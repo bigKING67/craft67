@@ -1,6 +1,6 @@
 # 旧 GitHub 仓库退役检查
 
-本轮只读查询时间：2026-10-06T09:47:05.630598+00:00。来源为 GitHub REST repos/releases/branches/tags/issues 接口，逐仓分页查询。未删除、归档、关闭 PR/Issue 或发布远端内容。
+删除前盘点时间：2026-10-06T09:47:05.630598+00:00。来源为 GitHub REST repos/releases/branches/tags/issues 接口，逐仓分页查询。该盘点时尚未删除远端内容；最终删除结果见文末。
 
 本地源码快照已迁入 craft67；完整历史、远端分支、PR/Issue 与 Release 不等于已迁移。
 
@@ -24,11 +24,11 @@
 - browser67 README、手动打包说明及 npm 仓库元数据使用 monorepo 路径；Design、Creative、Review、Write 的 README 活跃安装入口改为 craft67 的包或 Skill 子目录。
 - 本地 updater 合同回归不等于新 Release 安装或浏览器运行态验收。新仓库没有 browser67 Release 时明确失败，不使用旧仓库兜底。
 
-## 退役前还必须处理
+## 删除前的迁移建议（后由用户决定直接删除）
 
 1. 发布：为各包采用 `<package>/vX.Y.Z` 标签；先完成该包发布门禁，再对新 commit 创建 annotated tag 和 Release。browser67 需递增当前版本后发布，不能把旧源码的 Release 直接描述为新源码已验证。历史附件可以按原 SHA 保留为历史资产，但不能冒充新版本构建。
 2. 历史：逐项决定保留远端分支/标签历史，或明确放弃；当前 monorepo 只含导入快照。尤其 Design、Creative 和 Commerce 的开放 PR 不能因整合自动视为已完成。
-3. 外部消费者：旧版已安装 browser67 仍包含旧更新地址；需要过渡升级入口。已只读确认 `pi-67/packages/pi67-cli/src/lib/external-repos.mjs` 与 extension registry 仍引用旧 browser67/design-craft；`pi-67-desktop/eng/capabilities/capability-sources.lock.json` 仍绑定旧远端、旧 commit 及已删除的 `../browser67`、`../design-craft` sibling 路径。已获用户授权并完成这两个仓库的本地适配：Pi CLI 共用 craft67 检出、从子目录调用 runtime；Desktop 的三项一方来源通过 sourceDirectory 绑定已推送的 068e2fb。保留用户 WIP，尚未提交、发布或更新已安装客户端。
+3. 外部消费者：旧版已安装 browser67 仍包含旧更新地址；需要过渡升级入口。已只读确认 `pi-67/packages/pi67-cli/src/lib/external-repos.mjs` 与 extension registry 仍引用旧 browser67/design-craft；`pi-67-desktop/eng/capabilities/capability-sources.lock.json` 仍绑定旧远端、旧 commit 及已删除的 `../browser67`、`../design-craft` sibling 路径。已获用户授权并完成这两个仓库的本地适配：Pi CLI 共用 craft67 检出、从子目录调用 runtime；Desktop 的三项一方来源通过 sourceDirectory 绑定已推送的 `502266ef08cde5972efd2948055882cd9e03c1c4`。适配已提交并推送：Pi CLI `b94da54e9cfb01f6a1bebeee24f8de122e974744`，Desktop `5aff465042e53f76415765082afcb0aa57d4e642`。保留用户 WIP；未发布或更新已安装客户端。
 4. 文档及来源引用：其他包的 README、npm metadata、发布流程及历史证据中仍有旧地址。区分活跃安装/下载入口与历史来源、schema `$id`；历史证据和稳定 schema 标识不可批量改写。
 5. GitHub 状态：附件、Release 说明、PR/Issue 及分支处理完成前，不删除旧仓库。可先在明确授权后将旧仓库标记迁移并归档；归档与删除是不同动作。
 
@@ -48,3 +48,5 @@
 ## 删除结论
 
 2026-10-06：用户在获知 Release、附件、开放 PR/Issue 与旧客户端入口尚未迁移后，明确指示直接删除这 10 个旧仓库，不再迁移旧仓库内容。因此前述保留建议已被用户决定取代；删除执行与核验单独记录。当前 craft67 源码继续保留，旧下载/更新地址将失效；本决定不等于新 Release 或宿主更新已完成。
+
+2026-10-06T10:25:14Z：上述 10 个旧仓库全部删除成功，逐仓 GitHub API 回读均返回 404。删除对象严格限于表内仓库；`craft67`、`pi-67`、`pi-67-desktop` 不在删除范围。逐仓执行回执保存于本地忽略目录 `.migration-local/remote-deletion-result.json`。
