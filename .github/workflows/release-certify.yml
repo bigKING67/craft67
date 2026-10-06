@@ -1,0 +1,295 @@
+name: Release certification
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_level:
+        description: Explicit release evidence level
+        type: choice
+        required: true
+        options:
+          - operational_95
+          - certified_100
+      tag:
+        description: Existing annotated design-craft/v<version> tag
+        type: string
+        required: true
+      native_run_id:
+        description: Successful Native runtime evidence tag run ID
+        type: string
+        required: true
+      benchmark_run_id:
+        description: Successful tag-bound Operational candidate benchmark run ID
+        type: string
+        required: true
+      physical_device_run_id:
+        description: Required for certified_100; successful Physical device evidence run ID
+        type: string
+        required: false
+      benchmark_baseline:
+        description: Required committed benchmark baseline path
+        type: string
+        required: true
+      confirm_certification:
+        description: Enter certify-<tag>, for example certify-design-craft/v0.7.0
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-certification-${{ inputs.tag }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: packages/design-craft
+
+jobs:
+  certify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      actions: read
+      contents: read
+    env:
+      RELEASE_LEVEL: ${{ inputs.release_level }}
+      RELEASE_TAG: ${{ inputs.tag }}
+      NATIVE_RUN_ID: ${{ inputs.native_run_id }}
+      BENCHMARK_RUN_ID: ${{ inputs.benchmark_run_id }}
+      PHYSICAL_DEVICE_RUN_ID: ${{ inputs.physical_device_run_id }}
+      BENCHMARK_BASELINE: ${{ inputs.benchmark_baseline }}
+      CONFIRM_CERTIFICATION: ${{ inputs.confirm_certification }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+          submodules: recursive
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Configure isolated certification paths
+        shell: bash
+        run: |
+          echo "DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT=${RUNNER_TEMP}/native-evidence" >> "${GITHUB_ENV}"
+          echo "NATIVE_RUN_OBSERVATION=${RUNNER_TEMP}/native-run-observation.json" >> "${GITHUB_ENV}"
+          echo "BENCHMARK_RUN_OBSERVATION=${RUNNER_TEMP}/benchmark-run-observation.json" >> "${GITHUB_ENV}"
+          echo "BENCHMARK_RESULT=${RUNNER_TEMP}/benchmark/benchmark-result-full.json" >> "${GITHUB_ENV}"
+          echo "PHYSICAL_RUN_OBSERVATION=${RUNNER_TEMP}/physical-run-observation.json" >> "${GITHUB_ENV}"
+      - name: Verify immutable certification inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_tag="design-craft/v$(cat VERSION)"
+          test "${GITHUB_REF}" = refs/heads/main
+          test "${RELEASE_TAG}" = "${expected_tag}"
+          echo "CERTIFICATION_ARTIFACT_NAME=release-certification-${RELEASE_TAG//\//-}-${GITHUB_RUN_ID}" >> "${GITHUB_ENV}"
+          test "${CONFIRM_CERTIFICATION}" = "certify-${RELEASE_TAG}"
+          [[ "${NATIVE_RUN_ID}" =~ ^[1-9][0-9]*$ ]] || exit 2
+          [[ "${BENCHMARK_RUN_ID}" =~ ^[1-9][0-9]*$ ]] || exit 2
+          if [[ "${RELEASE_LEVEL}" = certified_100 ]]; then
+            [[ "${PHYSICAL_DEVICE_RUN_ID}" =~ ^[1-9][0-9]*$ ]] || exit 2
+          else
+            test -z "${PHYSICAL_DEVICE_RUN_ID}"
+          fi
+          [[ "${BENCHMARK_BASELINE}" == benchmarks/baselines/* ]] || exit 2
+          [[ "${BENCHMARK_BASELINE}" != *..* ]] || exit 2
+          test -f "${BENCHMARK_BASELINE}"
+          git ls-files --error-unmatch -- "${BENCHMARK_BASELINE}" >/dev/null
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          test "$(git cat-file -t "${RELEASE_TAG}")" = tag
+          test "$(git rev-list -n 1 "${RELEASE_TAG}")" = "$(git rev-parse HEAD)"
+          if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            echo "GitHub Release ${RELEASE_TAG} already exists; certify a new version instead" >&2
+            exit 2
+          fi
+          git switch -C main "$(git rev-parse HEAD)"
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+      - name: Observe exact source workflow runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m tools.design_craft release run-observation \
+            --kind native \
+            --run-id "${NATIVE_RUN_ID}" \
+            --output "${NATIVE_RUN_OBSERVATION}"
+          python3 -m tools.design_craft release run-observation \
+            --kind benchmark \
+            --run-id "${BENCHMARK_RUN_ID}" \
+            --output "${BENCHMARK_RUN_OBSERVATION}"
+          if [[ "${RELEASE_LEVEL}" = certified_100 ]]; then
+            python3 -m tools.design_craft release run-observation \
+              --kind physical \
+              --run-id "${PHYSICAL_DEVICE_RUN_ID}" \
+              --output "${PHYSICAL_RUN_OBSERVATION}"
+          fi
+      - name: Download exact native workflow evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/native-ios" "${RUNNER_TEMP}/native-android" "${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}"
+          gh run download "${NATIVE_RUN_ID}" \
+            --name "native-runtime-ios-${NATIVE_RUN_ID}" \
+            --dir "${RUNNER_TEMP}/native-ios"
+          gh run download "${NATIVE_RUN_ID}" \
+            --name "native-runtime-android-${NATIVE_RUN_ID}" \
+            --dir "${RUNNER_TEMP}/native-android"
+          cp -R "${RUNNER_TEMP}/native-ios/." "${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}/"
+          cp -R "${RUNNER_TEMP}/native-android/." "${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}/"
+          if [[ "${RELEASE_LEVEL}" = certified_100 ]]; then
+            mkdir -p "${RUNNER_TEMP}/native-physical"
+            gh run download "${PHYSICAL_DEVICE_RUN_ID}" \
+              --name "native-runtime-physical-${PHYSICAL_DEVICE_RUN_ID}" \
+              --dir "${RUNNER_TEMP}/native-physical"
+            cp -R "${RUNNER_TEMP}/native-physical/." "${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}/"
+          fi
+      - name: Download immutable benchmark evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/benchmark"
+          gh run download "${BENCHMARK_RUN_ID}" \
+            --name "operational-candidate-${BENCHMARK_RUN_ID}" \
+            --dir "${RUNNER_TEMP}/benchmark"
+          test -f "${BENCHMARK_RESULT}"
+          test -f "${RUNNER_TEMP}/benchmark/dist/evidence/operational-95-candidate.json"
+      - name: Install and verify the canonical skill
+        run: |
+          bash scripts/install_local.sh
+          make install-verify sync-status-check
+      - name: Verify final release evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="dist/evidence/${RELEASE_LEVEL}-final.json"
+          python3 -m tools.design_craft release verify \
+            --level "${RELEASE_LEVEL}" \
+            --phase final \
+            --baseline "${BENCHMARK_BASELINE}" \
+            --benchmark-result "${BENCHMARK_RESULT}" \
+            --benchmark-observation "${BENCHMARK_RUN_OBSERVATION}" \
+            --output "${evidence}"
+          python3 scripts/design_craft_github_checks.py \
+            --level "${RELEASE_LEVEL}" \
+            --require-tag-run
+          binding_args=(
+            --level "${RELEASE_LEVEL}"
+            --evidence "${evidence}"
+            --evidence-root "${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}"
+            --native-observation "${NATIVE_RUN_OBSERVATION}"
+            --benchmark-observation "${BENCHMARK_RUN_OBSERVATION}"
+            --benchmark-result "${BENCHMARK_RESULT}"
+          )
+          if [[ "${RELEASE_LEVEL}" = certified_100 ]]; then
+            binding_args+=(--physical-observation "${PHYSICAL_RUN_OBSERVATION}")
+          fi
+          python3 -m tools.design_craft release evidence-bindings "${binding_args[@]}"
+      - name: Upload release verification diagnostics
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: design-release-verification-${{ github.run_id }}
+          path: |
+            packages/design-craft/dist/evidence/${{ inputs.release_level }}-final.json
+            ${{ runner.temp }}/native-run-observation.json
+            ${{ runner.temp }}/benchmark-run-observation.json
+            ${{ runner.temp }}/benchmark/benchmark-result-full.json
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Build exact release asset set
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="dist/evidence/${RELEASE_LEVEL}-final.json"
+          if [[ "${RELEASE_LEVEL}" = certified_100 ]]; then
+            make release-assets-build-certified \
+              CERTIFIED_FINAL_EVIDENCE="${evidence}" \
+              RELEASE_ASSET_DIR=dist/release \
+              NATIVE_EVIDENCE_ROOT="${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}" \
+              NATIVE_RUN_OBSERVATION="${NATIVE_RUN_OBSERVATION}" \
+              BENCHMARK_RUN_OBSERVATION="${BENCHMARK_RUN_OBSERVATION}" \
+              BENCHMARK_RESULT="${BENCHMARK_RESULT}" \
+              PHYSICAL_RUN_OBSERVATION="${PHYSICAL_RUN_OBSERVATION}" \
+              NATIVE_IOS_SOURCE="${RUNNER_TEMP}/native-ios" \
+              NATIVE_ANDROID_SOURCE="${RUNNER_TEMP}/native-android" \
+              NATIVE_REAL_DEVICE_ROOT="${RUNNER_TEMP}/native-physical"
+            make release-assets-verify-certified RELEASE_ASSET_DIR=dist/release
+          else
+            make release-assets-build-operational \
+              OPERATIONAL_FINAL_EVIDENCE="${evidence}" \
+              NATIVE_EVIDENCE_ROOT="${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}" \
+              NATIVE_RUN_OBSERVATION="${NATIVE_RUN_OBSERVATION}" \
+              BENCHMARK_RUN_OBSERVATION="${BENCHMARK_RUN_OBSERVATION}" \
+              BENCHMARK_RESULT="${BENCHMARK_RESULT}" \
+              RELEASE_ASSET_DIR=dist/release
+            make release-assets-verify-operational RELEASE_ASSET_DIR=dist/release
+          fi
+      - name: Build immutable certification bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(
+            --level "${RELEASE_LEVEL}"
+            --tag "${RELEASE_TAG}"
+            --evidence "dist/evidence/${RELEASE_LEVEL}-final.json"
+            --evidence-root "${DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT}"
+            --native-observation "${NATIVE_RUN_OBSERVATION}"
+            --benchmark-observation "${BENCHMARK_RUN_OBSERVATION}"
+            --benchmark-result "${BENCHMARK_RESULT}"
+            --assets-dir dist/release
+            --repository "${GITHUB_REPOSITORY}"
+            --workflow-run-id "${GITHUB_RUN_ID}"
+            --workflow-run-attempt "${GITHUB_RUN_ATTEMPT}"
+            --output-dir dist/certification
+          )
+          if [[ "${RELEASE_LEVEL}" = certified_100 ]]; then
+            args+=(--physical-observation "${PHYSICAL_RUN_OBSERVATION}")
+          fi
+          python3 -m tools.design_craft release certification build "${args[@]}"
+          python3 -m tools.design_craft release certification validate \
+            --level "${RELEASE_LEVEL}" \
+            --input-dir dist/certification
+      - name: Upload immutable release certification
+        id: certification-artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ env.CERTIFICATION_ARTIFACT_NAME }}
+          path: packages/design-craft/dist/certification
+          if-no-files-found: error
+          retention-days: 90
+      - name: Record immutable certification artifact identity
+        env:
+          CERTIFICATION_ARTIFACT_ID: ${{ steps.certification-artifact.outputs.artifact-id }}
+          CERTIFICATION_ARTIFACT_DIGEST: ${{ steps.certification-artifact.outputs.artifact-digest }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "${CERTIFICATION_ARTIFACT_ID}" =~ ^[1-9][0-9]*$ ]] || exit 2
+          artifact_digest="${CERTIFICATION_ARTIFACT_DIGEST}"
+          if [[ "${artifact_digest}" =~ ^[0-9a-f]{64}$ ]]; then
+            artifact_digest="sha256:${artifact_digest}"
+          fi
+          [[ "${artifact_digest}" =~ ^sha256:[0-9a-f]{64}$ ]] || exit 2
+          {
+            echo "## Release certification artifact"
+            echo
+            echo "- Run ID: ${GITHUB_RUN_ID}"
+            echo "- Artifact ID: ${CERTIFICATION_ARTIFACT_ID}"
+            echo "- Artifact digest: ${artifact_digest}"
+          } >> "${GITHUB_STEP_SUMMARY}"

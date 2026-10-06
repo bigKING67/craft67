@@ -34,7 +34,7 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 | 包 | 已有入口 | 下一步需要完成的发布准备 |
 | --- | --- | --- |
-| design-craft | 根 `native-runtime.yml`、`benchmark.yml`；包内认证/发布参考 | 已接入手动 native 和性能证据采集；本地认证工具已限定命名空间标签；根认证工作流与正式发布链仍需迁移 |
+| design-craft | 根 `native-runtime.yml`、`benchmark.yml`、`release-certify.yml` | 已接入手动采集、operational candidate 和认证入口；认证成功证据、native 标签触发及正式发布仍待完成 |
 | creative-craft | 根 Offline candidates → 原 `scripts/build_release.py` | 已接入离线候选；真实宿主模型调用和创意质量证据仍需独立验收 |
 | review-craft | 根 Offline candidates → 原 `scripts/release_gate.py` | 本轮接入 Ubuntu 候选；旧包 CI 的同一 tarball 跨平台复验尚未迁入，真实宿主声明仍需单独验收 |
 | money-craft | 根 Offline candidates → 原包检查与 `scripts/package_smoke.py` | 已接入实际打包和隔离 smoke；数据源 live 与研究质量证据仍需独立验收 |
@@ -51,22 +51,36 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 - **Write Craft：发布检查失败。** 在 `a15cc0c` 源码上实际运行 `python3 scripts/release_check.py`，当前 Skill 摘要、用例 digest 与历史版本基线不一致，且缺少符合当前合同的完整 PASS、探索披露、评审器校准与真人阅读摘要。普通源码 CI 通过不改变此结果。需要重新采集真实行为与真人证据；不能复制旧 PASS、改摘要或删除门禁使其通过。
 - **Commerce：证据输入待准备。** `tooling/build/package_release.py` 明确要求 quality-regression 通过、干净当前 HEAD、完整选择/执行/评审/校准层、活跃安装一致性，以及同一个显式指定模型。当前未提供符合新 HEAD 的质量证据包；未执行正式打包或触发付费模型评测。仓库中的评测用例不是通过证据。
-- **Design：认证链迁移尚未完成。** operational/certified 产物构建需要 native observation、benchmark observation/result、证据目录及后续标签绑定校验。旧认证/发布工作流仍在包内，不能在根目录复制单个 build 命令就声称完成迁移。本轮没有运行或宣称这些认证通过。
+- **Design：认证链迁移尚未完成。** operational/certified 产物构建需要 native observation、benchmark observation/result、证据目录及后续标签绑定校验。根手动认证入口已迁移，但尚未取得完整 tag-bound 认证成功证据，正式发布工作流仍在包内。本轮没有运行或宣称这些认证通过。
 - **Browser67：先恢复平台验证入口。** 根 [Browser67 platform checks](../.github/workflows/browser67-platform.yml) 保留旧四格系统/Node 矩阵、Ubuntu 隔离 Chrome remote-CDP、覆盖率附件；只手动触发。它不访问用户浏览器配置，不运行真实 TMWD/Profile 验收，不代替 `release:ready` 中的 live、上游当前性与截图稳定性条件，因此暂不加入离线候选支持名单。
 
 剩余缺口是实际验收和工作流迁移工作，不是缺少版本号。六个已接入包的候选入口继续独立可用。
 
 ## Design 证据采集入口
 
-根 [Native runtime evidence](../.github/workflows/native-runtime.yml) 与 [Performance benchmark](../.github/workflows/benchmark.yml) 均只手动触发。前者复用原 iOS Simulator/Android Emulator 脚本、固定工具版本和证据格式；后者复用原性能测试命令，支持 smoke/full，默认 full。运行目录指向 `packages/design-craft`，第三方 emulator action 的脚本路径则从 Git 根显式定位。
+根 [Native runtime evidence](../.github/workflows/native-runtime.yml) 与 [Performance benchmark](../.github/workflows/benchmark.yml) 均只手动触发。前者复用原 iOS Simulator/Android Emulator 脚本、固定工具版本和证据格式；后者的 `mode=capture` 复用原性能测试命令，支持 smoke/full，默认 full；新增 `mode=operational-candidate`，详见下节。运行目录指向 `packages/design-craft`，第三方 emulator action 的脚本路径则从 Git 根显式定位。
 
 这两个入口用于验证迁移后的采集能力。main 上的手动运行不是 tag-push native 证据，不满足最终认证要求。只有审阅实际完成的 run、产物和源码绑定后，才能引用其中通过的单项证据；性能采集不是匹配 baseline 的回归验收，模拟器不是物理设备或跨 Agent 产品质量证明。
 
-后续认证迁移必须同时处理：
+认证迁移状态与剩余条件：
 
-1. 已迁移本地 tag-bound observation、metadata、assets、native bundle 和 certification 校验：仅接受当前版本的 `design-craft/v<version>`，拒绝裸标签及其他包标签；旧标签与旧证据保留为历史，不作为当前认证输入。认证附件采用 `release-certification-design-craft-v<version>-<run_id>`，避免标签中的斜杠进入附件名。远端检查器已改为查询根 `check.yml` 与 `native-runtime.yml`；包内历史工作流尚未同步，不能直接调用为新认证入口。
-2. 原认证/发布工作流的 checkout、包 cwd、artifact 路径、标签校验及不可覆盖语义。
+1. 已迁移本地 tag-bound observation、metadata、assets、native bundle 和 certification 校验：仅接受当前版本的 `design-craft/v<version>`，拒绝裸标签及其他包标签；旧标签与旧证据保留为历史，不作为当前认证输入。认证附件采用 `release-certification-design-craft-v<version>-<run_id>`，避免标签中的斜杠进入附件名。远端检查器已改为查询根 `check.yml` 与 `native-runtime.yml`；包内历史工作流仍不能直接作为新仓库入口。
+2. 根手动认证工作流已适配 main checkout、包 cwd、artifact 路径和命名空间标签；保留精确 SHA、确认输入及已有 Release 拒绝条件。正式发布工作流尚未迁移。
 3. native tag-push、对应 benchmark 与认证 run 的精确 SHA、事件、workflow、attempt 和产物 digest 绑定。
 4. certified 等级所需的真实物理设备与各宿主证据；本轮不触发 self-hosted 物理设备流程，不执行会写本机安装目录的 `publish-local`。
 
 在上述合同迁移和验证完成之前，不启用根自动 tag 触发或发布工作流，不将 Design 加入离线候选列表。
+
+## Design 手动候选与认证
+
+`benchmark.yml` 默认 `mode=capture`，不进行安装或认证。选择 `mode=operational-candidate` 时：
+
+- 必须从当前版本的 annotated `design-craft/v<版本>` 标签运行，标签目标必须等于运行 SHA；不接受 main、裸标签、其他包标签或 lightweight tag。
+- `native_run_id` 必须对应同一 SHA、同一 Design 标签的成功 native push run；使用原 observation 校验器核对 workflow、事件、attempt 与最新运行，不以名称相同或旧运行成功替代。
+- `benchmark_baseline` 是包内 `benchmarks/baselines/` 下已提交的文件；需要通过原 runner/指标合同及性能回归检查，不自动刷新旧 baseline。
+- 在 GitHub 临时 runner 中执行原 `release-readiness-operational`，包括源码门禁、隔离安装和 operational 证据要求；不改用户本机安装。
+- 附件 `operational-candidate-<run_id>` 保留 native observation、`benchmark-result-full.json` 和 `dist/evidence/operational-95-candidate.json`。附件存在不等于成功，消费者还必须验证对应 run 成功及 SHA 绑定。
+
+根 [Release certification](../.github/workflows/release-certify.yml) 只在 main 手动运行，输入现有 annotated Design 标签、native/benchmark run ID、包内 baseline 路径和 `certify-<完整标签>`。它重新观察指定运行、下载证据、执行 final 门禁、构建并验证认证包。源码 main、运行 SHA 和标签目标必须相同；不创建标签、不发布 Release、不授予 contents 写权限。附件采用不含斜杠的名称 `release-certification-design-craft-v<版本>-<run_id>`，工作流上传路径从仓库根指向包内产物。
+
+**尚未完成真实认证运行。** native 标签 push 触发仍未启用，现有 main 手动采集不能用作最终认证输入；需要后续在已确认的版本提交上取得合格 native、baseline 和宿主证据。`certified_100` 还要求 physical-device observation 和四宿主证据，根物理设备工作流尚未迁移，该等级目前不可完成。新增入口不改变这些门禁，也不代表十个包均已可正式发布。
