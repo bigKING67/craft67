@@ -116,3 +116,9 @@ exposed an incomplete move-budget rule; the Skill was repaired and the final
 evidence was rerun rather than editing the judge result. Those scores do not
 certify the changed 2026-09-07 Skill tree; current behavioral evidence must be
 collected separately without rewriting historical hashes or judge results.
+
+## 2026-10-06 adoption follow-up
+
+See [the current bounded adoption review](upstream-adoption-review-2026-10-06.md) for the exact new ranges, complete path counts, deferred candidates and exclusions. The compatibility inventories and previously absorbed behavior documented above remain unchanged; this follow-up imports no new Skill behavior.
+
+Adoption-screened range: `e79ca9ec7e071eb3a3b623c4fb752e853fc3ed58..ce26fc25c0e5e8cab638f883de62d9a86ee5e45b`. Latest disposition: `provenance_only`. This does not advance the absorbed-behavior boundary.

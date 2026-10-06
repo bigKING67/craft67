@@ -212,3 +212,9 @@ pre-date the mobile Web guidance and do not validate the current Skill tree:
   no-skill baseline 91.
 - `emil-motion-planning-ablation`: `design-craft` 95, focused Emil upstream 76,
   no-skill baseline 80.
+
+## 2026-10-06 adoption follow-up
+
+See [the current bounded adoption review](upstream-adoption-review-2026-10-06.md) for the exact new ranges, complete path counts, deferred candidates and exclusions. The compatibility inventories and previously absorbed behavior documented above remain unchanged; this follow-up imports no new Skill behavior.
+
+Adoption-screened range: `85e8e2363b713506e1d5b6e07a0eb2da66be1bc3..e8a175de22ae1e49370fc144c1f3bb9aeedf988d`. Latest disposition: `deferred`. This does not advance the absorbed-behavior boundary.

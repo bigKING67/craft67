@@ -201,3 +201,9 @@ changed design behavior. Synchronizing a pin never advances review or absorption
 metadata automatically.
 
 Global route-pack writes, installation, push and release remain separate actions.
+
+## 2026-10-06 adoption follow-up
+
+See [the current bounded adoption review](upstream-adoption-review-2026-10-06.md) for the exact new ranges, complete path counts, deferred candidates and exclusions. The compatibility inventories and previously absorbed behavior documented above remain unchanged; this follow-up imports no new Skill behavior.
+
+Adoption-screened range: `267330e1adfc66a718fb65fa6918c1f06d0a689e..d574cc8a576dc24256ad38268b8d03d86724a1b3`. Latest disposition: `deferred`. This does not advance the absorbed-behavior boundary.

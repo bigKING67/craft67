@@ -32,6 +32,12 @@
 
 本次是 main 上的 capture 运行，不能替代 final 所需的 tag-bound operational-candidate benchmark observation。结果绑定 `6d0676a`，不是后续提交的当前 SHA 证明；在最终版本提交确定后仍需采集对应认证证据。
 
+## 上游采用边界复核（2026-10-06 后续）
+
+四个上游的后续结果见 [采用边界审查报告](../packages/design-craft/docs/upstream-adoption-review-2026-10-06.md)。Taste 新范围为 `provenance_only`；Emil、Jakub 和 Impeccable 新范围明确 `deferred`，不引入新行为或 runtime。Impeccable 的截断比较已由临时 Git 数据恢复为 480 个提交、1,288 个路径的完整清单；完整清单不等于逐行技术审计。
+
+更新采用决策及精确范围后，`upstream_absorption_report.py --remote-details --fail-on-unreviewed` 已通过，四项 `reviewed_remote_drift=false`；吸收合同与 25 项 portable 门禁通过。上表保留 `6d0676a` 的原始失败快照，本节记录后续已解决的元数据/采用决策缺口。兼容性 pin、已吸收行为边界和 Skill 文件均未改变。宿主/对照评测失败、native 标签证据及最终认证缺口仍然存在。
+
 ## 真实评测执行顺序
 
 所有命令从 `packages/design-craft` 执行。模型、推理档位、费用预算尚未指定；下面是待执行清单，不是已经执行的记录。

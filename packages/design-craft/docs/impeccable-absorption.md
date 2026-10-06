@@ -288,3 +288,9 @@ remain intentionally outside the product.
 Current independent blind evidence is recorded in
 `evals/comparative/impeccable-production-ablation/`: `design-craft` 100,
 focused Impeccable upstream 97, no-skill baseline 96.
+
+## 2026-10-06 adoption follow-up
+
+See [the current bounded adoption review](upstream-adoption-review-2026-10-06.md) for the exact new ranges, complete path counts, deferred candidates and exclusions. The compatibility inventories and previously absorbed behavior documented above remain unchanged; this follow-up imports no new Skill behavior.
+
+Adoption-screened range: `f2c7051853848826aac2f4646581d62a732155ad..cf3d2fa07d3ad1814ac5fbbbb5b2043b795eaef1`. Latest disposition: `deferred`. This does not advance the absorbed-behavior boundary.
