@@ -36,3 +36,5 @@ python3 scripts/versions.py --check --package browser67
 发布顺序：确定包和版本 → 同步元数据与变更说明 → 运行包级检查和发布/live 门禁 → scoped commit/push → 核对精确 SHA → 在授权范围内创建不可覆盖的 annotated tag、Release 和包产物 → 回读验证。提交、推送、GitHub 发布、npm 发布和本机安装各自核对授权，不推断为同一步。
 
 Release 说明绑定完整源码 SHA、包目录、验证范围以及真实产物的校验值；不以整个 monorepo 的源码压缩包冒充单包安装包。包内旧工作流不会自动执行；逐包迁移真实发布流程后才能启用对应入口，不能只加标签就宣称安装可用。遗留工具若接收裸版本标签，可在本地门禁中传裸版本；远端标签仍使用命名空间。
+
+当前候选构建入口、证据范围与逐包缺口见 [发布流程迁移](release-migration.md)。
