@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Restore manual monorepo platform checks and update compatible transitive
+  security patches: brace-expansion 5.0.12, fast-uri 3.1.8, and source-map-js 1.2.2.
+
 - Move release resolution to `bigKING67/craft67` with `browser67/vX.Y.Z` tags;
   install from `packages/browser67`, isolate other packages' releases, and fail
   explicitly when no browser67 release is available.
