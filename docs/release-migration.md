@@ -34,7 +34,7 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 | 包 | 已有入口 | 下一步需要完成的发布准备 |
 | --- | --- | --- |
-| design-craft | 包内 `release-certify.yml`、`release-publish.yml` | 成套迁移 native/benchmark/认证/发布依赖；适配子目录、命名空间标签和远端 run/artifact 身份，保持认证证据绑定 |
+| design-craft | 根 `native-runtime.yml`、`benchmark.yml`；包内认证/发布参考 | 已接入手动 native 和性能证据采集；命名空间标签、认证 observation 与正式发布链仍需迁移 |
 | creative-craft | 根 Offline candidates → 原 `scripts/build_release.py` | 已接入离线候选；真实宿主模型调用和创意质量证据仍需独立验收 |
 | review-craft | 根 Offline candidates → 原 `scripts/release_gate.py` | 本轮接入 Ubuntu 候选；旧包 CI 的同一 tarball 跨平台复验尚未迁入，真实宿主声明仍需单独验收 |
 | money-craft | 根 Offline candidates → 原包检查与 `scripts/package_smoke.py` | 已接入实际打包和隔离 smoke；数据源 live 与研究质量证据仍需独立验收 |
@@ -55,3 +55,18 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 - **Browser67：先恢复平台验证入口。** 根 [Browser67 platform checks](../.github/workflows/browser67-platform.yml) 保留旧四格系统/Node 矩阵、Ubuntu 隔离 Chrome remote-CDP、覆盖率附件；只手动触发。它不访问用户浏览器配置，不运行真实 TMWD/Profile 验收，不代替 `release:ready` 中的 live、上游当前性与截图稳定性条件，因此暂不加入离线候选支持名单。
 
 剩余缺口是实际验收和工作流迁移工作，不是缺少版本号。六个已接入包的候选入口继续独立可用。
+
+## Design 证据采集入口
+
+根 [Native runtime evidence](../.github/workflows/native-runtime.yml) 与 [Performance benchmark](../.github/workflows/benchmark.yml) 均只手动触发。前者复用原 iOS Simulator/Android Emulator 脚本、固定工具版本和证据格式；后者复用原性能测试命令，支持 smoke/full，默认 full。运行目录指向 `packages/design-craft`，第三方 emulator action 的脚本路径则从 Git 根显式定位。
+
+这两个入口用于验证迁移后的采集能力。main 上的手动运行不是 tag-push native 证据，不满足最终认证要求。只有审阅实际完成的 run、产物和源码绑定后，才能引用其中通过的单项证据；性能采集不是匹配 baseline 的回归验收，模拟器不是物理设备或跨 Agent 产品质量证明。
+
+后续认证迁移必须同时处理：
+
+1. `release/github_runs.py` 的 tag-bound observation 合同，目前仍构造裸 `v<version>`；新仓库必须限定 `design-craft/v<version>`，拒绝其他包标签，并明确历史兼容边界。
+2. 原认证/发布工作流的 checkout、包 cwd、artifact 路径、标签校验及不可覆盖语义。
+3. native tag-push、对应 benchmark 与认证 run 的精确 SHA、事件、workflow、attempt 和产物 digest 绑定。
+4. certified 等级所需的真实物理设备与各宿主证据；本轮不触发 self-hosted 物理设备流程，不执行会写本机安装目录的 `publish-local`。
+
+在上述合同迁移和验证完成之前，不启用根自动 tag 触发或发布工作流，不将 Design 加入离线候选列表。

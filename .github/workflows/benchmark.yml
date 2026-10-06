@@ -1,0 +1,48 @@
+name: Performance benchmark
+on:
+  workflow_dispatch:
+    inputs:
+      scale:
+        description: Design Craft benchmark scale; capture only, no certification
+        type: choice
+        required: true
+        default: full
+        options: [smoke, full]
+permissions:
+  contents: read
+concurrency:
+  group: design-benchmark-${{ github.ref }}
+  cancel-in-progress: true
+defaults:
+  run:
+    working-directory: packages/design-craft
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.13'
+      - name: Capture current-source benchmark
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          BENCHMARK_SCALE: ${{ inputs.scale }}
+        run: >-
+          python3 -m tools.design_craft benchmark
+          --scale "$BENCHMARK_SCALE"
+          --output "$RUNNER_TEMP/benchmark-result.json"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: performance-${{ inputs.scale }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/benchmark-result.json
+          if-no-files-found: error
+          retention-days: 90
