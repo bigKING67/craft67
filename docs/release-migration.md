@@ -84,3 +84,5 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 根 [Release certification](../.github/workflows/release-certify.yml) 只在 main 手动运行，输入现有 annotated Design 标签、native/benchmark run ID、包内 baseline 路径和 `certify-<完整标签>`。它重新观察指定运行、下载证据、执行 final 门禁、构建并验证认证包。源码 main、运行 SHA 和标签目标必须相同；不创建标签、不发布 Release、不授予 contents 写权限。附件采用不含斜杠的名称 `release-certification-design-craft-v<版本>-<run_id>`，工作流上传路径从仓库根指向包内产物。
 
 **尚未完成真实认证运行。** native 标签 push 触发仍未启用，现有 main 手动采集不能用作最终认证输入；需要后续在已确认的版本提交上取得合格 native、baseline 和宿主证据。`certified_100` 还要求 physical-device observation 和四宿主证据，根物理设备工作流尚未迁移，该等级目前不可完成。新增入口不改变这些门禁，也不代表十个包均已可正式发布。
+
+当前认证证据的现场结果、真实评测调用清单和执行顺序见 [Design 认证证据核验与执行清单](design-certification-checklist.md)。
