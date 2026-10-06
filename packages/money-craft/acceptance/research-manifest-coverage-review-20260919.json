@@ -1,0 +1,43 @@
+{
+  "schema": "money-craft.research-manifest-coverage-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Completion manifest coverage must match current plan/case/evidence inventory",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "495e9d9ea7de842f21a239226efc5480f68210bb204a1b86757db0d3c81c8064",
+    "tests/test_research_manifest_coverage.py": "99ad2d88b95dbb3d2f2bf9754928ffae1621991bb6ee48b01fe9771e58cdf9e5",
+    "tests/test_research_run.py": "7b72901b4baee1b2f7b2f3c7c526fdf65d1c520b1ef5cfa2c0fdb67d29f345e7"
+  },
+  "validation": {
+    "new_tests": 1,
+    "mutation_cases": 6,
+    "reviewed_research_tests": 48,
+    "full_tests": 460,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 6,
+    "runtime_evidence": "Real temporary finalized workspaces: manifest omission/relabel/identity/count/duplicate mutations with updated receipt manifest hash rejected; finalize leaves sealed bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "initial_findings": "Preserve STALE for file drift; legacy manifest omission allowance conflicts with new coverage contract. Both resolved.",
+    "final_verdict": "KEEP; 48 tests passed; no remaining blockers",
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "495e9d9ea7de842f21a239226efc5480f68210bb204a1b86757db0d3c81c8064",
+      "tests/test_research_manifest_coverage.py": "99ad2d88b95dbb3d2f2bf9754928ffae1621991bb6ee48b01fe9771e58cdf9e5",
+      "tests/test_research_run.py": "7b72901b4baee1b2f7b2f3c7c526fdf65d1c520b1ef5cfa2c0fdb67d29f345e7"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Legacy manifests missing required evidence bindings now invalid; no auto migration or overwrite.",
+    "Legacy receipts without assessment remain supported.",
+    "No external signature or resistance to coordinated rewrite of plan/case/all evidence.",
+    "Research_run and core-wide acceptance remain PARTIAL."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "calendar": "solar",
+  "date": "2000-08-16",
+  "time": "04:00:00",
+  "uncertaintyMinutes": 59,
+  "place": "合成样例地点（东经120度）",
+  "longitude": 120,
+  "timeZone": "Asia/Shanghai",
+  "gender": "female",
+  "timeBasis": "civil",
+  "dayBoundary": "zi"
+}

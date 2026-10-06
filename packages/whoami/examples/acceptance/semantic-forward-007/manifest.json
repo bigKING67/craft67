@@ -1,0 +1,66 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-007",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "8480b9dc70cc1241a329fbab0a95876b753ebc920b13268ca051720458de7f71",
+    "bytes": 6235
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "8727d2df7558e7bc4012f9f87991efa2449f1a8e081aea392c3ed134ba4fc9fe",
+    "bytes": 1672
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "88788228c3cfe2a86238ecc11a2d303609e4b3058de5446e4bba6950eac12b6c",
+    "bytes": 1706
+  },
+  "cases": [
+    {
+      "id": "ziwei-transform-list-must-not-become-event-schedule",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "54ae665b4e5ec47f259ec1f40d3236ece14d3203d4abd49ffff05b726f6e3f44",
+        "bytes": 65645
+      },
+      "response": {
+        "path": "response.md",
+        "sha256": "98ef3b439b15c0ec49cd36eb409f874eb937792a82228e7820aef3955f30e064",
+        "bytes": 1063
+      },
+      "report": {
+        "path": "report.json",
+        "sha256": "57e78420c963839e8754a6658ad4e362122e667dd348237573525bebe92f6c2e",
+        "bytes": 15264
+      },
+      "responseClaims": {
+        "path": "response-claims.json",
+        "sha256": "3e9408c2de9b854b496eafaec3d961fbda13eb758b5beadee3eb6c1f05f36ea8",
+        "bytes": 2964
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

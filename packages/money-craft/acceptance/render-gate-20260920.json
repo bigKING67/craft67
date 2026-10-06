@@ -1,0 +1,101 @@
+{
+  "schema": "money-craft.render-gate-regression.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_RENDER_GATE_REGRESSION",
+  "changes": [
+    {
+      "file": "investment_render_gate.py",
+      "before_sha256": null,
+      "after_sha256": "33defbde94b125c94a3979714165dcc4e137ea644017def03a2de8f66afbb158"
+    },
+    {
+      "file": "investment_run.py",
+      "before_sha256": "d3db90504737d401fb1a7df167b8ebbbab96c849082e3705a08678b3e5ee6ab7",
+      "after_sha256": "756d9101f0243d464a81eef83aeea9a5776738588724570ed76f7295173517a5"
+    },
+    {
+      "file": "investment_archive_revision.py",
+      "before_sha256": "646f0ff1e02cda2de5bc4fa31606e7eb67b369973f06eabd9bff8fd7c4d3c12a",
+      "after_sha256": "9829284c710e2ed0a83094a8dc339f76d9ff088c3a58dc7e91499f34071e6317"
+    },
+    {
+      "file": "tests/render_gate_fixture.py",
+      "before_sha256": null,
+      "after_sha256": "b4c4e33c5d9b10a0648a47958575104d985dfeb3ed7e02c1047cb3ba47095c6d"
+    },
+    {
+      "file": "tests/test_investment_render_gate.py",
+      "before_sha256": null,
+      "after_sha256": "042c1ca42e1354ee3a5831a4d105a988e87e410d896030509c66568fa06f32b5"
+    },
+    {
+      "file": "tests/test_investment_run.sh",
+      "before_sha256": "729ed73905c24390b7810e162bd0b0ee466b50034ef6e1556d16236f946fc07e",
+      "after_sha256": "194bf14e1cc083fc4e1b6cdc86c11eea3d2546c850d069e5a15fbac6e2c4ead4"
+    }
+  ],
+  "unit_tests": 11,
+  "shell_suites_passed": [
+    "investment_run",
+    "investment_archive_revision",
+    "investment_archive_sources"
+  ],
+  "negative_integration": {
+    "collector_exit": 1,
+    "completion_exit": 1,
+    "completion_error": "{\n  \"schema\": \"codex.investment-run-error.v1\",\n  \"error\": \"render validation is not PASS\"\n}",
+    "ledger_unchanged": true,
+    "stage_after_rejection": "render",
+    "checks": {
+      "content-schema": "PASS",
+      "content": "FAIL",
+      "markdown": "FAIL",
+      "placeholders": "PASS",
+      "visual": "PASS",
+      "fonts": "PASS",
+      "style": "PASS",
+      "density": "PASS",
+      "math": "PASS"
+    },
+    "visual_review_fixture": true,
+    "archive_started": false
+  },
+  "legacy_readback_ok": true,
+  "new_full_e2e": false,
+  "previous_e2e_reclassified": false,
+  "global_skill_install_changed": false,
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-render-gate/tests.log",
+      "sha256": "0ad09c35e85da3ccbdaa374ca8441346ba3a36d9f535d39cc50f9ff8fdbf5b1e"
+    },
+    {
+      "path": "local/acceptance/20260920-render-gate/run-tests.log",
+      "sha256": "66fbebb14d819a47741f5ec3e39efdd6037c931522a726fb43bdf8eaaeaa0e8b"
+    },
+    {
+      "path": "local/acceptance/20260920-render-gate/revision-tests.log",
+      "sha256": "2efad216dc6be21302232b299e7b0e40b8725d4102c8b8a39d2122999c746a28"
+    },
+    {
+      "path": "local/acceptance/20260920-render-gate/source-tests.log",
+      "sha256": "93aaf362344d67a9c1d3dfc25927d7310db5df00d1aa1df73d46649714ce2464"
+    },
+    {
+      "path": "local/acceptance/20260920-render-gate/real-negative.json",
+      "sha256": "028c24117db9a384884c93cf9f57256f76ef4d55fb84323de90381139a8dc2a2"
+    },
+    {
+      "path": "local/acceptance/20260920-render-gate/legacy-readback.json",
+      "sha256": "81f9b3ca5cf91b1b3d4935dfffa900f51f53b20fb26185c49c0610afcafa00ae"
+    },
+    {
+      "path": "local/acceptance/20260920-render-gate/real_negative.py",
+      "sha256": "e33db205143ce4f13b57ace5944f758a3d9acd03b74bd0e0967d957282125a41"
+    },
+    {
+      "path": "local/acceptance/20260920-render-gate/real-checks/validation.json",
+      "sha256": "104f6a61f9528a9c3d3909b185f5394908c5099bfe65802194d16436ea7924d6"
+    }
+  ]
+}

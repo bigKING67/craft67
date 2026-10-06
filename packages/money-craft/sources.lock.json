@@ -1,0 +1,1814 @@
+{
+  "schema_version": "money-craft.sources.v1",
+  "verified_at": "2026-09-01",
+  "upstreams": [
+    {
+      "id": "ai-berkshire",
+      "url": "https://github.com/xbtlin/ai-berkshire",
+      "license": "MIT",
+      "license_file": "LICENSES/AI-BERKSHIRE-MIT.txt",
+      "pinned_commit": "fef5533145e2a505c7e07592d61165c7485a98b9",
+      "reviewed_commit": "fef5533145e2a505c7e07592d61165c7485a98b9",
+      "absorbed_commit": "fef5533145e2a505c7e07592d61165c7485a98b9",
+      "runtime_dependency": false,
+      "reviews": [
+        {
+          "from_commit": "fef5533145e2a505c7e07592d61165c7485a98b9",
+          "through_commit": "5402e44d4c2dfe23ef9e15139091acb057181219",
+          "reviewed_at": "2026-08-24",
+          "disposition": "pin-retained-report-only",
+          "changed_scope": [
+            "reports/"
+          ],
+          "mapped_source_changes": 0,
+          "mechanism_observations": [
+            {
+              "sources": [
+                "reports/快手/快手2026Q2财报深度解读-20260820.md",
+                "reports/茅台/茅台-2026半年度业绩说明会全文实录-20260821.md",
+                "reports/MINIMAX/MiniMax-三大报表解析-FY2025-20260824.md"
+              ],
+              "targets": [
+                "skills/money-craft/scripts/research_workflow.py",
+                "skills/money-craft/references/company-research.md",
+                "skills/money-craft/references/earnings-review.md"
+              ],
+              "classification": "reimplemented",
+              "mechanism": "conditional search and capture of decision-critical transaction, management-Q&A, and post-period primary disclosures"
+            },
+            {
+              "sources": [
+                "reports/五粮液/《看懂五粮液》-20260822/03-会计重述-消失的303亿.md",
+                "reports/五粮液/五粮液-三大报表解析-2025年报及2026Q1-20260824.md",
+                "reports/腾讯/腾讯-三大报表解析-2026Q2-20260824.md"
+              ],
+              "targets": [
+                "skills/money-craft/scripts/financial_reconciliation.py",
+                "skills/money-craft/schemas/financial-reconciliation.schema.json",
+                "skills/money-craft/references/financial-data-and-evidence.md"
+              ],
+              "classification": "reimplemented",
+              "mechanism": "restatement-basis tagging, three-statement reconciliation, and accounting-presentation-to-economics receipts"
+            }
+          ]
+        },
+        {
+          "from_commit": "5402e44d4c2dfe23ef9e15139091acb057181219",
+          "through_commit": "12b1aefccb28a4d4ac21ce1b7b3d8e058ca2a6f7",
+          "reviewed_at": "2026-09-01",
+          "disposition": "pin-retained-selective-reimplementation",
+          "changed_scope": [
+            "documentation",
+            "skills",
+            "excluded-content"
+          ],
+          "mapped_source_changes": 0,
+          "coverage": {
+            "changed_files": 54,
+            "reviewed_files": 7,
+            "accounted_excluded_files": 47,
+            "pending_files": 0,
+            "categories": {
+              "documentation": 3,
+              "skills": 4,
+              "excluded-content": 47
+            }
+          },
+          "mechanism_observations": [
+            {
+              "sources": [
+                "skills/era-alpha.md",
+                "reports/12家公司10年后利润结局推演-20260827.md"
+              ],
+              "targets": [
+                "skills/money-craft/references/high-growth-alpha.md",
+                "skills/money-craft/references/global-investing.md",
+                "skills/money-craft/references/routing.md",
+                "skills/money-craft/references/company-research.md",
+                "skills/money-craft/references/valuation-and-thesis.md"
+              ],
+              "classification": "reimplemented",
+              "mechanism": "global industry-and-company alpha routing with bounded value-chain mapping, cross-market candidates, high-frequency cross-checks, normalized baselines, contradiction handling, and falsifiable inflection metrics"
+            },
+            {
+              "sources": [
+                "reports/破净与净现金股全球筛选-20260827.md",
+                "reports/折扣零售产业链/折扣零售产业链投资研究-唯品会为起点-20260827.md"
+              ],
+              "targets": [
+                "skills/money-craft/references/screening.md",
+                "skills/money-craft/references/valuation-and-thesis.md",
+                "skills/money-craft/references/financial-data-and-evidence.md"
+              ],
+              "classification": "reimplemented",
+              "mechanism": "strict cash ownership, availability, debt, lease, minority-interest, and share-count reconciliation before net-cash, enterprise-value, or asset-discount claims"
+            }
+          ],
+          "non_absorbed_decisions": [
+            {
+              "sources": [
+                "codex-prompts/era-alpha.md",
+                "codex-skills/era-alpha/SKILL.md",
+                "codex-skills/investment-research/SKILL.md"
+              ],
+              "disposition": "provenance-only",
+              "reason": "generated compatibility artifacts are not upstream canonical workflow sources"
+            },
+            {
+              "sources": [
+                "reports/"
+              ],
+              "file_count": 45,
+              "disposition": "content-excluded",
+              "reason": "research outputs are review inputs, not Money Craft runtime or distributable source"
+            },
+            {
+              "sources": [
+                "实盘记录/"
+              ],
+              "file_count": 2,
+              "disposition": "content-excluded",
+              "reason": "real-account records remain outside the product and public evidence boundary"
+            },
+            {
+              "sources": [
+                "reports/快手/快手-赔率表与分批建仓框架-20260827.md"
+              ],
+              "disposition": "scope-rejected",
+              "reason": "position sizing, staged order placement, and trade instructions remain outside this source review and require separate user constraints and execution authorization"
+            }
+          ]
+        }
+      ],
+      "mappings": [
+        {
+          "source": "skills/investment-checklist.md",
+          "targets": [
+            "skills/money-craft/references/screening.md",
+            "skills/money-craft/references/company-research.md"
+          ],
+          "classification": "adapted"
+        },
+        {
+          "source": "skills/quality-screen.md",
+          "targets": [
+            "skills/money-craft/references/screening.md"
+          ],
+          "classification": "adapted"
+        },
+        {
+          "source": "skills/investment-research.md",
+          "targets": [
+            "skills/money-craft/references/company-research.md",
+            "skills/money-craft/templates/report.md"
+          ],
+          "classification": "adapted"
+        },
+        {
+          "source": "skills/earnings-review.md",
+          "targets": [
+            "skills/money-craft/references/earnings-review.md"
+          ],
+          "classification": "adapted"
+        },
+        {
+          "source": "skills/thesis-tracker.md",
+          "targets": [
+            "skills/money-craft/references/valuation-and-thesis.md",
+            "skills/money-craft/templates/thesis.md"
+          ],
+          "classification": "adapted"
+        },
+        {
+          "source": "skills/financial-data.md",
+          "targets": [
+            "skills/money-craft/references/financial-data-and-evidence.md"
+          ],
+          "classification": "adapted"
+        },
+        {
+          "source": "tools/financial_rigor.py",
+          "targets": [
+            "skills/money-craft/scripts/financial_rigor.py"
+          ],
+          "classification": "adapted"
+        },
+        {
+          "source": "tools/report_audit.py",
+          "targets": [
+            "skills/money-craft/scripts/report_audit.py"
+          ],
+          "classification": "reimplemented"
+        }
+      ],
+      "excluded": [
+        "reports/",
+        "data/",
+        "assets/",
+        "real-account records",
+        "short-term and technical trading workflows",
+        "automatic trading"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "id": "fuyao-llms-index",
+      "url": "https://fuyao.aicubes.cn/llms.txt",
+      "sha256": "e121147156b0fa12fa80c29d5d7091ddd95032fe4e42d9ff3ea857aba252335e",
+      "used_for": [
+        "endpoint inventory",
+        "official documentation routing"
+      ]
+    },
+    {
+      "id": "fuyao-llms-full",
+      "url": "https://fuyao.aicubes.cn/llms-full.txt",
+      "sha256": "de404f225ce741986864095ee26f724d38a8338d0bcbfabb0e5a52e0d1d0714f",
+      "used_for": [
+        "REST paths",
+        "parameters",
+        "response envelope",
+        "error semantics"
+      ]
+    },
+    {
+      "id": "yfinance-pypi-1.7.0",
+      "url": "https://pypi.org/pypi/yfinance/1.7.0/json",
+      "sha256": "264443167e002c4596a0198d2854bfaafd21c7acd62db4d16b82d4fd95450c5c",
+      "version": "1.7.0",
+      "wheel_sha256": "91281ecd1f71069a37155ff8653aff2d3085f3492bd8721f18b70955da62911a",
+      "sdist_sha256": "442f780d13d3e52fefa6c721c2c9bfee321078c1987d6585ec193b5c24382f8a",
+      "used_for": [
+        "optional dependency version",
+        "distribution hashes",
+        "license and use boundary"
+      ]
+    },
+    {
+      "id": "yfinance-ticker-reference",
+      "url": "https://ranaroussi.github.io/yfinance/reference/api/yfinance.Ticker.html",
+      "sha256": "be6b84079403e7f493ef884d9056a7bb17fce2bf529df756f2672955c51ffc36",
+      "used_for": [
+        "Ticker operations",
+        "financial statements",
+        "valuation and history adapter contract"
+      ]
+    },
+    {
+      "id": "yfinance-search-reference",
+      "url": "https://ranaroussi.github.io/yfinance/reference/api/yfinance.Search.html",
+      "sha256": "82e1da690131cb7fce26a828ff81878539d35efc3ff0b8af81cc5cd6c144e3fc",
+      "used_for": [
+        "ticker search and identity disambiguation"
+      ]
+    },
+    {
+      "id": "fred-api-key-reference",
+      "url": "https://fred.stlouisfed.org/docs/api/api_key.html",
+      "sha256": "845262e1b7443c7f4fa10d6e8db56068320a9241029c90c45578c50bc880c0cd",
+      "used_for": [
+        "credential format",
+        "per-application API key contract"
+      ]
+    },
+    {
+      "id": "fred-series-search-reference",
+      "url": "https://fred.stlouisfed.org/docs/api/fred/series_search.html",
+      "sha256": "335a71e853296e3b53d39d62736d7bf87e74fc9957033ef20ac45a2bc52cece2",
+      "used_for": [
+        "economic series search",
+        "search result metadata"
+      ]
+    },
+    {
+      "id": "fred-series-reference",
+      "url": "https://fred.stlouisfed.org/docs/api/fred/series.html",
+      "sha256": "bd7b27ae539e62b15e53223a148b2689fca073070ccff05824664d68125d747a",
+      "used_for": [
+        "series metadata",
+        "source, units, frequency, seasonal adjustment, and notes"
+      ]
+    },
+    {
+      "id": "fred-series-observations-reference",
+      "url": "https://fred.stlouisfed.org/docs/api/fred/series_observations.html",
+      "sha256": "a29c601f11d6b5065f7123b747d18052284474dd56b3aa2448762f1042f8ec0f",
+      "used_for": [
+        "observations",
+        "date ranges",
+        "units transformations",
+        "vintage queries"
+      ]
+    },
+    {
+      "id": "fred-series-vintagedates-reference",
+      "url": "https://fred.stlouisfed.org/docs/api/fred/series_vintagedates.html",
+      "sha256": "fa77f861e122bbd38c2fe56dac96b73b6cf7cd05a8befece483408a9f33e27ed",
+      "used_for": [
+        "ALFRED revision dates",
+        "historical information-set audit"
+      ]
+    },
+    {
+      "id": "fred-realtime-period-reference",
+      "url": "https://fred.stlouisfed.org/docs/api/fred/realtime_period.html",
+      "sha256": "f2f6ec5e9a9b3c9bd638cb98d14b15f4678c2f6841d1550914d75b6b2825ae20",
+      "used_for": [
+        "FRED versus ALFRED mode",
+        "as-known-on closed-period semantics"
+      ]
+    },
+    {
+      "id": "fred-api-terms",
+      "url": "https://fred.stlouisfed.org/docs/api/terms_of_use.html",
+      "sha256": "08d8a353e21d2f60f25c846a9f74c4c346d206912e752260e04db8fca3f5bb73",
+      "used_for": [
+        "required notice",
+        "rate-limit boundary",
+        "third-party series rights"
+      ]
+    }
+  ],
+  "reference_tracking": {
+    "schema": "money-craft.reference-tracking.v1",
+    "sources": [
+      {
+        "id": "anthropic-financial-services",
+        "kind": "git",
+        "url": "https://github.com/anthropics/financial-services",
+        "branch": "main",
+        "role": "primary-reference",
+        "purpose": "财报、模型、估值、催化剂和研究更新方法",
+        "runtime_dependency": false,
+        "license_status": "Fixed commit LICENSE verified: Apache-2.0; SHA-256 cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30. No NOTICE/ATTRIBUTION in inspected tree; no source code/templates copied in UP-02.",
+        "tracked_paths": [
+          "README.md",
+          "LICENSE",
+          "plugins/vertical-plugins/financial-analysis/",
+          "plugins/vertical-plugins/equity-research/"
+        ],
+        "observed": {
+          "revision": "fca3cc8e6c5692ba576b46d7c4783b8443c2a223",
+          "checked_at": "2026-09-20T02:02:22.593771+00:00",
+          "method": "public-github-branch-ref-and-fixed-tree-blob-verification"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": "734150c2d9f312421611926f6e84c09d07ba13b1",
+        "review_notes": "固定版本已审读 earnings-analysis/model-update/dcf-model/comps-analysis 四个源 SKILL.md、README和根LICENSE，blob hash与tree一致。详细路径/hash见docs/upstreams/anthropic-financial-services.md；未审完整tracked_paths，reviewed_revision仍为null。 2026-09-20另全文审读sector-overview、idea-generation与commands/sector三文件；固定版本blob与SHA-256核验，LICENSE与前次相同。增量记录见acceptance/upstream-anthropic-industry-20260920.json；完整范围仍未审完，不推进reviewed/absorbed。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "plugins/vertical-plugins/financial-analysis/",
+              "plugins/vertical-plugins/equity-research/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-02",
+            "revisit_when": "实施 UP-02 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          },
+          {
+            "scope": [
+              "plugins/vertical-plugins/equity-research/skills/earnings-analysis/SKILL.md",
+              "plugins/vertical-plugins/equity-research/skills/model-update/SKILL.md"
+            ],
+            "disposition": "adapt",
+            "decided_on": "2026-09-15",
+            "source_revision": "734150c2d9f312421611926f6e84c09d07ba13b1",
+            "reason": "按行为独立实现旧新actual/assumption记录、三情景重算及论文影响交接；补充源文件hash、同财政窗口、首次披露防后视与历史不可改写门禁。未复制上游代码或文档模板。",
+            "targets": [
+              "skills/money-craft/scripts/earnings_update.py",
+              "skills/money-craft/references/earnings-review.md",
+              "docs/upstreams/anthropic-financial-services.md"
+            ],
+            "backlog": "UP-02",
+            "evidence": [
+              "tests/test_earnings_update.py",
+              "acceptance/earnings/README.md",
+              "openspec/changes/add-earnings-update-core/validation.md"
+            ]
+          },
+          {
+            "scope": [
+              "plugins/vertical-plugins/financial-analysis/skills/dcf-model/SKILL.md",
+              "plugins/vertical-plugins/financial-analysis/skills/comps-analysis/SKILL.md"
+            ],
+            "disposition": "defer",
+            "reason": "已审读方法，但本批只交付正利润倍数法桥接，未建立DCF或完整可比公司模型。",
+            "targets": [
+              "docs/upstreams/anthropic-financial-services.md"
+            ],
+            "backlog": "UP-02-model-expansion",
+            "revisit_when": "明确DCF/可比公司模型任务且有适用数据与真实case验收时，先定义模型不变量。"
+          },
+          {
+            "scope": [
+              "plugins/vertical-plugins/equity-research/skills/earnings-preview/SKILL.md",
+              "plugins/vertical-plugins/equity-research/skills/catalyst-calendar/SKILL.md",
+              "plugins/vertical-plugins/equity-research/skills/thesis-tracker/SKILL.md",
+              "plugins/vertical-plugins/equity-research/skills/initiating-coverage/references/task1-company-research.md",
+              "plugins/vertical-plugins/equity-research/skills/initiating-coverage/references/valuation-methodologies.md",
+              "plugins/vertical-plugins/financial-analysis/skills/competitive-analysis/SKILL.md"
+            ],
+            "disposition": "defer",
+            "decided_on": "2026-09-20",
+            "source_revision": "fca3cc8e6c5692ba576b46d7c4783b8443c2a223",
+            "previous_observed_revision": "734150c2d9f312421611926f6e84c09d07ba13b1",
+            "reason": "六份材料全文审读。前瞻/催化剂/论文版本已有本地核心覆盖，本轮不新增重复层；竞争指标同口径和估值方法交叉核对作为真实研究案例候选。未声称完整DCF/comps能力或新机制已吸收。",
+            "targets": [
+              "docs/upstreams/anthropic-financial-services.md",
+              "docs/capability-evidence-matrix.md"
+            ],
+            "revisit_when": "真实公司或同业研究需要估值依据且具备同截止日/同口径数据时，先运行案例，按具体缺口决定是否修改Skill或新增确定性计算。",
+            "evidence": [
+              "acceptance/upstream-anthropic-20260920.json"
+            ]
+          },
+          {
+            "scope": [
+              "plugins/vertical-plugins/equity-research/skills/initiating-coverage/SKILL.md:1-110",
+              "fixed word/chart/page quotas, per-task reauthorization, unconditional model defaults"
+            ],
+            "disposition": "reject",
+            "decided_on": "2026-09-20",
+            "source_revision": "fca3cc8e6c5692ba576b46d7c4783b8443c2a223",
+            "reason": "不移植固定报告体量、已授权全流程仍每步重新确认、无依据的通用估值参数或将情景表解读为已校准价格预测；采用本地任务范围、证据与适用性要求。",
+            "targets": [
+              "docs/upstreams/anthropic-financial-services.md"
+            ]
+          },
+          {
+            "scope": [
+              "plugins/vertical-plugins/equity-research/skills/sector-overview/SKILL.md",
+              "plugins/vertical-plugins/equity-research/skills/idea-generation/SKILL.md",
+              "plugins/vertical-plugins/equity-research/commands/sector.md"
+            ],
+            "disposition": "defer",
+            "decided_on": "2026-09-20",
+            "source_revision": "fca3cc8e6c5692ba576b46d7c4783b8443c2a223",
+            "reason": "全文审读行业概览、想法生成和sector入口。产业链/反方/证据日期已有本地合同；直接间接受益、纯业务与多元暴露、实际可服务市场作为下一真实候选研究的核对项。本轮未新增Skill或运行依赖，不将阅读计为吸收。",
+            "targets": [
+              "docs/upstreams/anthropic-financial-services.md",
+              "docs/capability-evidence-matrix.md"
+            ],
+            "revisit_when": "真实行业任务需要从行业判断进入候选证券且具备分部收入/利润、市场口径和同期估值数据时再评估。",
+            "evidence": [
+              "acceptance/upstream-anthropic-industry-20260920.json"
+            ]
+          },
+          {
+            "scope": [
+              "plugins/vertical-plugins/equity-research/skills/sector-overview/SKILL.md",
+              "plugins/vertical-plugins/equity-research/skills/idea-generation/SKILL.md"
+            ],
+            "disposition": "reject",
+            "decided_on": "2026-09-20",
+            "source_revision": "fca3cc8e6c5692ba576b46d7c4783b8443c2a223",
+            "reason": "不移植固定页数、图表/候选数量、跨行业通用财务阈值或未经验证的long/short选择；候选筛选不等于投资结论。",
+            "targets": [
+              "docs/upstreams/anthropic-financial-services.md"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "myinvestpilot",
+        "kind": "docs",
+        "url": "https://www.myinvestpilot.com/docs/",
+        "role": "primary-reference",
+        "purpose": "组合研究、长期观察、语义保真与实验隔离方法参考",
+        "runtime_dependency": false,
+        "license_status": "Public documentation reviewed; engine source license and redistribution rights unverified.",
+        "catalog_method": "browser67-expanded-sidebar",
+        "review_document": "docs/upstreams/myinvestpilot.md",
+        "observed": {
+          "revision": "bd9718319a04f466f9aa323ce7d391eadc0b7225945253336c99b3abb5cc5fa6",
+          "checked_at": "2026-09-19T17:05:05.866Z",
+          "method": "browser67-public-article-text-and-structure"
+        },
+        "reviewed_revision": "bd9718319a04f466f9aa323ce7d391eadc0b7225945253336c99b3abb5cc5fa6",
+        "absorbed_revision": "bd9718319a04f466f9aa323ce7d391eadc0b7225945253336c99b3abb5cc5fa6",
+        "review_notes": "155个目录入口（149正文/概览、6导航）分组审读；最终捕获正文逐页与已审读文本核对一致。指纹针对捕获后传回的正文与浏览器提取的表格/代码结构，不是HTTP原始字节；未验证引擎/会员运行时。",
+        "reviewed_snapshot": {
+          "schema": "money-craft.doc-snapshot.v1",
+          "source_id": "myinvestpilot",
+          "captured_at": "2026-09-14T15:48:03.941Z",
+          "normalizer": "article-text-structure.v1",
+          "catalog_complete": true,
+          "revision": "bd9718319a04f466f9aa323ce7d391eadc0b7225945253336c99b3abb5cc5fa6",
+          "pages": [
+            {
+              "url": "https://www.myinvestpilot.com/docs",
+              "final_url": "https://www.myinvestpilot.com/docs",
+              "title": "欢迎使用策引文档",
+              "sha256": "89e0352e9a107c1f924ab268613e09f98cdb9a4ad06eaf2ae7e5dcdad0f6489b"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/agent-lab/built-in-strategies",
+              "final_url": "https://www.myinvestpilot.com/docs/agent-lab/built-in-strategies",
+              "title": "Agent Lab 支持的 Built-in 策略",
+              "sha256": "0eabf49d0e5a66c9525f0cb4aff8baebb1aef1c65614538c9c506b94989c45a3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/agent-lab/harness-setup",
+              "final_url": "https://www.myinvestpilot.com/docs/agent-lab/harness-setup",
+              "title": "连接你的 Agent（Harness）到 Agent Lab",
+              "sha256": "5ab3d0ff702f3df6886b7f7509f1da5af092b5987609d94a3da5df0e307829d2"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/agent-lab/mobile-open-minis",
+              "final_url": "https://www.myinvestpilot.com/docs/agent-lab/mobile-open-minis",
+              "title": "用 Open Minis 在手机上连接 Agent Lab",
+              "sha256": "1a5688fd6bef94770fc58e2fc4de7b2e951962a08e1c75f7f35ad7c3d77ef965"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/agent-lab/multi-strategy-analysis",
+              "final_url": "https://www.myinvestpilot.com/docs/agent-lab/multi-strategy-analysis",
+              "title": "派生多策略分析（组合多个策略结果）",
+              "sha256": "2b97ba3eca5becc5711c62ff7eb4aedf843e656c6d4fedb0f24779ecda348596"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/agent-lab/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/agent-lab/overview",
+              "title": "Agent Lab：用你自己的 Agent 做策略研究",
+              "sha256": "74452ec956d7182fe20c2ce187aff381fc4a87bf76fc18f1f9a281aa0fe13e4d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/agent-lab/research-guide",
+              "final_url": "https://www.myinvestpilot.com/docs/agent-lab/research-guide",
+              "title": "Agent Lab 策略研究指南",
+              "sha256": "2807d8fcc7cb2f15fa9a21a64a5b420d84325f2efe5e64a4ec118f6576fae13d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/ai-assistant/best-practices",
+              "final_url": "https://www.myinvestpilot.com/docs/ai-assistant/best-practices",
+              "title": "AI 助手最佳实践",
+              "sha256": "67e25f8579176c2964938cffe17c59a99adbd8139e9db1b5f3ea69389a53d81b"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/ai-assistant/capabilities",
+              "final_url": "https://www.myinvestpilot.com/docs/ai-assistant/capabilities",
+              "title": "AI 助手能力范围",
+              "sha256": "8a288b691dff4ffab7cb183a9416dea72961bfa4c7f3c9d428b957ef333e5872"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/ai-assistant/product-overview",
+              "final_url": "https://www.myinvestpilot.com/docs/ai-assistant/product-overview",
+              "title": "AI投资助手：信息检索与研究辅助",
+              "sha256": "9ee5feba0e11f969eaf56639554c7e0f737f342b670f9dada25b61188f6785b5"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/ai-assistant/roadmap",
+              "final_url": "https://www.myinvestpilot.com/docs/ai-assistant/roadmap",
+              "title": "策引 AI 助手的角色与边界",
+              "sha256": "6757139a13b869d05bb9dab7af0df86acb23bb564dafc33a1c0ba3d43fed593a"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/ai-assistant/use-cases",
+              "final_url": "https://www.myinvestpilot.com/docs/ai-assistant/use-cases",
+              "title": "AI 助手使用场景",
+              "sha256": "996dffcf76693b2ba598b99f7d4acea964bf4c04aab3911fb8dac35cceee8985"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/china-dividend-balanced",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/china-dividend-balanced",
+              "title": "A 股红利均衡组合：目标权重样本",
+              "sha256": "28aac0c056be3afb41542a83d8f99da60a195b2cd8d9ae9defa93291b83db046"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/classic-60-40",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/classic-60-40",
+              "title": "经典 60/40 组合：股债目标权重样本",
+              "sha256": "bb0aa3fdc577f846b51e87c3ebd24dcd66ca9ca9da026d33779c68578899cf23"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/dca-with-rebalancing",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/dca-with-rebalancing",
+              "title": "定投与再平衡结合：现金流规则样本",
+              "sha256": "dec428cbd0f206c0f76b65580037a913ed4a7ce6c15846f9fcc067485bceea8d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/hfea",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/hfea",
+              "title": "HFEA 杠杆策略：高波动研究样本",
+              "sha256": "3081cbdfb8ce638911b94aaf3965d7fb59b9f0496992aed774d7c83e04cd4fdb"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/introduction",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/introduction",
+              "title": "资产配置入门",
+              "sha256": "f28b36e064681707be1350c7e9a8d56722371d4e34f3ab844ca51c1bcfe7b774"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/performance-comparison",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/performance-comparison",
+              "title": "再平衡策略组合表现对比",
+              "sha256": "95a804999341be10e84970e243f4aaa9404dcc6532115bf5b95a3301662c209e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/permanent-portfolio",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/permanent-portfolio",
+              "title": "永久组合：固定多资产权重样本",
+              "sha256": "1ba4bb7b82e673b708edbfaeec74af29076491ee52d71a4711d01259dd1ccdbd"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/asset-allocation/rebalancing",
+              "final_url": "https://www.myinvestpilot.com/docs/asset-allocation/rebalancing",
+              "title": "再平衡机制",
+              "sha256": "9fe5e7a756ae91cb233dad6b19633377a39a25370feee826f5ca580a67833fdb"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/capital-strategies/cash-sweep-percent-capital-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/capital-strategies/cash-sweep-percent-capital-strategy",
+              "title": "现金管理标的百分比策略",
+              "sha256": "47676e3fd2a93f7f64ca573ae819e3ae1f31e0a3ea740f5e16640d52bd6e5eec"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/capital-strategies/fixed-investment-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/capital-strategies/fixed-investment-strategy",
+              "title": "定投策略",
+              "sha256": "dcb9884bee6204c4aa3b6b5a7c70f8684670d859f93804af705e23b0685e5be7"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/capital-strategies/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/capital-strategies/overview",
+              "title": "资金策略概览",
+              "sha256": "6fa6e35da433df0633f1c3eea3a88d7cb9c1ceaba43a0f3ed91eb96b9c4783a3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/capital-strategies/percent-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/capital-strategies/percent-strategy",
+              "title": "百分比策略",
+              "sha256": "86a2d38b959cc614c4d8f1bf0ed7958c1637cb440c7c31150987b0c441b09779"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/capital-strategies/proportional-capital-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/capital-strategies/proportional-capital-strategy",
+              "title": "差异化仓位策略",
+              "sha256": "cc054f307c6bd5a312ac29319c9b6b93bcb1949e5b68461bd5529707630c2f6b"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/capital-strategies/rebalancing-capital-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/capital-strategies/rebalancing-capital-strategy",
+              "title": "再平衡资金策略",
+              "sha256": "2cd51fb743d1a8fc7e28c13b09a81410020557182c61efbe5ee7bbc5b8618be2"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/capital-strategies/simple-percent-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/capital-strategies/simple-percent-strategy",
+              "title": "简单百分比策略",
+              "sha256": "9e7831ff22752c1867a64dc8c6104f0e239e2b9a12ecbcdbb9681ca6a49d5773"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/category/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C",
+              "final_url": "https://www.myinvestpilot.com/docs/category/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C",
+              "title": "人机协作",
+              "sha256": "7d4047777a9a70d3a8d61a8a68538421bb5e1a5ab75633d068d183dcfa90a5ed"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/category/%E6%89%A7%E8%A1%8C%E7%BA%AA%E5%BE%8B",
+              "final_url": "https://www.myinvestpilot.com/docs/category/%E6%89%A7%E8%A1%8C%E7%BA%AA%E5%BE%8B",
+              "title": "执行纪律",
+              "sha256": "92a0cf79e181eab8a2b843736547b3ffaa8f1cb238f8a870cc1a193620182b88"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/category/%E6%95%B0%E5%AD%A6%E7%8E%B0%E5%AE%9E",
+              "final_url": "https://www.myinvestpilot.com/docs/category/%E6%95%B0%E5%AD%A6%E7%8E%B0%E5%AE%9E",
+              "title": "数学现实",
+              "sha256": "787f687698c4c1587707dea6e5ff1a3425102d2abcbda8a5856f33004023ff3d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/category/%E6%B7%B1%E5%BA%A6%E8%AE%AE%E9%A2%98",
+              "final_url": "https://www.myinvestpilot.com/docs/category/%E6%B7%B1%E5%BA%A6%E8%AE%AE%E9%A2%98",
+              "title": "深度议题",
+              "sha256": "e8950fd1e59b5789123b81c51c40177aafc21d28327057aa09d5e3a673b6bc52"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/category/%E7%A0%B4%E9%99%A4%E5%BF%83%E9%AD%94",
+              "final_url": "https://www.myinvestpilot.com/docs/category/%E7%A0%B4%E9%99%A4%E5%BF%83%E9%AD%94",
+              "title": "破除心魔",
+              "sha256": "eeeab258cfbb4852c0a7506bd3d2cca00ec1712bb228683d0861a06a659388a1"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/category/%E7%BA%AA%E5%BE%8B%E6%89%8B%E8%AE%B0",
+              "final_url": "https://www.myinvestpilot.com/docs/category/%E7%BA%AA%E5%BE%8B%E6%89%8B%E8%AE%B0",
+              "title": "纪律手记",
+              "sha256": "1c2e5e253adcc2dfcd768f0e900c99e47bde5e157088a466d89d4c3cbc0f7257"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/concepts/ai-agent",
+              "final_url": "https://www.myinvestpilot.com/docs/concepts/ai-agent",
+              "title": "AI 与 Agent 的角色边界",
+              "sha256": "b2823836e0db882d95f28c9b747e30ad518f5897333990f258067baf6f19f487"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/concepts/background",
+              "final_url": "https://www.myinvestpilot.com/docs/concepts/background",
+              "title": "背景与理念",
+              "sha256": "aea3d2dc9d07dbf0a1cf9a852b1dee30be69e2f58747c3db1ecd8943e1887de6"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/concepts/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/concepts/overview",
+              "title": "核心概念：从规则到长期观察",
+              "sha256": "309988eebdf604158e9a509d50529aeb939ea5b25b03ef8b9124721e9754e91c"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/concepts/philosophy",
+              "final_url": "https://www.myinvestpilot.com/docs/concepts/philosophy",
+              "title": "策引哲学：理解规则，而不是追随答案",
+              "sha256": "24faf686622a11cb3670238f8748e449738c8624d9443d2c3cebcb0294d002c8"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/concepts/risk-analysis",
+              "final_url": "https://www.myinvestpilot.com/docs/concepts/risk-analysis",
+              "title": "风险分析",
+              "sha256": "59aca22b547e4919b0ba9baf2962f561241cd57a4b9eade8f3c75364228d1e6a"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/concepts/trading-system",
+              "final_url": "https://www.myinvestpilot.com/docs/concepts/trading-system",
+              "title": "构建交易系统：从研究到长期观察",
+              "sha256": "4f02e687cebc769d1b468c8b082f1585d72f4ae0a78e13dd7b758c54a38a09e3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/guides/create-portfolio",
+              "final_url": "https://www.myinvestpilot.com/docs/guides/create-portfolio",
+              "title": "创建自定义 Portfolio：高级路径与验证边界",
+              "sha256": "bd0236b6f1c2dd1a72f7b66dbec9fc0961ed9633e45dcb5d6cb9f772582c8e2a"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/guides/email-notifications",
+              "final_url": "https://www.myinvestpilot.com/docs/guides/email-notifications",
+              "title": "邮件通知服务",
+              "sha256": "1675cca25e54146971980e4d1c4046f7d252d5e2b9d836d78b7e4198588b4cb0"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/guides/frequently-asked-questions",
+              "final_url": "https://www.myinvestpilot.com/docs/guides/frequently-asked-questions",
+              "title": "策引常见问题",
+              "sha256": "406d89a0b4331abbfece63917b96a39c53d264829b94049c72b563cffe3cb0b1"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/guides/official-portfolios",
+              "final_url": "https://www.myinvestpilot.com/docs/guides/official-portfolios",
+              "title": "官方模拟组合：怎么看规则、回撤和当前状态",
+              "sha256": "6f5407958b43a7b22257ba169137d7ed02a9759b79e7a082888b99978202da98"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/guides/portfolio-analysis",
+              "final_url": "https://www.myinvestpilot.com/docs/guides/portfolio-analysis",
+              "title": "投资组合深度分析：回测指标与风险评估详解",
+              "sha256": "b3227bb6f74acb7261e79fba7434e6531995fbbc79055977bc0a166a9360d9ae"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/guides/quickstart",
+              "final_url": "https://www.myinvestpilot.com/docs/guides/quickstart",
+              "title": "快速上手：先看懂一个组合",
+              "sha256": "2d9f601622282f31a6d0fda3ddcc1903522b96218dfe835a92d33a91671eb35e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/guides/user-scenarios",
+              "final_url": "https://www.myinvestpilot.com/docs/guides/user-scenarios",
+              "title": "使用场景与学习方法",
+              "sha256": "0bc416f9820a42f0aacd7f1b53adc399bfc3d4cf12e8b3457382f58cbc797d70"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/all-in-temptation",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/all-in-temptation",
+              "title": "All-in的诱惑：凯利公式告诉你，全仓是条不归路",
+              "sha256": "253516600f1b3742a35b7636a90f0736abcb765b31b10cd0427b3439e62b5e15"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/combat-traps",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/combat-traps",
+              "title": "实战心魔：利润幻觉、仓位代偿、假信号疲劳与补票陷阱",
+              "sha256": "87bdf51925e158af4f29f35f9ecc276f115ae1d78f7f4f9058cfcdd3b61f0d4f"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/micro-management-trap",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/micro-management-trap",
+              "title": "微操即死：为什么频繁调整策略会毁掉你的收益",
+              "sha256": "86e4a1d105b7b9df21ea9f6178b1ba81109a9e0a1b856b8d98a04e3e45f06193"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/perverse-incentives",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/perverse-incentives",
+              "title": "市场的恶作剧：为什么短期正确的决策，长期却是错的",
+              "sha256": "6fbb471d385461a502a8bee1f07773e227c95c393ac513c20e439be76fd26659"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/unsupported-features",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/unsupported-features",
+              "title": "为什么策引不支持日内交易/做空/期权/选股？设计理念与风险边界",
+              "sha256": "38ab9bcb85491a9dc179b72df17e8ee7477eb8ca4ea21190cea3876502f8f3e3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/what-are-you-learning-in-investing",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/advanced-topics/what-are-you-learning-in-investing",
+              "title": "学投资，到底在学什么？",
+              "sha256": "a96b4a6afbd5f9a47fba5a9a4a9911c22ea563dc30db2dedf7e4abd8e9ab15e6"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/ai-collaboration/ai-assisted-investing",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/ai-collaboration/ai-assisted-investing",
+              "title": "策引的最佳打开方式：与AI共舞，而非让AI替你决策",
+              "sha256": "0334ae31d8d2e529255d319bad61f967d125c9613731bf458aec83d00c558f8e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/ai-collaboration/from-idea-to-trackable-portfolio",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/ai-collaboration/from-idea-to-trackable-portfolio",
+              "title": "从一个投资想法到一个可跟踪组合",
+              "sha256": "869a32125356f972e0099f4d419eb311ef894b46e158b330a8ef1eacd9a12fc5"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/ai-collaboration/minimalism",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/ai-collaboration/minimalism",
+              "title": "极简主义：少即是多，专注比折腾更有效",
+              "sha256": "23c3f46e254dc189dce3c56f9a3863fa758c0c8bb3bedc6fa58557c1a2c489f7"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/chau-fomo-market-mocked-me",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/chau-fomo-market-mocked-me",
+              "title": "被市场戏弄",
+              "sha256": "a02a61077dee80314a7b89a416aa90773f2b7aae23b9127f35a47a9343e0e156"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/execution-deviation-real-case",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/execution-deviation-real-case",
+              "title": "信号触发，我没执行",
+              "sha256": "12dd51642491b0f2850213e24afec3748d918b6698e24e7ba4ce136e6934f7a5"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/expert-override-real-case",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/expert-override-real-case",
+              "title": "我判断这是假信号",
+              "sha256": "6c6ea34d8251bf20a39d171519eeaf966ee0cc697b836b8386e0aeaca501eeea"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/mstx-no-strategy-only-illusion",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/mstx-no-strategy-only-illusion",
+              "title": "全靠幻觉",
+              "sha256": "742530385e4153d554eb59acaf27c6db150d7c4c88ea27016900b96cadd96503"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/soxl-can-endure-pain-not-gain",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/discipline-notes/soxl-can-endure-pain-not-gain",
+              "title": "可以共苦，不能同甘",
+              "sha256": "9b28d2f75d4554968a321826caefc92554845bd01b26918a8e13149bdfe6f352"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/boredom-management",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/boredom-management",
+              "title": "与无聊共处：系统化投资最难的考验",
+              "sha256": "1c8be739c28af795a8351e3eaeec177cb9f51c07100816c41156e107fe716afd"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/complexity-trap",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/complexity-trap",
+              "title": "复杂性是焦虑的形状：为什么你的组合越来越臃肿？",
+              "sha256": "8ef288f600c8ed9dc235453595f9441167b32c2dbadc97c8102950ff905f5c44"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/layered-money-management",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/layered-money-management",
+              "title": "分层资金管理：战略配置与战术执行",
+              "sha256": "0dd253a16fa19b21c9d3ae04aa0480cb5ad689b63b254e1cb6918c604178a4da"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/mid-cycle-entry",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/mid-cycle-entry",
+              "title": "半途上车的艺术：如何在趋势中期理性进场",
+              "sha256": "35125443fbdb8e9c7e42de06dff3bcc5737e43b6c003b1f4f83186b499e24c96"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/narrative-annual-review",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/narrative-annual-review",
+              "title": "投资叙事的保质期：为什么好策略也需要年度体检",
+              "sha256": "14f6e5ca46406a4db10f9f3bcb285f6123c408370d7835fd79361f926e41e8d8"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/profit-retention",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/profit-retention",
+              "title": "打赢了仗，但战利品没运回后方",
+              "sha256": "90454de5a1cb6de3c87513b699fd2227e50214e3b77ddc325168aa32d670a28a"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/rule-based-execution",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/rule-based-execution",
+              "title": "把账户交给\"法治\":从人治到规则化执行",
+              "sha256": "9e5619bbd039e05047568705efc9527d869585ddbea2c68acf4f7012812d471b"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/strategy-failure-detection",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/strategy-failure-detection",
+              "title": "策略失效判定：何时坚持，何时放弃",
+              "sha256": "7e34f32baa597578a7684bbc067047512abf96218fa82e9596ddf66de9a53164"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/trust-before-discipline",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/trust-before-discipline",
+              "title": "纪律从哪里来：从相信别人，到理解自己为什么相信",
+              "sha256": "b5a977182bbceb78cb3ef5f33dbd7451df11eaa3500cf9e0d7803f6709563662"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/watertight-compartments",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/execution-discipline/watertight-compartments",
+              "title": "模块化作战：水密舱原则与故障隔离",
+              "sha256": "e214505f5c32915e3fce677abf036397f998a4704986ca27f0cc3926ddffab3f"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/introduction",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/introduction",
+              "title": "从情绪化交易到系统化投资",
+              "sha256": "788cfe0f45201a1ac5136f3e018509bf47772744e9daa0c9af88586e0dc38ab8"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/evidence-hierarchy",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/evidence-hierarchy",
+              "title": "单次实盘能证明什么？谈投资研究中的证据层级",
+              "sha256": "173447e00254e50f7c8c9bf5a1f9ac7d489a5a9830239c6e9878435ce683af0d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/leverage-death-math",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/leverage-death-math",
+              "title": "杠杆ETF的数学真相：波动损耗与风险不对称",
+              "sha256": "204d72266f64f2d134053a46ee819775c0f7b0e0f586ced82ee895b0f0a11487"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/small-position-optionality",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/small-position-optionality",
+              "title": "小仓位不是小赌注：用有限亏损购买右尾机会",
+              "sha256": "84d2feb8397c392adffbc91638f05b8fcb81dd04c511484f3e38b31c18591f70"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/sunk-cost-fallacy",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/mathematical-reality/sunk-cost-fallacy",
+              "title": "沉没成本与市场失忆症：为什么\"回本思维\"是认知偏差",
+              "sha256": "62a952642e466a5f80115f2be9676091313186c38ddd3f9dd1e07336b11fbee3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/counterfactual-trap",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/counterfactual-trap",
+              "title": "你在和一个不存在的自己比：反事实折磨",
+              "sha256": "b75fdcebbc2fb11839b7b4a1cce6aa580d33806fe358391d4a7bf02e7d4fe21e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/grand-goal-override",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/grand-goal-override",
+              "title": "目标太大，会成为你系统的最大敌人",
+              "sha256": "441e798a3f5e77ca65d08c5324896a4246f9b15a57541c94b428cdf8791dd6be"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/holding-winners-paradox",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/holding-winners-paradox",
+              "title": "持盈比持亏更难：为什么我们总在最好的时候离场？",
+              "sha256": "9c8eb713bef4dc09b1d28199900cc8fd6fa4ee2deb5a77c5435fdbad948504b1"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/narrative-allocation-trap",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/narrative-allocation-trap",
+              "title": "叙事才是真正的仓位：你投的不只是指数",
+              "sha256": "fb4e8d763292c06792bbfd01eaa2cae1f28e38ac402f7ccf43ee39b0306ec138"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/prediction-trap",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/prediction-trap",
+              "title": "\"聪明人\"陷阱：为什么预测总是输给跟随？",
+              "sha256": "2104c02c994b2dea5f4195892d8fb96ca8ab2f59426d487cace529c9e6495b3e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/risk-tolerance-illusion",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/risk-tolerance-illusion",
+              "title": "你测的不是回撤承受力，是晴天里对自己的幻想",
+              "sha256": "d88ca50282ba17e6468f577c4ac2899deea8b18806463180199a391754a522ab"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/social-return-pressure",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/social-return-pressure",
+              "title": "牛市里的收益率竞赛：为什么别人的十倍会摧毁你的系统？",
+              "sha256": "ed01e146c6f475b79f43f143bac1761106615e6205ac69b185af2283596482b8"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/stop-loss-art",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/stop-loss-art",
+              "title": "止损的艺术：有一种痛叫\"卖飞\"，有一种死叫\"归零\"",
+              "sha256": "8ad9a98a9aa7cfab3fd501c17bed92e2d85d6ffa67e8c64d5172d6bdaf5bc64d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/trader-self-knowledge",
+              "final_url": "https://www.myinvestpilot.com/docs/investment-mindset/psychological-barriers/trader-self-knowledge",
+              "title": "盈亏同源：交易者首先要认识自己",
+              "sha256": "75c03714beee9c98b126845b19fd1e1e81edccb7d5cd3c9e9d87d555294e1330"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/ai-explains-not-decides",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/ai-explains-not-decides",
+              "title": "AI 应该直接告诉你买什么，还是解释原因？",
+              "sha256": "ebd31b029295166468947199e06dbd8227ffeeaf82c6cf395b33957ff76f6be0"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/existing-portfolio-risk-check",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/existing-portfolio-risk-check",
+              "title": "已经有几只股票和基金了，怎么判断组合风险？",
+              "sha256": "5cb12926a18beb2beffe03e7d8026ebdde2b74e340aab6f2ff2f3de8f6cb4b44"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/first-week-trial-guide",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/first-week-trial-guide",
+              "title": "第一次试用策引，第一周应该做什么？",
+              "sha256": "3c4266f37c436900fa2c1ab2e2f025bc8e44f2326a2084919dcb4dbfe4df15a1"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/official-portfolios-not-homework",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/official-portfolios-not-homework",
+              "title": "官方组合为什么不是作业？",
+              "sha256": "fe635e2d54c9471193a8b713b1935526866ffd452a72b024643ac9450ddf5522"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/overview",
+              "title": "学习资源",
+              "sha256": "3ccfbf962894a0146638ca2a2826a8ba9968def84982f0f458da14a6a2d18fd5"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/portfolio-position-vs-account-position",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/portfolio-position-vs-account-position",
+              "title": "组合仓位怎样对应到我的账户？",
+              "sha256": "027c7b7096c55b5f11a4db849f5cc9582d378b047f77a854ff0ce5691356d7c7"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/signal-to-real-trading-checklist",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/signal-to-real-trading-checklist",
+              "title": "有了策略信号，实盘前还要看哪几层？",
+              "sha256": "66357450949febc07beed78273566c07b363e03eb17a2e4edceebab6bd766bb1"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/signals-are-not-instructions",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/signals-are-not-instructions",
+              "title": "策略信号为什么不是买卖指令？",
+              "sha256": "d5bd26c222b788b5d8ea442b2071cbaa4c8d38ab6d48b45e3a2fedf0a6b48a6b"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/simulated-portfolio-vs-real-account",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/simulated-portfolio-vs-real-account",
+              "title": "模拟组合和真实账户，差在哪里？",
+              "sha256": "172ace4517c1552cdbe53c3526b70cc258ece95550b6f296d1202ee41569c70e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/what-problem-does-myinvestpilot-solve",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/what-problem-does-myinvestpilot-solve",
+              "title": "策引到底解决什么问题？",
+              "sha256": "5a1b1ced7ce5372826f42746a95ee51c9d56f765fe8c263e3d2b6f4ac144d211"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/what-to-check-during-20-percent-drawdown",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/what-to-check-during-20-percent-drawdown",
+              "title": "策略亏损 20% 时，应该看什么？",
+              "sha256": "0d321f2df5122366d7768ae03211f44dcc2544c2d6f7a1450fa91ea618c6caee"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/learning/when-to-buy-or-sell",
+              "final_url": "https://www.myinvestpilot.com/docs/learning/when-to-buy-or-sell",
+              "title": "不知道什么时候买卖，普通投资者该怎么办？",
+              "sha256": "760a1ce99f45e21059a1433c25b611b74b01e070956590394c03b1cb6e3dc731"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/market-analysis/china-market",
+              "final_url": "https://www.myinvestpilot.com/docs/market-analysis/china-market",
+              "title": "A股市场分析",
+              "sha256": "9bf2b6e2d20d96b40dc6b1031bbb3b55b8652f122314f036b1f70f0d623c1214"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/market-analysis/crypto-market",
+              "final_url": "https://www.myinvestpilot.com/docs/market-analysis/crypto-market",
+              "title": "加密货币市场分析",
+              "sha256": "2e1956064c429d05733b6d65a704ffe1dd675bee13ffc877babcf42c37327588"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/market-analysis/email-subscription",
+              "final_url": "https://www.myinvestpilot.com/docs/market-analysis/email-subscription",
+              "title": "邮件订阅市场分析",
+              "sha256": "48015e0987ee9d6e97f5c451bb475b247c4d4d97ee9a1a03ae56f75d150c47f3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/market-analysis/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/market-analysis/overview",
+              "title": "市场分析概览",
+              "sha256": "321c1c697c7bb4db6fa931a858fbd9bc28b22d15cbdb822d51f61a50a6c41fc0"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/market-analysis/us-market",
+              "final_url": "https://www.myinvestpilot.com/docs/market-analysis/us-market",
+              "title": "美股市场分析",
+              "sha256": "7b04fb26410aa7de09b93c658e246d78689190de527733fbcb7e0b39e59cd7f9"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/portfolios/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/portfolios/overview",
+              "title": "投资组合概览",
+              "sha256": "9006829c5644e09c96f2a63ab1df35cacb4f5af90ee0380a35ef1e75d529b1f0"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/architecture-limitations",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/architecture-limitations",
+              "title": "复杂策略分析与架构局限性",
+              "sha256": "3b82ab0cf43628360fecaa4f7c4287acb710565efd603847565114f5b3430eb9"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/crypto-strategy-case",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/crypto-strategy-case",
+              "title": "12个加密货币策略组合的实战对比：当数据推翻直觉",
+              "sha256": "48c5daa9cd2d8a52a57be7f188597bf3191b7090a09c1f1fca2d3b89027e1f5c"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/dynamic-position-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/dynamic-position-strategy",
+              "title": "从151%到1178%：动态仓位的案例研究",
+              "sha256": "972d0819efa9a37e3db22e500f015238c0a7b7a6895e14d912c43089aa321f09"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/fundamental-risk-control-case",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/fundamental-risk-control-case",
+              "title": "超越价格的维度：一次基本面风控的价值验证之旅",
+              "sha256": "49e2b20009ae0e602f613282b2a720a7fcbb89adca9c0395141010a3b0eec844"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/leveraged-etf-soxl-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/leveraged-etf-soxl-strategy",
+              "title": "用回测检验想法：一次 SOXL 策略探索记录",
+              "sha256": "9d2f381381cb6dd2aad416bbc24c716fabdd529ce533a9ce2c0fc638c593afe5"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/market-indicators",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/market-indicators",
+              "title": "市场指标原语指南",
+              "sha256": "ec2048c785b610ffd1dd78dc374fe34e5897d7ac34fc335f14fd9e59316d08ed"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/mean-reversion-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/mean-reversion-strategy",
+              "title": "均值回归的真相：为什么\"抄底\"很难赚钱",
+              "sha256": "440d73c8409dfb057c86c3d70ce69d15764fabb1cc6fa2c9b183cf218da39270"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/optimization",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/optimization",
+              "title": "原语策略优化实战指南：从案例到方法论",
+              "sha256": "8a76a12df7cb58ac4120937737ec3f4c15198e088e4cf5b2ba63faaff0066429"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/signal-confirmation-case",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/signal-confirmation-case",
+              "title": "信号确认的艺术：速度与质量的艰难权衡",
+              "sha256": "e2f0636079112e78667bb1d400d416d0ef32a1c5cd73b5b60cbd8287a8512fec"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/stock-bond-rotation-case",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/stock-bond-rotation-case",
+              "title": "股债轮动策略优化实战：从困境到突破的完整历程",
+              "sha256": "2d3360bf996ade15dc9a927a097b8422c240d11eb587f905e229d0ecf33f2d1b"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/troubleshooting",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/troubleshooting",
+              "title": "原语组件高级故障排除指南",
+              "sha256": "eb89e4efa72e288806fa3fa100d69891823b68541c968a00e516933a2269d118"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/advanced/volatility-control-case",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/advanced/volatility-control-case",
+              "title": "杠杆ETF波动率控制案例：用信号确认驯服市场野兽",
+              "sha256": "e72c6e21739395b3788e8903aa130f0b18c754137e7ef54c62e58050335351f7"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/ai-assisted-development",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/ai-assisted-development",
+              "title": "AI 辅助原语策略开发",
+              "sha256": "ba9812e2a6c5f7c26e74c0631a05093e6f8063cd7cf30d192f8aa5d9cac61696"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/architecture",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/architecture",
+              "title": "原语策略系统架构：模块化策略构建指南",
+              "sha256": "211cc45f7b784fcafb1d8c0c2c155ad923f47b9e001c30802f0f525521af2f04"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/composition",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/composition",
+              "title": "原语组合模式与最佳实践",
+              "sha256": "b409cab37b2df8b3fe1eefb9a832aa2c5e6519bdb6ae48753d1ebf78fb93cb26"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/cross-sectional",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/cross-sectional",
+              "title": "多标的轮动策略：在候选标的之间排名与选择",
+              "sha256": "ca66859e172ed096cbc66375b7cae446190e961713d8ac1dfd457d426f406f41"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/examples",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/examples",
+              "title": "原语策略示例",
+              "sha256": "f20ff4739e18f627a718887a755a031bc318136d953871e393e8c17a46182b7c"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/getting-started",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/getting-started",
+              "title": "原语策略入门：像搭积木一样配置交易系统",
+              "sha256": "9267348313c8014a2ac700cb050b8d4ffa00fb955db3d3fc169d55814b5a6b92"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/indicators",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/indicators",
+              "title": "指标原语参考：技术指标与基本面指标配置",
+              "sha256": "698d2c81a52c4d622c6c6a1f983672405af666a2731c6d315ad991a9765add53"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/signals",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/signals",
+              "title": "信号原语参考：交叉、比较、逻辑组合等条件配置",
+              "sha256": "fe8bd19f8a1abaf47e6dc195e54cff28e2b0ce5c59b3ef670775b4f50af2575d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/strategy-design-best-practices",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/strategy-design-best-practices",
+              "title": "策略的艺术：从逻辑构建到实战优化",
+              "sha256": "2f09ff39c027666a40588219031d008c72519eefbff4ff6d124c11b1a7264f64"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/target-allocation",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/target-allocation",
+              "title": "目标配置：固定/动态目标、方向约束与分批部署",
+              "sha256": "58fdbcd065e0493484df6aa04bd30dc0ac5d26a695ab852113619486cd7f7981"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/primitives/troubleshooting",
+              "final_url": "https://www.myinvestpilot.com/docs/primitives/troubleshooting",
+              "title": "策略原语系统故障排除指南",
+              "sha256": "ddd6800db1e1cfe98bebdfc9a66813507d9e00c43a1f0837397108e802dea16d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/ai-model-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/ai-model-strategy",
+              "title": "AI 模型策略",
+              "sha256": "aa8fe7c1fa4b00372e260831053c60f7789dbfe75838ad579f76273f907fc9c3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/basic-concepts",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/basic-concepts",
+              "title": "交易策略基础",
+              "sha256": "2760cfa7d6a75f609b808fe6786735eebaef4b0ebd52c28cd712e15e5c18d5af"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/bollinger-bands",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/bollinger-bands",
+              "title": "布林带策略：基于价格波动区间的交易方法",
+              "sha256": "22716f1bea1927dabb8dcbed904ad32f7b1f834939784223d79dddfa766b05b0"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/buy-and-hold",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/buy-and-hold",
+              "title": "买入持有策略",
+              "sha256": "ca51ced4c72ab0123f59fbb4d2a2c4d724145c270c120ae8c04eb4b5c5bfa6a2"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/chandelier-exit",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/chandelier-exit",
+              "title": "吊灯止损策略：基于ATR的动态止损方法",
+              "sha256": "16bd794efffe929e557b2da3f9af771e65272b94d5e7b5a2cd6ccd88887ab2ec"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/dual-moving-average",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/dual-moving-average",
+              "title": "双均线趋势策略：如何捕捉大趋势并规避震荡损耗",
+              "sha256": "6127c2a50142647e37092f8d4e0145c7c0736fc66dd0de47465bfd90e0d9b10c"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/file-based-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/file-based-strategy",
+              "title": "交易记录策略",
+              "sha256": "5fc10b354c92928b330284fa9d7322a6794b7e8da6c416b0d1e5fe240fdf294e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/macd-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/macd-strategy",
+              "title": "MACD策略：趋势方向与动量强弱的双重判断",
+              "sha256": "07545bf286c5d2d54f0fd20290cd529115cf0f3053701cd0e5d074e9a6984c45"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/momentum-rotation",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/momentum-rotation",
+              "title": "动量轮动策略详解：原理、ETF回测与实盘逻辑",
+              "sha256": "360c0e92feef2ffac48dea663c5c5067fa4c81df0eba085ec0bc941b32d2c0a7"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/primitive-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/primitive-strategy",
+              "title": "原语策略",
+              "sha256": "e756a456b9a4529455e1e504d2bc03e7a582ac32dfc3265b294be108b36fa3d2"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/target-weight-strategy",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/target-weight-strategy",
+              "title": "目标权重策略：资产配置再平衡规则",
+              "sha256": "f224053c482aa6d8fae13f9119af49491c17c5c73226d82e8dc16ab2a1355ab5"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategies/target-weight-trend-filter",
+              "final_url": "https://www.myinvestpilot.com/docs/strategies/target-weight-trend-filter",
+              "title": "目标权重趋势过滤策略：让趋势决定你是否持仓",
+              "sha256": "c112fd429929772f53cb2b936b1668d94c5c95933370f448611c4a1261b13fdc"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/issue-001-dual-ma-chiext",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/issue-001-dual-ma-chiext",
+              "title": "第一期：A 股双均线，到底有没有用？",
+              "sha256": "8420646e514a3febb05c3267b115e0036b2d1eed3d6f651cc83285ccaedd2307"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/issue-002-momentum-rotation",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/issue-002-momentum-rotation",
+              "title": "第二期：A 股科技板块动量轮动，有没有比买最强的更好的办法？",
+              "sha256": "2480c385769bc307ad2575e1eb6d66907a6729474d03deaf27370bcdd9857e39"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/issue-003-dual-ma-boundary",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/issue-003-dual-ma-boundary",
+              "title": "第三期：双均线的有效边界——哪类 A 股标的对均线过滤响应更好？",
+              "sha256": "a80c2af876a66ae7c463231f3b0701344482506f18641cee1c61e986fd2be31f"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/china-market/overview",
+              "title": "A 股策略研究",
+              "sha256": "aebc27af0caeab4e55089450c90609a226bb37a1c715083962aa7bed3cfefbe3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/issue-001-trend-following-btc",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/issue-001-trend-following-btc",
+              "title": "第一期：BTC 趋势跟踪哪家强？从双均线到自适应止损的完整实证",
+              "sha256": "11a70a7989fb7ce6bece0f3c82dda7d086d18dc2cf0485db41d51d576ae4819d"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/issue-002-momentum-vol-rotation",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/issue-002-momentum-vol-rotation",
+              "title": "第二期：动量、波动率和轮动——哪些传统策略在加密市场失效？",
+              "sha256": "7224549ef67486dd5b073400ea378bcc5ca964d4a99117b4ecb99a5bc363ee5f"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/issue-003-btc-max-min-anomalies",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/issue-003-btc-max-min-anomalies",
+              "title": "第三期：BTC 创新高还能追吗？入场信号与出场机制的实验",
+              "sha256": "b5e5002fd311464c4d3a76457490cd8e967c311ddaae383cee2c0fc59cb51893"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/crypto-market/overview",
+              "title": "加密资产策略研究",
+              "sha256": "7a863861c18f65259b7193055d61999368df1f30ebbd58e4ae3bc60311e074b7"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/introduction",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/introduction",
+              "title": "策略研究档案",
+              "sha256": "8fd209a223422a528c54c518de0adb4bc7d2da0fc10aa4e0f88af7a5807c8a0b"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-001-momentum-vs-qqq",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-001-momentum-vs-qqq",
+              "title": "第一期：动量轮动跑得赢 QQQ 吗？",
+              "sha256": "fb9583b48ed9f907959f5bacbb8a859de7a82ebb1a4cc2883cd514593b553030"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-002-leveraged-satellite",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-002-leveraged-satellite",
+              "title": "第二期：3 倍杠杆 ETF 能做卫星仓吗？",
+              "sha256": "3031361ece808f3afd6b22517cc4ca2aaae4c0c5f11a7905a59fadf842ea8c5e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-003-rejected-thematic-etfs",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-003-rejected-thematic-etfs",
+              "title": "第三期：铀矿与黄金被否定，电网基础设施仍待验证",
+              "sha256": "32cf7349450f44c37245be35bd20a6f7bcc228f35fb7d079b7c46f2dc75b21dc"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-004-defense-crypto",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-004-defense-crypto",
+              "title": "第四期：防御科技与加密货币 ETF 的实证",
+              "sha256": "37308e17fcd6d7fa278a5adfc8cce9d0de29df561910a46658e1cd726c910ca9"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-005-core-portfolio-rules",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-005-core-portfolio-rules",
+              "title": "第五期：核心仓该加主动规则吗？QQQ/SMH/GBTC 三仓组合完整实证",
+              "sha256": "e982d6399617ce7c1e725e58b3bf71d636ede5f54b1effb8ef0f4142b52993fd"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-006-dca-qqq-stress-test",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-006-dca-qqq-stress-test",
+              "title": "第六期：定投 QQQ，你真的想清楚了吗？",
+              "sha256": "9436638cf4575ede7cbd9fae2a9172939a781860149b212f68b1043fdf7226c3"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-007-qqq-trend-exit",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-007-qqq-trend-exit",
+              "title": "第七期：给 QQQ 加一道出场规则，真的有用吗？",
+              "sha256": "1a3d94c46a745c49f078af2504a2dcd578845f1b99aea7e49a5c66c96c1cac0e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-008-multi-asset-long-term",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/issue-008-multi-asset-long-term",
+              "title": "第八期：没有万能策略，但有更聪明的分散方式",
+              "sha256": "21fa6061f30c4a774385ab5fd999a61f2e6c778a80d9e6d742a3d0cfd7a8be0e"
+            },
+            {
+              "url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/overview",
+              "final_url": "https://www.myinvestpilot.com/docs/strategy-research-lab/us-market/overview",
+              "title": "美股策略研究",
+              "sha256": "404d0a3e7809592496ba4794d1b1042e48d7cf8e12daf7a34a0ac79aa4138a8e"
+            }
+          ]
+        },
+        "decisions": [
+          {
+            "scope": [
+              "public documentation catalog: 155 pages"
+            ],
+            "disposition": "defer",
+            "reason": "方法已评估并形成候选清单；文档审读不等于本地能力实现或引擎验证。",
+            "targets": [
+              "docs/upstreams/myinvestpilot.md",
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": [
+              "UP-01",
+              "UP-03",
+              "UP-04",
+              "UP-05"
+            ],
+            "revisit_when": "实施对应能力或检测到相关文档变化时，先解决专题档案中的口径冲突并定义本地验证。"
+          },
+          {
+            "scope": [
+              "https://www.myinvestpilot.com/docs/agent-lab/overview",
+              "https://www.myinvestpilot.com/docs/agent-lab/research-guide",
+              "artifact readiness vs investment judgment; explicit unknown/failure states only"
+            ],
+            "disposition": "adapt",
+            "decided_on": "2026-09-15",
+            "source_revision": "bd9718319a04f466f9aa323ce7d391eadc0b7225945253336c99b3abb5cc5fa6",
+            "reason": "UP-01 将产物就绪与投资判断分离的方法适配到现有研究/跟踪核心：未知评分、复核窗口、引用绑定和失败审计；不复制上游引擎或策略。其余组合/实验能力仍待实施。",
+            "targets": [
+              "skills/money-craft/scripts/tracking_workflow.py",
+              "skills/money-craft/scripts/research_run.py",
+              "skills/money-craft/scripts/financial_rigor.py",
+              "skills/money-craft/references/tracking-workflow.md",
+              "skills/money-craft/references/company-research.md"
+            ],
+            "backlog": "UP-01",
+            "evidence": [
+              "openspec/changes/fix-research-status-reliability/validation.md",
+              "tests/test_tracking_workflow.py",
+              "tests/test_research_run.py",
+              "tests/test_audits.py"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dexter",
+        "kind": "git",
+        "url": "https://github.com/virattt/dexter",
+        "branch": "main",
+        "role": "primary-reference",
+        "purpose": "研究组织与答案正确性/矛盾评测",
+        "runtime_dependency": false,
+        "license_status": "Metadata/README declaration only: None; verify exact LICENSE/NOTICE before copying.",
+        "tracked_paths": [
+          "README.md",
+          "LICENSE",
+          "src/"
+        ],
+        "observed": {
+          "revision": "ecaed3011f24ea24ef687ab536aa7f22f7294038",
+          "checked_at": "2026-09-14T15:22:16.772159+00:00",
+          "method": "public-github-branch-ref"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": null,
+        "review_notes": "已完成用途初筛；公开README/文档与部分实现的阅读不等于完整审查所登记范围。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "src/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-05",
+            "revisit_when": "实施 UP-05 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          }
+        ]
+      },
+      {
+        "id": "skfolio",
+        "kind": "git",
+        "url": "https://github.com/skfolio/skfolio",
+        "branch": "main",
+        "role": "adapter-candidate",
+        "purpose": "组合风险预算、约束、压力与样本外验证",
+        "runtime_dependency": false,
+        "license_status": "Fixed commit c99fcf71349e2df4a7a1033ee85ca2e9ced9abee LICENSE verified: BSD-3-Clause; SHA-256 07b8dfceb7b319e5145e7b1594d2cdaf94d924d78166d28951d4b360a4dc5844. Scoped source SPDX headers checked; no runtime source copied or dependency installed.",
+        "tracked_paths": [
+          "README.rst",
+          "LICENSE",
+          "src/",
+          "examples/",
+          "docs/",
+          "pyproject.toml",
+          "tests/test_preprocessing/test_returns.py"
+        ],
+        "observed": {
+          "revision": "c99fcf71349e2df4a7a1033ee85ca2e9ced9abee",
+          "checked_at": "2026-09-19T16:46:34.046633+00:00",
+          "method": "public-github-branch-ref"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": null,
+        "review_notes": "2026-09-20有界评估：5个文件完整审读、README/pyproject局部审读，7个文件blob核对；收益转换4项离线行为复现。修正README.rst跟踪路径。完整tracked_paths及45项变化未审完，reviewed_revision/absorbed_revision仍null。见docs/upstreams/skfolio.md。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "src/",
+              "examples/",
+              "docs/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-03",
+            "revisit_when": "实施 UP-03 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          },
+          {
+            "date": "2026-09-20",
+            "revision": "c99fcf71349e2df4a7a1033ee85ca2e9ced9abee",
+            "previous_observed": {
+              "revision": "2cc2a7dc7328285091e60d31c40a6623dee19420",
+              "checked_at": "2026-09-14T15:22:14.325639+00:00",
+              "method": "public-github-branch-ref"
+            },
+            "scope": [
+              "LICENSE",
+              "README.rst",
+              "pyproject.toml",
+              "src/skfolio/preprocessing/_returns.py",
+              "src/skfolio/base.py",
+              "src/skfolio/pre_selection/_select_complete.py",
+              "tests/test_preprocessing/test_returns.py"
+            ],
+            "read_coverage": {
+              "LICENSE": "FULL",
+              "README.rst": "PARTIAL: introduction, installation and Key Concepts (lines54-144)",
+              "pyproject.toml": "PARTIAL: project metadata and dependency groups (lines1-135)",
+              "src/skfolio/preprocessing/_returns.py": "FULL",
+              "src/skfolio/base.py": "FULL",
+              "src/skfolio/pre_selection/_select_complete.py": "FULL",
+              "tests/test_preprocessing/test_returns.py": "FULL"
+            },
+            "disposition": "defer",
+            "reason": "缺少真实历史收益矩阵、身份/日历/缺失策略及样本外任务；上游默认填补和删行不能直接替代本项目数据准入。当前快照核心不需要求解器依赖。",
+            "targets": [
+              "docs/upstreams/skfolio.md",
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-03",
+            "evidence": [
+              "acceptance/upstream-skfolio-20260920.json"
+            ],
+            "revisit_when": "出现明确历史风险/配置比较任务，并具备可追溯同币种收益序列、日历缺失策略、可投资约束与样本外基准时。"
+          }
+        ]
+      },
+      {
+        "id": "openbb",
+        "kind": "git",
+        "url": "https://github.com/OpenBB-finance/OpenBB",
+        "branch": "develop",
+        "role": "adapter-candidate",
+        "purpose": "按实际数据缺口评估可选Provider",
+        "runtime_dependency": false,
+        "license_status": "Metadata/README declaration only: NOASSERTION; verify exact LICENSE/NOTICE before copying.",
+        "tracked_paths": [
+          "README.md",
+          "LICENSE",
+          "openbb_platform/"
+        ],
+        "observed": {
+          "revision": "3e071fcc2cd9f891cac6040ae60296dba76dab46",
+          "checked_at": "2026-09-14T15:22:09.013693+00:00",
+          "method": "public-github-branch-ref"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": null,
+        "review_notes": "已完成用途初筛；公开README/文档与部分实现的阅读不等于完整审查所登记范围。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "openbb_platform/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-03",
+            "revisit_when": "实施 UP-03 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          }
+        ]
+      },
+      {
+        "id": "qlib",
+        "kind": "git",
+        "url": "https://github.com/microsoft/qlib",
+        "branch": "main",
+        "role": "watchlist",
+        "purpose": "有明确因子研究任务后评估",
+        "runtime_dependency": false,
+        "license_status": "Metadata/README declaration only: MIT; verify exact LICENSE/NOTICE before copying.",
+        "tracked_paths": [
+          "README.md",
+          "LICENSE",
+          "qlib/",
+          "examples/",
+          "docs/"
+        ],
+        "observed": {
+          "revision": "79633dd9506ea689e5400dea0197717b5b3d74b7",
+          "checked_at": "2026-09-14T15:22:27.255652+00:00",
+          "method": "public-github-branch-ref"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": null,
+        "review_notes": "已完成用途初筛；公开README/文档与部分实现的阅读不等于完整审查所登记范围。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "qlib/",
+              "examples/",
+              "docs/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-04",
+            "revisit_when": "实施 UP-04 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          }
+        ]
+      },
+      {
+        "id": "rd-agent",
+        "kind": "git",
+        "url": "https://github.com/microsoft/RD-Agent",
+        "branch": "main",
+        "role": "watchlist",
+        "purpose": "受控量化实验与因子研究参考",
+        "runtime_dependency": false,
+        "license_status": "Metadata/README declaration only: MIT; verify exact LICENSE/NOTICE before copying.",
+        "tracked_paths": [
+          "README.md",
+          "LICENSE",
+          "rdagent/",
+          "docs/"
+        ],
+        "observed": {
+          "revision": "32b3d395e73d9db5eee3fe9063d69aec0fdc83bd",
+          "checked_at": "2026-09-14T15:22:24.869947+00:00",
+          "method": "public-github-branch-ref"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": null,
+        "review_notes": "已完成用途初筛；公开README/文档与部分实现的阅读不等于完整审查所登记范围。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "rdagent/",
+              "docs/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-04",
+            "revisit_when": "实施 UP-04 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          }
+        ]
+      },
+      {
+        "id": "lean",
+        "kind": "git",
+        "url": "https://github.com/QuantConnect/Lean",
+        "branch": "master",
+        "role": "watchlist",
+        "purpose": "明确回测立项后评估执行语义",
+        "runtime_dependency": false,
+        "license_status": "Metadata/README declaration only: Apache-2.0; verify exact LICENSE/NOTICE before copying.",
+        "tracked_paths": [
+          "README.md",
+          "LICENSE",
+          "Engine/",
+          "Common/",
+          "Algorithm/"
+        ],
+        "observed": {
+          "revision": "6eb389012d73c364547d61546ff822fc8432dee2",
+          "checked_at": "2026-09-14T15:22:27.279065+00:00",
+          "method": "public-github-branch-ref"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": null,
+        "review_notes": "已完成用途初筛；公开README/文档与部分实现的阅读不等于完整审查所登记范围。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "Engine/",
+              "Common/",
+              "Algorithm/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-04",
+            "revisit_when": "实施 UP-04 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          }
+        ]
+      },
+      {
+        "id": "trading-agents",
+        "kind": "git",
+        "url": "https://github.com/TauricResearch/TradingAgents",
+        "branch": "main",
+        "role": "watchlist",
+        "purpose": "多视角研究与历史信息泄漏控制参考",
+        "runtime_dependency": false,
+        "license_status": "Metadata/README declaration only: Apache-2.0; verify exact LICENSE/NOTICE before copying.",
+        "tracked_paths": [
+          "README.md",
+          "LICENSE",
+          "tradingagents/",
+          "tests/"
+        ],
+        "observed": {
+          "revision": "be952b8eccb49720509af544c6675233bc1f10d0",
+          "checked_at": "2026-09-14T15:22:34.092199+00:00",
+          "method": "public-github-branch-ref"
+        },
+        "reviewed_revision": null,
+        "absorbed_revision": null,
+        "review_notes": "已完成用途初筛；公开README/文档与部分实现的阅读不等于完整审查所登记范围。",
+        "decisions": [
+          {
+            "scope": [
+              "README.md",
+              "LICENSE",
+              "tradingagents/",
+              "tests/"
+            ],
+            "disposition": "defer",
+            "reason": "已登记为参考候选，尚未完成所跟踪范围的逐文件审查和本地行为验证。",
+            "targets": [
+              "docs/upstream-strategy.md"
+            ],
+            "backlog": "UP-05",
+            "revisit_when": "实施 UP-05 或所跟踪范围出现与该能力相关的变化时，先审查固定版本与许可。"
+          }
+        ]
+      }
+    ]
+  }
+}

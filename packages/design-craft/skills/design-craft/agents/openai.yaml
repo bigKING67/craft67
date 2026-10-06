@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Craft"
+  short_description: "UI/UX design engineering and visual evidence workflow"
+  default_prompt: "Use $design-craft to plan, implement, review, or verify a product UI/UX task. Route controlled PNG comparison through comp-fidelity and fixed-commit or sealed-manifest capture closeout through sealed-rendition; keep measurements separate from human visual acceptance. Apply iOS, Android, or adaptive guidance only when the target is native."

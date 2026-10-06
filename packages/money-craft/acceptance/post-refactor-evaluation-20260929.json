@@ -1,0 +1,93 @@
+{
+  "schema": "money-craft.post-refactor-evaluation.v1",
+  "date": "2026-09-29",
+  "scope": "Behavioral check of the 2026-09-29 reference trimming (earnings-tools.md, host-render.md split) against frozen cases; single runs, parent-reviewed, not statistical evidence.",
+  "runs": [
+    {
+      "case": "preview-replay",
+      "skill_commit": "1c124ac",
+      "invocation": "explicit-source",
+      "result": "PASS_BOUNDED",
+      "criteria": "4/4",
+      "calculations": "11/11",
+      "notes": "Host read references/earnings-tools.md.",
+      "answer_sha256": "b3ee540807eb1035bc69a15038de27c6ab58531075fde4ccbd9102f416442682"
+    },
+    {
+      "case": "costco-fiscal-cash-quality",
+      "skill_commit": "1c124ac",
+      "invocation": "implicit",
+      "result": "FAIL_TIMEOUT",
+      "elapsed_seconds": 900,
+      "notes": "No answer; host spent the run reverse-engineering the calculation audit entry point (never documented)."
+    },
+    {
+      "case": "costco-fiscal-cash-quality",
+      "skill_commit": "812e054",
+      "invocation": "implicit",
+      "result": "PASS_BOUNDED_AFTER_CORRECTION",
+      "criteria": "8/8",
+      "calculations": "69/69",
+      "elapsed_seconds": 653.667,
+      "baseline_elapsed_seconds": 368.278,
+      "answer_sha256": "6a928113035c5750c171655300723e3ed80623766a85e4cc0257560518a6e137"
+    },
+    {
+      "case": "alibaba-hk-full-research-from-empty-workspace",
+      "skill_commit": "1c124ac",
+      "result": "FAIL_TIMEOUT",
+      "elapsed_seconds": 1200,
+      "notes": "Reached render preview v2; 25 separate financial_rigor.py calculate CLI calls; host-render.md was read.",
+      "per_calculation_cli_calls": 26
+    },
+    {
+      "case": "alibaba-hk-full-research-from-empty-workspace",
+      "skill_commit": "812e054",
+      "result": "FAIL_TIMEOUT",
+      "elapsed_seconds": 1200,
+      "notes": "Per-calculation CLI calls 0 (fix effective); render preview reached; 38 commands before research init incl. host ~/.codex/tools help and 6 capture --url-index usage errors (host governance tools, outside this repo).",
+      "per_calculation_cli_calls": 0,
+      "url_index_errors": 6
+    },
+    {
+      "case": "alibaba-hk-full-research-from-empty-workspace",
+      "skill_commit": "0923-frozen-candidate",
+      "purpose": "A/B control: byte-identical 2026-09-23 candidate under 2026-09-29 prompt, interpreter and window",
+      "result": "FAIL_TIMEOUT",
+      "elapsed_seconds": 1200,
+      "per_calculation_cli_calls": 34,
+      "url_index_errors": 7,
+      "report_md_first_written_seconds": 1199,
+      "notes": "Slowest of today's runs; never reached render."
+    },
+    {
+      "case": "alibaba-hk-full-research-from-empty-workspace",
+      "skill_commit": "8f49c08",
+      "window_seconds": 1800,
+      "result": "FAIL_TIMEOUT",
+      "elapsed_seconds": 1800,
+      "per_calculation_cli_calls": 0,
+      "url_index_errors": 0,
+      "research_sealed_seconds": 1230,
+      "notes": "Host rule fix effective (0 url-index errors). Two new failures: (1) first render rejected because the source index linked local evidence as [title](evidence/...); (2) first archive rejected because investment_archive_report.py --audit needs an ai-berkshire report_audit result array, which the Money Craft audit receipt does not satisfy; timed out while preparing it."
+    }
+  ],
+  "baseline": {
+    "case": "alibaba-hk-full-research-from-empty-workspace",
+    "date": "2026-09-23",
+    "result": "PASS_BOUNDED",
+    "elapsed_seconds": 934.283
+  },
+  "fix": "Document money_craft.py audit financial|report|reconciliation and a one-call batch receipt pattern (commits d2e4d1b, 812e054).",
+  "conclusion": "Earnings paths verified after the fix. The full-research timeouts are not caused by the reference trimming: the byte-identical 2026-09-23 candidate also timed out today and was slower (34 per-calculation CLI calls, report at 1199s) than the trimmed candidate with the calculation fix (0 calls, report at 976s). Remaining time sinks are the 20-minute window (the 2026-09-23 pass took 934s), host governance tool discovery, the undocumented 1-based capture --url-index (fixed in host rules) and model variance. A 30-minute run confirmed the url-index and calculation fixes and surfaced two more documentation gaps (local-evidence links in the source index, one caused by the trim; archive audit format, pre-existing); both are fixed but not yet re-verified end to end.",
+  "artifacts_local": [
+    "local/skill-evals/20260929-post-refactor-e2e",
+    "local/skill-evals/20260929-post-fix-e2e"
+  ],
+  "automatic_trading": false,
+  "host_rule_change": "~/.codex/rules/investment.md now states capture --url-index starts at 1 (host config, outside this repo).",
+  "fixes_after_window30": [
+    "report-rendering.md / company-research.md: write local evidence in the source index as a bare exact path; restore the dropped 'relative paths are rejected' detail (lost in the 2026-09-29 trim); regression test renders both forms.",
+    "host-render.md and ~/.codex/rules/investment.md: document the ai-berkshire extract -> fill -> verdict flow that produces the archive --audit input, prepared right after research finalize."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/release/policy.schema.json",
+  "title": "design-craft release policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "version", "levels"],
+  "properties": {
+    "schema": {"const": "design-craft.release-policy.v1"},
+    "version": {"const": 1},
+    "levels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operational_95", "certified_100"],
+      "properties": {
+        "operational_95": {"$ref": "#/$defs/level"},
+        "certified_100": {"$ref": "#/$defs/level"}
+      }
+    }
+  },
+  "$defs": {
+    "level": {
+      "type": "object",
+      "required": [
+        "score",
+        "required_hosts",
+        "required_native",
+        "allowed_unverified",
+        "required_domains",
+        "assets",
+        "permanent_native_bundle"
+      ],
+      "properties": {
+        "score": {"enum": [95, 100]},
+        "extends": {"type": "string"},
+        "required_hosts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "required_native": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "allowed_unverified": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "required_domains": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "assets": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "permanent_native_bundle": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

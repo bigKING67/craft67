@@ -1,0 +1,51 @@
+{
+  "as_of": "2025-04-30",
+  "captured_on": "2026-09-20",
+  "post_hoc": true,
+  "sources": [
+    {
+      "source_id": "S02",
+      "url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings",
+      "final_url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings",
+      "http_status": 200,
+      "path": "local/evidence/20260920-target-valuation/guidance.html",
+      "bytes": 250635,
+      "sha256": "cc5eab890121b9a46d4eda35a22bf46d86e2d83ccee959b1811b1a3a20b1771b",
+      "captured_at": "2026-09-20T03:22:57.478870+00:00"
+    },
+    {
+      "source_id": "S03",
+      "url": "https://www.suredividend.com/wp-content/uploads/2025/03/TGT-2025-03-12.pdf",
+      "final_url": "https://www.suredividend.com/wp-content/uploads/2025/03/TGT-2025-03-12.pdf",
+      "http_status": 200,
+      "path": "local/evidence/20260920-target-valuation/analyst.pdf",
+      "bytes": 347019,
+      "sha256": "385aa86b20333cfe224b9c0b8348cba90be496ab6303c9d682325a9c251f1601",
+      "captured_at": "2026-09-20T03:23:00.060792+00:00"
+    },
+    {
+      "source_id": "S01",
+      "path": "local/research/20260920-retail-peer/sources/target-2024.pdf",
+      "url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf",
+      "sha256": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271"
+    },
+    {
+      "source_id": "S10",
+      "url": "https://corporate.target.com/getmedia/d29ff305-a470-477a-bf4b-585069cf8fc0/TGT-Transcript-2025-03-04.pdf",
+      "path": "local/evidence/20260920-target-drivers/transcript.pdf",
+      "sha256": "48734f6898a1bc371e45728b5373cd1785b3cffc7857023f3101787ea406c5de",
+      "bytes": 265313,
+      "http_status": 200,
+      "captured_at": "2026-09-20T03:52:04.815514+00:00"
+    },
+    {
+      "source_id": "S11",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/04/modifying-reciprocal-tariff-rates-to-reflect-trading-partner-retaliation-and-alignment/",
+      "path": "local/evidence/20260920-target-drivers/tariff-order.html",
+      "sha256": "cc43e78ed4a11a71bbaa75861c7a76494681e6ab5d21174ba554aa9e3e6c27e3",
+      "bytes": 304162,
+      "http_status": 200,
+      "captured_at": "2026-09-20T03:52:07.206616+00:00"
+    }
+  ]
+}

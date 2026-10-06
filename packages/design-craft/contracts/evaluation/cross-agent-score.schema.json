@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/evaluation/cross-agent-score.schema.json",
+  "title": "design-craft current cross-agent score",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "task_id",
+    "agent",
+    "verified",
+    "agent_version",
+    "model",
+    "model_observation",
+    "reasoning_profile",
+    "reasoning_observation",
+    "runner_os",
+    "date",
+    "prompt_sha256",
+    "scorecard_json_sha256",
+    "contract_sha256",
+    "run_manifest_path",
+    "run_manifest_sha256",
+    "skill_version",
+    "skill_source_commit",
+    "skill_source_dirty",
+    "repo_dirty",
+    "release_state",
+    "skill_tree_sha256",
+    "behavior_domain",
+    "behavior_sha256",
+    "behavior_source_dirty",
+    "projected_skill_tree_sha256",
+    "skill_path",
+    "provenance_skill_path",
+    "command_summary",
+    "output_path",
+    "output_sha256",
+    "score",
+    "criteria"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.cross-agent-score.v5"},
+    "task_id": {"type": "string", "minLength": 1},
+    "agent": {"enum": ["codex", "pi", "cursor", "claude"]},
+    "verified": {"const": true},
+    "agent_version": {"type": "string", "minLength": 1},
+    "model": {"type": "string", "minLength": 1},
+    "model_observation": {"type": "string", "minLength": 1},
+    "reasoning_profile": {"type": "string", "minLength": 1},
+    "reasoning_observation": {"type": "string", "minLength": 1},
+    "runner_os": {"type": "string", "minLength": 1},
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "prompt_sha256": {"$ref": "#/$defs/sha256"},
+    "scorecard_json_sha256": {"$ref": "#/$defs/sha256"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "run_manifest_path": {"type": "string", "pattern": "^run\\.(codex|pi|cursor|claude)\\.json$"},
+    "run_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "skill_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "skill_source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "skill_source_dirty": {"type": "boolean"},
+    "repo_dirty": {"type": "boolean"},
+    "release_state": {
+      "enum": ["development", "release_candidate", "released", "unknown"]
+    },
+    "skill_tree_sha256": {"$ref": "#/$defs/sha256"},
+    "behavior_domain": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "behavior_sha256": {"$ref": "#/$defs/sha256"},
+    "behavior_source_dirty": {"const": false},
+    "projected_skill_tree_sha256": {"$ref": "#/$defs/sha256"},
+    "skill_path": {"type": "string", "minLength": 1},
+    "provenance_skill_path": {"type": "string", "minLength": 1},
+    "command_summary": {"type": "string", "minLength": 1},
+    "output_path": {"type": "string", "pattern": "^(codex|pi|cursor|claude)-output\\.md$"},
+    "output_sha256": {"$ref": "#/$defs/sha256"},
+    "score": {"type": "integer", "minimum": 0, "maximum": 100},
+    "criteria": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "style_authority",
+        "reference_selection",
+        "anti_generic_redesign",
+        "evidence_level",
+        "verified_boundary",
+        "design_moves",
+        "scope_control"
+      ],
+      "properties": {
+        "style_authority": {"$ref": "#/$defs/result"},
+        "reference_selection": {"$ref": "#/$defs/result"},
+        "anti_generic_redesign": {"$ref": "#/$defs/result"},
+        "evidence_level": {"$ref": "#/$defs/result"},
+        "verified_boundary": {"$ref": "#/$defs/result"},
+        "design_moves": {"$ref": "#/$defs/result"},
+        "scope_control": {"$ref": "#/$defs/result"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "earned", "note"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "earned": {"type": "integer", "minimum": 0, "maximum": 100},
+        "note": {"type": "string", "minLength": 8}
+      }
+    }
+  }
+}

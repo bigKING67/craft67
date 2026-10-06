@@ -1,0 +1,94 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-024",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "fd1a67fe1854d7a2aba267cc553f2066c2ea096c5156d14ff6c022dc82930226",
+    "bytes": 8597
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "2a9c5495e69e144d3e474a658d5bcb947f09b3717aec4087212e6cde443ccdcc",
+    "bytes": 2343
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "d1866f97ca81729daae11fdbb58a37bcbb59b34d094c0e63ca6add454277245b",
+    "bytes": 2451
+  },
+  "cases": [
+    {
+      "id": "career-ranking-without-reality-must-remain-unresolved",
+      "input": {
+        "path": "input.json",
+        "sha256": "3a11d3e3cbec2ecfe3ca9a2bdde96d390cf57ac737959f1e56794b14feaa4874",
+        "bytes": 257
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "52d318800a24fd74f42bed7e5cbf72393e08fede415d5e78c7ab76a6ef0a626b",
+        "bytes": 60450
+      },
+      "response": {
+        "path": "response-baseline.md",
+        "sha256": "7b80404c7df93e640faf9decb1ba12184b092361f3ab0538f2596ccccb40ac1d",
+        "bytes": 1187
+      },
+      "report": {
+        "path": "report-baseline.json",
+        "sha256": "406eca86bf44c4f97737d7a175ae95946fa823b95ff2fc3583c8cba3a715572d",
+        "bytes": 28360
+      },
+      "responseClaims": {
+        "path": "response-claims-baseline.json",
+        "sha256": "0137a2555111c33c37e70f0172cd87d62c19a180ef1cac865374b02d357a7609",
+        "bytes": 3062
+      }
+    },
+    {
+      "id": "reported-2026-promotion-must-not-retrofit-or-rank-future",
+      "input": {
+        "path": "input.json",
+        "sha256": "3a11d3e3cbec2ecfe3ca9a2bdde96d390cf57ac737959f1e56794b14feaa4874",
+        "bytes": 257
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "52d318800a24fd74f42bed7e5cbf72393e08fede415d5e78c7ab76a6ef0a626b",
+        "bytes": 60450
+      },
+      "response": {
+        "path": "response-reality.md",
+        "sha256": "43a3c98713b58556e012e45e5ca00c1dd6f6f20874f4a97aa3a078d679af6590",
+        "bytes": 1182
+      },
+      "report": {
+        "path": "report-reality.json",
+        "sha256": "92a404c9cd3a670343d56cf4e27a6a12b0c0fc27380dec1ae08a52394ecd6b7e",
+        "bytes": 28662
+      },
+      "responseClaims": {
+        "path": "response-claims-reality.json",
+        "sha256": "a4b5b7d6e4a9502871acd1d1e450226e167d434b7383e6e7ce1a97f934a7d1ab",
+        "bytes": 3075
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

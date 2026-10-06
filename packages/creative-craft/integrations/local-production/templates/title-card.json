@@ -1,0 +1,53 @@
+{
+  "schema_version": "creative-craft.graphic-template.v2",
+  "id": "title-card",
+  "version": 2,
+  "description": "Title panel with optional subtitle; panel colour, text colour and panel visibility are typed variables. Placements: center (default, 30-70% height) and top (8-28% height, clear of a centred face).",
+  "placements": {
+    "center": {
+      "left": 0.1,
+      "top": 0.3,
+      "width": 0.8,
+      "height": 0.4
+    },
+    "top": {
+      "left": 0.1,
+      "top": 0.08,
+      "width": 0.8,
+      "height": 0.2
+    }
+  },
+  "default_placement": "center",
+  "vars": {
+    "title": {
+      "type": "string",
+      "max_length": 12,
+      "font_em": 6,
+      "weight": 900
+    },
+    "subtitle": {
+      "type": "string",
+      "max_length": 24,
+      "font_em": 3,
+      "weight": 400,
+      "optional": true
+    },
+    "background": {
+      "type": "color",
+      "optional": true,
+      "default": "#101820"
+    },
+    "text_color": {
+      "type": "color",
+      "optional": true,
+      "default": "#ffffff"
+    },
+    "panel": {
+      "type": "boolean",
+      "optional": true,
+      "default": true
+    }
+  },
+  "html": "<span class=\"gfx-title-card-panel\"><span class=\"gfx-title-card-title\">{{title}}</span><span class=\"gfx-title-card-subtitle\">{{subtitle}}</span></span>",
+  "css": ".gfx-title-card{display:flex;align-items:center;justify-content:center}.gfx-title-card-panel{box-sizing:border-box;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2em;padding:2em;border-radius:.8em;background:var(--background);color:var(--text_color);text-align:center}.gfx-title-card[data-panel=\"false\"] .gfx-title-card-panel{background:transparent}.gfx-title-card-title{max-width:100%;font-size:var(--fs-title);font-weight:900;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gfx-title-card-subtitle{max-width:100%;font-size:var(--fs-subtitle);font-weight:400;line-height:1.25;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gfx-title-card-subtitle:empty{display:none}"
+}

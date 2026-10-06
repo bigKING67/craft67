@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://design-craft.local/contracts/sealed-rendition-gate-report.schema.json",
+  "title": "Design Craft Sealed Rendition Gate Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "gate_id", "verdict", "completed_at", "paths", "authority",
+    "statuses", "capture_order", "captures", "comparisons", "visual_review",
+    "decision_boundary"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.sealed-rendition-gate-report.v1"},
+    "gate_id": {"$ref": "#/$defs/slug"},
+    "verdict": {"$ref": "#/$defs/visualDecision"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["output_root", "spec", "capture_plan"],
+      "properties": {
+        "output_root": {"type": "string", "minLength": 1},
+        "spec": {"$ref": "#/$defs/fileRecord"},
+        "capture_plan": {"$ref": "#/$defs/fileRecord"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preflight", "postflight"],
+      "properties": {
+        "preflight": {"type": "object"},
+        "postflight": {"type": "object"}
+      }
+    },
+    "statuses": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_integrity", "capture_integrity", "comparison_integrity",
+        "source_mutation_audit", "visual_decision"
+      ],
+      "properties": {
+        "input_integrity": {"const": "pass"},
+        "capture_integrity": {"const": "pass"},
+        "comparison_integrity": {"const": "pass"},
+        "source_mutation_audit": {"const": "pass"},
+        "runtime_evidence": {"const": "pass"},
+        "visual_decision": {"$ref": "#/$defs/visualDecision"}
+      }
+    },
+    "capture_order": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/slug"}
+    },
+    "captures": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ordinal", "id", "kind", "rendered"],
+        "properties": {
+          "ordinal": {"type": "integer", "minimum": 1, "maximum": 12},
+          "id": {"$ref": "#/$defs/slug"},
+          "kind": {"enum": ["browser_viewport", "pdf_page"]},
+          "rendered": {"$ref": "#/$defs/fileRecord"},
+          "runtime_receipt": {"$ref": "#/$defs/fileRecord"}
+        }
+      }
+    },
+    "comparisons": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id", "report", "strict_validation", "overall_metrics", "regions",
+          "advisory", "verdict"
+        ],
+        "properties": {
+          "id": {"$ref": "#/$defs/slug"},
+          "report": {"$ref": "#/$defs/fileRecord"},
+          "strict_validation": {"type": "object"},
+          "overall_metrics": {"type": "object"},
+          "regions": {"type": "array", "minItems": 1, "maxItems": 24},
+          "advisory": {"type": ["object", "null"]},
+          "verdict": {"const": "measurement_only"}
+        }
+      }
+    },
+    "visual_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "reviewer", "note"],
+      "properties": {
+        "decision": {"$ref": "#/$defs/visualDecision"},
+        "reviewer": {"type": ["string", "null"]},
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "decision_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "global_pixel_pass_threshold", "measurement_verdict",
+        "visual_acceptance_authority"
+      ],
+      "properties": {
+        "global_pixel_pass_threshold": {"type": "null"},
+        "measurement_verdict": {"const": "measurement_only"},
+        "visual_acceptance_authority": {"const": "explicit_human_or_system_review"}
+      }
+    }
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "visualDecision": {"enum": ["pending", "pass", "blocked", "incomplete"]},
+    "fileRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

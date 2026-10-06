@@ -1,0 +1,50 @@
+{
+  "schema": "money-craft.report-render-staging.v1",
+  "date": "2026-09-17",
+  "scope": "Preserve existing formal outputs during HTML/PDF generation and pre-publication validation failures",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "db9285fd572bc5229c4b2cb6bb1d601f7fbde522cc2099f42926cd0fea1ec76a",
+    "tests/test_report_renderer.py": "20f98c4344b37c1e01cc867ef9e3ae6f11befbc7b60ffee051aa75a7acf02983",
+    "skills/money-craft/references/report-rendering.md": "29bcd6caa11c68bd7d579e89e8cb16a8369e8ff9a6ba18914c60f83856671a73"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Formal HTML was written before PDF generation and source hash validation, so failed generation could overwrite prior outputs.",
+    "after": "Generate in temporary directories, validate source and read asset hashes, then replace formal outputs."
+  },
+  "validation": {
+    "renderer_tests": 31,
+    "full_tests": 321,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regressions": 5,
+    "failure_matrix": "PDF exception or source drift, with existing or absent outputs; all preserve prior formal output state.",
+    "success": "Mock PDF writer observes unchanged prior outputs until publication; both outputs updated and temporary directories cleaned.",
+    "real_cli": "Subprocess main with partial PDF write then injected exception fails while preserving prior outputs and directory entries."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 31,
+    "skipped_tests": 0,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "db9285fd572bc5229c4b2cb6bb1d601f7fbde522cc2099f42926cd0fea1ec76a",
+      "tests/test_report_renderer.py": "20f98c4344b37c1e01cc867ef9e3ae6f11befbc7b60ffee051aa75a7acf02983"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T080706831226Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL; this is a bounded generation-failure review.",
+    "Two os.replace calls are individually atomic, not a pair transaction; publication failure may leave mixed versions and does not guarantee rollback.",
+    "New parent directories may remain; process kill or power loss can leave staging directories.",
+    "PDF writer is mocked; actual PDF engine, layout, visual result and crash durability are unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

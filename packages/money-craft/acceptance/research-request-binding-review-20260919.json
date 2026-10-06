@@ -1,0 +1,42 @@
+{
+  "schema": "money-craft.research-request-binding-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Fuyao case/request.json/normalized parameters binding and request manifest hashes",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "e8e21276a82e3abab2b942e1e254e3d2691c4b87d54c8d1e36ebd0ef52dd84d6",
+    "tests/test_research_request_binding.py": "98df44d3dca05a9d94391a542ced68008ca61f6c0822b3ef8acacb077deb4703",
+    "tests/test_research_run.py": "d721d873e0ba8530b015e09c058a82455b7b8582d6c23c5793d61b2151d8c1da"
+  },
+  "validation": {
+    "new_tests": 4,
+    "full_tests": 456,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 5,
+    "initial_red_errors": 1,
+    "evidence": "Actual CLI parser/prepare projection comparison for plan operations and None defaults; temporary workspaces reject parameter/path/missing-request changes; finalized authentication label change invalidates manifest receipt."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "initial_finding": "None-valued optional fields differed from actual CLI defaults; accepted and fixed",
+    "final_verdict": "Finding closed; no remaining blockers; 4 final tests pass",
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "e8e21276a82e3abab2b942e1e254e3d2691c4b87d54c8d1e36ebd0ef52dd84d6",
+      "tests/test_research_request_binding.py": "98df44d3dca05a9d94391a542ced68008ca61f6c0822b3ef8acacb077deb4703",
+      "tests/test_research_run.py": "d721d873e0ba8530b015e09c058a82455b7b8582d6c23c5793d61b2151d8c1da"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Only Fuyao request binding; other providers separate.",
+    "Local case/request agreement does not prove remote execution or protect against coordinated rewrite of all local artifacts.",
+    "Older captures without request.json are rejected, not migrated.",
+    "Research_run remains PARTIAL; no app, commit, push or release."
+  ]
+}

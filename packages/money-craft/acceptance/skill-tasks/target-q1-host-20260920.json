@@ -1,0 +1,76 @@
+{
+  "schema": "money-craft.target-q1-host-review.v1",
+  "status": "PASS_BOUNDED_EARNINGS_REPLAY",
+  "as_of": "2025-05-21",
+  "executed_on": "2026-09-20",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "elapsed_seconds": 213.855,
+  "installed_skill": "~/.agents/skills/money-craft/SKILL.md",
+  "automatic_discovery": "TRACE_VERIFIED",
+  "machine_checks_pass": true,
+  "route": {
+    "state": "READY",
+    "attempts": [
+      {
+        "exit_code": 0,
+        "state": "READY",
+        "error_code": null
+      }
+    ],
+    "ready": true
+  },
+  "calculation_count": 19,
+  "source_evidence": [
+    {
+      "source_id": "S02",
+      "hash_verified": true
+    },
+    {
+      "source_id": "S12",
+      "hash_verified": true
+    }
+  ],
+  "semantic_reviewer": "parent_agent",
+  "independent_host_execution": true,
+  "independent_semantic_review": false,
+  "criteria": [
+    {
+      "criterion": "自然选用安装版Skill并有效路由；不回写旧截止或声称事前预测",
+      "status": "PASS",
+      "evidence": "Trace reads installed money-craft SKILL and earnings references; earnings/quick/chat route READY; explicitly separates execution date and historical cutoff."
+    },
+    {
+      "criterion": "区分GAAP与调整后盈利，按披露的税后调整桥，不用名义税率编造税效",
+      "status": "PASS",
+      "evidence": "Uses disclosed 593 pretax / 441 aftertax / 0.97 per-share adjustment; correctly separates reported and adjusted earnings. Issuer EPS growth rates retained with rounding caveat."
+    },
+    {
+      "criterion": "旧新年度指引同口径对照；不把较高GAAP上限当作盈利修复，不将指引当已实现值",
+      "status": "PASS",
+      "evidence": "Compares March and May adjusted guidance, marks midpoint as provisional assumption and excludes GAAP settlement uplift from ongoing earnings."
+    },
+    {
+      "criterion": "现金流复算与FCF proxy边界准确，不将季报简单年化或宣称可分配现金",
+      "status": "PASS",
+      "evidence": "Recomputes both quarterly FCF proxies and cash bridge, identifies working-capital components without equating them to total change; rejects annualization and distributable-cash interpretation."
+    },
+    {
+      "criterion": "反方和下一窗口明确，数字/回执正确，未把假设自动转为交易动作",
+      "status": "PASS",
+      "evidence": "Digital comp is counterevidence; Q2 sales, adjusted margin, inventory/cash and guidance are next checks. No prediction score, price target or transaction. No old thesis supplied to host, correctly limits thesis claims."
+    }
+  ],
+  "artifacts": {
+    "local/skill-evals/20260920-target-q1/installed/answer.md": "39d62e3db21e2d40e5726057a84229185e1abfe2224c40eb4a758ddaed479e2a",
+    "local/skill-evals/20260920-target-q1/installed/host.json": "d2293c8cd80f5fd77b8a19302a6908e417a59b84671970d6f2d37f3dd8b42c67",
+    "local/skill-evals/20260920-target-q1/installed/machine-audit.json": "22f7ca611ae48c097e7255463a9a03f1cab760d846136bba1ed0c6c228e8e4a1",
+    "local/skill-evals/20260920-target-q1/installed/events.jsonl": "9dd021db50681c469f77436a91e28f362c65a89cfa5a6e898a94f7354514b635",
+    "acceptance/skill-tasks/target-q1-case-20260920.json": "809345ca22d7c5c0b180ecc1f0ac7325925a57b81d3ce75714af3ab07aa5c753"
+  },
+  "limitations": [
+    "Retrospective replay, not a blind forecast score.",
+    "Two selected issuer disclosures, not independent source lineages or a complete 10-Q review.",
+    "Trace also inspected legacy ai-berkshire helper source; actual calculation and audit imported the installed Money Craft helper.",
+    "Parent semantic review; not independent reviewer acceptance."
+  ]
+}

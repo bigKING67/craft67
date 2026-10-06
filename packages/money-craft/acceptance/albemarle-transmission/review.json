@@ -1,0 +1,56 @@
+{
+  "status": "PASS_BOUNDED_PARENT_REVIEW",
+  "reviewer": "parent agent; not independent",
+  "financial_checks": 15,
+  "semantic_checks": [
+    {
+      "criterion": "historical cutoff and captured-later limitation explicit",
+      "status": "PASS"
+    },
+    {
+      "criterion": "spot-to-contract bridge remains unverified",
+      "status": "PASS"
+    },
+    {
+      "criterion": "segment revenue share not price sensitivity",
+      "status": "PASS"
+    },
+    {
+      "criterion": "adjusted EBITDA distinct from GAAP and negative-base growth avoided",
+      "status": "PASS"
+    },
+    {
+      "criterion": "group cash not allocated to segment",
+      "status": "PASS"
+    },
+    {
+      "criterion": "prepayment diagnostic and capex bridge not sustainable earnings",
+      "status": "PASS"
+    },
+    {
+      "criterion": "next report-period window and changing-confidence conditions explicit",
+      "status": "PASS"
+    }
+  ],
+  "original_source_capture": "PARTIAL_TOOL_EXTRACTION_ONLY",
+  "natural_language_host": "NOT_RUN",
+  "full_company_research": "NOT_CLAIMED",
+  "artifacts": {
+    "report.md": "feebb69ea884f09d008f724503d613f8434019565fbff4f0653fe63f7a8e517f",
+    "input.json": "c8b0b8ea5592c16a654f55cc681e95f9da063318f707f1caed7e452cc1c7d463",
+    "evidence-manifest.json": "b2c477babeb812a7e4b68a31890262c0fdd8a56956fb8ad5907e69f24c01c15a",
+    "calculations.json": "68434ae5f079aa3571141c784b25ba51de57efd15fe4fcd11f6a2668ac1d3cff",
+    "financial-audit.json": "0a4b770e44142f8784cacc359d5628757fd83052dd5b8963016e1b30fa51efa6"
+  },
+  "public_citations": [
+    {
+      "source_id": "S01",
+      "registered_public_link": true
+    },
+    {
+      "source_id": "S02",
+      "registered_public_link": true
+    }
+  ],
+  "source_extraction_hashes_verified": true
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/delivery-manifest.schema.json",
+  "title": "Creative Craft Delivery v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "delivery_id",
+    "project_id",
+    "status",
+    "selected_route",
+    "files",
+    "validation",
+    "remaining_risks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.delivery.v1"
+    },
+    "delivery_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "prompt_ready",
+        "generated",
+        "inspected",
+        "needs_revision",
+        "approved",
+        "delivered",
+        "published",
+        "superseded"
+      ]
+    },
+    "selected_route": {
+      "type": "string"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "path_or_uri",
+          "role",
+          "channel",
+          "placement",
+          "aspect_ratio",
+          "format",
+          "language",
+          "exact_copy",
+          "source",
+          "approval_status",
+          "rights_status",
+          "known_limitations"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "path_or_uri": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "placement": {
+            "type": "string"
+          },
+          "dimensions": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "aspect_ratio": {
+            "type": "string"
+          },
+          "duration_seconds": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "format": {
+            "type": "string"
+          },
+          "codec": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "language": {
+            "type": "string"
+          },
+          "exact_copy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-fA-F0-9]{64}$"
+          },
+          "source": {
+            "type": "string"
+          },
+          "approval_status": {
+            "enum": [
+              "planned",
+              "generated",
+              "inspected",
+              "needs_revision",
+              "approved",
+              "delivered",
+              "published",
+              "superseded"
+            ]
+          },
+          "rights_status": {
+            "enum": [
+              "CLEARED",
+              "LIMITED",
+              "REJECTED",
+              "UNVERIFIED"
+            ]
+          },
+          "known_limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "validation": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remaining_risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

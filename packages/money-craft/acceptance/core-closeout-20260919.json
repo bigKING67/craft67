@@ -1,0 +1,601 @@
+{
+  "schema": "money-craft.core-closeout.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED_CORE_AND_RENDER",
+  "scope": "15 top-level runtime files; separately named Skill contracts; synthetic renderer fixture on macOS. Not canonical whole-repository scoring.",
+  "runtime_files": [
+    {
+      "path": "skills/money-craft/scripts/earnings_baseline.py",
+      "sha256": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+      "lines": 189,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查前瞻封存、哈希/关联模型、披露时间与回放边界；修复预期期间长度准入。"
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_crosscheck.py",
+      "sha256": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+      "lines": 111,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "累计转单季、阈值、日期、证券/币种绑定与结果分级；12 项合成测试。"
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_drivers.py",
+      "sha256": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+      "lines": 127,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "历史勾稽、情景排序、单变量敏感性及顺序归因；12 项合成测试。"
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_update.py",
+      "sha256": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+      "lines": 291,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查来源/期间、重述比较与冻结旧估值、预期首披及 tracking 提案；修复未来研究日期准入。"
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_reconciliation.py",
+      "sha256": "9bf8642e0cdc9a560e4d248efeaa11f749cd64716074d1806e1fdf3f985394d9",
+      "lines": 506,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查报表等式、期间/来源合同和异常输入；修复溢出、JSON 小数精度、枚举类型与期间绑定。"
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_rigor.py",
+      "sha256": "44bbdf45d5b8b08737296cb0018683971c0ba62872bce9e1968be1651176c44b",
+      "lines": 208,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查 Decimal 运算、容差与收据解析；修复多行/损坏收据漏审，极大 JSON 整数转结构化错误。"
+    },
+    {
+      "path": "skills/money-craft/scripts/fred_adapter.py",
+      "sha256": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+      "lines": 508,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件阅读及独立复核完成；修复Decimal解析逃逸/跳转体无界读取与异常关闭，默认opener受控TLS通过；真实FRED、跨平台及来源语义另列限制。"
+    },
+    {
+      "path": "skills/money-craft/scripts/money_craft.py",
+      "sha256": "6523b3e76b658877a0fb0ebf3f361afa4882910138950a844b54bbc9ca9b5f75",
+      "lines": 2139,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件 CLI/配置/Provider/委派/错误语义与独立复核闭合；凭据HTTP头准入、日期上界和UTF8响应补齐。"
+    },
+    {
+      "path": "skills/money-craft/scripts/report_audit.py",
+      "sha256": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+      "lines": 219,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查元数据、章节/来源解析、引用与占位符；修复索引后漏审、空来源跨行、非规范日期。文件编码/I/O及 Markdown 全语法不作保证。"
+    },
+    {
+      "path": "skills/money-craft/scripts/report_renderer.py",
+      "sha256": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+      "lines": 1905,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件与独立复核闭合；同树可见数据投影、状态列绑定、审计计数、可信资产及SVG数值；真实三页PDF和宽窄/明暗HTML另附产物证据。"
+    },
+    {
+      "path": "skills/money-craft/scripts/research_run.py",
+      "sha256": "079cab3659ba7c3f614cf6476409764f63b37ab202e2105140ca10dd2ff251c0",
+      "lines": 1911,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件研究生命周期与独立复核闭合；JSON运行时错误、请求/原始证据/manifest/状态及完成收据合同已验证。"
+    },
+    {
+      "path": "skills/money-craft/scripts/research_workflow.py",
+      "sha256": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+      "lines": 840,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查计划身份/期间/Provider 路由及论文解析/diff；修复报告期矛盾、事实与来源变化漏报。"
+    },
+    {
+      "path": "skills/money-craft/scripts/runtime_paths.py",
+      "sha256": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+      "lines": 217,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查路径优先级/legacy/显式env及常量文件名调用；修复symlink绕过、半加载与空进程变量覆盖；POSIX有界验证，父目录/同inode并发/Windows/NFS不保证。"
+    },
+    {
+      "path": "skills/money-craft/scripts/tracking_workflow.py",
+      "sha256": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+      "lines": 1023,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件初始化、工作区/版本/历史/状态与独立复核闭合；run-state身份/日期/绑定/执行边界与JSON错误准入补齐。"
+    },
+    {
+      "path": "skills/money-craft/scripts/yfinance_adapter.py",
+      "sha256": "5fce407420628b6348fc1003b0b1165e353fdcd8d713a404aeecb9d20756516c",
+      "lines": 367,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "全文及直接CLI独立复核完成，真实pandas/缺失/类型/日期/导出/超时有界验证；真实Yahoo与证券/财务事实仍需另验，见yfinance-review-boundaries.md。"
+    }
+  ],
+  "coverage_counts": {
+    "REVIEWED_BOUNDED": 15,
+    "PARTIAL": 0,
+    "PENDING": 0
+  },
+  "independent_reviews": {
+    "research_tracking": {
+      "agent": "/root/core_independent_review",
+      "whole_file_read": true,
+      "findings_closed": [
+        "tracking run-state identity/timestamp/bindings",
+        "JSON runtime parsing errors"
+      ]
+    },
+    "cli": {
+      "agent": "/root/yf_admission_review",
+      "whole_file_read": true,
+      "tests": 82,
+      "findings_closed": [
+        "HTTP credential header admission",
+        "MAXYEAR range overflow",
+        "lone-surrogate response before capture"
+      ]
+    },
+    "renderer": {
+      "agent": "/root/yf_admission_review",
+      "whole_file_read": true,
+      "tests": 64,
+      "svg_finite_samples": 1410,
+      "findings_closed": [
+        "hidden table/price projection",
+        "status column binding",
+        "audit list/count alias conflicts",
+        "duplicate scenario rows",
+        "company suffix and exchange identity preservation"
+      ]
+    },
+    "contracts": {
+      "agent": "/root/discipline_docs",
+      "scope_files": [
+        "skills/money-craft/SKILL.md",
+        "skills/money-craft/references/routing.md",
+        "skills/money-craft/references/valuation-and-thesis.md",
+        "skills/money-craft/references/financial-data-and-evidence.md",
+        "skills/money-craft/references/global-investing.md",
+        "skills/money-craft/references/report-rendering.md",
+        "skills/money-craft/references/high-growth-alpha.md",
+        "skills/money-craft/references/earnings-review.md",
+        "skills/money-craft/references/company-research.md",
+        "skills/money-craft/references/screening.md",
+        "skills/money-craft/references/tracking-workflow.md",
+        "skills/money-craft/references/providers/fred.md",
+        "skills/money-craft/references/providers/yfinance.md",
+        "skills/money-craft/references/providers/fuyao.md",
+        "skills/money-craft/schemas/thesis-diff.schema.json",
+        "skills/money-craft/schemas/research-init.schema.json",
+        "skills/money-craft/schemas/financial-reconciliation-audit.schema.json",
+        "skills/money-craft/schemas/company-research-plan.schema.json",
+        "skills/money-craft/schemas/report-render.schema.json",
+        "skills/money-craft/schemas/tracking-run-state.schema.json",
+        "skills/money-craft/schemas/data-response.schema.json",
+        "skills/money-craft/schemas/tracking-state.schema.json",
+        "skills/money-craft/schemas/tracking-revision.schema.json",
+        "skills/money-craft/schemas/earnings-update-input.schema.json",
+        "skills/money-craft/schemas/research-collection.schema.json",
+        "skills/money-craft/schemas/tracking-status.schema.json",
+        "skills/money-craft/schemas/research-finalize.schema.json",
+        "skills/money-craft/schemas/tracking-revision.v2.schema.json",
+        "skills/money-craft/schemas/financial-audit.schema.json",
+        "skills/money-craft/schemas/financial-reconciliation.schema.json",
+        "skills/money-craft/schemas/tracking-init.schema.json",
+        "skills/money-craft/schemas/tracking-current.schema.json",
+        "skills/money-craft/schemas/tracking-status.v2.schema.json",
+        "skills/money-craft/schemas/research-completion-receipt.schema.json",
+        "skills/money-craft/schemas/source-capture.schema.json",
+        "skills/money-craft/schemas/tracking-current.v2.schema.json",
+        "skills/money-craft/schemas/research-status.schema.json",
+        "skills/money-craft/schemas/report-render-verify.schema.json",
+        "skills/money-craft/schemas/earnings-update.schema.json",
+        "skills/money-craft/schemas/tracking-verify.schema.json",
+        "skills/money-craft/schemas/thesis-update-plan.schema.json",
+        "skills/money-craft/schemas/report-audit.schema.json",
+        "skills/money-craft/schemas/research-run-state.schema.json",
+        "skills/money-craft/schemas/official-import.schema.json",
+        "skills/money-craft/schemas/research-case.schema.json",
+        "skills/money-craft/schemas/tracking-state.v2.schema.json",
+        "skills/money-craft/templates/thesis.md",
+        "skills/money-craft/templates/report.md",
+        "skills/money-craft/templates/tracking-card.md",
+        "scripts/run_skill_task.py",
+        "scripts/audit_skill_task.py",
+        "scripts/validate.py",
+        "scripts/check_package.py",
+        "sources.lock.json"
+      ],
+      "nonblocking_observation": "Some forward-earnings input contracts are CLI-only, now explicitly documented."
+    }
+  },
+  "contract_hashes": {
+    "skills/money-craft/SKILL.md": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+    "skills/money-craft/references/routing.md": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+    "skills/money-craft/references/valuation-and-thesis.md": "7dd8f84ab2d176aba895897d7a44982304b92e7f8771cfd57492eb11a407d076",
+    "skills/money-craft/references/financial-data-and-evidence.md": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+    "skills/money-craft/references/global-investing.md": "e9769c6a103d243b797a0c2632250cf34765441e4e67629225a53c7b6dc7534a",
+    "skills/money-craft/references/report-rendering.md": "ff7ec6ecc4f09df1fce37448f9b59e899969fa76155f77cc5ef3f378b2d3c5b8",
+    "skills/money-craft/references/high-growth-alpha.md": "28d28ab94e4e66a9d1ec68f849050f857ad5d886cf3e3d60b2d463bea1e97f02",
+    "skills/money-craft/references/earnings-review.md": "975b0c413284e2ecd2ec6769134c53aae96654edd7169664ea49350431391c28",
+    "skills/money-craft/references/company-research.md": "d826b069ffb8828afece1dd8d95c13723a68c9b0da054a3878b6d1f539a6fb4e",
+    "skills/money-craft/references/screening.md": "bc1085720095632e1c48b67c004476f11f64ac5acb1ae789139e39522f61aae1",
+    "skills/money-craft/references/tracking-workflow.md": "861d986878f253eb619edbc1e698d9ea04ec0f292f2d6654dfa13ee7f0da05ca",
+    "skills/money-craft/references/providers/fred.md": "432c69d9363420afc490c9a261f539a9a375f841a821d96a1945cd63184c326a",
+    "skills/money-craft/references/providers/yfinance.md": "f8dd12d562454d69fd8448ca16fffd1d3501983b9f42b6395dde295fcd56becf",
+    "skills/money-craft/references/providers/fuyao.md": "de35ea53fc6d02d1dc1d12c00d66696a3ee169671b5def8e058ea9e2f7121c4d",
+    "skills/money-craft/schemas/thesis-diff.schema.json": "4ca4aa028b77d2142d7ad1e38ea597701b58f90aa0343e5594b79edcdf52e468",
+    "skills/money-craft/schemas/research-init.schema.json": "edf7596a962d3b8b039d7f781f6566f531f9135fe5e1bdf9cd2382db82ee4140",
+    "skills/money-craft/schemas/financial-reconciliation-audit.schema.json": "09adb2c61e7b5528b788f33b22fc8da721a914354b19aaf77e14dfe8b13b12e0",
+    "skills/money-craft/schemas/company-research-plan.schema.json": "c0a9745a56d4af64751982aef59f9adc8c824d9f30c51710479bf27fcce30b34",
+    "skills/money-craft/schemas/report-render.schema.json": "89fd54cba9e65ccd0cd41a2e306668b4d1e461bac3b21e5c960074bd43acaaad",
+    "skills/money-craft/schemas/tracking-run-state.schema.json": "fdcfb9ab10b983502840c3f3c9f1e80fbdc6668ad51b4cdd2cd4ae001db8b799",
+    "skills/money-craft/schemas/data-response.schema.json": "61815ba50490cefa3141ba1360bdb0d43e4a91c408044ade474db2581f37cee2",
+    "skills/money-craft/schemas/tracking-state.schema.json": "57d5fc3cf2e2ca36369e014da81ad6ab85f805eb7de56593421feced590a287a",
+    "skills/money-craft/schemas/tracking-revision.schema.json": "a8958b0261a63db80caf68953858a0a2fbcf813854fe7c5636e329a9a7b588f9",
+    "skills/money-craft/schemas/earnings-update-input.schema.json": "13629d064381606108ea00df3eeab91b2e4bf4358fcb80a99c1ca802735d2f9d",
+    "skills/money-craft/schemas/research-collection.schema.json": "206e03f2867c08be3a7acbaf23a6258ee253287a07aadc39e13972aec90f5dc7",
+    "skills/money-craft/schemas/tracking-status.schema.json": "473285cd60336aecbe79dcf92b0166a5bedee6ba3e74123313d69508b3dc550d",
+    "skills/money-craft/schemas/research-finalize.schema.json": "3ab0028b26add5bd1bf7d6bbbdaff4268abecc01d1e2e3197a129f508a342ee9",
+    "skills/money-craft/schemas/tracking-revision.v2.schema.json": "709bf60b5fa9638a6f4e306e0e7a1e3952bb78f21d45081c796f08e477060bfb",
+    "skills/money-craft/schemas/financial-audit.schema.json": "dc43561b48ba18eb166fe57f0e7a0fd1b50eec96242ca16c074c65308f2d6df2",
+    "skills/money-craft/schemas/financial-reconciliation.schema.json": "dbe686e3ac04c92106b3a1d7b91bb6c56ec8b83ad7eaff833c04f46a909b4ac1",
+    "skills/money-craft/schemas/tracking-init.schema.json": "b6e8635bd894cd10167ae95307a5e32ddfa446001f3ede7c8288ee038fb8f20f",
+    "skills/money-craft/schemas/tracking-current.schema.json": "e7e1251c2e037c79db875e9a1bb4b9cc0734cc22bcf7f36e4353dc247af49d29",
+    "skills/money-craft/schemas/tracking-status.v2.schema.json": "16859c283bed2f2986e1d17dbcfcd6d89657f2b74da2852938d589e52828da83",
+    "skills/money-craft/schemas/research-completion-receipt.schema.json": "ba0ca309356a3f2fea8aec1017759aeffe52f1858a1d1cb3a4e8dcc768e42333",
+    "skills/money-craft/schemas/source-capture.schema.json": "9ef75a6e7cb72f724a04b0a64a8e92d0aefc4c1a746631819bccfce121435c6a",
+    "skills/money-craft/schemas/tracking-current.v2.schema.json": "4537ca0e39133886b942a8f7387e292ac81b32fb9146ed01c890aa7991a174a6",
+    "skills/money-craft/schemas/research-status.schema.json": "3f2b92c1b1132c88effd9d26ef79d5af103c94c8ffeceac14b153781b789b7c3",
+    "skills/money-craft/schemas/report-render-verify.schema.json": "5159851aad44458acbe49c5d3f6b32fde6cc1302dfc8d17d1056837449cbb7bb",
+    "skills/money-craft/schemas/earnings-update.schema.json": "8bf59e151bf58de7208e0e07d20e54424420a1104b56f5fed029519e3e1a33cb",
+    "skills/money-craft/schemas/tracking-verify.schema.json": "1c400b647ce6949029cf2577229117712c6a282ea91cea07d9ceab3276777bb3",
+    "skills/money-craft/schemas/thesis-update-plan.schema.json": "593702760116c5a077e50657aed0ddd183baaa61fb309c95b350440e05061598",
+    "skills/money-craft/schemas/report-audit.schema.json": "1920aa89095c3ea7acf2763e934a9670510f8853856974ea675ae1bb2cb25fa3",
+    "skills/money-craft/schemas/research-run-state.schema.json": "2f33a1bdf8b5e9637d6a856d5bde1ec7af2b28df4eedf862172a9f58b009ee35",
+    "skills/money-craft/schemas/official-import.schema.json": "3f90f2841d121733c25ae7a45584320fa1eab93b5e2a2e1eb944673eeb17f43d",
+    "skills/money-craft/schemas/research-case.schema.json": "f031931375699bb189185aa36cd3e752c5509a54b9c7fad5e7776e23582e6863",
+    "skills/money-craft/schemas/tracking-state.v2.schema.json": "16ffbe9dc8851de86983ed22db2cc45e50461b800b0b958cb8f2c321975fc9ab",
+    "skills/money-craft/templates/thesis.md": "2e9b8d9402f7c2d711483605bfcb5630108a3b3e07e73af3a326776884c93835",
+    "skills/money-craft/templates/report.md": "80221be333693c7c7bd3e5f9e422071e6152ec7771b380340b7650bd5193de29",
+    "skills/money-craft/templates/tracking-card.md": "722f9f9fe39ca53c25d5b66c6a12b761d4622044e822a98a20f3f1f4c7490f35",
+    "scripts/run_skill_task.py": "2d5e5437deb3f3a876327727abd52be47195cae083037db9364d1f0b3c86b25e",
+    "scripts/audit_skill_task.py": "e3fac11bb7d085f080fdadae8d478313b2a54185d67f3e103a44f0455ac539a1",
+    "scripts/validate.py": "a12c498966fbbd0aab88781a00772e28edc8bae91db87b0704c7d643615238b8",
+    "scripts/check_package.py": "4f39e505c480aea873efbd920519b6420b91bf7b3058d3054fc2dc3e7fea6f04",
+    "sources.lock.json": "3911018f812674e5087f483e80bb0e6302fad12cd7935cd6dc2582bf35a3ed62"
+  },
+  "validation": {
+    "full_tests": {
+      "log": "/tmp/money-closeout-frozen-tests.log",
+      "sha256": "da5f8cecb15af02f441a211f1e9dfc857b9614f2c4bfb30766f1d698ff818215",
+      "result": [
+        "----------------------------------------------------------------------",
+        "Ran 473 tests in 28.152s",
+        "",
+        "OK"
+      ]
+    },
+    "source": {
+      "schema": "money-craft.source-validation.v1",
+      "valid": true,
+      "version": "0.3.0",
+      "checks": [
+        "version-parity",
+        "host-manifests",
+        "schema-json",
+        "skill-frontmatter",
+        "source-provenance",
+        "secret-scan",
+        "path-scan",
+        "no-symlinks",
+        "whitespace",
+        "public-data-boundary",
+        "acceptance-case-contracts",
+        "public-evidence-manifests",
+        "private-evidence-integrity",
+        "local-config-boundary",
+        "local-evidence-boundary",
+        "local-research-boundary",
+        "python-compile",
+        "runtime-self-test",
+        "skill-quick-validate"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "package": {
+      "schema": "money-craft.package-check.v1",
+      "valid": true,
+      "checks": [
+        "npm-pack-allowlist-and-size",
+        "safe-extraction",
+        "package-identity",
+        "packaged-runtime-self-test",
+        "atomic-install",
+        "installed-runtime-self-test",
+        "installed-research-run-smoke",
+        "installed-earnings-pipeline-smoke"
+      ],
+      "errors": []
+    }
+  },
+  "installation": {
+    "schema": "money-craft.install.v1",
+    "ok": true,
+    "host": "agents",
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T122137594335Z"
+  },
+  "render": {
+    "schema": "money-craft.report-render.v1",
+    "valid": true,
+    "source": "/private/tmp/money-craft-closeout-output/report.md",
+    "source_sha256": "9a1357c6bc552be152f0ef5203fb38b8a479a6f6148c7708ec9e9c511d7c26dc",
+    "template": "skills/money-craft/reporting/report.html",
+    "template_sha256": "fce898acd66bf9e3e54d52a7e2fb8620af3467c80b121ba0ab5a35d0644bf439",
+    "style": "skills/money-craft/reporting/report.css",
+    "style_sha256": "442e0c51856a62a8a6feab65abc38881514d30eeba499326911b85aa590a0315",
+    "script": "skills/money-craft/reporting/report.js",
+    "script_sha256": "4522a90ff0aa020dd3ab2d1a14393bdb6d7adc98da24039be4b487412619c7a2",
+    "theme": "editorial-ivory",
+    "requested_theme": "editorial-ivory",
+    "theme_label": "Money Craft Editorial Ivory",
+    "layout_mode": "research-publication",
+    "portable_html": true,
+    "title": "示例公司（600000.SH）基本面研究",
+    "html": "/private/tmp/money-craft-closeout-output/rendered/report.html",
+    "pdf": "/private/tmp/money-craft-closeout-output/rendered/report.pdf",
+    "pages": 3,
+    "html_bytes": 47921,
+    "pdf_bytes": 219872,
+    "placeholders": 0,
+    "external_dependencies": 0,
+    "charts": 6,
+    "network_used": false
+  },
+  "browser": {
+    "wide": {
+      "path": "~/.browser67/runtime/runs/money-craft-closeout-20260919/20260919T122218510Z-80759174/artifacts/screenshot-full_page-_600000.SH_-20260919T122218513Z-2ec9d854.png",
+      "sha256": "8731c18acced38dd0cb832b30f7e4b73a5f58b576678edde0c1ab69268b13108",
+      "mime_type": "image/png",
+      "bytes": 340676,
+      "width": 1440,
+      "height": 3408,
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 3408,
+        "scale": 1
+      },
+      "cdp_clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 3408,
+        "scale": 1
+      },
+      "fullscreen": false,
+      "created_at": "2026-09-19T12:22:18.514Z",
+      "evidence_ttl_ms": 86400000,
+      "evidence_valid_until": "2026-09-20T12:22:18.514Z",
+      "retention_policy": "runtime_run_retention",
+      "retention_delete_after": null,
+      "ttl_ms": 86400000,
+      "expires_at": "2026-09-20T12:22:18.514Z",
+      "retained_path": "local/acceptance/20260919-closeout/browser-wide.png"
+    },
+    "narrow": {
+      "path": "~/.browser67/runtime/runs/money-craft-closeout-20260919/20260919T122218736Z-bcd04f83/artifacts/screenshot-full_page-_600000.SH_-20260919T122218738Z-91bbba58.png",
+      "sha256": "0e416baeb5cff37586bf41a50d852502a93b1b9199ab03bd90d63200d72d826b",
+      "mime_type": "image/png",
+      "bytes": 292235,
+      "width": 390,
+      "height": 4399,
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 4399,
+        "scale": 1
+      },
+      "cdp_clip": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 4399,
+        "scale": 1
+      },
+      "fullscreen": false,
+      "created_at": "2026-09-19T12:22:18.739Z",
+      "evidence_ttl_ms": 86400000,
+      "evidence_valid_until": "2026-09-20T12:22:18.739Z",
+      "retention_policy": "runtime_run_retention",
+      "retention_delete_after": null,
+      "ttl_ms": 86400000,
+      "expires_at": "2026-09-20T12:22:18.739Z",
+      "retained_path": "local/acceptance/20260919-closeout/browser-narrow.png"
+    },
+    "dark": {
+      "path": "~/.browser67/runtime/runs/money-craft-closeout-20260919/20260919T122248427Z-3ee9866a/artifacts/screenshot-viewport-_600000.SH_-20260919T122248431Z-294b10b9.png",
+      "sha256": "41f80be761cece884ccc6fae38429bb92383b874f763d0573b4dcb424cad32aa",
+      "mime_type": "image/png",
+      "bytes": 119925,
+      "width": 1440,
+      "height": 1000,
+      "clip": null,
+      "cdp_clip": null,
+      "fullscreen": false,
+      "created_at": "2026-09-19T12:22:48.431Z",
+      "evidence_ttl_ms": 86400000,
+      "evidence_valid_until": "2026-09-20T12:22:48.431Z",
+      "retention_policy": "runtime_run_retention",
+      "retention_delete_after": null,
+      "ttl_ms": 86400000,
+      "expires_at": "2026-09-20T12:22:48.431Z",
+      "retained_path": "local/acceptance/20260919-closeout/browser-dark.png"
+    },
+    "behavior": {
+      "type": "object",
+      "preview": "{\"charts\":6,\"identity\":\"600000.SH · 2026-08-24\",\"price\":\"84.30 元\",\"tablesScrollable\":true,\"theme\":\"dark\"}",
+      "truncated": false,
+      "original_length": 105
+    },
+    "cleanup": "browser67 cleanup: finalize_task browser_instance_id=e482764d-e4e3-4361-b0f7-850bdec241b5 workspace_key=money-craft-closeout-20260919 task_id=report-acceptance closed=1 would_close=0 verified=1 stale_pruned=0 kept=0 remaining_unkept=0 errors=0"
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "pdf_pages_inspected": [
+      1,
+      2,
+      3
+    ],
+    "pdf_engine": "WeasyPrint 69.0",
+    "pdf_parser": "pypdf 6.19.0",
+    "result": "PASS_BOUNDED",
+    "checks": [
+      "Chinese readable",
+      "six chart types visible",
+      "tables and chart inputs consistent",
+      "security suffix and date in footer",
+      "page numbers",
+      "no observed overlap or clipped body",
+      "wide and narrow HTML; horizontal table scrolling; dark theme",
+      "theme toggle and navigation open/Escape close"
+    ]
+  },
+  "artifacts": {
+    "/tmp/money-craft-closeout-output/render.json": {
+      "sha256": "ec6dbf76021c6bd8a2172913eef1e1772ec330a03bb00f8fed4fb09e7662a741",
+      "bytes": 1359
+    },
+    "/tmp/money-craft-closeout-output/report.md": {
+      "sha256": "9a1357c6bc552be152f0ef5203fb38b8a479a6f6148c7708ec9e9c511d7c26dc",
+      "bytes": 1471
+    },
+    "/tmp/money-craft-closeout-output/final-page-3.png": {
+      "sha256": "6bae4251cc0af0404af348db7c1ba65c0cb1ac7fd5fff11138110b9931fc7dfd",
+      "bytes": 104072
+    },
+    "/tmp/money-craft-closeout-output/final-page-2.png": {
+      "sha256": "e9336b03215a1bc40ba5a58c853de49bdba9d1e179fc99971da534a5a0786816",
+      "bytes": 63602
+    },
+    "/tmp/money-craft-closeout-output/final-page-1.png": {
+      "sha256": "646a8cb59a80cedec6199fb0d30e6992c54dcc6ef589be4f9f1fc5689680f745",
+      "bytes": 107641
+    },
+    "/tmp/money-craft-closeout-output/rendered/report.html": {
+      "sha256": "bde6cc6e243ab7c759491394364f1ed122c87c6e3e9ce94805d3a52dffeca885",
+      "bytes": 47921
+    },
+    "/tmp/money-craft-closeout-output/rendered/report.pdf": {
+      "sha256": "7f149bc919dcbbc1cba357a5d345ac745f5924a5a424a166c10b86d634bb2c4f",
+      "bytes": 219872
+    }
+  },
+  "limitations": [
+    "Synthetic PDF fixture is not investment evidence.",
+    "Custom templates/CSS/JS are trusted executable assets, not sandboxed.",
+    "HTML/PDF publication is two atomic replacements, not one transaction.",
+    "Verifier checks metadata/hash and PDF header/pages, not full semantic or visual equivalence.",
+    "No real provider connection, Windows, NFS, power-loss durability or unrestricted concurrent external mutation proved.",
+    "Natural-language host suite recorded separately."
+  ],
+  "retained_evidence_root": "local/acceptance/20260919-closeout",
+  "retained_artifacts": {
+    "local/acceptance/20260919-closeout/money-closeout-frozen-tests.log": {
+      "sha256": "da5f8cecb15af02f441a211f1e9dfc857b9614f2c4bfb30766f1d698ff818215",
+      "bytes": 574
+    },
+    "local/acceptance/20260919-closeout/browser-dark.png": {
+      "sha256": "41f80be761cece884ccc6fae38429bb92383b874f763d0573b4dcb424cad32aa",
+      "bytes": 119925
+    },
+    "local/acceptance/20260919-closeout/browser-wide.png": {
+      "sha256": "8731c18acced38dd0cb832b30f7e4b73a5f58b576678edde0c1ab69268b13108",
+      "bytes": 340676
+    },
+    "local/acceptance/20260919-closeout/browser-narrow.png": {
+      "sha256": "0e416baeb5cff37586bf41a50d852502a93b1b9199ab03bd90d63200d72d826b",
+      "bytes": 292235
+    },
+    "local/acceptance/20260919-closeout/money-closeout-validate.json": {
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684",
+      "bytes": 622
+    },
+    "local/acceptance/20260919-closeout/money-closeout-package.json": {
+      "sha256": "360b6f84bc6eb68e7f8739d2ab459c91630ba93acd211e164742ad6d72c2f13c",
+      "bytes": 348
+    },
+    "local/acceptance/20260919-closeout/renderer-closeout-tests.log": {
+      "sha256": "984f31d6ce08f303e768af643e6685ee1ddf6594062921bdeaaf393df839b21f",
+      "bytes": 163
+    },
+    "local/acceptance/20260919-closeout/money-closeout-install.json": {
+      "sha256": "616edc2d692d985e64e5bdd1bb145b376a47b59ccf8dcaa21feaa76fead47942",
+      "bytes": 226
+    },
+    "local/acceptance/20260919-closeout/browser.json": {
+      "sha256": "6f93454ba888adce5a55693dcf6c56340101f9e4bb2080f3c1b7df0a4bc9a16f",
+      "bytes": 3288
+    },
+    "local/acceptance/20260919-closeout/render/evidence.json": {
+      "sha256": "02b0e555ce0e8e9838e7c635168403de045ad3ccc2841eaaaa41b6f2a38187fb",
+      "bytes": 72
+    },
+    "local/acceptance/20260919-closeout/render/render.json": {
+      "sha256": "ec6dbf76021c6bd8a2172913eef1e1772ec330a03bb00f8fed4fb09e7662a741",
+      "bytes": 1359
+    },
+    "local/acceptance/20260919-closeout/render/report.md": {
+      "sha256": "9a1357c6bc552be152f0ef5203fb38b8a479a6f6148c7708ec9e9c511d7c26dc",
+      "bytes": 1471
+    },
+    "local/acceptance/20260919-closeout/render/page-1.png": {
+      "sha256": "6e526580bf832dc36349b7565c0490da2a00a83545178273f7f36c1c2be64317",
+      "bytes": 144283
+    },
+    "local/acceptance/20260919-closeout/render/page-3.png": {
+      "sha256": "2c5ba6ad1207eafd18989dafcf4b6ad05f60581020b9d8862610c08b0bab0cff",
+      "bytes": 137412
+    },
+    "local/acceptance/20260919-closeout/render/page-2.png": {
+      "sha256": "95328487670e5922a98375c4b01a7604943ae92a33d65a2a54e82e7137025507",
+      "bytes": 87442
+    },
+    "local/acceptance/20260919-closeout/render/extracted.txt": {
+      "sha256": "cbc0ba0382b7ee5894f561e3cdc2bb6a243971d33f07a8860d6b449460a8f7b9",
+      "bytes": 10638
+    },
+    "local/acceptance/20260919-closeout/render/final-page-3.png": {
+      "sha256": "6bae4251cc0af0404af348db7c1ba65c0cb1ac7fd5fff11138110b9931fc7dfd",
+      "bytes": 104072
+    },
+    "local/acceptance/20260919-closeout/render/final-page-2.png": {
+      "sha256": "e9336b03215a1bc40ba5a58c853de49bdba9d1e179fc99971da534a5a0786816",
+      "bytes": 63602
+    },
+    "local/acceptance/20260919-closeout/render/final-page-1.png": {
+      "sha256": "646a8cb59a80cedec6199fb0d30e6992c54dcc6ef589be4f9f1fc5689680f745",
+      "bytes": 107641
+    },
+    "local/acceptance/20260919-closeout/render/browser.json": {
+      "sha256": "173482d6cbcfc0a89121c8d6b7ffa2438377a566220dc30fd19098443ed4efb4",
+      "bytes": 3057
+    },
+    "local/acceptance/20260919-closeout/render/render.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "local/acceptance/20260919-closeout/render/rendered/report.html": {
+      "sha256": "bde6cc6e243ab7c759491394364f1ed122c87c6e3e9ce94805d3a52dffeca885",
+      "bytes": 47921
+    },
+    "local/acceptance/20260919-closeout/render/rendered/report.pdf": {
+      "sha256": "7f149bc919dcbbc1cba357a5d345ac745f5924a5a424a166c10b86d634bb2c4f",
+      "bytes": 219872
+    }
+  },
+  "public_path_notation": "Repository paths are relative; home paths use ~/. Original host/runtime receipts remain in local evidence."
+}

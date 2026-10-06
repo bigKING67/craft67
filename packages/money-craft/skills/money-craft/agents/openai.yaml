@@ -1,0 +1,4 @@
+interface:
+  display_name: "Money Craft"
+  short_description: "Evidence-first global investment research"
+  default_prompt: "Use Money Craft to identify the global investment object, market, currency, and evidence route; for a listed company, create or resume the deterministic private research run, preserve provider gaps, and use official sources, exact calculations, explicit uncertainty, and audit-gated completion; do not describe a .research run as a sealed revision or a research conclusion as a trade execution."

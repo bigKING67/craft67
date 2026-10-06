@@ -1,0 +1,94 @@
+{
+  "method": {
+    "agent": "/root/ablation_n",
+    "status": "completed",
+    "reads_reported": "common.md + method.md + three birth/context pairs only",
+    "model_receipt": "UNVERIFIED",
+    "outputs": {
+      "case-01.md": {
+        "sha256": "370e88e6e8ab8def3d9e93ca4e83928b955bb45c874c28e4ae3c7b2b5d4f0a05",
+        "bytes": 2334,
+        "characters": 798
+      },
+      "case-02.md": {
+        "sha256": "6a5d2d6a9c64c411296cad5e95704ee2d33e470e3ffbe0f5122b43d3c8b3dace",
+        "bytes": 2442,
+        "characters": 834
+      },
+      "case-03.md": {
+        "sha256": "5fcea6df9b97a247ff0dce4d0b516f9ffb7f2b5ea643bfb74b7172a03122beb8",
+        "bytes": 2417,
+        "characters": 833
+      }
+    }
+  },
+  "invalid_control": {
+    "agent": "/root/ablation_m",
+    "status": "INVALID SAMPLE",
+    "reason": "extra legacy Skill read reported",
+    "model_receipt": "UNVERIFIED",
+    "outputs": {
+      "case-01.md": {
+        "sha256": "3db5171db64b95942e9604d99f16990d549fd09849d4d523a302f08a8c4017e1",
+        "bytes": 2620,
+        "characters": 916
+      },
+      "case-02.md": {
+        "sha256": "379744a69aac6b34a57542b113798caec9b3aca80f74508cfb04889240aeddca",
+        "bytes": 2690,
+        "characters": 950
+      },
+      "case-03.md": {
+        "sha256": "2cb5aae97afc880acef562d890f2f60e78e8e3a3ae0563f652577663e81efd6d",
+        "bytes": 2724,
+        "characters": 966
+      }
+    }
+  },
+  "control": {
+    "agent": "/root/ablation_control_clean",
+    "status": "completed",
+    "reads_reported": "common.md + three birth/context pairs only",
+    "model_receipt": "UNVERIFIED",
+    "outputs": {
+      "case-01.md": {
+        "sha256": "3cd0cc706a035be550f4c765804bea4d056871a7b4bc7f429bce547835be2d46",
+        "bytes": 2882,
+        "characters": 1002
+      },
+      "case-02.md": {
+        "sha256": "1787f1580a18be226c220ddd1940e32b75579be837bd1fd1a64ed3ef3052e419",
+        "bytes": 2878,
+        "characters": 992
+      },
+      "case-03.md": {
+        "sha256": "f9a4da89a67f19076302f491284a1b2915c07c7c280b643de139ed475c0a91d1",
+        "bytes": 2868,
+        "characters": 996
+      }
+    }
+  },
+  "blind_packets": {
+    "case-01-X.md": "370e88e6e8ab8def3d9e93ca4e83928b955bb45c874c28e4ae3c7b2b5d4f0a05",
+    "case-01-Y.md": "3cd0cc706a035be550f4c765804bea4d056871a7b4bc7f429bce547835be2d46",
+    "case-01-context.json": "f66b668cc7de4460a6b8a121d80ef6f5a580604e4cea0799a003e2d5ae434575",
+    "case-02-X.md": "1787f1580a18be226c220ddd1940e32b75579be837bd1fd1a64ed3ef3052e419",
+    "case-02-Y.md": "6a5d2d6a9c64c411296cad5e95704ee2d33e470e3ffbe0f5122b43d3c8b3dace",
+    "case-02-context.json": "dd28d9a8b538da5abe80e67bdfc3c8c26f2bd211b5055fcde24d4e51118ed30a",
+    "case-03-X.md": "5fcea6df9b97a247ff0dce4d0b516f9ffb7f2b5ea643bfb74b7172a03122beb8",
+    "case-03-Y.md": "f9a4da89a67f19076302f491284a1b2915c07c7c280b643de139ed475c0a91d1",
+    "case-03-context.json": "31c90b91eee2033406cf7d97bae73ec72e5c37665c427ac35a3b800251def560",
+    "rubric.md": "8ad34198e6aa66bcfc826ec70f4bf0154cc70924075b20aaade01803e50095b1"
+  },
+  "judge": {
+    "agent": "/root/ablation_blind_judge",
+    "status": "completed",
+    "effective_model": "UNVERIFIED",
+    "reads_reported": "rubric, three contexts and six anonymized responses only",
+    "outputs": {
+      "review.md": "92fdc339dc05215c8ecad65a98c487c2ca742b7589e9dfbb8b9d119b3d556be0",
+      "scores.json": "dba16783a2c0674f265913cecccbb66c9e64daafa55cf6d8dcc9eb606eeb7906"
+    },
+    "root_adjudication": "See comparison.md; blind scores retained, not silently rewritten."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "money-craft.yfinance-admission-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Malformed search rows and fully missing snapshots/required tables",
+  "source_hashes": {
+    "skills/money-craft/scripts/yfinance_adapter.py": "bb9f046023146bb4c2069e7136d465258419a61b4f051b33961a0ea9dceaa21d",
+    "tests/test_yfinance_adapter.py": "3063f9b7d9f39d245abc6740c1f954f49501ec2c1d539e684d734db5355c48eb"
+  },
+  "findings": [
+    "Search malformed rows now reject the whole result instead of silent filtering.",
+    "Snapshot metadata alone and entirely missing history/valuation/financial tables become bounded-retry provider gaps.",
+    "Nonfinite Decimal normalizes to missing, consistent with float; zero and empty corporate-actions retained."
+  ],
+  "validation": {
+    "yfinance_tests": 12,
+    "full_tests": 393,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 5,
+    "initial_red_errors": 1,
+    "real_cli": "Empty snapshot exhausts 3 attempts, returns EXIT_TRANSIENT, no capture."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No blockers in declared admission scope",
+    "tests": 12,
+    "additional_fixture_cases": 36,
+    "source_hashes": {
+      "skills/money-craft/scripts/yfinance_adapter.py": "bb9f046023146bb4c2069e7136d465258419a61b4f051b33961a0ea9dceaa21d",
+      "tests/test_yfinance_adapter.py": "3063f9b7d9f39d245abc6740c1f954f49501ec2c1d539e684d734db5355c48eb"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T083915169717Z"
+  },
+  "limits": [
+    "Nonmissing does not establish numeric type, table shape, date correctness or useful market prices.",
+    "No real yfinance/pandas or live Provider requests; empty actions are not proof of complete event history.",
+    "No app, commit, push, release or new host Skill injection."
+  ]
+}

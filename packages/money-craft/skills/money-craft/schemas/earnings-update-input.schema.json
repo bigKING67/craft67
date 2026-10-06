@@ -1,0 +1,440 @@
+{
+  "type": "object",
+  "required": [
+    "schema",
+    "security_id",
+    "currency",
+    "as_of",
+    "sources",
+    "previous",
+    "current",
+    "comparison_basis",
+    "valuation",
+    "thesis_updates"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.earnings-update-input.v1"
+    },
+    "security_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9-]{1,15}:[A-Z0-9][A-Z0-9._-]{0,31}$"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "sources": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "previous": {
+      "$ref": "#/$defs/period"
+    },
+    "current": {
+      "$ref": "#/$defs/period"
+    },
+    "comparison_basis": {
+      "enum": [
+        "unchanged",
+        "restated",
+        "unverified"
+      ]
+    },
+    "comparable_previous": {
+      "$ref": "#/$defs/period"
+    },
+    "restatement_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expectations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "metric",
+          "period_end",
+          "unit",
+          "as_of",
+          "source_refs",
+          "value",
+          "period_start",
+          "kind",
+          "accounting_basis"
+        ],
+        "properties": {
+          "metric": {
+            "enum": [
+              "revenue",
+              "net_income",
+              "operating_cash_flow",
+              "shares"
+            ]
+          },
+          "period_end": {
+            "type": "string",
+            "format": "date"
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date"
+          },
+          "source_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/sourceRef"
+            }
+          },
+          "value": {
+            "type": "string",
+            "pattern": "^[-+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][-+]?\\d+)?$"
+          },
+          "period_start": {
+            "type": "string",
+            "format": "date"
+          },
+          "kind": {
+            "enum": [
+              "annual",
+              "quarter",
+              "ytd"
+            ]
+          },
+          "accounting_basis": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "valuation": {
+      "type": "object",
+      "required": [
+        "method",
+        "currency",
+        "previous",
+        "current"
+      ],
+      "properties": {
+        "method": {
+          "const": "earnings_multiple"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "previous": {
+          "type": "object",
+          "required": [
+            "bear",
+            "base",
+            "bull"
+          ],
+          "properties": {
+            "bear": {
+              "$ref": "#/$defs/scenario"
+            },
+            "base": {
+              "$ref": "#/$defs/scenario"
+            },
+            "bull": {
+              "$ref": "#/$defs/scenario"
+            }
+          }
+        },
+        "current": {
+          "type": "object",
+          "required": [
+            "bear",
+            "base",
+            "bull"
+          ],
+          "properties": {
+            "bear": {
+              "$ref": "#/$defs/scenario"
+            },
+            "base": {
+              "$ref": "#/$defs/scenario"
+            },
+            "bull": {
+              "$ref": "#/$defs/scenario"
+            }
+          }
+        }
+      }
+    },
+    "thesis_updates": {
+      "type": "object",
+      "required": [
+        "hypotheses",
+        "red_lines"
+      ],
+      "properties": {
+        "hypotheses": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/proposal"
+          }
+        },
+        "red_lines": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/proposal"
+          }
+        }
+      }
+    },
+    "first_actual_disclosure": {
+      "type": "object",
+      "required": [
+        "date",
+        "source_refs"
+      ],
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/earnings-update-input.schema.json",
+  "title": "Evidence-bound earnings update input",
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "security_id",
+        "title",
+        "url",
+        "published_on",
+        "sha256",
+        "local_path"
+      ],
+      "properties": {
+        "security_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "published_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "local_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "locator"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^S[0-9]{2,4}$"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "required": [
+        "value",
+        "unit",
+        "source_refs"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "pattern": "^[-+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][-+]?\\d+)?$"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        }
+      }
+    },
+    "period": {
+      "type": "object",
+      "required": [
+        "start",
+        "end",
+        "kind",
+        "accounting_basis",
+        "basis",
+        "metrics"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date"
+        },
+        "end": {
+          "type": "string",
+          "format": "date"
+        },
+        "kind": {
+          "enum": [
+            "annual",
+            "quarter",
+            "ytd"
+          ]
+        },
+        "accounting_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "basis": {
+          "enum": [
+            "reported",
+            "restated"
+          ]
+        },
+        "metrics": {
+          "type": "object",
+          "required": [
+            "revenue",
+            "net_income",
+            "operating_cash_flow",
+            "shares"
+          ],
+          "properties": {
+            "revenue": {
+              "$ref": "#/$defs/metric"
+            },
+            "net_income": {
+              "$ref": "#/$defs/metric"
+            },
+            "operating_cash_flow": {
+              "$ref": "#/$defs/metric"
+            },
+            "shares": {
+              "$ref": "#/$defs/metric"
+            }
+          }
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "required": [
+        "earnings_factor",
+        "pe",
+        "fx",
+        "rationale"
+      ],
+      "properties": {
+        "earnings_factor": {
+          "type": "string",
+          "pattern": "^[-+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][-+]?\\d+)?$"
+        },
+        "pe": {
+          "type": "string",
+          "pattern": "^[-+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][-+]?\\d+)?$"
+        },
+        "fx": {
+          "type": "string",
+          "pattern": "^[-+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][-+]?\\d+)?$"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "required": [
+        "status",
+        "rationale",
+        "source_refs"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "expectations"
+        ],
+        "properties": {
+          "expectations": {
+            "minItems": 1
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "first_actual_disclosure"
+        ]
+      }
+    }
+  ]
+}

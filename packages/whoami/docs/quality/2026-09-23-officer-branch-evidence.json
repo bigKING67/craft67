@@ -1,0 +1,139 @@
+[
+  {
+    "dir": "examples",
+    "chartId": "ff593223dd13e02a1bafaf63b46578bec0b5cd002c60451f31563112812b878b",
+    "previousEvidenceId": "debd1a654c2c4b41a048abc97f1bc0d77b890690828c951290845664648b915b",
+    "evidenceId": "00e5027d0ac2b1678d35691b1ed418e5106b72d2bd7f652088580883ba9545bc",
+    "previousDigestMatched": true,
+    "oldReportRejected": true,
+    "reportCheck": "PASS",
+    "branches": [
+      {
+        "candidate": "C1-300a9bf9",
+        "status": "not-applicable",
+        "officers": [],
+        "checks": [
+          {
+            "id": "no-visible-hurting",
+            "condition": "不透伤官",
+            "positions": [],
+            "result": "not-observed"
+          },
+          {
+            "id": "no-visible-killer",
+            "condition": "未见七杀同透（不混七杀的局部检查）",
+            "positions": [],
+            "result": "not-observed"
+          }
+        ],
+        "blockers": [],
+        "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+        "conclusion": "月令透财入口或显官入口未满足，本项不作财旺生官分支判断；不否定暗官及其他取法。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      }
+    ]
+  },
+  {
+    "dir": "examples/acceptance/ordinary",
+    "chartId": "885badc5926d4759506311ae4f5e5405d31ca2f476298d675863665c95c834a1",
+    "previousEvidenceId": "a15a9ca170ed11e0a1c8d57322329cb4fa38d7d3afeb8227f366752a4e8b8bb2",
+    "evidenceId": "cb4f1f77bb6816fe8f935181aa29f8e782cb254515755bfaeff9370ff1245887",
+    "previousDigestMatched": true,
+    "oldReportRejected": true,
+    "reportCheck": "PASS",
+    "branches": [
+      {
+        "candidate": "C1-5ad54bcf",
+        "status": "not-applicable",
+        "officers": [],
+        "checks": [
+          {
+            "id": "no-visible-hurting",
+            "condition": "不透伤官",
+            "positions": [],
+            "result": "not-observed"
+          },
+          {
+            "id": "no-visible-killer",
+            "condition": "未见七杀同透（不混七杀的局部检查）",
+            "positions": [
+              {
+                "position": "hour",
+                "stem": "己",
+                "tenGod": "七杀"
+              }
+            ],
+            "result": "counterexample"
+          }
+        ],
+        "blockers": [],
+        "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+        "conclusion": "月令透财入口或显官入口未满足，本项不作财旺生官分支判断；不否定暗官及其他取法。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      }
+    ]
+  },
+  {
+    "dir": "examples/acceptance/boundary",
+    "chartId": "0f13b38f0e930ec11c5cf12ce804b612481e0738b76256fd8e2698e15928ac15",
+    "previousEvidenceId": "7d7cf2cd6827396799241bb37f8cc4afd3ec31074c0ce01ea18b0a7941f72fca",
+    "evidenceId": "de07a1759cfc67dbe8b852ebeeaf7b71b374d661645b4ed438a72811f025a068",
+    "previousDigestMatched": true,
+    "oldReportRejected": true,
+    "reportCheck": "PASS",
+    "branches": [
+      {
+        "candidate": "C1-c6a1740f",
+        "status": "not-applicable",
+        "officers": [],
+        "checks": [
+          {
+            "id": "no-visible-hurting",
+            "condition": "不透伤官",
+            "positions": [],
+            "result": "not-observed"
+          },
+          {
+            "id": "no-visible-killer",
+            "condition": "未见七杀同透（不混七杀的局部检查）",
+            "positions": [],
+            "result": "not-observed"
+          }
+        ],
+        "blockers": [],
+        "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+        "conclusion": "月令透财入口或显官入口未满足，本项不作财旺生官分支判断；不否定暗官及其他取法。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      },
+      {
+        "candidate": "C2-2f8865eb",
+        "status": "pending",
+        "officers": [
+          {
+            "position": "hour",
+            "stem": "丁",
+            "tenGod": "正官"
+          }
+        ],
+        "checks": [
+          {
+            "id": "no-visible-hurting",
+            "condition": "不透伤官",
+            "positions": [],
+            "result": "not-observed"
+          },
+          {
+            "id": "no-visible-killer",
+            "condition": "未见七杀同透（不混七杀的局部检查）",
+            "positions": [],
+            "result": "not-observed"
+          }
+        ],
+        "blockers": [],
+        "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+        "conclusion": "本轮显干反例未见；财旺、身强、官的作用及藏干和合化影响未核验，不能据此确认财旺生官成立。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      }
+    ]
+  }
+]

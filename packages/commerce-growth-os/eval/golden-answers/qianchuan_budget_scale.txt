@@ -1,0 +1,15 @@
+Decision: do not double the budget; 不建议直接翻倍. Freeze expansion and reduce or pause cohorts with mature, negative contribution after ads. Do not automatically hold last month's total spend.
+
+Confirmed facts: GMV 300000, ad spend 150000, ROI 2.0, gross margin 55%, gifts and fulfillment 12% of GMV, refund loss 6%.
+
+Economics: available margin before ad = 55% - 12% - 6% = 37%. Gross profit is 165000; gifts/fulfillment 36000; refund loss 18000; contribution before ads 111000; contribution after ads -39000. Gross-profit ROI = 165000 / 150000 = 1.10. Contribution before ad / ad spend = 0.74. Break-even ROI = 1 / 0.37 = 2.70, above ROI 2.0. At unchanged unit economics, doubling both GMV and spend doubles the loss to 78000; it does not repair profitability.
+
+Assumptions: these costs use the same GMV denominator and refund loss is not already deducted from GMV or gross margin. Finance must reconcile this before acting. Platform fees, service fees, content cost and other unreported costs are excluded, so -39000 is not an all-cost net-profit estimate. If additional variable cost rate is c, break-even ROI becomes 1 / (0.37 - c), provided the denominator is positive. A nonpositive denominator means paid scaling cannot break even under that mix. At unchanged GMV, 111000 is only the known-cost break-even ad allowance, not a safe future budget: cutting spend may reduce GMV.
+
+Mechanism and owner: finance/commercial owner first reconcile costs and mature order/refund cohorts; growth owner then separate campaign, SKU and creative cohorts. Keep only cohorts supported by positive contribution after all attributable costs. Marginal ROI means incremental attributable GMV / incremental spend, using a comparable control or staged test; average platform ROI alone cannot establish incrementality.
+
+Risk and stop rule: stop expansion now. Pause or reduce mature loss-making cohorts; unresolved attribution is not permission to preserve the full budget. Any learning spend needs prior commercial approval of an absolute spend cap, maximum acceptable loss and an end date; without those, no discretionary test spend. Also stop a test when its approved loss cap is reached or refund/fulfillment guardrails are breached.
+
+Scale rule: only consider a bounded increment after mature marginal contribution exceeds the updated all-cost break-even requirement plus a commercial-approved uncertainty buffer. Growth proposes the increment from traffic capacity and test precision; do not treat a fixed percentage as universally safe. Verify price consistency, inventory and fulfillment with Operations before release.
+
+Next review: set the first decision date from the account's verified attribution and refund-maturation windows before any test; review spend and loss daily while waiting. Success signal: reconciled positive cohort contribution, positive incremental contribution and no refund or channel-price deterioration. If evidence is inconclusive at the approved end date, stop the test and request the missing evidence rather than extend automatically.

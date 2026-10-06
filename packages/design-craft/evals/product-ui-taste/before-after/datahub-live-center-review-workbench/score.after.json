@@ -1,0 +1,87 @@
+{
+  "schema": "design-craft.product-ui-score.v1",
+  "case_id": "datahub-live-center-review-workbench-after",
+  "surface": "DataHub /content/live-center",
+  "route": "http://127.0.0.1:3000/content/live-center",
+  "evidence_level": "L4",
+  "expected_score": 91,
+  "acceptable_range": [
+    90,
+    92
+  ],
+  "maturity_band": "polished and professional",
+  "design_read": "Live review operations workbench for content/ecommerce operators, with restrained DataHub enterprise-console language, optimized for closing livestream evidence gaps.",
+  "screenshot_sha256": "85a78e25e470e3ef1810f52064badf3e206b14f4651657c587a8171269310a67",
+  "screenshot_dimensions": [
+    3024,
+    1638
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop-after",
+      "css_size": [
+        1512,
+        823
+      ],
+      "dimensions": [
+        3024,
+        1638
+      ],
+      "artifact_path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T145222425Z-ec2814d7/artifacts/screenshot-viewport-datahub-live-center-after-desktop-20260630T145222428Z-a6b69728.png",
+      "artifact_sha256": "85a78e25e470e3ef1810f52064badf3e206b14f4651657c587a8171269310a67",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile-after",
+      "css_size": [
+        390,
+        844
+      ],
+      "dimensions": [
+        780,
+        1688
+      ],
+      "artifact_path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T145400Z-headless-after-mobile/artifacts/screenshot-viewport-datahub-live-center-after-mobile-headless-chrome.png",
+      "artifact_sha256": "0970600b90780d1145989557b127ecb010479039379b89c52ba106ad27718142",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "authenticated_route": "Verified: final URL stayed on /content/live-center with h1 present and no login redirect.",
+    "selected_session": "Verified: one selected table row was present after the change.",
+    "focus_visible": "Verified on desktop: selected row retained a 2px brand-blue outline when focused.",
+    "horizontal_overflow": "Verified: no page-level horizontal overflow on desktop or mobile after the change; table uses contained horizontal scrolling.",
+    "responsive_priority": "Verified: mobile workbench moved into the first viewport at y=777 in a 390x844 viewport."
+  },
+  "layout_metrics": {
+    "desktop": {
+      "page_header_height": 234,
+      "command_strip_height": 91,
+      "filter_panel_height": 63,
+      "workbench_top": 449,
+      "readiness_top": 533,
+      "overview_top": 682,
+      "body_scroll_height": 2038
+    },
+    "mobile": {
+      "page_header_height": 338,
+      "command_strip_height": 163,
+      "filter_panel_height": 264,
+      "workbench_top": 777,
+      "workbench_top_in_first_viewport": true,
+      "body_scroll_height": 4901
+    }
+  },
+  "required_findings": [
+    "Mobile task priority improved: workbench starts at y=777 and is visible in the first 844px viewport.",
+    "Desktop remains a two-column operational workbench with no page-level horizontal overflow.",
+    "Readiness and next action now precede the metric grid in the selected-session detail panel.",
+    "Header and command-strip density was reduced without introducing a marketing or decorative treatment.",
+    "Selected-state blue is reserved for the selected row while converted-row emphasis is neutralized."
+  ],
+  "false_positive_guards": [
+    "Do not score this above 92 because upload, empty, error, active analysis, and full keyboard traversal were not exhaustively revalidated.",
+    "Do not claim the contained table horizontal scroll was removed; it remains intentionally inside the table viewport.",
+    "Do not treat the design as a new visual language; this is an enforce-mode polish under DataHub DESIGN.md."
+  ]
+}

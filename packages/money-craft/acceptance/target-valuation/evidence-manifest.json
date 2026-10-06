@@ -1,0 +1,83 @@
+{
+  "schema": "money-craft.case-evidence.v1",
+  "as_of": "2025-04-30",
+  "captured_on": "2026-09-20",
+  "post_hoc": true,
+  "sources": [
+    {
+      "source_id": "S02",
+      "url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings",
+      "final_url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings",
+      "http_status": 200,
+      "path": "local/evidence/20260920-target-valuation/guidance.html",
+      "bytes": 250635,
+      "sha256": "cc5eab890121b9a46d4eda35a22bf46d86e2d83ccee959b1811b1a3a20b1771b",
+      "captured_at": "2026-09-20T03:22:57.478870+00:00"
+    },
+    {
+      "source_id": "S03",
+      "url": "https://www.suredividend.com/wp-content/uploads/2025/03/TGT-2025-03-12.pdf",
+      "final_url": "https://www.suredividend.com/wp-content/uploads/2025/03/TGT-2025-03-12.pdf",
+      "http_status": 200,
+      "path": "local/evidence/20260920-target-valuation/analyst.pdf",
+      "bytes": 347019,
+      "sha256": "385aa86b20333cfe224b9c0b8348cba90be496ab6303c9d682325a9c251f1601",
+      "captured_at": "2026-09-20T03:23:00.060792+00:00"
+    },
+    {
+      "source_id": "S04",
+      "url": "https://chartexchange.com/symbol/nyse-tgt/historical/",
+      "final_url": "https://chartexchange.com/symbol/nyse-tgt/historical/",
+      "http_status": 200,
+      "path": "local/evidence/20260920-target-valuation/price-chartexchange.html",
+      "bytes": 482649,
+      "sha256": "29adb0c7fef838f934adbdf88812fecb4873fb8382262285e4792e6b380ae9f5",
+      "captured_at": "2026-09-20T03:23:02.488184+00:00"
+    },
+    {
+      "source_id": "S06",
+      "url": "https://www.statmuse.com/money/ask/what-was-the-price-of-target-in-april-2025",
+      "final_url": "https://www.statmuse.com/money/ask/what-was-the-price-of-target-in-april-2025",
+      "http_status": 200,
+      "path": "local/evidence/20260920-target-valuation/price-statmuse.html",
+      "bytes": 198956,
+      "sha256": "9b60cedf710d708d306aefc53136134e6a9149e94e28a0c39a8471021935c030",
+      "captured_at": "2026-09-20T03:23:06.709933+00:00"
+    },
+    {
+      "source_id": "S07",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/TGT?period1=1745971200&period2=1746057600&interval=1d&events=div%2Csplits",
+      "path": "local/evidence/20260920-target-valuation/price-yahoo.json",
+      "sha256": "5a45ec4d9495c0c544bc8360cd140caadb9b2f68b9a66709a4e1041d93975e52",
+      "bytes": 1302,
+      "captured_at": "2026-09-20T03:24:10.680639+00:00"
+    },
+    {
+      "source_id": "S09",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/WMT?period1=1745971200&period2=1746057600&interval=1d&events=div%2Csplits",
+      "path": "local/evidence/20260920-target-valuation/wmt-price-yahoo.json",
+      "sha256": "91f454d6518617c0a77a4641d0b309a31068bc41f1684a283e4aa6d492e3c46c",
+      "bytes": 1286,
+      "captured_at": "2026-09-20T03:25:06.963087+00:00"
+    },
+    {
+      "source_id": "S01",
+      "path": "local/research/20260920-retail-peer/sources/target-2024.pdf",
+      "url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf",
+      "sha256": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271"
+    },
+    {
+      "source_id": "S08",
+      "path": "local/research/20260920-retail-peer/sources/walmart-2025.html",
+      "url": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-25-000021/wmt-20250131.htm",
+      "sha256": "d3eaf5782e1642f33c6301f1849a830354590c3b733a868d9f180b17dd582744"
+    }
+  ],
+  "failed_captures": [
+    {
+      "source_id": "S05",
+      "url": "https://www.trading212.com/trading-instruments/invest/TGT.US",
+      "error": "HTTPError"
+    }
+  ]
+}

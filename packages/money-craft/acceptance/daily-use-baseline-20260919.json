@@ -1,0 +1,177 @@
+{
+  "schema": "money-craft.daily-use-baseline.v1",
+  "checked_at_utc": "2026-09-19T14:09:29.019360+00:00",
+  "status": "READY_FOR_BOUNDED_DAILY_USE",
+  "version": "0.3.0",
+  "source_head": "2d33799b939fab61fa842f0dfab420ed19239f19",
+  "dirty_worktree": true,
+  "release": false,
+  "scope": "Skill/shared core use and evidence closeout; application deferred",
+  "skill": {
+    "files": 72,
+    "source_install_parity": true,
+    "installed_metadata_extra": [
+      "INSTALL_PROVENANCE.json"
+    ],
+    "unchanged_since_amazon_freeze": true,
+    "source_hashes": {
+      "requirements-yfinance.txt": "af2a310cb859b04b2fea0b43e835974ca2c0285f8b3ab7733d82ba13d21a0b49",
+      "VERSION": "d915cc95d6ca8f47ae297713ed46d4e5c5d99ddd29fc3c61e263bdf305f2b5b0",
+      "SKILL.md": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+      "requirements-report.txt": "a8cb26c51e475c50ba9cbfbc1ed8fd8ae99cfaec3a45cf3e67e2861efb62bf38",
+      "reporting/report.css": "442e0c51856a62a8a6feab65abc38881514d30eeba499326911b85aa590a0315",
+      "reporting/report.js": "4522a90ff0aa020dd3ab2d1a14393bdb6d7adc98da24039be4b487412619c7a2",
+      "reporting/report.html": "fce898acd66bf9e3e54d52a7e2fb8620af3467c80b121ba0ab5a35d0644bf439",
+      "references/routing.md": "a3703530d3294161f60578b7eefcc361ea84c962570c2394a69332ef7c976f89",
+      "references/valuation-and-thesis.md": "fc86613b848870f3bdf680f8980d585a276c05d6164f181e9bf52fc54d15283b",
+      "references/financial-data-and-evidence.md": "f8cef1bb07042fde66266228d56db77921eee6779a6853f02f840d02d681b03b",
+      "references/global-investing.md": "e9769c6a103d243b797a0c2632250cf34765441e4e67629225a53c7b6dc7534a",
+      "references/report-rendering.md": "ff7ec6ecc4f09df1fce37448f9b59e899969fa76155f77cc5ef3f378b2d3c5b8",
+      "references/high-growth-alpha.md": "28d28ab94e4e66a9d1ec68f849050f857ad5d886cf3e3d60b2d463bea1e97f02",
+      "references/earnings-review.md": "1d082c35b4e88fe4f13f25b710aab2d75ead84a4392bb307efc51f513ec2bf6b",
+      "references/company-research.md": "70f1a1eea7c26ee77f79998e0e61fc7fc372b36a9c97ad5d32b0547f6b381c6a",
+      "references/screening.md": "bc1085720095632e1c48b67c004476f11f64ac5acb1ae789139e39522f61aae1",
+      "references/research-semantic-review.md": "930d924c993d68425b494e2e09db8b181fc2e3d57468d4236e0e97c25edaaafe",
+      "references/tracking-workflow.md": "861d986878f253eb619edbc1e698d9ea04ec0f292f2d6654dfa13ee7f0da05ca",
+      "agents/openai.yaml": "3f18964f6068352da4dc844116f051f5abfcbcea3ae3eb2dd80a43b5f97bec20",
+      "schemas/thesis-diff.schema.json": "4ca4aa028b77d2142d7ad1e38ea597701b58f90aa0343e5594b79edcdf52e468",
+      "schemas/research-init.schema.json": "edf7596a962d3b8b039d7f781f6566f531f9135fe5e1bdf9cd2382db82ee4140",
+      "schemas/financial-reconciliation-audit.schema.json": "09adb2c61e7b5528b788f33b22fc8da721a914354b19aaf77e14dfe8b13b12e0",
+      "schemas/company-research-plan.schema.json": "c0a9745a56d4af64751982aef59f9adc8c824d9f30c51710479bf27fcce30b34",
+      "schemas/report-render.schema.json": "89fd54cba9e65ccd0cd41a2e306668b4d1e461bac3b21e5c960074bd43acaaad",
+      "schemas/tracking-run-state.schema.json": "fdcfb9ab10b983502840c3f3c9f1e80fbdc6668ad51b4cdd2cd4ae001db8b799",
+      "schemas/data-response.schema.json": "61815ba50490cefa3141ba1360bdb0d43e4a91c408044ade474db2581f37cee2",
+      "schemas/tracking-state.schema.json": "57d5fc3cf2e2ca36369e014da81ad6ab85f805eb7de56593421feced590a287a",
+      "schemas/tracking-revision.schema.json": "a8958b0261a63db80caf68953858a0a2fbcf813854fe7c5636e329a9a7b588f9",
+      "schemas/earnings-update-input.schema.json": "13629d064381606108ea00df3eeab91b2e4bf4358fcb80a99c1ca802735d2f9d",
+      "schemas/research-collection.schema.json": "206e03f2867c08be3a7acbaf23a6258ee253287a07aadc39e13972aec90f5dc7",
+      "schemas/tracking-status.schema.json": "473285cd60336aecbe79dcf92b0166a5bedee6ba3e74123313d69508b3dc550d",
+      "schemas/research-finalize.schema.json": "3ab0028b26add5bd1bf7d6bbbdaff4268abecc01d1e2e3197a129f508a342ee9",
+      "schemas/tracking-revision.v2.schema.json": "709bf60b5fa9638a6f4e306e0e7a1e3952bb78f21d45081c796f08e477060bfb",
+      "schemas/financial-audit.schema.json": "dc43561b48ba18eb166fe57f0e7a0fd1b50eec96242ca16c074c65308f2d6df2",
+      "schemas/financial-reconciliation.schema.json": "f1927d629fbd62a521770289f27ba4af4c8c457a40040e0987984bfee528191b",
+      "schemas/tracking-init.schema.json": "b6e8635bd894cd10167ae95307a5e32ddfa446001f3ede7c8288ee038fb8f20f",
+      "schemas/tracking-current.schema.json": "e7e1251c2e037c79db875e9a1bb4b9cc0734cc22bcf7f36e4353dc247af49d29",
+      "schemas/tracking-status.v2.schema.json": "16859c283bed2f2986e1d17dbcfcd6d89657f2b74da2852938d589e52828da83",
+      "schemas/research-completion-receipt.schema.json": "ba0ca309356a3f2fea8aec1017759aeffe52f1858a1d1cb3a4e8dcc768e42333",
+      "schemas/source-capture.schema.json": "9ef75a6e7cb72f724a04b0a64a8e92d0aefc4c1a746631819bccfce121435c6a",
+      "schemas/tracking-current.v2.schema.json": "4537ca0e39133886b942a8f7387e292ac81b32fb9146ed01c890aa7991a174a6",
+      "schemas/research-status.schema.json": "3f2b92c1b1132c88effd9d26ef79d5af103c94c8ffeceac14b153781b789b7c3",
+      "schemas/report-render-verify.schema.json": "5159851aad44458acbe49c5d3f6b32fde6cc1302dfc8d17d1056837449cbb7bb",
+      "schemas/earnings-update.schema.json": "8bf59e151bf58de7208e0e07d20e54424420a1104b56f5fed029519e3e1a33cb",
+      "schemas/tracking-verify.schema.json": "1c400b647ce6949029cf2577229117712c6a282ea91cea07d9ceab3276777bb3",
+      "schemas/thesis-update-plan.schema.json": "593702760116c5a077e50657aed0ddd183baaa61fb309c95b350440e05061598",
+      "schemas/report-audit.schema.json": "1920aa89095c3ea7acf2763e934a9670510f8853856974ea675ae1bb2cb25fa3",
+      "schemas/research-run-state.schema.json": "2f33a1bdf8b5e9637d6a856d5bde1ec7af2b28df4eedf862172a9f58b009ee35",
+      "schemas/official-import.schema.json": "3f90f2841d121733c25ae7a45584320fa1eab93b5e2a2e1eb944673eeb17f43d",
+      "schemas/research-case.schema.json": "f031931375699bb189185aa36cd3e752c5509a54b9c7fad5e7776e23582e6863",
+      "schemas/tracking-state.v2.schema.json": "16ffbe9dc8851de86983ed22db2cc45e50461b800b0b958cb8f2c321975fc9ab",
+      "scripts/earnings_drivers.py": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+      "scripts/fred_adapter.py": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+      "scripts/financial_rigor.py": "44bbdf45d5b8b08737296cb0018683971c0ba62872bce9e1968be1651176c44b",
+      "scripts/financial_reconciliation.py": "7bfd04d8da339fbda508f979eb18dc31d4e05fd67dbc586243c47ef392ce0635",
+      "scripts/earnings_update.py": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+      "scripts/earnings_crosscheck.py": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+      "scripts/report_audit.py": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+      "scripts/yfinance_adapter.py": "660463d429197d45f9e2dcf3ff5335b7ad326a5eb319faf56d4da43cfa916320",
+      "scripts/runtime_paths.py": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+      "scripts/tracking_workflow.py": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+      "scripts/report_renderer.py": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+      "scripts/research_run.py": "079cab3659ba7c3f614cf6476409764f63b37ab202e2105140ca10dd2ff251c0",
+      "scripts/earnings_baseline.py": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+      "scripts/money_craft.py": "6523b3e76b658877a0fb0ebf3f361afa4882910138950a844b54bbc9ca9b5f75",
+      "scripts/research_workflow.py": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+      "templates/thesis.md": "2e9b8d9402f7c2d711483605bfcb5630108a3b3e07e73af3a326776884c93835",
+      "templates/report.md": "80221be333693c7c7bd3e5f9e422071e6152ec7771b380340b7650bd5193de29",
+      "templates/tracking-card.md": "722f9f9fe39ca53c25d5b66c6a12b761d4622044e822a98a20f3f1f4c7490f35",
+      "references/providers/fred.md": "432c69d9363420afc490c9a261f539a9a375f841a821d96a1945cd63184c326a",
+      "references/providers/yfinance.md": "bb515effa7c1a07df6633be458e4ebf96f55ce28edef6484e4895fb7031d3c8b",
+      "references/providers/fuyao.md": "de35ea53fc6d02d1dc1d12c00d66696a3ee169671b5def8e058ea9e2f7121c4d"
+    }
+  },
+  "documents": [
+    "docs/capability-evidence-matrix.md",
+    "docs/daily-use.md"
+  ],
+  "annual_observation": "acceptance/controlled-research-amazon-annual-20260919.json",
+  "doctor": {
+    "canonical_files_present": true,
+    "data_runtime_available": true,
+    "network_checked": false,
+    "artifact": {
+      "path": "local/acceptance/20260919-daily-baseline/doctor.json",
+      "sha256": "5de70bc35037f389f324ec37188363230e38875ab36c1edab2bc1da936b86f31",
+      "bytes": 2755
+    }
+  },
+  "upstream": {
+    "state": "partial",
+    "sources": [
+      {
+        "id": "ai-berkshire",
+        "state": "review_required"
+      },
+      {
+        "id": "anthropic-financial-services",
+        "state": "review_required"
+      },
+      {
+        "id": "dexter",
+        "state": "review_required"
+      },
+      {
+        "id": "lean",
+        "state": "review_required"
+      },
+      {
+        "id": "myinvestpilot",
+        "state": "unavailable"
+      },
+      {
+        "id": "openbb",
+        "state": "review_required"
+      },
+      {
+        "id": "qlib",
+        "state": "review_required"
+      },
+      {
+        "id": "rd-agent",
+        "state": "review_required"
+      },
+      {
+        "id": "skfolio",
+        "state": "review_required"
+      },
+      {
+        "id": "trading-agents",
+        "state": "review_required"
+      }
+    ],
+    "automatic_merge": false,
+    "review_state_mutated": false,
+    "artifact": {
+      "path": "local/acceptance/20260919-daily-baseline/upstream-live.json",
+      "sha256": "b2b8ae1621a58bfec4a2a9cbdd66a41933699ce3a56e7b69537b56f2212a3b0a",
+      "bytes": 78129
+    }
+  },
+  "validation": {
+    "source_checks_passed": 19,
+    "local_links_checked": 39,
+    "missing_links": 0,
+    "diff_check": "PASS",
+    "artifact": {
+      "path": "local/acceptance/20260919-daily-baseline/final-source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684",
+      "bytes": 622
+    }
+  },
+  "limitations": [
+    "No real portfolio optimization or dedicated real industry acceptance established",
+    "Historical host/test receipts remain bound to original hashes; no blanket replay claim",
+    "Human semantic review remains necessary",
+    "9 Git sources require review; MyInvestPilot lacks fresh complete browser snapshot",
+    "No commit, push, release or application delivery"
+  ]
+}

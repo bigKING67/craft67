@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/fix-attempt-evidence.schema.json",
+  "title": "Review Craft captured fix attempt evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "toolVersion", "fixId", "attemptId", "capturedAt", "completedAt", "planSha256", "manifestSha256", "sourceChanged", "current", "currentFiles", "changes", "commands", "skippedCommands", "claimObservations", "captureStatus", "failureReasons"],
+  "properties": {
+    "documentType": {"const": "review-craft.fix-attempt-evidence"},
+    "schemaVersion": {"const": "review-craft.fix-attempt.v1"},
+    "toolVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "fixId": {"type": "string", "minLength": 1},
+    "attemptId": {"type": "string", "pattern": "^attempt-[0-9]{4}-[a-f0-9]{12}$"},
+    "capturedAt": {"type": "string", "format": "date-time"},
+    "completedAt": {"type": "string", "format": "date-time"},
+    "planSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "manifestSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sourceChanged": {"type": "boolean"},
+    "current": {"$ref": "#/$defs/sourceState"},
+    "currentFiles": {"type": "array", "items": {"$ref": "#/$defs/sourceFile"}},
+    "changes": {"type": "array", "items": {"$ref": "#/$defs/change"}},
+    "commands": {"type": "array", "items": {"$ref": "#/$defs/commandResult"}},
+    "skippedCommands": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "claimObservations": {"type": "array", "items": {"$ref": "#/$defs/claimObservation"}},
+    "captureStatus": {"enum": ["PASSED", "FAILED", "NO_CHANGES"]},
+    "failureReasons": {"type": "array", "items": {"$ref": "#/$defs/failureReason"}}
+  },
+  "$defs": {
+    "scalar": {"type": ["string", "number", "boolean", "null"]},
+    "sourceState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "branch", "remote", "sourceFingerprint", "worktreeFingerprint", "statusFingerprint"],
+      "properties": {
+        "revision": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "remote": {"type": ["string", "null"]},
+        "sourceFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "worktreeFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "statusFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "sourceFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind", "sizeBytes", "sha256", "binary", "classification"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1},
+        "sizeBytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "binary": {"type": "boolean"},
+        "classification": {"type": "string", "minLength": 1},
+        "diffStatus": {"type": "string", "minLength": 1},
+        "previousPath": {"type": "string", "minLength": 1},
+        "untracked": {"type": "boolean"},
+        "sourceIdentity": {"type": "object", "additionalProperties": false, "required": ["executable", "gitlink", "checkout"], "properties": {"executable": {"type": ["boolean", "null"]}, "gitlink": {"type": ["string", "null"], "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"}, "checkout": {"type": ["string", "null"], "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"}}}
+      }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "status", "beforeSha256", "afterSha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "status": {"enum": ["ADDED", "MODIFIED", "DELETED"]},
+        "beforeSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "afterSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "commandResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "receiptId", "receiptSha256", "exitCode", "timedOut", "repositoryMutationDetected"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "receiptId": {"type": "string", "pattern": "^[a-f0-9]{16}$"},
+        "receiptSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "exitCode": {"type": "integer"},
+        "timedOut": {"type": "boolean"},
+        "repositoryMutationDetected": {"type": "boolean"},
+        "semanticEvidenceValid": {"type": "boolean"}
+      }
+    },
+    "claimObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "claimId", "kind", "status", "jsonPointer", "expected", "actualAvailable", "actual"],
+      "properties": {
+        "command": {"type": "string", "minLength": 1},
+        "claimId": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}$"},
+        "kind": {"enum": ["check", "test", "build", "package", "isolated-install", "runtime", "benchmark", "profile", "trace", "clean-deployment-reproduction"]},
+        "status": {"enum": ["VERIFIED", "UNVERIFIED"]},
+        "jsonPointer": {"type": "string", "minLength": 1},
+        "expected": {"$ref": "#/$defs/scalar"},
+        "actualAvailable": {"type": "boolean"},
+        "actual": {}
+      }
+    },
+    "failureReason": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "command"],
+      "properties": {
+        "code": {"enum": ["NO_SOURCE_CHANGES", "COMMAND_NON_ZERO", "COMMAND_TIMEOUT", "SEMANTIC_EVIDENCE_FAILURE", "SOURCE_MUTATION", "COMMAND_SKIPPED"]},
+        "command": {"type": ["string", "null"], "minLength": 1}
+      }
+    }
+  }
+}

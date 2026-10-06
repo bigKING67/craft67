@@ -1,0 +1,136 @@
+{
+  "version": 2,
+  "cases": [
+    {
+      "id": "annual_integrated_marketing",
+      "domain": "marketing_orchestration",
+      "answer": "eval/marketing/golden-answers/annual_integrated_marketing.txt"
+    },
+    {
+      "id": "spokesperson_selection",
+      "domain": "brand",
+      "answer": "eval/marketing/golden-answers/spokesperson_selection.txt"
+    },
+    {
+      "id": "xiaohongshu_content_system",
+      "domain": "content",
+      "answer": "eval/marketing/golden-answers/xiaohongshu_content_system.txt"
+    },
+    {
+      "id": "paid_media_scale",
+      "domain": "growth",
+      "answer": "eval/marketing/golden-answers/paid_media_scale.txt"
+    },
+    {
+      "id": "brand_vs_performance",
+      "domain": "marketing_orchestration",
+      "answer": "eval/marketing/golden-answers/brand_vs_performance.txt"
+    },
+    {
+      "id": "brand_sponsorship",
+      "domain": "brand",
+      "answer": "eval/marketing/golden-answers/brand_sponsorship.txt"
+    },
+    {
+      "id": "douyin_creative_system",
+      "domain": "content",
+      "answer": "eval/marketing/golden-answers/douyin_creative_system.txt"
+    },
+    {
+      "id": "crm_lifecycle",
+      "domain": "growth",
+      "answer": "eval/marketing/golden-answers/crm_lifecycle.txt"
+    },
+    {
+      "id": "full_commerce_orchestration",
+      "prompt_id": "full_brand_diagnosis_scalp_care",
+      "domain": "commerce_orchestration",
+      "answer": "eval/golden-answers/full_brand_diagnosis_scalp_care.txt"
+    },
+    {
+      "id": "qianchuan_budget_scale",
+      "domain": "commercial",
+      "answer": "eval/golden-answers/qianchuan_budget_scale.txt"
+    },
+    {
+      "id": "tmall_conversion_diagnosis",
+      "domain": "operations",
+      "answer": "eval/golden-answers/tmall_conversion_diagnosis.txt"
+    },
+    {
+      "id": "weekly_data_review_douyin_tmall",
+      "domain": "analytics",
+      "answer": "eval/golden-answers/weekly_data_review_douyin_tmall.txt"
+    },
+    {
+      "id": "negative_spokesperson_guarantee",
+      "prompt_id": "spokesperson_selection",
+      "domain": "brand",
+      "answer": "eval/structured-judge/negative-answers/spokesperson_guarantee.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_paid_media_double",
+      "prompt_id": "paid_media_scale",
+      "domain": "growth",
+      "answer": "eval/structured-judge/negative-answers/paid_media_double.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_xiaohongshu_fake_scale",
+      "prompt_id": "xiaohongshu_content_system",
+      "domain": "content",
+      "answer": "eval/structured-judge/negative-answers/xiaohongshu_fake_scale.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_commerce_economics",
+      "prompt_id": "full_brand_diagnosis_scalp_care",
+      "domain": "commerce_orchestration",
+      "answer": "eval/structured-judge/negative-answers/commerce_economics.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_commercial_wrong_cac",
+      "prompt_id": "qianchuan_budget_scale",
+      "domain": "commercial",
+      "answer": "eval/structured-judge/negative-answers/commercial_wrong_cac.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_currentness_fabrication",
+      "prompt_id": "platform_current_juguang_search",
+      "domain": "growth",
+      "answer": "eval/structured-judge/negative-answers/currentness_fabrication.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_analytics_causality",
+      "prompt_id": "weekly_data_review_douyin_tmall",
+      "domain": "analytics",
+      "answer": "eval/structured-judge/negative-answers/analytics_causality.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_operations_no_recovery",
+      "prompt_id": "tmall_conversion_diagnosis",
+      "domain": "operations",
+      "answer": "eval/structured-judge/negative-answers/operations_no_recovery.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_analytics_budget_authority",
+      "prompt_id": "weekly_data_review_douyin_tmall",
+      "domain": "analytics",
+      "answer": "eval/structured-judge/negative-answers/analytics_budget_authority.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "negative_analytics_mixed_gmv_scope",
+      "domain": "analytics",
+      "answer": "eval/structured-judge/negative-answers/analytics_mixed_gmv_scope.txt",
+      "expected_pass": false,
+      "prompt": "本周抖音 GMV 上升 35%，千川 ROI 从 2.4 降到 1.7，退款损失从 5% 升到 9%；天猫品牌词搜索上升 28%，但支付转化率下降。请区分已知事实、可能解释和待验证证据，给出下周分析与决策计划。"
+    }
+  ]
+}

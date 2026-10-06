@@ -1,0 +1,4 @@
+interface:
+  display_name: "Content, Creative & Social｜内容创意与社交营销"
+  short_description: "小红书抖音内容、达人、创意方向、Brief、脚本和素材治理。"
+  default_prompt: "Use $content-creative-social-marketing to build the content system, creator matrix, creative briefs, asset plan, search handoff, and measurable refresh cadence."

@@ -1,0 +1,117 @@
+{
+  "schema_version": "creative-craft.render-qa.v1",
+  "qa_id": "qa-fixture-edit-r2-preview",
+  "project_id": "fixture-edit",
+  "revision": 2,
+  "revision_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "render": {
+    "kind": "preview",
+    "file": "video.mp4",
+    "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "width": 640,
+    "height": 360,
+    "fps": 30,
+    "duration_seconds": 9.0,
+    "has_audio": true
+  },
+  "tool": {
+    "name": "creative-craft-local-production",
+    "version": "0.2.0",
+    "ffmpeg": "7.1"
+  },
+  "created_at": "2026-10-02T00:00:00Z",
+  "checks": [
+    {
+      "id": "duration-matches-revision",
+      "category": "structure",
+      "status": "pass",
+      "observation": "Rendered 9.000 s; revision expects 270 frames at 30 fps.",
+      "measured": {
+        "expected_seconds": 9.0,
+        "actual_seconds": 9.0
+      }
+    },
+    {
+      "id": "black-segments",
+      "category": "video",
+      "status": "pass",
+      "observation": "No black segment longer than 0.5 s."
+    },
+    {
+      "id": "integrated-loudness",
+      "category": "audio",
+      "status": "warn",
+      "observation": "Integrated loudness -19.8 LUFS is outside the -14 ±3 LUFS social target.",
+      "measured": {
+        "lufs": -19.8,
+        "true_peak_dbtp": -3.1
+      }
+    },
+    {
+      "id": "caption-visible-at-cue",
+      "category": "captions",
+      "status": "pass",
+      "observation": "Sampled frame inside each caption cue exists for review.",
+      "refs": [
+        {
+          "time_seconds": 1.2,
+          "item_id": "cap1",
+          "sample_id": "s-cap1"
+        }
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "id": "s-talk1-mid",
+      "time_seconds": 2.5,
+      "reason": "item_mid",
+      "item_id": "talk1",
+      "file": "qa/frames/s-talk1-mid.png",
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    {
+      "id": "s-cap1",
+      "time_seconds": 1.2,
+      "reason": "caption",
+      "item_id": "cap1",
+      "file": "qa/frames/s-cap1.png",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  ],
+  "boundary_clips": [
+    {
+      "cut_seconds": 5.0,
+      "file": "qa/boundaries/cut-5.000.mp4",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    }
+  ],
+  "contact_sheet": {
+    "file": "qa/contact-sheet.png",
+    "sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "verdict": "pass_with_warnings",
+  "review": {
+    "status": "done",
+    "reviewer": "fixture-agent",
+    "reviewer_kind": "agent",
+    "decision": "revise",
+    "findings": [
+      {
+        "id": "f1",
+        "severity": "major",
+        "observation": "B-roll enters mid-word at the 2.0 s cut.",
+        "refs": [
+          {
+            "time_seconds": 2.0,
+            "item_id": "broll1"
+          }
+        ],
+        "fix": "Move broll1 start to the pause at frame 66."
+      }
+    ]
+  },
+  "unverified": [
+    "Creative quality and brand fit were not assessed by a human."
+  ]
+}

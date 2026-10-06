@@ -1,0 +1,61 @@
+{
+  "schema": "money-craft.report-audit-review.v1",
+  "date": "2026-09-17",
+  "scope": "Whole report_audit and bounded citation-index exclusion in research_run",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_audit.py": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+    "skills/money-craft/scripts/research_run.py": "c7c2739b34cc18470eab581fe488fb9a958684c0e301492f59300c11ace0bab4",
+    "skills/money-craft/references/financial-data-and-evidence.md": "d5574b050d986a621d7e61cc547cb29c3732fed0c5460068a67623769adebbff",
+    "tests/test_audits.py": "293673d1f62378726b5dbe5ef8036d52f31c4818fbe42acd20f799dc7272e70d",
+    "tests/test_research_run.py": "6cd8da4b2f558247c33c763dcfe4b5d56d6a80271799c42c7c8432c7895a5f1e"
+  },
+  "findings": [
+    {
+      "before": "Report citations after source index ignored; alternate heading whitespace could count definitions as citations.",
+      "after": "Shared section pattern removes only index, preserves following sections for citation checks."
+    },
+    {
+      "before": "Compact and week dates accepted despite YYYY-MM-DD contract.",
+      "after": "Canonical calendar date required."
+    },
+    {
+      "before": "Empty source target borrowed following prose or definition silently disappeared.",
+      "after": "Source definition regex stays on one line and retains empty targets for errors."
+    },
+    {
+      "before": "Independent research citation-binding audit retained old prefix truncation.",
+      "after": "Reuse report section pattern so later cited IDs remain visible and checked."
+    }
+  ],
+  "validation": {
+    "targeted_tests": 58,
+    "audit_tests": 31,
+    "research_tests": 27,
+    "full_tests": 290,
+    "package_checks": 8,
+    "source_checks": 19,
+    "regressions_failed_before_fix": true
+  },
+  "independent_review": {
+    "agent": "report_audit_review",
+    "verdict": "NO_UNRESOLVED_FINDINGS",
+    "final_targeted_tests": 10,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_audit.py": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+      "skills/money-craft/scripts/research_run.py": "c7c2739b34cc18470eab581fe488fb9a958684c0e301492f59300c11ace0bab4"
+    },
+    "additional_observations": "Empty targets before next definition/prose/EOF rejected; later citation included for space/multispace/tab headings.",
+    "evidence_boundary": "Additional probes reviewer-reported, raw temporary transcripts not persisted."
+  },
+  "limits": [
+    "Regex-based contract Markdown, not complete Markdown parser.",
+    "No source truth, semantic claim support or freshness proof.",
+    "File encoding/I/O and whole research_run lifecycle not closed by this review.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T035127585170Z"
+  }
+}

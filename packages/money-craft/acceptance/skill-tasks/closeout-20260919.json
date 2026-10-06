@@ -1,0 +1,762 @@
+{
+  "schema": "money-craft.skill-closeout.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED_FROZEN_SKILL_CORE_HOST_AND_RENDER",
+  "scope": "Six original synthetic natural-language cases, one implicit installed-host case, one historical official filing case on final frozen source. Not statistical stability, newest research or universal platform proof.",
+  "frozen_source": {
+    "SKILL.md": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+    "VERSION": "d915cc95d6ca8f47ae297713ed46d4e5c5d99ddd29fc3c61e263bdf305f2b5b0",
+    "agents/openai.yaml": "3f18964f6068352da4dc844116f051f5abfcbcea3ae3eb2dd80a43b5f97bec20",
+    "references/company-research.md": "d826b069ffb8828afece1dd8d95c13723a68c9b0da054a3878b6d1f539a6fb4e",
+    "references/earnings-review.md": "975b0c413284e2ecd2ec6769134c53aae96654edd7169664ea49350431391c28",
+    "references/financial-data-and-evidence.md": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+    "references/global-investing.md": "e9769c6a103d243b797a0c2632250cf34765441e4e67629225a53c7b6dc7534a",
+    "references/high-growth-alpha.md": "28d28ab94e4e66a9d1ec68f849050f857ad5d886cf3e3d60b2d463bea1e97f02",
+    "references/providers/fred.md": "432c69d9363420afc490c9a261f539a9a375f841a821d96a1945cd63184c326a",
+    "references/providers/fuyao.md": "de35ea53fc6d02d1dc1d12c00d66696a3ee169671b5def8e058ea9e2f7121c4d",
+    "references/providers/yfinance.md": "f8dd12d562454d69fd8448ca16fffd1d3501983b9f42b6395dde295fcd56becf",
+    "references/report-rendering.md": "ff7ec6ecc4f09df1fce37448f9b59e899969fa76155f77cc5ef3f378b2d3c5b8",
+    "references/routing.md": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+    "references/screening.md": "bc1085720095632e1c48b67c004476f11f64ac5acb1ae789139e39522f61aae1",
+    "references/tracking-workflow.md": "861d986878f253eb619edbc1e698d9ea04ec0f292f2d6654dfa13ee7f0da05ca",
+    "references/valuation-and-thesis.md": "7dd8f84ab2d176aba895897d7a44982304b92e7f8771cfd57492eb11a407d076",
+    "reporting/report.css": "442e0c51856a62a8a6feab65abc38881514d30eeba499326911b85aa590a0315",
+    "reporting/report.html": "fce898acd66bf9e3e54d52a7e2fb8620af3467c80b121ba0ab5a35d0644bf439",
+    "reporting/report.js": "4522a90ff0aa020dd3ab2d1a14393bdb6d7adc98da24039be4b487412619c7a2",
+    "requirements-report.txt": "a8cb26c51e475c50ba9cbfbc1ed8fd8ae99cfaec3a45cf3e67e2861efb62bf38",
+    "requirements-yfinance.txt": "af2a310cb859b04b2fea0b43e835974ca2c0285f8b3ab7733d82ba13d21a0b49",
+    "schemas/company-research-plan.schema.json": "c0a9745a56d4af64751982aef59f9adc8c824d9f30c51710479bf27fcce30b34",
+    "schemas/data-response.schema.json": "61815ba50490cefa3141ba1360bdb0d43e4a91c408044ade474db2581f37cee2",
+    "schemas/earnings-update-input.schema.json": "13629d064381606108ea00df3eeab91b2e4bf4358fcb80a99c1ca802735d2f9d",
+    "schemas/earnings-update.schema.json": "8bf59e151bf58de7208e0e07d20e54424420a1104b56f5fed029519e3e1a33cb",
+    "schemas/financial-audit.schema.json": "dc43561b48ba18eb166fe57f0e7a0fd1b50eec96242ca16c074c65308f2d6df2",
+    "schemas/financial-reconciliation-audit.schema.json": "09adb2c61e7b5528b788f33b22fc8da721a914354b19aaf77e14dfe8b13b12e0",
+    "schemas/financial-reconciliation.schema.json": "dbe686e3ac04c92106b3a1d7b91bb6c56ec8b83ad7eaff833c04f46a909b4ac1",
+    "schemas/official-import.schema.json": "3f90f2841d121733c25ae7a45584320fa1eab93b5e2a2e1eb944673eeb17f43d",
+    "schemas/report-audit.schema.json": "1920aa89095c3ea7acf2763e934a9670510f8853856974ea675ae1bb2cb25fa3",
+    "schemas/report-render-verify.schema.json": "5159851aad44458acbe49c5d3f6b32fde6cc1302dfc8d17d1056837449cbb7bb",
+    "schemas/report-render.schema.json": "89fd54cba9e65ccd0cd41a2e306668b4d1e461bac3b21e5c960074bd43acaaad",
+    "schemas/research-case.schema.json": "f031931375699bb189185aa36cd3e752c5509a54b9c7fad5e7776e23582e6863",
+    "schemas/research-collection.schema.json": "206e03f2867c08be3a7acbaf23a6258ee253287a07aadc39e13972aec90f5dc7",
+    "schemas/research-completion-receipt.schema.json": "ba0ca309356a3f2fea8aec1017759aeffe52f1858a1d1cb3a4e8dcc768e42333",
+    "schemas/research-finalize.schema.json": "3ab0028b26add5bd1bf7d6bbbdaff4268abecc01d1e2e3197a129f508a342ee9",
+    "schemas/research-init.schema.json": "edf7596a962d3b8b039d7f781f6566f531f9135fe5e1bdf9cd2382db82ee4140",
+    "schemas/research-run-state.schema.json": "2f33a1bdf8b5e9637d6a856d5bde1ec7af2b28df4eedf862172a9f58b009ee35",
+    "schemas/research-status.schema.json": "3f2b92c1b1132c88effd9d26ef79d5af103c94c8ffeceac14b153781b789b7c3",
+    "schemas/source-capture.schema.json": "9ef75a6e7cb72f724a04b0a64a8e92d0aefc4c1a746631819bccfce121435c6a",
+    "schemas/thesis-diff.schema.json": "4ca4aa028b77d2142d7ad1e38ea597701b58f90aa0343e5594b79edcdf52e468",
+    "schemas/thesis-update-plan.schema.json": "593702760116c5a077e50657aed0ddd183baaa61fb309c95b350440e05061598",
+    "schemas/tracking-current.schema.json": "e7e1251c2e037c79db875e9a1bb4b9cc0734cc22bcf7f36e4353dc247af49d29",
+    "schemas/tracking-current.v2.schema.json": "4537ca0e39133886b942a8f7387e292ac81b32fb9146ed01c890aa7991a174a6",
+    "schemas/tracking-init.schema.json": "b6e8635bd894cd10167ae95307a5e32ddfa446001f3ede7c8288ee038fb8f20f",
+    "schemas/tracking-revision.schema.json": "a8958b0261a63db80caf68953858a0a2fbcf813854fe7c5636e329a9a7b588f9",
+    "schemas/tracking-revision.v2.schema.json": "709bf60b5fa9638a6f4e306e0e7a1e3952bb78f21d45081c796f08e477060bfb",
+    "schemas/tracking-run-state.schema.json": "fdcfb9ab10b983502840c3f3c9f1e80fbdc6668ad51b4cdd2cd4ae001db8b799",
+    "schemas/tracking-state.schema.json": "57d5fc3cf2e2ca36369e014da81ad6ab85f805eb7de56593421feced590a287a",
+    "schemas/tracking-state.v2.schema.json": "16ffbe9dc8851de86983ed22db2cc45e50461b800b0b958cb8f2c321975fc9ab",
+    "schemas/tracking-status.schema.json": "473285cd60336aecbe79dcf92b0166a5bedee6ba3e74123313d69508b3dc550d",
+    "schemas/tracking-status.v2.schema.json": "16859c283bed2f2986e1d17dbcfcd6d89657f2b74da2852938d589e52828da83",
+    "schemas/tracking-verify.schema.json": "1c400b647ce6949029cf2577229117712c6a282ea91cea07d9ceab3276777bb3",
+    "scripts/earnings_baseline.py": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+    "scripts/earnings_crosscheck.py": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+    "scripts/earnings_drivers.py": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+    "scripts/earnings_update.py": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+    "scripts/financial_reconciliation.py": "9bf8642e0cdc9a560e4d248efeaa11f749cd64716074d1806e1fdf3f985394d9",
+    "scripts/financial_rigor.py": "44bbdf45d5b8b08737296cb0018683971c0ba62872bce9e1968be1651176c44b",
+    "scripts/fred_adapter.py": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+    "scripts/money_craft.py": "6523b3e76b658877a0fb0ebf3f361afa4882910138950a844b54bbc9ca9b5f75",
+    "scripts/report_audit.py": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+    "scripts/report_renderer.py": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+    "scripts/research_run.py": "079cab3659ba7c3f614cf6476409764f63b37ab202e2105140ca10dd2ff251c0",
+    "scripts/research_workflow.py": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+    "scripts/runtime_paths.py": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+    "scripts/tracking_workflow.py": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+    "scripts/yfinance_adapter.py": "5fce407420628b6348fc1003b0b1165e353fdcd8d713a404aeecb9d20756516c",
+    "templates/report.md": "80221be333693c7c7bd3e5f9e422071e6152ec7771b380340b7650bd5193de29",
+    "templates/thesis.md": "2e9b8d9402f7c2d711483605bfcb5630108a3b3e07e73af3a326776884c93835",
+    "templates/tracking-card.md": "722f9f9fe39ca53c25d5b66c6a12b761d4622044e822a98a20f3f1f4c7490f35"
+  },
+  "installed_parity_files": 71,
+  "final_source_and_install_rechecked": true,
+  "cases": [
+    {
+      "id": "earnings-periods",
+      "case_id": "earnings-periods",
+      "run_dir": "local/skill-evals/20260919-closeout/earnings-periods-final",
+      "status": "PASS_BOUNDED",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "calculation_receipts": 13,
+      "manual_reviewer": "/root/core_independent_review",
+      "criteria": [
+        {
+          "criterion": "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+          "status": "PASS",
+          "evidence": "Q3收入60/40，归母利润9/8"
+        },
+        {
+          "criterion": "区分累计与单季，不能把Provider quarterly直接读为单季",
+          "status": "PASS",
+          "evidence": "拒绝将quarterly标签视为单季"
+        },
+        {
+          "criterion": "比较同比和利润率，并说明量价/原因资料不足",
+          "status": "PASS",
+          "evidence": "同比25/50及25/12.5；利润率20到15，下降5pp；原因未证实"
+        },
+        {
+          "criterion": "保留合成与未来报告期限制，不形成真实买卖结论",
+          "status": "PASS",
+          "evidence": "合成/未来报告期与执行日分离"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            5
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/earnings-review.md",
+          "sha256": "975b0c413284e2ecd2ec6769134c53aae96654edd7169664ea49350431391c28",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/routing.md",
+          "sha256": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+          "completed_event_lines": [
+            7
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "d957308df0fea60edd0a107bc15b5c33b9b5dfefef5a93dc955089896cba8b62",
+        "events.jsonl": "b49196a9bd91d14fed279804ec7760251154b659892d59c9d65bd264933fab94",
+        "host.json": "6a4e65ee1d9dc0cf7dcb1241eeeafe366919486dfab77e3a456777eefeb90a50",
+        "machine-audit.json": "0fe0ffe1ea712302c5b3e4286cd4e4bee510efa87961ac4fd4f132353a12e537",
+        "case-snapshot.json": "defe179a80bf065499d068a540f02c9be61f716770deedf49c421e17f9dc936e"
+      }
+    },
+    {
+      "id": "preview-replay",
+      "case_id": "preview-replay",
+      "run_dir": "local/skill-evals/20260919-closeout/preview-replay-final",
+      "status": "PASS_BOUNDED",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "calculation_receipts": 6,
+      "manual_reviewer": "/root/core_independent_review",
+      "criteria": [
+        {
+          "criterion": "使用A评价事前预测，B标为事后版本不能替换历史",
+          "status": "PASS",
+          "evidence": "保留事前A，B为事后重建"
+        },
+        {
+          "criterion": "差额收入-10/-10%，利润-5/-25%",
+          "status": "PASS",
+          "evidence": "收入-10/-10%，利润-5/-25%"
+        },
+        {
+          "criterion": "C01过期无证据为逾期待核实，不能宣称发生",
+          "status": "PASS",
+          "evidence": "窗口已过，兑现未核实"
+        },
+        {
+          "criterion": "区分结果偏差与原因未知，不声称封存哈希已核验",
+          "status": "PASS",
+          "evidence": "不归因、不虚称封存哈希已验"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            5
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/earnings-review.md",
+          "sha256": "975b0c413284e2ecd2ec6769134c53aae96654edd7169664ea49350431391c28",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/routing.md",
+          "sha256": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+          "completed_event_lines": [
+            7
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "7f772edc5f3a8a9720fa6e57ba7c97a22ddfe35ad7afb3f24a29a4635efa5d01",
+        "events.jsonl": "1a3a41e7fe0d444aa9f01a9d87a24082206e44c717cd3cdcc6903c035cf5b3de",
+        "host.json": "20a4fd371fcdb42e04d052bafef4b1c656f72db61ae930253343fc944ee5de4a",
+        "machine-audit.json": "128ba6cca88551af28c10e689542ef1a92d6d8ac84f212735cbed4774287e762",
+        "case-snapshot.json": "f57fd7863979f37301cb188589ced960768fc4c6f68ceb7d838f100d08f8b634"
+      }
+    },
+    {
+      "id": "screening",
+      "case_id": "screening",
+      "run_dir": "local/skill-evals/20260919-closeout/screening",
+      "status": "PASS_BOUNDED",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "calculation_receipts": 4,
+      "manual_reviewer": "/root/core_independent_review",
+      "criteria": [
+        {
+          "criterion": "先筛选，分清硬否决与待补证据",
+          "status": "PASS",
+          "evidence": "GRAY，红旗/缺口/硬否决分开"
+        },
+        {
+          "criterion": "不默认完整报告或交易动作",
+          "status": "PASS",
+          "evidence": "只做screen/quick/chat"
+        },
+        {
+          "criterion": "识别现金流恶化、应收增长及保留意见的风险；不能仅凭保留意见推定造假或把一年数据扩展为多年硬否决",
+          "status": "PASS",
+          "evidence": "OCF转负、应收快增和保留意见，不推定造假"
+        },
+        {
+          "criterion": "如计算增幅或比率，提供可重算回执；缺估值时不输出买入价",
+          "status": "PASS",
+          "evidence": "20%、20%、-23、175%回执覆盖；不报买入价"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            5
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/routing.md",
+          "sha256": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/screening.md",
+          "sha256": "bc1085720095632e1c48b67c004476f11f64ac5acb1ae789139e39522f61aae1",
+          "completed_event_lines": [
+            7
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "abf3ceaf10b2151c43c02d22c7336f4d739750b8789041841551da1d9aed54c2",
+        "events.jsonl": "f3c7c57acefc109a3ba8cae5bdfcdf7b7d50793af60319162710882db14342fa",
+        "host.json": "d94c3e67e1620952000080ba1b7e81cad370f37166cafba0616cc32e03431619",
+        "machine-audit.json": "69ae699fab2881ca565781ef7755751c5fa254602a11504b252a8fdc11039373",
+        "case-snapshot.json": "117b735ebe3256f7f8f7a029c6afba7e14cfc333eccc876b589cee96949a3f2a"
+      }
+    },
+    {
+      "id": "evidence-conflict",
+      "case_id": "evidence-conflict",
+      "run_dir": "local/skill-evals/20260919-closeout/evidence-conflict",
+      "status": "PASS_BOUNDED",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "calculation_receipts": 0,
+      "manual_reviewer": "/root",
+      "criteria": [
+        {
+          "criterion": "指出net_profit和归母口径未对齐，不能直接判30%同口径冲突",
+          "status": "PASS",
+          "evidence": "net_profit归属未核实，不计算伪30%冲突"
+        },
+        {
+          "criterion": "阻断依赖缺失口径/股数/行情日期的精确估值及买入结论",
+          "status": "PASS",
+          "evidence": "阻断缺股数/行情日/同口径利润的估值买入结论"
+        },
+        {
+          "criterion": "列出能解除阻断的必要证据",
+          "status": "PASS",
+          "evidence": "列明口径桥接、报价、股本、资本结构与个人约束"
+        },
+        {
+          "criterion": "不补零、不捏造股数、不把HTTPS或Provider成功当语义验证",
+          "status": "PASS",
+          "evidence": "未补零或捏造数字，不以传输成功证明语义"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            5
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/routing.md",
+          "sha256": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/screening.md",
+          "sha256": "bc1085720095632e1c48b67c004476f11f64ac5acb1ae789139e39522f61aae1",
+          "completed_event_lines": [
+            15
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/valuation-and-thesis.md",
+          "sha256": "7dd8f84ab2d176aba895897d7a44982304b92e7f8771cfd57492eb11a407d076",
+          "completed_event_lines": [
+            7
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "b3e797504f103c7abb8a60fb7aae266cc17527cfa8467633f5cf8f316b7f63c9",
+        "events.jsonl": "b3ad3810c9207e4ccdcc4531a7db8348d66b9ceaa60b6736eb59c2eb3fb7d914",
+        "host.json": "4bd6558ff669c5ebb68884759baf898bcf8c0630df68b45d6c8118edaacf29bd",
+        "machine-audit.json": "38776b612b85a93d98948d4f0997927659ecb2458116eccd67f720c24bb329ef",
+        "case-snapshot.json": "860aee8cbdca99684b955863b24a4217bf2dc07dcd797afa3de4d0b2f6a63dba"
+      }
+    },
+    {
+      "id": "global-assets",
+      "case_id": "global-assets",
+      "run_dir": "local/skill-evals/20260919-closeout/global-assets",
+      "status": "PASS_BOUNDED",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "BLOCKED_AS_EXPECTED",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "BLOCKED_AS_EXPECTED",
+            "error_code": "AMBIGUOUS_SECURITY"
+          }
+        ],
+        "ready": false
+      },
+      "calculation_receipts": 0,
+      "manual_reviewer": "/root",
+      "criteria": [
+        {
+          "criterion": "解析证券与基金身份、币种和时间",
+          "status": "PASS",
+          "evidence": "身份/币种/时间缺口表；不猜代码"
+        },
+        {
+          "criterion": "不把企业估值方法直接套ETF",
+          "status": "PASS",
+          "evidence": "企业与ETF使用不同估值字段"
+        },
+        {
+          "criterion": "不猜测代码、份额类别、汇率或报价日期；身份不明时停止对象特定排名",
+          "status": "PASS",
+          "evidence": "AMBIGUOUS_SECURITY停止对象排名"
+        },
+        {
+          "criterion": "区分收益期间、分红、历史与预测口径；允许列缺口表，不计算伪可比收益",
+          "status": "PASS",
+          "evidence": "收益期间/历史预测/分红未明，不换算伪可比收益"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            5
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            8
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/global-investing.md",
+          "sha256": "e9769c6a103d243b797a0c2632250cf34765441e4e67629225a53c7b6dc7534a",
+          "completed_event_lines": [
+            14
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/routing.md",
+          "sha256": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+          "completed_event_lines": [
+            9
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/valuation-and-thesis.md",
+          "sha256": "7dd8f84ab2d176aba895897d7a44982304b92e7f8771cfd57492eb11a407d076",
+          "completed_event_lines": [
+            13
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "a022dc17cdefbc633b7d8b642c8548f5a022f49ff3f4d46de169a8ed8403bc45",
+        "events.jsonl": "b6f73d4d6d3948e424eb622aef23bd0caf9081c0df7a4a0ccb3d61ee15fee3e6",
+        "host.json": "e7b5c6406da62e9ba728e2cc5c737a4ab61ad7e1e843d744c357e9e49dd9f95e",
+        "machine-audit.json": "d46642695b88ae97458bf3b800094613b1acbd1a313136eb75a4202236780eb5",
+        "case-snapshot.json": "49d0b826662f7a20ea92b182c87329d94aab807ffbb93d8c9d26d45ad63ca528"
+      }
+    },
+    {
+      "id": "upstream-update",
+      "case_id": "upstream-update",
+      "run_dir": "local/skill-evals/20260919-closeout/upstream-update",
+      "status": "PASS_BOUNDED",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "NOT_OBSERVED",
+        "attempts": [],
+        "ready": false
+      },
+      "calculation_receipts": 0,
+      "manual_reviewer": "/root",
+      "criteria": [
+        {
+          "criterion": "绑定明确版本与变更范围",
+          "status": "PASS",
+          "evidence": "绑定合成aaa111到bbb222的D01-D03"
+        },
+        {
+          "criterion": "记录吸收/不吸收理由，不自动合并或更新已审基线",
+          "status": "PASS",
+          "evidence": "逐项吸收/拒绝/暂缓，未合并或改锁"
+        },
+        {
+          "criterion": "区分D01业务code校验、D02自动交易越界、D03累计改单季语义破坏",
+          "status": "PASS",
+          "evidence": "业务code值得吸收；交易越界；累计单季变更破坏语义"
+        },
+        {
+          "criterion": "合成revision不冒充真实提交核验；许可摘录不等于固定版本许可证已审查",
+          "status": "PASS",
+          "evidence": "真实提交和许可未核验，不冒充MIT已审"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            5
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            12
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "523f61c23e23fde122bb3aa3771791394c2fae3c11023f7b100f8d0c8367f1de",
+        "events.jsonl": "8418a4613dd0cbec7f22ddc498e81db44c475de453fb2d908103de78518afb56",
+        "host.json": "3eda86ddb9c87d305a62e9d3bffcde9136d168c041da7365074d42e2ddb5dd9e",
+        "machine-audit.json": "9a06c231b485e7ab6ff5aaf9a457a6ecbc4ca5e694e3796ef165c4b11ac9a467",
+        "case-snapshot.json": "7a18d91e42b27b5173d4f33bdde7137e38b9cd6c1cdf2fb72a285a00026265d5"
+      }
+    },
+    {
+      "id": "implicit-earnings",
+      "case_id": "earnings-periods",
+      "run_dir": "local/skill-evals/20260919-closeout/implicit-earnings",
+      "status": "PASS_BOUNDED",
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "calculation_receipts": 20,
+      "manual_reviewer": "/root",
+      "criteria": [
+        {
+          "criterion": "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+          "status": "PASS",
+          "evidence": "Q3收入60/40，利润9/8"
+        },
+        {
+          "criterion": "区分累计与单季，不能把Provider quarterly直接读为单季",
+          "status": "PASS",
+          "evidence": "S02季度标签不覆盖累计口径疑点"
+        },
+        {
+          "criterion": "比较同比和利润率，并说明量价/原因资料不足",
+          "status": "PASS",
+          "evidence": "同比和利润率5pp差额均留回执；原因未知"
+        },
+        {
+          "criterion": "保留合成与未来报告期限制，不形成真实买卖结论",
+          "status": "PASS",
+          "evidence": "保留合成未来期限制，无买卖判断"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "~/.agents/skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            7
+          ]
+        },
+        {
+          "file": "~/.agents/skills/money-craft/references/earnings-review.md",
+          "sha256": "975b0c413284e2ecd2ec6769134c53aae96654edd7169664ea49350431391c28",
+          "completed_event_lines": [
+            9
+          ]
+        },
+        {
+          "file": "~/.agents/skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            9
+          ]
+        },
+        {
+          "file": "~/.agents/skills/money-craft/references/routing.md",
+          "sha256": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+          "completed_event_lines": [
+            9
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "b95bb5a6ed4d262bcd1d9386e56eb2e2314b3b0c01d4f1a30c89f906eeccf935",
+        "events.jsonl": "9131bef96f1251056007968ec00b74ce75db259874adb6dbd2ed4566b830cdd7",
+        "host.json": "82ecc296d5cac9e789c3bba127b516d5229966641d6b9ed35b40f3bcabff1b76",
+        "machine-audit.json": "98996d88ddd890beb2395a62ea412c92b4bc92190859f5e3faa2a8e992ad1d4b",
+        "case-snapshot.json": "defe179a80bf065499d068a540f02c9be61f716770deedf49c421e17f9dc936e"
+      }
+    },
+    {
+      "id": "historical-host",
+      "case_id": "historical-600519-margins",
+      "run_dir": "local/skill-evals/20260919-closeout/historical-host",
+      "status": "PASS_BOUNDED",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "source_snapshot_matches_final": true,
+      "machine_checks_pass": true,
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "calculation_receipts": 17,
+      "manual_reviewer": "/root",
+      "criteria": [
+        {
+          "criterion": "实际读取两份原始PDF且核对哈希，关键数字绑定正确来源和第5页定位。",
+          "status": "PASS",
+          "evidence": "实际读取两PDF第5页，哈希与材料一致"
+        },
+        {
+          "criterion": "使用营业收入而非营业总收入、归母利润而非净利润；2023年比较列与原始报告对齐，保留币种单位。",
+          "status": "PASS",
+          "evidence": "营业收入/归母利润/OCF均对应正确行，2023比较列一致"
+        },
+        {
+          "criterion": "给出收入/归母利润/OCF同比以及两期归母利润/营业收入，百分点变化有可复算回执。",
+          "status": "PASS",
+          "evidence": "三项同比、两期利润率及-0.1451768768266pp均可复算"
+        },
+        {
+          "criterion": "OCF/归母利润只作明确口径辅助比较，不推断合并净利润现金含量或现金改善原因已证实。",
+          "status": "PASS",
+          "evidence": "OCF/归母利润明确是跨归属口径辅助指标，不证明改善原因"
+        },
+        {
+          "criterion": "历史截止日与2026执行获取日分离；同源限制明确，无超预期、当前估值或买卖结论。",
+          "status": "PASS",
+          "evidence": "2025截止、2026重新获取/执行分开，同源限制，不谈当前买卖"
+        }
+      ],
+      "actual_full_file_reads": [
+        {
+          "file": "skills/money-craft/SKILL.md",
+          "sha256": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+          "completed_event_lines": [
+            5
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/earnings-review.md",
+          "sha256": "975b0c413284e2ecd2ec6769134c53aae96654edd7169664ea49350431391c28",
+          "completed_event_lines": [
+            9
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/financial-data-and-evidence.md",
+          "sha256": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c",
+          "completed_event_lines": [
+            9
+          ]
+        },
+        {
+          "file": "skills/money-craft/references/routing.md",
+          "sha256": "49d6e226362e22da12d815852f71028283de0716ee97ea332a8b2978af98148b",
+          "completed_event_lines": [
+            9
+          ]
+        }
+      ],
+      "artifacts": {
+        "answer.md": "cfa8c4e60bd55d01d97108b00ecaa387481366a56f63773989b166f94d3bacf7",
+        "events.jsonl": "02a118cb73290f690d9c8cfea910b5a9bdec6b6df2c647c16a9b41a5cc32cd8c",
+        "host.json": "334db0edda4d99683e421f329522ca8f88ece4e3326e79329f588a689a243899",
+        "machine-audit.json": "dcb4dcc01a4a68d0ba5d60b1c1ab4517de690b16f93a6be534918c9218a75b97",
+        "case-snapshot.json": "e804d80657b6b652eb2042559ea3eb9ef0e6e96d014a8ef99f7be32e7e0c5343"
+      }
+    }
+  ],
+  "summary": {
+    "synthetic_original_cases_passed": 6,
+    "implicit_installed_host_passed": 1,
+    "historical_official_case_passed": 1,
+    "calculation_receipts_passed": 60,
+    "criteria_passed": 33
+  },
+  "case_file_hashes": {
+    "acceptance/skill-tasks/cases.json": "ce54a1982af27361071417493cfa0d7cf5d266f196a559efbe78b340b610f20e",
+    "acceptance/skill-tasks/historical-cases.json": "99727536519cd4a4fea6df7780d89ef9667ba30c7b187b892fd5087cc192d601"
+  },
+  "excluded_earlier_runs": [
+    {
+      "run_dir": "local/skill-evals/20260919-closeout/earnings-periods",
+      "disposition": "NOT_ACCEPTED_FOR_FINAL_SOURCE",
+      "reason": "Started before final renderer title identity fix; original answers and machine receipts preserved. Same problem rerun on final source."
+    },
+    {
+      "run_dir": "local/skill-evals/20260919-closeout/preview-replay",
+      "disposition": "NOT_ACCEPTED_FOR_FINAL_SOURCE",
+      "reason": "Started before final renderer title identity fix; original answers and machine receipts preserved. Same problem rerun on final source."
+    }
+  ],
+  "core_receipt": "acceptance/core-closeout-20260919.json",
+  "limits": [
+    "One accepted run per case is bounded evidence, not statistical reliability.",
+    "Implicit trigger includes current host global investment rules; not isolated description-only discovery.",
+    "Historical two filings share one issuer; not independent two-source evidence, latest investment advice or formal money archive.",
+    "PDF and browser use synthetic fixture; archived PDF semantics reviewed separately.",
+    "No real Provider live credentials/connectivity, account/trading, commit/push/release or application work."
+  ],
+  "public_path_notation": "Repository paths are relative; home paths use ~/. Original host/runtime receipts remain in local evidence."
+}

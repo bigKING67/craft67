@@ -1,0 +1,48 @@
+{
+  "rationale": "A wins narrowly because it provides the fullest end-to-end correction of the decision flow: exception-first hierarchy, tiered metrics, removal of non-actionable insight content, restrained surfaces, and explicit hostile-state behavior. B is stronger on some visual-system details but omits two important implementation areas from its moves; C is similarly credible but less comprehensive.",
+  "results": [
+    {
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 20,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 13
+      },
+      "label": "A",
+      "summary": "The most complete response: it reorganizes attention around next-hour exceptions, directly challenges equal-weight cards and generic insights, preserves the stated authority, and covers operational states within eight acceptance-backed moves.",
+      "total": 98
+    },
+    {
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 18,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 14
+      },
+      "label": "B",
+      "summary": "Exceptionally strong hierarchy and slightly sharper spacing, encoding, and surface guidance, but its redesign moves leave replacement of generic insights and specification of missing operational states largely to later validation.",
+      "total": 97
+    },
+    {
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 17,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 14
+      },
+      "label": "C",
+      "summary": "Clear, product-specific, and disciplined, with measurable table criteria, but it addresses generic insight content and chart demotion less directly and does not turn the missing loading, empty, error, and focus states into redesign moves.",
+      "total": 94
+    }
+  ],
+  "winner": "A"
+}

@@ -1,0 +1,196 @@
+{
+  "schema": "money-craft.target-valuation-case.v1",
+  "as_of": "2025-04-30",
+  "executed_on": "2026-09-20",
+  "security_id": "US-NYSE:TGT",
+  "currency": "USD",
+  "balance_sheet_date": "2025-02-01",
+  "shares_date": "2025-03-05",
+  "share_count_rollforward": "UNVERIFIED",
+  "balance_sheet_rollforward": "UNVERIFIED",
+  "normalization_status": "NO_VERIFIED_SUSTAINABLE_BASELINE",
+  "values": {
+    "price": {
+      "value": "96.70",
+      "unit": "USD/share",
+      "source_id": "S04",
+      "locator": "2025-04-30 OHLC row; S07 quote.close rounds to USD cents"
+    },
+    "shares": {
+      "value": "455.576464",
+      "unit": "million shares",
+      "source_id": "S01",
+      "locator": "10-K cover: March 5, 2025 outstanding 455,576,464"
+    },
+    "weighted_diluted": {
+      "value": "461.8",
+      "unit": "million shares",
+      "source_id": "S01",
+      "locator": "10-K p42 FY2024 weighted average diluted"
+    },
+    "debt_current": {
+      "value": "1636",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K p44 current debt"
+    },
+    "debt_noncurrent": {
+      "value": "14304",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K p44 noncurrent debt; note15 p55"
+    },
+    "finance_lease": {
+      "value": "2161",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "note15: already included in borrowings"
+    },
+    "operating_lease": {
+      "value": "3935",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "note17 pp56-58: present value of operating lease liabilities"
+    },
+    "cash": {
+      "value": "4762",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K p44 cash and equivalents"
+    },
+    "short_investments": {
+      "value": "3893",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "five-year summary and note6 p49; cash-equivalent short-term investments"
+    },
+    "issuer_net_debt": {
+      "value": "12047",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "five-year summary non-GAAP definition"
+    },
+    "net_income": {
+      "value": "4091",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K p42 FY2024 net earnings"
+    },
+    "eps": {
+      "value": "8.86",
+      "unit": "USD/share",
+      "source_id": "S01",
+      "locator": "10-K p42 FY2024 GAAP diluted; adjusted also 8.86 p31"
+    },
+    "eps_2023": {
+      "value": "8.94",
+      "unit": "USD/share",
+      "source_id": "S01",
+      "locator": "FY2023 53 weeks GAAP diluted"
+    },
+    "eps_2022": {
+      "value": "5.98",
+      "unit": "USD/share",
+      "source_id": "S01",
+      "locator": "FY2022 GAAP diluted"
+    },
+    "eps_2021": {
+      "value": "14.10",
+      "unit": "USD/share",
+      "source_id": "S01",
+      "locator": "five-year summary FY2021 GAAP diluted"
+    },
+    "eps_2020": {
+      "value": "8.64",
+      "unit": "USD/share",
+      "source_id": "S01",
+      "locator": "five-year summary FY2020 GAAP diluted"
+    },
+    "ocf": {
+      "value": "7367",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K cash flows FY2024"
+    },
+    "capex": {
+      "value": "2891",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K cash flows FY2024 property/equipment"
+    },
+    "guidance_low": {
+      "value": "8.80",
+      "unit": "USD/share",
+      "source_id": "S02",
+      "locator": "2025 guidance announced March 4, 2025"
+    },
+    "guidance_high": {
+      "value": "9.80",
+      "unit": "USD/share",
+      "source_id": "S02",
+      "locator": "2025 guidance announced March 4, 2025"
+    },
+    "capex_low": {
+      "value": "4000",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K p33 FY2025 capex outlook"
+    },
+    "capex_high": {
+      "value": "5000",
+      "unit": "USD million",
+      "source_id": "S01",
+      "locator": "10-K p33 FY2025 capex outlook"
+    },
+    "analyst_eps": {
+      "value": "9.15",
+      "unit": "USD/share",
+      "source_id": "S03",
+      "locator": "p1 analyst forecast dated March12, not consensus"
+    },
+    "analyst_pe": {
+      "value": "15",
+      "unit": "times",
+      "source_id": "S03",
+      "locator": "p2 analyst fair multiple assumption, not observed April30 PE"
+    },
+    "analyst_spot_pe": {
+      "value": "12.3",
+      "unit": "times",
+      "source_id": "S03",
+      "locator": "p2 rounded March12 forward PE, not current April30 quote"
+    },
+    "wmt_price": {
+      "value": "97.25",
+      "unit": "USD/share",
+      "source_id": "S09",
+      "locator": "quote.close April30; single captured provider"
+    },
+    "wmt_eps": {
+      "value": "2.41",
+      "unit": "USD/share",
+      "source_id": "S08",
+      "locator": "FY2025 GAAP diluted earnings Jan31 annual"
+    }
+  },
+  "scenarios": [
+    {
+      "name": "bear_stress",
+      "eps_key": "eps_2022",
+      "pe_key": "analyst_spot_pe",
+      "basis": "HYPOTHESIZED: historical trough GAAP EPS and prior-date observed forward multiple; stress combination, not expected loss floor"
+    },
+    {
+      "name": "base_external",
+      "eps_key": "analyst_eps",
+      "pe_key": "analyst_pe",
+      "basis": "HYPOTHESIZED: reproduce one named analyst March12 forecast and multiple; not Money Craft fair value"
+    },
+    {
+      "name": "bull_guidance",
+      "eps_key": "guidance_high",
+      "pe_key": "analyst_pe",
+      "basis": "HYPOTHESIZED: management guidance high end combined with analyst multiple; independent realization not verified"
+    }
+  ]
+}

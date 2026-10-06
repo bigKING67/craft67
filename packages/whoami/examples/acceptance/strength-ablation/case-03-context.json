@@ -1,0 +1,557 @@
+{
+  "schema": "whoami.evidence.v1",
+  "chartId": "d03f105b1330e8f7fc35787c5a9fa1fe896352e822d84dcbd0fcabec072b6e47",
+  "evidenceId": "7de3b2a319102b641ad2b267be082d74b63d996ad590703471b689af74a42288",
+  "status": "ready",
+  "input": {
+    "calendar": "solar",
+    "date": "1998-05-09",
+    "leapMonth": false,
+    "time": "10:20:00",
+    "uncertaintyMinutes": 0,
+    "place": "合成东经120度",
+    "longitude": 120,
+    "timeZone": "Asia/Shanghai",
+    "gender": "male",
+    "timeBasis": "true-solar",
+    "dayBoundary": "zi",
+    "dstDisambiguation": "reject"
+  },
+  "years": [
+    2026,
+    2027,
+    2028
+  ],
+  "warnings": [
+    "真太阳时使用 NOAA 近似均时差；±2 分钟仅作边界筛查，不是经认证的误差上限，不能声称秒级精度。"
+  ],
+  "candidateIds": [
+    "C1-d211efa9"
+  ],
+  "facts": [
+    {
+      "id": "C1-d211efa9.input.time",
+      "candidate": "C1-d211efa9",
+      "system": "input",
+      "label": "代表性时间及校正",
+      "value": {
+        "instant": "1998-05-09T02:20:00Z",
+        "civil": "1998-05-09T10:20:00+08:00[Asia/Shanghai]",
+        "trueSolar": "1998-05-09T10:23:44.864",
+        "chartClock": "1998-05-09T10:23:44.864",
+        "offsetMinutes": 480,
+        "longitudeCorrectionMinutes": 0,
+        "equationOfTimeMinutes": 3.7477271887435193,
+        "totalCorrectionMinutes": 3.7477271887435193,
+        "model": "NOAA fractional-year equation of time",
+        "solarShiftMinutes": 0,
+        "screeningMarginMinutes": 2
+      },
+      "source": "NOAA + IANA tzdata"
+    },
+    {
+      "id": "C1-d211efa9.bazi.year",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "year 柱",
+      "value": {
+        "position": "year",
+        "value": "戊寅",
+        "stem": "戊",
+        "branch": "寅",
+        "element": "土",
+        "tenGod": "食神",
+        "hiddenStems": [
+          {
+            "stem": "甲",
+            "element": "木",
+            "tenGod": "偏印"
+          },
+          {
+            "stem": "丙",
+            "element": "火",
+            "tenGod": "比肩"
+          },
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "食神"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-d211efa9.bazi.month",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "month 柱",
+      "value": {
+        "position": "month",
+        "value": "丁巳",
+        "stem": "丁",
+        "branch": "巳",
+        "element": "火",
+        "tenGod": "劫财",
+        "hiddenStems": [
+          {
+            "stem": "丙",
+            "element": "火",
+            "tenGod": "比肩"
+          },
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "食神"
+          },
+          {
+            "stem": "庚",
+            "element": "金",
+            "tenGod": "偏财"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-d211efa9.bazi.day",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "day 柱",
+      "value": {
+        "position": "day",
+        "value": "丙辰",
+        "stem": "丙",
+        "branch": "辰",
+        "element": "火",
+        "tenGod": "日主",
+        "hiddenStems": [
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "食神"
+          },
+          {
+            "stem": "乙",
+            "element": "木",
+            "tenGod": "正印"
+          },
+          {
+            "stem": "癸",
+            "element": "水",
+            "tenGod": "正官"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-d211efa9.bazi.hour",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "hour 柱",
+      "value": {
+        "position": "hour",
+        "value": "癸巳",
+        "stem": "癸",
+        "branch": "巳",
+        "element": "水",
+        "tenGod": "正官",
+        "hiddenStems": [
+          {
+            "stem": "丙",
+            "element": "火",
+            "tenGod": "比肩"
+          },
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "食神"
+          },
+          {
+            "stem": "庚",
+            "element": "金",
+            "tenGod": "偏财"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-d211efa9.bazi.dayMaster",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "日主",
+      "value": "丙",
+      "source": "lunar-typescript; declared day boundary"
+    },
+    {
+      "id": "C1-d211efa9.bazi.monthExposure",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "月支藏干及年/月/时同干透出（不判成格）",
+      "value": {
+        "monthBranch": "巳",
+        "dayMaster": "丙",
+        "hiddenStems": [
+          {
+            "stem": "丙",
+            "element": "火",
+            "tenGod": "比肩",
+            "matchesDayMaster": true,
+            "exposedAt": []
+          },
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "食神",
+            "matchesDayMaster": false,
+            "exposedAt": [
+              "year"
+            ]
+          },
+          {
+            "stem": "庚",
+            "element": "金",
+            "tenGod": "偏财",
+            "matchesDayMaster": false,
+            "exposedAt": []
+          }
+        ]
+      },
+      "source": "whoami：既有月支藏干与年/月/时天干精确匹配；日干匹配单列，未算月令司权或格局"
+    },
+    {
+      "id": "C1-d211efa9.bazi.wealthReview",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "月令财星透出的条件核对（非成败裁定）",
+      "value": {
+        "scope": "月支财星同干透于年/月/时；仅核对显干前提",
+        "status": "outside-scope",
+        "monthBranch": "巳",
+        "candidates": [],
+        "sealPlacement": {
+          "status": "not-applicable",
+          "pairs": [],
+          "conclusion": "财格候选入口或显干财印配对未满足；本项不作位置判断。",
+          "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+          "source": "https://donglishuzhai.net/chapter/3746.html"
+        },
+        "officerBranch": {
+          "status": "not-applicable",
+          "officers": [
+            {
+              "position": "hour",
+              "stem": "癸",
+              "tenGod": "正官"
+            }
+          ],
+          "checks": [
+            {
+              "id": "no-visible-hurting",
+              "condition": "不透伤官",
+              "positions": [],
+              "result": "not-observed"
+            },
+            {
+              "id": "no-visible-killer",
+              "condition": "未见七杀同透（不混七杀的局部检查）",
+              "positions": [],
+              "result": "not-observed"
+            }
+          ],
+          "blockers": [],
+          "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+          "conclusion": "月令透财入口或显官入口未满足，本项不作财旺生官分支判断；不否定暗官及其他取法。",
+          "source": "https://donglishuzhai.net/chapter/3746.html"
+        },
+        "checks": [],
+        "judgment": "unresolved",
+        "source": "https://donglishuzhai.net/chapter/3722.html",
+        "limits": [
+          "not-observed 仅指本轮显干条件未见，不表示藏干无作用、没有救应或现实无该事件。",
+          "outside-scope 仅表示不满足本模块入口，不表示无财格；未覆盖未透取用、会支变化及其他格局。",
+          "所有线索并列保留，不相互抵消、计分或多数表决；旺衰、位置、合化、制化有效性仍需单独论证。"
+        ]
+      },
+      "source": "whoami 显干前提检测；传统条件见《子平真诠·论用神成败救应》原文转录"
+    },
+    {
+      "id": "C1-d211efa9.bazi.roots",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "同五行藏干所在柱（仅通根线索）",
+      "value": [
+        "year",
+        "month",
+        "hour"
+      ],
+      "source": "传统藏干表；不计强弱权重"
+    },
+    {
+      "id": "C1-d211efa9.bazi.visibleElements",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "四个天干五行出现数",
+      "value": {
+        "木": 0,
+        "火": 2,
+        "土": 1,
+        "金": 0,
+        "水": 1
+      },
+      "source": "unweighted descriptive counts"
+    },
+    {
+      "id": "C1-d211efa9.bazi.relations",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "地支关系（不自动判化局或事件）",
+      "value": [
+        {
+          "kind": "害",
+          "positions": [
+            "year",
+            "month"
+          ],
+          "branches": "寅巳"
+        },
+        {
+          "kind": "害",
+          "positions": [
+            "year",
+            "hour"
+          ],
+          "branches": "寅巳"
+        }
+      ],
+      "source": "传统合冲刑害关系表；首版仅列全三合/全三刑与成对关系"
+    },
+    {
+      "id": "C1-d211efa9.bazi.rootDetails",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "同五行藏干与直接六冲来源（不裁定根气有效性）",
+      "value": [
+        {
+          "position": "year",
+          "branch": "寅",
+          "hiddenStem": "丙",
+          "element": "火",
+          "tenGod": "比肩",
+          "sameStemAsDayMaster": true,
+          "clashSources": []
+        },
+        {
+          "position": "month",
+          "branch": "巳",
+          "hiddenStem": "丙",
+          "element": "火",
+          "tenGod": "比肩",
+          "sameStemAsDayMaster": true,
+          "clashSources": []
+        },
+        {
+          "position": "hour",
+          "branch": "巳",
+          "hiddenStem": "丙",
+          "element": "火",
+          "tenGod": "比肩",
+          "sameStemAsDayMaster": true,
+          "clashSources": []
+        }
+      ],
+      "source": "whoami：既有藏干事实与直接六冲关系联结；无旺衰、根气权重或冲毁裁定"
+    },
+    {
+      "id": "C1-d211efa9.bazi.cycles",
+      "candidate": "C1-d211efa9",
+      "system": "bazi",
+      "label": "起运与大运流年",
+      "value": {
+        "direction": "forward",
+        "method": "lunar-typescript Yun sect=2; absolute birth vs Jie; original civil basis",
+        "startAge": {
+          "years": 9,
+          "months": 3,
+          "days": 4,
+          "hours": 10
+        },
+        "startInstant": "2007-08-13T12:20:00Z",
+        "startCivil": "2007-08-13T20:20:00+08:00[Asia/Shanghai]",
+        "decades": [
+          {
+            "index": 1,
+            "pillar": "戊午",
+            "startCivil": "2007-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2017-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 2,
+            "pillar": "己未",
+            "startCivil": "2017-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2027-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 3,
+            "pillar": "庚申",
+            "startCivil": "2027-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2037-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 4,
+            "pillar": "辛酉",
+            "startCivil": "2037-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2047-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 5,
+            "pillar": "壬戌",
+            "startCivil": "2047-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2057-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 6,
+            "pillar": "癸亥",
+            "startCivil": "2057-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2067-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 7,
+            "pillar": "甲子",
+            "startCivil": "2067-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2077-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 8,
+            "pillar": "乙丑",
+            "startCivil": "2077-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2087-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 9,
+            "pillar": "丙寅",
+            "startCivil": "2087-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2097-08-13T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 10,
+            "pillar": "丁卯",
+            "startCivil": "2097-08-13T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2107-08-13T20:20:00+08:00[Asia/Shanghai]"
+          }
+        ],
+        "yearly": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun"
+          }
+        ]
+      },
+      "source": "lunar-typescript Yun sect=2; whoami absolute-time adapter"
+    }
+  ],
+  "rules": [
+    {
+      "id": "C1-d211efa9.R-bazi-structure",
+      "candidate": "C1-d211efa9",
+      "label": "旺衰、格局与用神分开论证",
+      "factRefs": [
+        "C1-d211efa9.bazi.dayMaster",
+        "C1-d211efa9.bazi.month",
+        "C1-d211efa9.bazi.monthExposure",
+        "C1-d211efa9.bazi.roots",
+        "C1-d211efa9.bazi.rootDetails",
+        "C1-d211efa9.bazi.visibleElements",
+        "C1-d211efa9.bazi.year",
+        "C1-d211efa9.bazi.month",
+        "C1-d211efa9.bazi.day",
+        "C1-d211efa9.bazi.hour"
+      ],
+      "guidance": "先结合月令、透干与藏干通根说明支持/反对理由。五行计数只是描述，不能据数量判旺衰或缺什么补什么。格局、调候与扶抑分列依据，存在冲突时说明适用条件；证据不足则不确定，不自动给唯一用神。",
+      "source": "references/analysis.md#八字"
+    },
+    {
+      "id": "C1-d211efa9.R-bazi-wealth-review",
+      "candidate": "C1-d211efa9",
+      "label": "财格候选分清出现、作用与成败",
+      "factRefs": [
+        "C1-d211efa9.bazi.wealthReview",
+        "C1-d211efa9.bazi.monthExposure",
+        "C1-d211efa9.bazi.rootDetails",
+        "C1-d211efa9.bazi.year",
+        "C1-d211efa9.bazi.month",
+        "C1-d211efa9.bazi.day",
+        "C1-d211efa9.bazi.hour",
+        "C1-d211efa9.bazi.relations"
+      ],
+      "guidance": "逐项说明已出现的显干前提与尚未裁定的旺衰、位置及制化条件。支持、风险和救应线索必须同时保留；not-observed 不等于无作用，outside-scope 不等于无格。不能从某个组合出现直接输出成格、破格或救应完成，最终仍需说明未决条件。",
+      "source": "references/analysis.md#财格候选复核"
+    },
+    {
+      "id": "C1-d211efa9.R-bazi-month-exposure",
+      "candidate": "C1-d211efa9",
+      "label": "月令藏干透出与格局成败分开核验",
+      "factRefs": [
+        "C1-d211efa9.bazi.dayMaster",
+        "C1-d211efa9.bazi.monthExposure",
+        "C1-d211efa9.bazi.year",
+        "C1-d211efa9.bazi.month",
+        "C1-d211efa9.bazi.day",
+        "C1-d211efa9.bazi.hour",
+        "C1-d211efa9.bazi.relations"
+      ],
+      "guidance": "先逐个核对月支藏干及年/月/时同一天干的透出位置；同五行不同干不算本项透出，日干同字单列。透干仅提供格局分析线索；多干同透全部保留，不按出现次数选唯一用神，未透也不等于无格。月令司权、会支变化、成败救应及制化有效性仍需另行论证。《子平真诠》的月令用神语境不得直接替代调候或扶抑用神。",
+      "source": "references/analysis.md#月令透干复核"
+    },
+    {
+      "id": "C1-d211efa9.R-bazi-root-review",
+      "candidate": "C1-d211efa9",
+      "label": "藏干存在与根气作用分开核对",
+      "factRefs": [
+        "C1-d211efa9.bazi.dayMaster",
+        "C1-d211efa9.bazi.roots",
+        "C1-d211efa9.bazi.rootDetails",
+        "C1-d211efa9.bazi.relations",
+        "C1-d211efa9.bazi.year",
+        "C1-d211efa9.bazi.month",
+        "C1-d211efa9.bazi.day",
+        "C1-d211efa9.bazi.hour"
+      ],
+      "guidance": "先核对具体柱、地支和藏干，再讨论对日主的支持。同五行与同天干分别列出；直接受冲的根仍是盘面事实，不能直接删除，未列直接六冲也不等于根气有效或身强。结合月令、透干及其他关系提出支持、反证与待核条件；不把多条同源描述重复计为独立证据，不自动裁定旺衰、从格或用神。",
+      "source": "references/analysis.md#通根复核"
+    },
+    {
+      "id": "C1-d211efa9.R-bazi-timing",
+      "candidate": "C1-d211efa9",
+      "label": "本命与运年联读",
+      "factRefs": [
+        "C1-d211efa9.bazi.cycles",
+        "C1-d211efa9.bazi.relations",
+        "C1-d211efa9.bazi.year",
+        "C1-d211efa9.bazi.month",
+        "C1-d211efa9.bazi.day",
+        "C1-d211efa9.bazi.hour"
+      ],
+      "guidance": "将具体运年与本命柱联系，区分触发线索、替代解释及现实条件；冲不等于灾、合不等于吉，不从关系表直接推断具体人生事件。",
+      "source": "references/analysis.md#八字"
+    }
+  ],
+  "limits": [
+    "确定性排盘不证明现实预测有效。",
+    "不同命理体系的同向解读不是独立统计验证。",
+    "规则依据仅支持传统解释，不构成医疗、投资或婚姻决策的事实证明。"
+  ]
+}

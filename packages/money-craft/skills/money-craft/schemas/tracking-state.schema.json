@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-state.schema.json",
+  "title": "Money Craft Tracking State",
+  "type": "object",
+  "required": ["schema", "security", "security_id", "as_of", "data_cutoff", "base_currency", "tracking_revision", "health", "hypotheses", "red_lines", "automatic_trading"],
+  "properties": {
+    "schema": {"const": "money-craft.tracking-state.v1"},
+    "security": {"type": "string", "minLength": 1},
+    "security_id": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]{1,15}:[A-Z0-9][A-Z0-9._-]{0,31}$"},
+    "as_of": {"type": "string", "format": "date"},
+    "data_cutoff": {"type": "string", "format": "date-time"},
+    "base_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "tracking_revision": {"type": "string", "pattern": "^(DRAFT|t[0-9]{4})$"},
+    "source_research": {"type": "object"},
+    "health": {
+      "type": "object",
+      "required": ["score", "maximum", "status", "formula"],
+      "properties": {
+        "score": {"type": "integer", "minimum": 1, "maximum": 10},
+        "maximum": {"const": 10},
+        "status": {"enum": ["SUPPORTED", "WEAKENED", "DAMAGED", "BROKEN"]},
+        "formula": {"type": "string", "minLength": 1}
+      }
+    },
+    "hypotheses": {"type": "object", "additionalProperties": {"enum": ["SUPPORTED", "WEAKENED", "DAMAGED", "BROKEN", "UNVERIFIED"]}},
+    "red_lines": {"type": "object", "additionalProperties": {"enum": ["CLEAR", "WATCH", "TRIGGERED", "UNVERIFIED"]}},
+    "automatic_trading": {"const": false}
+  }
+}

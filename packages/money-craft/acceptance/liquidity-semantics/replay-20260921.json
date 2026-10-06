@@ -1,0 +1,345 @@
+{
+  "schema": "money-craft.liquidity-semantic-replay.v1",
+  "fixture_sha256": "6e51f4289d161d02f3bfeafd31468c2d1772492916581022f713bdc984650544",
+  "scope": "authored-pair audit observations only",
+  "host_skill_evaluated": false,
+  "independent_semantic_review": false,
+  "results": [
+    {
+      "case": "entity-scope",
+      "variant": "supported_claim",
+      "authored_manual_label": "SUPPORTED_WITHIN_SCOPE",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "7df4ee3ce0f28c5322a2370094198c164eee436ec7640a8921c25cb207ca2a18",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "subtract",
+            "actual": "300",
+            "expected": "300",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "case": "entity-scope",
+      "variant": "contradicted_claim",
+      "authored_manual_label": "CONTRADICTED",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "3f2a30f59cceabd98edc8f5a3d51f55ca476b2ce373032cefd0aab8428af0c18",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "subtract",
+            "actual": "300",
+            "expected": "300",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "case": "current-convertible",
+      "variant": "supported_claim",
+      "authored_manual_label": "SUPPORTED_WITHIN_SCOPE",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "7d3ed79ba0f774488890c5a6c903fcbaa84b94a5452aa0e553d61e64aa53670a",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "add",
+            "actual": "100",
+            "expected": "100",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "case": "current-convertible",
+      "variant": "contradicted_claim",
+      "authored_manual_label": "CONTRADICTED",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "3ad1e7601d98174c17e9efe3ad48d637c99f45fc7cdd051843850a7d610464a3",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "add",
+            "actual": "100",
+            "expected": "100",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "case": "restricted-cash",
+      "variant": "supported_claim",
+      "authored_manual_label": "SUPPORTED_WITHIN_SCOPE",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "5a20e87cd9a250bcadf7225825a6c618af4d30b12ba86e78a5a6f5c871b32036",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "subtract",
+            "actual": "60",
+            "expected": "60",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "case": "restricted-cash",
+      "variant": "contradicted_claim",
+      "authored_manual_label": "CONTRADICTED",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "563d86894e0530daba37314c0ca61be041ce925963c4eaabde9804cc0b1564a0",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "subtract",
+            "actual": "60",
+            "expected": "60",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "case": "maturity-release",
+      "variant": "supported_claim",
+      "authored_manual_label": "SUPPORTED_WITHIN_SCOPE",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "381bdc04a9ad67adfa976f0bab7d24b8313dd0bab80d30f78ad0dc9d2030d230",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "subtract",
+            "actual": "139",
+            "expected": "139",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "case": "maturity-release",
+      "variant": "contradicted_claim",
+      "authored_manual_label": "CONTRADICTED",
+      "manual_label_is_runtime_verdict": false,
+      "report_sha256": "462ba22b86ddf4218c8a9b45a5e4560222f4d5049c963c41ebcd14484a326b59",
+      "report_audit": {
+        "schema": "money-craft.report-audit.v1",
+        "valid": true,
+        "metadata": {
+          "schema": "money-craft.report.v1",
+          "workflow": "earnings",
+          "security": "Synthetic Liquidity Company",
+          "security_id": "TEST:LIQUIDITY",
+          "as_of": "2026-09-21",
+          "data_cutoff": "2026-09-21T00:00:00+08:00",
+          "base_currency": "CNY",
+          "provider_status": "synthetic-offline"
+        },
+        "source_count": 2,
+        "citation_count": 2,
+        "warnings": [],
+        "errors": []
+      },
+      "financial_audit": {
+        "schema": "money-craft.financial-audit.v1",
+        "valid": true,
+        "checks": [
+          {
+            "id": "C01",
+            "operation": "subtract",
+            "actual": "139",
+            "expected": "139",
+            "relative_error": "0",
+            "tolerance": "0",
+            "passed": true
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    }
+  ]
+}

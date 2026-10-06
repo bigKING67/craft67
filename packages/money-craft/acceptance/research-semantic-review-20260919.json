@@ -1,0 +1,286 @@
+{
+  "schema": "money-craft.semantic-review-acceptance.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED_REVIEW_EXERCISE",
+  "reviewer": "main-agent self-review; not independent",
+  "scope": "Frozen Moutai research E2E sample; claim support and interpretation boundaries",
+  "research_as_of": "2026-09-19",
+  "new_data_collected": false,
+  "original_sealed_inputs_unchanged": true,
+  "inputs": [
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/report.md",
+      "sha256": "c829bf1384addf890693df1a51f47b8f908ab5d2b21efc4792ff076dbadc1f3c",
+      "matches_prior_acceptance": true
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/thesis.md",
+      "sha256": "74f8c8a9d9235ae8087aedaf26b8cc7a64cb9bcaea7ec494cd4c308af070486d",
+      "matches_prior_acceptance": true
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/financial-reconciliation.json",
+      "sha256": "fc5874483f4990d4c6061819b5f1d9f3d9192b36e6742c266b749b5f301e8778",
+      "matches_prior_acceptance": true
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/completion-receipt.json",
+      "sha256": "19a9f7a0d7ef988bfaf30cc4415a98490a80f6ba2f262b810f001375a2183ece",
+      "matches_prior_acceptance": true
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/evidence/S11-official.pdf",
+      "sha256": "0e10aa26be46b1cf3cd03f06e834c7fb98d5dd0d661b96f8fddd4af7e846a4f6",
+      "matches_prior_acceptance": true
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/evidence/S12-official.pdf",
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288",
+      "matches_prior_acceptance": true
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/evidence/S18-official.pdf",
+      "sha256": "1a12378ed0e4a803eae00e73c74bc20eb2d73821fc960d746d52476dbf80df1d",
+      "matches_prior_acceptance": true
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/evidence/S20-official.pdf",
+      "sha256": "24e51c43dfc6da7d3a19c67b88081715a3a3b4a26c2d83ec51a557e3e5692873",
+      "matches_prior_acceptance": true
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "H1归母利润低于上年同期",
+      "verdict": "SUPPORTED_WITHIN_SCOPE",
+      "locator": "S11 p5同表比较",
+      "support_boundary": "仅支持本期同比承压，不推出长期衰退。",
+      "decision_effect": "不把单期变动外推正常化盈利。"
+    },
+    {
+      "id": "C02",
+      "claim": "货币资金与期末现金范围不同，需现金桥",
+      "verdict": "SUPPORTED_WITHIN_SCOPE",
+      "locator": "S11 p53与p82",
+      "support_boundary": "披露分项支持分类调和，不支持全部合并现金归股东所有。",
+      "decision_effect": "估值未额外加回集团现金；可分配性仍缺证据。"
+    },
+    {
+      "id": "C03",
+      "claim": "本次会计政策变更无追溯、无重大影响",
+      "verdict": "SUPPORTED_WITHIN_SCOPE",
+      "locator": "S18 p3",
+      "support_boundary": "仅为发行人对本次变更的披露，不是外部确认或所有会计问题均不存在。",
+      "decision_effect": "保持reported比较，不将声明扩大到全部会计风险。"
+    },
+    {
+      "id": "C04",
+      "claim": "Q2收入由H1减Q1推导",
+      "verdict": "SUPPORTED_WITHIN_SCOPE",
+      "locator": "S11 p5；S14 Q1；外层Q1 PDF p1",
+      "support_boundary": "INFERRED推导值，不是第三份独立单季披露。",
+      "decision_effect": "reported_quarter旧字段不赋予更高证据等级。"
+    },
+    {
+      "id": "C05",
+      "claim": "7月价格调整为H1之后事项",
+      "verdict": "SUPPORTED_WITHIN_SCOPE",
+      "locator": "S20 p1；S11 p5报告窗口",
+      "support_boundary": "支持动作和时间，不支持销量、接受度与盈利贡献。",
+      "decision_effect": "不解释H1盈利，不量化未证实的后续增量。"
+    },
+    {
+      "id": "C06",
+      "claim": "三档利润与PE设定支持合理价值",
+      "verdict": "UNVERIFIED",
+      "locator": "报告估值表与其HYPOTHESIZED说明",
+      "support_boundary": "算术通过，但0.9/1/1.1倍TTM及16/20/24倍PE无独立经营或可比依据。原报告已限制为演示。",
+      "decision_effect": "维持敏感性演示；不得据此给目标价、安全边际或仓位。"
+    },
+    {
+      "id": "C07",
+      "claim": "Provider与正式报表可作为独立双源",
+      "verdict": "UNVERIFIED",
+      "locator": "本轮Provider captures与S11/S12；无血缘独立证明",
+      "support_boundary": "11项相同值证明字段映射与转录一致，不证明独立生成事实。",
+      "decision_effect": "披露独立性缺口；停止依赖独立确认的确定性判断。"
+    },
+    {
+      "id": "C08",
+      "claim": "H01足以构成可执行完整论文",
+      "verdict": "UNVERIFIED",
+      "locator": "thesis.md核心假设与证伪条件",
+      "support_boundary": "只有一条假设，后续两期未明示季度与单季/YTD口径；未满足完整论文3至7项依赖要求。",
+      "decision_effect": "在补充记录明确2026Q3/Q4单季窗口，分列现金与估值依赖；均保持UNVERIFIED。"
+    },
+    {
+      "id": "C09",
+      "claim": "OCF变动受到财务公司款项影响",
+      "verdict": "SUPPORTED_WITHIN_SCOPE",
+      "locator": "S11 p5公司说明",
+      "support_boundary": "观察到发行人归因，不等于独立验证因果贡献或主业回款改善。",
+      "decision_effect": "不把合并OCF增长当作酒业现金转换改善证据。"
+    },
+    {
+      "id": "C10",
+      "claim": "已取得全部影响决策的最新公告",
+      "verdict": "UNVERIFIED",
+      "locator": "S13所取目录及本轮导入列表",
+      "support_boundary": "目录可用与5份导入不能证明全量公告覆盖；未刷新新截止时间。",
+      "decision_effect": "source_freshness保持UNVERIFIED，不把历史样例当当前完整研究。"
+    }
+  ],
+  "counts": {
+    "claims_reviewed": 10,
+    "supported_within_scope": 6,
+    "unverified": 4,
+    "designed_mutations": 6,
+    "manual_rejections": 6,
+    "machine_structure_and_calculation_passes": 6
+  },
+  "mutations": [
+    {
+      "id": "M01",
+      "topic": "财务公司现金波动",
+      "wrong_claim": "经营现金流增长已证明白酒主业回款质量改善。[S11]",
+      "artifact": "local/acceptance/20260919-semantic-review/M01.md",
+      "sha256": "46580f7bb7577916c702111ff73b3903adf8d50ab4e066d6298c5088e75b4c96",
+      "structure_audit_valid": true,
+      "financial_audit_valid": true,
+      "calculation_count": 11,
+      "semantic_verdict": "CONTRADICTED_INFERENCE",
+      "reason": "S11 p5明确财务公司存款与同业款项因素，未给主业贡献拆分。",
+      "reviewer": "main-agent",
+      "automatically_blocked": false
+    },
+    {
+      "id": "M02",
+      "topic": "合并现金归属",
+      "wrong_claim": "期末现金及现金等价物可全部加到母公司股东可得价值。[S11]",
+      "artifact": "local/acceptance/20260919-semantic-review/M02.md",
+      "sha256": "d35804363ce66b297e932d95ae448115b365ef6d7c9dbb41fdb214debcbe868f",
+      "structure_audit_valid": true,
+      "financial_audit_valid": true,
+      "calculation_count": 11,
+      "semantic_verdict": "UNSUPPORTED",
+      "reason": "S11 p82是合并现金范围，缺少所有权、监管资本、负债和可调度性桥。",
+      "reviewer": "main-agent",
+      "automatically_blocked": false
+    },
+    {
+      "id": "M03",
+      "topic": "期后归因",
+      "wrong_claim": "7月价格调整已经推动2026H1实现利润改善。[S11][S20]",
+      "artifact": "local/acceptance/20260919-semantic-review/M03.md",
+      "sha256": "ce35de06829264bb78a6e86ef824dbfcdd936709bd9c3827f85348f912823734",
+      "structure_audit_valid": true,
+      "financial_audit_valid": true,
+      "calculation_count": 11,
+      "semantic_verdict": "CONTRADICTED",
+      "reason": "S20生效日7月18日晚于S11的1至6月窗口；利润同比亦下降。",
+      "reviewer": "main-agent",
+      "automatically_blocked": false
+    },
+    {
+      "id": "M04",
+      "topic": "敏感性冒充目标价",
+      "wrong_claim": "中性情景结果已验证为合理目标价，足以据此形成买入判断。[S11][S12]",
+      "artifact": "local/acceptance/20260919-semantic-review/M04.md",
+      "sha256": "2254b1961caa89cdaf6876fb474cef8a482edd652710bf68c5f464676475b4e4",
+      "structure_audit_valid": true,
+      "financial_audit_valid": true,
+      "calculation_count": 11,
+      "semantic_verdict": "UNSUPPORTED",
+      "reason": "利润系数与PE仅设定假设；正确乘除不能认证倍数经济依据。",
+      "reviewer": "main-agent",
+      "automatically_blocked": false
+    },
+    {
+      "id": "M05",
+      "topic": "伪独立来源",
+      "wrong_claim": "正式年报与Provider数值一致，已经证明两个独立来源确认所有财务事实。[S12][S05]",
+      "artifact": "local/acceptance/20260919-semantic-review/M05.md",
+      "sha256": "ba207cb47daf1ac3509bf5def96e84174af00ef403b06eede6e2ab8e6ff29068",
+      "structure_audit_valid": true,
+      "financial_audit_valid": true,
+      "calculation_count": 11,
+      "semantic_verdict": "UNSUPPORTED",
+      "reason": "未记录Provider独立生成路径，且11项对照不是全部财务事实。",
+      "reviewer": "main-agent",
+      "automatically_blocked": false
+    },
+    {
+      "id": "M06",
+      "topic": "完整性冒充准出",
+      "wrong_claim": "完成收据证明盈利恢复与长期定价能力均已得到充分验证。[S11][S20]",
+      "artifact": "local/acceptance/20260919-semantic-review/M06.md",
+      "sha256": "2bea14e8ddb2a2da39098da0bc27feebe84b5173286c6ecddd408d88eb3c058a",
+      "structure_audit_valid": true,
+      "financial_audit_valid": true,
+      "calculation_count": 11,
+      "semantic_verdict": "UNSUPPORTED",
+      "reason": "completion receipt与事实来源不证明未观测的未来经营；H01仍UNVERIFIED。",
+      "reviewer": "main-agent",
+      "automatically_blocked": false
+    }
+  ],
+  "investment_research_readiness": "NOT_ESTABLISHED",
+  "machine_assessment_override": false,
+  "limits": [
+    "Self-designed cases and main-agent review; not independent or held-out host acceptance.",
+    "Machine audits intentionally remain unable to certify semantics; no runtime semantic detector added.",
+    "Original financial facts are reviewed as captured, not refreshed market data or advice.",
+    "Missing evidence remains missing; reviewer verdict is not proof of profitability."
+  ],
+  "addendum": "docs/research-semantic-review-20260919.md",
+  "verification": {
+    "source_checks": 19,
+    "package_checks": 8,
+    "audit_regressions": 34,
+    "installed_file_parity": 72,
+    "original_research_status_complete": true,
+    "original_machine_claim_support": "UNVERIFIED",
+    "runtime_code_changed": false,
+    "full_runtime_suite_rerun": false,
+    "host_replay_performed": false
+  },
+  "verification_artifacts": [
+    {
+      "path": "skills/money-craft/references/research-semantic-review.md",
+      "sha256": "bb777c4d2c2f48714cef2c3565890526bd1bb1b24e4f143eeb6ab9f6a30c635d"
+    },
+    {
+      "path": "skills/money-craft/references/company-research.md",
+      "sha256": "70f1a1eea7c26ee77f79998e0e61fc7fc372b36a9c97ad5d32b0547f6b381c6a"
+    },
+    {
+      "path": "skills/money-craft/references/valuation-and-thesis.md",
+      "sha256": "fc86613b848870f3bdf680f8980d585a276c05d6164f181e9bf52fc54d15283b"
+    },
+    {
+      "path": "docs/research-semantic-review-20260919.md",
+      "sha256": "d387e5cae5ea037b87ee2844ed8d80437dae1a53d11698e87c0682f4eaa611ab"
+    },
+    {
+      "path": "local/acceptance/20260919-semantic-review/route.json",
+      "sha256": "64d970d614f7975e182db400ee9cc805de519257efe2bc6211b8ae6826e45e99"
+    },
+    {
+      "path": "local/acceptance/20260919-semantic-review/mutation-audits.json",
+      "sha256": "8bd9b693eb4aa499aca2ec0bc1689fb65d322bd79a3df2963b998744a4afe7c6"
+    },
+    {
+      "path": "local/acceptance/20260919-semantic-review/source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+    },
+    {
+      "path": "local/acceptance/20260919-semantic-review/package-validation.json",
+      "sha256": "360b6f84bc6eb68e7f8739d2ab459c91630ba93acd211e164742ad6d72c2f13c"
+    },
+    {
+      "path": "local/acceptance/20260919-semantic-review/audit-tests.log",
+      "sha256": "16b44535904ff79f146633178ecd21120c9be82d0ace6beecaaaf53212f6a626"
+    }
+  ]
+}

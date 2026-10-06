@@ -1,0 +1,44 @@
+{
+  "schema": "money-craft.yfinance-dates-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "History response dates and corporate-action date filtering",
+  "source_hashes": {
+    "skills/money-craft/scripts/yfinance_adapter.py": "bea44347274072f3020a5c6d7673201bd225d123b0c7bba8302d6630d3e511fc",
+    "tests/test_yfinance_adapter.py": "2b3907bc4cdea641b3356a5a24752e77eeaf1f47205dcbf9c1f705d7b411d9d9"
+  },
+  "validation": {
+    "yfinance_tests": 23,
+    "full_tests": 404,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 7,
+    "real_cli": "Out-of-range history returns EXIT_PROVIDER/malformed_response without capture."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No remaining blockers in declared date scope",
+    "tests": 23,
+    "source_hashes": {
+      "skills/money-craft/scripts/yfinance_adapter.py": "bea44347274072f3020a5c6d7673201bd225d123b0c7bba8302d6630d3e511fc",
+      "tests/test_yfinance_adapter.py": "2b3907bc4cdea641b3356a5a24752e77eeaf1f47205dcbf9c1f705d7b411d9d9"
+    },
+    "extra_checks": [
+      "Leap dates, timezone offsets, ISO timestamp suffixes and nanosecond fractions.",
+      "Invalid date/time/offset/noncanonical inputs rejected.",
+      "Single-sided actions filtering and missing loc rejected appropriately."
+    ]
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T085908569557Z"
+  },
+  "limits": [
+    "No real pandas/Provider; pd.NA/pd.NaT actual objects unverified.",
+    "No trading-calendar completeness, duplicate-date or exchange-timezone authenticity claim.",
+    "Statement-period labels and serialization remain separate.",
+    "No app, commit, push or release."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/brand-pack.schema.json",
+  "title": "Creative Craft Brand Pack v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "brand_id",
+    "brand_name",
+    "pack_id",
+    "version",
+    "status",
+    "classification",
+    "owner",
+    "approved_at",
+    "review_after",
+    "supersedes",
+    "authority_files",
+    "asset_ledger",
+    "source_references"
+  ],
+  "properties": {
+    "schema_version": {"const": "creative-craft.brand-pack.v1"},
+    "brand_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "brand_name": {"type": "string", "minLength": 1},
+    "pack_id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"enum": ["draft", "approved", "superseded", "revoked"]},
+    "classification": {"enum": ["public", "internal", "confidential", "restricted"]},
+    "owner": {"type": "string", "minLength": 1},
+    "approved_at": {"type": ["string", "null"]},
+    "review_after": {"type": ["string", "null"]},
+    "supersedes": {"type": ["string", "null"]},
+    "authority_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["role", "path", "sha256"],
+        "properties": {
+          "role": {
+            "enum": ["brand", "products", "claims", "visual", "verbal", "channels", "rights", "other"]
+          },
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "asset_ledger": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "source_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "uri", "version", "reviewed_at"],
+        "properties": {
+          "source_id": {"type": "string", "minLength": 1},
+          "uri": {"type": "string", "minLength": 1},
+          "version": {"type": ["string", "null"]},
+          "reviewed_at": {"type": ["string", "null"]},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

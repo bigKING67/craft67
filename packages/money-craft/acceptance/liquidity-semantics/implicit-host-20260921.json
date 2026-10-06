@@ -1,0 +1,218 @@
+{
+  "schema": "money-craft.liquidity-implicit-host-acceptance.v1",
+  "date": "2026-09-21",
+  "status": "PASS_BOUNDED_AFTER_AUDITOR_FIX",
+  "host": "codex-cli 0.155.1",
+  "invocation": "IMPLICIT_NATURAL_LANGUAGE_UNDER_EXISTING_HOST_RULES",
+  "host_runs": 4,
+  "cases_passed": 4,
+  "criteria_passed": 12,
+  "calculations_passed": 8,
+  "source_installed_sha256": "69e64c5c99818311ebbd5cf832b80408bff28e0ae72e76534fc2ba23af44542a",
+  "source_files_equal": 75,
+  "source_dirty": true,
+  "formal_release": false,
+  "installed_self_test_checks": 9,
+  "unit_tests_passed": 35,
+  "auditor_fix": "Recognize exact PYTHONDONTWRITEBYTECODE=1 prefix. Original traces and first audits preserved; re-audit without rerunning hosts. Successful exit, route receipt and artifact binding remain required.",
+  "limits": [
+    "Four authored synthetic tasks; not held-out or market research generalization.",
+    "Host investment rules direct Skill selection; not unaided discovery or other-host proof.",
+    "Prompt excludes criteria and answers; filesystem access was not technically denied. Trace review found no test-answer reads.",
+    "Semantic review by parent, no independent reviewer.",
+    "Does not resolve real-company missing evidence or certify all Skill capabilities."
+  ],
+  "runs": [
+    {
+      "run": "entity",
+      "case_id": "liquidity-entity-scope",
+      "status": "PASS_BOUNDED",
+      "host_exit": 0,
+      "original_machine_pass": true,
+      "reaudit_machine_pass": true,
+      "route": "READY",
+      "prompt_names_skill": false,
+      "installed_skill_and_semantic_read_commands": [
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/SKILL.md'",
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/references/routing.md ~/.agents/skills/money-craft/references/financial-data-and-evidence.md'",
+        "/bin/zsh -lc 'cat ~/.codex/tools/investment_route_plan.sh; cat ~/.agents/skills/money-craft/references/research-semantic-review.md'",
+        "/bin/zsh -lc \"rg -n 'write|mkdir|open\\\\(|requests|urllib|subprocess|choices=|add_argument' ~/.codex/tools/investment_route_core.py; sed -n '1,165p' ~/.agents/skills/money-craft/scripts/financial_rigor.py\"",
+        "/bin/zsh -lc \"cat ~/.agents/skills/money-craft/references/earnings-review.md; date '+%Y-%m-%d %Z'\""
+      ],
+      "semantic_reviewer": "parent",
+      "independent_review": false,
+      "criteria": [
+        {
+          "criterion": "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+          "status": "PASS",
+          "basis": "Actual installed Skill/reference reads and successful route; criteria excluded from prompt."
+        },
+        {
+          "criterion": "集团列不能代替母公司列；其他应付款清偿安排未知。",
+          "status": "PASS",
+          "basis": "集团300不等于母公司分红空间；其他应付款安排未知，不能设零或假定全部即时到期。"
+        },
+        {
+          "criterion": "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。",
+          "status": "PASS",
+          "basis": "集团300不等于母公司分红空间；其他应付款安排未知，不能设零或假定全部即时到期。"
+        }
+      ],
+      "observations": "集团300不等于母公司分红空间；其他应付款安排未知，不能设零或假定全部即时到期。",
+      "artifacts": {
+        "local/skill-evals/20260921-liquidity-implicit/entity/host.json": "7b4ca79f68b55b9d81a0c27a040d2f919d01a7fac7b468fe239c449ee02614f0",
+        "local/skill-evals/20260921-liquidity-implicit/entity/events.jsonl": "05cc0aba27b71def9008fa6051f6bdd08b1cbbf0528226299a1be5da72da1156",
+        "local/skill-evals/20260921-liquidity-implicit/entity/answer.md": "ed1b184abd397c78e5340e979de8667c7395872fba462b32a6b291da670446d2",
+        "local/skill-evals/20260921-liquidity-implicit/entity/prompt.txt": "cdf27023efd15a165012a5a9116610f30656c7f1306dd8ffa477dc680538a28c",
+        "local/skill-evals/20260921-liquidity-implicit/entity/case-snapshot.json": "72dffc57268832051ec93451183966073297444c95795033c4990ccdd858ccb5",
+        "local/skill-evals/20260921-liquidity-implicit/entity/machine-audit.json": "794fc8983bf431e27787564bbb4056172926a399cbc652976c9a628266d193c9",
+        "local/skill-evals/20260921-liquidity-implicit/entity/machine-audit-r2.json": "794fc8983bf431e27787564bbb4056172926a399cbc652976c9a628266d193c9"
+      }
+    },
+    {
+      "run": "convertible",
+      "case_id": "liquidity-current-convertible",
+      "status": "PASS_BOUNDED",
+      "host_exit": 0,
+      "original_machine_pass": false,
+      "reaudit_machine_pass": true,
+      "route": "READY",
+      "prompt_names_skill": false,
+      "installed_skill_and_semantic_read_commands": [
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/SKILL.md'",
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/references/routing.md'",
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/references/financial-data-and-evidence.md'",
+        "/bin/zsh -lc \"cat ~/.codex/tools/investment_route_plan.sh\nrg -n '现金、债务与法人边界|融资|零票|重分类' ~/.agents/skills/money-craft/references/research-semantic-review.md\nls ~/Documents/sixseven/codeproject/ai-berkshire/tools/financial_rigor.py\"",
+        "/bin/zsh -lc \"sed -n '30,46p' ~/.agents/skills/money-craft/references/research-semantic-review.md\nrg -n 'write|mkdir|http|open\\\\(|choices=|add_argument' ~/.codex/tools/investment_route_core.py\nrg -n '\"'^def audit_text|''^import|''^from'\"' ~/Documents/sixseven/codeproject/ai-berkshire/tools/financial_rigor.py\"",
+        "/bin/zsh -lc \"cat ~/.agents/skills/money-craft/references/earnings-review.md\nrg --files ~/.agents/skills/money-craft | rg 'financial_rigor'\""
+      ],
+      "semantic_reviewer": "parent",
+      "independent_review": false,
+      "criteria": [
+        {
+          "criterion": "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+          "status": "PASS",
+          "basis": "Actual installed Skill/reference reads and successful route; criteria excluded from prompt."
+        },
+        {
+          "criterion": "漏掉30的流动可转债；附注重复出现不能再加第二次。",
+          "status": "PASS",
+          "basis": "融资负债130，零票息可转债计入一次；重分类不改变合计，合同现金流仍未知。"
+        },
+        {
+          "criterion": "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。",
+          "status": "PASS",
+          "basis": "融资负债130，零票息可转债计入一次；重分类不改变合计，合同现金流仍未知。"
+        }
+      ],
+      "observations": "融资负债130，零票息可转债计入一次；重分类不改变合计，合同现金流仍未知。",
+      "artifacts": {
+        "local/skill-evals/20260921-liquidity-implicit/convertible/host.json": "81f0ef1b165256366a64f95d4693ce93fa12c1d818e3ba55f9f2ee5deb20e756",
+        "local/skill-evals/20260921-liquidity-implicit/convertible/events.jsonl": "3001ea64fed0e9b7e70af6a623ddacd62fd72c30e72bb7226861cdcdb3abf7bc",
+        "local/skill-evals/20260921-liquidity-implicit/convertible/answer.md": "40893eb4a260a7c55f14bd849ac78149bf4608191dcae433e105f19c88973d3e",
+        "local/skill-evals/20260921-liquidity-implicit/convertible/prompt.txt": "27e18a155f9e98d4393dbcd95f87bc321546728c7704dd718b450d1c64e51973",
+        "local/skill-evals/20260921-liquidity-implicit/convertible/case-snapshot.json": "f505749b454bbe6cdb24c1d5774a12216baff2288913fec420dde6c8bc7cc54e",
+        "local/skill-evals/20260921-liquidity-implicit/convertible/machine-audit.json": "21acd08add51a7cd5326563e494e721b19cefa99351039995c393e4c6d753d58",
+        "local/skill-evals/20260921-liquidity-implicit/convertible/machine-audit-r2.json": "81cc1a99cab5faedef86ccf3530480c0b0d3bc926c7c483cf58af6318e9095be"
+      }
+    },
+    {
+      "run": "restricted",
+      "case_id": "liquidity-restricted-cash",
+      "status": "PASS_BOUNDED",
+      "host_exit": 0,
+      "original_machine_pass": true,
+      "reaudit_machine_pass": true,
+      "route": "READY",
+      "prompt_names_skill": false,
+      "installed_skill_and_semantic_read_commands": [
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/SKILL.md'",
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/references/routing.md ~/.agents/skills/money-craft/references/financial-data-and-evidence.md ~/.agents/skills/money-craft/references/earnings-review.md'",
+        "/bin/zsh -lc \"cat ~/.codex/tools/investment_route_plan.sh; rg -n '现金、债务|受限|母公司|重复' ~/.agents/skills/money-craft/references/research-semantic-review.md; rg --files ~/.agents/skills/money-craft | rg 'financial_rigor.py\"'$'\"'\"",
+        "/bin/zsh -lc \"sed -n '1,115p' ~/.codex/tools/investment_route_core.py; sed -n '34,47p' ~/.agents/skills/money-craft/references/research-semantic-review.md; rg -n 'write|mkdir|subprocess|requests|urlopen|add_argument' ~/.codex/tools/investment_route_core.py; rg -n 'def audit_text|def calculate|\"'^import|''^from'\"' ~/.agents/skills/money-craft/scripts/financial_rigor.py\""
+      ],
+      "semantic_reviewer": "parent",
+      "independent_review": false,
+      "criteria": [
+        {
+          "criterion": "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+          "status": "PASS",
+          "basis": "Actual installed Skill/reference reads and successful route; criteria excluded from prompt."
+        },
+        {
+          "criterion": "现金等价物已经排除受限20，不能重复扣减并称保守值。",
+          "status": "PASS",
+          "basis": "100-20=80已排除受限资金，再扣至60是重复扣减；80不等于自由分配现金。"
+        },
+        {
+          "criterion": "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。",
+          "status": "PASS",
+          "basis": "100-20=80已排除受限资金，再扣至60是重复扣减；80不等于自由分配现金。"
+        }
+      ],
+      "observations": "100-20=80已排除受限资金，再扣至60是重复扣减；80不等于自由分配现金。",
+      "artifacts": {
+        "local/skill-evals/20260921-liquidity-implicit/restricted/host.json": "f4f10652f2cec4c6c1fc8bbca25bba717ddc361e57be684a7cb0499b5bdbdbfb",
+        "local/skill-evals/20260921-liquidity-implicit/restricted/events.jsonl": "ed6e0023f31b588f5035ba30bceb0b24278ef7cc8adaeb04f4d9dba4c966a150",
+        "local/skill-evals/20260921-liquidity-implicit/restricted/answer.md": "32715be5dad841f6b1496916b50e60c88f1f4144930d52048d356286e6cc0fab",
+        "local/skill-evals/20260921-liquidity-implicit/restricted/prompt.txt": "b336341b4df96b2e3c0177f85ecfdb256086d835cb007fb95114c687b91fd240",
+        "local/skill-evals/20260921-liquidity-implicit/restricted/case-snapshot.json": "ddf26dd6bad4220eba532bbc23f1f6c6577174bb8929245ac69be3d14f13f802",
+        "local/skill-evals/20260921-liquidity-implicit/restricted/machine-audit.json": "3f114f36e1684d10db6dd14ddf15622a32dfce52e2237e30152563268562e4b3",
+        "local/skill-evals/20260921-liquidity-implicit/restricted/machine-audit-r2.json": "3f114f36e1684d10db6dd14ddf15622a32dfce52e2237e30152563268562e4b3"
+      }
+    },
+    {
+      "run": "maturity",
+      "case_id": "liquidity-maturity-release",
+      "status": "PASS_BOUNDED",
+      "host_exit": 0,
+      "original_machine_pass": true,
+      "reaudit_machine_pass": true,
+      "route": "READY",
+      "prompt_names_skill": false,
+      "installed_skill_and_semantic_read_commands": [
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/SKILL.md'",
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/references/routing.md ~/.agents/skills/money-craft/references/financial-data-and-evidence.md'",
+        "/bin/zsh -lc 'cat ~/.codex/tools/investment_route_plan.sh; cat ~/.agents/skills/money-craft/references/research-semantic-review.md'",
+        "/bin/zsh -lc \"rg -n 'write|mkdir|open\\\\(|add_argument|import|def main' ~/.codex/tools/investment_route_core.py; sed -n '100,180p' ~/.agents/skills/money-craft/scripts/financial_rigor.py\"",
+        "/bin/zsh -lc 'cat ~/.agents/skills/money-craft/references/earnings-review.md; date +%Y-%m-%d'"
+      ],
+      "semantic_reviewer": "parent",
+      "independent_review": false,
+      "criteria": [
+        {
+          "criterion": "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+          "status": "PASS",
+          "basis": "Actual installed Skill/reference reads and successful route; criteria excluded from prompt."
+        },
+        {
+          "criterion": "到期桶不是即刻到账；质押配置和其他可用条件未证实。",
+          "status": "PASS",
+          "basis": "139至158只是质押分配情景，不是即时可用资金上下限；退出及解押条件未知。"
+        },
+        {
+          "criterion": "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。",
+          "status": "PASS",
+          "basis": "139至158只是质押分配情景，不是即时可用资金上下限；退出及解押条件未知。"
+        }
+      ],
+      "observations": "139至158只是质押分配情景，不是即时可用资金上下限；退出及解押条件未知。",
+      "artifacts": {
+        "local/skill-evals/20260921-liquidity-implicit/maturity/host.json": "64504075b26b5ba0d3e7f31b3864f6b290d060327011c65089ce80ebf51fc6a5",
+        "local/skill-evals/20260921-liquidity-implicit/maturity/events.jsonl": "785b253c2fb8f2bbb251711cacdaef140cc5c67d1e4add231c00876686063a2c",
+        "local/skill-evals/20260921-liquidity-implicit/maturity/answer.md": "ed75e84afcfd28a826aa7bd940fc2a32256f00402ff222e51930c1c1496ed606",
+        "local/skill-evals/20260921-liquidity-implicit/maturity/prompt.txt": "7286ad22331469d0b086c5f4517592537ec676d611156de6c929041573b69103",
+        "local/skill-evals/20260921-liquidity-implicit/maturity/case-snapshot.json": "9c1a5bdd9dba4b4df37290248260d80109e5bc9241c18e94f8631dd47554dd4e",
+        "local/skill-evals/20260921-liquidity-implicit/maturity/machine-audit.json": "43c8427d395e338ad74f6501c474f2fafecc752ba51c34fb4ec119c4431fec15",
+        "local/skill-evals/20260921-liquidity-implicit/maturity/machine-audit-r2.json": "43c8427d395e338ad74f6501c474f2fafecc752ba51c34fb4ec119c4431fec15"
+      }
+    }
+  ],
+  "supporting_artifacts": {
+    "local/skill-evals/20260921-liquidity-implicit/install.json": "d7608955efea47a89b0e7a053b6dff8ff017ebc2282c4ddc95d18851695e79fa",
+    "local/skill-evals/20260921-liquidity-implicit/installed-self-test.json": "6e51159012160cf9c43a20647a1ed4e931cc7d1a87947283ad98c91ac4af2a21",
+    "local/skill-evals/20260921-liquidity-implicit/prompt-boundary.json": "1e67cb4dc4bbb3974e689447575bb945d2754aaaa0ec0b0bb11638d4c634d96a",
+    "scripts/audit_skill_task.py": "08e70004061fe8f23dbdac058ba3bbfd95bf75a8e278ba745819f84d650ad60e",
+    "tests/test_skill_task_audit.py": "0becc2cb6de8cb00cc947da38b7275ede114ca4f2e2bd9293e6412f76002b666"
+  }
+}

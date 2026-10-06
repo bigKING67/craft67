@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/reverse-craft/schemas/event.schema.json",
+  "title": "Reverse Craft event record v1",
+  "type": "object",
+  "required": ["seq", "at", "type", "data", "prev_hash", "event_hash"],
+  "properties": {
+    "seq": {"type": "integer", "minimum": 1},
+    "at": {"type": "string", "format": "date-time"},
+    "type": {
+      "enum": ["case.initialized", "evidence.added", "finding.added", "path.added", "report.rendered", "case.sealed"]
+    },
+    "data": {"type": "object"},
+    "prev_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "event_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "type": {"const": "case.initialized"},
+            "data": {"$ref": "#/$defs/case-initialized"}
+          }
+        },
+        {
+          "properties": {
+            "type": {"const": "evidence.added"},
+            "data": {"$ref": "#/$defs/evidence-added"}
+          }
+        },
+        {
+          "properties": {
+            "type": {"const": "finding.added"},
+            "data": {"$ref": "#/$defs/finding-added"}
+          }
+        },
+        {
+          "properties": {
+            "type": {"const": "path.added"},
+            "data": {"$ref": "#/$defs/path-added"}
+          }
+        },
+        {
+          "properties": {
+            "type": {"const": "report.rendered"},
+            "data": {"$ref": "#/$defs/report-rendered"}
+          }
+        },
+        {
+          "properties": {
+            "type": {"const": "case.sealed"},
+            "data": {"$ref": "#/$defs/case-sealed"}
+          }
+        }
+      ]
+    }
+  ],
+  "$defs": {
+    "case-initialized": {
+      "type": "object",
+      "required": ["id", "route_id"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+        "route_id": {"type": ["string", "null"], "pattern": "^(?:R(?:[0-9]|[1-3][0-9]|4[01])|R44)$"}
+      },
+      "additionalProperties": false
+    },
+    "evidence-added": {
+      "type": "object",
+      "required": ["id", "sha256", "size"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^E-[0-9]{4,}$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "size": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "finding-added": {
+      "type": "object",
+      "required": ["id", "status", "evidence_ids"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^F-[0-9]{4,}$"},
+        "status": {"enum": ["hypothesis", "supported", "confirmed", "refuted"]},
+        "evidence_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^E-[0-9]{4,}$"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "path-added": {
+      "type": "object",
+      "required": ["id", "status", "finding_ids"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^P-[0-9]{4,}$"},
+        "status": {"enum": ["hypothesis", "supported", "confirmed", "refuted"]},
+        "finding_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^F-[0-9]{4,}$"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "report-rendered": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "case-sealed": {
+      "type": "object",
+      "required": ["id", "sealed_at"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+        "sealed_at": {"type": "string", "format": "date-time"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

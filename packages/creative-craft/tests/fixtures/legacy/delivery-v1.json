@@ -1,0 +1,10 @@
+{
+  "schema_version": "creative-craft.delivery.v1",
+  "delivery_id": "legacy-delivery",
+  "project_id": "legacy-project",
+  "status": "planned",
+  "selected_route": "legacy-route",
+  "files": [],
+  "validation": [],
+  "remaining_risks": ["Migrate to Delivery v2."]
+}

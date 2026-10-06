@@ -1,0 +1,89 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "multiply",
+      "actual": "1591141364200.83",
+      "expected": "1591141364200.83",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "subtract",
+      "actual": "81433985225.44",
+      "expected": "81433985225.44",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "divide",
+      "actual": "19.53903348578545297721249280404509",
+      "expected": "19.53903348578545297721249280404509",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "multiply",
+      "actual": "1248000000000",
+      "expected": "1248000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "divide",
+      "actual": "998.3348279037665797946577409069474",
+      "expected": "998.3348279037665797946577409069474",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "multiply",
+      "actual": "1680000000000",
+      "expected": "1680000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "divide",
+      "actual": "1343.912268331993472800500805067045",
+      "expected": "1343.912268331993472800500805067045",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "multiply",
+      "actual": "2160000000000",
+      "expected": "2160000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C09",
+      "operation": "divide",
+      "actual": "1727.887202141134465029215320800486",
+      "expected": "1727.887202141134465029215320800486",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

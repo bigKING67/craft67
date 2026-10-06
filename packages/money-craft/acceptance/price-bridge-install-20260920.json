@@ -1,0 +1,61 @@
+{
+  "schema": "money-craft.price-bridge-install.v1",
+  "status": "PASS_GLOBAL_INSTALL_AND_AUTHORIZED_BACKUP_CLEANUP",
+  "date": "2026-09-20",
+  "authorization": "User explicitly approved installation and old Money Craft backup cleanup.",
+  "destination": "~/.agents/skills/money-craft",
+  "version": "0.3.0",
+  "release": false,
+  "source_candidate_installed_files": 75,
+  "changed_content": [
+    "references/earnings-review.md"
+  ],
+  "runtime_self_test": {
+    "schema": "money-craft.self-test.v1",
+    "scope": "runtime",
+    "version": "0.3.0",
+    "runtime_valid": true,
+    "network_used": false,
+    "checks": [
+      "thscode-validation",
+      "shanghai-date-conversion",
+      "report-audit",
+      "financial-audit",
+      "company-research-plan",
+      "research-run-case",
+      "global-security-research-plan",
+      "tracking-health-contract",
+      "report-renderer-assets"
+    ],
+    "errors": []
+  },
+  "cleanup": {
+    "count": 98,
+    "logical_bytes": 118444648,
+    "backup_directories_retained": false,
+    "other_backup_entries_preserved": 0
+  },
+  "source_behavior": "acceptance/albemarle-transmission/price-bridge-review.json",
+  "new_installed_natural_language_host_run": "NOT_RUN",
+  "artifacts": {
+    "local/acceptance/20260920-price-bridge-candidate/install.json": "ff0cbdf75cf60dd85fe2f869a3814923b4c6c80ee33c6028c56b252d380b5d8f",
+    "local/acceptance/20260920-price-bridge-candidate/installed-self-test.json": "6e51159012160cf9c43a20647a1ed4e931cc7d1a87947283ad98c91ac4af2a21",
+    "local/acceptance/20260920-price-bridge-candidate/cleanup-plan.json": "5856c96f73989e9f33b852ea7aa9473c322dd2051d547d3df6b207226ed86712",
+    "local/acceptance/20260920-price-bridge-candidate/cleanup-targets.txt": "538d0cb077fa15f877be735997c7f9a30bdb5a610bb02a9b55048e9ac991adf9",
+    "local/acceptance/20260920-price-bridge-candidate/cleanup-result.json": "ca225f44075813d273f4389814c94e40e158a21eb62e73597a76634187adaa8f",
+    "local/acceptance/20260920-price-bridge-candidate/source-hashes.json": "cadc9fe9f0e849a6c6181f30831b256348a955ec17015eacc7739d8a7c9f0115",
+    "local/acceptance/20260920-price-bridge-candidate/bigking67-money-craft-0.3.0.tgz": "f189cc3142063b7c846a6d146d71f232e41ec7623bbc3c0817455f7dd2476768"
+  },
+  "limits": [
+    "Older backup directory references in historical receipts are now intentionally unavailable.",
+    "Frozen candidate packages and evidence receipts retained.",
+    "No commit, push, release or application work."
+  ],
+  "portability_redaction": {
+    "date": "2026-09-20",
+    "field": "destination",
+    "reason": "Replace machine-specific home prefix; installation facts unchanged.",
+    "original_sha256": "9cae29a97a17532f70b3224bf497cee10cdd941aec9b8f6b96eb23cd31b514ea",
+    "original_private_path": "local/evidence/20260920-disclosure-candidate/price-bridge-install-original.json"
+  }
+}

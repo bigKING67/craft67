@@ -1,0 +1,82 @@
+{
+  "schema": "money-craft.historical-host-acceptance.v1",
+  "date": "2026-09-16",
+  "status": "PASS_BOUNDED_HISTORICAL_ANALYSIS",
+  "case_id": "historical-600519-margins",
+  "machine_checks_pass": true,
+  "route": "READY",
+  "source_hashes_verified": 2,
+  "calculation_checks": 16,
+  "manual_review": [
+    {
+      "criterion": "原始证据读取",
+      "verdict": "PASS",
+      "evidence": "两份PDF的第5页提取命令成功；shasum与固定来源哈希匹配；最终审计复核两份来源。"
+    },
+    {
+      "criterion": "期间与指标口径",
+      "verdict": "PASS",
+      "evidence": "营业收入、归母净利润、OCF三项2023值在两份报告一致；报告保留元与亿元展示区别。"
+    },
+    {
+      "criterion": "利润率与现金比例",
+      "verdict": "PASS",
+      "evidence": "归母利润/收入50.6007498%到50.4555729%，变化-0.1451769个百分点；OCF/归母利润0.8910694到1.0723145，数值与独立复算一致。"
+    },
+    {
+      "criterion": "来源及解释边界",
+      "verdict": "PASS",
+      "evidence": "合并OCF与归母利润口径不同，仅辅助比率；未认定变化原因或持续性；同一发行人不算独立双源。"
+    },
+    {
+      "criterion": "时间与动作边界",
+      "verdict": "PASS",
+      "evidence": "历史截止2025-04-03与执行/获取2026-09-16分开；不声称当年捕获、当前观点或买卖结论。"
+    }
+  ],
+  "artifacts": {
+    "prompt.txt": {
+      "path": "local/skill-evals/20260916/historical-host/prompt.txt",
+      "sha256": "961785d0d9f2ecc8d5cf350013fd1e43680fd99de4457e1aa38cbf2926b91df5"
+    },
+    "case-snapshot.json": {
+      "path": "local/skill-evals/20260916/historical-host/case-snapshot.json",
+      "sha256": "e804d80657b6b652eb2042559ea3eb9ef0e6e96d014a8ef99f7be32e7e0c5343"
+    },
+    "host.json": {
+      "path": "local/skill-evals/20260916/historical-host/host.json",
+      "sha256": "d5b7fc8f7ce3593689009ef2be94a13a4db31127ae3a69d7b0886bf7e8c33105"
+    },
+    "events.jsonl": {
+      "path": "local/skill-evals/20260916/historical-host/events.jsonl",
+      "sha256": "1cb107689d3ca2cb3c0e6fa0bee4a41f153e108f0cda65f822b9f32566f945c0"
+    },
+    "answer.md": {
+      "path": "local/skill-evals/20260916/historical-host/answer.md",
+      "sha256": "4bcb28a1f2442d0fbf7ffc7dab6cdd0039ea2ff3270c030aa49d6bbc1c00dfa0"
+    },
+    "final-machine-audit.json": {
+      "path": "local/skill-evals/20260916/historical-host/final-machine-audit.json",
+      "sha256": "0fcf5005b702a1c91b025fdf3c8cdb2fd05d3cb28775de8ed4d96d254c09185d"
+    }
+  },
+  "independent_decimal_check": {
+    "path": "local/skill-evals/20260916/historical-host-review-expected.json",
+    "sha256": "9a84c7865eba5619b9253b98c2100ec8ba08bdf31eb0b02af63ecb1ae4d5cd34"
+  },
+  "test_result": {
+    "passed": 262,
+    "skipped": 0,
+    "log": {
+      "path": "local/skill-evals/20260916/historical-host-tests.log",
+      "sha256": "27a9444f962d2fdcec51835efdfa2e0a23cbc67f474dcfa98f28d598ce9466c1"
+    }
+  },
+  "limits": [
+    "局部历史财报指标比较，不是完整公司研究、正式money档案或最新投资结论。",
+    "来源同一发行人，披露日沿用案例元数据，未独立重核首披时点。",
+    "问题明确要求利润率比较，本例通过不消除通用问法遗漏的既有风险。",
+    "原始machine-audit在宿主启动时加载旧审计器；final-machine-audit为加入来源后验哈希检查后的最终离线审计，保留两者不覆盖。",
+    "本轮没有修改Skill运行包或全局安装，没有提交、推送或发布。"
+  ]
+}

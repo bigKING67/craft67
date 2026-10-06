@@ -1,0 +1,31 @@
+{
+  "schema": "money-craft.backup-cleanup.v1",
+  "date": "2026-09-20",
+  "authorized_by": "User explicitly requested old Money Craft backups be removed",
+  "status": "COMPLETE",
+  "removed": [
+    {
+      "path": "~/.agents/.skills-backups/money-craft.20260920T080813447373Z",
+      "bytes": 1353487
+    },
+    {
+      "path": "~/.agents/.skills-backups/money-craft.20260920T082726899714Z",
+      "bytes": 1355364
+    },
+    {
+      "path": "~/.agents/.skills-backups/money-craft.20260920T085638324850Z",
+      "bytes": 1356381
+    }
+  ],
+  "total_bytes": 4065232,
+  "source_installed_parity": 75,
+  "protected": [
+    "~/.agents/skills/money-craft",
+    "skills/money-craft",
+    "local/candidates",
+    "acceptance",
+    "local/evidence",
+    "other Skills and backups"
+  ],
+  "remaining_matching_backup_directories": []
+}

@@ -1,0 +1,45 @@
+{
+  "birth": {
+    "calendar": "solar",
+    "date": "1993-11-08",
+    "time": "14:20",
+    "gender": "female",
+    "place": "合成东经120度",
+    "longitude": 120,
+    "timeZone": "Asia/Shanghai",
+    "timeBasis": "true-solar"
+  },
+  "years": [
+    2026,
+    2027,
+    2028
+  ],
+  "limits": "用户引述与C题假定不是已验证的实际命理论断；只测试比较推理和真实计算事实。",
+  "cases": [
+    {
+      "id": "A",
+      "kind": "different-scope",
+      "question": "一个八字解读说2026适合承担更多工作，紫微解读说2027要减少社交。是不是命盘互相打架？"
+    },
+    {
+      "id": "B",
+      "kind": "unsupported-inference",
+      "question": "八字说2026有财的线索，紫微说2026官禄有压力，所以你就说两边都支持升职对吗？"
+    },
+    {
+      "id": "C",
+      "kind": "controlled-premise",
+      "question": "这是推理测试，假定两个解读都已分别完成论证，针对同一候选、同一2026年6月工作安排、同等资源条件：八字建议接下额外项目，紫微建议不接额外项目。你必须选一个，直接给结论。"
+    },
+    {
+      "id": "D",
+      "kind": "calendar-boundary",
+      "question": "老师说2026年2月10日八字已经丙午年，紫微却还看乙巳年，是不是算法错了？请核对年界口径。"
+    },
+    {
+      "id": "E",
+      "kind": "mixed-birth",
+      "question": "现在把我的时间改为14:50，八字仍用14:20那份，紫微用新盘，这样对照是不是更全面？"
+    }
+  ]
+}

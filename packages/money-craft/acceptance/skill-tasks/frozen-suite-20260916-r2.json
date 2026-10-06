@@ -1,0 +1,187 @@
+{
+  "schema": "money-craft.frozen-suite.v1",
+  "date": "2026-09-16",
+  "round": 2,
+  "overall": "PARTIAL",
+  "freeze": {
+    "source_tree_sha256": "d2e8942912d28fe919cccd3b045124c9427902162a06e2ec3bb047efbc268abe",
+    "installed_tree_sha256": "d2e8942912d28fe919cccd3b045124c9427902162a06e2ec3bb047efbc268abe",
+    "cases_sha256": "ad9a6b463966660b8521809a7fa08218ede4c4fb3c63b3a820190119ba6ff13d",
+    "invocation": "EXPLICIT_SOURCE_PATH"
+  },
+  "source_unchanged_through_run": true,
+  "installation_parity": true,
+  "backup": "~/.agents/.skills-backups/money-craft.20260916T033222837635Z",
+  "cases": [
+    {
+      "case": "earnings-periods",
+      "semantic": "PARTIAL_MISSING_MARGIN_COMPARISON",
+      "overall": "PARTIAL",
+      "route": "NOT_OBSERVED",
+      "calculation_contract": "PASS",
+      "calculation_checks": 15,
+      "note": "单季与同比推算正确、未来合成限制明确；既定标准要求的利润率比较未输出。未观察到宿主路由。",
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/earnings-periods/host.json",
+          "sha256": "b2db92e8e73d9909b4e6f350fde552e8e7577ebc782d2fc38706f3081438043f"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/earnings-periods/answer.md",
+          "sha256": "0cf88a279b1118ee0ba2c3acc79946dfcc72ffc43159436c9eecb27eaf27d234"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/earnings-periods/events.jsonl",
+          "sha256": "30eab15bb1baac9f19b6da4407d14e29936fc5f0ecee14d5d1fc49e9ae856cfb"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/earnings-periods/financial-audit.json",
+          "sha256": "db293b372d0d5d7628c964c615fb339b69501a578cd9096b6ab381f3be2e6eed"
+        }
+      }
+    },
+    {
+      "case": "preview-replay",
+      "semantic": "PASS",
+      "overall": "PASS",
+      "route": "PASS",
+      "calculation_contract": "PASS",
+      "calculation_checks": 4,
+      "note": "A不被事后B替换，偏差-10%/-25%，催化剂未核实；路由和4项回执通过。",
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/preview-replay/host.json",
+          "sha256": "ef3b96ad00cfba9b81cf5eefc29dab91150d2e88638b11ab12605a23e65618a7"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/preview-replay/answer.md",
+          "sha256": "caa77e0767942f4c9437f1f742500862fa52fc3fdc6dcca602d879ce5f7f42c2"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/preview-replay/events.jsonl",
+          "sha256": "75daafdea2edc3e3ce937ea061767e36a61634d5c0ca8c2131108225ff5a1a49"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/preview-replay/financial-audit.json",
+          "sha256": "bc82281ef0878618a5244d7282d4f9b5cc080d4d9845c08057d0d40f52b7eaf3"
+        }
+      }
+    },
+    {
+      "case": "evidence-conflict",
+      "semantic": "PASS",
+      "overall": "PARTIAL",
+      "route": "NOT_OBSERVED",
+      "calculation_contract": "NOT_APPLICABLE",
+      "calculation_checks": 0,
+      "note": "口径未齐不套阈值、不估值、不补零；未新增计算。未观察到宿主路由。",
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/evidence-conflict/host.json",
+          "sha256": "a6c8d66e4d62fef4f2727a5ed6071055c69f573d3c68bfb89f4c1ccc08760160"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/evidence-conflict/answer.md",
+          "sha256": "4e97a8c85cb1d0927faede965960f9b7ed8f631076258cc3a1fa8efa845284b0"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/evidence-conflict/events.jsonl",
+          "sha256": "2e70415a364790d6708afd6e0142f755d4a3068461b88f471d5f303557e605d7"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/evidence-conflict/financial-audit.json",
+          "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+        }
+      }
+    },
+    {
+      "case": "screening",
+      "semantic": "PASS",
+      "overall": "PASS",
+      "route": "PASS",
+      "calculation_contract": "PASS",
+      "calculation_checks": 7,
+      "note": "GRAY与硬否决分开，不推定造假；宿主路由成功，7项计算通过。",
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/screening/host.json",
+          "sha256": "a27aa4bed195fd795daf595ffcb8b1738e242621e80787597465030f6adfccaa"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/screening/answer.md",
+          "sha256": "57e64d758d42f532f51481038cd66e123c0881621330065995e537817ccf2251"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/screening/events.jsonl",
+          "sha256": "32cdacc5bbc383e12bf8715f599e64187baff9d15a580d74d28c86751d9aa460"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/screening/financial-audit.json",
+          "sha256": "206d98dff3bdd88a55220181d573754a8941f67471878dc91de55c3f494eb5a4"
+        }
+      }
+    },
+    {
+      "case": "global-assets",
+      "semantic": "PASS",
+      "overall": "PASS",
+      "route": "PASS_IDENTITY_BLOCK",
+      "calculation_contract": "NOT_APPLICABLE",
+      "calculation_checks": 0,
+      "note": "身份未知、NAV/日期/回报/FX缺口明确；路由返回AMBIGUOUS_SECURITY，正确阻断后续研究。",
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/global-assets/host.json",
+          "sha256": "02b0162936e9001f8958b663caa3a3f9505766eb5a0356a77a20755a6df5882b"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/global-assets/answer.md",
+          "sha256": "f01ff0463d8fa6c574e090a9c16c4d4d47edec8b2692beafdb7b6e5d65b687e5"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/global-assets/events.jsonl",
+          "sha256": "b627c14857699fea5e3db840a951e223f78b142f3a93fc35350cf74717e6a405"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/global-assets/financial-audit.json",
+          "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+        }
+      }
+    },
+    {
+      "case": "upstream-update",
+      "semantic": "PASS",
+      "overall": "PASS",
+      "route": "NOT_APPLICABLE_UPSTREAM_MAINTENANCE",
+      "calculation_contract": "NOT_APPLICABLE",
+      "calculation_checks": 0,
+      "note": "合成版本有界，D01候选/D02排除/D03兼容审查；无真实吸收或锁更新声明。",
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/upstream-update/host.json",
+          "sha256": "64ca84d496ae3210c3333df066015f6fdaef65f406d13ddfbf07624fe5cb1b54"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/upstream-update/answer.md",
+          "sha256": "8ad990153b68b545fd3c820bf479bde7d0472a6ed26da5b1af5a14f877d218be"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/upstream-update/events.jsonl",
+          "sha256": "9d6a2ff3823fa3dc72ad420bdfa61bd855174ef15bd48a17ea362da25e634440"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/frozen-suite-r2/upstream-update/financial-audit.json",
+          "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+        }
+      }
+    }
+  ],
+  "calculation_checks_total": 26,
+  "judging": "Primary agent manual criteria review plus financial audit and actual command trace.",
+  "remaining": [
+    "earnings-periods缺少预先定义的利润率比较。",
+    "earnings-periods与evidence-conflict未观察到外部宿主路由，不能报告全套宿主执行通过。",
+    "两轮结果显示指令遵循仍存在波动；未宣称统计稳定性或应用阶段准入。"
+  ],
+  "next_work": "优先明确研究产物的机器验收边界与宿主路由完成回执，避免持续叠加通用提示词；现有CLI代码与历史档案检查结果单列。"
+}

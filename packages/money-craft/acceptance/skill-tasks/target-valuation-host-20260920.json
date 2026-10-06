@@ -1,0 +1,69 @@
+{
+  "schema": "money-craft.valuation-host-review.v1",
+  "status": "PASS_BOUNDED_SOURCE_CASE",
+  "invocation": "EXPLICIT_SOURCE_PATH",
+  "elapsed_seconds": 600.888,
+  "source_files": 8,
+  "machine_checks_pass": true,
+  "route_state": "READY",
+  "route_intent": "thesis-drift",
+  "calculation_checks": 41,
+  "semantic_reviewer": "parent_agent",
+  "independent_execution": true,
+  "independent_semantic_review": false,
+  "criteria": [
+    {
+      "criterion": "使用源码Skill和有效研究路由，不读取既有答案/标准",
+      "status": "PASS",
+      "reason": "Trace reads source Skill plus task references; route thesis-drift/standard/chat returned READY; no reads of case answers or acceptance rubric observed"
+    },
+    {
+      "criterion": "价格使用明确Close；复权和不同快照不冒充同口径独立双源",
+      "status": "PASS",
+      "reason": "Explicit Close/adjclose distinction, StatMuse basis uncertainty and unverified provider ancestry"
+    },
+    {
+      "criterion": "实际股数与加权稀释股数区分；三种日期分别披露，市值/EV为滞后余额估算",
+      "status": "PASS",
+      "reason": "March5 actual shares versus weighted average; Feb1 balances and April30 price labelled stale-balance estimates"
+    },
+    {
+      "criterion": "净债务分母正确；融资租赁不重复、经营租赁口径明确，不重复扣短投",
+      "status": "PASS",
+      "reason": "Finance lease already in debt, short investments inside cash; issuer net debt explained; operating leases shown separately"
+    },
+    {
+      "criterion": "正常化与管理层调整/指引区分；周期低点/多年均值不自动正常化",
+      "status": "PASS",
+      "reason": "GAAP/adjusted zero bridge distinguished from sustainable earnings; no fabricated normalized EPS"
+    },
+    {
+      "criterion": "Walmart仅有限可比，不用之后披露的Q1，不机械赋值其PE",
+      "status": "PASS",
+      "reason": "Walmart fiscal GAAP denominator and business differences explicit; no later Q1 data, single quote source limitation"
+    },
+    {
+      "criterion": "三情景注明外部预测/研究假设，不把计算通过提升为独立公允价值；PE法不再次扣债",
+      "status": "PASS",
+      "reason": "Scenario inputs attributed and conditional, no endorsed fair value/safety margin; no repeated debt subtraction"
+    },
+    {
+      "criterion": "关键结果算术正确且覆盖；明确反方影响和下一期验证；保留独立来源与历史补抓限制",
+      "status": "PASS",
+      "reason": "41 final receipts passed; next reporting windows and evidence limitations explicit"
+    }
+  ],
+  "artifacts": {
+    "local/skill-evals/20260920-target-valuation/source/answer.md": "05d72677e67dad0b1b134c8d68f521224aaf5f721b51b39424f7c4e6e83ed6ca",
+    "local/skill-evals/20260920-target-valuation/source/events.jsonl": "4ab3c779995becf9f4ea7f5e049ad1f47bfdcab59168531e6c51fb21117ccb73",
+    "local/skill-evals/20260920-target-valuation/source/host.json": "79f1b780862364af31af001073c70b3fcb872034be04a3164db91020306178a6",
+    "local/skill-evals/20260920-target-valuation/source/machine-audit.json": "9e55530aca9cbb6a85441e227b1839ccad8149e0e4573ee16517bdea842e9c37"
+  },
+  "limits": [
+    "One bounded retrospective case, no prediction performance",
+    "Source-explicit run, not implicit installed discovery",
+    "Historical sources recaptured later; source independence not certified",
+    "Walmart illustrative comparison not a complete comparable valuation group",
+    "Fair value and normalized sustainable earnings remain unverified"
+  ]
+}

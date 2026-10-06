@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/video-job.schema.json",
+  "title": "Creative Craft Video Job v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "job_id",
+    "brief_id",
+    "status",
+    "provider_profile",
+    "task_type",
+    "execution_mode",
+    "intended_use",
+    "duration_seconds",
+    "format",
+    "premise",
+    "end_state",
+    "references",
+    "continuity_locks",
+    "timeline",
+    "environment",
+    "dialogue_audio",
+    "edit",
+    "exclude",
+    "inspection",
+    "rights"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.video-job.v1"
+    },
+    "job_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brief_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "ready",
+        "executed",
+        "inspected",
+        "approved",
+        "superseded"
+      ]
+    },
+    "provider_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_type": {
+      "enum": [
+        "text_to_video",
+        "image_to_video",
+        "reference_to_video",
+        "extend_video",
+        "edit_video"
+      ]
+    },
+    "execution_mode": {
+      "enum": [
+        "single_pass",
+        "extension",
+        "edit"
+      ]
+    },
+    "intended_use": {
+      "type": "string",
+      "minLength": 1
+    },
+    "duration_seconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "format": {
+      "type": "object",
+      "required": [
+        "aspect_ratio",
+        "resolution_target",
+        "language"
+      ],
+      "properties": {
+        "aspect_ratio": {
+          "type": "string"
+        },
+        "resolution_target": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "premise": {
+      "type": "string",
+      "minLength": 1
+    },
+    "end_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "kind",
+          "role"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "image",
+              "video",
+              "audio",
+              "clay_render"
+            ]
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "continuity_locks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "start",
+          "end",
+          "visual",
+          "action",
+          "camera",
+          "audio"
+        ],
+        "properties": {
+          "start": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "visual": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "camera": {
+            "type": "string"
+          },
+          "audio": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "lighting",
+        "materials",
+        "physics"
+      ],
+      "properties": {
+        "lighting": {
+          "type": "string"
+        },
+        "materials": {
+          "type": "string"
+        },
+        "physics": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "dialogue_audio": {
+      "type": "object",
+      "required": [
+        "dialogue",
+        "voice",
+        "ambience",
+        "effects",
+        "music"
+      ],
+      "properties": {
+        "dialogue": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "voice": {
+          "type": "string"
+        },
+        "ambience": {
+          "type": "string"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "music": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "edit": {
+      "type": "object",
+      "required": [
+        "range",
+        "change",
+        "preserve"
+      ],
+      "properties": {
+        "range": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "change": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preserve": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "exclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inspection": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "rights": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "CLEARED",
+            "LIMITED",
+            "REJECTED",
+            "UNVERIFIED"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

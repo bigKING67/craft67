@@ -1,0 +1,112 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "status": "PARTIAL_SEMANTIC_COVERAGE",
+  "reviewer": "parent agent; manual review, not independent",
+  "runs": [
+    {
+      "name": "installed",
+      "path": "local/skill-evals/20260920-albemarle-blind/installed",
+      "elapsed_seconds": 360.008,
+      "timed_out": true,
+      "answer_present": false,
+      "machine_checks_pass": false,
+      "errors": [
+        "ANSWER_MISSING"
+      ],
+      "trace_review": {
+        "installed_skill_read": true,
+        "acceptance_read_command_observed": false,
+        "scope": "observable command trace; not an OS-level isolation guarantee"
+      },
+      "artifact_hashes": {
+        "host.json": "8d166f0a75d1ca13e045fea34cd9b1e62f896bde73ea61d0db981bf223ffa07a",
+        "prompt.txt": "3673bc1c34b55c0557a01991381d188f710e49567cf28e4dcd7743bc7d7ced8d",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "events.jsonl": "c84d2897bbb2df0e6ca37ff91dfb732e0cd1235712fcf5807107c34550a8b78a",
+        "case-snapshot.json": "a57deda1d993fb20b427d4c60b95bd88d5ad8c0c11f641e708beca80f9627b51",
+        "machine-audit.json": "53914796d60599dd47620926f9f6be2fb0dc04ba95a5fa0e27ba6c4887ded0ab"
+      }
+    },
+    {
+      "name": "compact",
+      "path": "local/skill-evals/20260920-albemarle-blind/compact",
+      "elapsed_seconds": 192.922,
+      "timed_out": false,
+      "answer_present": true,
+      "machine_checks_pass": true,
+      "errors": [],
+      "trace_review": {
+        "installed_skill_read": true,
+        "acceptance_read_command_observed": false,
+        "scope": "observable command trace; not an OS-level isolation guarantee"
+      },
+      "artifact_hashes": {
+        "host.json": "32e34843d7efcf3cddc51399b49071b4fb29bfea8b58494a2389a4c6be32a1a9",
+        "prompt.txt": "d2020122c01429ac0fe57911c61c1689ecd34b5e0ece0504bff2876575a28e92",
+        "answer.md": "8de681dfc6a5da11ea984e5066586f28c69158e1d0e5f5ae8772cb8a426c5315",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "events.jsonl": "d361cfe53924a1e7a51e218d44a1272bb5067cb8eedfc76c1286fc1d6b7b4fd9",
+        "case-snapshot.json": "e495d3ffa9dd4927c9edc5b2d14f407d130ac4eab5f2f6b331096acf9fcc6edc",
+        "machine-audit.json": "576aafd1d15ff25579a370f5383c9636e4ca4727bde4412d177179a22db5d879"
+      }
+    }
+  ],
+  "compact_result": {
+    "semantic_pass": 6,
+    "semantic_partial": 1,
+    "checks": [
+      {
+        "criterion": "实际隐式加载安装版Money Craft和相关引用；路由有效，身份及历史回放限制清晰",
+        "status": "PASS",
+        "reason": "Trace reads installed Skill, required references, date, successful earnings route and separate source hashes; final identity/cutoff disclosed."
+      },
+      {
+        "criterion": "不把市场现货价格机械等同公司合同实现价或收入弹性；无价格桥时明确缺口",
+        "status": "PARTIAL",
+        "reason": "Company price contributions are distinguished from cycle recovery, but spot versus contract/realised price bridge and missing exposure sensitivity are not explicitly addressed."
+      },
+      {
+        "criterion": "区分分部与集团以及调整后EBITDA与GAAP利润；收入比率不当价格beta或单位经济性",
+        "status": "PASS",
+        "reason": "Separate group GAAP operating margin, adjusted EBITDA, segment revenue, preferred dividends and common shareholder loss. No revenue share is used as price beta."
+      },
+      {
+        "criterion": "识别Q4负利润基数及LCM减记，避免负基数百分比增长误导",
+        "status": "PASS",
+        "reason": "Prior-year LCM charge identified; no percentage growth calculation on negative profit base. Tax benefit is a net-income driver, not EBITDA support; wording could be more explicit."
+      },
+      {
+        "criterion": "从现金流原表计算OCF减资本支出，识别客户预付款和削减资本支出的影响；不当可持续或可分配现金",
+        "status": "PASS",
+        "reason": "OCF minus capex and prepayment diagnostic correct; final explicitly denies distributable cash and sustainable-earnings inference. Prepayment rounding means residual precision is approximate."
+      },
+      {
+        "criterion": "不按分部收入占比分配集团现金流；同发行人多份披露不当独立双源",
+        "status": "PASS",
+        "reason": "Group cash is not assigned to segment. Same-issuer lineage and textual/table dividend conflict are explicit."
+      },
+      {
+        "criterion": "下一复查有报告期或披露事件窗口及判断变动条件；不编造发布日期，不形成买卖结论",
+        "status": "PASS",
+        "reason": "Q2 2025 and following reporting windows specified with conditions lowering recovery confidence; no invented release date or trade recommendation."
+      }
+    ],
+    "financial_checks": 10,
+    "public_links": 2
+  },
+  "retry_change": "Only compact answer length added; same sources and semantic criteria. Not same-prompt causal experiment.",
+  "limitations": [
+    "First attempt timed out after 360 seconds with no final answer; intermediate 35 calculations are not final acceptance.",
+    "Compact retry is one observed case, not reliability or broad generalization evidence.",
+    "Official sources are tool extractions, original downloads unavailable; no independent numeric corroboration.",
+    "No Skill/core or global installation changed."
+  ],
+  "addendum": {
+    "path": "acceptance/albemarle-transmission/blind-review-addendum.md",
+    "sha256": "14a234a3df6fa658f040260f4eec3f1a9e5bdde7fbc400323eaafc60548a0f01"
+  },
+  "source_validation": {
+    "checks": 19,
+    "valid": true
+  }
+}

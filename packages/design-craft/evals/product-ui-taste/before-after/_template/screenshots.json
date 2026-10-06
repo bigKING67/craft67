@@ -1,0 +1,46 @@
+{
+  "schema": "design-craft.l4-screenshots.v1",
+  "case_id": "template",
+  "route": "TODO",
+  "artifacts": {
+    "before": {
+      "desktop": {
+        "tool": "TODO",
+        "target": "viewport",
+        "path": "TODO",
+        "sha256": "",
+        "dimensions": [
+          0,
+          0
+        ],
+        "viewport": {
+          "width": 0,
+          "height": 0,
+          "dpr": 0
+        }
+      }
+    },
+    "after": {
+      "desktop": {
+        "tool": "TODO",
+        "target": "viewport",
+        "path": "TODO",
+        "sha256": "",
+        "dimensions": [
+          0,
+          0
+        ],
+        "viewport": {
+          "width": 0,
+          "height": 0,
+          "dpr": 0
+        }
+      }
+    }
+  },
+  "layout_delta": {},
+  "notes": [
+    "Template placeholders are allowed only in non-strict validation.",
+    "Use strict validation after filling real screenshot artifact paths, hashes, dimensions, viewport metadata, and layout metrics."
+  ]
+}

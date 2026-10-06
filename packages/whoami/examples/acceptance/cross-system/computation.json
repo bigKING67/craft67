@@ -1,0 +1,54 @@
+{
+  "status": "pass",
+  "scope": "calendar facts and input identity, not semantic classification",
+  "lichunFixedUTC8": "2026-02-04 04:02:08",
+  "lunarNewYear": "2026-02-17",
+  "yearBoundaries": [
+    {
+      "date": "2026-02-03",
+      "clock": "12:00 +08:00",
+      "baziYear": "乙巳",
+      "ziweiYear": "乙巳"
+    },
+    {
+      "date": "2026-02-10",
+      "clock": "12:00 +08:00",
+      "baziYear": "丙午",
+      "ziweiYear": "乙巳"
+    },
+    {
+      "date": "2026-02-17",
+      "clock": "12:00 +08:00",
+      "baziYear": "丙午",
+      "ziweiYear": "丙午"
+    }
+  ],
+  "changedBirth": [
+    {
+      "time": "14:20",
+      "chartId": "6d80036f29e803a766f62f5f56cc9d5081ab58f87f49d9305879de2b0df518a8",
+      "candidate": "C1-5ad54bcf",
+      "pillars": [
+        "癸酉",
+        "癸亥",
+        "癸巳",
+        "己未"
+      ],
+      "soulPalace": "卯",
+      "bodyPalace": "巳"
+    },
+    {
+      "time": "14:50",
+      "chartId": "0c13764dbf2edf7ff2dc71e9c4f74bfb215d1d4c7406f3809b5cbae5d8368184",
+      "candidate": "C1-224a1ce5",
+      "pillars": [
+        "癸酉",
+        "癸亥",
+        "癸巳",
+        "庚申"
+      ],
+      "soulPalace": "寅",
+      "bodyPalace": "午"
+    }
+  ]
+}

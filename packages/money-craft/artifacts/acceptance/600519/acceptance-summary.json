@@ -1,0 +1,62 @@
+{
+  "schema": "money-craft.fuyao-acceptance.v1",
+  "security": "贵州茅台",
+  "thscode": "600519.SH",
+  "as_of": "2026-08-23",
+  "data_cutoff": "2026-08-23T19:40:16+08:00",
+  "installed_skill": {
+    "version": "0.1.0",
+    "credential_source": "secure-file",
+    "secret_recorded": false
+  },
+  "distribution": {
+    "mode": "metadata-only",
+    "manifest": "evidence-manifest.json",
+    "provider_payloads_distributed": false,
+    "downloaded_documents_distributed": false,
+    "synthetic_fixtures": "tests/fixtures/fuyao"
+  },
+  "summary": {
+    "primary_passed": 10,
+    "primary_total": 10,
+    "latest_statement_passed": 3,
+    "latest_statement_total": 3,
+    "latest_indicator_passed": 0,
+    "latest_indicator_total": 1,
+    "client_contract_defects": 0,
+    "provider_availability_limitations": 1
+  },
+  "cases": [
+    {"id": "S01", "operation": "search", "status": "passed", "manifest_ref": "evidence-manifest.json#S01"},
+    {"id": "S02", "operation": "snapshot", "status": "passed", "manifest_ref": "evidence-manifest.json#S02"},
+    {"id": "S03", "operation": "valuations", "status": "passed", "manifest_ref": "evidence-manifest.json#S03"},
+    {"id": "S04", "operation": "history", "status": "passed", "manifest_ref": "evidence-manifest.json#S04"},
+    {"id": "S05", "operation": "income-statements annual", "status": "passed", "manifest_ref": "evidence-manifest.json#S05"},
+    {"id": "S06", "operation": "balance-sheets annual", "status": "passed", "manifest_ref": "evidence-manifest.json#S06"},
+    {"id": "S07", "operation": "cash-flow-statements annual", "status": "passed", "manifest_ref": "evidence-manifest.json#S07"},
+    {"id": "S08", "operation": "indicators 2025-4", "status": "passed", "manifest_ref": "evidence-manifest.json#S08"},
+    {"id": "S09", "operation": "corporate-actions", "status": "passed", "manifest_ref": "evidence-manifest.json#S09"},
+    {"id": "S10", "operation": "trading-calendar", "status": "passed_with_warning", "manifest_ref": "evidence-manifest.json#S10", "note": "The requested range was filtered locally as documented by the client."},
+    {"id": "S14", "operation": "income-statements quarterly", "status": "passed", "manifest_ref": "evidence-manifest.json#S14"},
+    {"id": "S15", "operation": "balance-sheets quarterly", "status": "passed", "manifest_ref": "evidence-manifest.json#S15"},
+    {"id": "S16", "operation": "cash-flow-statements quarterly", "status": "passed", "manifest_ref": "evidence-manifest.json#S16"},
+    {"id": "S17", "operation": "indicators 2026-2", "status": "provider_unavailable", "manifest_ref": "evidence-manifest.json#S17", "error_kind": "transient_provider_error", "provider_code": 5003, "retryable": true, "note": "Provider returned result empty for the latest report period after bounded retries."}
+  ],
+  "quote_boundary": {
+    "requested_as_of": "2026-08-23",
+    "last_trading_date": "2026-08-21",
+    "rule": "Use the last history bar date as the quote date; snapshot timestamps are request-time metadata when the market is closed."
+  },
+  "official_reconciliation": [
+    {"field": "2025 operating income", "official_cny": "168838102514.79", "fuyao_cny": "168838102514.79", "difference_cny": "0.00"},
+    {"field": "2025 parent-holder net profit", "official_cny": "82320067101.68", "fuyao_cny": "82320067101.68", "difference_cny": "0.00"},
+    {"field": "2026 H1 operating income", "official_cny": "90703260964.48", "fuyao_cny": "90703260964.48", "difference_cny": "0.00"},
+    {"field": "2026 H1 parent-holder net profit", "official_cny": "44516880421.86", "fuyao_cny": "44516880421.86", "difference_cny": "0.00"}
+  ],
+  "integrity": {
+    "public_manifest": "passed_17_of_17",
+    "private_evidence_hashes": "passed_30_of_30",
+    "secret_scan": "passed",
+    "source_validation": "passed"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PASS_HISTORICAL_EXTRACTION",
+  "fields_verified": 4,
+  "calculations": 4,
+  "core_imported": false,
+  "full_finalize_rerun": false,
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260921-midea-history/review.md",
+      "sha256": "b2193403f489e6626a0bf7042ef8f52a7fc6e5d4eeda6ba1e6f309d03053f8c1"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-history/extracted-fields.json",
+      "sha256": "a2de6be63ee452db2ab36d133a40a77cc5af4984973578eb51979cc4d5c34152"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-history/financial-audit.json",
+      "sha256": "16af1b4673ebc3bf809e2bcd99ead8111adda938a55646b94a17ea3629bd4a42"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-history/semantic-review.json",
+      "sha256": "6b1602970eee28011695e7a8ba5029ebc0a58811b3e3f86a312115ba44fe8cbd"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-history/ledger-verification.json",
+      "sha256": "d3a2e45836fcef228637bb8ff6e6b6c5045ed1258821cd50017578f81a837932"
+    }
+  ]
+}

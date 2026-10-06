@@ -1,0 +1,4 @@
+- [x] Implement driver model, scenarios, sensitivity and actual residual review.
+- [x] Add source-bound assumptions and linked model integrity.
+- [x] Exercise real filing reconciliation and separate illustrative scenario seal.
+- [x] Complete regression, source and package validation.

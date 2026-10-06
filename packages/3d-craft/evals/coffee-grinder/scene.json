@@ -1,0 +1,79 @@
+{
+  "schema": "3d-craft.scene.v1",
+  "units": "meters",
+  "up_axis": "Z",
+  "origin_policy": "object-base-center",
+  "topology_policy": "closed",
+  "authoring_mode": "procedural",
+  "dimensions": {
+    "width": 0.18,
+    "depth": 0.22,
+    "height": 0.32,
+    "tolerance_percent": 6
+  },
+  "identity_features": [
+    {"id": "feature-01", "description": "Compact tabletop appliance proportions", "importance": "critical", "status": "specified"},
+    {"id": "feature-02", "description": "Transparent tapered hopper above the grinding chamber", "importance": "critical", "status": "specified"},
+    {"id": "feature-03", "description": "Forward chute above a detachable grounds cup", "importance": "critical", "status": "specified"},
+    {"id": "feature-04", "description": "Side adjustment knob and front status light", "importance": "major", "status": "specified"}
+  ],
+  "components": [
+    "body",
+    "transparent_hopper",
+    "lid",
+    "grinding_chamber",
+    "adjustment_knob",
+    "chute",
+    "grounds_cup",
+    "base",
+    "status_light"
+  ],
+  "materials": [
+    "brushed_metal",
+    "matte_polymer",
+    "tinted_transparent",
+    "rubber"
+  ],
+  "cameras": ["front", "back", "left", "right", "top", "perspective"],
+  "runtime": {
+    "engine": "r3f",
+    "renderer": "webgl",
+    "target_devices": ["desktop", "mobile"]
+  },
+  "budgets": {
+    "status": "approved",
+    "asset_bytes": 5242880,
+    "triangles": 75000,
+    "draw_calls": 30,
+    "textures": 8,
+    "frame_p95_ms": 25,
+    "performance_profile": {
+      "viewport": [1440, 900],
+      "device_pixel_ratio": 1,
+      "warmup_ms": 3000,
+      "sample_ms": 10000,
+      "resource_reload_cycles": 3,
+      "max_geometry_delta": 0,
+      "max_texture_delta": 0
+    },
+    "required_node_coverage_percent": 100,
+    "bbox_drift_percent": 0.5
+  },
+  "required_evidence": [
+    "blend-inspection",
+    "clean-reproduction",
+    "front",
+    "back",
+    "left",
+    "right",
+    "top",
+    "perspective",
+    "contact-sheet",
+    "lookdev",
+    "visual-review",
+    "gltf-validation",
+    "browser-runtime",
+    "browser-desktop-screenshot",
+    "browser-mobile-screenshot"
+  ]
+}

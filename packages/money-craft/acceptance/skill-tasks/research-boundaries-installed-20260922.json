@@ -1,0 +1,72 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "as_of": "2026-09-22",
+  "verdict": "PASS_BOUNDED_INSTALLED_NATURAL_PROMPT",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "machine_checks_pass": true,
+  "calculation_receipts": 5,
+  "manual_reviewer": "main-agent",
+  "independent_review": false,
+  "source_install_parity": true,
+  "installed_snapshot_unchanged": true,
+  "tree_sha256": "91cd64ef734baaba0a89a9c550773d18670016235e4eab8e623352452f223a0c",
+  "checks": [
+    {
+      "status": "PASS",
+      "reason": "实际从全局安装路径读取Skill及新语义规则，成功路由"
+    },
+    {
+      "status": "PASS",
+      "reason": "负70仅表面利润差额，不作跨期同比"
+    },
+    {
+      "status": "PASS",
+      "reason": "不以期末票据余额扣OCF，也不声称贴现改善已证实"
+    },
+    {
+      "status": "PASS",
+      "reason": "预算账面差额不作剩余现金，保留预算已知事实"
+    },
+    {
+      "status": "PASS",
+      "reason": "机器人样品20与其他收入280分离，不冒称量产"
+    },
+    {
+      "status": "PASS",
+      "reason": "40仅条件演示，不作合理价值或买卖结论"
+    },
+    {
+      "status": "PASS",
+      "reason": "保留收入成本差30，将流程完成和假设未决分开并明确收口"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/implicit/answer.md",
+      "sha256": "1c24b10d5c5b4b5a0eeab4cc46537a03555e65917418861ad4f27805bd29e210"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/implicit/events.jsonl",
+      "sha256": "bbd80f94e309ff4764e05b6ed91a03961831be49552e685fbdd28b03da8d663a"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/implicit/host.json",
+      "sha256": "a5c41f54d6325fc90033790e19193a3de6f124ede3e1463d87874ee1f792b4f5"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/implicit/machine-audit.json",
+      "sha256": "d09caa70a71efde865e55fda70d4ea1893162cdaa2f6c97e110c059d82583b56"
+    },
+    {
+      "path": "local/validation/20260922-installed-boundaries/sync-receipt.json",
+      "sha256": "54ff27e222ff56f53102a123731d877db6e64f2302cf2c2d86121f4e01978bda"
+    }
+  ],
+  "limits": [
+    "Single authored synthetic case; prior source-path run means not a fresh holdout",
+    "Natural trigger under existing global governance, not isolated description-only discovery",
+    "No repeated stability, other-host, live-provider or formal-archive acceptance",
+    "Only .agents installation updated; no commit, push, release or application changes",
+    "Runner read legacy financial_rigor compatibility shim before using installed calculator; no legacy Skill loaded"
+  ]
+}

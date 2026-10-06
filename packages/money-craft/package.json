@@ -1,0 +1,61 @@
+{
+  "name": "@bigking67/money-craft",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Evidence-first global investment research, wealth decision support, valuation, and thesis tracking for agent hosts.",
+  "license": "MIT",
+  "author": "bigKING67",
+  "homepage": "https://github.com/bigKING67/money-craft#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigKING67/money-craft.git"
+  },
+  "files": [
+    ".env.example",
+    ".codex-plugin",
+    ".claude-plugin",
+    ".grok-plugin",
+    "skills/money-craft",
+    "adapters",
+    "scripts/install_skill.py",
+    "README.md",
+    "LICENSE",
+    "LICENSES",
+    "THIRD_PARTY_NOTICES.md",
+    "VERSION",
+    "sources.lock.json",
+    "!skills/money-craft/**/__pycache__",
+    "!skills/money-craft/**/*.pyc"
+  ],
+  "keywords": [
+    "agent-skill",
+    "investment-research",
+    "global-investing",
+    "portfolio-analysis",
+    "fundamental-analysis",
+    "earnings-review",
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "skills/money-craft"
+    ]
+  },
+  "moneyCraft": {
+    "python": ">=3.10",
+    "releaseStatus": "unreleased-candidate",
+    "distribution": "github-only"
+  },
+  "scripts": {
+    "doctor": "python3 skills/money-craft/scripts/money_craft.py doctor --json",
+    "self-test": "python3 skills/money-craft/scripts/money_craft.py self-test --json",
+    "validate": "python3 scripts/validate.py",
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py' -v",
+    "host-smoke": "python3 scripts/host_smoke.py --run-local-validators --run-discovery --json",
+    "host-smoke:static": "python3 scripts/host_smoke.py --json",
+    "package-check": "python3 scripts/check_package.py",
+    "package-smoke": "python3 scripts/package_smoke.py",
+    "evidence-verify": "python3 scripts/verify_evidence.py artifacts/acceptance/600519/evidence-manifest.json --require-private",
+    "upstream-status": "python3 scripts/upstream_status.py --json"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "money-craft.research-init-lock.v1",
+  "date": "2026-09-17",
+  "scope": "Cooperative initialization competition and retry after pre-publication process termination",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "53edb2a760ffe863faba53f2f16223563816899895037dd1ae072ec8c8f66481",
+    "tests/test_research_run.py": "66ef280ff7d3973aad1fe4fd4c35615de710473363f2ba5a97976935abe94f71",
+    "skills/money-craft/references/company-research.md": "e3e7cfa7a86e587582ffa9c1909b81163b31483bc3d525584bb6d5c781bed3d2"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Initializer was outside workspace lock, so a competing init could create the requested workspace while another initializer was paused before publication.",
+    "after": "Initialization holds the same sibling lock through staging construction/publication, rechecks target inside lock, and rejects existing workspace."
+  },
+  "validation": {
+    "research_tests": 46,
+    "full_tests": 309,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regression": "Isolated unlocked initializer copy allowed competing init exit0 instead of workspace_busy exit4.",
+    "real_cli": [
+      "Paused initializer prevents competing init from publishing",
+      "Released initializer completes",
+      "Killed pre-publication initializer releases lock and new init succeeds",
+      "Existing workspace duplicate init rejected with unchanged bytes"
+    ],
+    "fixture_corrections": "Resolved macOS /var vs /private path alias for barrier; fixture-owned idle sidecar removed before unsafe-lock probes; child pipes closed on all paths."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 46,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "53edb2a760ffe863faba53f2f16223563816899895037dd1ae072ec8c8f66481",
+      "tests/test_research_run.py": "66ef280ff7d3973aad1fe4fd4c35615de710473363f2ba5a97976935abe94f71"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T063800630619Z"
+  },
+  "limits": [
+    "Killed initializer staging retained; retry builds a new staging, not recovery of the old one.",
+    "No protection claim for external writers bypassing the lock protocol.",
+    "Lifecycle remains PARTIAL: other transaction/cleanup boundaries, Windows, network filesystem and power-loss durability unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No live provider, app, commit, push or release."
+  ]
+}

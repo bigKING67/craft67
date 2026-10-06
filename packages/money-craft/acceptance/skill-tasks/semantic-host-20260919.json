@@ -1,0 +1,230 @@
+{
+  "schema": "money-craft.semantic-host-acceptance.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED_AFTER_CORRECTION",
+  "scope": "Two new synthetic natural-language tasks; explicit source valuation and implicit installed earnings entry",
+  "results": {
+    "selected_cases_passed": 2,
+    "selected_cases": [
+      "valuation-r1",
+      "quarter-r2"
+    ],
+    "criteria_passed": 11,
+    "selected_calculations_passed": 34,
+    "host_runs": 3,
+    "first_attempt_all_passed": false,
+    "source_checks": 19,
+    "package_checks": 8,
+    "installed_files_equal": 72
+  },
+  "runs": [
+    {
+      "run": "valuation-r1",
+      "case_id": "semantic-valuation-dependencies",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "exit_code": 0,
+      "timed_out": false,
+      "route": "READY",
+      "machine_checks_pass": true,
+      "calculation_count": 17,
+      "semantic_reference_read_in_trace": true,
+      "verdict": "PASS_BOUNDED",
+      "criteria": [
+        [
+          "PASS",
+          "实际命令读取源码research-semantic-review.md，route READY。"
+        ],
+        [
+          "PASS",
+          "TTM92、每股4.6、20倍对应92；明确非有依据目标价。"
+        ],
+        [
+          "PASS",
+          "明确60不是净现金，停止240或60加回。"
+        ],
+        [
+          "PASS",
+          "明确S03复制S01/S02，不构成独立双源。"
+        ],
+        [
+          "PASS",
+          "GRAY，要求补正常化利润、现金债务范围和股数；拒绝确定性买入。"
+        ]
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-semantic-host/valuation-r1/host.json",
+          "sha256": "8c78aeaf3a8e8335d139d57806e47ab7a68a07724431c56503b5018663be067d"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/valuation-r1/events.jsonl",
+          "sha256": "5846e6f6d66f9f4281dd0248ccd8a32506af990d02e9fd60c476847a7bf9a775"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/valuation-r1/answer.md",
+          "sha256": "d1febc44d2e57319dc092ab6c45aa915eceeef965a1cbc0174757408307b186d"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/valuation-r1/machine-audit.json",
+          "sha256": "1218bcb7192640960d3e99320247fa35cb227bf67af55c9d17c9449eeeaeac55"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/valuation-r1/semantic-review.json",
+          "sha256": "ed4dbdf7e8d7cde9379e864afb79c0dce651cb59f5b48a716f6aa8c979d25b73"
+        }
+      ],
+      "relevant_reference_hashes": {
+        "skills/money-craft/references/earnings-review.md": "8098be49f0aac5a120d3a954c538e2cf7e9caabf9dd954f6a96eeabc117ef239",
+        "skills/money-craft/references/research-semantic-review.md": "bb777c4d2c2f48714cef2c3565890526bd1bb1b24e4f143eeb6ab9f6a30c635d",
+        "skills/money-craft/references/valuation-and-thesis.md": "fc86613b848870f3bdf680f8980d585a276c05d6164f181e9bf52fc54d15283b"
+      }
+    },
+    {
+      "run": "quarter-r1",
+      "case_id": "semantic-quarter-cash-causality",
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "exit_code": 0,
+      "timed_out": false,
+      "route": "READY",
+      "machine_checks_pass": true,
+      "calculation_count": 17,
+      "semantic_reference_read_in_trace": false,
+      "verdict": "NEEDS_CORRECTION",
+      "criteria": [
+        [
+          "FAIL",
+          "自然读取安装Skill且route READY，但事件轨迹与最终引用均未读取research-semantic-review.md。"
+        ],
+        [
+          "PASS",
+          "推导Q4收入320、利润38，不算缺基数的同比。"
+        ],
+        [
+          "PARTIAL",
+          "定义了简化FCF与30/80；但称压低可用现金，未明确与可自由分配现金的区别。"
+        ],
+        [
+          "PASS",
+          "缺九个月现金流时不计算Q4现金，结论不能确认共同改善。"
+        ],
+        [
+          "PASS",
+          "正确识别2026提价不能解释2025，也没有把未给材料说成未披露。"
+        ],
+        [
+          "PASS",
+          "补具体累计现金、资本开支、可比利润窗口，现金下降约束判断。"
+        ]
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r1/host.json",
+          "sha256": "59c0b16d9eedec50457576c44047822c16989cc60cde364a3ccc17527c4d327f"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r1/events.jsonl",
+          "sha256": "f594a7a18006332293c40353df9586ff485ba37117195bcaf4eb595d61fffbc5"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r1/answer.md",
+          "sha256": "5b605186d353c8a12b220e6ae131dc986b7affe3c47c017e925623330f2c2697"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r1/machine-audit.json",
+          "sha256": "e4294323eebe051ff9e2b2cfbac4bedc3ce5f581461381a2474207dd88ebbc2e"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r1/semantic-review.json",
+          "sha256": "fd380f5ac77aee7408ff8e162b4457f34ec0d2d748e650129406c33628f5a23c"
+        }
+      ],
+      "relevant_reference_hashes": {
+        "skills/money-craft/references/earnings-review.md": "8098be49f0aac5a120d3a954c538e2cf7e9caabf9dd954f6a96eeabc117ef239",
+        "skills/money-craft/references/research-semantic-review.md": "bb777c4d2c2f48714cef2c3565890526bd1bb1b24e4f143eeb6ab9f6a30c635d",
+        "skills/money-craft/references/valuation-and-thesis.md": "fc86613b848870f3bdf680f8980d585a276c05d6164f181e9bf52fc54d15283b"
+      }
+    },
+    {
+      "run": "quarter-r2",
+      "case_id": "semantic-quarter-cash-causality",
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "exit_code": 0,
+      "timed_out": false,
+      "route": "READY",
+      "machine_checks_pass": true,
+      "calculation_count": 17,
+      "semantic_reference_read_in_trace": true,
+      "verdict": "PASS_BOUNDED_AFTER_CORRECTION",
+      "criteria": [
+        {
+          "status": "PASS",
+          "reason": "事件轨迹显示从安装Skill自然触发并读取research-semantic-review，路由READY。"
+        },
+        {
+          "status": "PASS",
+          "reason": "收入320、归母净利38按累计差额推导，明确缺同比基数。"
+        },
+        {
+          "status": "PASS",
+          "reason": "全年OCF下降18.18%、proxy30对80；明确不等于股东可自由分配现金。"
+        },
+        {
+          "status": "PASS",
+          "reason": "缺九个月现金流，拒绝判断Q4现金转换改善。"
+        },
+        {
+          "status": "PASS",
+          "reason": "1月提价不解释之前Q4，无后续材料不冒称当前收益已兑现。"
+        },
+        {
+          "status": "PASS",
+          "reason": "明确2025Q4双年累计窗口及提价后验证指标，反方改变最终判断。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r2/host.json",
+          "sha256": "73666322c83275f56fc9a04bc4d73f0ccf82a18817212a31c469ddff99d99c84"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r2/events.jsonl",
+          "sha256": "ff2f1f01ba01417d841873c277885af317472c7e34c21b4ee14fa2b7e605c8b7"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r2/answer.md",
+          "sha256": "e8a86b05ba95e672ca956848f6f9a8179b73549c3514b4ba49762695e9416d05"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r2/machine-audit.json",
+          "sha256": "7da5b8bfe2dcd1a2a38720c0c76f2cdeb18599ebb3e721632ef931c2b4f16c40"
+        },
+        {
+          "path": "local/skill-evals/20260919-semantic-host/quarter-r2/semantic-review.json",
+          "sha256": "22b7e70b04f6fe30d311a17b3bd2b3db392d613b53b1d804438fe3290c6b9298"
+        }
+      ],
+      "relevant_reference_hashes": {
+        "skills/money-craft/references/earnings-review.md": "1d082c35b4e88fe4f13f25b710aab2d75ead84a4392bb307efc51f513ec2bf6b",
+        "skills/money-craft/references/research-semantic-review.md": "930d924c993d68425b494e2e09db8b181fc2e3d57468d4236e0e97c25edaaafe",
+        "skills/money-craft/references/valuation-and-thesis.md": "fc86613b848870f3bdf680f8980d585a276c05d6164f181e9bf52fc54d15283b"
+      }
+    }
+  ],
+  "changes": [
+    {
+      "path": "skills/money-craft/references/earnings-review.md",
+      "sha256": "1d082c35b4e88fe4f13f25b710aab2d75ead84a4392bb307efc51f513ec2bf6b"
+    },
+    {
+      "path": "skills/money-craft/references/research-semantic-review.md",
+      "sha256": "930d924c993d68425b494e2e09db8b181fc2e3d57468d4236e0e97c25edaaafe"
+    }
+  ],
+  "limits": [
+    "All cases are synthetic, evaluator-designed and reviewed by the main agent; not independent empirical generalization.",
+    "Valuation r1 binds the pre-correction reference snapshot; quarter r2 binds the final snapshot. This is not a full final-version suite replay.",
+    "No runtime code or automatic semantic auditor changed; no full runtime test suite rerun.",
+    "No live market data, application, trading, commit, push or release."
+  ],
+  "retained_environment_failure": "Default python source-validation failed due missing PyYAML; configured acceptance venv passed. No global dependency changed."
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "./skills/review-craft/schemas/config.schema.json",
+  "mode": "review",
+  "assuranceLevel": "standard",
+  "profile": "auto",
+  "focusDimensions": [],
+  "diffBase": null,
+  "scope": ["."],
+  "exclude": [],
+  "generated": [],
+  "vendored": [],
+  "commands": {
+    "benchmark-1k": {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "scripts/benchmark_runtime.py",
+        "run",
+        "--sizes",
+        "1000",
+        "--repetitions",
+        "1",
+        "--warmups",
+        "0"
+      ],
+      "cwd": ".",
+      "timeoutSeconds": 600,
+      "evidenceClaims": [
+        {
+          "id": "runtime-benchmark-1k",
+          "kind": "benchmark",
+          "jsonPointer": "/measurements/0/fileCount",
+          "equals": 1000
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "runtime-benchmark-result",
+          "pathJsonPointer": "/result",
+          "maxBytes": 16777216
+        }
+      ]
+    },
+    "package-check": {
+      "argv": ["python3", "scripts/package_check.py"],
+      "cwd": ".",
+      "timeoutSeconds": 120
+    },
+    "complexity-budget": {
+      "argv": ["uv", "run", "--locked", "python", "scripts/complexity_budget.py"],
+      "cwd": ".",
+      "timeoutSeconds": 120,
+      "evidenceClaims": [
+        {
+          "id": "core-complexity-budget",
+          "kind": "check",
+          "jsonPointer": "/valid",
+          "equals": true
+        }
+      ]
+    },
+    "source-validation": {
+      "argv": ["uv", "run", "--locked", "python", "scripts/validate.py"],
+      "cwd": ".",
+      "timeoutSeconds": 120
+    },
+    "test": {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py"
+      ],
+      "cwd": ".",
+      "timeoutSeconds": 600
+    }
+  },
+  "policy": {
+    "allowNetwork": false,
+    "allowInstall": false,
+    "allowRepositoryMutation": false,
+    "outputOutsideRepository": true
+  },
+  "reportLanguage": "zh-CN"
+}

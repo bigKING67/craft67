@@ -1,0 +1,38 @@
+{
+  "name": "review-craft",
+  "version": "0.7.3",
+  "description": "Evidence-driven engineering review, validation, remediation planning, and quality governance for real codebases.",
+  "author": {
+    "name": "bigKING67",
+    "url": "https://github.com/bigKING67"
+  },
+  "homepage": "https://github.com/bigKING67/review-craft#readme",
+  "repository": "https://github.com/bigKING67/review-craft",
+  "license": "MIT",
+  "keywords": [
+    "engineering-review",
+    "architecture",
+    "maintainability",
+    "performance",
+    "repository-governance",
+    "agent-skill"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Review Craft",
+    "shortDescription": "Evidence-driven repository engineering review",
+    "longDescription": "Review Craft accounts for repository coverage, validates engineering findings, separates severity from priority, content-binds explicitly authorized remediation verification, and can attest post-commit push and CI delivery evidence.",
+    "developerName": "bigKING67",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read"],
+    "websiteURL": "https://github.com/bigKING67/review-craft",
+    "defaultPrompt": [
+      "Run an evidence-driven engineering review of this repository.",
+      "Review this codebase and produce validated remediation decisions.",
+      "Identify what to fix, delete, measure, defer, or keep.",
+      "Verify the explicitly selected Review Craft findings after remediation.",
+      "Create a Review Craft delivery attestation for a verified fix after commit, push, and CI."
+    ],
+    "brandColor": "#1F2937"
+  }
+}

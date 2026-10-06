@@ -1,0 +1,14 @@
+{
+  "case-01": {
+    "X": "method",
+    "Y": "control"
+  },
+  "case-02": {
+    "X": "control",
+    "Y": "method"
+  },
+  "case-03": {
+    "X": "method",
+    "Y": "control"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "blind_map_sha256": "0b0f21e99d58077431687a5fc3b80331c2b5f472886344b7c66e6ffa9a20fa89",
+  "blind_packet_sha256": "7a953a2de6a564f85ea54138bcd5e1843d6933616b44ace7240c955772b2f74c",
+  "case_id": "emil-motion-planning-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "ec55be6ed2143129e786e0591b384b3337581b0b53a8d5cbf12367ef8ce8c46a",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "5ddd944e78c8cdd998e3637f71ae620f3376329fcc612c33501f804391f9ad4a",
+    "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.145.0"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "b90b0fc1ec877d783cbffba9848944df30f73b9a7270c094a1cab2d7c37d9e71",
+  "judgment_sha256": "49d5231a56889b0da893307445fe7f16f704a1b411b90306d29648813c2a3724",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "rationale": "C 胜出，因为它最接近完整 scorecard：既没有把静态片段冒充运行证据，又对 property cost、origin、pointer tracking、interruption 和 primitive tradeoff 给出了条件化且可停止的实施路径。A 的命令面板删除方案很有针对性，但 sortable queue 中的原始 `clientY` transform 和假定 spring 配置属于高风险技术缺陷。B 相对稳妥，却以抽象一致性问题主导优先级，并遗漏 origin 与 settle 中断等关键环节。三份输出均未满足 180 行上限，也都缺少真正量化的性能验证步骤；以上总分均由八项 criterion 分数重新相加得到。",
+  "recorded_at": "2026-07-23T11:24:34Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility_performance": 8,
+        "evidence_recon": 13,
+        "plan_self_containment": 17,
+        "prioritization": 7,
+        "project_conventions": 8,
+        "purpose_frequency": 7,
+        "technical_accuracy": 10,
+        "verification_quality": 8
+      },
+      "score": 78,
+      "summary": "覆盖范围完整，机械检查、后续体感检查、Reduced Motion 和漂移停止条件均较清楚。但优先级把通用 token 一致性和片段中未展示的 Reduced Motion 置于 P0，高于更具体的高频交互问题；同时将 popover 判断为极高频、toast 判断为高频，静态证据不足。队列计划复制 CSS 数值为 JS 常量，未充分处理 settle 中断与当前呈现值，popover 也没有认真解决 origin，且输出超过 180 行。"
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility_performance": 8,
+        "evidence_recon": 14,
+        "plan_self_containment": 18,
+        "prioritization": 8,
+        "project_conventions": 10,
+        "purpose_frequency": 9,
+        "technical_accuracy": 14,
+        "verification_quality": 9
+      },
+      "score": 90,
+      "summary": "三者中证据边界和技术推理最完整，持续区分静态风险、目标行为和尚待运行验证的结论。它正确覆盖了显式动画属性、popover origin 条件、toast 布局属性、拖拽坐标系、pointer capture、当前呈现值、中断、释放速度单位以及 animation primitive 能力边界，并复用了既有 token 和 Button precedent。扣分主要来自 sortable queue 的频率与 P1 排名仍有推断、命令面板新增样式文件路径未能精确落定、没有安排量化帧时序或布局测量，以及明显超过 180 行。"
+    },
+    "emil": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility_performance": 8,
+        "evidence_recon": 14,
+        "plan_self_containment": 17,
+        "prioritization": 8,
+        "project_conventions": 9,
+        "purpose_frequency": 8,
+        "technical_accuracy": 10,
+        "verification_quality": 8
+      },
+      "score": 82,
+      "summary": "静态侦察、路径级计划和高频命令面板取舍较强，三份计划也基本覆盖了要求的实施字段。但队列方案将原有 CSS 变量写入武断地描述为父级广播，直接用视口坐标 `clientY` 作为 `translateY`，并给出未经证实且可能单位不一致的 spring API 参数，明显削弱技术准确性和实施安全性。缺少量化性能检查，整体也明显超过 180 行限制。"
+    }
+  },
+  "schema": "design-craft.comparative-result.v3",
+  "scorecard_json_sha256": "a06d975f9da69fa9bea87362ee0e4f90bdc790e552561e6b6ac96f650bb53a88",
+  "scorecard_sha256": "ea04fd4fce3cbad1a31129f3b8ea45be2bca0ec334b07598a3d5223e41260d48",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "9982847aa02610d7840eea6647b935c359dcdac7337bbe5ff3ebd29ee938d86b",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "e21a7916bcacec3a02cc1c9a7857b7f363cd5bef83a9ccf4610d5e033cbd5c9e",
+      "run_path": "run.baseline.json",
+      "run_sha256": "e76b1bcbd2b1c8ca8c916c63b2c46b1aee6789740a13d4db04c73ef46d80461a",
+      "skill_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "9982847aa02610d7840eea6647b935c359dcdac7337bbe5ff3ebd29ee938d86b",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "e8550530ab5b61bebd8c8fa82ac426f41a72468910ca922d84408d36f1afd071",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "7c5cce2aea22088e8282cceacf2bb10021be56d77dfa97c08d70df4722dc9713",
+      "skill_trees": {
+        "skills/design-craft": "a1d70f431e9d59a4537e5082f1d363029a604086f5bf2a80cf6fa508722a5ca1"
+      },
+      "thinking": "high"
+    },
+    "emil": {
+      "contract_sha256": "9982847aa02610d7840eea6647b935c359dcdac7337bbe5ff3ebd29ee938d86b",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.emil.md",
+      "output_sha256": "3c50cbca8f3c7a3e7dee59dbd689690f6827f184083ad724c3c38c5016be8adf",
+      "run_path": "run.emil.json",
+      "run_sha256": "cf35379336437c4d349bfc0dd2330d88fc578de58eb6a076173e665df87388c1",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "creative-craft.provider.v1",
+  "profile_id": "openai.gpt-image-2.2026-04-21",
+  "provider": "OpenAI",
+  "model": "gpt-image-2",
+  "snapshot": "gpt-image-2-2026-04-21",
+  "verified_at": "2026-08-04",
+  "authority": "official",
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-image-2",
+    "https://developers.openai.com/api/docs/guides/image-generation",
+    "https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide"
+  ],
+  "availability": {
+    "image_api_generation": true,
+    "image_api_edit": true,
+    "responses_api_multi_turn": true,
+    "network_adapter_included_in_creative_craft": false
+  },
+  "capabilities": {
+    "input_modalities": [
+      "text",
+      "image"
+    ],
+    "output_modalities": [
+      "image"
+    ],
+    "automatic_high_fidelity_image_input": true,
+    "quality": [
+      "low",
+      "medium",
+      "high",
+      "auto"
+    ],
+    "format": [
+      "png",
+      "jpeg",
+      "webp"
+    ],
+    "background": [
+      "opaque",
+      "auto"
+    ],
+    "transparent_background": false,
+    "size": {
+      "auto": true,
+      "max_edge_px": 3840,
+      "edge_multiple_px": 16,
+      "max_aspect_ratio": 3.0,
+      "min_total_pixels": 655360,
+      "max_total_pixels": 8294400,
+      "popular": [
+        "1024x1024",
+        "1536x1024",
+        "1024x1536",
+        "2048x2048",
+        "2048x1152",
+        "3840x2160",
+        "2160x3840"
+      ],
+      "experimental_above_total_pixels": 3686400
+    },
+    "compression": {
+      "formats": [
+        "jpeg",
+        "webp"
+      ],
+      "minimum_percent": 0,
+      "maximum_percent": 100
+    },
+    "masked_edits": {
+      "supported": true,
+      "mask_is_guidance_not_pixel_exact": true,
+      "source_and_mask_same_size_and_format": true,
+      "mask_requires_alpha_channel": true
+    }
+  },
+  "workflow_guidance": {
+    "single_prompt_or_edit": "Image API",
+    "conversational_or_iterative_editing": "Responses API",
+    "draft": "Start with quality=low when it satisfies the creative requirement.",
+    "final": "Compare medium/high for dense text, identity-sensitive edits, detailed graphics, and high-resolution delivery.",
+    "prompt_order": [
+      "intended use",
+      "background or scene",
+      "subject",
+      "key details",
+      "composition and lighting",
+      "exact text",
+      "reference roles",
+      "change",
+      "preserve",
+      "constraints"
+    ]
+  },
+  "known_limitations": [
+    "Precise text placement and clarity may still fail.",
+    "Recurring character or brand consistency may drift.",
+    "Layout-sensitive composition may not be exact.",
+    "Complex requests can have significant latency.",
+    "Outputs above the documented reliability boundary require extra validation.",
+    "Mask-guided edits may not follow the mask boundary with pixel precision."
+  ]
+}

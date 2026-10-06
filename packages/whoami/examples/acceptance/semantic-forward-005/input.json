@@ -1,0 +1,14 @@
+{
+  "calendar": "solar",
+  "date": "2024-03-10",
+  "leapMonth": false,
+  "time": "02:30",
+  "uncertaintyMinutes": 0,
+  "place": "纽约（合成）",
+  "longitude": -74.006,
+  "timeZone": "America/New_York",
+  "gender": "female",
+  "timeBasis": "civil",
+  "dayBoundary": "midnight",
+  "dstDisambiguation": "later"
+}

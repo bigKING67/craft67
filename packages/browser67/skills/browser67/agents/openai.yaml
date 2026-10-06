@@ -1,0 +1,16 @@
+interface:
+  display_name: "browser67"
+  short_description: "Real Chrome/Edge automation with managed-tab lifecycle"
+  default_prompt: "Use $browser67 for real Chrome/Edge work: create managed tabs by default, adopt an exact user-opened tab only when requested, inspect browser67.tool-outcome.v3 page/data, and run scoped finalize_task; use $js-reverse for reverse workflows."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "tmwd_browser"
+      description: "Primary browser67 MCP for real Chrome/Edge automation and managed/adopted tab lifecycle."
+    - type: "mcp"
+      value: "js-reverse"
+      description: "browser67 JS reverse MCP for request tracing, hooks, and evidence export."
+
+policy:
+  allow_implicit_invocation: true

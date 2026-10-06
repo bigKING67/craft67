@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/edit-document-v2.schema.json",
+  "title": "Creative Craft Edit Document v2",
+  "description": "Engine-independent, revisioned multi-track edit. Source assets are distinct from timeline item instances. Output time is integer frames at canvas.fps using half-open [start_frame, start_frame + frames); source time is seconds. Kind-specific item rules (media/caption/graphic fields, linked caption timing, same-track overlap except declared crossfades, speed-scaled source ranges, fades, ducking, locked tracks) are enforced by semantic validation.",
+  "type": "object",
+  "required": ["schema_version", "project_id", "revision", "parent_sha256", "title", "canvas", "assets", "tracks", "items", "change"],
+  "properties": {
+    "schema_version": {"const": "creative-craft.edit-document.v2"},
+    "project_id": {"$ref": "#/$defs/id"},
+    "revision": {"type": "integer", "minimum": 1},
+    "parent_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "title": {"type": "string", "minLength": 1},
+    "canvas": {
+      "type": "object",
+      "required": ["width", "height", "fps"],
+      "properties": {
+        "width": {"type": "integer", "minimum": 64, "maximum": 3840},
+        "height": {"type": "integer", "minimum": 64, "maximum": 3840},
+        "fps": {"enum": [24, 30, 60]}
+      },
+      "additionalProperties": false
+    },
+    "caption_font": {
+      "type": "object",
+      "required": ["profile", "sha256", "file"],
+      "properties": {
+        "profile": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "file": {"type": "string", "pattern": "^fonts/[a-f0-9]{64}\\.ttf$"}
+      },
+      "additionalProperties": false
+    },
+    "graphic_templates": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "required": ["id", "version", "sha256", "file"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,47}$"},
+          "version": {"type": "integer", "minimum": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "file": {"type": "string", "pattern": "^templates/[a-f0-9]{64}\\.json$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "assets": {"type": "array", "minItems": 1, "maxItems": 200, "items": {"$ref": "#/$defs/asset"}},
+    "tracks": {"type": "array", "minItems": 1, "maxItems": 32, "items": {"$ref": "#/$defs/track"}},
+    "items": {"type": "array", "maxItems": 2000, "items": {"$ref": "#/$defs/item"}},
+    "change": {
+      "type": "object",
+      "required": ["author", "summary"],
+      "properties": {
+        "author": {"enum": ["agent", "human", "system", "migration"]},
+        "summary": {"type": "string", "minLength": 1},
+        "operations_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$"},
+    "asset": {
+      "type": "object",
+      "required": ["id", "file", "sha256", "duration", "video", "audio", "width", "height", "origin"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "file": {"type": "string", "pattern": "^assets/[a-f0-9]{64}\\.media$"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "duration": {"type": "number", "exclusiveMinimum": 0, "maximum": 1800},
+        "video": {"type": "boolean"},
+        "audio": {"type": "boolean"},
+        "width": {"type": "integer", "minimum": 0, "maximum": 32768},
+        "height": {"type": "integer", "minimum": 0, "maximum": 32768},
+        "frame_rate": {"type": "string", "pattern": "^[1-9][0-9]{0,5}/[1-9][0-9]{0,5}$"},
+        "origin": {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": {"enum": ["import", "generated", "render"]},
+            "label": {"type": "string", "minLength": 1},
+            "provenance_ref": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "track": {
+      "type": "object",
+      "required": ["id", "kind", "locked"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "kind": {"enum": ["video", "audio", "caption"]},
+        "locked": {"type": "boolean"},
+        "name": {"type": "string", "minLength": 1},
+        "duck": {
+          "type": "object",
+          "required": ["under_track_id", "depth_db", "attack_frames", "release_frames"],
+          "properties": {
+            "under_track_id": {"$ref": "#/$defs/id"},
+            "depth_db": {"type": "number", "minimum": -24, "maximum": -3},
+            "attack_frames": {"type": "integer", "minimum": 0, "maximum": 60},
+            "release_frames": {"type": "integer", "minimum": 0, "maximum": 120}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "item": {
+      "type": "object",
+      "required": ["id", "track_id", "kind"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "track_id": {"$ref": "#/$defs/id"},
+        "kind": {"enum": ["media", "caption", "graphic"]},
+        "start_frame": {"type": "integer", "minimum": 0},
+        "frames": {"type": "integer", "minimum": 1},
+        "asset_id": {"$ref": "#/$defs/id"},
+        "source_in_seconds": {"type": "number", "minimum": 0, "maximum": 1800},
+        "volume": {"type": "number", "minimum": 0, "maximum": 1},
+        "fit": {"enum": ["contain", "cover"]},
+        "opacity": {"type": "number", "minimum": 0, "maximum": 1},
+        "transform": {
+          "type": "object",
+          "required": ["x", "y", "scale"],
+          "properties": {
+            "x": {"type": "number", "minimum": 0, "maximum": 1},
+            "y": {"type": "number", "minimum": 0, "maximum": 1},
+            "scale": {"type": "number", "minimum": 0.05, "maximum": 1}
+          },
+          "additionalProperties": false
+        },
+        "text": {"type": "string", "minLength": 1},
+        "style": {
+          "type": "object",
+          "required": ["fontHeight", "centerY", "color", "strokeWidth", "weight"],
+          "properties": {
+            "fontHeight": {"type": "number", "minimum": 0.015, "maximum": 0.08},
+            "centerY": {"type": "number", "minimum": 0.1, "maximum": 0.9},
+            "color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+            "strokeWidth": {"type": "number", "minimum": 0, "maximum": 0.004},
+            "weight": {"enum": [400, 600, 700, 900]}
+          },
+          "additionalProperties": false
+        },
+        "speed": {"type": "number", "minimum": 0.1, "maximum": 10},
+        "fade_in_frames": {"type": "integer", "minimum": 0},
+        "fade_out_frames": {"type": "integer", "minimum": 0},
+        "transition_in": {
+          "type": "object",
+          "required": ["kind", "frames"],
+          "properties": {
+            "kind": {"enum": ["crossfade"]},
+            "frames": {"type": "integer", "minimum": 1}
+          },
+          "additionalProperties": false
+        },
+        "template": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,47}$"},
+        "vars": {"type": "object"},
+        "link": {
+          "type": "object",
+          "required": ["item_id", "source_from", "source_to"],
+          "properties": {
+            "item_id": {"$ref": "#/$defs/id"},
+            "source_from": {"type": "number", "minimum": 0, "maximum": 1800},
+            "source_to": {"type": "number", "minimum": 0, "maximum": 1800}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

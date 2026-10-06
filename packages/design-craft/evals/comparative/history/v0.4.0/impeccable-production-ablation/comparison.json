@@ -1,0 +1,115 @@
+{
+  "blind_map_sha256": "8b7620da569930ec9b2bf6d96daf30179743bccdf95c673c5bfc08293c3299bb",
+  "blind_packet_sha256": "1547aaf8d49cd2c2c1c9f4c1083f66e883fa6e0d233043f521be4d0464fb631f",
+  "case_id": "impeccable-production-ablation",
+  "focused_variant": "impeccable",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "f2d0ad6d0776c2c60f30296aa29225c8b63f7f06b0ee77d193cd77797adba690",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "a8bb82e061e6280d9c6437369ea07b81f539ee549d3adfe917b87e29f6e27465",
+    "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.144.1"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "8ab06e3fbd808dfb94de68b17ca25a94d56d3e15c485f64756f3528fdfdae4ce",
+  "judgment_sha256": "76db6892575e90293f29d898a69643543bacbc96d78760f9134573dcbff00d41",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "rationale": "B 在全部核心维度上最完整且判断最克制：既把静态事实与运行态未知严格分开，又给出了可直接实施的错误状态机、抽屉交互、权限与批处理恢复、响应式和无障碍修复，以及覆盖渲染、过滤、图片、内存和交互延迟的测量与回滚方案。A 的覆盖同样很强，但触摸目标和部分证据措辞稍弱；C 的具体阈值较好，但优先级与未测量性能风险的定级不如 B 稳健。三份输出均未声称运行任何工具，但都违反了 180 行限制。",
+  "recorded_at": "2026-07-12T13:17:50Z",
+  "results": {
+    "baseline": {
+      "blind_label": "A",
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 14,
+        "mode_sequence": 10,
+        "production_fixes": 20,
+        "responsive_accessibility": 13
+      },
+      "score": 94,
+      "summary": "顺序、故障矩阵、状态恢复和生产修复非常完整；主要扣分在于没有明确修复 28px 触摸目标，对少数未展示的可访问性实现略作确定性推断，且篇幅明显超过 180 行。"
+    },
+    "design-craft": {
+      "blind_label": "B",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 15,
+        "mode_sequence": 10,
+        "production_fixes": 20,
+        "responsive_accessibility": 15
+      },
+      "score": 98,
+      "summary": "三者中最均衡且最接近满分：优先级清晰，故障与敌意数据覆盖完整，响应式和无障碍措施可落地，性能基线、指标、回滚和安全发布条件充分，静态证据与运行态假设边界也最严谨；主要缺点是超过 180 行。"
+    },
+    "impeccable": {
+      "blind_label": "C",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 15
+      },
+      "score": 95,
+      "summary": "触摸目标、实时状态播报、平板宽度和 p95 延迟目标尤其具体，故障及数据覆盖也完整；但总序列把完整无障碍处理放在性能优化之后，并在尚未测量时将 10,000 行渲染直接列为 P0 发布阻塞项，待保存关闭文案也存在请求已在途时“丢弃”的语义风险，同时超过 180 行。"
+    }
+  },
+  "schema": "design-craft.comparative-result.v3",
+  "scorecard_json_sha256": "1941a30865724592c32ea8a4440e36e85cedc2d19bad7d65c9e4300de81ccd7b",
+  "scorecard_sha256": "69dc4820fe035512e9a2c8a7ba7dcac39dcd55bfe202509b97a71f057d043a3f",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "a064917650ef9a1fa95f015ae3218515f29d719a9c3cce6e084327917fb4323d",
+      "run_path": "run.baseline.json",
+      "run_sha256": "d869b342295d94d0fcd4612b2c169dcd6ff12fb7e01440d3e8ea7b842a5e9f5c",
+      "skill_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "f3c65feb31665b7cb706dfb4b9ee540dbebf59b34eceef689da189f3ad698b3b",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "e49e515b7336de070c7e29f0eca8fe6a806b75140596904886300c2beeaa2fcb",
+      "skill_trees": {
+        "skills/design-craft": "c165a78d91eed7392b33659633efb756acbe03c1a0a06b16c8889604854f72f8"
+      },
+      "thinking": "high"
+    },
+    "impeccable": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.impeccable.md",
+      "output_sha256": "8407d500f1c695c25a68ced0835d3c3b00d33ffb3289bfdd4d38ca199ba6fbda",
+      "run_path": "run.impeccable.json",
+      "run_sha256": "d8179d0539ff9bb6534236ea68f993cee1b4c729dca07e7332e531be32bccaea",
+      "skill_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "1fe1c4b76825c9538d5379a0a5d3d00378cf9420ce498f5b9309b79c888cc410"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "money-craft.research-no-clobber.v1",
+  "date": "2026-09-17",
+  "scope": "atomic_bytes replace=False atomic single-file publication",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "8fbd13dbdfbad273d560795e86e83d3afd1b59941e7774fbf95656645aaaf606",
+    "tests/test_research_run.py": "44046a8830a87b69905a60335404487289fdf4e777291ebf47f90875d9ec9cde",
+    "skills/money-craft/references/company-research.md": "6affbf7d622fd76cf6b4e6a8c03d47e186c731066f2665482f43785238505bcb"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Check-then-replace allowed both writers to succeed and overwrite an existing artifact.",
+    "after": "Publish fully written/fsynced same-directory staging via os.link; EEXIST becomes existing_artifact; no unsafe fallback.",
+    "regression": "Old implementation failed deterministic thread test (two successes); isolated old-helper copy also failed real two-process finalize CLI test. Fixed implementation has one successful writer and one existing_artifact."
+  },
+  "validation": {
+    "research_tests": 33,
+    "full_tests": 296,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "cli_competition": "Two real CLI processes, barrier inserted immediately before completion receipt publication; winning receipt preserved, no staging residue, status complete, repeat finalize byte-preserving.",
+    "failure_cleanup": "Existing file/directory/dangling symlink preserved; injected unsupported-link error propagates with no published target or staging residue. replace=True still replaces."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 33,
+    "source_sha256": "8fbd13dbdfbad273d560795e86e83d3afd1b59941e7774fbf95656645aaaf606"
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T041327660675Z"
+  },
+  "limits": [
+    "Whole research lifecycle remains PARTIAL: workspace-wide collect/import/finalize races, state lost updates, multi-file interruption and recovery remain open.",
+    "No real unsupported-hard-link volume, Windows, network filesystem, power loss or unlink-failure acceptance.",
+    "Directory fsync and crash durability are not established by this single-file fix.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No live provider, app, commit, push or release."
+  ]
+}

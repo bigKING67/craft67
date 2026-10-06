@@ -1,0 +1,24 @@
+{
+  "status": "PASS_SCOPED_PARENT_LIQUIDITY",
+  "research_status": "PARTIAL",
+  "calculations": 14,
+  "synthesis_calculations": 82,
+  "visual_pages": [
+    96,
+    97,
+    99,
+    154
+  ],
+  "source_sha256": "576dd80e353e53296a800b03e9889a9cbb2e8b91fa2ab3c1dace7c10159179b8",
+  "old_report_sha256": "00fd63b231473d62883945d53273120777cb390e8110ebdc01a87968b0b9416b",
+  "review_sha256": "0bfb904320145bcd42592dd5b440e08cbb7484f4db1fa618f9f2015be6a4b364",
+  "synthesis_sha256": "d6fd53886a53f31dc85bd61bf77eef9c8db5ada54abd6be65244772362d93fa0",
+  "reviewer": "parent",
+  "independent": false,
+  "full_finalize_rerun": false,
+  "distributable_cash": "UNVERIFIED",
+  "product_release_calendar": "UNVERIFIED",
+  "other_payables_terms": "UNVERIFIED",
+  "source_count": 1,
+  "report_warnings_reviewed": 19
+}

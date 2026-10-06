@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/creative-brief.schema.json",
+  "title": "Creative Craft Brief v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "brief_id",
+    "status",
+    "project",
+    "objective",
+    "audience",
+    "tension",
+    "insight",
+    "proposition",
+    "desired_response",
+    "constraints"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.brief.v1"
+    },
+    "brief_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "working",
+        "locked",
+        "superseded"
+      ]
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "name",
+        "owner"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "objective": {
+      "type": "object",
+      "required": [
+        "business",
+        "communication"
+      ],
+      "properties": {
+        "business": {
+          "type": "string",
+          "minLength": 1
+        },
+        "communication": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "audience": {
+      "type": "object",
+      "required": [
+        "primary",
+        "context"
+      ],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "current_belief": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "tension": {
+      "$ref": "#/$defs/evidenceStatement"
+    },
+    "insight": {
+      "$ref": "#/$defs/evidenceStatement"
+    },
+    "support": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim",
+          "evidence_state"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "evidence_state": {
+            "enum": [
+              "SPECIFIED",
+              "OBSERVED",
+              "INFERRED",
+              "HYPOTHESIZED",
+              "UNVERIFIED"
+            ]
+          },
+          "source": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "proposition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "desired_response": {
+      "type": "object",
+      "required": [
+        "feel",
+        "think",
+        "do"
+      ],
+      "properties": {
+        "feel": {
+          "type": "string"
+        },
+        "think": {
+          "type": "string"
+        },
+        "do": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "mandatories": {
+      "type": "object",
+      "properties": {
+        "include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exact_copy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "constraints": {
+      "type": "object",
+      "required": [
+        "must",
+        "must_not"
+      ],
+      "properties": {
+        "must": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "must_not": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "role"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "success": {
+      "type": "object"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "evidenceStatement": {
+      "type": "object",
+      "required": [
+        "statement",
+        "evidence_state"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_state": {
+          "enum": [
+            "SPECIFIED",
+            "OBSERVED",
+            "INFERRED",
+            "HYPOTHESIZED",
+            "UNVERIFIED"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

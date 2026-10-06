@@ -1,0 +1,40 @@
+{
+  "schema": "money-craft.research-yfinance-binding-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Yfinance case/request/normalized/export bindings and request manifest hash",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "c7cb2d856a7ca8b5ff305150ca43218cee7b1187f3fcea270f969666f846a521",
+    "tests/test_research_yfinance_binding.py": "10c5c022d338a67645a960f7da1f4c69ecbe1c6858be73fbb9279afc258158a4"
+  },
+  "validation": {
+    "new_tests": 3,
+    "full_tests": 459,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 8,
+    "initial_red_errors": 1,
+    "runtime_evidence": "11-operation research collection through real CLI subprocess and real adapter request/export with synthetic _execute; status/resume/manifest/tamper. Six operation projections versus CLI defaults."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "KEEP; no blockers; 10 yfinance/Fuyao binding tests passed",
+    "extra_checks": "One-sided optional dates, None removal, Decimal timestamp precision, zero versus False mutation rejected",
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "c7cb2d856a7ca8b5ff305150ca43218cee7b1187f3fcea270f969666f846a521",
+      "tests/test_research_yfinance_binding.py": "10c5c022d338a67645a960f7da1f4c69ecbe1c6858be73fbb9279afc258158a4"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Synthetic execution only; no Yahoo requests or remote data truth proof.",
+    "Export version metadata retained, not compared to currently installed version.",
+    "Consistent local evidence can still be jointly rewritten; not an external signature.",
+    "Research_run and core-wide acceptance remain PARTIAL."
+  ]
+}

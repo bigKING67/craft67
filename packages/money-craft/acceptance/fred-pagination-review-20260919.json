@@ -1,0 +1,38 @@
+{
+  "schema": "money-craft.fred-pagination-review.v1",
+  "date": "2026-09-19",
+  "scope": "Pagination metadata, CLI completeness notices, requested observation range and units binding",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "76247fce7bf24856945c3ce2156c6cb9930c7d1e8ba758d598281279fafb8acc",
+    "skills/money-craft/scripts/money_craft.py": "c0ccf6b989020dac0fdff8ff6cc093ac13995f34799993dd285ce30d1f330bd3",
+    "tests/test_fred_adapter.py": "5d21e7a7f90583799576c86cf9529c673fc6925b7107196b765d7e37b383f274",
+    "skills/money-craft/references/providers/fred.md": "a1b606ed617969d6c58872658bc646d49b892da8818376f48b8ff8f68120be77"
+  },
+  "validation": {
+    "fred_tests": 33,
+    "full_tests": 378,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 11,
+    "real_cli": "Subprocess CLI injected partial search page remains successful and emits explicit partial-page warning; original count and rows retained."
+  },
+  "review": {
+    "mode": "parent scoped implementation and regression review",
+    "independent_agent_review": "NOT_RUN"
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T014826028589Z"
+  },
+  "official_contract_sources": [
+    "https://fred.stlouisfed.org/docs/api/fred/series_observations.html"
+  ],
+  "limits": [
+    "FRED remains PARTIAL; no automatic pagination, arbitrary realtime interval closure or live Provider validation.",
+    "Units binding validates the transformation identifier, not currency or upstream arithmetic.",
+    "Missing pagination metadata remains accepted with an unverified CLI warning; raw captures preserve original payload and do not embed CLI warnings.",
+    "No new host Skill injection, app, commit, push or release."
+  ]
+}

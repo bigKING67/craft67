@@ -1,0 +1,12 @@
+{
+  "calendar": "solar",
+  "date": "1988-02-15",
+  "time": "23:00",
+  "place": "合成东经120度",
+  "longitude": 120,
+  "timeZone": "Asia/Shanghai",
+  "gender": "female",
+  "timeBasis": "civil",
+  "dayBoundary": "zi",
+  "uncertaintyMinutes": 2
+}

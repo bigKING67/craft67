@@ -1,0 +1,12 @@
+{
+  "calendar": "solar",
+  "date": "1998-05-09",
+  "time": "10:20:00",
+  "gender": "male",
+  "place": "合成东经120度",
+  "longitude": 120,
+  "timeZone": "Asia/Shanghai",
+  "timeBasis": "true-solar",
+  "dayBoundary": "zi",
+  "uncertaintyMinutes": 0
+}

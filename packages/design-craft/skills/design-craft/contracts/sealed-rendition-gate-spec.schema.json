@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://design-craft.local/contracts/sealed-rendition-gate-spec.schema.json",
+  "title": "Design Craft Sealed Rendition Gate Spec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "gate_id", "authority", "captures"],
+  "properties": {
+    "schema": {"const": "design-craft.sealed-rendition-gate-spec.v1"},
+    "gate_id": {"$ref": "#/$defs/slug"},
+    "authority": {
+      "oneOf": [
+        {"$ref": "#/$defs/sealedAuthority"},
+        {"$ref": "#/$defs/gitAuthority"}
+      ]
+    },
+    "captures": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {"$ref": "#/$defs/capture"}
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "absolutePath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "coordinateSpace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": {"type": "integer", "minimum": 1, "maximum": 8192},
+        "height": {"type": "integer", "minimum": 1, "maximum": 16384}
+      }
+    },
+    "sealedAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "root", "manifest", "expected_schema", "inventory_key", "anchors"],
+      "properties": {
+        "kind": {"const": "sealed_manifest"},
+        "root": {"$ref": "#/$defs/absolutePath"},
+        "manifest": {"$ref": "#/$defs/absolutePath"},
+        "expected_schema": {"type": "string", "minLength": 1},
+        "inventory_key": {"type": "string", "minLength": 1},
+        "anchors": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "root", "records_key"],
+            "properties": {
+              "id": {"$ref": "#/$defs/slug"},
+              "root": {"$ref": "#/$defs/absolutePath"},
+              "records_key": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "gitAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "shadow_lab_manifest"],
+      "properties": {
+        "kind": {"const": "git_commit"},
+        "shadow_lab_manifest": {"$ref": "#/$defs/absolutePath"},
+        "execution_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required_phase_ids", "receipts"],
+          "properties": {
+            "required_phase_ids": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 16,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/slug"}
+            },
+            "receipts": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 16,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/absolutePath"}
+            }
+          }
+        }
+      }
+    },
+    "stabilization": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": {"kind": {"const": "none"}}
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "selector", "expected_text", "timeout_ms"],
+          "properties": {
+            "kind": {"const": "wait_for_text_then_pause_animation"},
+            "selector": {"type": "string", "minLength": 1, "maxLength": 256},
+            "expected_text": {"type": "string", "minLength": 1, "maxLength": 512},
+            "timeout_ms": {"type": "integer", "minimum": 100, "maximum": 60000}
+          }
+        }
+      ]
+    },
+    "runtimeEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network_proof", "stabilization"],
+      "properties": {
+        "network_proof": {"const": "required"},
+        "stabilization": {"$ref": "#/$defs/stabilization"}
+      }
+    },
+    "browserContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime", "viewport", "device_scale_factor", "theme", "network", "wait_for"],
+      "properties": {
+        "runtime": {"const": "browser67"},
+        "viewport": {"$ref": "#/$defs/coordinateSpace"},
+        "device_scale_factor": {"const": 1},
+        "theme": {"enum": ["light", "dark", "system"]},
+        "network": {"enum": ["offline", "loopback_only"]},
+        "wait_for": {"const": "document_complete"},
+        "runtime_evidence": {"$ref": "#/$defs/runtimeEvidence"}
+      }
+    },
+    "pdfContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime", "page", "output"],
+      "properties": {
+        "runtime": {"const": "pdf_renderer"},
+        "page": {"type": "integer", "minimum": 1},
+        "output": {"$ref": "#/$defs/coordinateSpace"}
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "source", "reference", "comparison_spec", "contract"],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "kind": {"enum": ["browser_viewport", "pdf_page"]},
+        "source": {"$ref": "#/$defs/relativePath"},
+        "reference": {"$ref": "#/$defs/relativePath"},
+        "comparison_spec": {"$ref": "#/$defs/absolutePath"},
+        "contract": {
+          "oneOf": [
+            {"$ref": "#/$defs/browserContract"},
+            {"$ref": "#/$defs/pdfContract"}
+          ]
+        }
+      }
+    }
+  }
+}

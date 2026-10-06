@@ -1,0 +1,45 @@
+{
+  "schema": "money-craft.cli-provider-errors-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "yfinance error to CLI exit code mapping",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "bc86eb9f96146e11c65da17be4b6469ef4bf142f5d4560bda3bcb48691b056f7",
+    "tests/test_yfinance_adapter.py": "c46cebc5427f351eaace437fb42fccf068d9f2f9c88933e9b2290b2a70100261"
+  },
+  "behavior": {
+    "missing_optional_dependency": 3,
+    "retryable": 5,
+    "malformed_response_nonretryable": 6,
+    "other_provider_error": 4
+  },
+  "validation": {
+    "target_tests": 25,
+    "full_tests": 411,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 2,
+    "real_cli": "Four subprocess cases retain kind/retryable, ok false and no capture."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No blockers in declared mapping scope",
+    "tests": 25,
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "bc86eb9f96146e11c65da17be4b6469ef4bf142f5d4560bda3bcb48691b056f7",
+      "tests/test_yfinance_adapter.py": "c46cebc5427f351eaace437fb42fccf068d9f2f9c88933e9b2290b2a70100261"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T091225612343Z"
+  },
+  "limits": [
+    "CLI whole-file review remains incomplete.",
+    "Historical yfinance receipts with malformed_response exit 4 describe the previous behavior; not rewritten.",
+    "No real Provider, app, commit, push or release."
+  ]
+}

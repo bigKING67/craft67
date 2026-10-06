@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en" data-variant="baseline" data-state="default">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A controlled Cairn evidence-dossier fixture for visual-reference evaluation."
+    />
+    <title>Cairn - Decision evidence dossier</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" aria-label="Primary">
+      <a class="wordmark" href="#main-content" aria-label="Cairn home">
+        <span aria-hidden="true" class="wordmark__mark">C</span>
+        <span>Cairn</span>
+      </a>
+      <nav class="primary-nav" aria-label="Page sections">
+        <a href="#evidence">Evidence</a>
+        <a href="#method">Method</a>
+        <a href="#questions">Questions</a>
+      </nav>
+      <a class="button button--compact button--commercial" href="#pilot">
+        Request a pilot
+      </a>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__grid">
+          <div class="hero__title">
+            <p class="eyebrow">Decision evidence / release 24.8</p>
+            <h1 id="hero-title">
+              One dossier. Every claim, control, and open exception.
+            </h1>
+          </div>
+
+          <section
+            class="hero-proof"
+            aria-labelledby="posture-title"
+            data-hero-proof
+          >
+            <div class="hero-proof__heading">
+              <div>
+                <p class="meta-label">Decision posture</p>
+                <h2 id="posture-title" data-posture>Ready with 3 open calls</h2>
+              </div>
+              <span class="status-mark status-mark--open" data-posture-status>
+                <span aria-hidden="true">!</span>
+                Open
+              </span>
+            </div>
+
+            <dl class="evidence-summary" aria-label="Evidence summary">
+              <div>
+                <dt>Scope</dt>
+                <dd><strong data-metric="scope">14 / 14</strong> services</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd><strong data-metric="controls">37 / 40</strong> verified</dd>
+              </div>
+              <div>
+                <dt>Exceptions</dt>
+                <dd><strong data-metric="exceptions">3</strong> open</dd>
+              </div>
+              <div>
+                <dt>Freshness</dt>
+                <dd><strong data-metric="freshness">18 min</strong> observed</dd>
+              </div>
+            </dl>
+
+            <p class="hero-proof__source" data-source-note>
+              Controlled demonstration data / no customer or production claim
+            </p>
+          </section>
+
+          <div class="hero__support">
+            <p class="hero__summary">
+              Cairn connects what changed, what was verified, who owns the
+              remaining calls, and when every source was last observed.
+            </p>
+            <div class="hero__actions" aria-label="Evaluation actions">
+              <button class="button button--primary" type="button" data-open-dossier>
+                Open sample dossier
+              </button>
+              <a class="text-action" href="#method">
+                Review the method
+                <span aria-hidden="true">&darr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="evidence-section reveal" id="evidence" aria-labelledby="evidence-title">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">Evidence ledger</p>
+            <h2 id="evidence-title">The proof stays attributable.</h2>
+          </div>
+          <p>
+            Every row names its scope, observation, status, and remaining
+            decision. Verified evidence never hides the exceptions beside it.
+          </p>
+        </header>
+
+        <div
+          class="state-banner"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          data-state-banner
+        >
+          Demonstration dossier loaded from four bounded evidence dimensions.
+        </div>
+
+        <div class="evidence-ledger" data-ledger aria-busy="false">
+          <div class="evidence-ledger__head" aria-hidden="true">
+            <span>Evidence object</span>
+            <span>Observed result</span>
+            <span>Status</span>
+          </div>
+
+          <article class="evidence-row" data-row="coverage">
+            <div class="evidence-row__identity">
+              <span class="evidence-row__index">01</span>
+              <div>
+                <h3 data-row-title>Coverage map</h3>
+                <p data-row-source>Release manifest / observed 18 minutes ago</p>
+              </div>
+            </div>
+            <p class="evidence-row__result" data-row-result>14 of 14 services</p>
+            <span class="status-mark status-mark--verified" data-row-status>
+              <span aria-hidden="true">+</span>
+              Ready
+            </span>
+          </article>
+
+          <article class="evidence-row" data-row="impact">
+            <div class="evidence-row__identity">
+              <span class="evidence-row__index">02</span>
+              <div>
+                <h3 data-row-title>Change impact</h3>
+                <p data-row-source>Release diff / owner confirmed</p>
+              </div>
+            </div>
+            <p class="evidence-row__result" data-row-result>
+              3 changes / 2 customer workflows
+            </p>
+            <span class="status-mark status-mark--verified" data-row-status>
+              <span aria-hidden="true">+</span>
+              Verified
+            </span>
+          </article>
+
+          <article class="evidence-row" data-row="exceptions">
+            <div class="evidence-row__identity">
+              <span class="evidence-row__index">03</span>
+              <div>
+                <h3 data-row-title>Exception ownership</h3>
+                <p data-row-source>Decision log / due 21 August</p>
+              </div>
+            </div>
+            <p class="evidence-row__result" data-row-result>
+              3 open / 2 owners confirmed
+            </p>
+            <span class="status-mark status-mark--open" data-row-status>
+              <span aria-hidden="true">!</span>
+              Decide
+            </span>
+          </article>
+
+          <div class="ledger-recovery" data-recovery hidden>
+            <p>The evidence source did not respond. The last observed packet remains visible.</p>
+            <button class="button button--secondary" type="button" data-retry>
+              Retry evidence refresh
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="method reveal" id="method" aria-labelledby="method-title">
+        <header class="section-heading">
+          <p class="eyebrow">Method / three bounded moves</p>
+          <h2 id="method-title">Map the claim. Bind the evidence. Name the decision.</h2>
+        </header>
+
+        <ol class="method-list">
+          <li>
+            <span class="method-list__number">01</span>
+            <h3>Map the claim</h3>
+            <p>Separate what the product says from what the current release must prove.</p>
+          </li>
+          <li>
+            <span class="method-list__number">02</span>
+            <h3>Bind the evidence</h3>
+            <p>Attach scope, source, owner, freshness, and the exact observed result.</p>
+          </li>
+          <li>
+            <span class="method-list__number">03</span>
+            <h3>Name the decision</h3>
+            <p>Keep verified facts, open calls, and unavailable evidence visibly distinct.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="questions reveal" id="questions" aria-labelledby="questions-title">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">Questions before a pilot</p>
+            <h2 id="questions-title">What the page should not ask you to infer.</h2>
+          </div>
+          <p>These answers describe the controlled fixture, not a live service.</p>
+        </header>
+
+        <div class="question-list">
+          <details>
+            <summary>How current is each source?</summary>
+            <p>
+              Every evidence object carries an observation time. The default
+              sample reports an 18 minute freshness window.
+            </p>
+          </details>
+          <details>
+            <summary>What happens when evidence is missing?</summary>
+            <p>
+              Empty and error states remove invented certainty, retain the last
+              attributable context, and expose a specific recovery action.
+            </p>
+          </details>
+          <details>
+            <summary>What does the pilot do?</summary>
+            <p>
+              This fixture stages a local acknowledgement only. It creates no
+              account, upload, integration, or production request.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="pilot reveal" id="pilot" aria-labelledby="pilot-title">
+        <div>
+          <p class="eyebrow">A bounded next step</p>
+          <h2 id="pilot-title">Request a bounded pilot.</h2>
+        </div>
+        <div class="pilot__action">
+          <button class="button button--primary" type="button" data-request-pilot>
+            Stage pilot request
+          </button>
+          <p role="status" aria-live="polite" data-pilot-status>
+            Demonstration only. No account, upload, or message is created.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Cairn / controlled evidence fixture</span>
+      <span>Same content, semantics, controls, and states in both variants</span>
+    </footer>
+
+    <dialog class="dossier-dialog" aria-labelledby="dossier-title">
+      <form method="dialog">
+        <header class="dossier-dialog__bar">
+          <div>
+            <p class="meta-label">Sample dossier / release 24.8</p>
+            <h2 id="dossier-title">Ready with three open calls.</h2>
+          </div>
+          <button
+            class="icon-button"
+            value="close"
+            aria-label="Close sample dossier"
+            data-dialog-close
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </header>
+        <div class="dossier-dialog__body">
+          <p>
+            Scope and change impact are verified. Three exceptions remain open,
+            and two have confirmed owners. This packet is demonstration data.
+          </p>
+          <dl>
+            <div><dt>Scope</dt><dd>14 / 14 services</dd></div>
+            <div><dt>Controls</dt><dd>37 / 40 verified</dd></div>
+            <div><dt>Open calls</dt><dd>3 exceptions</dd></div>
+            <div><dt>Observed</dt><dd>18 minutes ago</dd></div>
+          </dl>
+        </div>
+        <footer class="dossier-dialog__actions">
+          <button class="button button--primary" value="close">
+            Return to evidence
+          </button>
+        </footer>
+      </form>
+    </dialog>
+  </body>
+</html>

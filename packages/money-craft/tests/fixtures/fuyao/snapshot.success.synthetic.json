@@ -1,0 +1,16 @@
+{
+  "code": 0,
+  "message": "synthetic success",
+  "request_id": "synthetic-snapshot-1",
+  "data": {
+    "timestamp": 1,
+    "item": [
+      {
+        "thscode": "999999.SH",
+        "ticker": "999999",
+        "name": "示例股份",
+        "last_price": 1.2300
+      }
+    ]
+  }
+}

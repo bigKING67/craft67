@@ -1,0 +1,34 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "intel-fy2024-liquidity-transfer",
+      "category": "跨市场真实现金与扩产资金迁移",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL_RELEASE",
+      "prompt": "英特尔2024年拿到了政府和合作伙伴的资金，调整后自由现金流也改善了，是不是说明经营已经能支持扩产，资金压力基本解决了？请用这份公告核对，比较全年与第四季度，给出必要计算，以及这轮研究何时可以结束。不需要股价分析或完整公司报告。",
+      "facts": "Intel Corporation，US-NASDAQ:INTC，NASDAQ普通股，交易与报告币种USD。执行日2026-09-23；历史as_of及信息截止2025-01-30。仅使用所附2024全年及第四季度业绩公告，财务年度截至2024-12-28。本次2026-09-23下载为post-hoc历史回放，不是当时捕获。核对PDF哈希、页码和表格单位；可用pdftotext向stdout提取。不读取其他答案、验收标准或后续资料。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260923-intel-liquidity/sources/intel-fy2024.pdf",
+          "url": "https://download.intel.com/newsroom/2025/c8e6h3a2/intel-q4-2024y-earnings.pdf",
+          "sha256": "22086ebbd41048b30e039762f6601b04548a63f7f485af3a41f2f9d4560941f0"
+        }
+      ],
+      "criteria": [
+        "自然读取安装Skill及需要的引用，宿主有效路由、核对PDF哈希，来源页码和历史时间正确；无验收标准或其他答案读取。",
+        "全年OCF8288与投资活动购建23944分开，简化差额-15656仅该口径；发现融资活动另列购建1178，不能忽略或混成全部属于投资现金流。",
+        "调整后FCF全年8288-10515-1=-2228，上年-11853；Q4为3165-4667-1=-1503，上年-1305。全年改善与Q4变差同时成立，不能跨期混算。",
+        "说明政府资本补助1936与伙伴出资12714不等于经营造血；净资本支出含补助及净伙伴贡献抵减。若自行桥接毛额净额存在残差，保留未解释差异，不捏造组成或归因舍入。",
+        "现金8249、短投13813与短债3729、非流动债46282分别呈现；不把短投全部等于无限制现金、不用静态差额证明危机或长期充足，未披露租赁/可用性等不得编数。",
+        "2025资本支出及补助/出资是前瞻指引，不能当已收款或已经获得资金保障；保留融资缓解压力的反方事实及单发行人边界，给具体触发并局部收口。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,659 @@
+#!/usr/bin/env node
+import assert from "node:assert/strict";
+import { createServer } from "node:http";
+import { mkdtemp, rm, stat } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+
+import { createRpcClient } from "./browser67-browser-mcp-contract/rpc-client.mjs";
+import { firstJsonContent } from "./browser67-browser-mcp-contract/rpc-content.mjs";
+import {
+  commonArgs,
+  parseArgs,
+} from "./browser-captcha-assist-live-smoke/cli.mjs";
+import {
+  disposeTmwdRuntime,
+  executeTmwdJsWithFallback,
+  resolvePreferredBrowserContext,
+} from "../src/tmwd-runtime/index.mjs";
+
+const DEFAULT_SCREENSHOT_TOOL_TIMEOUT_MS = 25_000;
+const SCREENSHOT_RPC_HEADROOM_MS = 5_000;
+
+function resolveScreenshotTimeouts(argv, parsedTimeoutMs) {
+  const toolTimeoutMs = argv.includes("--timeout-ms")
+    ? parsedTimeoutMs
+    : DEFAULT_SCREENSHOT_TOOL_TIMEOUT_MS;
+  return {
+    tool_timeout_ms: toolTimeoutMs,
+    rpc_timeout_ms: toolTimeoutMs + SCREENSHOT_RPC_HEADROOM_MS,
+  };
+}
+
+async function startScreenshotFixture() {
+  const sockets = new Set();
+  const server = createServer((req, res) => {
+    const pathname = new URL(req.url ?? "/", "http://127.0.0.1").pathname;
+    res.writeHead(200, {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store",
+    });
+    if (pathname !== "/screenshot") {
+      res.end("<!doctype html><title>not found</title><main>not found</main>");
+      return;
+    }
+    res.end(`<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TMWD screenshot smoke</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; font-family: system-ui, sans-serif; background: #f6f4ef; color: #1f2937; }
+    .hero { min-height: 420px; padding: 48px; background: linear-gradient(135deg, #111827, #3b82f6); color: white; }
+    .hero h1 { margin: 0 0 16px; font-size: 48px; line-height: 1.05; }
+    .capture-target { width: min(360px, 100%); height: 180px; margin-top: 32px; border-radius: 24px; background: #f97316; display: grid; place-items: center; font-weight: 800; }
+    .flaky-target { width: min(320px, 100%); height: 120px; margin-top: 24px; border-radius: 20px; background: #22c55e; display: grid; place-items: center; color: #052e16; font-weight: 800; }
+    .content { height: 860px; padding: 48px; }
+  </style>
+  <script>
+    (() => {
+      const originalQuerySelector = Document.prototype.querySelector;
+      window.__browser67FlakySelectorCalls = 0;
+      Document.prototype.querySelector = function browser67ScreenshotSmokeQuerySelector(selector) {
+        if (selector === "#flaky-target") {
+          window.__browser67FlakySelectorCalls += 1;
+          if (window.__browser67FlakySelectorCalls > 1) {
+            return null;
+          }
+        }
+        return originalQuerySelector.call(this, selector);
+      };
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <h1>TMWD screenshot smoke</h1>
+      <p>Viewport, selector, and bounded full-page capture fixture.</p>
+      <div id="capture-target" class="capture-target">selector target</div>
+      <div id="flaky-target" class="flaky-target">layout fallback target</div>
+    </section>
+    <section class="content">
+      <h2>Lower content</h2>
+      <p>Extra height keeps full_page distinct from viewport without creating a large artifact.</p>
+    </section>
+  </main>
+</body>
+</html>`);
+  });
+  server.keepAliveTimeout = 1_000;
+  server.on("connection", (socket) => {
+    sockets.add(socket);
+    socket.once("close", () => sockets.delete(socket));
+  });
+  await new Promise((resolvePromise, rejectPromise) => {
+    server.once("error", rejectPromise);
+    server.listen(0, "127.0.0.1", resolvePromise);
+  });
+  const address = server.address();
+  if (!address || typeof address === "string") {
+    throw new Error("screenshot fixture did not expose a TCP port");
+  }
+  return {
+    origin: `http://127.0.0.1:${String(address.port)}`,
+    close: () => new Promise((resolvePromise) => {
+      for (const socket of sockets) {
+        socket.destroy();
+      }
+      if (typeof server.closeAllConnections === "function") {
+        server.closeAllConnections();
+      }
+      server.close(resolvePromise);
+    }),
+  };
+}
+
+async function initializeRpc(rpc, timeoutMs) {
+  const init = await rpc.call("initialize", {
+    protocolVersion: "2024-11-05",
+    capabilities: {},
+    clientInfo: {
+      name: "browser-screenshot-live-smoke",
+      version: "1.0.0",
+    },
+  }, timeoutMs);
+  assert.equal(init?.result?.serverInfo?.name, "browser67-tmwd-browser");
+  rpc.notify("notifications/initialized", {});
+}
+
+function createToolCaller(rpc, timeoutMs) {
+  return async function callTool(name, args) {
+    const response = await rpc.call("tools/call", { name, arguments: args }, timeoutMs);
+    const payload = firstJsonContent(response.result);
+    if (response?.result?.isError === true) {
+      throw new Error(`${name} failed: ${JSON.stringify({
+        error: String(payload?.error ?? "tool error"),
+        error_code: payload?.error_code,
+        details: payload?.details,
+      })}`);
+    }
+    if (payload?.ok === false || payload?.status === "failed") {
+      throw new Error(`${name} returned failure: ${JSON.stringify(payload)}`);
+    }
+    return payload;
+  };
+}
+
+function createToolErrorCaller(rpc, timeoutMs) {
+  return async function callToolError(name, args) {
+    const response = await rpc.call("tools/call", { name, arguments: args }, timeoutMs);
+    const payload = firstJsonContent(response.result);
+    assert.equal(response?.result?.isError, true, `${name} should return a tool error`);
+    assert.ok(payload && typeof payload === "object", `${name} should return a structured error`);
+    return payload;
+  };
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+async function waitForReady(check, timeoutMs = 10_000, intervalMs = 150) {
+  const deadline = Date.now() + timeoutMs;
+  let last = null;
+  while (Date.now() < deadline) {
+    try {
+      last = await check();
+      if (last?.ok) {
+        return last;
+      }
+    } catch (error) {
+      last = {
+        ok: false,
+        error: String(error?.message ?? error),
+      };
+    }
+    await sleep(intervalMs);
+  }
+  return last ?? { ok: false, error: "readiness timeout" };
+}
+
+async function assertScreenshotArtifact(payload, label) {
+  assert.equal(payload?.ok, true, `${label} should succeed`);
+  assert.equal(payload?.status, "success", `${label} status`);
+  assert.equal(payload?.artifact?.mime_type, "image/png", `${label} mime`);
+  assert.equal(typeof payload?.artifact?.sha256, "string", `${label} sha`);
+  assert.equal(payload.artifact.sha256.length, 64, `${label} sha length`);
+  assert.equal(payload?.artifact?.fullscreen, false, `${label} fullscreen flag`);
+  assert.equal(payload?.capture?.returns_base64, false, `${label} base64 contract`);
+  assert.equal(typeof payload?.artifact?.width, "number", `${label} width`);
+  assert.equal(typeof payload?.artifact?.height, "number", `${label} height`);
+  assert.ok(payload.artifact.width > 0, `${label} width positive`);
+  assert.ok(payload.artifact.height > 0, `${label} height positive`);
+  const info = await stat(payload.artifact.path);
+  assert.ok(info.size > 0, `${label} artifact size`);
+  assert.equal(info.size, payload.artifact.bytes, `${label} byte metadata`);
+}
+
+async function run() {
+  const argv = process.argv.slice(2);
+  const cli = parseArgs(argv);
+  const timeouts = resolveScreenshotTimeouts(argv, cli.timeout_ms);
+  const baseArgs = {
+    ...commonArgs(cli),
+    timeout_ms: timeouts.tool_timeout_ms,
+  };
+  const registryDir = await mkdtemp(path.join(os.tmpdir(), "tmwd-screenshot-live-registry-"));
+  const runRoot = await mkdtemp(path.join(os.tmpdir(), "tmwd-screenshot-live-runs-"));
+  const previousRegistryPath = process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH;
+  const previousRunRoot = process.env.BROWSER_STRUCTURED_RUN_ROOT;
+  process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH = path.join(registryDir, "managed-tabs.json");
+  process.env.BROWSER_STRUCTURED_RUN_ROOT = runRoot;
+
+  const fixture = await startScreenshotFixture();
+  const rpc = createRpcClient();
+  const callTool = createToolCaller(rpc, timeouts.rpc_timeout_ms);
+  const callToolError = createToolErrorCaller(rpc, timeouts.rpc_timeout_ms);
+  const workspaceKey = `screenshot-live-${String(Date.now())}`;
+  let tabId = "";
+  try {
+    await initializeRpc(rpc, timeouts.rpc_timeout_ms);
+    const managed = await callTool("browser_tab_lifecycle", {
+      ...baseArgs,
+      action: "select_or_create",
+      url: `${fixture.origin}/screenshot`,
+      workspace_key: workspaceKey,
+      fresh: true,
+      active: false,
+      window_policy: "dedicated",
+      focus_policy: "background_preferred",
+      wait_until: "listed",
+      wait_timeout_ms: 5_000,
+      wait_poll_ms: 100,
+    });
+    tabId = String(managed?.managed_tab?.tab_id ?? "");
+    assert.ok(tabId, "managed tab id required");
+    assert.equal(managed.created, true, "screenshot smoke should create isolated managed tab");
+    assert.equal(managed.ready, true, "screenshot smoke managed tab should become listed");
+
+    const ready = await waitForReady(async () => {
+      const payload = await callTool("browser_wait", {
+        ...baseArgs,
+        tab_id: tabId,
+        type: "selector",
+        selector: "#capture-target",
+        timeout_ms: 2_000,
+      });
+      return {
+        ok: payload.status === "passed",
+        payload,
+      };
+    }, 10_000);
+    assert.equal(ready.ok, true, `screenshot fixture did not settle: ${JSON.stringify(ready)}`);
+
+    const backgroundState = await callTool("browser_execute_js", {
+      ...baseArgs,
+      tab_id: tabId,
+      workspace_key: workspaceKey,
+      no_monitor: true,
+      script: `return {
+        visibility_state: document.visibilityState,
+        inner_width: window.innerWidth,
+        inner_height: window.innerHeight,
+        dpr: window.devicePixelRatio,
+        target_present: Boolean(document.querySelector("#capture-target"))
+      };`,
+    });
+    assert.equal(backgroundState.js_return?.visibility_state, "hidden");
+    assert.equal(backgroundState.js_return?.target_present, true);
+    const originalViewport = {
+      width: backgroundState.js_return?.inner_width,
+      height: backgroundState.js_return?.inner_height,
+      dpr: backgroundState.js_return?.dpr,
+    };
+
+    const browserInstanceId = String(managed?.managed_tab?.browser_instance_id ?? "");
+    assert.ok(browserInstanceId, "managed Browser Instance id required");
+    const timeoutProofArgs = {
+      ...baseArgs,
+      tmwd_transport: "ws",
+      browser_instance_id: browserInstanceId,
+      session_id: tabId,
+      timeout_ms: 2_000,
+    };
+    const timeoutProofContext = await resolvePreferredBrowserContext(timeoutProofArgs);
+    const timeoutProofStartedAt = Date.now();
+    const timeoutProof = await executeTmwdJsWithFallback(
+      timeoutProofArgs,
+      timeoutProofContext.context,
+      {
+        cmd: "batch",
+        commands: [
+          {
+            cmd: "cdp",
+            method: "Emulation.setDeviceMetricsOverride",
+            params: {
+              width: 360,
+              height: 640,
+              deviceScaleFactor: 1,
+              mobile: true,
+            },
+          },
+          {
+            cmd: "cdp",
+            method: "Runtime.evaluate",
+            params: {
+              expression: "({width:innerWidth,height:innerHeight,dpr:devicePixelRatio,visibility:document.visibilityState})",
+              returnByValue: true,
+            },
+          },
+          {
+            cmd: "cdp",
+            method: "Runtime.evaluate",
+            params: {
+              expression: "new Promise(() => {})",
+              awaitPromise: true,
+              returnByValue: true,
+            },
+          },
+        ],
+      },
+      { tmwdFallbackOnTimeout: false },
+    );
+    const timeoutProofElapsedMs = Date.now() - timeoutProofStartedAt;
+    assert.equal(timeoutProof.executed.raw?.ok, false);
+    assert.equal(timeoutProof.executed.raw?.errorCode, "TIMEOUT");
+    assert.deepEqual(timeoutProof.executed.raw?.result?.[1]?.result?.value, {
+      width: 360, height: 640, dpr: 1, visibility: "hidden",
+    }, "timeout fixture must actually apply emulated layout before failing");
+    assert.equal(timeoutProof.executed.raw?.details?.failed_phase, "debugger_batch_command");
+    assert.equal(
+      timeoutProof.executed.raw?.details?.cleanup?.some((entry) => entry.cleared === true),
+      true,
+      "live debugger timeout must clear its viewport override",
+    );
+    assert.ok(
+      timeoutProofElapsedMs < timeoutProofArgs.timeout_ms,
+      `live debugger timeout exceeded its host budget: ${String(timeoutProofElapsedMs)}ms`,
+    );
+
+    const timeoutRestoredState = await callTool("browser_execute_js", {
+      ...baseArgs,
+      tab_id: tabId,
+      workspace_key: workspaceKey,
+      no_monitor: true,
+      script: `return {
+        visibility_state: document.visibilityState,
+        inner_width: window.innerWidth,
+        inner_height: window.innerHeight,
+        dpr: window.devicePixelRatio
+      };`,
+    });
+    assert.equal(timeoutRestoredState.js_return?.visibility_state, "hidden");
+    assert.equal(timeoutRestoredState.js_return?.inner_width, originalViewport.width);
+    assert.equal(timeoutRestoredState.js_return?.inner_height, originalViewport.height);
+    assert.equal(timeoutRestoredState.js_return?.dpr, originalViewport.dpr);
+
+    const viewport = await callTool("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "viewport",
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "viewport",
+      max_pixels: 8_000_000,
+    });
+    await assertScreenshotArtifact(viewport, "viewport");
+    assert.equal(viewport.target, "viewport");
+    assert.equal(viewport.page?.visibility_state, "hidden");
+
+    const viewportOverBudget = await callToolError("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "viewport",
+      viewport: {
+        width: 100,
+        height: 100,
+        dpr: 2,
+      },
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "viewport-over-budget",
+      prepare_run: false,
+      max_pixels: 10_000,
+    });
+    assert.equal(viewportOverBudget.error_code, "INVALID_ARGUMENT");
+    assert.equal(viewportOverBudget.details?.device_pixel_ratio, 2);
+    assert.equal(viewportOverBudget.details?.area_css_pixels, 10_000);
+    assert.equal(viewportOverBudget.details?.area_bitmap_pixels, 40_000);
+    assert.equal(viewportOverBudget.details?.max_pixels, 10_000);
+    assert.equal(viewportOverBudget.artifact, undefined);
+
+    const mobileViewport = await callTool("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "viewport",
+      viewport: {
+        width: 390,
+        height: 844,
+        dpr: 2,
+        is_mobile: true,
+      },
+      layout_selectors: {
+        capture_target: "#capture-target",
+      },
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "mobile-viewport",
+      max_pixels: 8_000_000,
+    });
+    await assertScreenshotArtifact(mobileViewport, "mobile_viewport");
+    assert.equal(mobileViewport.target, "viewport");
+    assert.equal(mobileViewport.page?.visibility_state, "hidden");
+    assert.equal(mobileViewport.viewport_override?.requested?.width, 390);
+    assert.equal(mobileViewport.viewport_override?.requested?.height, 844);
+    assert.equal(mobileViewport.viewport_override?.cleanup?.cleared, true);
+    assert.equal(mobileViewport.page?.viewport?.inner_width, 390);
+    assert.equal(mobileViewport.page?.viewport?.inner_height, 844);
+    assert.equal(mobileViewport.viewport_override?.verification?.ok, true);
+    assert.equal(mobileViewport.viewport_override?.verification?.page?.ok, true);
+    assert.equal(mobileViewport.viewport_override?.verification?.artifact?.ok, true);
+    assert.equal(
+      mobileViewport.viewport_override?.settle?.settle_basis,
+      "cdp_ack_plus_synchronous_layout_read",
+    );
+    assert.equal(mobileViewport.viewport_override?.verification?.artifact?.expected?.width, 780);
+    assert.equal(mobileViewport.viewport_override?.verification?.artifact?.expected?.height, 1688);
+    assert.equal(mobileViewport.artifact.width, 780);
+    assert.equal(mobileViewport.artifact.height, 1688);
+    assert.ok(mobileViewport.deadline?.elapsed_ms <= mobileViewport.deadline?.timeout_ms);
+    assert.equal(mobileViewport.layout_metrics?.selectors?.capture_target?.found, true);
+    assert.equal(typeof mobileViewport.layout_metrics?.horizontal_overflow, "boolean");
+
+    const mobileSelector = await callTool("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "selector",
+      selector: "#capture-target",
+      viewport: {
+        width: 390,
+        height: 844,
+        dpr: 2,
+        is_mobile: true,
+      },
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "mobile-selector",
+      max_pixels: 8_000_000,
+    });
+    await assertScreenshotArtifact(mobileSelector, "mobile_selector");
+    assert.equal(mobileSelector.target, "selector");
+    assert.equal(mobileSelector.selector, "#capture-target");
+    assert.equal(mobileSelector.page?.visibility_state, "hidden");
+    assert.equal(mobileSelector.viewport_override?.requested?.width, 390);
+    assert.equal(mobileSelector.viewport_override?.requested?.height, 844);
+    assert.equal(mobileSelector.viewport_override?.cleanup?.cleared, true);
+    assert.equal(mobileSelector.page?.viewport?.inner_width, 390);
+    assert.equal(mobileSelector.page?.viewport?.inner_height, 844);
+    assert.equal(mobileSelector.viewport_override?.verification?.ok, true);
+    assert.equal(mobileSelector.viewport_override?.verification?.page?.ok, true);
+    assert.equal(mobileSelector.viewport_override?.verification?.artifact?.ok, true);
+    assert.ok(mobileSelector.deadline?.elapsed_ms <= mobileSelector.deadline?.timeout_ms);
+    assert.equal(
+      mobileSelector.artifact.width,
+      mobileSelector.viewport_override?.verification?.artifact?.expected?.width,
+    );
+    assert.equal(
+      mobileSelector.artifact.height,
+      mobileSelector.viewport_override?.verification?.artifact?.expected?.height,
+    );
+
+    const mobileFullPage = await callTool("browser_screenshot_ops", {
+      ...baseArgs, tab_id: tabId, target: "full_page",
+      viewport: { width: 390, height: 844, dpr: 2, is_mobile: true },
+      workspace_key: workspaceKey, task_id: "screenshot-live-smoke",
+      title: "mobile-full-page", max_pixels: 8_000_000,
+    });
+    await assertScreenshotArtifact(mobileFullPage, "mobile_full_page");
+    assert.equal(mobileFullPage.page?.visibility_state, "hidden");
+    assert.equal(mobileFullPage.page?.viewport?.inner_width, 390);
+    assert.equal(mobileFullPage.viewport_override?.verification?.ok, true);
+    assert.equal(mobileFullPage.viewport_override?.cleanup?.cleared, true);
+    assert.equal(mobileFullPage.artifact.width, 780);
+    assert.ok(mobileFullPage.artifact.height > 1688);
+
+    const restoredState = await callTool("browser_execute_js", {
+      ...baseArgs,
+      tab_id: tabId,
+      workspace_key: workspaceKey,
+      no_monitor: true,
+      script: `return {
+        visibility_state: document.visibilityState,
+        inner_width: window.innerWidth,
+        inner_height: window.innerHeight,
+        dpr: window.devicePixelRatio,
+        target_present: Boolean(document.querySelector("#capture-target"))
+      };`,
+    });
+    assert.equal(restoredState.js_return?.visibility_state, "hidden");
+    assert.equal(restoredState.js_return?.inner_width, originalViewport.width);
+    assert.equal(restoredState.js_return?.inner_height, originalViewport.height);
+    assert.equal(restoredState.js_return?.dpr, originalViewport.dpr);
+    assert.equal(restoredState.js_return?.target_present, true);
+
+    const selector = await callTool("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "selector",
+      selector: "#capture-target",
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "selector",
+      max_pixels: 8_000_000,
+    });
+    await assertScreenshotArtifact(selector, "selector");
+    assert.equal(selector.target, "selector");
+    assert.equal(selector.selector, "#capture-target");
+    assert.equal(selector.page?.visibility_state, "hidden");
+    assert.ok(selector.capture.clip.width > 0, "selector clip width");
+
+    const selectorFallback = await callTool("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "selector",
+      selector: "#flaky-target",
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "selector-fallback",
+      max_pixels: 8_000_000,
+    });
+    await assertScreenshotArtifact(selectorFallback, "selector_fallback");
+    assert.equal(selectorFallback.target, "selector");
+    assert.equal(selectorFallback.selector, "#flaky-target");
+    assert.equal(selectorFallback.selector_fallback?.used, true);
+    assert.equal(selectorFallback.selector_fallback?.source, "layout_metrics");
+    assert.equal(selectorFallback.selector_fallback?.original_reason, "selector_not_found");
+    assert.equal(
+      selectorFallback.layout_metrics?.selectors?.__browser67_target_selector?.found,
+      true,
+      "selector fallback must preserve the metric that made the capture possible",
+    );
+    assert.ok(selectorFallback.capture.clip.width > 0, "selector fallback clip width");
+
+    const fullPageOverBudget = await callToolError("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "full_page",
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "full-page-over-budget",
+      prepare_run: false,
+      max_pixels: 8_000_000,
+    });
+    assert.equal(fullPageOverBudget.error_code, "INVALID_ARGUMENT");
+    assert.equal(fullPageOverBudget.details?.device_pixel_ratio, 2);
+    assert.ok(fullPageOverBudget.details?.area_bitmap_pixels > 8_000_000);
+    assert.equal(fullPageOverBudget.details?.max_pixels, 8_000_000);
+    assert.equal(fullPageOverBudget.artifact, undefined);
+
+    const fullPage = await callTool("browser_screenshot_ops", {
+      ...baseArgs,
+      tab_id: tabId,
+      target: "full_page",
+      workspace_key: workspaceKey,
+      task_id: "screenshot-live-smoke",
+      title: "full-page",
+      max_pixels: 12_000_000,
+    });
+    await assertScreenshotArtifact(fullPage, "full_page");
+    assert.equal(fullPage.target, "full_page");
+    assert.equal(fullPage.capture.capture_beyond_viewport, true);
+    assert.equal(fullPage.capture.device_pixel_ratio, 2);
+    assert.equal(
+      fullPage.capture.actual_bitmap_pixels,
+      fullPage.artifact.width * fullPage.artifact.height,
+    );
+    assert.ok(fullPage.capture.predicted_bitmap_pixels <= fullPage.capture.max_pixels);
+    assert.ok(fullPage.capture.actual_bitmap_pixels <= fullPage.capture.max_pixels);
+
+    const finalized = await callTool("browser_tab_lifecycle", {
+      ...baseArgs,
+      action: "finalize_task",
+      workspace_key: workspaceKey,
+      prune_stale: true,
+      cleanup_created_agent_window: true,
+    });
+    assert.equal(finalized.status, "success", "screenshot fixture finalization must succeed");
+
+    process.stdout.write(`${JSON.stringify({
+      ok: true,
+      tab_id: tabId,
+      workspace_key: workspaceKey,
+      viewport_artifact: viewport.artifact.path,
+      mobile_viewport_artifact: mobileViewport.artifact.path,
+      mobile_viewport_inner_width: mobileViewport.page.viewport.inner_width,
+      mobile_viewport_artifact_dimensions: [mobileViewport.artifact.width, mobileViewport.artifact.height],
+      mobile_selector_artifact: mobileSelector.artifact.path,
+      mobile_selector_inner_width: mobileSelector.page.viewport.inner_width,
+      mobile_selector_artifact_dimensions: [mobileSelector.artifact.width, mobileSelector.artifact.height],
+      selector_artifact: selector.artifact.path,
+      selector_fallback_artifact: selectorFallback.artifact.path,
+      full_page_artifact: fullPage.artifact.path,
+      viewport_budget_error_code: viewportOverBudget.error_code,
+      full_page_budget_error_code: fullPageOverBudget.error_code,
+      tool_timeout_ms: timeouts.tool_timeout_ms,
+      rpc_timeout_ms: timeouts.rpc_timeout_ms,
+      background_visibility_state: backgroundState.js_return.visibility_state,
+      debugger_timeout_error_code: timeoutProof.executed.raw.errorCode,
+      debugger_timeout_elapsed_ms: timeoutProofElapsedMs,
+      debugger_timeout_cleanup_verified: true,
+      viewport_restored_after_mobile_capture: true,
+      finalized_status: finalized.status,
+      run_root: runRoot,
+    })}\n`);
+  } finally {
+    if (tabId) {
+      try {
+        await callTool("browser_tab_lifecycle", {
+          ...baseArgs,
+          action: "finalize_task",
+          workspace_key: workspaceKey,
+          prune_stale: true,
+          cleanup_created_agent_window: true,
+        });
+      } catch {
+        // Best-effort finalizer. Test assertions above report authoritative cleanup failures.
+      }
+    }
+    await disposeTmwdRuntime({
+      reason: "browser screenshot live smoke cleanup",
+      timeout_ms: 1_000,
+    });
+    await rpc.close();
+    await fixture.close();
+    if (previousRegistryPath === undefined) {
+      delete process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH;
+    } else {
+      process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH = previousRegistryPath;
+    }
+    if (previousRunRoot === undefined) {
+      delete process.env.BROWSER_STRUCTURED_RUN_ROOT;
+    } else {
+      process.env.BROWSER_STRUCTURED_RUN_ROOT = previousRunRoot;
+    }
+    await rm(registryDir, { recursive: true, force: true });
+    await rm(runRoot, { recursive: true, force: true });
+  }
+}
+
+try {
+  await run();
+} catch (error) {
+  process.stderr.write(`${String(error?.stack ?? error)}\n`);
+  process.exitCode = 1;
+}

@@ -1,0 +1,35 @@
+{
+  "as_of": "2025-05-31",
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://investors.albemarle.com/news-and-events/news/news-details/2025/Albemarle-Reports-Fourth-Quarter-and-Full-Year-2024-Results/",
+      "published_at": "2025-02-12",
+      "captured_at": "2026-09-20",
+      "capture_kind": "web_tool_extracted_text_json_string",
+      "original_blob_captured": false,
+      "path": "local/evidence/20260920-albemarle/annual-web.json",
+      "sha256": "49a0e4275c3f2214b828a0f518416ebd026ddfd5c4803326e1c06f5157838bbd",
+      "locator": "L100-L113: Energy Storage Q4 results",
+      "lineage": "Albemarle issuer disclosure",
+      "historical_version_verified": false
+    },
+    {
+      "id": "S02",
+      "url": "https://www.albemarle.com/sites/default/files/q4/attachments/Q12025_pressrelease.pdf",
+      "published_at": "2025-04-30",
+      "captured_at": "2026-09-20",
+      "capture_kind": "web_tool_extracted_text_json_string",
+      "original_blob_captured": false,
+      "path": "local/evidence/20260920-albemarle/q1-web.json",
+      "sha256": "dcabadb9f685f026edf701b638ede818da69b0b53965534687099985ebf77799",
+      "locator": "PDF pp1-2 segment results; p7 selected cash flow data",
+      "lineage": "Albemarle issuer disclosure",
+      "historical_version_verified": false
+    }
+  ],
+  "limitations": [
+    "Direct original downloads returned HTTP 403; hashes bind tool extraction only.",
+    "Same issuer, not independent corroboration; selected earnings releases, not full 10-K/10-Q review."
+  ]
+}

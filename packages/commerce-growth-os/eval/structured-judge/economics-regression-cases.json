@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "full_commerce_scope_failure",
+      "domain": "commerce_orchestration",
+      "prompt": "给一个中高端头皮护理品牌制定未来 90 天经营方案。已知天猫和抖音为主渠道，客单价 189 元，毛利率约 62%，抖音 ROI 1.4，退款率上升，天猫评价偏弱。请明确事实、假设、优先级、负责人、止损条件和复盘机制。",
+      "answer": "eval/regression-answers/full_commerce_scope_failure.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "commercial_revenue_basis_failure",
+      "domain": "commercial",
+      "prompt": "主推 SKU 上月 GMV 30 万元，千川消耗 15 万元，ROI 2.0，毛利率 55%，赠品和履约占 GMV 12%，退款损失占 6%。判断是否应直接把预算翻倍，并给出计算、边际测试、预算上限、止损与放量条件。",
+      "answer": "eval/regression-answers/commercial_revenue_basis_failure.txt",
+      "expected_pass": false
+    },
+    {
+      "id": "full_commerce_scope_control",
+      "domain": "commerce_orchestration",
+      "prompt": "给一个中高端头皮护理品牌制定未来 90 天经营方案。已知天猫和抖音为主渠道，客单价 189 元，毛利率约 62%，抖音 ROI 1.4，退款率上升，天猫评价偏弱。请明确事实、假设、优先级、负责人、止损条件和复盘机制。",
+      "answer": "eval/regression-answers/full_commerce_scope_control.txt",
+      "expected_pass": true
+    },
+    {
+      "id": "commercial_revenue_basis_control",
+      "domain": "commercial",
+      "prompt": "主推 SKU 上月 GMV 30 万元，千川消耗 15 万元，ROI 2.0，毛利率 55%，赠品和履约占 GMV 12%，退款损失占 6%。判断是否应直接把预算翻倍，并给出计算、边际测试、预算上限、止损与放量条件。",
+      "answer": "eval/regression-answers/commercial_revenue_basis_control.txt",
+      "expected_pass": true
+    }
+  ]
+}

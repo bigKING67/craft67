@@ -1,0 +1,32 @@
+{
+  "identity": "US-NYSE:ALB common stock",
+  "currency": "USD",
+  "as_of": "2025-05-31",
+  "executed_at": "2026-09-20",
+  "scope": "Q4 2024 and Q1 2025 transmission, not complete FY2024 analysis",
+  "segment_unit": "USD million, rounded disclosure",
+  "cash_flow_unit": "USD thousand",
+  "q4_energy": {
+    "sales_2024": "616.8",
+    "sales_2023": "1675.1",
+    "adj_ebitda_2024": "133.7",
+    "adj_ebitda_2023": "-156.1",
+    "price_contribution_pct": "-53",
+    "volume_contribution_pct": "-10"
+  },
+  "q1_energy": {
+    "sales_2025": "524.6",
+    "sales_2024": "800.9",
+    "adj_ebitda_2025": "186.4",
+    "adj_ebitda_2024": "198.0",
+    "group_sales_2025": "1076.9"
+  },
+  "q1_cash": {
+    "ocf_2025": "545383",
+    "ocf_2024": "97954",
+    "capex_outflow_2025": "182624",
+    "capex_outflow_2024": "579322",
+    "prepayment_2025": "350000",
+    "prepayment_precision": "converted from disclosed USD 350 million; diagnostic is approximate"
+  }
+}

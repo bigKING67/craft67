@@ -1,0 +1,40 @@
+{
+  "schema": "money-craft.research-state-contract-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Research run-state structure, revision/event consistency and timezone timestamps",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "cd0feeb31e342a89c391ee599da883b3fda37444ad0b638336ed884a12896aa7",
+    "tests/test_research_state_contract.py": "30d9d2831f131c689c393594eb4954f4a43dfa56ecfc0ae0a80c7bef5c2b77f9"
+  },
+  "validation": {
+    "new_tests": 2,
+    "malformed_cli_cases": 16,
+    "full_tests": 463,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 13,
+    "runtime_evidence": "Real CLI status rejects malformed state as structured invalid_state without writes; timezone and wall-clock rollback positive retained."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "finding": "Python3.14 accepts 24:00 via normalization; explicit hour/minute/second ranges added and verified",
+    "final_verdict": "KEEP; first49 state/research tests and final2 state tests pass; no blockers",
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "cd0feeb31e342a89c391ee599da883b3fda37444ad0b638336ed884a12896aa7",
+      "tests/test_research_state_contract.py": "30d9d2831f131c689c393594eb4954f4a43dfa56ecfc0ae0a80c7bef5c2b77f9"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Regular non-leap-second RFC3339 timestamps only; event time monotonicity intentionally not required.",
+    "No automatic malformed-state repair or migration.",
+    "Structural consistency does not establish authenticity of event history.",
+    "Research_run/core-wide closure remains PARTIAL."
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schema": "design-craft.browser-evidence.v1",
+  "source": {
+    "url": "http://localhost:3000/marketing/content-assets",
+    "title": "Groland Datahub",
+    "collectedAt": "2026-06-30T09:18:09.397Z"
+  },
+  "viewport": {
+    "innerWidth": 1512,
+    "innerHeight": 823,
+    "devicePixelRatio": 2,
+    "scrollX": 0,
+    "scrollY": 0,
+    "scrollWidth": 1512,
+    "scrollHeight": 823,
+    "horizontalOverflow": false
+  },
+  "body": {
+    "tag": "body",
+    "text": "",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "lineHeight": "19.6px",
+    "color": "rgb(26, 26, 26)",
+    "backgroundColor": "rgb(245, 245, 245)",
+    "borderColor": "rgb(229, 231, 235)",
+    "borderRadius": "0px",
+    "boxShadow": "none",
+    "outline": "none",
+    "padding": "0px",
+    "rect": { "x": 0, "y": 0, "width": 1512, "height": 823 }
+  },
+  "headings": [
+    {
+      "tag": "h1",
+      "text": "今天需要处理的素材事项",
+      "fontSize": "30px",
+      "fontWeight": "680",
+      "lineHeight": "36px",
+      "color": "rgb(26, 26, 26)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderColor": "rgb(229, 231, 235)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "outline": "none",
+      "padding": "0px",
+      "rect": { "x": 276, "y": 110, "width": 1184, "height": 36 }
+    }
+  ],
+  "controls": [
+    {
+      "tag": "button",
+      "text": "上传素材",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "22px",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgb(47, 110, 234)",
+      "borderColor": "rgb(47, 110, 234)",
+      "borderRadius": "12px",
+      "boxShadow": "present",
+      "outline": "none",
+      "padding": "0px 16px",
+      "rect": { "x": 1283, "y": 24, "width": 110, "height": 36 }
+    },
+    {
+      "tag": "input",
+      "text": "",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "34px",
+      "color": "rgba(26, 26, 26, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderColor": "rgba(26, 26, 26, 0.88)",
+      "borderRadius": "4px",
+      "boxShadow": "none",
+      "outline": "none",
+      "padding": "0px",
+      "rect": { "x": 264, "y": 24, "width": 1010, "height": 34 }
+    }
+  ],
+  "surfaces": [
+    {
+      "tag": "main",
+      "text": "material operations dashboard",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "22px",
+      "color": "rgba(26, 26, 26, 0.88)",
+      "backgroundColor": "rgb(245, 245, 245)",
+      "borderColor": "rgb(229, 231, 235)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "outline": "none",
+      "padding": "0px",
+      "rect": { "x": 0, "y": 0, "width": 1512, "height": 823 }
+    }
+  ],
+  "stateSample": {
+    "activeElement": {
+      "tag": "body",
+      "text": "not focused",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "19.6px",
+      "color": "rgb(26, 26, 26)",
+      "backgroundColor": "rgb(245, 245, 245)",
+      "borderColor": "rgb(229, 231, 235)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "outline": "none",
+      "padding": "0px",
+      "rect": { "x": 0, "y": 0, "width": 1512, "height": 823 }
+    },
+    "focusableCount": 28
+  },
+  "metrics": {
+    "headingCount": 1,
+    "controlCount": 28,
+    "surfaceCount": 16
+  },
+  "limits": {
+    "textMaxChars": 90,
+    "screenshotsIncluded": false,
+    "secretsRedacted": true
+  },
+  "observations": {
+    "gridRole": "12 visible metric cards share similar weight",
+    "priorityTerms": ["待生成脚本", "待绑定视频ID", "授权待确认"],
+    "internalTerms": ["asset_id", "TOS", "preview", "视频ID"]
+  }
+}

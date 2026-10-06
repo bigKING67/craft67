@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-26",
+  "packetId": "bazi-timing-blind-review-v1",
+  "distributionBoundary": "Coordinator-only. Do not send this file, repository context, source filenames, anchor IDs, witness IDs, expected readings, or case roles to reviewers.",
+  "reviewerPacket": "../research/bazi-timing-blind-review/README.md",
+  "machinePacket": "../research/bazi-timing-blind-review/packet.json",
+  "responseTemplate": "../research/bazi-timing-blind-review/response-template.json",
+  "caseSummary": {
+    "total": 5,
+    "target": 3,
+    "control": 2
+  },
+  "cases": [
+    {
+      "caseId": "case-01",
+      "role": "control",
+      "anchorId": "A03",
+      "witnessId": "zp-1926",
+      "pdfPage": 45,
+      "printedPage": "32",
+      "verticalLineRegionRef": "page:C08",
+      "referenceLiteral": "壬生戌下闕",
+      "adjudicationTarget": "壬生戌下闕",
+      "sourceEvidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/zp-1926-45-lacuna.jpg",
+        "sha256": "cd298738456b0bcbf53ce5f842a32e37d9645e0098de75d197cc86bc6f1cb08d"
+      },
+      "blindImage": {
+        "path": "docs/research/bazi-timing-blind-review/images/case-01.jpg",
+        "sha256": "daaf9bf2cd643f0019e147cf3512ecbe9e270bf04e379688bd8a55683bcd0794",
+        "bytes": 62031,
+        "widthPx": 260,
+        "heightPx": 1000,
+        "cropPx": {
+          "x": 20,
+          "y": 450,
+          "width": 260,
+          "height": 1000
+        },
+        "focusColumnFromRight": 2,
+        "annotation": {
+          "type": "focus-box",
+          "boxPx": {
+            "x": 32,
+            "y": 565,
+            "width": 105,
+            "height": 360
+          },
+          "color": "red@0.9",
+          "thicknessPx": 4,
+          "textAlteration": false
+        }
+      },
+      "referenceFocusSpanLiteral": "壬生戌下闕"
+    },
+    {
+      "caseId": "case-02",
+      "role": "target",
+      "anchorId": "A10",
+      "witnessId": "dts-1947",
+      "pdfPage": 505,
+      "printedPage": "117",
+      "verticalLineRegionRef": "page:C08",
+      "referenceLiteral": "是年進而中",
+      "adjudicationTarget": "是年進而中",
+      "sourceEvidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-1947-505-jinerzhong.jpg",
+        "sha256": "94db4711c01f9f608aee5e457a66bcfaac853aae6eb92b1737f7f133abb08308"
+      },
+      "blindImage": {
+        "path": "docs/research/bazi-timing-blind-review/images/case-02.jpg",
+        "sha256": "9d336677e2039a3d2066ff65113a32763876d81a7be2a7aec93c07dc67531090",
+        "bytes": 170520,
+        "widthPx": 420,
+        "heightPx": 1250,
+        "cropPx": {
+          "x": 130,
+          "y": 0,
+          "width": 420,
+          "height": 1250
+        },
+        "focusColumnFromRight": 3,
+        "annotation": {
+          "type": "focus-box",
+          "boxPx": {
+            "x": 96,
+            "y": 425,
+            "width": 105,
+            "height": 365
+          },
+          "color": "red@0.9",
+          "thicknessPx": 4,
+          "textAlteration": false
+        }
+      },
+      "referenceFocusSpanLiteral": "是年進而中。"
+    },
+    {
+      "caseId": "case-03",
+      "role": "target",
+      "anchorId": "A04",
+      "witnessId": "dts-ming",
+      "pdfPage": 66,
+      "printedPage": "47",
+      "verticalLineRegionRef": "right:R06",
+      "referenceLiteral": "主譬如吾身",
+      "adjudicationTarget": "主譬如吾身",
+      "sourceEvidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-ming-66-zhu.jpg",
+        "sha256": "59a3fdd254f6adfad781d62111bbcc98e99ed9b8d168f585a991ce2d783da420"
+      },
+      "blindImage": {
+        "path": "docs/research/bazi-timing-blind-review/images/case-03.jpg",
+        "sha256": "2ed46d8cda07e3fd4dcebf5bf16d9955239e77a547c6d25ff201f36201c5add6",
+        "bytes": 69005,
+        "widthPx": 650,
+        "heightPx": 900,
+        "cropPx": {
+          "x": 80,
+          "y": 150,
+          "width": 650,
+          "height": 900
+        },
+        "focusColumnFromRight": 3,
+        "annotation": {
+          "type": "focus-box",
+          "boxPx": {
+            "x": 178,
+            "y": 95,
+            "width": 125,
+            "height": 740
+          },
+          "color": "red@0.9",
+          "thicknessPx": 4,
+          "textAlteration": false
+        }
+      },
+      "referenceFocusSpanLiteral": "主譬如吾身"
+    },
+    {
+      "caseId": "case-04",
+      "role": "control",
+      "anchorId": "A08",
+      "witnessId": "dts-1936",
+      "pdfPage": 27,
+      "printedPage": "22",
+      "verticalLineRegionRef": "page:C03",
+      "referenceLiteral": "喜水則不吉",
+      "adjudicationTarget": "喜水則不吉",
+      "sourceEvidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-1936-27-buji.jpg",
+        "sha256": "abf4dcacbd65cae62fc674a591bad1a0aac203501a9c774afbb9be68e8641d6e"
+      },
+      "blindImage": {
+        "path": "docs/research/bazi-timing-blind-review/images/case-04.jpg",
+        "sha256": "bdd6d79ceeec4081ec4114d2c97acd8ea9fc587d5332113301cb296fe214b48c",
+        "bytes": 44936,
+        "widthPx": 260,
+        "heightPx": 1000,
+        "cropPx": {
+          "x": 40,
+          "y": 0,
+          "width": 260,
+          "height": 1000
+        },
+        "focusColumnFromRight": 2,
+        "annotation": {
+          "type": "focus-box",
+          "boxPx": {
+            "x": 76,
+            "y": 40,
+            "width": 108,
+            "height": 450
+          },
+          "color": "red@0.9",
+          "thicknessPx": 4,
+          "textAlteration": false
+        }
+      },
+      "referenceFocusSpanLiteral": "喜水則不吉。"
+    },
+    {
+      "caseId": "case-05",
+      "role": "target",
+      "anchorId": "A05",
+      "witnessId": "dts-ming",
+      "pdfPage": 67,
+      "printedPage": "48",
+      "verticalLineRegionRef": "left:L01",
+      "referenceLiteral": "大。則運自降。吉。",
+      "adjudicationTarget": "大。則運自降。吉。",
+      "sourceEvidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-ming-67-zijiangji.jpg",
+        "sha256": "4d66d45045c26fd5d2c74818096e92a74b9ee31129bc3fd198310258c913538e"
+      },
+      "blindImage": {
+        "path": "docs/research/bazi-timing-blind-review/images/case-05.jpg",
+        "sha256": "94cc9e34d42589b4a2aa39e1eac874d2740b336cfbb47c6084b16f5e2856b298",
+        "bytes": 47462,
+        "widthPx": 360,
+        "heightPx": 1100,
+        "cropPx": {
+          "x": 180,
+          "y": 0,
+          "width": 360,
+          "height": 1100
+        },
+        "focusColumnFromRight": 1,
+        "annotation": {
+          "type": "focus-box",
+          "boxPx": {
+            "x": 155,
+            "y": 270,
+            "width": 125,
+            "height": 820
+          },
+          "color": "red@0.9",
+          "thicknessPx": 4,
+          "textAlteration": false
+        }
+      },
+      "referenceFocusSpanLiteral": "大。則運自降。吉。"
+    }
+  ],
+  "adjudication": {
+    "minimumIndependentReviewers": 2,
+    "thirdReviewerTriggers": [
+      "any high-confidence character disagreement at a target locus",
+      "either of the first two reviewers marks a target image partial or no",
+      "either reviewer scores fail on controls",
+      "the first two reviewers do not produce the same target character sequence"
+    ],
+    "characterNormalization": "Remove whitespace only. Traditional and variant characters remain distinct unless the coordinator documents a glyph-equivalence decision after review.",
+    "punctuation": "Score printed punctuation separately from characters; punctuation disagreement does not silently alter character agreement.",
+    "controlCalibration": {
+      "pass": "2 of 2 control character sequences match",
+      "conditional": "1 of 2 control character sequences matches",
+      "fail": "0 of 2 control character sequences match",
+      "rule": "A fail reviewer cannot be the sole support for a target; if only two reviewers were collected and either fails, obtain a third."
+    },
+    "targetAcceptance": "Accept a target character reading only when at least two independent usable responses agree exactly, at least one agreeing reviewer passes both controls, and no other control-passing reviewer gives a conflicting high-confidence reading.",
+    "unresolvedRule": "Otherwise retain the existing reading as provisional and record the locus as unresolved; do not choose by simple majority or contextual smoothness.",
+    "tool": "npm run blind-review:adjudicate -- --response <a.json> --response <b.json> [--response <c.json>] [--out <result.json>]"
+  },
+  "notClaimed": [
+    "that this package has already been reviewed by an external expert",
+    "that an accepted glyph reading validates traditional theory",
+    "that a control result measures general paleographic expertise",
+    "cryptographic secrecy when the reviewer can inspect the whole repository"
+  ]
+}

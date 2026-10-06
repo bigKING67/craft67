@@ -1,0 +1,66 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-008",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "84a39ac46479cc5581ed4e14ad86e7d93a449df5cb25feb1bae8f0d31dd6622e",
+    "bytes": 6761
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "df1022d379da0319da182d85233ba6eba5403523f6344b11b89aa52ba46843e4",
+    "bytes": 1677
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "58e32092234b5f18efffcaf02f5126b9f6716aaf879846412c79dfee64def302",
+    "bytes": 1886
+  },
+  "cases": [
+    {
+      "id": "relative-years-and-decadal-range-must-not-become-events",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "54ae665b4e5ec47f259ec1f40d3236ece14d3203d4abd49ffff05b726f6e3f44",
+        "bytes": 65645
+      },
+      "response": {
+        "path": "response.md",
+        "sha256": "74ecb79d1b11d86b90580dd2c18544f5328d80f293fd34d11eb29c18dfb29cad",
+        "bytes": 1108
+      },
+      "report": {
+        "path": "report.json",
+        "sha256": "262e25b3cbbda38c93123064a258c75b74e6938d62b69d1e062d96fd3f9f95d2",
+        "bytes": 15916
+      },
+      "responseClaims": {
+        "path": "response-claims.json",
+        "sha256": "7016981525da1021540c8700e9b5fbcd97cd50ca10c096e8a599d88363a6eb90",
+        "bytes": 3040
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

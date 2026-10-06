@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "incomplete-brief",
+      "title": "Incomplete brief to usable direction",
+      "expected_mode": "quick",
+      "prompt": "We are launching a premium sparkling tea for people who want a sophisticated alcohol-free dinner drink. The product is called Still/Alive. I only know that it should feel adult, social, and not wellness-preachy. Give me one strong launch direction I can take into a creative meeting tomorrow. Make reasonable assumptions rather than sending me a questionnaire."
+    },
+    {
+      "id": "concept-routes",
+      "title": "Distinct campaign routes",
+      "expected_mode": "quick",
+      "prompt": "Develop three genuinely different campaign routes for a compact carry-on suitcase that opens from the front in cramped hotel rooms. Audience: frequent urban business travelers. Proposition: unpack without laying the suitcase flat. Give each route a hook, creative mechanism, hero execution, extensibility, risk, and then recommend one. Do not invent performance claims."
+    },
+    {
+      "id": "commercial-copy",
+      "title": "Commercial copy system",
+      "expected_mode": "quick",
+      "prompt": "Write launch copy for a fragrance named AFTER RAIN. Verified facts: green fig, wet stone and cedar notes; 50 ml; no verified longevity claim. Deliver one hero line, one 35-50 word product paragraph, three paid-social headlines under 28 characters, and a 12-second voiceover. The tone should be precise and sensory, not generic luxury. Explain the job of each copy layer briefly."
+    },
+    {
+      "id": "image-edit",
+      "title": "Production-ready image edit brief",
+      "expected_mode": "quick",
+      "prompt": "Prepare a production-ready image-edit prompt for this described source: a studio photo of a cobalt-blue hand cream tube standing upright on pale gray acrylic, logo and label perfectly legible, cap geometry correct. Change only the setting to a humid night greenhouse with condensation and deep green leaves; preserve the exact tube, cap, logo, label text, proportions, camera angle and product scale. Output is a 4:5 paid-social key visual with negative space at top. Include reference roles, change/preserve instructions, failure checks, and an efficient iteration plan. Do not pretend you saw or edited the image."
+    },
+    {
+      "id": "video-treatment",
+      "title": "Fifteen-second video treatment",
+      "expected_mode": "quick",
+      "prompt": "Create an executable 15-second vertical video treatment for a noise-cancelling headphone launch. Premise: the city does not disappear; it falls into rhythm. One performer walks through a real morning commute. Deliver timestamped beats, blocking, camera, transitions, sound design, end frame and generation failure conditions. Keep the product geometry stable and avoid impossible crowd physics."
+    },
+    {
+      "id": "critique-refine",
+      "title": "Evidence-aware critique and refinement",
+      "expected_mode": "quick",
+      "prompt": "Critique this described six-second preroll: 0-2s, a skincare jar rotates on white while five benefit claims appear; 2-4s, a model touches her cheek and the line 'clinically perfect skin' appears; 4-6s, logo, 30% discount and three CTAs compete on screen. We have no performance data and no substantiation for 'clinically perfect skin'. Separate observations, interpretations and hypotheses, then recommend the smallest high-value revision."
+    },
+    {
+      "id": "direction-reopened-by-feedback",
+      "title": "Stakeholder feedback reopens image direction",
+      "expected_mode": "quick",
+      "prompt": "We have been iterating on a portrait jewelry image. The latest pass removed a watermark, separated the dark cord from the tray and toned down an overly blue stone. The stakeholder's response is: 'This feels too close-up. I want a wider scene and more of an object-world aesthetic.' What should happen next? Give a concise response that the production team can use."
+    },
+    {
+      "id": "locked-direction-bounded-refine",
+      "title": "Approved direction receives one bounded refinement",
+      "expected_mode": "quick",
+      "prompt": "The stakeholder has approved the wide environmental still-life composition, object hierarchy, product scale, props, crop and lighting. One edit pass remains. Her review notes are: there is a small bottom-right watermark, and the bracelet stone reads as saturated cyan instead of natural gray-blue with localized iridescence. Respond as the creative lead responsible for the next production step."
+    },
+    {
+      "id": "traceable-campaign",
+      "title": "Traceable multi-agent campaign setup",
+      "expected_mode": "traceable",
+      "prompt": "Set up the operating approach for a six-week multi-agent campaign producing 40 image and video variants across two agencies. Product claims, approved copy, source rights and final files must be auditable; provider executions will be repeated and public delivery needs named owner approval. Explain which durable Creative Craft artifacts and gates are actually needed, the causal order, and the minimum CLI checks. Do not generate fake receipts, inspections, approvals or delivery evidence."
+    }
+  ]
+}

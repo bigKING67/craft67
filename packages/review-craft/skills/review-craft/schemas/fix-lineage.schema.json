@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/fix-lineage.schema.json",
+  "title": "Review Craft deterministic fix attempt lineage projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "fixId", "planSha256", "aggregateStatus", "latestAttemptId", "recoveryClassification", "attempts"],
+  "properties": {
+    "documentType": {"const": "review-craft.fix-lineage"},
+    "schemaVersion": {"const": "review-craft.fix-attempt.v1"},
+    "fixId": {"type": "string", "minLength": 1},
+    "planSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "aggregateStatus": {"enum": ["NO_ATTEMPTS", "AWAITING_ASSESSMENT", "VERIFIED", "VERIFIED_WITH_RETRY", "PARTIAL", "FAILED", "NO_CHANGES"]},
+    "latestAttemptId": {"type": ["string", "null"], "pattern": "^attempt-[0-9]{4}-[a-f0-9]{12}$"},
+    "recoveryClassification": {"enum": ["NONE", "FLAKY_COMMAND_RECOVERED", "ASSESSMENT_RECOVERED", "RETRY_NOT_RECOVERED"]},
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["attemptId", "sequence", "capturedAt", "captureStatus", "status", "verificationSha256", "recoveryClassification"],
+        "properties": {
+          "attemptId": {"type": "string", "pattern": "^attempt-[0-9]{4}-[a-f0-9]{12}$"},
+          "sequence": {"type": "integer", "minimum": 1, "maximum": 9999},
+          "capturedAt": {"type": "string", "format": "date-time"},
+          "captureStatus": {"enum": ["PASSED", "FAILED", "NO_CHANGES"]},
+          "status": {"enum": ["AWAITING_ASSESSMENT", "VERIFIED", "PARTIAL", "FAILED", "NO_CHANGES"]},
+          "verificationSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "recoveryClassification": {"type": ["string", "null"], "enum": [null, "NONE", "FLAKY_COMMAND_RECOVERED", "ASSESSMENT_RECOVERED", "RETRY_NOT_RECOVERED"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "creative-craft.output-inspection.v1",
+  "inspection_id": "inspection-tbd",
+  "job_id": "job-tbd",
+  "receipt_id": "receipt-tbd",
+  "output_asset_id": "output-tbd",
+  "output_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "inspector": "inspector-tbd",
+  "inspected_at": "TBD",
+  "findings": [],
+  "invariant_checks": [],
+  "copy_checks": [],
+  "technical_checks": [],
+  "rights_checks": [],
+  "decision": "deferred",
+  "approval": {
+    "approved_by": null,
+    "approved_at": null,
+    "approval_basis": ""
+  },
+  "remaining_unknowns": ["Actual output has not been inspected."]
+}

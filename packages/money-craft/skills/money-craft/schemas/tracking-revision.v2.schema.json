@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-revision.v2.schema.json",
+  "title": "Money Craft Tracking Revision",
+  "type": "object",
+  "required": [
+    "schema",
+    "security",
+    "security_id",
+    "tracking_revision",
+    "as_of",
+    "data_cutoff",
+    "run_id",
+    "result",
+    "audits",
+    "provider",
+    "files"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.tracking-revision.v2"
+    },
+    "security": {
+      "type": "string",
+      "minLength": 1
+    },
+    "security_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9-]{1,15}:[A-Z0-9][A-Z0-9._-]{0,31}$"
+    },
+    "tracking_revision": {
+      "type": "string",
+      "pattern": "^t[0-9]{4}$"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "data_cutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_research": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "health_score",
+        "health_status",
+        "diff_signal",
+        "automatic_trading"
+      ],
+      "properties": {
+        "health_score": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 10
+        },
+        "health_status": {
+          "enum": [
+            "SUPPORTED",
+            "WEAKENED",
+            "DAMAGED",
+            "BROKEN",
+            "UNVERIFIED",
+            "WATCH"
+          ]
+        },
+        "diff_signal": {
+          "enum": [
+            "NO_MATERIAL_CHANGE",
+            "CHANGED",
+            "REVIEW_REQUIRED",
+            "CRITICAL_REVIEW"
+          ]
+        },
+        "automatic_trading": {
+          "const": false
+        }
+      }
+    },
+    "audits": {
+      "type": "object"
+    },
+    "provider": {
+      "type": "object"
+    },
+    "files": {
+      "type": "object"
+    }
+  }
+}

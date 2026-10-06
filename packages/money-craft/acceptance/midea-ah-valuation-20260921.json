@@ -1,0 +1,18 @@
+{
+  "status": "PASS_CONDITIONAL_CALCULATION",
+  "research_status": "PARTIAL",
+  "calculations": 9,
+  "source_hashes_verified": 7,
+  "reviewer": "parent",
+  "independent": false,
+  "h_balance_sep18": "INFERRED",
+  "fx_basis": "central_parity_not_close",
+  "core_imported": false,
+  "full_company_finalize_rerun": false,
+  "visual_pages": [
+    "S33:1"
+  ],
+  "total_cny": "630148041746.7510000",
+  "report_sha256": "f7830eca3243f9679cc83a6f7be4e6400b92682afcd07c92e0fd069f178dceb9",
+  "full_report_audit": "not_applicable_bounded_supplement"
+}

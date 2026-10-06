@@ -1,0 +1,7 @@
+结论：先用“小规模内容—搜索—承接”闭环验证，再扩大达人和笔记数量。已确认事实只有品牌要建设小红书体系；品类、人群、现有搜索、内容基线和承接渠道未知，因此 Content Lead 必须先补基线。
+
+第一步建立 audience × scenario × problem × evidence 地图，并形成品牌词、品类词、场景词、问题词和比较词的 keyword 结构。第二步建立 content pillar：真实体验、教程/方法、比较与异议、产品证明、生活方式和品牌观点。第三步按工作分层 KOL/KOC/达人：权威负责可信度，垂直达人负责问题教育，生活方式达人负责场景，KOC 负责长尾体验和搜索资产。
+
+每类 creator brief 写清目标人群、内容任务、核心信息、必须出现的 proof、禁止宣称、创作自由、交付、发布时间、评论处理、搜索词、landing、二次编辑、paid amplification 和 rights 到期时间。第一轮建议以 4-6 周为测试窗，分多个内容母题和达人角色，每个单元设准入与淘汰条件，而不是复制同一脚本。
+
+Owner：Content Lead 负责内容系统和 refresh，Creator Manager 负责达人交付与授权，Brand/Compliance 负责信息与宣称，Growth Lead 负责付费放大，Commerce Owner 负责承接，Analytics Owner 负责 measurement。核心指标是目标词搜索提升、收藏和有效评论、优质落地、转化质量、内容授权价值和资产复用。若互动不能形成搜索或有效 landing，调整关键词、证据和达人；若内容产生合规、授权或价格风险立即停止；只有连续复盘证明搜索和承接质量稳定后才扩大预算。

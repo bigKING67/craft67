@@ -1,0 +1,26 @@
+{
+  "status": "PASS_BOUNDED_SEGMENT_DISCLOSURE_REVIEW",
+  "completed_on": "2026-09-21",
+  "as_of": "2026-09-20",
+  "calculation_count": 36,
+  "independent_review": false,
+  "full_research_status_changed": false,
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-midea-segment-drivers/review.md",
+      "sha256": "76dfeaa6477e11ff53885cc364997bffb430f475714ee2992dda1101db5d9dfe"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-segment-drivers/financial-audit.json",
+      "sha256": "ed2176624d3a26b7fe55d5fda63f600d03b98e773794fbb50cde8cbf6c444908"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-segment-drivers/semantic-review.json",
+      "sha256": "f527750b922bfdf33754dae626103255612553de0bf44a212efc749c20c2288c"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-segment-drivers/ledger-verification.json",
+      "sha256": "9720a21e7d099a0c344c76b14e98086d377b5a947eb49a9953e88fc272d5ab28"
+    }
+  ]
+}

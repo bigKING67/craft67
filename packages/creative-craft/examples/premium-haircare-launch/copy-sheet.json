@@ -1,0 +1,115 @@
+{
+  "schema_version": "creative-craft.copy-sheet.v1",
+  "copy_sheet_id": "northstar-motion-proof-copy-v1",
+  "brief_id": "northstar-airlift-launch-v1",
+  "direction_id": "northstar-motion-proof-direction-v1",
+  "selected_route_id": "motion-is-proof",
+  "status": "reviewed",
+  "use_scope": "internal",
+  "strategy": {
+    "objective": "Express soft, mobile volume as the visible proof of the fictional product proposition.",
+    "audience": "Urban professionals who want polished self-care without an effortful or rigid result.",
+    "tension": "Volumizing products are expected to trade movement for stiffness.",
+    "proposition": "Visible lift that still moves like you.",
+    "desired_response": "Read movement as premium product proof rather than styling spectacle.",
+    "evidence_state": "HYPOTHESIZED",
+    "evidence_refs": [
+      "cc://brief/northstar-airlift-launch-v1#/audience/primary",
+      "cc://brief/northstar-airlift-launch-v1#/audience/current_belief",
+      "cc://brief/northstar-airlift-launch-v1#/proposition"
+    ]
+  },
+  "voice": {
+    "principles": [
+      "Use one short declarative proof line.",
+      "Let the visible motion carry more meaning than explanatory body copy.",
+      "Keep the tone composed, exact, and premium without category cliches."
+    ],
+    "prohibited_tones": [
+      "therapeutic",
+      "miracle-result",
+      "generic empowerment",
+      "overwritten luxury"
+    ]
+  },
+  "proof_hierarchy": [
+    {
+      "proof_id": "motion-proof",
+      "priority": 1,
+      "statement": "Lift remains visibly fluid through one controlled turn.",
+      "evidence_state": "HYPOTHESIZED",
+      "evidence_refs": [
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/message_hierarchy/1"
+      ]
+    },
+    {
+      "proof_id": "product-anchor",
+      "priority": 2,
+      "statement": "The fictional Northstar AirLift bottle remains the stable brand anchor.",
+      "evidence_state": "SPECIFIED",
+      "evidence_refs": [
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/message_hierarchy/2"
+      ]
+    }
+  ],
+  "mandatory_copy": [
+    "VOLUME THAT MOVES"
+  ],
+  "prohibited_copy": [
+    "hair growth",
+    "clinically proven",
+    "repairs damage"
+  ],
+  "legal_copy": [],
+  "copy_routes": [
+    {
+      "route_id": "proof-line",
+      "job": "Name the visible behavior as the benefit in one exact line.",
+      "mechanism": "The phrase turns motion into the product demonstration without adding an unsupported result claim.",
+      "intended_response": "Understand the benefit immediately and remember the moving-volume distinction.",
+      "evidence_state": "HYPOTHESIZED",
+      "evidence_refs": [
+        "cc://concept-routes/northstar-routes-v1#/routes/0/mechanism",
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/copy_direction/0"
+      ]
+    },
+    {
+      "route_id": "quiet-proposition",
+      "job": "State the proposition in a restrained explanatory line.",
+      "mechanism": "Contrast visible lift with natural movement in plain language.",
+      "intended_response": "Resolve the product distinction when a longer format needs clarification.",
+      "evidence_state": "HYPOTHESIZED",
+      "evidence_refs": [
+        "cc://brief/northstar-airlift-launch-v1#/proposition"
+      ]
+    }
+  ],
+  "selected_copy_route_id": "proof-line",
+  "copy_units": [
+    {
+      "unit_id": "hero-headline",
+      "role": "headline",
+      "text": "VOLUME THAT MOVES",
+      "language": "en",
+      "evidence_state": "SPECIFIED",
+      "evidence_refs": [
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/message_hierarchy/0"
+      ],
+      "render_method": "post_overlay"
+    }
+  ],
+  "render_method": "post_overlay",
+  "approval": {
+    "status": "reviewed",
+    "reviewed_by": "fictional-fixture-reviewer",
+    "reviewed_at": "2026-08-14T08:30:00Z",
+    "approved_by": null,
+    "approved_at": null,
+    "basis": "Rights-safe fictional fixture reviewed for internal runtime readiness only."
+  },
+  "unknowns": [
+    "Audience insight remains hypothesized.",
+    "No real output has been inspected.",
+    "No business or brand owner has approved this copy for public delivery."
+  ]
+}

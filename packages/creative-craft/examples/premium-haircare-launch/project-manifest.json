@@ -1,0 +1,18 @@
+{
+  "schema_version": "creative-craft.project-manifest.v2",
+  "project_id": "northstar-airlift-launch",
+  "manifest_id": "northstar-project-manifest-v2",
+  "contract_version": "0.3",
+  "copy_policy": "required",
+  "artifacts": [
+    {"artifact_type": "brief", "artifact_id": "northstar-airlift-launch-v1", "schema_version": "creative-craft.brief.v1", "path": "creative-brief.json", "sha256": "9ebb6d0c4e727487c2c534195f1cc896082064eaeb8d3872ab2b42a0b00e7326"},
+    {"artifact_type": "asset-ledger", "artifact_id": "northstar-assets-v1", "schema_version": "creative-craft.asset-ledger.v1", "path": "asset-ledger.json", "sha256": "0865e79ee26240e074dc0f886acc199c89dee0371bddd4419c12af64833f4c17"},
+    {"artifact_type": "concept-routes", "artifact_id": "northstar-routes-v1", "schema_version": "creative-craft.concept-routes.v1", "path": "concept-routes.json", "sha256": "ec69ac21a44a4e56a10fb3c6a83b43cd37c72b9a345dcd08408c03dce9697aed"},
+    {"artifact_type": "creative-direction", "artifact_id": "northstar-motion-proof-direction-v1", "schema_version": "creative-craft.creative-direction.v1", "path": "creative-direction.json", "sha256": "98669a38356131f69fb4a8ee7bb7bc67e59bc3165b29dc5e31ae160f9407db18"},
+    {"artifact_type": "copy-sheet", "artifact_id": "northstar-motion-proof-copy-v1", "schema_version": "creative-craft.copy-sheet.v1", "path": "copy-sheet.json", "sha256": "b4c9c26d8abf9916d84c2935749dc865cf6253d457d67ec1823a657be79ef8e6"},
+    {"artifact_type": "image", "artifact_id": "northstar-motion-proof-hero-image-v1", "schema_version": "creative-craft.image-job.v2", "path": "image-job.json", "sha256": "6be222fc69261ecd2892f0d94dd0837c7dc7ad7ac88bd7c0b2f26c18c38f5096"},
+    {"artifact_type": "video", "artifact_id": "northstar-motion-proof-vertical-15s-v1", "schema_version": "creative-craft.video-job.v2", "path": "video-job.json", "sha256": "72cc3cc848023d8c488ddc4708e4f56a52335c883196fa85877d26582a16e4d7"},
+    {"artifact_type": "evaluation", "artifact_id": "northstar-motion-proof-direction-eval-v2", "schema_version": "creative-craft.evaluation.v2", "path": "evaluation.json", "sha256": "08300743d31e42af2853371c8f5b816d4ab3571fb4d17000a07a9dc2b8836907"},
+    {"artifact_type": "delivery", "artifact_id": "northstar-launch-planned-v2", "schema_version": "creative-craft.delivery.v2", "path": "delivery-manifest.json", "sha256": "1cab94f4710cf849d77344fc83a95401cb463a434e550e1583f4788774f49f0e"}
+  ]
+}

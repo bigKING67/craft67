@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "packages": [
+    {
+      "name": "design-craft",
+      "path": "packages/design-craft",
+      "skills": [
+        {
+          "name": "design-craft",
+          "path": "skills/design-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "make",
+          "validate-portable"
+        ]
+      ]
+    },
+    {
+      "name": "creative-craft",
+      "path": "packages/creative-craft",
+      "skills": [
+        {
+          "name": "creative-craft",
+          "path": "skills/creative-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "python3",
+          "scripts/validate.py"
+        ],
+        [
+          "python3",
+          "scripts/check_package.py"
+        ]
+      ]
+    },
+    {
+      "name": "review-craft",
+      "path": "packages/review-craft",
+      "skills": [
+        {
+          "name": "review-craft",
+          "path": "skills/review-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "python3",
+          "scripts/release_gate.py"
+        ]
+      ]
+    },
+    {
+      "name": "money-craft",
+      "path": "packages/money-craft",
+      "skills": [
+        {
+          "name": "money-craft",
+          "path": "skills/money-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "python3",
+          "scripts/validate.py"
+        ],
+        [
+          "python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ],
+        [
+          "python3",
+          "scripts/check_package.py"
+        ]
+      ]
+    },
+    {
+      "name": "whoami",
+      "path": "packages/whoami",
+      "skills": [
+        {
+          "name": "whoami",
+          "path": "SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "npm",
+          "run",
+          "check"
+        ]
+      ]
+    },
+    {
+      "name": "browser67",
+      "path": "packages/browser67",
+      "skills": [
+        {
+          "name": "browser67",
+          "path": "skills/browser67/SKILL.md"
+        },
+        {
+          "name": "js-reverse",
+          "path": "skills/js-reverse/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "npm",
+          "run",
+          "check"
+        ]
+      ]
+    },
+    {
+      "name": "commerce-growth-os",
+      "path": "packages/commerce-growth-os",
+      "skills": [
+        {
+          "name": "commerce-analytics",
+          "path": "skills/commerce/commerce-analytics/SKILL.md"
+        },
+        {
+          "name": "commerce-commercial-strategy",
+          "path": "skills/commerce/commerce-commercial-strategy/SKILL.md"
+        },
+        {
+          "name": "commerce-growth-os",
+          "path": "skills/commerce/commerce-growth-os/SKILL.md"
+        },
+        {
+          "name": "commerce-operations",
+          "path": "skills/commerce/commerce-operations/SKILL.md"
+        },
+        {
+          "name": "brand-strategy-communications",
+          "path": "skills/marketing/brand-strategy-communications/SKILL.md"
+        },
+        {
+          "name": "consumer-marketing-os",
+          "path": "skills/marketing/consumer-marketing-os/SKILL.md"
+        },
+        {
+          "name": "content-creative-social-marketing",
+          "path": "skills/marketing/content-creative-social-marketing/SKILL.md"
+        },
+        {
+          "name": "growth-performance-lifecycle-marketing",
+          "path": "skills/marketing/growth-performance-lifecycle-marketing/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "bash",
+          "scripts/validate.sh"
+        ]
+      ]
+    },
+    {
+      "name": "3d-craft",
+      "path": "packages/3d-craft",
+      "skills": [
+        {
+          "name": "3d-craft",
+          "path": "skills/3d-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "npm",
+          "run",
+          "validate"
+        ],
+        [
+          "npm",
+          "test"
+        ],
+        [
+          "npm",
+          "run",
+          "viewer:typecheck"
+        ],
+        [
+          "npm",
+          "run",
+          "viewer:build"
+        ]
+      ]
+    },
+    {
+      "name": "reverse-craft",
+      "path": "packages/reverse-craft",
+      "skills": [
+        {
+          "name": "reverse-craft",
+          "path": "skills/reverse-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "npm",
+          "run",
+          "check:all"
+        ]
+      ]
+    },
+    {
+      "name": "write-craft",
+      "path": "packages/write-craft",
+      "skills": [
+        {
+          "name": "write-craft",
+          "path": "skills/write-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "npm",
+          "run",
+          "validate"
+        ],
+        [
+          "npm",
+          "test"
+        ],
+        [
+          "npm",
+          "run",
+          "package:check"
+        ]
+      ]
+    }
+  ]
+}

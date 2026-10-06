@@ -1,0 +1,226 @@
+{
+  "case-01": {
+    "candidate": "C1-a8e0b00e",
+    "pillars": [
+      "辛未",
+      "辛丑",
+      "己丑",
+      "戊辰"
+    ],
+    "rootDetails": [
+      {
+        "position": "year",
+        "branch": "未",
+        "hiddenStem": "己",
+        "element": "土",
+        "tenGod": "比肩",
+        "sameStemAsDayMaster": true,
+        "clashSources": [
+          {
+            "position": "month",
+            "branch": "丑"
+          },
+          {
+            "position": "day",
+            "branch": "丑"
+          }
+        ]
+      },
+      {
+        "position": "month",
+        "branch": "丑",
+        "hiddenStem": "己",
+        "element": "土",
+        "tenGod": "比肩",
+        "sameStemAsDayMaster": true,
+        "clashSources": [
+          {
+            "position": "year",
+            "branch": "未"
+          }
+        ]
+      },
+      {
+        "position": "day",
+        "branch": "丑",
+        "hiddenStem": "己",
+        "element": "土",
+        "tenGod": "比肩",
+        "sameStemAsDayMaster": true,
+        "clashSources": [
+          {
+            "position": "year",
+            "branch": "未"
+          }
+        ]
+      },
+      {
+        "position": "hour",
+        "branch": "辰",
+        "hiddenStem": "戊",
+        "element": "土",
+        "tenGod": "劫财",
+        "sameStemAsDayMaster": false,
+        "clashSources": []
+      }
+    ],
+    "relations": [
+      {
+        "kind": "冲",
+        "positions": [
+          "year",
+          "month"
+        ],
+        "branches": "未丑"
+      },
+      {
+        "kind": "冲",
+        "positions": [
+          "year",
+          "day"
+        ],
+        "branches": "未丑"
+      }
+    ],
+    "note": "Current core observations only, not strength/useful-element labels or independently validated calendar truth."
+  },
+  "case-02": {
+    "candidate": "C1-aaf572ad",
+    "pillars": [
+      "己巳",
+      "壬申",
+      "甲寅",
+      "壬申"
+    ],
+    "rootDetails": [
+      {
+        "position": "day",
+        "branch": "寅",
+        "hiddenStem": "甲",
+        "element": "木",
+        "tenGod": "比肩",
+        "sameStemAsDayMaster": true,
+        "clashSources": [
+          {
+            "position": "month",
+            "branch": "申"
+          },
+          {
+            "position": "hour",
+            "branch": "申"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "kind": "六合",
+        "positions": [
+          "year",
+          "month"
+        ],
+        "branches": "巳申"
+      },
+      {
+        "kind": "害",
+        "positions": [
+          "year",
+          "day"
+        ],
+        "branches": "巳寅"
+      },
+      {
+        "kind": "六合",
+        "positions": [
+          "year",
+          "hour"
+        ],
+        "branches": "巳申"
+      },
+      {
+        "kind": "冲",
+        "positions": [
+          "month",
+          "day"
+        ],
+        "branches": "申寅"
+      },
+      {
+        "kind": "冲",
+        "positions": [
+          "day",
+          "hour"
+        ],
+        "branches": "寅申"
+      },
+      {
+        "kind": "三刑",
+        "positions": [
+          "year",
+          "month",
+          "day",
+          "hour"
+        ],
+        "branches": "寅巳申"
+      }
+    ],
+    "note": "Current core observations only, not strength/useful-element labels or independently validated calendar truth."
+  },
+  "case-03": {
+    "candidate": "C1-d211efa9",
+    "pillars": [
+      "戊寅",
+      "丁巳",
+      "丙辰",
+      "癸巳"
+    ],
+    "rootDetails": [
+      {
+        "position": "year",
+        "branch": "寅",
+        "hiddenStem": "丙",
+        "element": "火",
+        "tenGod": "比肩",
+        "sameStemAsDayMaster": true,
+        "clashSources": []
+      },
+      {
+        "position": "month",
+        "branch": "巳",
+        "hiddenStem": "丙",
+        "element": "火",
+        "tenGod": "比肩",
+        "sameStemAsDayMaster": true,
+        "clashSources": []
+      },
+      {
+        "position": "hour",
+        "branch": "巳",
+        "hiddenStem": "丙",
+        "element": "火",
+        "tenGod": "比肩",
+        "sameStemAsDayMaster": true,
+        "clashSources": []
+      }
+    ],
+    "relations": [
+      {
+        "kind": "害",
+        "positions": [
+          "year",
+          "month"
+        ],
+        "branches": "寅巳"
+      },
+      {
+        "kind": "害",
+        "positions": [
+          "year",
+          "hour"
+        ],
+        "branches": "寅巳"
+      }
+    ],
+    "note": "Current core observations only, not strength/useful-element labels or independently validated calendar truth."
+  }
+}

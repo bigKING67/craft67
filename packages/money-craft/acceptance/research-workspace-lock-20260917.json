@@ -1,0 +1,45 @@
+{
+  "schema": "money-craft.research-workspace-lock.v1",
+  "date": "2026-09-17",
+  "scope": "Cooperative workspace isolation for collect/import/status/finalize, including collect CLI preflight",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "ca63eda4e2c2422a6a86311e401fae0a8a4f849cc16654470f3cde994496a8b1",
+    "skills/money-craft/scripts/money_craft.py": "00928191f3436e88e49d2ca084af91ce5eca79565ef4ad0db418219749dae86b",
+    "tests/test_research_run.py": "bf2ec86329b165ca13ed37ffba43cc264544ff0261160454ecb87050cbc49263",
+    "skills/money-craft/references/company-research.md": "55875c8291b55061b06bd5bace3cfdf6912519ef44f3ea19539e79fffc9141e8"
+  },
+  "behavior": "Persistent sibling lock inode, nonblocking OS exclusive lock; busy returns workspace_busy before reading workspace; release on normal exit, exception or process death. Nested calls use locked helpers.",
+  "validation": {
+    "research_tests": 35,
+    "full_tests": 298,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regression": "Isolated copy without decorators allowed competing real finalize CLI to exit 0; expected workspace_busy exit 4.",
+    "real_cli_interleaving": "Finalizer paused immediately before receipt publication; collect/import/status/finalize competitors return workspace_busy, workspace bytes unchanged; released finalizer succeeds and repeat finalize preserves bytes.",
+    "recovery": "Exception and killed lock-holder process release OS lock; subsequent status succeeds. This is lock release only, not transaction recovery.",
+    "boundaries": "Symlink/hardlink lock paths and absent platform locking rejected; protected files unchanged. Disabled-provider collect returns busy while held, provider_disabled after release."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 35,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "ca63eda4e2c2422a6a86311e401fae0a8a4f849cc16654470f3cde994496a8b1",
+      "skills/money-craft/scripts/money_craft.py": "00928191f3436e88e49d2ca084af91ce5eca79565ef4ad0db418219749dae86b",
+      "tests/test_research_run.py": "bf2ec86329b165ca13ed37ffba43cc264544ff0261160454ecb87050cbc49263"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T054759624946Z"
+  },
+  "limits": [
+    "Lifecycle remains PARTIAL: init competition, multi-file interrupted publication and recovery remain OPEN.",
+    "External writers and lock-file deletion/replacement bypass cooperative protocol.",
+    "Windows msvcrt, network filesystems and power-loss durability UNVERIFIED.",
+    "Lock sidecar persists outside sealed workspace; parent must permit initial lock creation.",
+    "No live provider, app, commit, push or release.",
+    "Existing HTTPError fixture ResourceWarnings remain."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "money-craft.render-absorption.v1",
+  "status": "PASS_BOUNDED_RENDER_ABSORPTION",
+  "date": "2026-09-20",
+  "host_tool_changes": [
+    {
+      "file": "investment_kami_render.py",
+      "before_sha256": "b651daa7ef44415b59f2d8656e20b5f1d0abc5bb39cf40a6940418f3bc6c572a",
+      "after_sha256": "9228c5c4545320ab5d6027924514973087f0d7e50513b5b3ec0b031bae3cb4c1"
+    },
+    {
+      "file": "test_investment_kami_render.sh",
+      "before_sha256": "00e6f7322cfce37e41a5ece3771294703b280a38d746acbeeeac6398919b774d",
+      "after_sha256": "1898cef3ff54b80bca3406687bcaa409810b302c3c55c9d1880cd6a3adf2c89e"
+    }
+  ],
+  "coverage": {
+    "pages": 7,
+    "fragments": 136,
+    "html_missing": [],
+    "pdf_missing": [],
+    "fonts_embedded": true,
+    "source_sha256": "69c3b43336ba72df0a582ff14f09a3db4a4d6971c81bc26b0a874240b240fb18",
+    "source_matches_frozen": true
+  },
+  "integration": {
+    "audit_verdict": "PASS",
+    "pages": 7,
+    "pixel_parity_with_reviewed_pdf": true,
+    "canonical_unchanged": true,
+    "sealed": false
+  },
+  "render_regressions_passed": true,
+  "archive_regressions_passed": true,
+  "core_changed": false,
+  "global_skill_install_changed": false,
+  "new_autonomous_e2e": false,
+  "browser_verified": false,
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-render-absorption/check.py",
+      "sha256": "12c7e2f70f3d623c3e6db018ba095bafb029add0fc4f8867d8f59d100dd07e92"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/coverage.json",
+      "sha256": "bce92fb29e433cfbfc0e74fa061242823957efc595a6bf7add4c60a5e1d1543c"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/integration.json",
+      "sha256": "322a643ded74dabc38018180e1e41588a3b06410e8542a54b2675d5a03c00e10"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/tests.log",
+      "sha256": "29df94fd5fe2f2edeb542f9d6490cde7bd0d099a032e8c1aeaa811bcb8aeddfe"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/archive-tests.log",
+      "sha256": "6a0a6e866f5ca22ce0c8fd859616d9a7bbf87c77cc655469ed7cae18d2e11ded"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/render.json",
+      "sha256": "7d436bacad15408aaffebf26d0cc26e6e31d1077e23f4a91211cee9c117c9cb5"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/archive-smoke.json",
+      "sha256": "4cb05ae6af2bc465a0eb52f629522ef6eb0d427d28eaea86c9a462b6d80359f3"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/investment_kami_render.py.diff",
+      "sha256": "03c3d8432d540aeb02cebcdb36eca2aba8c75564f7d04131a134c3812e4806fc"
+    },
+    {
+      "path": "local/acceptance/20260920-render-absorption/test_investment_kami_render.sh.diff",
+      "sha256": "6a4c3a730579bb24eb226979144a1501f7931bab2f93f9019e9df23e624e0193"
+    }
+  ]
+}

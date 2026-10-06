@@ -1,0 +1,176 @@
+name: Performance benchmark
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "41 5 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Benchmark or certify the current ref
+        required: true
+        default: full
+        type: choice
+        options:
+          - full
+          - operational-candidate
+      native_run_id:
+        description: Successful Native runtime evidence run used for candidate certification
+        required: false
+        type: string
+      benchmark_baseline:
+        description: Committed matching-runner baseline required for candidate certification
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: benchmark-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Run representative benchmark suite
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: >-
+          python3 -m tools.design_craft benchmark
+          --scale smoke
+          --output "${RUNNER_TEMP}/benchmark-result-smoke.json"
+      - name: Upload smoke benchmark evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: performance-smoke-${{ github.run_id }}
+          path: ${{ runner.temp }}/benchmark-result-smoke.json
+          if-no-files-found: error
+          retention-days: 30
+
+  full:
+    if: >-
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.mode == 'full')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Run full benchmark suite
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: >-
+          python3 -m tools.design_craft benchmark
+          --scale full
+          --output "${RUNNER_TEMP}/benchmark-result-full.json"
+      - name: Upload full benchmark evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: performance-full-${{ github.run_id }}
+          path: ${{ runner.temp }}/benchmark-result-full.json
+          if-no-files-found: error
+          retention-days: 90
+
+  operational-candidate:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'operational-candidate'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Validate benchmark baseline
+        env:
+          BENCHMARK_BASELINE: ${{ inputs.benchmark_baseline }}
+        run: |
+          [[ "${BENCHMARK_BASELINE}" == benchmarks/baselines/* ]]
+          [[ "${BENCHMARK_BASELINE}" != *..* ]]
+          test -f "${BENCHMARK_BASELINE}"
+      - name: Validate native evidence run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NATIVE_RUN_ID: ${{ inputs.native_run_id }}
+        run: |
+          if [[ ! "${NATIVE_RUN_ID}" =~ ^[1-9][0-9]*$ ]]; then
+            echo "native_run_id must be a positive GitHub Actions run ID" >&2
+            exit 2
+          fi
+          run_state="$(gh run view "${NATIVE_RUN_ID}" --json conclusion,status,workflowName,headSha --jq '[.status, .conclusion, .workflowName, .headSha] | join("|")')"
+          if [[ "${run_state}" != "completed|success|Native runtime evidence|${GITHUB_SHA}" ]]; then
+            echo "native_run_id must reference successful current-source Native runtime evidence; got ${run_state}" >&2
+            exit 1
+          fi
+      - name: Download native runtime evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NATIVE_RUN_ID: ${{ inputs.native_run_id }}
+        run: |
+          evidence_root="${RUNNER_TEMP}/native-evidence"
+          mkdir -p "${evidence_root}/ios" "${evidence_root}/android" "${evidence_root}/combined"
+          gh run download "${NATIVE_RUN_ID}" --name "native-runtime-ios-${NATIVE_RUN_ID}" --dir "${evidence_root}/ios"
+          gh run download "${NATIVE_RUN_ID}" --name "native-runtime-android-${NATIVE_RUN_ID}" --dir "${evidence_root}/android"
+          cp -R "${evidence_root}/ios/." "${evidence_root}/combined/"
+          cp -R "${evidence_root}/android/." "${evidence_root}/combined/"
+          test -f "${evidence_root}/combined/ios-observed.json"
+          test -f "${evidence_root}/combined/android-observed.json"
+      - name: Run immutable full benchmark
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: >-
+          python3 -m tools.design_craft benchmark
+          --scale full
+          --output "${RUNNER_TEMP}/operational-candidate/benchmark-result-full.json"
+      - name: Certify Operational 95 release candidate
+        env:
+          BENCHMARK_BASELINE: ${{ inputs.benchmark_baseline }}
+          DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT: ${{ runner.temp }}/native-evidence/combined
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: >-
+          make release-readiness-operational
+          BENCHMARK_BASELINE="${BENCHMARK_BASELINE}"
+          BENCHMARK_RESULT="${RUNNER_TEMP}/operational-candidate/benchmark-result-full.json"
+          OPERATIONAL_CANDIDATE_EVIDENCE="${RUNNER_TEMP}/operational-candidate/dist/evidence/operational-95-candidate.json"
+      - name: Upload Operational 95 candidate evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: operational-candidate-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/operational-candidate/benchmark-result-full.json
+            ${{ runner.temp }}/operational-candidate/dist/evidence/operational-95-candidate.json
+          if-no-files-found: error
+          retention-days: 90

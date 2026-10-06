@@ -1,0 +1,35 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "amazon-fy2024-cash-quality",
+      "category": "真实发行人多种FCF口径与直接单季现金表",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL_RELEASE",
+      "prompt": "亚马逊2024年利润大涨，自由现金流也增加，是不是说明第四季度现金转化和股东可拿走的钱一起明显变好了？请用这份公告核对全年与第四季度，给关键计算、明确结论和下一步需要验证的事实；不用完整公司报告或当前买卖建议。",
+      "facts": "对象Amazon.com Inc.，US-NASDAQ:AMZN，NASDAQ普通股，交易与报告币种USD。历史as_of及信息截止日2025-02-06，指定2024全年及第四季度业绩公告。执行日2026-09-19；本PDF为本次下载，属于post-hoc历史回放，不是2025年捕获。仅使用指定PDF，实际读取并核对SHA256、单位和页码；可用pdftotext向stdout提取。不读取其他会话答案、验收标准或后续披露。无需完整研究归档。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260919-amazon/sources/amazon-q4-2024.pdf",
+          "url": "https://s2.q4cdn.com/299287126/files/doc_financials/2024/q4/AMZN-Q4-2024-Earnings-Release.pdf",
+          "sha256": "0435f36d49cc40373c1ec7d6a8aa77abf83f90f7774b477d69f28b3859e7fe72"
+        }
+      ],
+      "criteria": [
+        "实际自然触发安装Skill并读取research-semantic-review；成功执行路由、独立工具核验PDF哈希，引用对应页码，未读验收标准。",
+        "单位百万美元；2024/2023全年净利59248/30425、OCF115877/84946，与Q4净利20004/10624、OCF45636/42465分开；不得声称材料缺Q4现金流。",
+        "FCF遵循发行人净资本开支定义：全年82999-5341=77658，115877-77658=38219；上年48133及36813；不把现金购买固定资产毛额直接当净资本开支。",
+        "用Q4直接现金表计算净资本开支27834-1782=26052、FCF19584；上年14588-1235=13353、FCF29112，说明Q4下降与全年小幅上升并存，推导值标明。",
+        "至少比较一个同窗口现金转换指标，例如OCF/净利或FCF/净利，结论不能只以现金绝对额增长认定转换改善。",
+        "区分发行人FCF38219、扣融资租赁/融资义务本金35507、扣设备融资租赁等36211三个全年口径；不称任何一项为股东可自由分配现金，指出未覆盖约束。",
+        "现金反方实际改变最终结论；说明资本支出不自动等于经营恶化、利润质量仍需营运资本/非现金调整等证据；保留单发行人及历史回放边界，给具体补证窗口，不输出当前估值买卖判断。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

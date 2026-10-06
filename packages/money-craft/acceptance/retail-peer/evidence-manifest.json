@@ -1,0 +1,38 @@
+{
+  "schema": "money-craft.retail-peer-evidence.v1",
+  "sources": [
+    {
+      "source_id": "S01",
+      "url": "https://s201.q4cdn.com/287523651/files/doc_financials/2024/ar/COST-2024-Annual-Report.pdf",
+      "final_url": "https://s201.q4cdn.com/287523651/files/doc_financials/2024/ar/COST-2024-Annual-Report.pdf",
+      "path": "local/research/20260920-retail-peer/sources/costco-2024.pdf",
+      "sha256": "bdeca9c1891ffbee65796ade60212f61f7a29790b962e15076b6159c6d288612",
+      "bytes": 3159797,
+      "content_type": "application/pdf",
+      "captured_at": "2026-09-20T02:06:00.118880+00:00",
+      "source_lineage": "issuer; not independent corroboration"
+    },
+    {
+      "source_id": "S02",
+      "url": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-25-000021/wmt-20250131.htm",
+      "final_url": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-25-000021/wmt-20250131.htm",
+      "path": "local/research/20260920-retail-peer/sources/walmart-2025.html",
+      "sha256": "d3eaf5782e1642f33c6301f1849a830354590c3b733a868d9f180b17dd582744",
+      "bytes": 2380849,
+      "content_type": "text/html; charset=UTF-8",
+      "captured_at": "2026-09-20T02:06:03.266647+00:00",
+      "source_lineage": "issuer; not independent corroboration"
+    },
+    {
+      "source_id": "S03",
+      "url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf",
+      "final_url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf",
+      "path": "local/research/20260920-retail-peer/sources/target-2024.pdf",
+      "sha256": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271",
+      "bytes": 902389,
+      "content_type": "application/pdf",
+      "captured_at": "2026-09-20T02:06:06.100830+00:00",
+      "source_lineage": "issuer; not independent corroboration"
+    }
+  ]
+}

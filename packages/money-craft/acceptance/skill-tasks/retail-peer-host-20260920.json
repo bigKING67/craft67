@@ -1,0 +1,143 @@
+{
+  "schema": "money-craft.retail-peer-host-closeout.v1",
+  "date": "2026-09-20",
+  "status": "SOURCE_REPAIR_VERIFIED_INSTALL_RETEST_PENDING",
+  "runs": [
+    {
+      "run": "implicit",
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "elapsed_seconds": 286.782,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "route": "NOT_OBSERVED",
+      "machine_checks_pass": false,
+      "calculation_count": 22,
+      "calculation_failures": [],
+      "errors": [
+        "ROUTE_REQUIRED_NOT_VERIFIED"
+      ],
+      "artifacts": {
+        "prompt.txt": "e0835ef0918c8faabb0ad4bfaed60d175cfb71cbbc5383f6096668cb19bb5b6e",
+        "answer.md": "0bcf23ec5d9d5cc315a40dd264b930c583ebdae6a31241d7c953fdab3e36dc63",
+        "host.json": "0a6f19b9043efff3ae9d1218ba0025f346ad47f05558439c8acecd7adc35a646",
+        "events.jsonl": "73470914a8126ec6f1ead0dca26cb3e68d3d1a7443291822e65d537df2932428",
+        "machine-audit.json": "e4f686af510d8106db45a90e22a56f92e5f74c7a1f2d16247dc0e5756f0794bf"
+      }
+    },
+    {
+      "run": "clean-scope",
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "elapsed_seconds": 323.581,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "route": "READY",
+      "machine_checks_pass": false,
+      "calculation_count": 25,
+      "calculation_failures": [
+        "C05",
+        "C12",
+        "C19"
+      ],
+      "errors": [
+        "FINANCIAL_AUDIT_FAILED"
+      ],
+      "artifacts": {
+        "prompt.txt": "aab4f4d1ff6dbd07f8b08d33881566a8c8c6b22cdd7a7828ac23aaca249614e8",
+        "answer.md": "bbcbae3e388214ce8148300a57c34b1650f79cbd1a617901983d5d0a40212580",
+        "host.json": "3bd67d00e88a4dbcffafeab68a2b7bce3503dd54f11eba6010a82fdf12fe2f72",
+        "events.jsonl": "1c1efb0d3834f041e1fd074776f7961f7b21184454579face013007d1d8f3a24",
+        "machine-audit.json": "29f783817cc9918f94e0cc976a76b6d42fad3bcb63128d5d135b550318f52aca"
+      }
+    },
+    {
+      "run": "source-fix",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "elapsed_seconds": 460.085,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "route": "READY",
+      "machine_checks_pass": true,
+      "calculation_count": 29,
+      "calculation_failures": [],
+      "errors": [],
+      "artifacts": {
+        "prompt.txt": "53424c325f88a7003d4aa1ca714132ce5d706453fb7a48aee3a5157d5ed9ffe7",
+        "answer.md": "7b8971703a34eda53d70debcfdb66e2a7794b5422a784e17c22703fbc5e2076b",
+        "host.json": "d2bbc239e8496dcf4642b23ce48d90f2ebf7b6106951ca0c47bb3ba306603f9e",
+        "events.jsonl": "47a81c06804de501b84cdc8b05c95f7f204a76677e25b1b1e7576ce82e02daf9",
+        "machine-audit.json": "06c2ceb1d3611a93292cacb3d55a0a6b662c93e11476d1534b0204dd36809e1f"
+      }
+    }
+  ],
+  "source_change": {
+    "path": "skills/money-craft/references/financial-data-and-evidence.md",
+    "sha256": "e0eaed2ffc3e4cb84a0914414bbe62de92af836a14126f5423242bae5798ec9a",
+    "installed_sha256": "f8cef1bb07042fde66266228d56db77921eee6779a6853f02f840d02d681b03b",
+    "scope": "Full-precision receipt generation, final audit, receipt ID documentation parity",
+    "calculation_engine_changed": false,
+    "tolerance_weakened": false
+  },
+  "semantic_review": {
+    "schema": "money-craft.retail-peer-host-semantic.v1",
+    "reviewer": "parent_review_of_separate_codex_host_output",
+    "run": "source-fix",
+    "criteria": [
+      {
+        "id": "discovery_and_route",
+        "status": "SOURCE_SCOPE_PASS_INSTALL_RETEST_PENDING",
+        "evidence": "Initial and clean-scope runs auto-discovered installed Skill; source-fix explicitly loaded source and returned READY. Not an updated-install implicit acceptance."
+      },
+      {
+        "id": "historical_identity_lineage",
+        "status": "PASS",
+        "evidence": "Opening states 2026 execution, historical cutoff, post-hoc reading, historical exchange; closing rejects issuer/TXT as independent sources."
+      },
+      {
+        "id": "period_alignment",
+        "status": "PASS",
+        "evidence": "Actual fiscal windows and 52/53 weeks; Walmart overseas one-month lag; no synchronous ranking."
+      },
+      {
+        "id": "revenue_definitions",
+        "status": "PASS",
+        "evidence": "Costco and Walmart add other revenue; Target Net Sales is total; common denominator explicitly defined."
+      },
+      {
+        "id": "reclassification",
+        "status": "PASS",
+        "evidence": "Target updated comparison columns; expense shift does not affect operating income; no gross margin ranking."
+      },
+      {
+        "id": "calculations",
+        "status": "PASS",
+        "evidence": "29 final receipts pass; reported growth differs from same-store growth; extra-week adjustment explicitly approximate."
+      },
+      {
+        "id": "peer_selection",
+        "status": "PASS",
+        "evidence": "Business-based subgroup rationale; Sam’s Club is operating reference, not independent listed valuation; no group/segment PE mixing."
+      },
+      {
+        "id": "valuation_stop",
+        "status": "PASS",
+        "evidence": "No price/EV/earnings support => no multiples, target price or margin of safety; concrete next evidence and falsification windows."
+      }
+    ],
+    "research_complete": false,
+    "generalization_claim": false
+  },
+  "tests": {
+    "audit_tests_passed": 35,
+    "source_checks_passed": 19
+  },
+  "original_failed_runs_preserved": true,
+  "expected_answers_or_rubric_given_to_hosts": false,
+  "host_source_answer": "local/skill-evals/20260920-retail-peer/source-fix/answer.md",
+  "frozen_install_unchanged": true,
+  "limitations": [
+    "Single historical peer case, not broad generalization",
+    "Source-fix is explicit-source invocation, not updated global install discovery",
+    "Independent fact corroboration, market inputs and valuation conclusions remain unverified",
+    "Original core and historical receipts retain their version scope"
+  ]
+}

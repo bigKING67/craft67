@@ -1,0 +1,41 @@
+{
+  "candidate": "C1-10d9757b",
+  "pillars": [
+    "辛未",
+    "戊戌",
+    "乙卯",
+    "壬午"
+  ],
+  "observations": {
+    "wealth_visible": "月干戊正财，戌藏同干戊",
+    "wealth_hidden": "未午藏己偏财",
+    "food_hidden": "未戌午均藏丁食神，未见显干食神",
+    "peer_roots": "未卯藏乙；日干不算额外比肩",
+    "seal": "时壬正印，四支无水藏干；透出不证明作用有效",
+    "killer": "年辛七杀、戌藏辛",
+    "relations": [
+      {
+        "kind": "六合",
+        "positions": [
+          "year",
+          "hour"
+        ],
+        "branches": "未午"
+      },
+      {
+        "kind": "六合",
+        "positions": [
+          "month",
+          "day"
+        ],
+        "branches": "戌卯"
+      }
+    ],
+    "wealth_review": {
+      "status": "candidate-only",
+      "food": "not-observed",
+      "sealPlacement": "no-adjacent-pair"
+    }
+  },
+  "limits": "Current core facts and mappings only; no prescribed strength, wealth-weight or useful-element answer. Do not provide this file to independent executor."
+}

@@ -1,0 +1,154 @@
+{
+  "blind_map_sha256": "ae20b61088ceb9d73f004b7c8642bfcb5666cbc777820bc2c812c7a9ef5fe789",
+  "blind_packet_sha256": "eb015ed0fe2082fc614a75822e37678222af19f163a6b2b9d1bb6a18ae1aa22b",
+  "case_id": "taste-visual-critique-ablation",
+  "focused_variant": "taste",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "61ef46ee3c15c0137c77d2f3d077d6848c2b8aaae633baface8e92d4a2999212",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "6399107ec4b1aa8579ca0b64bb6f1114d4dd077cfcaaf45aa145f320cc449a7a",
+    "runner_os": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.155.1"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "f80a55f5da5692ecd98e1a34f3ab5e0884af7840e14870655dfb99dc5306cf58",
+  "judgment_sha256": "5c2ec3a4d8a55ba95c53367b31aafe47a382422777b7001d87d0de2c4aee0c8f",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "rationale": "A wins narrowly because it provides the fullest end-to-end correction of the decision flow: exception-first hierarchy, tiered metrics, removal of non-actionable insight content, restrained surfaces, and explicit hostile-state behavior. B is stronger on some visual-system details but omits two important implementation areas from its moves; C is similarly credible but less comprehensive.",
+  "recorded_at": "2026-09-19T12:41:30Z",
+  "results": {
+    "baseline": {
+      "blind_label": "C",
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 17,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 14
+      },
+      "score": 94,
+      "summary": "Clear, product-specific, and disciplined, with measurable table criteria, but it addresses generic insight content and chart demotion less directly and does not turn the missing loading, empty, error, and focus states into redesign moves."
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 20,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 13
+      },
+      "score": 98,
+      "summary": "The most complete response: it reorganizes attention around next-hour exceptions, directly challenges equal-weight cards and generic insights, preserves the stated authority, and covers operational states within eight acceptance-backed moves."
+    },
+    "taste": {
+      "blind_label": "B",
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 18,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 14
+      },
+      "score": 97,
+      "summary": "Exceptionally strong hierarchy and slightly sharper spacing, encoding, and surface guidance, but its redesign moves leave replacement of generic insights and specification of missing operational states largely to later validation."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "fce00a94275af2560f20e1e69edb040a5c470a03a5caa51b71bb49ab07489c75",
+  "scorecard_sha256": "a1f750a6c735ff178260bcc806a0ad089d0c4de4e2ff0cfd466ffcd08317d989",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "f5c93667b202234f68f40fe80466db3502beb93a2ec221e1acd126f999930bc1",
+      "run_path": "run.baseline.json",
+      "run_sha256": "d8619ad00ae0a271f22b945da8c60811761a528c0acf5d3198e27c3c682d8069",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "07749a8f52adc044e49193cd5f2f5c61609d14590b60e4830301d6c151472ab8",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "b6e880e5fdd8a52e4f969a47fba57ed224f2b15dfc9cb78b9b5ce1639e2d5ebb",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "02c798ea3b98ffb47def9aac595821d603eaa1837fec7e3e169f32d1995cd245"
+      },
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-visual-critique",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "02c798ea3b98ffb47def9aac595821d603eaa1837fec7e3e169f32d1995cd245",
+          "sha256": "874bf184ca3749d62b46e4813c416781ad45ee5d4481ac7132e7b75e4ce5f731",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "8da53f99d4ac651deeb72b63faf8c6522d009ea69e5aee5e9362e2a89fc1105b"
+      },
+      "thinking": "high"
+    },
+    "taste": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.taste.md",
+      "output_sha256": "87a5484d596e1bfce0160fc8940364e0e19ad53eabffb6b71df9383b92241b2e",
+      "run_path": "run.taste.json",
+      "run_sha256": "450c314d6b0f45ff68295ce1570327a1ebe33c48f9e740901ca9465e2d49834b",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {
+        "upstreams/taste-skill/skills/redesign-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "source_dirty": false
+        },
+        "upstreams/taste-skill/skills/taste-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

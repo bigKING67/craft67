@@ -1,0 +1,56 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-003-lunar-remediated",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "08be6c43a52feff08fd39926f3074c529b430326b848345730a539f4ee2c7abe",
+    "bytes": 5468
+  },
+  "task": {
+    "path": "remediation-task.md",
+    "sha256": "1979c45381afd9855eaba39da4d3ee3b0ad5c3b33bcaaef5b91307ec77fc7099",
+    "bytes": 637
+  },
+  "rubric": {
+    "path": "remediation-rubric.md",
+    "sha256": "9740cefa83394675cdee0013ee82a32826c3f71b586bed1d685100cbef6ced8c",
+    "bytes": 769
+  },
+  "cases": [
+    {
+      "id": "lunar-year-boundary-remediated",
+      "input": {
+        "path": "input-lunar-boundary.json",
+        "sha256": "496694936548af3bc1c391a68912b5d45db728c4e3aeea8715a6367f2d127524",
+        "bytes": 234
+      },
+      "context": {
+        "path": "context-lunar-boundary.json",
+        "sha256": "e441c24690d0293bc4ba77c2ce49565cc67fd4e27c639d388dad6e3843eedb0a",
+        "bytes": 55218
+      },
+      "response": {
+        "path": "response-lunar-boundary-remediated.md",
+        "sha256": "7703ad71cbf49624472c1a8b736ddb9166e9a471be05b620f3e78aba39905e88",
+        "bytes": 942
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

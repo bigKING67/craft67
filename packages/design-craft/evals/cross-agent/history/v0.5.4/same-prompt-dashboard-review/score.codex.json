@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v4",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.145.0",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-25",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "907627714e2c4078558dba2e0449c2df2bf1d6d7db5e91e0f1e8b2017c22d0c9",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "6fbd8c0f3355d61bb13e2ea2773fa718116deb52cf1939edba3fb4eafed0cf00",
+  "skill_version": "0.5.4",
+  "skill_source_commit": "0239d83a826a51206953c411c564da72c51c4425",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "0aacdc6e7ec587121f24fce3b055814b907aebda0663d54d42e84d36f2b5e5f5",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "b06e8663e3a909ff848479aa50695db580f42e777a2042cf64fa69e6d2a26d61",
+  "score": 99,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Preserves the restrained, dense-but-calm enterprise-console authority and centers the operator's next-hour triage job."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Uses relevant dashboard hierarchy, taste, design-move, state, accessibility, and validation guidance without unrelated domains."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Rejects equal-card soup, decorative charting, and generic tips in favor of lead metrics, an exception queue, diagnostic evidence, and a task-first table."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the review L0 static, gives a bounded concept score band, and claims no browser, screenshot, DOM, responsive, state, or runtime proof."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates prompt facts and design judgments from unverified rendering, tokens, data semantics, interactions, accessibility, responsiveness, and performance."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Provides exactly eight concrete moves covering context, metric hierarchy, exception queue, diagnostic chart, task-first table, contextual actions, resilient states, and narrow-window access."
+    },
+    "scope_control": {
+      "passed": false,
+      "earned": 9,
+      "note": "Remains read-only, dashboard-specific, and within the finding and move counts, but contains 151 logical lines, exceeding the 150-line cap by one line."
+    }
+  }
+}

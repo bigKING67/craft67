@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/review-scope.schema.json",
+  "title": "Review mode, profile, and selected scope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "mode", "dimensions", "profile", "diff"],
+  "properties": {
+    "documentType": {"const": "review-craft.review-scope"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "mode": {"enum": ["review", "diff", "focus"]},
+    "assuranceLevel": {"enum": ["fast", "standard", "assured"]},
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"enum": ["correctness", "architecture", "maintainability", "performance", "codeQuality", "testing", "dependenciesSecurity", "repositoryExperience"]}
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requested", "resolved", "confidence", "signals"],
+      "properties": {
+        "requested": {"enum": ["auto", "generic", "application", "desktop-app", "frontend", "backend-service", "library", "cli", "monorepo", "agent-project", "data-pipeline"]},
+        "resolved": {"enum": ["generic", "application", "desktop-app", "frontend", "backend-service", "library", "cli", "monorepo", "agent-project", "data-pipeline"]},
+        "confidence": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+        "signals": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "diff": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["requestedBase", "baseRevision", "changes"],
+      "properties": {
+        "requestedBase": {"type": "string", "minLength": 1},
+        "baseRevision": {"type": "string", "pattern": "^[a-f0-9]{40,64}$"},
+        "changes": {"type": "array", "items": {"$ref": "#/$defs/change"}}
+      }
+    }
+  },
+  "$defs": {
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "status", "statusDetail", "untracked", "inScope", "reason"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "status": {"enum": ["A", "C", "D", "M", "R", "T", "U", "X"]},
+        "statusDetail": {"type": "string", "minLength": 1},
+        "previousPath": {"type": "string", "minLength": 1},
+        "untracked": {"type": "boolean"},
+        "inScope": {"type": "boolean"},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

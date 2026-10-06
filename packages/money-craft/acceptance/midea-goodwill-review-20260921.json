@@ -1,0 +1,32 @@
+{
+  "status": "PASS_BOUNDED_GOODWILL_REVIEW",
+  "as_of": "2026-09-21",
+  "calculation_count": 6,
+  "asset_group_attribution": "UNVERIFIED",
+  "segment_fx_attribution": "UNVERIFIED",
+  "independent_review": false,
+  "full_research_status_changed": false,
+  "issuer_contacted": false,
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260921-midea-goodwill/review.md",
+      "sha256": "e00b558072472e47bf618a29100f8cb6dc8a479c5e90c44f39d8ca9ddfaba98c"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-goodwill/financial-audit.json",
+      "sha256": "257601fd51261ea27f7611aadfb83e9946686d79da802862bd71f538bb0c6b27"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-goodwill/semantic-review.json",
+      "sha256": "d623fdb8ac9e6d6447a77b4098af84ae22d550aef9b283396e4bbc5b5acbeab7"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-goodwill/ledger-verification.json",
+      "sha256": "55d3fb2dbffba5492f2d556e05dfc018ceac5ee16dca1ce627d8c888f3c49b56"
+    },
+    {
+      "path": "local/acceptance/20260921-midea-goodwill/issuer-questions-draft.md",
+      "sha256": "c180e2ce2340c321b1446cd8d4f66ff4b02c150df6c8d292ce18d450ceadb1e3"
+    }
+  ]
+}

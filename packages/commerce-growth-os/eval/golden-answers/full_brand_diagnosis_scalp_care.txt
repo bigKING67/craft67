@@ -1,0 +1,25 @@
+Judgment: stage = hero-SKU scale with profit and trust bottleneck. AOV 189, gross margin 62%, Douyin ROI 1.4, rising refund, and weak Tmall reviews mean GMV scale is not healthy yet.
+
+Evidence status: AOV, gross margin, ROI, refund direction, and review weakness are confirmed from the prompt; fee and refund-loss detail remain assumptions to verify.
+
+Business model: before adding spend, calculate break-even ROI after platform fee, gift, fulfillment, refund loss, and service cost. If paid-media-available margin falls near 30%-35%, break-even ROI is roughly 2.9-3.3, so ROI 1.4 is below a safe scale gate.
+
+Assortment: traffic SKU = trial scalp-care pack; hero SKU = core scalp-care set; profit SKU = routine bundle; repurchase SKU = refill/monthly care; talent-exclusive SKU = bundle with different gift; campaign SKU = limited stock-up pack.
+
+Price ladder: official price, daily price, self-live bundle price, talent-live pack price, Tmall member price, campaign price, minimum profit price, forbidden floor price. Do not let Douyin live undercut Tmall hero SKU.
+
+Channel jobs: Xiaohongshu builds trust/search mindshare and safe claim education; Douyin short video tests content hooks; Douyin self-live explains routine and captures conversion; talent live only tests controlled packs; Tmall absorbs brand search with review/Q&A/detail trust.
+
+Content: scalp scenario notes, ingredient/proof-safe scripts, routine demo, refund-reason objection handling, buyer-show/review collection, and Tmall detail-page proof modules.
+
+Fulfillment/refund/after-sale: inspect refund reasons by SKU, creator, promise, gift, shipping, and expectation gap. Freeze risky benefits until refund loss is stable.
+
+Exception and recovery: isolate the affected SKU, creator promise, or fulfillment batch when refund loss breaches the gate. Escalation owner: the operations lead coordinates service, warehouse, content, and channel owners. Reopen traffic only after the cause, corrected promise/SOP, and one stable observation window are verified.
+
+Analytics confidence: current causal confidence is low because the prompt gives movements but no reason-coded order cohort. Alternative explanations include traffic-mix deterioration, promise mismatch, late delivery, or product experience. Next evidence: SKU/creator/content/order cohorts joined to refund reason, delivery time, Tmall review theme, and paid-media marginal return.
+
+Stop rule: stop paid scale if marginal ROI stays below break-even ROI or refund loss rises again. Scale rule: add budget only after gross-profit ROI, payment CVR, refund, and review quality all improve for one review window.
+
+Review cadence: daily dashboard for Douyin ROI/refund/live CVR, weekly review for assortment and price ladder, monthly review for Tmall review base and member repurchase.
+
+Mechanism: repair refund and trust proof before releasing paid scale. Owner: growth lead, with named Douyin, Tmall, content, and service owners. Success signal: marginal ROI clears break-even while refund loss falls and Tmall review conversion improves.

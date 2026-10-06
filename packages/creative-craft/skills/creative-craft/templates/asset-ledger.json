@@ -1,0 +1,21 @@
+{
+  "schema_version": "creative-craft.asset-ledger.v1",
+  "project_id": "project-tbd",
+  "assets": [
+    {
+      "asset_id": "asset-001",
+      "path_or_uri": "TBD",
+      "mime_type": "application/octet-stream",
+      "sha256": null,
+      "creator": "TBD",
+      "owner": "TBD",
+      "rights_status": "UNVERIFIED",
+      "consent_status": "NOT_APPLICABLE",
+      "allowed_use": [],
+      "expires_at": null,
+      "reference_roles": [],
+      "parent_assets": [],
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "version": 2,
+  "cases": [
+    {
+      "id": "spokesperson_reputation",
+      "prompt": "我们要评估品牌代言人，并制定舆情风险、授权边界和退出机制。",
+      "expected": ["brand-strategy-communications"]
+    },
+    {
+      "id": "xiaohongshu_content",
+      "prompt": "为新品设计小红书内容矩阵、KOL/KOC 分层和达人 Brief。",
+      "expected": ["content-creative-social-marketing"]
+    },
+    {
+      "id": "paid_scale_economics",
+      "prompt": "千川 ROI 开始下降；请先结合毛利、退款和渠道净利润确定可承受的投放上限，再制定止损线与增量放量条件。",
+      "expected": ["commerce-commercial-strategy", "growth-performance-lifecycle-marketing"]
+    },
+    {
+      "id": "economic_ceiling_only",
+      "prompt": "不设计媒体实验，只根据已经确认的 GMV、毛利、退款、平台费和履约成本，计算最大经济可承受投放额、盈亏平衡 ROI 与利润止损线。",
+      "expected": ["commerce-commercial-strategy"]
+    },
+    {
+      "id": "live_operations",
+      "prompt": "商业货盘、SKU 角色和价格边界已经确认；只需给抖音自播间制定直播产品顺序、客服、退款和每日运营 SOP。",
+      "expected": ["commerce-operations"]
+    },
+    {
+      "id": "weekly_analytics",
+      "prompt": "分析本周 GMV、ROI、退款、搜索和复购变化，判断根因和数据置信度。",
+      "expected": ["commerce-analytics"]
+    },
+    {
+      "id": "annual_integrated_marketing",
+      "prompt": "制定全年整合营销方案，平衡品牌传播、内容、效果广告和 CRM 预算。",
+      "expected": ["consumer-marketing-os"]
+    },
+    {
+      "id": "integrated_launch_conflict",
+      "prompt": "为新品做完整上市方案，并裁决品牌心智、达人内容、效果转化和 CRM 之间的年度预算与优先级冲突。",
+      "expected": ["consumer-marketing-os"]
+    },
+    {
+      "id": "bounded_content_paid_delivery",
+      "prompt": "年度策略、受众和商业护栏已经确认；只需交付小红书达人 Brief、素材授权规则和对应的聚光放大实验，不做完整整合营销方案。",
+      "expected": ["content-creative-social-marketing", "growth-performance-lifecycle-marketing"]
+    },
+    {
+      "id": "bounded_brand_content_delivery",
+      "prompt": "品牌定位与 Campaign 目标已经确认；只需制定公关口径审批和小红书内容矩阵、达人 Brief，不做预算取舍或完整 Campaign 编排。",
+      "expected": ["brand-strategy-communications", "content-creative-social-marketing"]
+    },
+    {
+      "id": "full_commerce_plan",
+      "prompt": "给品牌做一套从商业模型、货盘、Marketing、平台运营到数据复盘的 90 天经营方案。",
+      "expected": ["commerce-growth-os"]
+    },
+    {
+      "id": "creator_live_composition",
+      "prompt": "评估达人直播合作：测算坑位和佣金，设计达人内容 Brief，并制定直播排品和履约 SOP。",
+      "expected": ["commerce-commercial-strategy", "commerce-operations", "content-creative-social-marketing"]
+    },
+    {
+      "id": "ltv_metric_definition",
+      "prompt": "请定义复购 LTV 的统计口径、观察窗口、退款处理和数据置信度。",
+      "expected": ["commerce-analytics"]
+    },
+    {
+      "id": "ltv_budget_ceiling",
+      "prompt": "LTV 口径已经确认，不需要重新做数据分析；请先结合毛利和回收周期计算复购人群广告的经济上限，再制定下一轮实验预算、每次增量步长、边际响应止损与放量规则。",
+      "expected": ["commerce-commercial-strategy", "growth-performance-lifecycle-marketing"]
+    },
+    {
+      "id": "refund_root_cause",
+      "prompt": "分析本月退款率从 6% 升到 10% 的根因、数据置信度和还需要什么证据。",
+      "expected": ["commerce-analytics"]
+    },
+    {
+      "id": "refund_recovery_sop",
+      "prompt": "退款根因、异常判定阈值、监控口径和恢复条件已经确认；只需制定客服升级、履约补救与恢复营业 SOP。",
+      "expected": ["commerce-operations"]
+    },
+    {
+      "id": "organic_search_content",
+      "prompt": "设计小红书自然内容的搜索心智、关键词矩阵和达人内容 Brief。",
+      "expected": ["content-creative-social-marketing"]
+    },
+    {
+      "id": "paid_search_growth",
+      "prompt": "商业盈亏平衡和最大经济投入护栏已经批准；只设计聚光付费搜索的实验投入上限、归因、边际止损和增量步长。",
+      "expected": ["growth-performance-lifecycle-marketing"]
+    },
+    {
+      "id": "search_data_analysis",
+      "prompt": "只分析小红书搜索词、品牌词变化和搜索到支付漏斗的数据口径与异常，不制定内容策略。",
+      "expected": ["commerce-analytics"]
+    },
+    {
+      "id": "creator_content_brief",
+      "prompt": "只为 KOL/KOC 内容合作制定 Brief、内容授权与复用、质量门和更新节奏，不涉及长期代言人、品牌大使或公关。",
+      "expected": ["content-creative-social-marketing"]
+    },
+    {
+      "id": "creator_economics",
+      "prompt": "成本、坑位费、佣金和退款输入都已确认；直接测算渠道净利润，判断这次达人合作值不值得，不做数据质量诊断。",
+      "expected": ["commerce-commercial-strategy"]
+    },
+    {
+      "id": "creator_live_fulfillment",
+      "prompt": "商业货盘、SKU 角色、价格和利润边界已经确认；只需为已批准的达人直播制定产品顺序、库存、客服、发货、异常升级和售后恢复 SOP。",
+      "expected": ["commerce-operations"]
+    }
+  ]
+}

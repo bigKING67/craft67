@@ -1,0 +1,28 @@
+{
+  "schema": "write-craft.release-policy.v1",
+  "required_tracks": ["regression"],
+  "exploration": {
+    "require_disclosure": true
+  },
+  "behavior": {
+    "require_current_skill_digest": true,
+    "require_current_case_digests": true,
+    "require_deterministic_limits": true
+  },
+  "reader_testing": {
+    "require_declared_reader_stages": true
+  },
+  "judge_calibration": {
+    "required": true,
+    "fixtures": "evals/judge-fixtures.json"
+  },
+  "human_acceptance": {
+    "required": true,
+    "minimum_documents": 3,
+    "require_independence_record": true,
+    "require_limitations": true
+  },
+  "package": {
+    "require_boundary_check": true
+  }
+}

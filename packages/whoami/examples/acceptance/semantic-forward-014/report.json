@@ -1,0 +1,348 @@
+{
+  "schema": "whoami.report.v6",
+  "chartId": "a3fee7834bc85e84bff82e9ad80e72c9678383d5948ea7ae4d76e2094cb97789",
+  "evidenceId": "7545af38452f0cee530f81f35d1cd41aef2575dcaec5a8dc637836e9a6b2ba5b",
+  "mode": "ziwei",
+  "title": "紫微2027—2029年度事业证据边界",
+  "uncertainty": "本报告使用合成出生资料、真太阳时、子初换日及当前全书派设置，并以2026-09-25、Asia/Shanghai冻结公历相对时间。用户已把问题限定为2027—2029年度事业主题；当前只有年度证据，不生成更细时点或现实事件窗口。",
+  "sections": [
+    {
+      "id": "summary",
+      "claims": [
+        {
+          "text": "当前紫微盘可定位命宫、身宫及所引本命宫星曜，因此可以形成范围明确的本命结构阅读。较稳妥的用法是把命身位置和关联宫当作职责、资源与关系议题的复盘入口；这些事实不等于完整人格测量，也不能直接推出职位、收入或婚恋结果。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.base",
+            "C1-300a9bf9.ziwei.palace-4",
+            "C1-300a9bf9.ziwei.palace-6"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-事业"
+          ],
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-structure"
+            }
+          ],
+          "premiseStatus": "conditional",
+          "conditions": "只在当前出生候选与全书派设置下成立；须联读命身宫、主题宫与三方四正，资料或设置变化后重新计算。",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "claims": [
+        {
+          "text": "命宫紫微、福德宫破军并见文昌与禄存，可作为自我要求、调整旧结构和整理表达等传统主题的条件性入口。这里不把单星翻译成固定性格；更合适的现实检查是观察自己在承担责任、推进变化和复盘表达之间是否保持可持续节奏。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.base",
+            "C1-300a9bf9.ziwei.palace-4",
+            "C1-300a9bf9.ziwei.palace-6"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-事业"
+          ],
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-structure"
+            }
+          ],
+          "premiseStatus": "conditional",
+          "conditions": "单星须放回本命宫、命身位置和关联宫理解；现实人格与行为仍需由长期观察验证。",
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "id": "career",
+      "claims": [
+        {
+          "text": "用户已把问题明确为2027—2029年度事业主题。对应年份的流年层与四化事实已进入证据包；身宫落官禄、官禄宫见廉贞与天府，可以作为职责、规则和资源统筹的复核入口。但当前没有岗位空缺、考核结果、权限变化和组织机会，也没有细粒度时间证据，不能据此保证升职、离职或换团队。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.base",
+            "C1-300a9bf9.ziwei.transformations",
+            "C1-300a9bf9.ziwei.palace-8"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-事业"
+          ],
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-career"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved",
+          "conditions": "2027年度事业主题须同时核对流年宫职、四化本命落宫、官禄宫与三方四正、跨层差异和现实职业条件；任一定位或现实条件不支持时撤回。",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "id": "wealth",
+      "claims": [
+        {
+          "text": "财帛宫的武曲化权、天相与天马，可作为资源配置、执行、流动和风险边界的传统主题入口。明确事业年度范围并不等于获得收入、合同或现金流事实，也不能从事业问题外推薪资、收益率、投资方向或风险承受能力。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.base",
+            "C1-300a9bf9.ziwei.transformations",
+            "C1-300a9bf9.ziwei.palace-0"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-财运"
+          ],
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-wealth"
+            }
+          ],
+          "premiseStatus": "conditional",
+          "conditions": "财帛宫须与关联宫、当前时间层及真实现金流和风险资料共同核对；现实财务资料不支持时，只保留预算复盘建议。",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "claims": [
+        {
+          "text": "当前计算把2022—2031列为夫妻宫大限，后续阶段列为2032—2041子女宫大限；这些是传统时间层范围，不是本次事业问题的结果依据。宫名和周期切换不能替代双方行为、意愿与环境，也不能推出婚恋事件或关系结局。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.base",
+            "C1-300a9bf9.ziwei.transformations",
+            "C1-300a9bf9.ziwei.palace-2",
+            "C1-300a9bf9.ziwei.cycles"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-关系"
+          ],
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-relationships"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved",
+          "conditions": "关系主题须联读命身、夫妻、福德、官禄等关联宫及实际关系资料；本次不从事业年度补算外推关系结果。",
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "claims": [
+        {
+          "text": "当前evidence.years为2026、2027、2028与2029；用户选择的2027—2029年度闭区间已由同一出生资料计算相关流年和四化事实。明确闭区间只解决首尾年份与证据覆盖，仍不能形成升职日程；还须逐年补齐官禄主题宫、三方四正、跨层差异和现实触发。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.transformations",
+            "C1-300a9bf9.ziwei.cycles"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-transformations"
+          ],
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved",
+          "conditions": "形成2027年度事业主题前须补齐本命落宫、流年宫职、官禄宫及三方四正、跨层差异、定位缺口、现实触发与撤回条件；未计算宫干飞化、自化、流月流日或事件强度。",
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "claims": [
+        {
+          "text": "补齐年度 evidence 后，可以把2027—2029作为明确闭区间，逐年复核岗位职责、考核标准、权限变化、组织机会和可撤回条件。跨年计划仍依据现实资料、风险和反馈推进；只有各年事业主题的完整作用链得到论证时，才在窄范围内增加传统主题参考，不能把年度范围误写成具体窗口或升职已经成立。",
+          "kind": "advice",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.base",
+            "C1-300a9bf9.ziwei.palace-4",
+            "C1-300a9bf9.ziwei.palace-6",
+            "C1-300a9bf9.ziwei.transformations",
+            "C1-300a9bf9.ziwei.palace-8",
+            "C1-300a9bf9.ziwei.cycles"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-事业",
+            "C1-300a9bf9.R-ziwei-transformations"
+          ],
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-structure"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-career"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved",
+          "conditions": "本段建议是低风险的现实复盘方法，不以紫微结构证明其更适合此人；限运前提未决时，不把建议绑定到确定年份。",
+          "confidence": "medium"
+        }
+      ]
+    }
+  ],
+  "baziReasoning": [],
+  "ziweiReasoning": [
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-structure",
+      "status": "conditional",
+      "conclusion": "命身宫及所引本命宫星曜已经定位，可形成范围明确的本命结构阅读；这只确认传统主题入口，不定性完整人格或现实结果。",
+      "counterReview": "已检查单星不能脱离宫位、关联宫和命身位置单独下结论；尚未把星曜组合换算成现实人格测量。",
+      "conditions": "仅在当前出生候选和全书派设置下成立；须联读命身宫、主题宫与三方四正，资料变化后重算。",
+      "alternatives": "若相关宫位为空、星曜定位改变或现实资料不支持，只保留宫位事实，不沿用性格化解释。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.palace-4",
+        "C1-300a9bf9.ziwei.palace-6"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-career",
+      "status": "conditional",
+      "conclusion": "官禄、命身及关联宫事实可形成事业主题的条件性阅读，但不能由星曜直接推出职业、升迁或工作结果。",
+      "counterReview": "已检查主题宫不能由单星或单一四化独断；跨层四化与现实职责尚需逐项核对。",
+      "conditions": "具体判断须同时说明官禄宫、命身宫、三方四正、时间层和现实职业条件。",
+      "alternatives": "若联宫信息不一致或现实角色不匹配，退回为工作方式的复盘问题，不给职业定性。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.palace-8"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-wealth",
+      "status": "conditional",
+      "conclusion": "财帛及关联宫事实可形成资源主题的条件性阅读，但不构成收入、收益、投资方向或风险承受能力证明。",
+      "counterReview": "已检查财帛宫不能脱离官禄、福德、迁移等关联宫，也不以化禄或化权直接断财。",
+      "conditions": "资源判断须与主题宫、关联宫、时间层及真实现金流、合同和风险资料共同核对。",
+      "alternatives": "现实财务资料不支持时，只保留预算和复盘建议，不沿用盘面收益叙述。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.palace-0"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-财运"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-relationships",
+      "status": "conditional",
+      "conclusion": "夫妻及关联宫事实可形成关系与合作主题的条件性阅读，但不能推出婚恋事件、对象性格或关系结局。",
+      "counterReview": "已检查夫妻宫须与命身、福德、官禄等关联宫联读，四化并存也不自动抵消或定吉凶。",
+      "conditions": "只讨论沟通、承诺与边界主题；现实关系仍取决于双方行为、意愿和环境。",
+      "alternatives": "若现实对象、关系类型或时间范围不同，退回为沟通复盘问题，不给事件判断。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.palace-2"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-关系"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-timing",
+      "status": "unresolved",
+      "conclusion": "2026—2029年度的大限、流年与四化事实可复算，2027—2029已按用户选择限定为事业主题闭区间；但逐年作用轻重、跨层取舍和现实触发尚未完成，且没有细粒度证据，不能生成升职或行动日程。",
+      "counterReview": "已检查本命落宫与流年宫职分层、同星跨层异化和定位缺口；未计算宫干飞化、自化、流月流日或事件强度。",
+      "conditions": "给出2027—2029年度事业主题前须逐年核对本命落宫、流年宫职、官禄宫与三方四正、跨层差异及现实触发和撤回条件。",
+      "alternatives": "条件不足时只报告年表和定位事实；行动时机按现实目标、资源、风险与反馈决定。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.cycles",
+        "C1-300a9bf9.ziwei.palace-4",
+        "C1-300a9bf9.ziwei.palace-6",
+        "C1-300a9bf9.ziwei.palace-8",
+        "C1-300a9bf9.ziwei.palace-0",
+        "C1-300a9bf9.ziwei.palace-2"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-transformations"
+      ],
+      "timingChain": {
+        "target": "general",
+        "years": [
+          2026,
+          2027,
+          2028,
+          2029
+        ],
+        "transformationRefs": [
+          "C1-300a9bf9.ziwei.transformations"
+        ],
+        "cycleRefs": [
+          "C1-300a9bf9.ziwei.cycles"
+        ],
+        "palaceRefs": [
+          "C1-300a9bf9.ziwei.palace-4",
+          "C1-300a9bf9.ziwei.palace-6",
+          "C1-300a9bf9.ziwei.palace-8",
+          "C1-300a9bf9.ziwei.palace-0",
+          "C1-300a9bf9.ziwei.palace-2"
+        ],
+        "crossLayerReview": "已区分本命落宫、流年宫职、大限与流年四化；同星跨层信息并存时不相互抵消，也不直接换算为现实事件。",
+        "missingLinks": [
+          "现实目标、经历和约束尚未绑定",
+          "目标主题的逐年作用关系尚未闭合"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "当前资料只有命盘计算事实，没有可核对的现实触发记录。",
+          "source": null
+        },
+        "withdrawalConditions": "出生资料、时间层定位、主题宫联读或现实反馈发生变化时，撤回当前年度主题并重新核对。"
+      }
+    }
+  ],
+  "crossSystem": [],
+  "assertions": [],
+  "timeReference": {
+    "asOfDate": "2026-09-25",
+    "timeZone": "Asia/Shanghai"
+  }
+}

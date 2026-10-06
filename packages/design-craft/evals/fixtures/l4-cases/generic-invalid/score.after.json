@@ -1,0 +1,57 @@
+{
+  "case_id": "generic-l4-invalid-after",
+  "evidence_level": "L4",
+  "expected_score": 80,
+  "acceptable_range": [
+    78,
+    82
+  ],
+  "maturity_band": "intentionally invalid",
+  "screenshot_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile",
+      "css_size": [
+        390,
+        844
+      ],
+      "dimensions": [
+        780,
+        1688
+      ],
+      "artifact_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "focus": "verified in fixture metadata",
+    "empty": "not applicable to fixture"
+  },
+  "required_findings": [
+    "The after score intentionally fails to improve.",
+    "The screenshot hash intentionally does not match the manifest.",
+    "The after dimensions intentionally do not match the manifest phase."
+  ],
+  "false_positive_guards": [
+    "Do not accept this fixture as real evidence.",
+    "Do not ignore score and screenshot mismatches.",
+    "Do not ignore before and after score direction."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://3d-craft.local/schemas/run.v1.schema.json",
+  "title": "3D-Craft run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "run_id", "project_key", "created_at", "input_hashes", "route", "capabilities", "versions", "stages", "repairs", "evidence", "unverified"],
+  "properties": {
+    "schema": {"const": "3d-craft.run.v1"},
+    "run_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"},
+    "project_key": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "input_hashes": {
+      "type": "object",
+      "propertyNames": {"enum": ["scene_contract"]},
+      "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+    },
+    "route": {"$ref": "#/$defs/route"},
+    "capabilities": {
+      "type": "object",
+      "propertyNames": {"enum": ["blender.version", "blender.inspect", "blender.execute", "blender.render", "blender.export", "asset.gltf.validate", "asset.gltf.inspect", "browser.navigate", "browser.capture", "browser.console.read", "browser.network.read", "browser.performance.profile"]},
+      "additionalProperties": {"enum": ["available", "missing", "unverified"]}
+    },
+    "versions": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}},
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status"],
+        "properties": {
+          "id": {"$ref": "#/$defs/gate"},
+          "status": {"enum": ["pending", "running", "pass", "fail", "unverified", "blocked"]}
+        }
+      }
+    },
+    "repairs": {"type": "array", "maxItems": 3, "items": {"$ref": "#/$defs/repair"}},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "path"],
+        "properties": {"kind": {"type": "string", "minLength": 1}, "path": {"type": "string", "minLength": 1}}
+      }
+    },
+    "unverified": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+  },
+  "$defs": {
+    "gate": {"enum": ["authority", "reproduction", "scene_integrity", "identity", "gltf", "cross_runtime", "web_runtime", "delivery"]},
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "target", "intent", "profile", "quality_tier", "authoring_mode", "evidence_level", "selected_references", "required_capabilities", "hard_gates", "unsupported_in_v0_1"],
+      "properties": {
+        "schema": {"const": "3d-craft.route.v1"},
+        "target": {"enum": ["blender", "bridge", "web3d"]},
+        "intent": {"enum": ["build", "validate", "repair"]},
+        "profile": {"enum": ["product-asset", "prop"]},
+        "quality_tier": {"enum": ["draft", "production"]},
+        "authoring_mode": {"enum": ["procedural", "native", "hybrid"]},
+        "evidence_level": {"enum": ["static", "rendered", "runtime", "assured"]},
+        "selected_references": {"type": "array", "items": {"enum": ["authority-and-evidence.md", "repair-and-security.md", "blender-production.md", "gltf-web-handoff.md", "web3d-runtime-qa.md"]}, "uniqueItems": true},
+        "required_capabilities": {"type": "array", "items": {"enum": ["blender.version", "blender.inspect", "blender.execute", "blender.render", "blender.export", "asset.gltf.validate", "asset.gltf.inspect", "browser.navigate", "browser.capture", "browser.console.read", "browser.network.read", "browser.performance.profile"]}, "uniqueItems": true},
+        "hard_gates": {"type": "array", "items": {"$ref": "#/$defs/gate"}, "uniqueItems": true},
+        "unsupported_in_v0_1": {"type": "array", "items": {"enum": ["reference-image-reconstruction", "character-production", "complex-animation-and-simulation", "games", "webgpu", "external-ai-3d-generation"]}, "uniqueItems": true}
+      },
+      "allOf": [
+        {"not": {"properties": {"target": {"const": "blender"}, "evidence_level": {"const": "runtime"}}, "required": ["target", "evidence_level"]}},
+        {"not": {"properties": {"target": {"const": "web3d"}, "evidence_level": {"const": "rendered"}}, "required": ["target", "evidence_level"]}}
+      ]
+    },
+    "repair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate", "hypothesis", "change", "candidate_hash", "verdict"],
+      "properties": {
+        "gate": {"$ref": "#/$defs/gate"},
+        "hypothesis": {"type": "string", "minLength": 1},
+        "change": {"type": "string", "minLength": 1},
+        "candidate_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "verdict": {"enum": ["improved", "regressed", "unchanged"]}
+      }
+    }
+  }
+}

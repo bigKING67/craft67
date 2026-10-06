@@ -1,0 +1,6 @@
+interface:
+  display_name: "Reverse Craft"
+  short_description: "Reverse engineering + CTI/OSINT with traceable evidence"
+  default_prompt: "Use $reverse-craft to route this reverse-engineering or CTI/OSINT task, preserve evidence, and produce a reproducible result."
+policy:
+  allow_implicit_invocation: true

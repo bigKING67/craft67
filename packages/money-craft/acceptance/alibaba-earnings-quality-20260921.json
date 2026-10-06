@@ -1,0 +1,75 @@
+{
+  "schema": "money-craft.earnings-quality-supplement.v1",
+  "status": "PASS_BOUNDED_DISCLOSURE_BRIDGES",
+  "research_status": "PARTIAL",
+  "normalized_eps_established": false,
+  "as_of": "2025-07-01T23:59:59+08:00",
+  "security_id": "HK:09988",
+  "source_independent_origins": 1,
+  "independent_crosscheck_gap": true,
+  "calculations": 30,
+  "financial_audit_valid": true,
+  "archive_unchanged_verified_files": 27,
+  "reviewer": "parent",
+  "code_changed": false,
+  "sources": [
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/sources/annual2025.txt",
+      "sha256": "2a6e401ede1635f15c4fd3ecc1fbd3cbfebe83491ae1efef6efb889b39cbbc4d",
+      "ranges": [
+        [
+          3698,
+          3748
+        ],
+        [
+          4000,
+          4065
+        ],
+        [
+          5990,
+          6007
+        ]
+      ]
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/sources/earnings2025.txt",
+      "sha256": "21156faf8167993e72fc2d248faecfd3ca3903011219c0e5acbbf30ed3fd4340",
+      "ranges": [
+        [
+          1674,
+          1792
+        ]
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/alibaba-earnings-quality-20260921.md",
+      "sha256": "2bfed93e047e33d640a49f68b55bc1607705ae5e1102f35333e974594a291128"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-earnings-quality/annual2025.txt.excerpts",
+      "sha256": "67c6975aef2617a059aebadb01cb6a76336042ce58b1d5b28cc67090aa9b002d"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-earnings-quality/build.py",
+      "sha256": "6168220d0da8882e38db34ed723586dc3320695945b605f244075c79ede53fa0"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-earnings-quality/calculations.json",
+      "sha256": "45559871d55480735fc5b09a49553559d35e9b3202a6ced87d3758cf1b69d091"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-earnings-quality/earnings2025.txt.excerpts",
+      "sha256": "a5ce4c02dd1fd2f35a0547088a22db4a7ff45267b4130b683f7ec1b445e3a4db"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-earnings-quality/financial-audit.json",
+      "sha256": "5d944dec9a45595b8d31e2637d0533d89da739c4e581a5028dede9005783d78b"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-earnings-quality/route.json",
+      "sha256": "5a4fd8a656210d4b5e9503afb36630dc044a6fc15461f970306fd28612d3bb41"
+    }
+  ]
+}

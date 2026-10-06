@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/release/evidence.schema.json",
+  "title": "design-craft release evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "release_level",
+    "release_level_score",
+    "phase",
+    "source_commit",
+    "branch",
+    "verified_hosts",
+    "verified_native",
+    "unverified",
+    "evidence_retention",
+    "maturity",
+    "checks",
+    "ok"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.release-evidence.v1"},
+    "release_level": {"enum": ["operational_95", "certified_100"]},
+    "release_level_score": {"enum": [95, 100]},
+    "phase": {"enum": ["candidate", "final"]},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "branch": {"type": ["string", "null"]},
+    "verified_hosts": {
+      "type": "array",
+      "items": {"enum": ["codex", "pi", "cursor", "claude"]},
+      "uniqueItems": true
+    },
+    "verified_native": {
+      "type": "array",
+      "items": {"enum": ["ios_simulator", "android_emulator", "physical_device"]},
+      "uniqueItems": true
+    },
+    "unverified": {
+      "type": "object",
+      "additionalProperties": {"const": "explicitly_unverified"}
+    },
+    "evidence_retention": {
+      "enum": ["workflow_artifact_90_days", "self_contained_native_release_bundle"]
+    },
+    "maturity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "status", "failed_gate_ids"],
+      "properties": {
+        "schema": {"const": "design-craft.maturity.v2"},
+        "status": {"enum": ["passed", "failed"]},
+        "failed_gate_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/check"}
+    },
+    "ok": {"type": "boolean"}
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "evidence", "error"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "status": {"enum": ["passed", "failed"]},
+        "evidence": {},
+        "error": {"type": "string"}
+      }
+    }
+  }
+}

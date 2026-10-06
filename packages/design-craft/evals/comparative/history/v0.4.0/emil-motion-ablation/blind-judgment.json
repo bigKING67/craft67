@@ -1,0 +1,51 @@
+{
+  "rationale": "C 以最短且在行数预算内的结构覆盖了全部关键缺陷，并且是三个输出中唯一明确给出速度单位、单调时间戳、投影端点边界处理以及 translate/scale 分层所有权的方案。B 在释放速度向 spring 的连续传递上更明确，但缺少单位且略冗长；A 内容全面，却在速度连续性、单位和输出预算方面落后。",
+  "results": [
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 7,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 12
+      },
+      "label": "A",
+      "summary": "静态证据边界清楚，完整识别抓取偏移、指针捕获、动画锁定、布局属性和无障碍问题；但速度方案未明确单位，也未明确把释放速度作为新 settle 的初速度，且整体篇幅与验证计划明显超出“最小、150 行内”的约束。",
+      "total": 94
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 14
+      },
+      "label": "B",
+      "summary": "覆盖面和可执行性很强，尤其明确要求从当前呈现位置中断、基于投影位置选吸附点，并将释放速度传入 spring；主要缺口是没有定义速度单位，输出也略显超过要求的最小篇幅。",
+      "total": 98
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 10,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 14
+      },
+      "label": "C",
+      "summary": "最符合约束且证据标签最紧凑：明确覆盖一比一跟随、抓取偏移、指针所有权、当前呈现值中断、CSS px/s、投影吸附、transform 分层所有权和非前庭 Reduced Motion 路径。速度用于投影已说明，但将其作为 settle 初速度的连续性仍不如 B 明确。",
+      "total": 99
+    }
+  ],
+  "winner": "C"
+}

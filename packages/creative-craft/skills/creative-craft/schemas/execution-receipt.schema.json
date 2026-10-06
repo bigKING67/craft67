@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/execution-receipt.schema.json",
+  "title": "Creative Craft Execution Receipt v1",
+  "type": "object",
+  "required": ["schema_version", "receipt_id", "job_id", "job_sha256", "provider_profile", "execution_surface", "model", "snapshot", "host", "operator", "started_at", "completed_at", "outcome", "request_or_prompt_sha256", "parameters", "provider_execution_id", "outputs", "provider_errors", "moderation_result", "limitations"],
+  "properties": {
+    "schema_version": {"const": "creative-craft.execution-receipt.v1"},
+    "receipt_id": {"type": "string", "minLength": 1},
+    "job_id": {"type": "string", "minLength": 1},
+    "job_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "provider_profile": {"type": "string", "minLength": 1},
+    "execution_surface": {"type": "string", "minLength": 1},
+    "model": {"type": "string", "minLength": 1},
+    "snapshot": {"type": ["string", "null"]},
+    "host": {"type": "string", "minLength": 1},
+    "operator": {"type": "string", "minLength": 1},
+    "started_at": {"type": "string", "minLength": 1},
+    "completed_at": {"type": "string", "minLength": 1},
+    "outcome": {"enum": ["succeeded", "partial", "failed", "cancelled"]},
+    "request_or_prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "parameters": {"type": "object"},
+    "provider_execution_id": {"type": ["string", "null"]},
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "path", "sha256", "mime_type", "bytes"],
+        "properties": {
+          "asset_id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "mime_type": {"type": "string", "minLength": 1},
+          "bytes": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    },
+    "provider_errors": {"type": "array", "items": {"type": "object"}},
+    "moderation_result": {"type": ["object", "null"]},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

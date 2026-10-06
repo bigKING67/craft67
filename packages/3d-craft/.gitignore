@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+node_modules/
+dist/
+coverage/
+*.log
+*.blend1
+*.blend2
+*.tmp
+*.tsbuildinfo
+.3d-craft/
+skills/3d-craft/assets/r3f-viewer/public/asset.glb
+evals/**/output/

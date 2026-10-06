@@ -1,0 +1,129 @@
+{
+  "schema": "money-craft.valuation-installed-closeout.v1",
+  "status": "PASS_BOUNDED_INSTALLED_VALUATION_BOUNDARIES",
+  "as_of": "2025-04-30",
+  "executed_on": "2026-09-20",
+  "source_head": "2d33799b939fab61fa842f0dfab420ed19239f19",
+  "source_state": "DIRTY_LOCAL_0.3.0_UNRELEASED_CANDIDATE",
+  "scope": "Source full bounded reconstruction plus narrower installed natural-language boundary retest; not identical prompts or full fair-value research",
+  "source_case": "acceptance/skill-tasks/target-valuation-host-20260920.json",
+  "source_case_calculations": 41,
+  "source_case_semantic_checks": 8,
+  "installed_case": {
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "elapsed_seconds": 143.932,
+    "machine_checks_pass": true,
+    "route_state": "READY",
+    "source_files": 2,
+    "calculation_checks": 9,
+    "independent_execution": true,
+    "semantic_reviewer": "parent_agent",
+    "independent_semantic_review": false,
+    "criteria": [
+      {
+        "criterion": "自然触发安装版Skill并执行有效路由",
+        "status": "PASS",
+        "reason": "Trace explicitly reads global installed Skill after natural prompt and valid earnings/quick route"
+      },
+      {
+        "criterion": "Close与Adjusted Close区分，实际股数与加权股数区分，日期错位限制准确",
+        "status": "PASS",
+        "reason": "Uses April30 Close and March5 actual outstanding shares, states market cap is estimate"
+      },
+      {
+        "criterion": "净债务正确，融资租赁和短期投资不重复计入；经营租赁单列",
+        "status": "PASS",
+        "reason": "Reconciles issuer/book net debt, no duplicate finance lease or short investments; operating lease separately treated"
+      },
+      {
+        "criterion": "EPS×PE不再重复扣债；15倍仅假设，不认证合理价值；回执通过",
+        "status": "PASS",
+        "reason": "No repeated debt subtraction from EPS x PE; 15x explicitly hypothetical; nine final receipts pass"
+      }
+    ]
+  },
+  "installation": {
+    "schema": "money-craft.install.v1",
+    "ok": true,
+    "host": "agents",
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260920T033714648631Z",
+    "path_notation": "Public receipt uses ~ for home; exact paths retained in private install.json"
+  },
+  "parity": {
+    "file_count": 75,
+    "source_candidate_installed_identical": true,
+    "changed_skill_files": [
+      "references/financial-data-and-evidence.md",
+      "references/valuation-and-thesis.md"
+    ]
+  },
+  "package_smoke": {
+    "schema": "money-craft.package-smoke.v1",
+    "valid": true,
+    "package": "bigking67-money-craft-0.3.0.tgz",
+    "checks": [
+      "safe-extraction",
+      "package-identity",
+      "packaged-runtime-self-test",
+      "atomic-install",
+      "installed-runtime-self-test",
+      "installed-research-run-smoke",
+      "installed-earnings-pipeline-smoke"
+    ],
+    "errors": []
+  },
+  "source_validation": {
+    "schema": "money-craft.source-validation.v1",
+    "valid": true,
+    "version": "0.3.0",
+    "checks": [
+      "version-parity",
+      "host-manifests",
+      "schema-json",
+      "skill-frontmatter",
+      "source-provenance",
+      "secret-scan",
+      "path-scan",
+      "no-symlinks",
+      "whitespace",
+      "public-data-boundary",
+      "acceptance-case-contracts",
+      "public-evidence-manifests",
+      "private-evidence-integrity",
+      "local-config-boundary",
+      "local-evidence-boundary",
+      "local-research-boundary",
+      "python-compile",
+      "runtime-self-test",
+      "skill-quick-validate"
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "regression": {
+    "command": "python3 -m unittest discover -s tests -p test_audits.py -v",
+    "passed": 35
+  },
+  "validation_environment": {
+    "initial_failure": "PyYAML missing in default and existing report Python; retained as environment failures, not source gate bypass",
+    "resolution": "isolated local/acceptance/20260920-target-validation-venv; PyYAML 6.0.3",
+    "public_receipt_path_fix": "Final source check caught home-specific install/backup paths; public receipt normalized to ~, private install receipt preserved"
+  },
+  "artifacts": {
+    "local/skill-evals/20260920-target-valuation/installed/answer.md": "d161aaaf11440b449d6227c48af7e654e09c49e531e575024641dcb305e000f2",
+    "local/skill-evals/20260920-target-valuation/installed/events.jsonl": "ab3f53f89937befb0ca11fa20f34d02b0d7d46c82755ea74d01683dbbd783f9d",
+    "local/skill-evals/20260920-target-valuation/installed/host.json": "bb4ced1f573af27da602aa4785a88e658e960d3e9e2dffb7f53a64f62a6f360c",
+    "local/skill-evals/20260920-target-valuation/installed/machine-audit.json": "93bdd905340654dc380173c13bd79ecac8624813041c03c049bc178a84719fbb",
+    "local/acceptance/20260920-target-candidate/source-hashes.json": "4791568475b8ded35a8134c979d393e01801718b60fc6c3b7d215fc482aa3bbc",
+    "local/acceptance/20260920-target-candidate/bigking67-money-craft-0.3.0.tgz": "7cd9f519c2f8cdfd04633f55323f05c721ae17eb2ccde36c4c0b9503baae9049",
+    "acceptance/target-valuation/reconstruction/report.md": "061e050fc6eae67d8f1c64e650e1fb36d405d4beb61942b8f780b4f295fd80b0",
+    "acceptance/target-valuation/semantic-review.json": "d1239acca3d36e51d438f5c6cb3346a5452141dba116cfb62cb80f7a76d5648f"
+  },
+  "limits": [
+    "Current-date investment conclusion not produced",
+    "Sustainable normalized earnings and economically justified comparable multiple set not established",
+    "No full valuation-date capital structure or independent source-lineage certification",
+    "No formal money archive, application work, commit, push or release"
+  ]
+}

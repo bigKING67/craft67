@@ -1,0 +1,44 @@
+name: Physical device evidence
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_capture:
+        description: Enter capture-physical-device
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: physical-device-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  android-device:
+    if: github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, linux, android-physical-device]
+    timeout-minutes: 30
+    environment: physical-device
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: main
+          fetch-depth: 0
+          submodules: recursive
+      - name: Require explicit physical-device capture
+        env:
+          CONFIRM_CAPTURE: ${{ inputs.confirm_capture }}
+        run: test "${CONFIRM_CAPTURE}" = capture-physical-device
+      - name: Capture authorized Android physical-device evidence
+        env:
+          DESIGN_CRAFT_NATIVE_EVIDENCE_DIR: ${{ runner.temp }}/native-runtime-physical
+        run: bash scripts/native_runtime_device_android.sh
+      - name: Upload physical-device evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: native-runtime-physical-${{ github.run_id }}
+          path: ${{ runner.temp }}/native-runtime-physical
+          if-no-files-found: error
+          retention-days: 90

@@ -1,0 +1,20 @@
+{
+  "schema": "money-craft.public-source-install.v1",
+  "checked_at": "2026-09-20T10:09:56.968226+00:00",
+  "status": "PASS_INSTALLED_PARITY_AND_SELF_TEST",
+  "authorization": "User continued the proposed candidate installation and frozen Midea rerun.",
+  "candidate_sha256": "caf43cf46ce8db6ee35839d38ca84397198a2bb363c0c3b7aa0b62a1fa83d679",
+  "source_candidate_installed_files": 75,
+  "source_candidate_installed_equal": true,
+  "runtime_self_test_valid": true,
+  "runtime_self_test_checks": 9,
+  "backup": ".agents/.skills-backups/money-craft.20260920T100348320710Z",
+  "release": false,
+  "host_e2e_status": "RUNNING_NOT_YET_VERIFIED",
+  "run_directory": "local/skill-evals/20260920-midea-e2e-public-source/host",
+  "artifact_hashes": {
+    "local/acceptance/20260920-public-source-install/preflight.json": "b74d43cd5cc5836accd48a6327fb9e1ea1c4ceab00408aa2bd9e8d33e2329708",
+    "local/acceptance/20260920-public-source-install/install.json": "8ef7b32152fe19b92a33c6788a429e61dd86fdf42ae45ca9428de05f9a3c5341",
+    "local/acceptance/20260920-public-source-install/self-test.json": "6e51159012160cf9c43a20647a1ed4e931cc7d1a87947283ad98c91ac4af2a21"
+  }
+}

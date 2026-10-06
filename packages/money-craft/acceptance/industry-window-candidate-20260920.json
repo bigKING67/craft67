@@ -1,0 +1,31 @@
+{
+  "schema": "money-craft.industry-window-candidate.v1",
+  "status": "READY_FOR_EXPLICIT_GLOBAL_INSTALL_APPROVAL",
+  "date": "2026-09-20",
+  "version": "0.3.0",
+  "release": false,
+  "source_package_parity_files": 75,
+  "changed_installed_content": [
+    "references/high-growth-alpha.md"
+  ],
+  "package_checks": [
+    "safe-extraction",
+    "package-identity",
+    "packaged-runtime-self-test",
+    "atomic-install",
+    "installed-runtime-self-test",
+    "installed-research-run-smoke",
+    "installed-earnings-pipeline-smoke"
+  ],
+  "source_behavior_receipt": "acceptance/lithium-industry/observation-review.json",
+  "proposed_destination": "~/.agents/skills/money-craft",
+  "rollback": "Installer retains previous complete directory under ~/.agents/.skills-backups/money-craft.<timestamp>; failed replacement restores previous destination.",
+  "global_install_performed": false,
+  "authorization": "Explicit repo-external installation approval pending; no commit/push/release.",
+  "artifacts": {
+    "local/acceptance/20260920-industry-window-candidate/bigking67-money-craft-0.3.0.tgz": "5c917ac72b6d36f123deaeb067a51cd81052242f88d85b89f8cd973d6e5a87ef",
+    "local/acceptance/20260920-industry-window-candidate/source-hashes.json": "5c086d53160fb827fe98c0b4370e00e55b22064ef21a291cbdd7e155c9f7ae11",
+    "local/acceptance/20260920-industry-window-candidate/package-smoke.json": "5aaf50a41dc7a96a098154e15588d101262d1144760d6e1bb9459c82d1dad687",
+    "acceptance/lithium-industry/observation-review.json": "4f23087c69d37f0fcd348d922761100c1e1c07afd62043d65aeca1348a9131a4"
+  }
+}

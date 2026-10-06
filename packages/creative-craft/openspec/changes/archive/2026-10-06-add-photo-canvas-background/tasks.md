@@ -1,0 +1,2 @@
+- [x] Brief background option and edge report.
+- [x] Tests; CHANEL source re-run with a white canvas at creation.

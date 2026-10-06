@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.report-financial-units.v1",
+  "date": "2026-09-17",
+  "scope": "Explicit monetary row units for financial trends and FCF charts",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "2e0a7e7a5c6aa15bdebb4a43e4f61e983a2956edb97286847b1a0b3a7884a60c",
+    "tests/test_report_renderer.py": "9e934baa66587e09148de6f99b174d2be7f64dc82a0578c6f1812bae3a3a5c1b",
+    "skills/money-craft/references/report-rendering.md": "b80a38223ea0fc15c8e340b1ed7e64bab594ccab27e762bc322bd7c3e63a31f1"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Trends admitted missing/nonmonetary units, and two equal percentage units could be subtracted as FCF.",
+    "after": "Explicit allowed monetary row units required; first-header unit must match when present; per-panel units shown; FCF requires identical monetary units."
+  },
+  "validation": {
+    "renderer_tests": 49,
+    "full_tests": 339,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 9,
+    "real_cli": "Nonmonetary financial rows remain in table; trend and cash charts omitted, scenario chart retained; source bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 49,
+    "skipped_tests": 0,
+    "additional_boundary_assertions": 65,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "2e0a7e7a5c6aa15bdebb4a43e4f61e983a2956edb97286847b1a0b3a7884a60c",
+      "tests/test_report_renderer.py": "9e934baa66587e09148de6f99b174d2be7f64dc82a0578c6f1812bae3a3a5c1b"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T114821613995Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "Only terminal parenthesized unit contracts are interpreted; arbitrary prose and multiple declarations are not parsed.",
+    "No unit inheritance, scale conversion or foreign-exchange conversion.",
+    "Complete SVG geometry/visuals and actual PDF remain unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

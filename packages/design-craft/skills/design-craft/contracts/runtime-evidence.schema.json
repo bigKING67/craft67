@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://design-craft.local/contracts/runtime-evidence.schema.json",
+  "title": "Design Craft runtime evidence",
+  "oneOf": [
+    {"$ref": "#/$defs/shadowCommand"},
+    {"$ref": "#/$defs/browserCapture"}
+  ],
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "fileRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "imageRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "width", "height"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "width": {"type": "integer", "minimum": 1, "maximum": 8192},
+        "height": {"type": "integer", "minimum": 1, "maximum": 16384}
+      }
+    },
+    "shadowCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema", "kind", "id", "started_at", "completed_at", "authority",
+        "phase", "enforcement", "command", "outputs", "source_audit", "status"
+      ],
+      "properties": {
+        "schema": {"const": "design-craft.runtime-evidence.v1"},
+        "kind": {"const": "shadow_command"},
+        "id": {"$ref": "#/$defs/slug"},
+        "started_at": {"type": "string", "format": "date-time"},
+        "completed_at": {"type": "string", "format": "date-time"},
+        "authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["shadow_lab_manifest", "source_commit", "worktree"],
+          "properties": {
+            "shadow_lab_manifest": {"$ref": "#/$defs/fileRecord"},
+            "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
+            "worktree": {"type": "string", "minLength": 1}
+          }
+        },
+        "phase": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "network_mode"],
+          "properties": {
+            "kind": {"enum": ["install", "build", "test", "preview", "capture", "custom"]},
+            "network_mode": {"enum": ["denied", "allowed"]}
+          }
+        },
+        "enforcement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "status"],
+          "properties": {
+            "kind": {"enum": ["macos_sandbox_exec_egress", "not_required"]},
+            "status": {"enum": ["enforced", "not_required"]}
+          }
+        },
+        "command": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["executable", "argv_sha256", "exit_code"],
+          "properties": {
+            "executable": {"type": "string", "minLength": 1},
+            "argv_sha256": {"$ref": "#/$defs/sha256"},
+            "exit_code": {"type": "integer"}
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stdout", "stderr"],
+          "properties": {
+            "stdout": {"$ref": "#/$defs/fileRecord"},
+            "stderr": {"$ref": "#/$defs/fileRecord"}
+          }
+        },
+        "source_audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_unchanged", "difference_fields"],
+          "properties": {
+            "source_unchanged": {"type": "boolean"},
+            "difference_fields": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "status": {"enum": ["pass", "fail"]}
+      }
+    },
+    "browserCapture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema", "kind", "id", "recorded_at", "runtime", "runtime_context",
+        "page", "viewport", "theme", "network", "stabilization", "rendered"
+      ],
+      "properties": {
+        "schema": {"const": "design-craft.runtime-evidence.v1"},
+        "kind": {"const": "browser_capture"},
+        "id": {"$ref": "#/$defs/slug"},
+        "recorded_at": {"type": "string", "format": "date-time"},
+        "runtime": {"const": "browser67"},
+        "runtime_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["browser_instance_id", "workspace_id", "task_id", "tab_id"],
+          "properties": {
+            "browser_instance_id": {"type": "string", "minLength": 1, "maxLength": 256},
+            "workspace_id": {"type": "string", "minLength": 1, "maxLength": 256},
+            "task_id": {"type": "string", "minLength": 1, "maxLength": 256},
+            "tab_id": {"type": "string", "minLength": 1, "maxLength": 256}
+          }
+        },
+        "page": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "document_ready_state"],
+          "properties": {
+            "url": {"type": "string", "minLength": 1},
+            "document_ready_state": {"const": "complete"}
+          }
+        },
+        "viewport": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height", "device_scale_factor"],
+          "properties": {
+            "width": {"type": "integer", "minimum": 1, "maximum": 8192},
+            "height": {"type": "integer", "minimum": 1, "maximum": 16384},
+            "device_scale_factor": {"const": 1}
+          }
+        },
+        "theme": {"enum": ["light", "dark", "system"]},
+        "network": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contract", "proof", "status", "observed_origins",
+            "external_origin_count", "unknown_origin_count", "request_id"
+          ],
+          "properties": {
+            "contract": {"enum": ["offline", "loopback_only"]},
+            "proof": {"enum": ["browser67_network_observation", "external_sandbox"]},
+            "status": {"const": "pass"},
+            "observed_origins": {
+              "type": "array",
+              "maxItems": 64,
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1, "maxLength": 512}
+            },
+            "external_origin_count": {"const": 0},
+            "unknown_origin_count": {"const": 0},
+            "request_id": {"type": "string", "minLength": 1, "maxLength": 128}
+          }
+        },
+        "stabilization": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["kind", "status"],
+              "properties": {
+                "kind": {"const": "none"},
+                "status": {"const": "not_required"}
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "kind", "status", "selector", "expected_text", "observed_text",
+                "matched", "paused", "source_mutated", "displayed_text_changed"
+              ],
+              "properties": {
+                "kind": {"const": "wait_for_text_then_pause_animation"},
+                "status": {"const": "pass"},
+                "selector": {"type": "string", "minLength": 1, "maxLength": 256},
+                "expected_text": {"type": "string", "minLength": 1, "maxLength": 512},
+                "observed_text": {"type": "string", "minLength": 1, "maxLength": 512},
+                "matched": {"const": true},
+                "paused": {"const": true},
+                "source_mutated": {"const": false},
+                "displayed_text_changed": {"const": false}
+              }
+            }
+          ]
+        },
+        "rendered": {"$ref": "#/$defs/imageRecord"}
+      }
+    }
+  }
+}

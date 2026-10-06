@@ -1,0 +1,359 @@
+{
+  "schema": "money-craft.skill-task-results.v1",
+  "date": "2026-09-16",
+  "review_method": "PRIMARY_AGENT_MANUAL_CRITERIA_REVIEW_PLUS_FINANCIAL_AUDIT",
+  "invocation": "EXPLICIT_SOURCE_PATH",
+  "automatic_discovery": "NOT_TESTED",
+  "data_kind": "SYNTHETIC",
+  "overall_scope": "6_OF_6_CASES_EXECUTED",
+  "attempts": [
+    {
+      "case_id": "earnings-periods",
+      "attempt": 1,
+      "verdict": "PASS",
+      "semantic": "PASS",
+      "calculation_contract": "PASS",
+      "audit_valid": true,
+      "calculation_checks": 12,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "单季60/9与40/8；收入同比50%、利润12.5%；保留未来合成限制。",
+      "failed_host_commands": 0,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/earnings-periods.answer.md",
+          "sha256": "f508276caed2eda51ba48e7df683dffb3f9639d59b1cbceef8f3ec37cad06e13"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/earnings-periods.events.jsonl",
+          "sha256": "5c2747ac40211b38590f8c004ef453b904381cf83bfd5f0dbe7a1746f23879cd"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/earnings-periods.host.json",
+          "sha256": "e61fa41afe553e19ed543cad6a9637af67f529d0dc094272d723eb7c4f2051c2"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/earnings-periods.financial-audit.json",
+          "sha256": "6add5a438dc0b1a65562df84fe83470a125cb65ae4855ed819b0667e2aaf124e"
+        }
+      }
+    },
+    {
+      "case_id": "preview-replay",
+      "attempt": 1,
+      "verdict": "PARTIAL",
+      "semantic": "PASS",
+      "calculation_contract": "FAIL",
+      "audit_valid": true,
+      "calculation_checks": 0,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "判断正确但缺少结构化计算回执。",
+      "failed_host_commands": 0,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/preview-replay/answer.md",
+          "sha256": "bf1f34ca216d1c24ca15cfb123f465ae818980846e068bfeceb153142578667a"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/preview-replay/events.jsonl",
+          "sha256": "2284784096ae29664ac290bd2ee8dc8134cf060e6467a69d05d48fdc494dd932"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/preview-replay/host.json",
+          "sha256": "c5c529e866a32227544a575a6a1e07129eb819b4eb7672aac3c707d2033b3dc5"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/preview-replay/financial-audit.json",
+          "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+        }
+      }
+    },
+    {
+      "case_id": "preview-replay",
+      "attempt": 2,
+      "verdict": "PARTIAL",
+      "semantic": "PASS",
+      "calculation_contract": "FAIL",
+      "audit_valid": false,
+      "calculation_checks": 0,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "有回执，但CALC_REV_DIFF等编号不符合审计合同。",
+      "failed_host_commands": 0,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/preview-replay-r2/answer.md",
+          "sha256": "bdc624e1b8d2b73d48b6a432e366c29917c053235ab81a7767d99982e4d2d63c"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/preview-replay-r2/events.jsonl",
+          "sha256": "67d9369888e51244f6b477e3fcc0986e27709b75e17ffcdeadb603d22926391d"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/preview-replay-r2/host.json",
+          "sha256": "1ff28e30011f9a526d1e618254b55c51258f30a6606eaf3316cca832ecb6cfaf"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/preview-replay-r2/financial-audit.json",
+          "sha256": "f071d8c1697657535efa59bee0bc82cb27be2d7176f69a2d771b54e51fb24a1e"
+        }
+      }
+    },
+    {
+      "case_id": "preview-replay",
+      "attempt": 3,
+      "verdict": "PASS",
+      "semantic": "PASS",
+      "calculation_contract": "PASS",
+      "audit_valid": true,
+      "calculation_checks": 4,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "保留A；B为事后版本；偏差-10%/-25%；催化剂逾期待核实。",
+      "failed_host_commands": 0,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/preview-replay-r3/answer.md",
+          "sha256": "3bb6dad7c0008e6f019c6dd77f45c4a08c7e7d0ce4d084b2d37a6194bc8725bb"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/preview-replay-r3/events.jsonl",
+          "sha256": "3839d0089b925bfeb03987f30b0488b4c4b261850b514414c14576e966c2b941"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/preview-replay-r3/host.json",
+          "sha256": "3615c9f6e093a584e3cfd6459825478f9c40dbc1264de526f820c996f435eca4"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/preview-replay-r3/financial-audit.json",
+          "sha256": "bebf3c65c477c816435dc5c1e36a1fcdae64f2ae68ba167d20accf85a6701c15"
+        }
+      }
+    },
+    {
+      "case_id": "evidence-conflict",
+      "attempt": 1,
+      "verdict": "PARTIAL",
+      "semantic": "FAIL",
+      "calculation_contract": "PASS",
+      "audit_valid": true,
+      "calculation_checks": 2,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "口径未对齐，却引用超过5%的同口径冲突阈值。",
+      "failed_host_commands": 1,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/evidence-conflict/answer.md",
+          "sha256": "b404632ab795c89b3bf2558c7225b7ce57e1b5b220968c9381eb255f2834bffd"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/evidence-conflict/events.jsonl",
+          "sha256": "bea7bca4d048a9edb4d618965a02336275387bdbf3f7e3109b9d19b1e7143d0f"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/evidence-conflict/host.json",
+          "sha256": "b020f1ecf7718085f97438061d965a0d158574e0077cc197b35733543a8d9ef4"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/evidence-conflict/financial-audit.json",
+          "sha256": "552f0538ae22028889fb16063bb7ba58994835558153904bbd36a1f31248ea6d"
+        }
+      }
+    },
+    {
+      "case_id": "evidence-conflict",
+      "attempt": 2,
+      "verdict": "PASS",
+      "semantic": "PASS",
+      "calculation_contract": "PASS",
+      "audit_valid": true,
+      "calculation_checks": 2,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "UNVERIFIED_BASIS先于阈值；不编造股数、行情日期或估值。",
+      "failed_host_commands": 1,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/evidence-conflict-r2/answer.md",
+          "sha256": "dcbe187774e6387d100fb5975cfb2904399baffd01e26b70e311b779de62e439"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/evidence-conflict-r2/events.jsonl",
+          "sha256": "ddee175172abe6da6a6ebad12e586b95329d8831f4043099eba60e89057c7d16"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/evidence-conflict-r2/host.json",
+          "sha256": "ed6e416f6ff59493a97123ce5506bb42f9987845eeb46eda7dbac3ad4f73e819"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/evidence-conflict-r2/financial-audit.json",
+          "sha256": "40c7de0bdf671e36ea22ef532bfe8535d7ba00dd2360de4db29d3b7623428f02"
+        }
+      }
+    },
+    {
+      "case_id": "screening",
+      "attempt": 1,
+      "verdict": "PASS",
+      "semantic": "PASS",
+      "calculation_contract": "PASS",
+      "audit_valid": true,
+      "calculation_checks": 6,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "GRAY与硬否决分开；没有买入价或仓位，也未扩展完整报告。；收入/利润增长20%，应收增长175%，现金流变动-23；6项回执通过。；未把保留意见推断为坏账或造假；未把两期比率冒充五年指标。；列回款、审计、偿债与估值补证，以及改变谨慎判断的条件。",
+      "criterion_evidence": [
+        {
+          "verdict": "PASS",
+          "evidence": "GRAY与硬否决分开；没有买入价或仓位，也未扩展完整报告。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "收入/利润增长20%，应收增长175%，现金流变动-23；6项回执通过。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "未把保留意见推断为坏账或造假；未把两期比率冒充五年指标。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "列回款、审计、偿债与估值补证，以及改变谨慎判断的条件。"
+        }
+      ],
+      "source_snapshot": "UNCHANGED_AT_REVIEW",
+      "failed_host_commands": 0,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/screening/answer.md",
+          "sha256": "9a29ede024a283672b05d6d188901c232531b7783772fca1f63c97b2cbc52c65"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/screening/events.jsonl",
+          "sha256": "14cd58b28dff59a1ed9a271b48886097991f88456d5c4ec6223f52ee6e644b50"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/screening/host.json",
+          "sha256": "63d093487056771f4414d56942af391b0079c769346e9619f2e46833683f8e15"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/screening/financial-audit.json",
+          "sha256": "9b206536f7529123ddcf56f050a9adf7d5fe1b502c62820893a32c4519f20265"
+        },
+        "prompt": {
+          "path": "local/skill-evals/20260916/screening/prompt.txt",
+          "sha256": "65b5d74e420483670437712b29a45ab116d36006f300d57d66f6bf6bf21f0d8a"
+        }
+      }
+    },
+    {
+      "case_id": "global-assets",
+      "attempt": 1,
+      "verdict": "PASS",
+      "semantic": "PASS",
+      "calculation_contract": "NOT_APPLICABLE",
+      "audit_valid": true,
+      "calculation_checks": 0,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "不猜测证券代码或份额类别，停止对象特定估值排名。；原币报价只作材料列示；日期、汇率、回报口径均未核实。；区分公司估值与ETF的NAV、持仓、费用、跟踪差异。；没有新增财务推算，计算合同不适用。",
+      "criterion_evidence": [
+        {
+          "verdict": "PASS",
+          "evidence": "不猜测证券代码或份额类别，停止对象特定估值排名。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "原币报价只作材料列示；日期、汇率、回报口径均未核实。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "区分公司估值与ETF的NAV、持仓、费用、跟踪差异。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "没有新增财务推算，计算合同不适用。"
+        }
+      ],
+      "source_snapshot": "UNCHANGED_AT_REVIEW",
+      "failed_host_commands": 0,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/global-assets/answer.md",
+          "sha256": "20d2bec84aa86454d9c97c641ef334cf1dd3a1eee63a76a7038e8bcea199090c"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/global-assets/events.jsonl",
+          "sha256": "1e6f980cc3bc5686eeb0e625c92962004006bea4bfac239414d831de70f39814"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/global-assets/host.json",
+          "sha256": "df892111ba6ee7fa09a6cae245e96463f655168b1d4bc6e39c100d6f86376d40"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/global-assets/financial-audit.json",
+          "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+        },
+        "prompt": {
+          "path": "local/skill-evals/20260916/global-assets/prompt.txt",
+          "sha256": "02d58235bbcabfde6c35adfbf8c079ea452610a3a2ad5ce91a9e02251e62d993"
+        }
+      }
+    },
+    {
+      "case_id": "upstream-update",
+      "attempt": 1,
+      "verdict": "PASS",
+      "semantic": "PASS",
+      "calculation_contract": "NOT_APPLICABLE",
+      "audit_valid": true,
+      "calculation_checks": 0,
+      "skill_read": "OBSERVED_SUCCESSFUL_COMMAND",
+      "manual_review_note": "绑定合成aaa111到bbb222，未冒充真实提交核验。；D01建议吸收业务code校验且不猜成功码；D02因自动交易边界排除。；D03识别为累计与单季语义破坏，要求同口径与缺失期间阻断。；许可摘录不冒充代码许可审查；未实施吸收或推进锁文件。",
+      "criterion_evidence": [
+        {
+          "verdict": "PASS",
+          "evidence": "绑定合成aaa111到bbb222，未冒充真实提交核验。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "D01建议吸收业务code校验且不猜成功码；D02因自动交易边界排除。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "D03识别为累计与单季语义破坏，要求同口径与缺失期间阻断。"
+        },
+        {
+          "verdict": "PASS",
+          "evidence": "许可摘录不冒充代码许可审查；未实施吸收或推进锁文件。"
+        }
+      ],
+      "source_snapshot": "UNCHANGED_AT_REVIEW",
+      "failed_host_commands": 0,
+      "artifacts": {
+        "answer": {
+          "path": "local/skill-evals/20260916/upstream-update/answer.md",
+          "sha256": "fd7a5434495cdaa0b2086265d034cdf1b95a4dbc73080cf6de5e5384fbd85efb"
+        },
+        "events": {
+          "path": "local/skill-evals/20260916/upstream-update/events.jsonl",
+          "sha256": "a73d78edfc83f3f788017b9bbd0ffeb7450b0c7f9e2f64f709bddb8062afc112"
+        },
+        "host": {
+          "path": "local/skill-evals/20260916/upstream-update/host.json",
+          "sha256": "1ba8faa92ea4f799e2656377cb298f4d676e15b97102ae35de5363a4de3fac40"
+        },
+        "audit": {
+          "path": "local/skill-evals/20260916/upstream-update/financial-audit.json",
+          "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+        },
+        "prompt": {
+          "path": "local/skill-evals/20260916/upstream-update/prompt.txt",
+          "sha256": "bcf1ecf01b84db7a7322f7ab47a1b4371ccdded47f4b94692ff46c003092c41b"
+        }
+      }
+    }
+  ],
+  "not_run": [],
+  "limitations": [
+    "一次固定案例通过不证明多次运行稳定性或真实研究能力。",
+    "原始宿主事件保存在忽略目录；公开摘要不能替代事件核验。",
+    "源码哈希为启动前快照；证据冲突r2和复盘r3运行期间另有回执编号说明修订，实际读取文本以事件为准。",
+    "证据冲突r2路由命令首次数值无效退出2，纠正枚举后退出0；不将此记为无错误运行。",
+    "首个财报案例使用一次性harness，无完整启动前源码快照。",
+    "上游案例只验证合成差异的吸收判断，不验证真实远端检查器或自动上游更新流程。"
+  ]
+}

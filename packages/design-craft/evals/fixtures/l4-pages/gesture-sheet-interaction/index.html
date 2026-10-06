@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design Craft Gesture Sheet Fixture</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --ink: #17201b;
+        --muted: #617068;
+        --line: #d7ded9;
+        --surface: #f8faf8;
+        --panel: #ffffff;
+        --accent: #1f6f4a;
+        --accent-soft: #dcefe4;
+        --danger: #a13d32;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 1120px;
+        min-height: 900px;
+        color: var(--ink);
+        background: #eef2ef;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .page {
+        display: grid;
+        grid-template-columns: minmax(440px, 0.92fr) minmax(520px, 1.08fr);
+        gap: 32px;
+        width: min(1320px, calc(100vw - 72px));
+        margin: 0 auto;
+        padding: 44px 0;
+      }
+
+      .brief {
+        display: flex;
+        min-height: 812px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 42px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--panel);
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 12ch;
+        margin: 0;
+        font-size: clamp(44px, 4.5vw, 68px);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+
+      .lede {
+        max-width: 42ch;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .checks {
+        display: grid;
+        gap: 12px;
+        margin: 34px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checks li {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 12px;
+        align-items: start;
+        color: #334039;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .checks span {
+        display: grid;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .control {
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        color: var(--ink);
+        background: var(--panel);
+        cursor: pointer;
+      }
+
+      .control.primary {
+        border-color: var(--accent);
+        color: #fff;
+        background: var(--accent);
+      }
+
+      .control:focus-visible,
+      .handle:focus-visible {
+        outline: 3px solid rgba(31, 111, 74, 0.3);
+        outline-offset: 3px;
+      }
+
+      .trace-card {
+        margin-top: 24px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--surface);
+      }
+
+      .trace-card h2 {
+        margin: 0 0 10px;
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      #trace-output {
+        min-height: 126px;
+        margin: 0;
+        overflow: hidden;
+        color: #425149;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 11px;
+        line-height: 1.55;
+        white-space: pre-wrap;
+      }
+
+      .stage-shell {
+        min-height: 812px;
+        padding: 28px;
+        border: 1px solid #cfd8d2;
+        border-radius: 32px;
+        background: #dce4df;
+      }
+
+      .stage {
+        position: relative;
+        height: 756px;
+        overflow: hidden;
+        border: 10px solid #17201b;
+        border-radius: 28px;
+        background: #f4f7f5;
+        box-shadow: 0 22px 48px rgba(27, 43, 34, 0.18);
+      }
+
+      .app-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+        padding: 0 24px;
+        border-bottom: 1px solid #dbe2dd;
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .app-title {
+        font-weight: 780;
+        letter-spacing: -0.02em;
+      }
+
+      .status-pill {
+        padding: 7px 10px;
+        border-radius: 999px;
+        color: var(--accent);
+        background: var(--accent-soft);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .task-list {
+        display: grid;
+        gap: 12px;
+        padding: 22px;
+      }
+
+      .task-row {
+        display: grid;
+        grid-template-columns: 36px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 66px;
+        padding: 12px 14px;
+        border: 1px solid #dce3de;
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .task-index {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        border-radius: 9px;
+        background: #eef3ef;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .task-copy strong,
+      .task-copy span {
+        display: block;
+      }
+
+      .task-copy strong {
+        font-size: 14px;
+      }
+
+      .task-copy span {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .task-meta {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .sheet {
+        position: absolute;
+        z-index: 4;
+        top: 0;
+        right: 0;
+        left: 0;
+        min-height: 690px;
+        transform: translate3d(0, var(--sheet-y, 560px), 0);
+        border-top: 1px solid #cad4cd;
+        border-radius: 24px 24px 0 0;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 -18px 50px rgba(31, 48, 38, 0.18);
+        will-change: transform;
+      }
+
+      .sheet[data-phase="dragging"] {
+        box-shadow: 0 -24px 60px rgba(31, 48, 38, 0.24);
+      }
+
+      .handle {
+        display: grid;
+        width: 100%;
+        min-height: 72px;
+        place-items: center;
+        border: 0;
+        border-radius: 24px 24px 0 0;
+        background: transparent;
+        cursor: grab;
+        touch-action: none;
+      }
+
+      .handle::before {
+        width: 52px;
+        height: 6px;
+        border-radius: 999px;
+        background: #a8b4ac;
+        content: "";
+        transition: background-color 100ms ease-out, transform 100ms ease-out;
+      }
+
+      .sheet[data-pressed="true"] .handle::before,
+      .sheet[data-phase="dragging"] .handle::before {
+        background: var(--accent);
+        transform: scaleX(1.12);
+      }
+
+      .sheet-content {
+        padding: 8px 26px 30px;
+      }
+
+      .sheet-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e1e6e2;
+      }
+
+      .sheet-heading h2 {
+        margin: 0;
+        font-size: 25px;
+        letter-spacing: -0.035em;
+      }
+
+      .sheet-heading p {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      #state-badge {
+        padding: 8px 11px;
+        border-radius: 10px;
+        color: #fff;
+        background: #25362c;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 11px;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .detail {
+        min-height: 92px;
+        padding: 15px;
+        border: 1px solid #dfe5e1;
+        border-radius: 13px;
+        background: #f8faf8;
+      }
+
+      .detail span,
+      .detail strong {
+        display: block;
+      }
+
+      .detail span {
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .detail strong {
+        margin-top: 9px;
+        font-size: 15px;
+      }
+
+      .reduce-note {
+        margin-top: 18px;
+        padding: 14px 15px;
+        border-left: 3px solid var(--accent);
+        color: #425149;
+        background: #f0f6f2;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .handle::before {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="brief">
+        <div>
+          <p class="eyebrow">Design-craft 0.4.0 fixture</p>
+          <h1>Gesture physics, not animation theater.</h1>
+          <p class="lede">
+            A project-neutral bottom sheet fixture for verifying causal feedback,
+            1:1 drag tracking, interruption, velocity projection, soft boundaries,
+            and a Reduced Motion alternative.
+          </p>
+          <ul class="checks">
+            <li><span>1</span><div>Pointer-down feedback changes only the handle, never the sheet geometry.</div></li>
+            <li><span>2</span><div>Dragging is transform-only and preserves the exact grab offset.</div></li>
+            <li><span>3</span><div>A settling sheet can be re-grabbed from its presentation value without a jump.</div></li>
+            <li><span>4</span><div>Release velocity projects the endpoint before choosing a snap state.</div></li>
+            <li><span>5</span><div>Reduced Motion removes projection, overshoot, and long automatic travel.</div></li>
+          </ul>
+          <div class="controls">
+            <button class="control primary" id="run-scenario" type="button">Run evidence scenario</button>
+            <button class="control" id="reset" type="button">Reset</button>
+            <button class="control" id="toggle-motion" type="button">Reduced Motion: off</button>
+          </div>
+        </div>
+        <div class="trace-card">
+          <h2>Observed trace</h2>
+          <pre id="trace-output">Ready. Drag the handle or run the deterministic scenario.</pre>
+        </div>
+      </section>
+
+      <section class="stage-shell" aria-label="Gesture sheet demo">
+        <div class="stage" id="stage">
+          <header class="app-header">
+            <div class="app-title">Field review queue</div>
+            <div class="status-pill">3 items need attention</div>
+          </header>
+          <div class="task-list" aria-hidden="true">
+            <div class="task-row">
+              <div class="task-index">01</div>
+              <div class="task-copy"><strong>Cooling unit inspection</strong><span>Site A · due in 24 min</span></div>
+              <div class="task-meta">High</div>
+            </div>
+            <div class="task-row">
+              <div class="task-index">02</div>
+              <div class="task-copy"><strong>Inventory exception</strong><span>Warehouse 4 · 8 mismatches</span></div>
+              <div class="task-meta">Review</div>
+            </div>
+            <div class="task-row">
+              <div class="task-index">03</div>
+              <div class="task-copy"><strong>Delivery proof</strong><span>Route 17 · photo required</span></div>
+              <div class="task-meta">Open</div>
+            </div>
+          </div>
+
+          <section class="sheet" id="sheet" data-phase="idle" data-pressed="false" aria-label="Task details">
+            <button class="handle" id="handle" type="button" aria-label="Drag task details sheet"></button>
+            <div class="sheet-content">
+              <div class="sheet-heading">
+                <div>
+                  <h2>Cooling unit inspection</h2>
+                  <p>Drag between collapsed, half, and full states.</p>
+                </div>
+                <div id="state-badge">collapsed</div>
+              </div>
+              <div class="detail-grid">
+                <div class="detail"><span>Owner</span><strong>Lin Q.</strong></div>
+                <div class="detail"><span>Impact</span><strong>Cold-chain risk</strong></div>
+                <div class="detail"><span>Last reading</span><strong>8.7°C</strong></div>
+                <div class="detail"><span>Threshold</span><strong>≤ 6.0°C</strong></div>
+              </div>
+              <div class="reduce-note">
+                Reduced Motion keeps direct 1:1 manipulation, then settles immediately
+                to the nearest state without projection or bounce.
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const stage = document.querySelector("#stage");
+        const sheet = document.querySelector("#sheet");
+        const handle = document.querySelector("#handle");
+        const traceOutput = document.querySelector("#trace-output");
+        const stateBadge = document.querySelector("#state-badge");
+        const toggleMotion = document.querySelector("#toggle-motion");
+
+        let y = 0;
+        let velocity = 0;
+        let phase = "idle";
+        let activePointer = null;
+        let grabOffset = 0;
+        let samples = [];
+        let settleFrame = 0;
+        let reducedMotionOverride = false;
+        let trace = [];
+
+        const reducedMotion = () =>
+          reducedMotionOverride || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const points = () => {
+          const height = stage.clientHeight;
+          return {
+            full: 54,
+            half: Math.round(height * 0.42),
+            collapsed: height - 150,
+          };
+        };
+
+        const eventLog = (type, data = {}) => {
+          const row = {
+            index: trace.length + 1,
+            type,
+            t: Math.round(performance.now()),
+            ...data,
+          };
+          trace.push(row);
+          trace = trace.slice(-28);
+          traceOutput.textContent = trace
+            .slice(-8)
+            .map((item) => `${String(item.index).padStart(2, "0")} ${item.type} ${JSON.stringify(item)}`)
+            .join("\n");
+          return row;
+        };
+
+        const stateForY = (value) => {
+          const entries = Object.entries(points());
+          return entries.sort((a, b) => Math.abs(a[1] - value) - Math.abs(b[1] - value))[0][0];
+        };
+
+        const render = (value) => {
+          y = value;
+          sheet.style.setProperty("--sheet-y", `${y.toFixed(2)}px`);
+          sheet.dataset.phase = phase;
+          stateBadge.textContent = stateForY(y);
+        };
+
+        const cancelSettle = (reason = "interrupt") => {
+          if (settleFrame) {
+            cancelAnimationFrame(settleFrame);
+            settleFrame = 0;
+            eventLog("settle-cancel", { reason, y: Number(y.toFixed(2)), velocity: Number(velocity.toFixed(2)) });
+          }
+        };
+
+        const rubberband = (overshoot, dimension, constant = 0.55) =>
+          (overshoot * dimension * constant) /
+          (dimension + constant * Math.abs(overshoot));
+
+        const constrainedY = (raw) => {
+          const snap = points();
+          if (raw < snap.full) return snap.full + rubberband(raw - snap.full, stage.clientHeight);
+          if (raw > snap.collapsed) return snap.collapsed + rubberband(raw - snap.collapsed, stage.clientHeight);
+          return raw;
+        };
+
+        const estimateVelocity = () => {
+          const recent = samples.filter((sample) => performance.now() - sample.t <= 100);
+          if (recent.length < 2) return 0;
+          const first = recent[0];
+          const last = recent[recent.length - 1];
+          const dt = Math.max(1, last.t - first.t);
+          return ((last.y - first.y) / dt) * 1000;
+        };
+
+        const project = (initialVelocity, decelerationRate = 0.998) =>
+          (initialVelocity / 1000) * decelerationRate / (1 - decelerationRate);
+
+        const nearestTarget = (value) => {
+          const entries = Object.entries(points());
+          return entries.sort((a, b) => Math.abs(a[1] - value) - Math.abs(b[1] - value))[0];
+        };
+
+        const settleTo = (targetName, initialVelocity, reason) => {
+          const targetY = points()[targetName];
+          cancelSettle("retarget");
+          phase = "settling";
+          sheet.dataset.pressed = "false";
+          const reduce = reducedMotion();
+          eventLog("settle-start", {
+            target: targetName,
+            from: Number(y.toFixed(2)),
+            velocity: Number(initialVelocity.toFixed(2)),
+            reducedMotion: reduce,
+            reason,
+          });
+
+          if (reduce) {
+            velocity = 0;
+            phase = "idle";
+            render(targetY);
+            eventLog("settle-end", { target: targetName, y: targetY, reducedMotion: true, frames: 0 });
+            return Promise.resolve();
+          }
+
+          const startedAt = performance.now();
+          let previous = startedAt;
+          let frames = 0;
+          velocity = initialVelocity;
+          return new Promise((resolve) => {
+            const frame = (now) => {
+              const dt = Math.min(0.032, Math.max(0.001, (now - previous) / 1000));
+              previous = now;
+              const displacement = targetY - y;
+              const acceleration = displacement * 170 - velocity * 25;
+              velocity += acceleration * dt;
+              render(y + velocity * dt);
+              frames += 1;
+
+              if ((Math.abs(displacement) < 0.35 && Math.abs(velocity) < 4) || now - startedAt > 900) {
+                velocity = 0;
+                phase = "idle";
+                settleFrame = 0;
+                render(targetY);
+                eventLog("settle-end", { target: targetName, y: targetY, reducedMotion: false, frames });
+                resolve();
+                return;
+              }
+              settleFrame = requestAnimationFrame(frame);
+            };
+            settleFrame = requestAnimationFrame(frame);
+          });
+        };
+
+        const onPointerDown = (event) => {
+          if (activePointer !== null || event.button > 0) return;
+          const before = y;
+          cancelSettle("pointerdown");
+          phase = "pressed";
+          sheet.dataset.pressed = "true";
+          render(y);
+          activePointer = event.pointerId;
+          const stageTop = stage.getBoundingClientRect().top;
+          grabOffset = event.clientY - stageTop - y;
+          samples = [{ t: performance.now(), y }];
+          try {
+            handle.setPointerCapture(event.pointerId);
+          } catch (_) {
+            // Synthetic pointer events do not always create a capturable pointer.
+          }
+          eventLog("pointerdown", {
+            y: Number(y.toFixed(2)),
+            grabOffset: Number(grabOffset.toFixed(2)),
+            interruptionJump: Number(Math.abs(before - y).toFixed(3)),
+          });
+        };
+
+        const onPointerMove = (event) => {
+          if (event.pointerId !== activePointer) return;
+          const stageTop = stage.getBoundingClientRect().top;
+          const next = constrainedY(event.clientY - stageTop - grabOffset);
+          phase = "dragging";
+          render(next);
+          samples.push({ t: performance.now(), y });
+          samples = samples.slice(-10);
+          eventLog("pointermove", {
+            y: Number(y.toFixed(2)),
+            pointerY: Number((event.clientY - stageTop).toFixed(2)),
+            grabOffset: Number(grabOffset.toFixed(2)),
+          });
+        };
+
+        const endPointer = (event, cancelled = false) => {
+          if (event.pointerId !== activePointer) return;
+          activePointer = null;
+          sheet.dataset.pressed = "false";
+          const releaseVelocity = cancelled ? 0 : estimateVelocity();
+          const projection = reducedMotion() ? 0 : project(releaseVelocity);
+          const clampedProjection = Math.max(-stage.clientHeight * 0.5, Math.min(stage.clientHeight * 0.5, projection));
+          const projectedEndpoint = y + clampedProjection;
+          const [targetName, targetY] = nearestTarget(projectedEndpoint);
+          eventLog(cancelled ? "pointercancel" : "pointerup", {
+            y: Number(y.toFixed(2)),
+            releaseVelocity: Number(releaseVelocity.toFixed(2)),
+            projectedEndpoint: Number(projectedEndpoint.toFixed(2)),
+            target: targetName,
+            targetY,
+          });
+          void settleTo(targetName, releaseVelocity, cancelled ? "cancel" : "release");
+        };
+
+        handle.addEventListener("pointerdown", onPointerDown);
+        handle.addEventListener("pointermove", onPointerMove);
+        handle.addEventListener("pointerup", (event) => endPointer(event));
+        handle.addEventListener("pointercancel", (event) => endPointer(event, true));
+
+        const dispatchPointer = (type, clientY, pointerId = 7) => {
+          handle.dispatchEvent(
+            new PointerEvent(type, {
+              bubbles: true,
+              cancelable: true,
+              pointerId,
+              pointerType: "touch",
+              isPrimary: true,
+              button: 0,
+              buttons: type === "pointerup" ? 0 : 1,
+              clientX: handle.getBoundingClientRect().left + handle.clientWidth / 2,
+              clientY,
+            }),
+          );
+        };
+
+        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        const reset = () => {
+          cancelSettle("reset");
+          activePointer = null;
+          velocity = 0;
+          phase = "idle";
+          trace = [];
+          sheet.dataset.pressed = "false";
+          render(points().collapsed);
+          eventLog("reset", { y: points().collapsed });
+        };
+
+        const runScenario = async () => {
+          reducedMotionOverride = false;
+          toggleMotion.textContent = "Reduced Motion: off";
+          reset();
+          const stageTop = stage.getBoundingClientRect().top;
+          const grabY = stageTop + y + 34;
+          dispatchPointer("pointerdown", grabY, 21);
+          await wait(24);
+          dispatchPointer("pointermove", stageTop + points().half + 34, 21);
+          await wait(24);
+          dispatchPointer("pointermove", stageTop + points().full + 92, 21);
+          await wait(24);
+          dispatchPointer("pointerup", stageTop + points().full + 92, 21);
+
+          await wait(86);
+          const beforeInterrupt = y;
+          dispatchPointer("pointerdown", stageTop + y + 28, 22);
+          const afterInterrupt = y;
+          await wait(18);
+          dispatchPointer("pointermove", stageTop + points().half + 22, 22);
+          await wait(18);
+          dispatchPointer("pointerup", stageTop + points().half + 22, 22);
+          await wait(760);
+
+          reducedMotionOverride = true;
+          toggleMotion.textContent = "Reduced Motion: on";
+          const reducedStart = y;
+          dispatchPointer("pointerdown", stageTop + y + 30, 23);
+          await wait(18);
+          dispatchPointer("pointermove", stageTop + points().collapsed - 20, 23);
+          await wait(18);
+          dispatchPointer("pointerup", stageTop + points().collapsed - 20, 23);
+          await wait(30);
+
+          const result = {
+            schema: "design-craft.gesture-fixture-trace.v1",
+            pointerDownFeedback: trace.some((item) => item.type === "pointerdown"),
+            oneToOneDrag: trace.some((item) => item.type === "pointermove" && Math.abs(item.pointerY - item.grabOffset - item.y) < 0.75),
+            interruptionJumpPx: Number(Math.abs(beforeInterrupt - afterInterrupt).toFixed(3)),
+            interruptionPassed: Math.abs(beforeInterrupt - afterInterrupt) < 0.75,
+            projectedEndpointObserved: trace.some((item) => item.type === "pointerup" && Number.isFinite(item.projectedEndpoint)),
+            reducedMotionImmediate: trace.some((item) => item.type === "settle-end" && item.reducedMotion === true && item.frames === 0),
+            reducedStart: Number(reducedStart.toFixed(2)),
+            finalY: Number(y.toFixed(2)),
+            finalState: stateForY(y),
+            trace: [...trace],
+          };
+          eventLog("scenario-complete", {
+            interruptionJumpPx: result.interruptionJumpPx,
+            finalState: result.finalState,
+            reducedMotionImmediate: result.reducedMotionImmediate,
+          });
+          window.__gestureFixtureLastResult = result;
+          return result;
+        };
+
+        document.querySelector("#run-scenario").addEventListener("click", () => void runScenario());
+        document.querySelector("#reset").addEventListener("click", reset);
+        toggleMotion.addEventListener("click", () => {
+          reducedMotionOverride = !reducedMotionOverride;
+          toggleMotion.textContent = `Reduced Motion: ${reducedMotionOverride ? "on" : "off"}`;
+          eventLog("reduced-motion-toggle", { enabled: reducedMotionOverride });
+        });
+
+        window.gestureFixture = {
+          reset,
+          runScenario,
+          setReducedMotion(value) {
+            reducedMotionOverride = Boolean(value);
+            toggleMotion.textContent = `Reduced Motion: ${reducedMotionOverride ? "on" : "off"}`;
+            return reducedMotionOverride;
+          },
+          getState() {
+            return {
+              phase,
+              y: Number(y.toFixed(2)),
+              velocity: Number(velocity.toFixed(2)),
+              reducedMotion: reducedMotion(),
+              state: stateForY(y),
+              trace: [...trace],
+              lastResult: window.__gestureFixtureLastResult || null,
+            };
+          },
+        };
+
+        reset();
+        window.__gestureFixtureReady = true;
+      })();
+    </script>
+  </body>
+</html>

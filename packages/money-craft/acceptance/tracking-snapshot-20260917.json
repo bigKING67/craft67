@@ -1,0 +1,45 @@
+{
+  "schema": "money-craft.tracking-snapshot-review.v1",
+  "date": "2026-09-17",
+  "scope": "Bounded verify/status snapshot consistency with cooperating writers",
+  "finding": {
+    "before": "Real CLI writer paused after revision publication before current replacement; concurrent verify and status immediately returned invalid despite normal publication. Regression failed for both commands.",
+    "after": "Both public read entrypoints acquire existing tracking lock; status calls internal already-locked verification and keeps lock through assessment and inventory.",
+    "status": "FIXED_LOCAL"
+  },
+  "source_hashes": {
+    "skills/money-craft/scripts/tracking_workflow.py": "8808d10b5b2ae0c4249f7af1b78e4e0c9af5a3874e98beeabad7c7d1a5a70365",
+    "skills/money-craft/references/tracking-workflow.md": "db5ef3bc2504e4ffff6415fa8003521edef0bc2c9165c19a000a7d9416bedf60",
+    "tests/test_tracking_workflow.py": "8f2a0bb5db4cbb996ab856e70ada334af3ee0cf2f30042f997ba9954fec9905c"
+  },
+  "validation": {
+    "tracking_tests": 20,
+    "full_tests": 271,
+    "package_checks": 8,
+    "mechanism": "Real CLI writer with deterministic stdin barrier before current replacement; independent verify/status CLI processes wait then return valid one-revision snapshot; final verification passes.",
+    "test": "test_cli_readers_wait_for_publication_snapshot",
+    "source_checks": 19
+  },
+  "independent_review": {
+    "agent": "tracking_snapshot_review",
+    "verdict": "NO_BLOCKING_FINDINGS",
+    "source_sha256": "8808d10b5b2ae0c4249f7af1b78e4e0c9af5a3874e98beeabad7c7d1a5a70365",
+    "tracking_tests": 20,
+    "additional_observations": [
+      "For both verify and status, reader paused inside verification while holding lock; writer could not create workspace until reader released lock. Both finished successfully and archive hashes unchanged."
+    ],
+    "evidence_boundary": "Reader-first probes are independent reviewer report; raw probe transcripts not persisted in this artifact."
+  },
+  "limits": [
+    "Only processes following tracking_lock protocol are synchronized.",
+    "Readers use exclusive lock and serialize; runtime lock must be accessible and may be created. Research archive bytes remain unchanged.",
+    "POSIX local host evidence only; Windows and network filesystems unverified.",
+    "No SIGKILL, power-loss recovery or lock-wait timeout change.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T031424930417Z"
+  }
+}

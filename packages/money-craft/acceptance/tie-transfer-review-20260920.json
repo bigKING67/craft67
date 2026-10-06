@@ -1,0 +1,82 @@
+{
+  "schema": "money-craft.tie-transfer-review.v1",
+  "date": "2026-09-20",
+  "status": "PASS_THREE_SYNTHETIC_CASES",
+  "frozen_case_path": "acceptance/skill-tasks/tie-transfer-20260920.json",
+  "frozen_case_sha256": "1f353d374def62e8ab1c4aede154cb1b5d8f4468fcca96f577d5a7e20b7cca2a",
+  "results": [
+    {
+      "case": "control",
+      "status": "PASS_BOUNDED_CASE",
+      "machine_checks_pass": true,
+      "financial_checks": 13,
+      "semantic_review": "main agent manual, not independent",
+      "semantic_observations": [
+        "Exact totals and weighted margin reconciled with zero residuals; no invented conflict.",
+        "Positive gross profit not equated with net income; same issuer tables not independent sources."
+      ],
+      "elapsed_seconds": 150.119,
+      "artifact_hashes": {
+        "prompt.txt": "66e12abeee20809c80604c258a33c22f567dcb2e518578b7f02d7b4eb9553d5f",
+        "answer.md": "49eb1feb8f695609494dd937521994be0cc8c83463819080ced804bfc573fa86",
+        "events.jsonl": "adddd5d708aa34deee5d9c564796f48c182a9585d8f6910f5a113c8395287033",
+        "machine-audit.json": "f2029866bd1d055d74e727dc51ef17883baa16784cf6e92703995f9e83165c85",
+        "machine-audit-rechecked.json": "f2029866bd1d055d74e727dc51ef17883baa16784cf6e92703995f9e83165c85"
+      }
+    },
+    {
+      "case": "precision",
+      "status": "PASS_BOUNDED_CASE",
+      "machine_checks_pass": true,
+      "financial_checks": 6,
+      "semantic_review": "main agent manual, not independent",
+      "semantic_observations": [
+        "Computed rounding intervals match independent oracle and overlap disclosed rate interval.",
+        "Hypothetical witness explicitly labeled; compatibility distinguished from verified underlying amounts."
+      ],
+      "elapsed_seconds": 127.848,
+      "artifact_hashes": {
+        "prompt.txt": "dd1d693037ff00875d5aa07614b871d65b14e4322edef8866bde176b3003b9d7",
+        "answer.md": "fbb280238ce34277e95784daca514fb80bcbad8325763239054f8a9766a2609a",
+        "events.jsonl": "3049ddc1e5f4c5819872f0d69b8908bafeece138dd9e5d0c48dc1460b3738b03",
+        "machine-audit.json": "8ee5817cebe241ff3cb03a16e5064782d9d3a26b833e26f9436d796c710e5666",
+        "machine-audit-rechecked.json": "8ee5817cebe241ff3cb03a16e5064782d9d3a26b833e26f9436d796c710e5666"
+      }
+    },
+    {
+      "case": "periods",
+      "status": "PASS_BOUNDED_CASE",
+      "machine_checks_pass": true,
+      "financial_checks": 12,
+      "semantic_review": "main agent manual, not independent",
+      "semantic_observations": [
+        "Converted dollar and ten-thousand-dollar units; separate half-year and annual margins.",
+        "Five-point difference labeled different windows, not YoY improvement or within-table conflict; no annualization forecast."
+      ],
+      "elapsed_seconds": 110.086,
+      "artifact_hashes": {
+        "prompt.txt": "c2735e5e4be1e773cb4ebc5492a0c76d0e8a00d888fa039760ded731997d8a2c",
+        "answer.md": "c210ded14443b8853339622cea1f2dcbbd145ad499b71629366e47ce0e21d825",
+        "events.jsonl": "714f4cd915d8c9b9b2114ed40966a254b90008df854a334d0082b2fcb91f3fe5",
+        "machine-audit.json": "9bba3e5271622d4d3d81d5b7814b66aabaf58d32e68b94c3409b255a9790e433",
+        "machine-audit-rechecked.json": "3f2706c0fd5dc5aedea8184f30ebe9f496070e4102c14ba9ee633a687e1a7a25"
+      }
+    }
+  ],
+  "evaluator_fix": {
+    "file": "scripts/audit_skill_task.py",
+    "reason": "Existing shell wrapper execs investment_route_core.py; host used python3 -B core directly. Original recognizer missed valid route.",
+    "original_failure_retained": true,
+    "replayed_existing_trace_without_model_rerun": true,
+    "success_exit_and_valid_route_payload_still_required": true,
+    "tests_passed": 33
+  },
+  "source_validation_checks_passed": 20,
+  "skill_runtime_changed": false,
+  "global_install_changed": false,
+  "limits": [
+    "Three frozen synthetic cases are bounded behavioral checks, not comprehensive real-company generalization or repeated-run stability.",
+    "Semantic review performed by main agent, not independent.",
+    "No commit, push, release or application work."
+  ]
+}

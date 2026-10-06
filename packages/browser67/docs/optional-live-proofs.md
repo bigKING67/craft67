@@ -1,0 +1,383 @@
+# Optional live proof artifacts
+
+`npm run check:optional-live-proofs` validates sanitized, repo-external JSON
+proofs for near-100 optional gates that cannot be completed on every machine.
+
+The default self-use acceptance set is:
+
+- Local CAPTCHA physical-input live proof.
+- Windows native physical-input live proof.
+- External OAuth popup handoff/resume live proof.
+- External cross-domain SSO handoff/resume live proof.
+- External MFA handoff/resume live proof.
+
+`native-live-linux` is retained as an on-demand Linux desktop proof. It is not
+included in default audit, plan, status, readiness, release, or strict-release
+counts. Headless Linux servers and SSH-only Linux hosts do not need native GUI
+proof. An actual Linux desktop deployment can opt in explicitly without
+removing or weakening the provider/gate.
+
+The default proof directory is:
+
+```text
+~/.browser67/optional-live-proofs
+```
+
+Override it when needed:
+
+```bash
+TMWD_OPTIONAL_PROOF_DIR=/path/to/proofs npm run check:optional-live-proofs
+```
+
+By default the check is non-blocking and reports missing default proofs. Use
+`--strict` only for a local release gate that should fail until all default
+proofs are present:
+
+```bash
+npm run check:optional-live-proofs -- --strict
+```
+
+For an actual Linux desktop acceptance target, include the on-demand proof:
+
+```bash
+npm run check:optional-live-proofs -- --include-on-demand
+npm run check:optional-live-proofs -- --include-on-demand --strict
+```
+
+Print the current proof collection plan without opening Chrome, creating tabs,
+moving the mouse, or writing proof files:
+
+```bash
+npm run plan:optional-live-proofs
+npm run plan:optional-live-proofs -- --id idp-oauth-popup
+npm run plan:optional-live-proofs -- --id native-live-linux
+npm run plan:optional-live-proofs -- --json
+```
+
+The unfiltered plan contains only the default acceptance set. The explicit
+Linux id returns a single on-demand desktop runbook with
+`release_scope:"on_demand"` and `default_required:false`.
+
+The plan reports each proof id, current satisfaction status, required host or
+provider kind, safe commands, blockers such as macOS Accessibility permission,
+the dry-run/write record commands, and the evidence fields that must be present
+before a proof is accepted. JSON output includes enough state for agents and UIs
+to resume collection directly from a readiness gap:
+
+- `accepted`: accepted proof path plus `checked_at`, `expires_at`,
+  `expires_in_days`, `expires_soon`, and the source-identity comparison when a
+  proof is already valid.
+- `next_command`: the next safe command or host/provider handoff to run.
+- `collection_steps`: a short ordered runbook for collecting that proof.
+- `commands.record_replace`: the audited refresh command for replacing an
+  existing canonical proof after a newer sanitized run is available.
+
+Use `--id <proof-id>` to produce a single-proof handoff packet for a specific
+host or provider owner. The filtered plan keeps the same safe defaults and
+validates the proof id before printing commands.
+
+Print an operator-facing status/checklist without executing any listed command:
+
+```bash
+npm run proof:optional-live-status
+npm run proof:optional-live-status -- --id native-live-linux
+npm run proof:optional-live-status -- --json
+```
+
+The unfiltered status contains only the default acceptance set; use the
+explicit Linux id when a desktop deployment is actually in scope.
+
+The status output is optimized for near-100 proof collection handoff. It groups
+accepted proofs and missing checklist entries, assigns each missing item to the
+required host/provider owner, repeats the dry-run/write/replace record commands,
+and includes a completion policy that explicitly forbids fabricated cross-OS or
+external IdP proofs. Like the plan command, it does not move the mouse, open
+Chrome, create tabs, read browser private state, or write proof files.
+Use `--id <proof-id>` when sending only one checklist item to a Windows/IdP
+operator or to an explicitly scoped Linux desktop operator.
+
+Generate safe starter templates instead of hand-writing JSON:
+
+```bash
+npm run proof:optional-live-template
+npm run proof:optional-live-template -- --id native-live-linux
+npm run proof:optional-live-template -- --all --write
+```
+
+Without arguments, template generation follows the default acceptance set.
+`--all` includes on-demand requirements; `--id native-live-linux` selects only
+the Linux desktop template.
+
+`--write` stores `*.template.json` files under the proof directory using
+`ok:false` and `template_only:true`, so templates do not satisfy the audit. Do
+not edit native templates into passing artifacts. The local CAPTCHA physical
+gate and the Linux/Windows `proof:native-live` gate write their passing proofs
+automatically after successful real-host runs. External IdP proofs must replace
+`template_only:true` and placeholder commands only with sanitized results from
+an approved real provider gate.
+
+CAPTCHA and native physical proofs also carry
+`source_identity.schema:"browser67.optional-proof-source.v1"`. The
+`physical-input-v1` digest is computed from normalized cross-platform text for
+the browser/runtime/extension/native/CAPTCHA gate behavior files. Audit accepts
+a physical proof only when that behavior digest, project version, scope, digest
+algorithm, and file count are source-equivalent to the current checkout. Git
+revision and dirty state remain provenance fields: a dirty proof may still be
+accepted after committing the exact same behavior bytes, while an older proof
+is rejected as soon as those behavior bytes change. Expiry alone is therefore
+never sufficient evidence for a newer physical-input implementation.
+
+After a Windows host, explicitly scoped Linux desktop, or approved external IdP
+live gate produces a sanitized JSON proof, record it through the validator
+instead of copying files by hand:
+
+```bash
+npm run proof:optional-live-record -- --id native-live-linux --from-json /path/to/sanitized.json
+npm run proof:optional-live-record -- --id native-live-linux --from-json /path/to/sanitized.json --write
+```
+
+The default record command is dry-run only. It accepts a JSON file path, validates
+the proof against the selected requirement, prints input/output SHA-256 hashes,
+prints a `redaction_checklist`, and does not read environment secrets, browser
+state, cookies, tokens, or clipboard data. The validator rejects obvious
+sensitive key names, Bearer/JWT/cookie-like values, templates, placeholder
+commands, and unredacted IdP tenant, account, email, username, phone, domain,
+provider, client, org, or user identifiers. `--write` persists the canonical JSON to the
+repo-external proof directory as `<proof-id>.json`; it refuses to overwrite an
+existing proof unless `--replace` is also supplied for an intentional audited
+refresh.
+
+```bash
+npm run check:native-pointer
+npm run check:native-live
+
+TMWD_CAPTCHA_ASSIST_PHYSICAL=1 \
+TMWD_CAPTCHA_ASSIST_CONFIRM=1 \
+npm run check:captcha-assist-physical-live
+```
+
+For Windows target-OS proof collection, or an explicitly scoped Linux desktop
+proof, use the dedicated gate instead of converting the CAPTCHA proof by hand:
+
+```bash
+TMWD_NATIVE_LIVE_PHYSICAL=1 \
+TMWD_NATIVE_LIVE_CONFIRM=1 \
+npm run proof:native-live -- --write --json
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:TMWD_NATIVE_LIVE_PHYSICAL = "1"
+$env:TMWD_NATIVE_LIVE_CONFIRM = "1"
+npm run proof:native-live -- --write --json
+```
+
+The native gate runs only on `linux` or `win32`, requires a real interactive GUI
+session, refuses to run without explicit confirmation and `--write`, blocks
+before pointer input when an existing proof would be overwritten, and forces the
+`native-os` provider. Linux availability here does not make it a default release
+requirement. The gate creates browser67-owned local fixture tabs, verifies a
+positive-size native window rectangle plus visible drag/click completion,
+finalizes the fixture tabs, and writes only sanitized JSON. Complete host setup
+instructions are in `docs/native-live-linux.md` and
+`docs/native-live-windows.md`.
+
+The gate only counts as executable when the selected physical provider can
+actually affect the browser window. The physical wrapper performs native pointer
+preflight before opening the GUI fixture or creating a managed tab; if click or
+drag is unavailable, it returns structured skipped/blocked output without
+foregrounding Chrome or attempting physical input. On macOS, `native-os` pointer
+actions depend on `cliclick`; the readiness probe treats `cliclick` as
+unavailable for click and drag when its diagnostic output reports missing
+Accessibility privileges for the current terminal/Codex host.
+`npm run check:native-pointer` is diagnostic-only by default and does not move
+the mouse; use `npm run check:native-pointer -- --require-pointer` only when a
+local release gate should fail until click/drag support is genuinely available.
+When macOS `cliclick` is installed but Accessibility permission is missing, the
+`check:native-pointer -- --json` report, plus the affected
+`check:readiness -- --json` optional gaps, include `permission_recovery` with:
+
+- `settings_path`: the exact System Settings pane to open.
+- `open_settings_command`: a copyable macOS `open` command.
+- `manual_steps`: the verify command and explicit physical-gate command.
+- `safe_defaults`: confirmation that the readiness report does not move the
+  mouse, open Chrome, create managed tabs, or read browser private state.
+
+Default readiness optional proof gaps also include a compact `proof_plan`
+object with the active proof directory, missing proof ids, and the copyable
+`npm run plan:optional-live-proofs -- --json` command. This keeps agent/UI
+callers on the same collection path as the CLI without embedding the full plan
+in every readiness response. `native-live-linux` appears only in an explicit
+on-demand plan/audit and never creates a default readiness deduction.
+
+Set `TMWD_CAPTCHA_ASSIST_WRITE_PROOF=0` to disable that automatic proof write, or
+`TMWD_CAPTCHA_ASSIST_REQUIRE_PROOF=1` to fail the gate if the sanitized proof
+cannot be persisted.
+
+Proof files must be sanitized. The validator rejects keys whose names look like
+credentials, cookies, tokens, secrets, or session material. Do not store browser
+cookies, IdP tokens, screenshots with private data, passwords, authorization
+headers, or raw profile/session state in proof files.
+For external IdP proofs, tenant, account, email, username, phone, domain,
+provider, client, org, and user identifiers must be represented only as redacted,
+anonymous, hashed, synthetic, fixture, or test-tenant/test-provider values.
+
+The audit reports JSON parse failures as `invalid_file_count`. The plan/status
+commands separately report rejected proof candidates as `rejected_candidate_count`
+when a JSON proof targets the right requirement but still fails validation, for
+example when a generated `*.template.json` file is present, when a placeholder
+command remains, when a proof is expired, when required click/drag actions are
+missing, or when evidence does not explicitly state the safe boundaries.
+Rejected candidates remain visible for cleanup, but they do not block completion
+when every requirement already has a separate accepted proof. A passing proof
+must be explicit about these invariants:
+
+- Native proofs include `get_window_rect`, `click`, and `drag` actions and set
+  `provider_id:"native-os"`.
+- Native proofs set `evidence.managed_tab_only:true`.
+- CAPTCHA/native proofs include a current `source_identity` generated by the
+  gate; hand-authored, missing, or source-mismatched identities are rejected.
+- Native proofs set `evidence.fullscreen_screenshot:false`.
+- Native proofs set `evidence.window_rect_verified:true`,
+  `evidence.drag_completed:true`, `evidence.click_completed:true`, and
+  `evidence.browser_private_state_access:false`.
+- Native and IdP proofs set `evidence.secrets_redacted:true`.
+- Local CAPTCHA physical proofs set `evidence.browser_private_state_access:false`.
+- Local CAPTCHA physical proofs include visible slider movement evidence:
+  `evidence.slider_visual_offset`, `evidence.slider_delta_live`, and
+  `evidence.handle_transform`. The validator rejects local CAPTCHA proofs unless
+  both movement fields are at least `180` pixels and the transform is
+  `translateX(...px)`.
+- Local CAPTCHA physical proofs include checkbox click evidence:
+  `checkbox_completed:true` and `evidence.checkbox_click_inside:true`.
+
+Accepted proofs expose freshness metadata through `check:optional-live-proofs`,
+`plan:optional-live-proofs`, and `check:readiness`. This lets callers distinguish
+fresh accepted proof, soon-expiring proof, expired proof, and missing proof
+without reading or storing any browser private state.
+
+## Local CAPTCHA physical proof example
+
+```json
+{
+  "type": "captcha_physical_live",
+  "ok": true,
+  "platform": "darwin",
+  "provider_id": "native-os",
+  "actions": ["drag", "click"],
+  "checked_at": "2026-06-17T00:00:00.000Z",
+  "expires_at": "2026-09-17T00:00:00.000Z",
+  "command": "TMWD_CAPTCHA_ASSIST_PHYSICAL=1 TMWD_CAPTCHA_ASSIST_CONFIRM=1 npm run check:captcha-assist-physical-live",
+  "source_identity": {
+    "schema": "browser67.optional-proof-source.v1",
+    "source_scope": "physical-input-v1",
+    "digest_algorithm": "sha256-path-normalized-text-v1",
+    "project_version": "0.6.0",
+    "build_revision": "0123456789abcdef0123456789abcdef01234567",
+    "build_revision_source": "git",
+    "build_inputs_dirty": false,
+    "source_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_file_count": 250
+  },
+  "managed_tab_only": true,
+  "fixture": "local browser67-owned managed tab",
+  "slider_completed": true,
+  "checkbox_completed": true,
+  "fullscreen_screenshot": false,
+  "js_cdp_widget_click": false,
+  "secrets_redacted": true,
+  "evidence": {
+    "assist_target": "slider",
+    "assist_targets": ["slider", "checkbox"],
+    "slider_visual_offset": 260,
+    "slider_delta_live": "260",
+    "handle_transform": "translateX(260px)",
+    "checkbox_click_inside": true,
+    "checkbox_status_text": "completed",
+    "browser_private_state_access": false
+  }
+}
+```
+
+The `platform` must match the current host that runs `check:readiness`; stale or
+cross-host local CAPTCHA proofs do not satisfy the local physical gate.
+
+## Native proof example
+
+```json
+{
+  "type": "native_live",
+  "ok": true,
+  "platform": "linux",
+  "provider_id": "native-os",
+  "actions": ["get_window_rect", "click", "drag"],
+  "checked_at": "2026-06-17T00:00:00.000Z",
+  "expires_at": "2026-09-17T00:00:00.000Z",
+  "command": "TMWD_NATIVE_LIVE_PHYSICAL=1 TMWD_NATIVE_LIVE_CONFIRM=1 npm run proof:native-live -- --write",
+  "source_identity": {
+    "schema": "browser67.optional-proof-source.v1",
+    "source_scope": "physical-input-v1",
+    "digest_algorithm": "sha256-path-normalized-text-v1",
+    "project_version": "0.6.0",
+    "build_revision": "0123456789abcdef0123456789abcdef01234567",
+    "build_revision_source": "git",
+    "build_inputs_dirty": false,
+    "source_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_file_count": 250
+  },
+  "evidence": {
+    "fixture": "local browser67-owned managed tab",
+    "managed_tab_only": true,
+    "fullscreen_screenshot": false,
+    "secrets_redacted": true,
+    "window_rect_verified": true,
+    "window_rect_dimensions_positive": true,
+    "drag_completed": true,
+    "click_completed": true,
+    "visible_completion_verified": true,
+    "browser_private_state_access": false,
+    "finalized_managed_tabs_closed": true
+  }
+}
+```
+
+The dedicated gate creates `native-live-linux.json` or
+`native-live-win32.json` automatically on the matching target OS. Transfer only
+that sanitized JSON file to the release host, then use
+`proof:optional-live-record` for dry validation and canonical persistence.
+The target and release checkouts must have the same `physical-input-v1`
+behavior digest; copying an unexpired proof to different behavior source fails
+closed with a source-identity mismatch.
+The Linux artifact remains on-demand unless the audit is run with
+`--include-on-demand`.
+
+## External IdP proof example
+
+```json
+{
+  "type": "idp_live",
+  "ok": true,
+  "provider_kind": "oauth_popup",
+  "checked_at": "2026-06-17T00:00:00.000Z",
+  "expires_at": "2026-09-17T00:00:00.000Z",
+  "command": "npm run check:idp-oauth-popup-live",
+  "manual_required_verified": true,
+  "resume_verified": true,
+  "evidence": {
+    "approved_provider": "redacted test tenant",
+    "profile_scope": "repo-external exact-origin profile",
+    "secrets_redacted": true
+  }
+}
+```
+
+Valid `provider_kind` values are:
+
+- `oauth_popup`
+- `cross_domain_sso`
+- `mfa`
+
+These proofs do not replace deterministic local contracts. They only let the
+readiness audit distinguish "not implemented" from "implemented locally but not
+yet proven against approved external providers or other operating systems".

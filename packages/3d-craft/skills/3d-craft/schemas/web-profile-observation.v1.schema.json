@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://3d-craft.local/schemas/web-profile-observation.v1.schema.json",
+  "title": "3D-Craft viewer performance and resource observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "status", "source"],
+  "properties": {
+    "schema": {"const": "3d-craft.web-profile-observation.v1"},
+    "status": {"enum": ["PASS", "FAIL"]},
+    "source": {"const": "viewer-observability"},
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "sha256"],
+      "properties": {
+        "url": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "browser-runtime.v1.schema.json#/$defs/sha256"}
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visibility_state", "viewport", "device_pixel_ratio"],
+      "properties": {
+        "visibility_state": {"const": "visible"},
+        "viewport": {"$ref": "browser-runtime.v1.schema.json#/$defs/pair"},
+        "device_pixel_ratio": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "$ref": "browser-runtime.v1.schema.json#/properties/metrics",
+      "required": [
+        "draw_calls",
+        "triangles",
+        "geometries",
+        "textures",
+        "frame_p50_ms",
+        "frame_p95_ms"
+      ]
+    },
+    "performance_profile": {
+      "$ref": "browser-runtime.v1.schema.json#/$defs/performanceProfile"
+    },
+    "resource_stability": {
+      "$ref": "browser-runtime.v1.schema.json#/$defs/resourceStability"
+    },
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "PASS"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "asset": {},
+          "page": {},
+          "metrics": {},
+          "performance_profile": {
+            "type": "object",
+            "properties": {"test_status": {"const": "PASS"}},
+            "required": ["test_status"]
+          },
+          "resource_stability": {
+            "type": "object",
+            "properties": {"test_status": {"const": "PASS"}},
+            "required": ["test_status"]
+          }
+        },
+        "required": [
+          "asset",
+          "page",
+          "metrics",
+          "performance_profile",
+          "resource_stability"
+        ]
+      },
+      "else": {
+        "properties": {"reason": {}},
+        "required": ["reason"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "design-craft.product-ui-score.v1",
+  "case_id": "datahub-live-center-review-workbench-before",
+  "surface": "DataHub /content/live-center",
+  "route": "http://127.0.0.1:3000/content/live-center",
+  "evidence_level": "L4",
+  "expected_score": 86,
+  "acceptable_range": [
+    85,
+    87
+  ],
+  "maturity_band": "polished and professional",
+  "design_read": "Live review operations workbench for content/ecommerce operators, with restrained DataHub enterprise-console language, optimized for closing livestream evidence gaps.",
+  "screenshot_sha256": "a79713c06d20b7ab77e759a0b8175468e3259b7b45d84cdb1f659b1ce5e73a98",
+  "screenshot_dimensions": [
+    3024,
+    1638
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop-before",
+      "css_size": [
+        1512,
+        823
+      ],
+      "dimensions": [
+        3024,
+        1638
+      ],
+      "artifact_path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T143721691Z-ce83d279/artifacts/screenshot-viewport-datahub-live-center-before-desktop-20260630T143721693Z-014d4baf.png",
+      "artifact_sha256": "a79713c06d20b7ab77e759a0b8175468e3259b7b45d84cdb1f659b1ce5e73a98",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile-before",
+      "css_size": [
+        390,
+        844
+      ],
+      "dimensions": [
+        780,
+        1688
+      ],
+      "artifact_path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T144317Z-headless-before-mobile/artifacts/screenshot-viewport-datahub-live-center-before-mobile-headless-chrome.png",
+      "artifact_sha256": "119653d0bbcb7634a853678d2204723238742c50907906923637b3de0ce79c1f",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "authenticated_route": "Verified: final URL stayed on /content/live-center with h1 present and no login redirect.",
+    "selected_session": "Verified: one selected table row was present.",
+    "focus_visible": "Verified on desktop: selected row received a 2px brand-blue outline when focused.",
+    "horizontal_overflow": "Verified: no page-level horizontal overflow on desktop or mobile; table uses contained horizontal scrolling."
+  },
+  "layout_metrics": {
+    "desktop": {
+      "page_header_height": 258,
+      "command_strip_height": 103,
+      "filter_panel_height": 71,
+      "workbench_top": 481,
+      "body_scroll_height": 2112
+    },
+    "mobile": {
+      "page_header_height": 526,
+      "command_strip_height": 298,
+      "filter_panel_height": 307,
+      "workbench_top": 1008,
+      "workbench_top_in_first_viewport": false,
+      "body_scroll_height": 5156
+    }
+  },
+  "required_findings": [
+    "Desktop already has a credible two-column operational workbench with selected-state and focus evidence.",
+    "Mobile first viewport buries the session queue: workbench starts at y=1008 below the 844px viewport.",
+    "Header, command cards, and filters take too much mobile vertical priority before the primary session queue.",
+    "The detail overview presents readiness after metrics and metadata, so next action is diluted.",
+    "Converted rows and selected rows both lean on brand blue, weakening selected-state semantics."
+  ],
+  "false_positive_guards": [
+    "Do not score this above 88 because mobile task priority is not resilient before the change.",
+    "Do not claim upload, empty, error, or active AI-running states were exhaustively verified.",
+    "Do not treat table-internal horizontal scroll as page-level overflow."
+  ]
+}

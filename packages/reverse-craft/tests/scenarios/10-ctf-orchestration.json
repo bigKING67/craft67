@@ -1,0 +1,2 @@
+{"schema":"reverse-craft.scenario.v1","id":"ctf-orchestration","title":"CTF route orchestration","scope":"offline competition fixture","hint":"CTF sandbox competition task","expected_route":"R41","artifact_name":"challenge.txt","artifact_content":"goal=flag{fixture_only}\nreset=local-script\n","kind":"challenge-manifest","finding":"The fixture declares a local reset and synthetic flag format","severity":"info","reproduction":"Read the two manifest lines from a clean fixture","path":"Challenge manifest to success artifact"}
+

@@ -1,0 +1,8 @@
+interface:
+  display_name: "3D Craft"
+  short_description: "Build and validate Blender-to-web 3D assets"
+  brand_color: "#E45C2A"
+  default_prompt: "Use $3d-craft to turn this product brief into a reproducible Blender asset, validated GLB, and evidence-backed web viewer."
+
+policy:
+  allow_implicit_invocation: true

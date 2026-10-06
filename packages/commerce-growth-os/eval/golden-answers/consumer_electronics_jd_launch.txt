@@ -1,0 +1,17 @@
+Decision: yes, but JD, Tmall, Douyin, and Xiaohongshu must do different jobs; do not make the three conversion channels identical.
+
+Confirmed facts: smart hardware brand, one hero model, good Xiaohongshu seeding, Tmall reviews.
+
+Assumptions: need model/spec, parameter proof, service cost, warranty, refund rate, inventory, and price ladder.
+
+Channel jobs: JD = search/trust/service/warranty/parameter comparison; Tmall = flagship review and brand-search conversion; Douyin = demo/live education and bundle conversion; Xiaohongshu = trust asset and scenario search mindshare.
+
+Economics: calculate unit economics and channel net profit by model after fee, coupon, logistics, return freight, warranty reserve, replacement, and after-sale service.
+
+Landing requirements: parameter table, Q&A/问大家, review, warranty/质保, service promise, accessory/refill path, delivery, compatibility, and after-sale script.
+
+Risk: direct price comparison, weak service promise, warranty cost, and confusing model/spec naming.
+
+Stop rule: stop JD test if search clicks do not convert or after-sale/refund cost rises. Scale rule: expand only when JD search CVR, review quality, service score, and channel net profit are stable.
+
+Mechanism: start with the hero model and service-proof landing, then expand only after the search-to-service funnel is proven. Owner: commercial lead with JD operations and after-sale owners. Success signal: profitable search conversion, stable warranty cost, and review quality above the launch threshold. Next review: weekly for the first four weeks and at the end of the launch test.

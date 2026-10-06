@@ -1,0 +1,117 @@
+{
+  "schema_version": "creative-craft.video-job.v2",
+  "job_id": "northstar-motion-proof-vertical-15s-v1",
+  "brief_id": "northstar-airlift-launch-v1",
+  "direction_id": "northstar-motion-proof-direction-v1",
+  "selected_route_id": "motion-is-proof",
+  "copy_sheet_id": "northstar-motion-proof-copy-v1",
+  "copy_unit_refs": [
+    "hero-headline"
+  ],
+  "declared_status": "ready",
+  "provider_profile": "bytedance.seedance-2.5.2026-07-31",
+  "execution_surface": "bytedance.jimeng_web",
+  "task_type": "reference_to_video",
+  "execution_mode": "single_pass",
+  "intended_use": "15-second vertical launch film for a social feed.",
+  "asset_refs": ["product-pack-001", "light-ref-001", "motion-ref-001"],
+  "duration_seconds": 15,
+  "format": {
+    "aspect_ratio": "9:16",
+    "resolution_target": "platform-high",
+    "language": "en"
+  },
+  "premise": "Prove light, touchable volume by placing the hairstyle under one elegant movement test.",
+  "end_state": "The bottle and lifted hair settle into a clean shared frame while the line 'VOLUME THAT MOVES' appears, followed by a quiet product sound resolve.",
+  "references": [
+    {
+      "asset_id": "product-pack-001",
+      "kind": "image",
+      "role": "Exact product geometry, cap, label, wordmark, and liquid color."
+    },
+    {
+      "asset_id": "light-ref-001",
+      "kind": "image",
+      "role": "Warm directional light and restrained shadow softness only."
+    },
+    {
+      "asset_id": "motion-ref-001",
+      "kind": "video",
+      "role": "Hair movement rhythm and camera acceleration only; do not copy talent identity or setting."
+    }
+  ],
+  "continuity_locks": [
+    "same fictional adult model hair color, length, texture, and styling across all shots",
+    "same bottle geometry, label, cap, and liquid color",
+    "warm-white studio and upper-left key light",
+    "restrained premium visual language",
+    "hair remains lifted but touchable, never rigid"
+  ],
+  "timeline": [
+    {
+      "start": 0,
+      "end": 3,
+      "visual": "Extreme close-up of a few lifted hair strands and the silver cap edge in warm light; the frame begins almost still.",
+      "action": "A soft current of air begins and the strands respond gradually.",
+      "camera": "Very slow macro push-in with stable focus and no cut.",
+      "audio": "Quiet studio ambience, one subtle inhale-like air rise."
+    },
+    {
+      "start": 3,
+      "end": 9,
+      "visual": "Medium back-and-side view of the adult model in the warm minimal studio, product on a low pedestal in the foreground.",
+      "action": "The model performs one controlled turn. Hair opens into a fluid arc, then remains visibly lifted as it moves.",
+      "camera": "Track with the turn, then arc about 30 degrees around the subject; preserve product visibility and avoid frantic motion.",
+      "audio": "Soft fabric movement and a restrained percussive pulse synchronized to the turn."
+    },
+    {
+      "start": 9,
+      "end": 15,
+      "visual": "The movement resolves into a vertical product-and-hair hero composition with clean copy space.",
+      "action": "Hair settles naturally without collapsing; the bottle remains perfectly stable. The exact line appears: VOLUME THAT MOVES.",
+      "camera": "Gentle pull back into the final locked frame; hold the last second.",
+      "audio": "A quiet glass-like product click and warm low-frequency resolve; no voiceover."
+    }
+  ],
+  "environment": {
+    "lighting": "Warm upper-left directional key, controlled silver highlights, realistic hair translucency and contact shadows.",
+    "materials": "Natural hair fiber detail, transparent bottle, silver cap, amber liquid, matte warm-white set.",
+    "physics": "Hair movement follows inertia, gravity, air resistance, and the completed body turn; no impossible strand reversal or clipping."
+  },
+  "dialogue_audio": {
+    "dialogue": [],
+    "voice": "",
+    "ambience": "Quiet premium studio room tone with subtle air movement.",
+    "effects": [
+      "soft hair/fabric movement",
+      "single glass-like product click"
+    ],
+    "music": "Minimal restrained pulse that enters at 3 seconds and resolves under the final frame; original or properly licensed."
+  },
+  "edit": {
+    "range": null,
+    "change": [],
+    "preserve": []
+  },
+  "exclude": [
+    "no extra text before the final line",
+    "no medical or hair-growth claims",
+    "no facial close-up or identifiable real person",
+    "no bottle deformation or label drift",
+    "no rigid hairspray look",
+    "no chaotic camera motion",
+    "no accidental subtitles or watermark"
+  ],
+  "inspection": [
+    "Verify bottle and label fidelity in every visible frame.",
+    "Verify the same hair identity and styling across shots.",
+    "Verify motion, contact, inertia, and settling are physically plausible.",
+    "Verify camera path follows the timeline and final frame holds.",
+    "Verify exact final text and absence of accidental text.",
+    "Verify audio synchronization, rights status, and delivery specification."
+  ],
+  "rights": {
+    "status": "CLEARED",
+    "notes": "Fictional assets, fictional adult model reference, original/licensed audio required."
+  }
+}

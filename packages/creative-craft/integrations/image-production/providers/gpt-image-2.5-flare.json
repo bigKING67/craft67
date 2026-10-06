@@ -1,0 +1,63 @@
+{
+  "schema_version": "creative-craft.provider.v1",
+  "profile_id": "openai.gpt-image-2.5-flare.2026-09-08",
+  "provider": "OpenAI",
+  "model": "gpt-image-2.5-flare",
+  "verified_at": "2026-10-04",
+  "authority": "official",
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+    "https://developers.openai.com/api/docs/guides/image-prompting",
+    "https://developers.openai.com/api/docs/guides/image-generation"
+  ],
+  "availability": {
+    "image_api_generation": true,
+    "image_api_edit": true,
+    "network_adapter_in_optional_module": true
+  },
+  "capabilities": {
+    "size": {
+      "max_edge_px": 3840,
+      "edge_multiple_px": 16,
+      "max_aspect_ratio": 3.0,
+      "min_total_pixels": 655360,
+      "max_total_pixels": 8294400,
+      "experimental_above_total_pixels": 3686400
+    },
+    "official_quality": [
+      "auto",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "official_background": [
+      "auto",
+      "opaque",
+      "transparent"
+    ],
+    "adapter_quality": [
+      "auto",
+      "low",
+      "medium",
+      "high"
+    ],
+    "adapter_background": [
+      "auto",
+      "opaque",
+      "transparent"
+    ],
+    "transparent_background": true
+  },
+  "workflow_guidance": {
+    "role": "speed and everyday image generation",
+    "documented_snapshot": "gpt-image-2.5-flare-2026-09-08"
+  },
+  "known_limitations": [
+    "Optional module profiles; not installed Skill profiles.",
+    "Current canonical Image Job limits adapter quality; xhigh/max require a later contract update.",
+    "Gateway aliases do not verify actual upstream snapshot or billing.",
+    "Mask is guidance; deterministic composite enforces protected pixels."
+  ]
+}

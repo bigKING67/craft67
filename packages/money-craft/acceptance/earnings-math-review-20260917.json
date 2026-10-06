@@ -1,0 +1,54 @@
+{
+  "schema": "money-craft.earnings-math-review.v1",
+  "date": "2026-09-17",
+  "scope": "Two complete runtime modules and relevant tests/helpers; not full dependency or repository audit",
+  "source_hashes": {
+    "skills/money-craft/scripts/earnings_crosscheck.py": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+    "skills/money-craft/scripts/earnings_drivers.py": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+    "tests/test_earnings_crosscheck.py": "cd3f52f25aefe03c7efddc3734c7837afa5aa8a46276f07a245a30e7682a7659",
+    "tests/test_earnings_drivers.py": "55763b381417c6a337a63942ac019854e8041714c1b48bcf712f605576354bf8"
+  },
+  "decisions": [
+    {
+      "module": "earnings_crosscheck.py",
+      "disposition": "KEEP",
+      "evidence": "12 existing synthetic tests pass; read complete module. Cumulative subtraction requires explicit YTD basis; missing prior value stays missing; 1%/5% thresholds checked including ambient precision; capture hash/date/identity checks retain PARTIAL and UNVERIFIED claim support.",
+      "limits": "Declared checks only; provider capture and source labels do not prove issuer facts, extraction accuracy, or point-in-time availability."
+    },
+    {
+      "module": "earnings_drivers.py",
+      "disposition": "KEEP",
+      "evidence": "12 existing synthetic tests pass; read complete module. Historical totals reconcile within stated tolerance; ordered scenarios, single-driver sensitivity, fixed-order attribution and explicit residual; unsupported loss-making intermediate suppresses bridge instead of inventing contributions.",
+      "limits": "Conditional arithmetic, not causal or forecast proof; actuals and forecast inputs rely on supplied source semantics."
+    }
+  ],
+  "validation": {
+    "crosscheck_tests": 12,
+    "driver_tests": 12,
+    "full_suite": "NOT_RERUN_NO_RUNTIME_CHANGES",
+    "source_checks": 19
+  },
+  "independent_review": {
+    "agent": "earnings_math_review",
+    "disposition": "KEEP",
+    "verdict": "NO_BLOCKING_FINDINGS",
+    "tests": 24,
+    "additional_probe_count": 9,
+    "additional_observations": "Zero/negative primary values, thresholds, Q1 and Q3/Q4 cumulative conversions, driver entry with ambient precision=2 passed.",
+    "evidence_boundary": "Additional probes are reviewer-reported temporary fixtures, not persisted test cases.",
+    "source_hashes": {
+      "skills/money-craft/scripts/earnings_crosscheck.py": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+      "skills/money-craft/scripts/earnings_drivers.py": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3"
+    }
+  },
+  "limits": [
+    "Offline synthetic validation; no current provider request or real issuer re-extraction.",
+    "No runtime changes or installation required.",
+    "No app, commit, push or release."
+  ],
+  "dependency_hashes": {
+    "skills/money-craft/scripts/earnings_update.py": "085ad3a06ebf55ccebabd91abd21fcc39f06499585d96690d0887dfdd92b58c0",
+    "skills/money-craft/scripts/earnings_baseline.py": "7836e30a7e1a5710aa298e6a50abe99b2d2974052584544893673ddd0bd260ce",
+    "skills/money-craft/scripts/financial_rigor.py": "1dd16d4a08a1a0c09c6402855cbbba9d02f45f5b8ae00f734b94b96e64f743b6"
+  }
+}

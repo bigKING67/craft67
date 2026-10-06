@@ -1,0 +1,150 @@
+{
+  "schema": "money-craft.liquidity-semantic-cases.v1",
+  "scope": "Six synthetic authored pairs motivated by research; not issuer data, held-out evaluation, or runtime semantic verdict",
+  "cases": [
+    {
+      "id": "unequal-periods",
+      "category": "期间口径",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构研究样本；金额单位百万元，每股价格例外为元。同一子公司2025年前九月亏损10，2026上半年亏损80；没有2025上半年和单季数据。",
+      "task": "计算给定算式并判断结论范围，保留可支持事实及未决事项。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "80",
+          "10"
+        ],
+        "expected": "70",
+        "tolerance": "0"
+      },
+      "supported_claim": "两段亏损金额相差70，但期间不可比，不能称同比或环比扩大；可确认两个期间均亏损。",
+      "contradicted_claim": "亏损同比扩大70，已证明经营恶化。",
+      "review_rationale": "缺同期窗口；阻断增长归因，不阻断各期事实。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "bill-stock-flow",
+      "category": "票据存量与流量",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构研究样本；金额单位百万元，每股价格例外为元。半年OCF为90，期末已背书或贴现未到期余额300，混合背书与贴现，未披露期间贴现收款。",
+      "task": "计算给定算式并判断结论范围，保留可支持事实及未决事项。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "90",
+          "300"
+        ],
+        "expected": "-210",
+        "tolerance": "0"
+      },
+      "supported_claim": "相减为-210，但不是剔除贴现后的OCF；仍可引用披露OCF90及解释限制。",
+      "contradicted_claim": "真实经营现金流为-210，公司经营现金造假。",
+      "review_rationale": "期末余额不是期间现金流；没有造假证据。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "budget-payment",
+      "category": "预算与现金付款",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构研究样本；金额单位百万元，每股价格例外为元。厂房预算145，在建工程账面余额62；未披露累计付款、转固及应付款，设备和营运资金不在此预算内。",
+      "task": "计算给定算式并判断结论范围，保留可支持事实及未决事项。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "145",
+          "62"
+        ],
+        "expected": "83",
+        "tolerance": "0"
+      },
+      "supported_claim": "预算与账面余额差83，不能称剩余付款；厂房预算145已知，完整资金需求未知。",
+      "contradicted_claim": "还需现金83，除此之外没有扩产资金需求。",
+      "review_rationale": "预算、资产账面余额和付款口径不同。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "product-scope",
+      "category": "产品与主体",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构研究样本；金额单位百万元，每股价格例外为元。子公司收入300，发行人另披露其中机器人样品收入20，其余含工业母机；机器人尚在样品阶段。",
+      "task": "计算给定算式并判断结论范围，保留可支持事实及未决事项。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "300",
+          "20"
+        ],
+        "expected": "280",
+        "tolerance": "0"
+      },
+      "supported_claim": "其他收入差额280不能全部计入机器人，机器人样品收入20已获支持。",
+      "contradicted_claim": "机器人收入300，子公司已实现机器人规模化商业化。",
+      "review_rationale": "公司收入不是指定产品收入；样品不能升级为量产。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "conditional-valuation",
+      "category": "敏感性与价值",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构研究样本；金额单位百万元，每股价格例外为元。当前EPS为2；研究者假设20倍PE，无同行或持续盈利依据。",
+      "task": "计算给定算式并判断结论范围，保留可支持事实及未决事项。",
+      "calculation": {
+        "id": "C01",
+        "operation": "multiply",
+        "inputs": [
+          "2",
+          "20"
+        ],
+        "expected": "40",
+        "tolerance": "0"
+      },
+      "supported_claim": "条件价格40只是敏感性，不是经验证合理价值；缺口不否定乘法。",
+      "contradicted_claim": "合理价值确定为40，低于40即可买入。",
+      "review_rationale": "正确乘法不认证退出倍数和盈利可持续性。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "completion-scope",
+      "category": "流程与判断收口",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构研究样本；金额单位百万元，每股价格例外为元。研究文件与计算审计已完成，已知收入100和成本70；现金可分配性尚未披露，有界检索已结束。",
+      "task": "计算给定算式并判断结论范围，保留可支持事实及未决事项。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "100",
+          "70"
+        ],
+        "expected": "30",
+        "tolerance": "0"
+      },
+      "supported_claim": "给定收入成本差30可交付；流程完成不证明可分配现金，留下下一披露窗口后停止重复检索。",
+      "contradicted_claim": "研究流程完成，所以30全部可分配；或者因现金未知，收入成本也不能交付。",
+      "review_rationale": "局部缺口不能升级结论，也不能抹去受支持事实。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    }
+  ]
+}

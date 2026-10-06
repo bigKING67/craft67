@@ -1,0 +1,77 @@
+{
+  "schema": "money-craft.review-delta.v1",
+  "checked_at_utc": "2026-09-19T14:36:11.361702+00:00",
+  "status": "PASS_BOUNDED_DELTA",
+  "reviewer": "main-agent",
+  "independent_review": false,
+  "trigger": "Real five-year Amazon research could not import earlier annual reports under correct source roles.",
+  "change": "Add optional historical annual sources S21/S22, avoiding existing Provider S14-S17; leave required and event sources unchanged.",
+  "files": [
+    {
+      "path": "skills/money-craft/scripts/research_workflow.py",
+      "before_sha256": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+      "after_sha256": "0833fd8a55911b38d7ace727e31ec7c8c4a1591956f03cbabbb20ce906538db1"
+    },
+    {
+      "path": "skills/money-craft/scripts/money_craft.py",
+      "before_sha256": "6523b3e76b658877a0fb0ebf3f361afa4882910138950a844b54bbc9ca9b5f75",
+      "after_sha256": "31aa8294b16fffe92e1ce3af65252acdf7622d74ccde725ec5123ab77f8b82c9"
+    },
+    {
+      "path": "skills/money-craft/references/company-research.md",
+      "before_sha256": "70f1a1eea7c26ee77f79998e0e61fc7fc372b36a9c97ad5d32b0547f6b381c6a",
+      "after_sha256": "4dfb0152cd57210fc14a0a6c347bea6e1c7b405404106d60589aee557203e4b7"
+    },
+    {
+      "path": "tests/test_research_run.py",
+      "before_sha256": null,
+      "after_sha256": "30705f72eebe4af486995b773a087b515a42d1adc75bbf6d2f466cac6c85eb70"
+    },
+    {
+      "path": "tests/test_workflow.py",
+      "before_sha256": null,
+      "after_sha256": "8c91682b732c0deb73282c0221b74e6ef756824340e3951c8f1cadb8f6bbad8c"
+    }
+  ],
+  "review_scope": [
+    "IDs unique for Fuyao and yfinance operations",
+    "Optional absence does not block existing required source gate",
+    "Historical report import participates in exact citation binding and hash validation",
+    "Saved older plan without new slots remains immutable and finalizes under its original contract",
+    "No new network dependency, account action, migration or automatic source acceptance"
+  ],
+  "regressions": [
+    "Historical annual import, reference, finalize and post-seal tamper rejection",
+    "Old saved plan without historical slots still finalizes byte-unchanged"
+  ],
+  "validation": {
+    "full_tests": 481,
+    "source_checks": 19,
+    "package_checks": 8,
+    "artifacts": [
+      {
+        "path": "local/research/20260919-amazon-thesis/full-tests-r2.txt",
+        "sha256": "b33a9bb0669e84484b4f9c163f342d65295cd368503e643c200b0e9a68cae1cb",
+        "bytes": 582
+      },
+      {
+        "path": "local/research/20260919-amazon-thesis/source-validation-r2.json",
+        "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684",
+        "bytes": 622
+      },
+      {
+        "path": "local/research/20260919-amazon-thesis/package-check-r2.json",
+        "sha256": "360b6f84bc6eb68e7f8739d2ab459c91630ba93acd211e164742ad6d72c2f13c",
+        "bytes": 348
+      }
+    ]
+  },
+  "failures_preserved": [
+    "Initial S14/S15 draft collided with Provider slots; corrected to S21/S22 before delivery",
+    "Self-test fixed to assert the expanded official-source contract; first full-test failure preserved"
+  ],
+  "limits": [
+    "Delta review supplements earlier whole-file reviews; not a new full-repository audit",
+    "Global install left at earlier frozen Skill; package-specific installed smoke passed"
+  ]
+}

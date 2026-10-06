@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/reverse-craft/schemas/report.schema.json",
+  "title": "Reverse Craft report receipt v1",
+  "type": "object",
+  "required": ["schema", "case_id", "path", "sha256"],
+  "properties": {
+    "schema": {"const": "reverse-craft.report.v1"},
+    "case_id": {"pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "path": {"type": "string", "minLength": 1},
+    "sha256": {"pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.industry-window-install.v1",
+  "status": "PASS_GLOBAL_INSTALL",
+  "date": "2026-09-20",
+  "authorization": "User explicitly confirmed installation of the reviewed frozen candidate.",
+  "version": "0.3.0",
+  "release": false,
+  "destination": "~/.agents/skills/money-craft",
+  "backup": "~/.agents/.skills-backups/money-craft.20260920T061420935474Z",
+  "backup_hash_verified": true,
+  "source_candidate_installed_files": 75,
+  "changed_content": [
+    "references/high-growth-alpha.md"
+  ],
+  "installation_method": "Repository installer after exact source/candidate hash verification; complete pre-install state preserved and checked against backup.",
+  "runtime_self_test": {
+    "schema": "money-craft.self-test.v1",
+    "scope": "runtime",
+    "version": "0.3.0",
+    "runtime_valid": true,
+    "network_used": false,
+    "checks": [
+      "thscode-validation",
+      "shanghai-date-conversion",
+      "report-audit",
+      "financial-audit",
+      "company-research-plan",
+      "research-run-case",
+      "global-security-research-plan",
+      "tracking-health-contract",
+      "report-renderer-assets"
+    ],
+    "errors": []
+  },
+  "source_behavior": "acceptance/lithium-industry/observation-review.json",
+  "new_installed_natural_language_host_run": "NOT_RUN; source behavior evidence and installed byte parity are distinct from a fresh installed host run",
+  "artifacts": {
+    "acceptance/industry-window-candidate-20260920.json": "5f3973c8f2a8a4193f0d7f57c12ab259cfbe750afcad22a29a1875ee812a200f",
+    "local/acceptance/20260920-industry-window-candidate/source-hashes.json": "5c086d53160fb827fe98c0b4370e00e55b22064ef21a291cbdd7e155c9f7ae11",
+    "local/acceptance/20260920-industry-window-candidate/pre-install-hashes.json": "4791568475b8ded35a8134c979d393e01801718b60fc6c3b7d215fc482aa3bbc",
+    "local/acceptance/20260920-industry-window-candidate/install.json": "7acb90cca10e63ef60ebbe40b314b386cad8bf38fc3abe0b97cdab5487a993b2",
+    "local/acceptance/20260920-industry-window-candidate/installed-self-test.json": "6e51159012160cf9c43a20647a1ed4e931cc7d1a87947283ad98c91ac4af2a21",
+    "local/acceptance/20260920-industry-window-candidate/bigking67-money-craft-0.3.0.tgz": "5c917ac72b6d36f123deaeb067a51cd81052242f88d85b89f8cd973d6e5a87ef"
+  },
+  "limits": [
+    "No commit, push, release or application work.",
+    "Prior candidate approval and source-only receipts remain historical records, not overwritten."
+  ]
+}

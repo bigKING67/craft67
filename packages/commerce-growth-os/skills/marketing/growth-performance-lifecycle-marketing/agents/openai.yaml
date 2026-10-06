@@ -1,0 +1,4 @@
+interface:
+  display_name: "Growth, Performance & Lifecycle｜增长效果与生命周期"
+  short_description: "付费媒体、搜索、转化实验、CRM、复购、召回和增量增长。"
+  default_prompt: "Use $growth-performance-lifecycle-marketing to design a bounded growth or lifecycle experiment with economics, attribution, stop rules, scale rules, and asset learning."

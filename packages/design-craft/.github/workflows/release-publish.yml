@@ -1,0 +1,191 @@
+name: Release publication
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_level:
+        description: Certified release evidence level
+        type: choice
+        required: true
+        options:
+          - operational_95
+          - certified_100
+      tag:
+        description: Existing annotated version tag
+        type: string
+        required: true
+      certification_run_id:
+        description: Successful Release certification workflow run ID
+        type: string
+        required: true
+      certification_artifact_id:
+        description: Exact certification artifact ID from the successful run
+        type: string
+        required: true
+      certification_artifact_digest:
+        description: Exact certification artifact digest, sha256:<64 lowercase hex>
+        type: string
+        required: true
+      confirm_publication:
+        description: Enter publish-<tag>, for example publish-v0.5.1
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-publication-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    permissions:
+      actions: read
+      contents: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_LEVEL: ${{ inputs.release_level }}
+      RELEASE_TAG: ${{ inputs.tag }}
+      CERTIFICATION_RUN_ID: ${{ inputs.certification_run_id }}
+      CERTIFICATION_ARTIFACT_ID: ${{ inputs.certification_artifact_id }}
+      CERTIFICATION_ARTIFACT_DIGEST: ${{ inputs.certification_artifact_digest }}
+      CONFIRM_PUBLICATION: ${{ inputs.confirm_publication }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: main
+          fetch-depth: 0
+          submodules: recursive
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Configure isolated verification paths
+        shell: bash
+        run: |
+          echo "CERTIFICATION_RUN_OBSERVATION=${RUNNER_TEMP}/certification-run-observation.json" >> "${GITHUB_ENV}"
+          echo "CERTIFICATION_ARTIFACT_OBSERVATION=${RUNNER_TEMP}/certification-artifact-observation.json" >> "${GITHUB_ENV}"
+          echo "CERTIFICATION_ARCHIVE=${RUNNER_TEMP}/release-certification.zip" >> "${GITHUB_ENV}"
+      - name: Verify immutable publication inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_tag="v$(cat VERSION)"
+          test "${RELEASE_TAG}" = "${expected_tag}"
+          test "${CONFIRM_PUBLICATION}" = "publish-${RELEASE_TAG}"
+          [[ "${CERTIFICATION_RUN_ID}" =~ ^[1-9][0-9]*$ ]]
+          [[ "${CERTIFICATION_ARTIFACT_ID}" =~ ^[1-9][0-9]*$ ]]
+          [[ "${CERTIFICATION_ARTIFACT_DIGEST}" =~ ^sha256:[0-9a-f]{64}$ ]]
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          test "$(git cat-file -t "${RELEASE_TAG}")" = tag
+          test "$(git rev-list -n 1 "${RELEASE_TAG}")" = "$(git rev-parse HEAD)"
+          if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            echo "GitHub Release ${RELEASE_TAG} already exists; publish a new version instead" >&2
+            exit 2
+          fi
+          git switch -C main "$(git rev-parse HEAD)"
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+      - name: Observe exact certification run and artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          artifact_name="release-certification-${RELEASE_TAG}-${CERTIFICATION_RUN_ID}"
+          python3 -m tools.design_craft release run-observation \
+            --kind certification \
+            --run-id "${CERTIFICATION_RUN_ID}" \
+            --output "${CERTIFICATION_RUN_OBSERVATION}"
+          python3 -m tools.design_craft release artifact-observation \
+            --artifact-id "${CERTIFICATION_ARTIFACT_ID}" \
+            --certification-observation "${CERTIFICATION_RUN_OBSERVATION}" \
+            --expected-name "${artifact_name}" \
+            --output "${CERTIFICATION_ARTIFACT_OBSERVATION}"
+      - name: Download and hash exact certification artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "repos/${GITHUB_REPOSITORY}/actions/artifacts/${CERTIFICATION_ARTIFACT_ID}/zip" \
+            > "${CERTIFICATION_ARCHIVE}"
+          actual_digest="sha256:$(sha256sum "${CERTIFICATION_ARCHIVE}" | cut -d' ' -f1)"
+          test "${actual_digest}" = "${CERTIFICATION_ARTIFACT_DIGEST}"
+          mkdir -p dist/certification
+          unzip -q "${CERTIFICATION_ARCHIVE}" -d dist/certification
+      - name: Revalidate certification identity and exact assets
+        shell: bash
+        run: >-
+          python3 -m tools.design_craft release certification validate
+          --level "${RELEASE_LEVEL}"
+          --input-dir dist/certification
+          --certification-observation "${CERTIFICATION_RUN_OBSERVATION}"
+          --artifact-observation "${CERTIFICATION_ARTIFACT_OBSERVATION}"
+          --artifact-id "${CERTIFICATION_ARTIFACT_ID}"
+          --artifact-digest "${CERTIFICATION_ARTIFACT_DIGEST}"
+
+  publish:
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      actions: read
+      contents: write
+      id-token: write
+      attestations: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_LEVEL: ${{ inputs.release_level }}
+      RELEASE_TAG: ${{ inputs.tag }}
+      CERTIFICATION_ARTIFACT_ID: ${{ inputs.certification_artifact_id }}
+      CERTIFICATION_ARTIFACT_DIGEST: ${{ inputs.certification_artifact_digest }}
+    steps:
+      - name: Reconfirm immutable tag and release absence
+        shell: bash
+        run: |
+          set -euo pipefail
+          read -r ref_type tag_object_sha < <(
+            gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" \
+              --jq '"\(.object.type) \(.object.sha)"'
+          )
+          test "${ref_type}" = tag
+          read -r target_type target_sha < <(
+            gh api "repos/${GITHUB_REPOSITORY}/git/tags/${tag_object_sha}" \
+              --jq '"\(.object.type) \(.object.sha)"'
+          )
+          test "${target_type}" = commit
+          test "${target_sha}" = "${GITHUB_SHA}"
+          if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            echo "GitHub Release ${RELEASE_TAG} already exists; publish a new version instead" >&2
+            exit 2
+          fi
+      - name: Download previously verified immutable artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive="${RUNNER_TEMP}/release-certification.zip"
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "repos/${GITHUB_REPOSITORY}/actions/artifacts/${CERTIFICATION_ARTIFACT_ID}/zip" \
+            > "${archive}"
+          actual_digest="sha256:$(sha256sum "${archive}" | cut -d' ' -f1)"
+          test "${actual_digest}" = "${CERTIFICATION_ARTIFACT_DIGEST}"
+          mkdir -p dist/certification
+          unzip -q "${archive}" -d dist/certification
+          test -f dist/certification/certification.json
+          test -d dist/certification/release
+      - name: Attest exact certified release assets
+        uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a # v3
+        with:
+          subject-path: dist/certification/release/*
+      - name: Publish final GitHub Release
+        shell: bash
+        run: >-
+          gh release create "${RELEASE_TAG}"
+          dist/certification/release/*
+          --verify-tag
+          --title "${RELEASE_TAG}"
+          --generate-notes

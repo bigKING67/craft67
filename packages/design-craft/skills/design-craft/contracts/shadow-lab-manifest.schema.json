@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/skills/design-craft/contracts/shadow-lab-manifest.schema.json",
+  "title": "design-craft shadow lab manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "lab_id", "created_at", "state", "source", "isolation", "snapshot"],
+  "properties": {
+    "schema": {"const": "design-craft.shadow-lab-manifest.v1"},
+    "lab_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "state": {"const": "prepared"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo_path", "requested_ref", "commit", "baseline", "snapshot_mode"],
+      "properties": {
+        "repo_path": {"type": "string", "minLength": 1},
+        "requested_ref": {"type": "string", "minLength": 1},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
+        "snapshot_mode": {"const": "git-archive-fixed-commit"},
+        "baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "head",
+            "branch",
+            "status_sha256",
+            "tracked_diff_sha256",
+            "dirty_entry_count",
+            "dirty_entries",
+            "dirty_metadata_sha256",
+            "git_index",
+            "untracked_content_read"
+          ],
+          "properties": {
+            "head": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
+            "branch": {"type": ["string", "null"]},
+            "status_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "tracked_diff_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "dirty_entry_count": {"type": "integer", "minimum": 0},
+            "dirty_entries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["status", "path"],
+                "properties": {
+                  "status": {"type": "string", "minLength": 2, "maxLength": 2},
+                  "path": {"type": "string", "minLength": 1},
+                  "source_path": {"type": "string", "minLength": 1}
+                }
+              }
+            },
+            "dirty_metadata_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "git_index": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["present", "size", "mtime_ns"],
+              "properties": {
+                "present": {"type": "boolean"},
+                "size": {"type": "integer", "minimum": 0},
+                "mtime_ns": {"type": "integer", "minimum": 0}
+              }
+            },
+            "untracked_content_read": {"const": false}
+          }
+        }
+      }
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_writes_allowed",
+        "network_allowed",
+        "network_boundary",
+        "untracked_content_included",
+        "output_root",
+        "root_id",
+        "lab_dir",
+        "worktree",
+        "manifest_path",
+        "source_and_output_disjoint"
+      ],
+      "properties": {
+        "source_writes_allowed": {"const": false},
+        "network_allowed": {"const": false},
+        "network_boundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policy",
+            "authorization",
+            "enforcement",
+            "observation",
+            "evidence_status"
+          ],
+          "properties": {
+            "policy": {"enum": ["denied", "install_only", "allowed"]},
+            "authorization": {"enum": ["shadow_lab_default", "caller_declared"]},
+            "enforcement": {"const": "phase_receipts_required"},
+            "observation": {"const": "phase_receipts"},
+            "evidence_status": {"const": "pending"}
+          }
+        },
+        "untracked_content_included": {"const": false},
+        "output_root": {"type": "string", "minLength": 1},
+        "root_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+        "lab_dir": {"type": "string", "minLength": 1},
+        "worktree": {"type": "string", "minLength": 1},
+        "manifest_path": {"type": "string", "minLength": 1},
+        "source_and_output_disjoint": {"const": true}
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "file_count",
+        "total_bytes",
+        "archive_bytes",
+        "symlink_count",
+        "submodule_count"
+      ],
+      "properties": {
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "file_count": {"type": "integer", "minimum": 0},
+        "total_bytes": {"type": "integer", "minimum": 0},
+        "archive_bytes": {"type": "integer", "minimum": 0},
+        "symlink_count": {"const": 0},
+        "submodule_count": {"const": 0}
+      }
+    }
+  }
+}

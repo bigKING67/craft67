@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/findings.schema.json",
+  "title": "Validated review findings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "findings"],
+  "properties": {
+    "documentType": {"const": "review-craft.findings"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "lineStart", "lineEnd", "role"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "lineStart": {"type": "integer", "minimum": 1},
+        "lineEnd": {"type": "integer", "minimum": 1},
+        "role": {"type": "string", "minLength": 1},
+        "anchor": {"$ref": "#/$defs/anchor"}
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "sourceSide", "sourceSha256", "sourceLineCount", "spanSha256"],
+      "properties": {
+        "algorithm": {"const": "sha256-raw-lines-v1"},
+        "sourceSide": {"enum": ["CURRENT", "BASE"]},
+        "sourceSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "sourceLineCount": {"type": "integer", "minimum": 1},
+        "spanSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "strings": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "candidateId", "title", "category", "locations", "evidenceRefs", "rootCause", "currentImpact", "longTermRisk", "validationStatus", "confidence", "severity", "priority", "recommendation", "decisionId", "modificationCost", "modificationRisk", "verification"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "candidateId": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "category": {"type": "string", "minLength": 1},
+        "locations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/location"}},
+        "evidenceRefs": {"$ref": "#/$defs/strings"},
+        "rootCause": {"type": "string", "minLength": 1},
+        "currentImpact": {"type": "string", "minLength": 1},
+        "longTermRisk": {"type": "string", "minLength": 1},
+        "validationStatus": {"enum": ["CONFIRMED", "LIKELY"]},
+        "confidence": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+        "severity": {"enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO"]},
+        "priority": {"enum": ["P0", "P1", "P2", "P3"]},
+        "performanceClass": {"enum": ["MEASURED_REGRESSION", "ALGORITHMIC_RISK"]},
+        "recommendation": {"type": "string", "minLength": 1},
+        "decisionId": {"type": "string", "minLength": 1},
+        "modificationCost": {"type": "string", "minLength": 1},
+        "modificationRisk": {"type": "string", "minLength": 1},
+        "verification": {"$ref": "#/$defs/strings"}
+      }
+    }
+  }
+}

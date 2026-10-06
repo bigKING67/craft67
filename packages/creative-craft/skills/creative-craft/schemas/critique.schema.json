@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/critique.schema.json",
+  "title": "Creative Craft Critique v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "critique_id",
+    "asset_id",
+    "observations",
+    "interpretations",
+    "performance_hypotheses",
+    "decisions",
+    "unknowns"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.critique.v1"
+    },
+    "critique_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "interpretations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "performance_hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "decision",
+          "evidence",
+          "reason",
+          "preserve",
+          "action",
+          "validation",
+          "confidence"
+        ],
+        "properties": {
+          "decision": {
+            "enum": [
+              "KEEP",
+              "AMPLIFY",
+              "POLISH",
+              "SIMPLIFY",
+              "RECOMPOSE",
+              "REWRITE",
+              "REGENERATE",
+              "RE_EDIT",
+              "RE_SHOOT",
+              "REPLACE",
+              "DROP",
+              "TEST",
+              "DEFER",
+              "DOCUMENT"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "preserve": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "action": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "validation": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

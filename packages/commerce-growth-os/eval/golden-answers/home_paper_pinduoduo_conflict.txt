@@ -1,0 +1,15 @@
+Decision: test only with a Pinduoduo 拼多多 channel-exclusive family pack; do not sell the same tissue/home cleaning hero pack at a lower all-in price.
+
+Confirmed facts: tissue/纸品 and home cleaning/家清 consumables; Pinduoduo wants low-price family pack for volume.
+
+Assumptions: freight/物流, packaging, refund, replacement, subsidy, platform fee, and region cost are not yet modeled.
+
+Economics: calculate channel net profit by order after product cost, freight, packaging reinforcement, coupon/subsidy, refund/replacement, missing-piece service, and fulfillment. Define minimum profit price and forbidden floor price.
+
+Pack design: use channel-exclusive spec, count, refill, scent, packaging, or barcode to avoid price conflict with Tmall/JD/Douyin. Link to repurchase through family stock-up and replenishment reminders.
+
+Risk: price conflict, brand price memory, leakage/damage/missing pieces, scent complaints, heavy-region freight loss, and weak reviews.
+
+Stop rule: stop if channel net profit is negative, refund/damage complaints rise, or Tmall/JD/Douyin price comparison appears. Scale rule: scale only when freight, refund, review quality, and repeat purchase are stable.
+
+Mechanism: isolate the Pinduoduo offer by specification and barcode, then validate freight and repeat economics before volume. Owner: commercial lead with Pinduoduo operations and logistics owners. Success signal: positive channel net profit without cross-channel price complaints. Next review: after the first two delivery cohorts and monthly thereafter.

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/evaluation/evidence-graph.schema.json",
+  "title": "design-craft evidence graph v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "domains", "bindings"],
+  "properties": {
+    "schema": {"const": "design-craft.evidence-graph.v2"},
+    "domains": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"pattern": "^[a-z0-9][a-z0-9-]*$"},
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["extends", "include"],
+        "properties": {
+          "extends": {
+            "type": "array",
+            "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+            "uniqueItems": true
+          },
+          "include": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cross_agent", "comparative", "operational"],
+      "properties": {
+        "cross_agent": {"$ref": "#/$defs/bindings"},
+        "comparative": {"$ref": "#/$defs/bindings"},
+        "operational": {"$ref": "#/$defs/bindings"}
+      }
+    }
+  },
+  "$defs": {
+    "bindings": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      }
+    }
+  }
+}

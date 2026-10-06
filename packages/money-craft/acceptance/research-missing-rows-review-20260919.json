@@ -1,0 +1,41 @@
+{
+  "schema": "money-craft.research-missing-rows-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Fuyao snapshot/valuations missing requested securities across research lifecycle",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "a976e4e8730d91a13239e5ee32f13d72d8350678e88654eda4d2975059789018",
+    "tests/test_research_missing_rows.py": "666c9498246819c888724862d45283db414338c4f5b4df98cf1c460f715560b7",
+    "tests/test_research_run.py": "bf9bc1a10e82e5bfb289333688a8c4dc7cd7ee56e90365be00e7ef79035ebc6e"
+  },
+  "validation": {
+    "new_tests": 2,
+    "research_tests": 49,
+    "full_tests": 449,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 1,
+    "lifecycle": "Temporary actual workspace files, synthetic provider runner: collect/resume/status/evidence exclusion/manifest raw bindings/finalize PARTIAL/tamper rejection. No live network."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "KEEP; no blockers; 49 tests passed",
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "a976e4e8730d91a13239e5ee32f13d72d8350678e88654eda4d2975059789018",
+      "tests/test_research_missing_rows.py": "666c9498246819c888724862d45283db414338c4f5b4df98cf1c460f715560b7",
+      "tests/test_research_run.py": "bf9bc1a10e82e5bfb289333688a8c4dc7cd7ee56e90365be00e7ef79035ebc6e"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Coverage based on requested and self-reported identities, not external truth or numeric validity.",
+    "Entire partial source excluded from citation support; no per-row evidence promotion.",
+    "Finalization may complete with explicit gaps; evidence_coverage remains PARTIAL.",
+    "Remaining research lifecycle and core-wide acceptance not closed."
+  ]
+}

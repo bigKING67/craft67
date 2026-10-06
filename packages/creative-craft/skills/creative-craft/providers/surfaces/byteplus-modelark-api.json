@@ -1,0 +1,11 @@
+{
+  "schema_version": "creative-craft.surface.v1",
+  "surface_id": "byteplus.modelark_api",
+  "provider": "BytePlus",
+  "label": "BytePlus ModelArk API",
+  "available": false,
+  "verified_at": "2026-08-04",
+  "provider_profiles": ["bytedance.seedance-2.5.2026-07-31"],
+  "modes": [],
+  "notes": ["Unavailable in this profile until official API availability and parameters are verified.", "Creative Craft includes no network adapter."]
+}

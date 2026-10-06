@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/financial-reconciliation-audit.schema.json",
+  "title": "Money Craft financial reconciliation audit",
+  "type": "object",
+  "required": ["schema", "valid", "checks", "warnings", "errors"],
+  "properties": {
+    "schema": {"const": "money-craft.financial-reconciliation-audit.v1"},
+    "valid": {"type": "boolean"},
+    "checks": {"type": "array", "items": {"type": "object"}},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "errors": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.retail-peer-acceptance.v1",
+  "executed_on": "2026-09-20",
+  "historical_as_of": "2025-04-30",
+  "scope": "Selected annual filings and peer-comparability boundaries",
+  "status": "PASS_BOUNDED_SELF_REVIEW",
+  "route": {
+    "id": "primary-source-earnings-review",
+    "status": "ready",
+    "exit_code": 0,
+    "depth": "standard",
+    "deliverable": "chat",
+    "archive_mode": "none",
+    "execution": "main_serial"
+  },
+  "actual_skill": "money-craft",
+  "source_count": 3,
+  "source_hashes_independently_rechecked": true,
+  "same_source_lineage_warning": true,
+  "calculation_receipts": 35,
+  "financial_audit_valid": true,
+  "semantic_mutations": 5,
+  "mutation_financial_audits_passed": 5,
+  "semantic_review": "main_agent_self_review",
+  "independent_host_acceptance": "NOT_RUN",
+  "automatic_semantic_detection": "NOT_CLAIMED",
+  "valuation_admission": "UNVERIFIED_MISSING_ALIGNED_MARKET_AND_CAPITAL_INPUTS",
+  "runtime_changed": false,
+  "frozen_source_installed_matching_files": 75,
+  "source_validation_checks_passed": 19,
+  "artifacts": {
+    "acceptance/retail-peer/calculations.json": "b2e3d65b17725af7b97c4089fb0c9efb842b6c43e00559062598bd8aca450597",
+    "acceptance/retail-peer/evidence-manifest.json": "255dcfff59b687060ee3cc6f44add2c7820c6c3f293ae8f3b407692e2b6e8049",
+    "acceptance/retail-peer/financial-audit.json": "fbd89a1c1c60561e5cc6e53f3d3793348fd7e1341926942ae0aa449e7d3dab54",
+    "acceptance/retail-peer/input.json": "c41d8eebc2fe21469fed6cb2233cdc1f169fd2357fafe41c1b77c5404f56f32a",
+    "acceptance/retail-peer/report.md": "76cda50c15785924898f08c8853d7a55974b71a3526f40a325472a199bdba68d",
+    "acceptance/retail-peer/semantic-review.json": "5e1ca4ce5a314fe1086a9d48775acdf595e9e4c23b59be71ad28bf89cd4f4cd0"
+  },
+  "limitations": [
+    "Source values manually extracted; no general automatic filing parser verified",
+    "No independent second-source numerical verification",
+    "Selected annual reports do not cover all latest interim disclosures at historical cutoff",
+    "No calibrated ranking, full comps engine, target price or current investment conclusion",
+    "No natural-language independent host acceptance in this turn"
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "before": {
+    "input": {
+      "calendar": "solar",
+      "date": "1996-07-19",
+      "time": "09:40:00",
+      "place": "合成地点（东经120度）",
+      "longitude": 120,
+      "timeZone": "Asia/Shanghai",
+      "gender": "female",
+      "timeBasis": "true-solar",
+      "dayBoundary": "zi",
+      "uncertaintyMinutes": 0
+    },
+    "chartId": "219eea8317c53033a396ddb81dd1b5d380074f1e00b90737ee30e0c181397902",
+    "evidenceId": "7e155f3e7aee71553c39e8d36f113a517eb9d07eecde1d48a8fed9639cf5303d"
+  },
+  "after": {
+    "input": {
+      "calendar": "solar",
+      "date": "1996-07-19",
+      "leapMonth": false,
+      "time": "10:10:00",
+      "uncertaintyMinutes": 0,
+      "place": "合成地点（东经120度）",
+      "longitude": 120,
+      "timeZone": "Asia/Shanghai",
+      "gender": "female",
+      "timeBasis": "true-solar",
+      "dayBoundary": "zi",
+      "dstDisambiguation": "reject"
+    },
+    "chartId": "5eaafde7605334042fa19cac2725f51a720e7e861a9622b7075711efd977679d",
+    "evidenceId": "adf1aa77b19a7ffce93b4023f572e80f0028d27261378cf2e25adbbc148c505e"
+  },
+  "changedFacts": [
+    {
+      "id": "C1-0e85dde8.input.time",
+      "before": {
+        "instant": "1996-07-19T01:40:00Z",
+        "civil": "1996-07-19T09:40:00+08:00[Asia/Shanghai]",
+        "trueSolar": "1996-07-19T09:33:48.249",
+        "chartClock": "1996-07-19T09:33:48.249",
+        "offsetMinutes": 480,
+        "longitudeCorrectionMinutes": 0,
+        "equationOfTimeMinutes": -6.195842195844185,
+        "totalCorrectionMinutes": -6.195842195844185,
+        "model": "NOAA fractional-year equation of time",
+        "solarShiftMinutes": 0,
+        "screeningMarginMinutes": 2
+      },
+      "after": {
+        "instant": "1996-07-19T02:10:00Z",
+        "civil": "1996-07-19T10:10:00+08:00[Asia/Shanghai]",
+        "trueSolar": "1996-07-19T10:03:48.143",
+        "chartClock": "1996-07-19T10:03:48.143",
+        "offsetMinutes": 480,
+        "longitudeCorrectionMinutes": 0,
+        "equationOfTimeMinutes": -6.197624806454264,
+        "totalCorrectionMinutes": -6.197624806454264,
+        "model": "NOAA fractional-year equation of time",
+        "solarShiftMinutes": 0,
+        "screeningMarginMinutes": 2
+      }
+    },
+    {
+      "id": "C1-0e85dde8.bazi.cycles",
+      "before": {
+        "direction": "backward",
+        "method": "lunar-typescript Yun sect=2; absolute birth vs Jie; original civil basis",
+        "startAge": {
+          "years": 4,
+          "months": 0,
+          "days": 28,
+          "hours": 8
+        },
+        "startInstant": "2000-08-16T09:40:00Z",
+        "startCivil": "2000-08-16T17:40:00+08:00[Asia/Shanghai]",
+        "decades": [
+          {
+            "index": 1,
+            "pillar": "甲午",
+            "startCivil": "2000-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2010-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 2,
+            "pillar": "癸巳",
+            "startCivil": "2010-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2020-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 3,
+            "pillar": "壬辰",
+            "startCivil": "2020-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2030-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 4,
+            "pillar": "辛卯",
+            "startCivil": "2030-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2040-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 5,
+            "pillar": "庚寅",
+            "startCivil": "2040-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2050-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 6,
+            "pillar": "己丑",
+            "startCivil": "2050-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2060-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 7,
+            "pillar": "戊子",
+            "startCivil": "2060-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2070-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 8,
+            "pillar": "丁亥",
+            "startCivil": "2070-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2080-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 9,
+            "pillar": "丙戌",
+            "startCivil": "2080-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2090-08-16T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 10,
+            "pillar": "乙酉",
+            "startCivil": "2090-08-16T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2100-08-16T17:40:00+08:00[Asia/Shanghai]"
+          }
+        ],
+        "yearly": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun"
+          }
+        ]
+      },
+      "after": {
+        "direction": "backward",
+        "method": "lunar-typescript Yun sect=2; absolute birth vs Jie; original civil basis",
+        "startAge": {
+          "years": 4,
+          "months": 1,
+          "days": 0,
+          "hours": 20
+        },
+        "startInstant": "2000-08-19T22:10:00Z",
+        "startCivil": "2000-08-20T06:10:00+08:00[Asia/Shanghai]",
+        "decades": [
+          {
+            "index": 1,
+            "pillar": "甲午",
+            "startCivil": "2000-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2010-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 2,
+            "pillar": "癸巳",
+            "startCivil": "2010-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2020-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 3,
+            "pillar": "壬辰",
+            "startCivil": "2020-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2030-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 4,
+            "pillar": "辛卯",
+            "startCivil": "2030-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2040-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 5,
+            "pillar": "庚寅",
+            "startCivil": "2040-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2050-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 6,
+            "pillar": "己丑",
+            "startCivil": "2050-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2060-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 7,
+            "pillar": "戊子",
+            "startCivil": "2060-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2070-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 8,
+            "pillar": "丁亥",
+            "startCivil": "2070-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2080-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 9,
+            "pillar": "丙戌",
+            "startCivil": "2080-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2090-08-20T06:10:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 10,
+            "pillar": "乙酉",
+            "startCivil": "2090-08-20T06:10:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2100-08-20T06:10:00+08:00[Asia/Shanghai]"
+          }
+        ],
+        "yearly": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun"
+          }
+        ]
+      }
+    }
+  ],
+  "allOtherFactValuesEqual": true,
+  "oldReportRejected": true
+}

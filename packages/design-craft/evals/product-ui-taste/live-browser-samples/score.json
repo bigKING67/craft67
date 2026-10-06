@@ -1,0 +1,97 @@
+{
+  "case_id": "live-browser-samples",
+  "evidence_level": "L2",
+  "collected_at": "2026-06-30T08:58:00Z",
+  "browser_tooling": {
+    "runtime": "tmwd",
+    "screenshot_path_policy": "repo-external artifacts under ~/.tmwd-browser-mcp/runtime/runs",
+    "screenshot_method": "TMWD browser_screenshot_ops using Page.captureScreenshot",
+    "binary_screenshots_committed": false
+  },
+  "cases": [
+    {
+      "case_id": "cpa-management-quota",
+      "page_type": "admin quota management",
+      "evidence_level": "L2",
+      "expected_score": 83,
+      "acceptable_range": [81, 85],
+      "maturity_band": "clean but generic",
+      "screenshot_sha256": "0b306daf2d8a335472642a78f21a736fd6c83cfb68f28fbfb54e23813f6e198c",
+      "screenshot_dimensions": [3024, 1646],
+      "required_findings": [
+        "dark visual system is polished enough to avoid a rough or unfinished score",
+        "large empty content area weakens composition and density",
+        "high quota usage should use warning or risk semantics rather than only green progress",
+        "account or auth-file identifiers should be visually demoted or redacted in public review artifacts"
+      ],
+      "false_positive_guards": [
+        "do not treat local browser screenshot evidence as responsive validation",
+        "do not claim hover, focus, loading, empty, or error states were verified",
+        "do not store raw account identifiers in the eval case"
+      ]
+    },
+    {
+      "case_id": "cpa-usage-keeper",
+      "page_type": "analytics dashboard",
+      "evidence_level": "L2",
+      "expected_score": 88,
+      "acceptable_range": [86, 90],
+      "maturity_band": "polished and professional",
+      "screenshot_sha256": "bf0800788469cb0d60a6dbb163f0b74bad67e1ce3e2f32ab0d062e4cf13f453c",
+      "screenshot_dimensions": [3024, 1646],
+      "required_findings": [
+        "strong dark-dashboard visual language and large metric hierarchy",
+        "filters, tabs, and cards are visually coherent but create a tall first-screen rhythm",
+        "secondary labels and chart context need stronger contrast for dense operational scanning",
+        "card gradients and glow should stay subordinate to metric meaning"
+      ],
+      "false_positive_guards": [
+        "do not call the page generic AI slop just because it uses cards",
+        "do not score above 92 without responsive and state evidence",
+        "do not claim cost accuracy or data correctness from UI evidence"
+      ]
+    },
+    {
+      "case_id": "groland-datahub-home",
+      "page_type": "enterprise app home / product gateway",
+      "evidence_level": "L2",
+      "expected_score": 86,
+      "acceptable_range": [84, 88],
+      "maturity_band": "polished and professional",
+      "screenshot_sha256": "316ecd4221d81797a22e0d70cacf9a13f3d8e561ee02ea60600cb1e770570e82",
+      "screenshot_dimensions": [3024, 1646],
+      "required_findings": [
+        "clear premium-light composition with strong hero typography",
+        "hero and feature cards feel more like a product gateway than an operational cockpit",
+        "capability cards share similar visual weight and need clearer next-step priority",
+        "top navigation is clean but active destination hierarchy should remain obvious across real routes"
+      ],
+      "false_positive_guards": [
+        "do not recommend landing-page drama that would hurt enterprise calmness",
+        "do not score as exceptional without interaction and responsive evidence",
+        "do not confuse polished surface treatment with product-task specificity"
+      ]
+    },
+    {
+      "case_id": "groland-content-assets-live",
+      "page_type": "material operations dashboard",
+      "evidence_level": "L2",
+      "expected_score": 82,
+      "acceptable_range": [80, 84],
+      "maturity_band": "clean but generic",
+      "screenshot_sha256": "6c05a3c171460bf65a2132fbbe4709085d2c46fda59f0c7a5decf68b9544476a",
+      "screenshot_dimensions": [3024, 1646],
+      "required_findings": [
+        "metric grid treats backlog, risk, completion, and capacity with similar visual weight",
+        "authorization, script, and video-ID backlog should become a prioritized task queue",
+        "hero is spacious but underuses the most valuable first-screen area",
+        "internal terms such as asset_id, preview, TOS, and video ID should be softened or explained"
+      ],
+      "false_positive_guards": [
+        "do not call the page rough or unfinished",
+        "do not claim responsive or interaction-state validation from the browser viewport alone",
+        "do not score above 84 while flat hierarchy and card soup remain the main issue"
+      ]
+    }
+  ]
+}

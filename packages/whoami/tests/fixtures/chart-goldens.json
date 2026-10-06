@@ -1,0 +1,69 @@
+{
+  "note": "外部公开样例，非 whoami 自生成答案；属于依赖适配回归，不是独立天文算法认证。精确版本见 docs/research/source-manifest.json。",
+  "bazi": [
+    {
+      "date": "2005-12-23",
+      "time": "08:37:00",
+      "expected": ["乙酉", "戊子", "辛巳", "壬辰"],
+      "source": "https://github.com/6tail/lunar-typescript/blob/master/src/test/EightCharTest.ts#L5"
+    },
+    {
+      "date": "1988-02-15",
+      "time": "22:30:00",
+      "expected": ["戊辰", "甲寅", "庚子", "丁亥"],
+      "source": "https://github.com/6tail/lunar-typescript/blob/master/src/test/EightCharTest.ts"
+    },
+    {
+      "date": "1988-02-15",
+      "time": "23:30:00",
+      "expected": ["戊辰", "甲寅", "辛丑", "戊子"],
+      "source": "https://github.com/6tail/lunar-typescript/blob/master/src/test/EightCharTest.ts (sect=1)"
+    },
+    {
+      "date": "1988-02-02",
+      "time": "22:30:00",
+      "expected": ["丁卯", "癸丑", "丁亥", "辛亥"],
+      "source": "https://github.com/6tail/lunar-typescript/blob/master/src/test/EightCharTest.ts"
+    },
+    {
+      "date": "2000-08-16",
+      "time": "04:00:00",
+      "expected": ["庚辰", "甲申", "丙午", "庚寅"],
+      "source": "https://iztro.com/quick-start"
+    }
+  ],
+  "lunarBazi": [
+    {
+      "date": "2019-12-12",
+      "time": "11:22:00",
+      "leapMonth": false,
+      "expected": ["己亥", "丁丑", "戊申", "戊午"],
+      "source": "https://github.com/6tail/lunar-flutter/blob/1892ffb22cf0ae8f45ebe7f6fd3faa05dfd1389b/test/EightChar_test.dart#L43"
+    }
+  ],
+  "ziwei": {
+    "date": "2000-08-16",
+    "time": "04:00:00",
+    "gender": "female",
+    "soulPalace": "午",
+    "bodyPalace": "戌",
+    "soul": "破军",
+    "body": "文昌",
+    "fiveElementsClass": "木三局",
+    "palaces": [
+      {"name":"财帛","stem":"戊","branch":"寅","mainStars":["武曲","天相"],"stars":["武曲","天相","天马"]},
+      {"name":"子女","stem":"己","branch":"卯","mainStars":["太阳","天梁"],"stars":["太阳","天梁"]},
+      {"name":"夫妻","stem":"庚","branch":"辰","mainStars":["七杀"],"stars":["七杀","右弼","火星"]},
+      {"name":"兄弟","stem":"辛","branch":"巳","mainStars":["天机"],"stars":["天机"]},
+      {"name":"命宫","stem":"壬","branch":"午","mainStars":["紫微"],"stars":["紫微","文曲"]},
+      {"name":"父母","stem":"癸","branch":"未","mainStars":[],"stars":["天钺","陀罗"]},
+      {"name":"福德","stem":"甲","branch":"申","mainStars":["破军"],"stars":["破军","禄存","文昌"]},
+      {"name":"田宅","stem":"乙","branch":"酉","mainStars":[],"stars":["地空","擎羊"]},
+      {"name":"官禄","stem":"丙","branch":"戌","mainStars":["廉贞","天府"],"stars":["廉贞","天府","左辅"]},
+      {"name":"仆役","stem":"丁","branch":"亥","mainStars":["太阴"],"stars":["太阴"]},
+      {"name":"迁移","stem":"戊","branch":"子","mainStars":["贪狼"],"stars":["贪狼","铃星"]},
+      {"name":"疾厄","stem":"己","branch":"丑","mainStars":["天同","巨门"],"stars":["天同","巨门","天魁","地劫"]}
+    ],
+    "source": "https://docs.iztro.com/quick-start (retrieved 2026-09-23; fingerprint in source-manifest.json)"
+  }
+}

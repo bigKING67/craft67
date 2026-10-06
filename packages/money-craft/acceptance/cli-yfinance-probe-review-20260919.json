@@ -1,0 +1,39 @@
+{
+  "schema": "money-craft.cli-yfinance-probe-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Doctor, research plan and collect yfinance discovery error handling",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "cb62f216ae61879077f3670ce479be51de194e4ad13fa554e32d23c4394eab92",
+    "tests/test_cli_runtime.py": "56dc7d64758d7f1fd973e5e987250355b6fbe3877d9cb932cbb2a00d6ae90fa1"
+  },
+  "validation": {
+    "target_tests": 8,
+    "full_tests": 423,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_failures": 1,
+    "red_errors": 2,
+    "real_process": "doctor via runpy with broken yfinance spec: structured diagnostic, exit 0"
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "KEEP; no blockers in bounded scope",
+    "collect_evidence": "Real main dispatch with in-memory workspace/lock fixtures: CONFIG3 invalid_configuration before collection, no private error details",
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "cb62f216ae61879077f3670ce479be51de194e4ad13fa554e32d23c4394eab92",
+      "tests/test_cli_runtime.py": "56dc7d64758d7f1fd973e5e987250355b6fbe3877d9cb932cbb2a00d6ae90fa1"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Module discovery is not import/native library/network readiness.",
+    "Collect validation used in-memory workspace and lock fixtures, not real provider collection.",
+    "Remaining CLI branches and whole-core closure remain partial."
+  ]
+}

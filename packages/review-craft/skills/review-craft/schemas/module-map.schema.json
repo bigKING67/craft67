@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/module-map.schema.json",
+  "title": "Deterministic repository module map",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "strategy", "modules"],
+  "properties": {
+    "documentType": {"const": "review-craft.module-map"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "strategy": {"type": "string", "minLength": 1},
+    "modules": {"type": "array", "items": {"$ref": "#/$defs/module"}}
+  },
+  "$defs": {
+    "module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "fileCount", "sourceFileCount", "totalBytes", "entryPoints"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "fileCount": {"type": "integer", "minimum": 0},
+        "sourceFileCount": {"type": "integer", "minimum": 0},
+        "totalBytes": {"type": "integer", "minimum": 0},
+        "entryPoints": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}

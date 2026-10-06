@@ -1,0 +1,273 @@
+{
+  "schema": "design-craft.l4-screenshots.v1",
+  "case_id": "reference-assisted-product-landing",
+  "created_at": "2026-08-17T05:26:08.857Z",
+  "source_tool": "tmwd_browser.browser_evidence_bundle_ops",
+  "artifacts": {
+    "before": {
+      "desktop": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T051534181Z-3107946c/artifacts/screenshot-viewport-baseline-desktop-1440x900-final-20260817T052428921Z-99d41662.png",
+        "artifact_sha256": "e07322716f7110ed5e30ef5da8eb2fd72f3fbc63570df0eb3348f49a38f43f08",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "headline": {
+              "found": true,
+              "rect": {
+                "x": 57.59375,
+                "y": 197.5546875,
+                "width": 582.9140625,
+                "height": 409
+              }
+            },
+            "support": {
+              "found": true,
+              "rect": {
+                "x": 57.59375,
+                "y": 664.1484375,
+                "width": 582.9140625,
+                "height": 149.453125
+              }
+            },
+            "evidence": {
+              "found": true,
+              "rect": {
+                "x": 698.1015625,
+                "y": 310.5078125,
+                "width": 684.3046875,
+                "height": 362.984375
+              }
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4177/?variant=baseline",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 118132
+        }
+      },
+      "mobile": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T051534181Z-3107946c/artifacts/screenshot-viewport-baseline-mobile-390x844-20260817T051832978Z-be2e7cfb.png",
+        "artifact_sha256": "cc211806041493148c1c5dbe4e05502b1c9dba3efd1d41e9b91c23686b85d203",
+        "dimensions": [
+          390,
+          844
+        ],
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "is_mobile": true
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "headline": {
+              "found": true,
+              "rect": {
+                "x": 20,
+                "y": 113.59375,
+                "width": 350,
+                "height": 269.25
+              }
+            },
+            "support": {
+              "found": true,
+              "rect": {
+                "x": 20,
+                "y": 414.84375,
+                "width": 350,
+                "height": 187.453125
+              }
+            },
+            "evidence": {
+              "found": true,
+              "rect": {
+                "x": 20,
+                "y": 634.296875,
+                "width": 350,
+                "height": 326.4921875
+              }
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4177/?variant=baseline",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 67257
+        }
+      }
+    },
+    "after": {
+      "desktop": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T051534181Z-3107946c/artifacts/screenshot-viewport-reference-assisted-desktop-1440x900-final-20260817T052007190Z-a684323b.png",
+        "artifact_sha256": "cc35694bb38addcb59b112b5eb52eb9ddcebba1a0a0a72c24c7945db9bb6059d",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "headline": {
+              "found": true,
+              "rect": {
+                "x": 57.59375,
+                "y": 132,
+                "width": 1324.8125,
+                "height": 320.890625
+              }
+            },
+            "support": {
+              "found": true,
+              "rect": {
+                "x": 57.59375,
+                "y": 665.453125,
+                "width": 380.640625,
+                "height": 202.546875
+              }
+            },
+            "evidence": {
+              "found": true,
+              "rect": {
+                "x": 494.234375,
+                "y": 505.015625,
+                "width": 888.171875,
+                "height": 362.984375
+              }
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4177/?variant=reference-assisted",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 118831
+        }
+      },
+      "mobile": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T051534181Z-3107946c/artifacts/screenshot-viewport-reference-assisted-mobile-390x844-final-20260817T052017777Z-fa102ee1.png",
+        "artifact_sha256": "5042812f05cf8af2a2dce4da864bb781ab3fff5190da3f81fa8fe82d38adf236",
+        "dimensions": [
+          390,
+          844
+        ],
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "is_mobile": true
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "headline": {
+              "found": true,
+              "rect": {
+                "x": 20,
+                "y": 121.59375,
+                "width": 350,
+                "height": 269.25
+              }
+            },
+            "support": {
+              "found": true,
+              "rect": {
+                "x": 20,
+                "y": 768.5234375,
+                "width": 350,
+                "height": 182.65625
+              }
+            },
+            "evidence": {
+              "found": true,
+              "rect": {
+                "x": 20,
+                "y": 416.4375,
+                "width": 350,
+                "height": 326.4921875
+              }
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4177/?variant=reference-assisted",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 72981
+        }
+      }
+    }
+  },
+  "evidence_bundle": {
+    "schema": "tmwd.design-craft-evidence-bundle.v1",
+    "normalized_entries": [
+      {
+        "phase": "before",
+        "key": "desktop"
+      },
+      {
+        "phase": "before",
+        "key": "mobile"
+      },
+      {
+        "phase": "after",
+        "key": "desktop"
+      },
+      {
+        "phase": "after",
+        "key": "mobile"
+      }
+    ],
+    "shared_artifact_keys": [
+      "desktop",
+      "mobile"
+    ],
+    "transport_health": {
+      "ok": true,
+      "status": "healthy",
+      "mode": "tmwd",
+      "preferred_transport": "ws",
+      "checked_at": "2026-08-17T05:15:23.115Z"
+    },
+    "finalize_summary": {
+      "delivery_summary": "browser67 cleanup: finalize_task workspace_key=design-craft task_id=reference-assisted-product-landing-2026-08-17 closed=1 would_close=0 verified=1 stale_pruned=0 kept=0 remaining_unkept=0 errors=0",
+      "cleanup_summary": {
+        "closed_count": 1,
+        "close_verified_count": 1,
+        "close_error_count": 0,
+        "remaining_unkept_count": 0
+      }
+    },
+    "run": {
+      "run_id": "20260817T051534181Z-3107946c",
+      "workspace_key": "design-craft",
+      "task_id": "reference-assisted-product-landing-2026-08-17",
+      "status": "completed",
+      "finished_at": "2026-08-17T05:25:15.830Z",
+      "run_dir": "browser67://runs/design-craft/20260817T051534181Z-3107946c"
+    }
+  }
+}

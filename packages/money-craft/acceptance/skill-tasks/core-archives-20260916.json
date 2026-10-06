@@ -1,0 +1,73 @@
+{
+  "schema": "money-craft.core-archive-recheck.v1",
+  "date": "2026-09-16",
+  "core_tests": {
+    "total": 242,
+    "passed": 242,
+    "skipped": 0,
+    "result": "PASS",
+    "log": {
+      "path": "local/skill-evals/20260916/frozen-suite/core-tests-with-markdown.log",
+      "sha256": "cffa24cc0f1338d714a778253b3578128e787a406783223798b86b9073c9f6c2"
+    },
+    "code_unchanged_after_test": true,
+    "environment": "temporary validation venv; optional Markdown dependency installed only there"
+  },
+  "historical_archives": [
+    {
+      "ticker": "600519",
+      "as_of": "2026-08-23",
+      "evidence_files": 30,
+      "source_count": 17,
+      "financial_checks": 27,
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/600519-evidence.json",
+          "sha256": "67ffa21b20fd9a4f48de27b7263824e8c34923299a249db443fa87db9ec809c8"
+        },
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/600519-report-audit.json",
+          "sha256": "4900222693ffc0c54dfa636081460488d1588fa9ab0e6c0cd155381216e3bff8"
+        },
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/600519-report-financial.json",
+          "sha256": "b78c49d5af4605c413dd782ec55cfd26d9f756b933547cceb325cb1b9ceac208"
+        },
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/600519-thesis-financial.json",
+          "sha256": "006120bfcbeb05c4d31f44acf6da1ba09bc897887a8aef298825cda4985b43df"
+        }
+      ]
+    },
+    {
+      "ticker": "000333",
+      "as_of": "2026-08-23",
+      "evidence_files": 31,
+      "source_count": 17,
+      "financial_checks": 31,
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/000333-evidence.json",
+          "sha256": "f1fb016b38c51a83f8b5b5378026d2f61500f82bd2cc48b533fcaccf5b838a13"
+        },
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/000333-report-audit.json",
+          "sha256": "e8c836bf93386c47bf59e0a40bc1a4df50d1118c7036b76e41123a471185c25b"
+        },
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/000333-report-financial.json",
+          "sha256": "d474fdff7ca6f55056b4ef71423fbe929411c6869438faaa761587d7d5d286fd"
+        },
+        {
+          "path": "local/skill-evals/20260916/frozen-suite/000333-thesis-financial.json",
+          "sha256": "8508354392af88c5a23a6d023fbdea88f33fe6679635892f1583f11d91757dc7"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "历史档案as_of均为2026-08-23，未更新研究判断。",
+    "本轮重算哈希、财务回执与报告结构；没有重新核实来源语义、最新披露或真实Provider连通性。",
+    "财务计算通过不证明推算假设或投资判断正确。"
+  ]
+}

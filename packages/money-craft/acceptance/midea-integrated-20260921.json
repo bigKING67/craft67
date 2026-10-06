@@ -1,0 +1,104 @@
+{
+  "status": "INTEGRATED_CONDITIONAL_VALUATION",
+  "source_count": 18,
+  "source_hashes": [
+    {
+      "id": "S11",
+      "sha256": "576dd80e353e53296a800b03e9889a9cbb2e8b91fa2ab3c1dace7c10159179b8"
+    },
+    {
+      "id": "S12",
+      "sha256": "16f95f70527db59dcf2736f276a9479cf7ee917e5f71e4f6cbbe83acbad9f4b6"
+    },
+    {
+      "id": "S13",
+      "sha256": "c196204924fcb4cb80eb8c771ff405872cb34b357f04b79e87debe32033b44ce"
+    },
+    {
+      "id": "S21",
+      "sha256": "22f4915d91ada74a37eab8d074aef4c15420f3b1a8b5f5bd5777c00f97d58b86"
+    },
+    {
+      "id": "S18",
+      "sha256": "f8e6bdf462a23dd948e44d616e25b308b4b9054da3bda42567f52e6f69ed0c60"
+    },
+    {
+      "id": "S19",
+      "sha256": "9857edda695c7b3d5b68c0cad6d98c2c3d46bb7bcb7f60fb292ec0b77546e99e"
+    },
+    {
+      "id": "S20",
+      "sha256": "24900692f953f24bff8464e27e3383e91b2a272984e38bff21ca628b3d7cc50b"
+    },
+    {
+      "id": "S23",
+      "sha256": "a1a977c0ab10e36d744d45edc8ce3253666dff58f6ebb86efba40299eed02ef7"
+    },
+    {
+      "id": "S24",
+      "sha256": "a5f259ed049c53457f01d36e756df62e8e12b51adf5c891643972366fa40fae0"
+    },
+    {
+      "id": "S26",
+      "sha256": "f1210d6e006e00963492edbf4cc79884b0febdffa50a82ed2d291fa694369def"
+    },
+    {
+      "id": "S28",
+      "sha256": "af850865d3d9be750be77c3cc98a580f160aa8c9ba6f524fc75af8f4bcc1d4b4"
+    },
+    {
+      "id": "S29",
+      "sha256": "bf53aa02eb357b965fd16df9cd31adca8a049ff8aa123d3c2571a4a01613e62e"
+    },
+    {
+      "id": "S33",
+      "sha256": "3d9f718d9382335c21dbc65f3f3ada9c222ceb45d8668d353c7f1fd848283b0f"
+    },
+    {
+      "id": "S35",
+      "sha256": "737ad73cd4d944b31a6032c40a8dbc386fba17f27013d1980f1aed8668a427c5"
+    },
+    {
+      "id": "S31",
+      "sha256": "2ae890ea091900d35362806e9a13e286e5ca8b33f095397b598524597a9ae425"
+    },
+    {
+      "id": "S32",
+      "sha256": "bd7efbb908bc9bcf10618ed871e4d81ca6195eb4a76747344581178749854bff"
+    },
+    {
+      "id": "S34",
+      "sha256": "f5c62109a038510a0501bd2d650cc47464a5e0e0aa3d87f201f6c3203573d854"
+    },
+    {
+      "id": "S36",
+      "sha256": "e616e5827239bd894edceb6e72398941a6fbac48e70998c41916d1c58cfc4c3d"
+    }
+  ],
+  "old_inputs_unchanged": {
+    "local/acceptance/20260921-midea-core-history/research/report.md": "85b5d9fb06888befc7a77ec395998d7d9b4a077ff3200db4697311828e0bdeb0",
+    "local/acceptance/20260921-midea-core-history/research/thesis.md": "7f492666fe8d7703d0090ce2ad3c03ce2a3480e96da6b4d01342b978249de0d2",
+    "local/acceptance/20260921-midea-core-history/research/plan.json": "e3f78546c2ca71ff31659ad65241b644c41bca0e90c22f67412a6c147e6fccc9",
+    "local/acceptance/20260921-midea-core-history/research/case.json": "dfc8f21fa03387ac31a9d8773b72672161ee7b553c872bc4327be29b710cec05",
+    "local/acceptance/20260921-midea-core-history/research/financial-reconciliation.json": "50413ca279adbd9bff27ee6e11ed75f20b545816f1629e64bd1362d6556d368a",
+    "docs/midea-research-synthesis-20260921-v2.md": "9e62170ce25928f088d76a04d400994c4338567cc6f7e82f6c97d3d2eb382002"
+  },
+  "core_report_calculations": 88,
+  "new_calculations": 36,
+  "remaining_errors": [
+    "presentation_to_economics.items[4].evidence_state must be resolved before finalization",
+    "presentation_to_economics.items[5].evidence_state must be resolved before finalization"
+  ],
+  "complete": false,
+  "finalization_valid": false,
+  "reviewer": "parent",
+  "independent": false,
+  "gate_changed": false,
+  "new_source_fetch": false,
+  "report_sha256": "439f4950a648d7f62255949e9c547c8dcd652fe8ef3d43475c4a4421f8fb7df0",
+  "h_share_balance_sep18": "INFERRED",
+  "normalized_profit": "UNVERIFIED",
+  "pe_reported": "14.19963671321004995340233276318285",
+  "pe_recurring": "18.19816343231080890517469699162327",
+  "valuation_scope": "sensitivity_only"
+}

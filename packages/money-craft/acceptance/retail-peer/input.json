@@ -1,0 +1,90 @@
+{
+  "schema": "money-craft.retail-peer-case.v1",
+  "as_of": "2025-04-30",
+  "execution_date": "2026-09-20",
+  "scope": "Selected annual filing comparison only; not latest interim/TTM research or investment recommendation",
+  "currency": "USD",
+  "unit": "USD million",
+  "identity_as_of": "2025-04-30",
+  "companies": [
+    {
+      "name": "Costco",
+      "security_id": "US-NASDAQ:COST",
+      "source": "S01",
+      "current_label": "FY2024",
+      "prior_label": "FY2023",
+      "current_end": "2024-09-01",
+      "prior_end": "2023-09-03",
+      "duration": "52周 / 53周",
+      "sales": [
+        "249625",
+        "237710"
+      ],
+      "other": [
+        "4828",
+        "4580"
+      ],
+      "revenue": [
+        "254453",
+        "242290"
+      ],
+      "operating_income": [
+        "9285",
+        "8114"
+      ],
+      "locator": "Consolidated Statements of Income; Note 1"
+    },
+    {
+      "name": "Walmart",
+      "security_id": "US-NYSE:WMT",
+      "source": "S02",
+      "current_label": "FY2025",
+      "prior_label": "FY2024",
+      "current_end": "2025-01-31",
+      "prior_end": "2024-01-31",
+      "duration": "截至1月31日的年度；部分海外业务滞后一个月合并",
+      "sales": [
+        "674538",
+        "642637"
+      ],
+      "other": [
+        "6447",
+        "5488"
+      ],
+      "revenue": [
+        "680985",
+        "648125"
+      ],
+      "operating_income": [
+        "29348",
+        "27012"
+      ],
+      "locator": "Consolidated Statements of Income; Note 1; Sam’s Club U.S. Segment"
+    },
+    {
+      "name": "Target",
+      "security_id": "US-NYSE:TGT",
+      "source": "S03",
+      "current_label": "FY2024",
+      "prior_label": "FY2023",
+      "current_end": "2025-02-01",
+      "prior_end": "2024-02-03",
+      "duration": "52周 / 53周",
+      "sales": [
+        "106566",
+        "107412"
+      ],
+      "other": null,
+      "revenue": [
+        "106566",
+        "107412"
+      ],
+      "operating_income": [
+        "5566",
+        "5707"
+      ],
+      "locator": "2024 Form 10-K printed pp.42,47–50; Notes 1–3"
+    }
+  ],
+  "source_inputs_manually_extracted": true
+}

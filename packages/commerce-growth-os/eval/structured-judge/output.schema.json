@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scores", "hard_failures", "summary"],
+  "properties": {
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategic_coherence",
+        "evidence_and_assumptions",
+        "mechanism_and_actionability",
+        "specialist_depth",
+        "measurement_and_learning",
+        "risk_and_governance"
+      ],
+      "properties": {
+        "strategic_coherence": {"type": "integer"},
+        "evidence_and_assumptions": {"type": "integer"},
+        "mechanism_and_actionability": {"type": "integer"},
+        "specialist_depth": {"type": "integer"},
+        "measurement_and_learning": {"type": "integer"},
+        "risk_and_governance": {"type": "integer"}
+      }
+    },
+    "hard_failures": {"type": "array", "items": {"type": "string"}},
+    "summary": {"type": "string"}
+  }
+}

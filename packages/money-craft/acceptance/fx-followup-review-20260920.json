@@ -1,0 +1,78 @@
+{
+  "schema": "money-craft.fx-followup-review.v1",
+  "checked_at": "2026-09-20T10:56:02.415313+00:00",
+  "status": "PARTIAL_RESEARCH_WITH_NARROWED_GAPS",
+  "bounded_followup_completed": true,
+  "original_e2e_pass": false,
+  "parent_review": true,
+  "independent_review": false,
+  "calculations_passed": 10,
+  "ledger_verified": true,
+  "original_reconciliation_unchanged": true,
+  "source_S24": {
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0915/2026091500547.pdf",
+    "sha256": "a5f259ed049c53457f01d36e756df62e8e12b51adf5c891643972366fa40fae0"
+  },
+  "resolved_scope": [
+    "Two-year FX totals and H-report split match A-report disclosure",
+    "Exact relationship between derivative table, prose and OCI rows identified; interpretation remains inferred"
+  ],
+  "remaining": [
+    "Derivative P&L scope and realization bridge",
+    "Item-specific tax and minority attribution for all FX/derivative items",
+    "Instrument settlement and normalized earnings"
+  ],
+  "search_absence_proven": false,
+  "runtime_changed": false,
+  "global_install_changed": false,
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-fx-followup/S24.txt",
+      "sha256": "498a919c8cf2d1b6bfe324bfd8bac8bee1aaf615931a785c48d2418a44b9a4c8"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/build_review.py",
+      "sha256": "7256ade7b70d8afc43a5ea0b2e744512d842c561093bc3bd3b35de67668c9b85"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/capture-S11.json",
+      "sha256": "fcb17873f25307022763a699ab880e556786031bafc876f6de47cd4cc71aa0ba"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/capture-S24.json",
+      "sha256": "fa05051b6f1de65644f4a3abfc6474fe9bc70b72fd31402bd24bfeeaac7f67d5"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/capture-S25.json",
+      "sha256": "e96c383e1f86db193f9f8c0cbac36e660b6130a3efb82daf2c564ed577086e08"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/compat-extract.txt",
+      "sha256": "43d4c0514b9e6148ffee2066e1f5bda983f214d83101411ec5ce4de443acf688"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/discovery.json",
+      "sha256": "9cd387830dc5453a34a960fd6e843679fadebcef78d06286f4232d1b5fc23045"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/financial-audit.json",
+      "sha256": "7c29996d8648fd25c0f12b5854aa402a896149699b08c84e0df307efa42f58ae"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/followup-review.md",
+      "sha256": "acfc96838ac64333ce62390b941233709771fac8aa0a435706b4647aee7a4da4"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/ledger-verify.json",
+      "sha256": "9258aab22bffea5d535888329d26a9c5f517d4f567b186e3857c285b87e153a4"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/route.json",
+      "sha256": "d33b88d3f796dbb9c9f43462f68dc9987e07eb9b0d1e70eb91c79871f3134fcb"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-followup/semantic-review.json",
+      "sha256": "10d640ef0729a36dc634577542a6524dd38c64b2905870a864c829f83ca55e44"
+    }
+  ]
+}

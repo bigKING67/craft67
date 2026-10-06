@@ -1,0 +1,69 @@
+{
+  "schema": "whoami.response-claims.v1",
+  "reportSha256": "77b5694169e83f6f76ed7bd63904d7a07c9ff09c1c4ad3d2ff39a49d06575458",
+  "paragraphs": [
+    {
+      "id": "explicit-annual-scope",
+      "text": "你已把问题改为“只看 2027 年度事业主题”，并放弃未定义的时间窗口。当前报告只绑定 2026—2027 年度 evidence；这个选择解决的是时间口径不明确，并没有补出月份、日期或事件窗口证据。",
+      "reportClaims": [
+        {
+          "section": "timing",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "career-boundary",
+      "text": "2027 的流年层与四化事实已经进入当前证据范围。身宫落官禄、官禄宫见廉贞与天府，可以把职责边界、规则、资源统筹和项目推进列为事业复核入口；但盘面没有提供岗位空缺、考核结果、权限变化、组织机会或主管决策，所以不能保证 2027 升职、跳槽，也不能据此选择最佳行动窗口。",
+      "reportClaims": [
+        {
+          "section": "career",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "remaining-action-chain",
+      "text": "若要形成更窄的 2027 年度事业主题，还须把当年四化的本命落宫、流年宫职、官禄宫与三方四正放进同一问题，核对同星跨层差异、定位缺口、现实触发和撤回条件。当前作用链仍未闭合，限运前提保持未决；现实行动应依据岗位信息、考核标准、资源与反馈，不能把年度事实写成具体月份、日期或结论成立。",
+      "reportClaims": [
+        {
+          "section": "advice",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-structure"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ]
+}

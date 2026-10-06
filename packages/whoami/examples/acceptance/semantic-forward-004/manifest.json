@@ -1,0 +1,74 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-004",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "3edf9d7ab20ba4f955a4806c67a92120d6e489f66c0fd3b8c6c4bc8ec17cd8af",
+    "bytes": 5573
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "e34e4bd80a8112e6c1e913a73d20dd75755d6060a59438ecfc60cefc14397211",
+    "bytes": 1088
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "8d30e3588a464b71154a58da03b3f53a9805c19a15ef8f9677f2584229da617b",
+    "bytes": 1050
+  },
+  "cases": [
+    {
+      "id": "dst-overlap-earlier",
+      "input": {
+        "path": "input-earlier.json",
+        "sha256": "dcec2c1b482bbb6abd592a3fbb6416e577afb93f73ce52e14385bd569986f18a",
+        "bytes": 269
+      },
+      "context": {
+        "path": "context-earlier.json",
+        "sha256": "bc448e07cee61cd27429871bb79609775f00149521109c933249bd071e4b2e90",
+        "bytes": 51018
+      },
+      "response": {
+        "path": "response-earlier.md",
+        "sha256": "687e3970b988ae2b0b70182ae7c15c9838e46958e278a2e2f1703764f7c37836",
+        "bytes": 562
+      }
+    },
+    {
+      "id": "dst-overlap-later",
+      "input": {
+        "path": "input-later.json",
+        "sha256": "024a1aebc092c62fde7c669ad70da60c0010f4e1ad267e82be9d7e149caf7f06",
+        "bytes": 267
+      },
+      "context": {
+        "path": "context-later.json",
+        "sha256": "d58220dd874fccfb7004df99734c3d33ec3f1ef63cac960d9b2bc31456dd1f3e",
+        "bytes": 51025
+      },
+      "response": {
+        "path": "response-later.md",
+        "sha256": "a673061f0f1c03f15620453e20d5045dcfcaba3517fa8fc78733bc4f3385ebab",
+        "bytes": 586
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

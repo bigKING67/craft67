@@ -1,0 +1,1012 @@
+#!/usr/bin/env node
+
+import { createHash } from "node:crypto";
+import {
+  existsSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  statSync,
+} from "node:fs";
+import { dirname, relative, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
+import { tmpdir } from "node:os";
+import { fileURLToPath } from "node:url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const repoRoot = resolve(__dirname, "..");
+const lockPath = resolve(repoRoot, "UPSTREAM.lock.json");
+const defaultReviewPath = resolve(repoRoot, "UPSTREAM.review.json");
+const defaultGenericAgentRoot = resolve(repoRoot, "..", "GenericAgent");
+const defaultSourceDir = resolve(defaultGenericAgentRoot, "assets", "tmwd_cdp_bridge");
+const defaultUpstreamRemote = "https://github.com/lsdefine/GenericAgent.git";
+const targetDir = resolve(repoRoot, "extension");
+const managedExtraFiles = new Set(["config.example.js"]);
+const ignoredFiles = new Set(["config.js"]);
+const ENHANCED_BRIDGE_FEATURES = [
+  {
+    id: "handle_tabs_dispatch",
+    description: "top-level TMWD tabs command dispatches through handleTabs",
+    fragments: ["async function handleTabs(msg)", "return await handleTabs(msg)"],
+  },
+  {
+    id: "tabs_get",
+    description: "tabs.get is available for stale-tab and about:blank diagnostics",
+    fragments: ["method === 'get'", "chrome.tabs.get"],
+  },
+  {
+    id: "tabs_close",
+    description: "tabs.close removes only explicitly selected browser67-owned tabs",
+    fragments: ["method === 'close'", "chrome.tabs.remove"],
+  },
+  {
+    id: "include_unscriptable",
+    description: "tabs.list can include about:blank/internal unscriptable tabs when requested",
+    fragments: ["includeUnscriptable", "includeUnscriptableTabs"],
+  },
+  {
+    id: "unsupported_tabs_method",
+    description: "unsupported tabs methods fail explicitly",
+    fragments: ["unsupported tabs method"],
+  },
+  {
+    id: "batch_uses_handle_tabs",
+    description: "batch tab commands use the same handleTabs capability surface",
+    fragments: ["R.push(await handleTabs(c))"],
+  },
+  {
+    id: "numeric_tab_id_validation",
+    description: "tabId inputs are normalized and rejected when not integer-like",
+    fragments: ["function normalizeNumericTabId(raw)", "function requireNumericTabId(raw)"],
+  },
+  {
+    id: "cookies_tabid_validation",
+    description: "cookie lookup validates tabId before chrome.tabs.get",
+    fragments: ["chrome.tabs.get(requireNumericTabId(msg.tabId))"],
+  },
+  {
+    id: "cdp_tabid_validation",
+    description: "CDP command path validates tabId before debugger attach",
+    fragments: ["normalizeNumericTabId(msg.tabId ?? sender.tab?.id)", "invalid or missing numeric tabId"],
+  },
+  {
+    id: "ws_exec_tabid_validation",
+    description: "WebSocket exec path validates tabId before script execution",
+    fragments: ["const tabId = normalizeNumericTabId(data.tabId)", "invalid or missing numeric tabId"],
+  },
+];
+
+function parseArgs(argv) {
+  const parsed = {
+    sourceDir: defaultSourceDir,
+    genericAgentRoot: defaultGenericAgentRoot,
+    json: false,
+    noRemote: false,
+    latestTemp: false,
+    latestKeep: false,
+    latestRepo: null,
+    latestRef: "main",
+    reviewFile: defaultReviewPath,
+    sourceExplicit: false,
+  };
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = String(argv[index] ?? "");
+    if (token === "--source") {
+      const value = String(argv[index + 1] ?? "").trim();
+      if (!value || value.startsWith("--")) {
+        throw new Error("missing --source value");
+      }
+      parsed.sourceDir = resolve(value);
+      parsed.genericAgentRoot = inferGenericAgentRoot(parsed.sourceDir);
+      parsed.sourceExplicit = true;
+      index += 1;
+      continue;
+    }
+    if (token === "--genericagent-root") {
+      const value = String(argv[index + 1] ?? "").trim();
+      if (!value || value.startsWith("--")) {
+        throw new Error("missing --genericagent-root value");
+      }
+      parsed.genericAgentRoot = resolve(value);
+      if (!parsed.sourceExplicit) {
+        parsed.sourceDir = resolve(parsed.genericAgentRoot, "assets", "tmwd_cdp_bridge");
+      }
+      index += 1;
+      continue;
+    }
+    if (token === "--json") {
+      parsed.json = true;
+      continue;
+    }
+    if (token === "--no-remote") {
+      parsed.noRemote = true;
+      continue;
+    }
+    if (token === "--latest-temp") {
+      parsed.latestTemp = true;
+      continue;
+    }
+    if (token === "--latest-keep") {
+      parsed.latestKeep = true;
+      continue;
+    }
+    if (token === "--latest-repo") {
+      const value = String(argv[index + 1] ?? "").trim();
+      if (!value || value.startsWith("--")) {
+        throw new Error("missing --latest-repo value");
+      }
+      parsed.latestRepo = value;
+      index += 1;
+      continue;
+    }
+    if (token === "--latest-ref") {
+      const value = String(argv[index + 1] ?? "").trim();
+      if (!value || value.startsWith("--")) {
+        throw new Error("missing --latest-ref value");
+      }
+      parsed.latestRef = value;
+      index += 1;
+      continue;
+    }
+    if (token === "--review-file") {
+      const value = String(argv[index + 1] ?? "").trim();
+      if (!value || value.startsWith("--")) {
+        throw new Error("missing --review-file value");
+      }
+      parsed.reviewFile = resolve(value);
+      index += 1;
+      continue;
+    }
+    if (token === "--help" || token === "-h") {
+      parsed.help = true;
+      continue;
+    }
+    throw new Error(`unknown argument: ${token}`);
+  }
+  if (parsed.latestKeep && !parsed.latestTemp) {
+    throw new Error("--latest-keep requires --latest-temp");
+  }
+  if (parsed.latestTemp && (parsed.sourceDir !== defaultSourceDir || parsed.genericAgentRoot !== defaultGenericAgentRoot)) {
+    throw new Error("--latest-temp cannot be combined with --source or --genericagent-root");
+  }
+  return parsed;
+}
+
+function inferGenericAgentRoot(sourceDir) {
+  const normalized = resolve(sourceDir);
+  const marker = `${["assets", "tmwd_cdp_bridge"].join("/")}`;
+  const rel = normalized.replaceAll("\\", "/");
+  if (rel.endsWith(marker)) {
+    return resolve(normalized, "..", "..");
+  }
+  return resolve(normalized, "..", "..");
+}
+
+function usage() {
+  return [
+    "Usage: node scripts/upstream-audit.mjs [--json] [--source <GenericAgent/assets/tmwd_cdp_bridge>]",
+    "       node scripts/upstream-audit.mjs [--json] [--genericagent-root <GenericAgent>]",
+    "       node scripts/upstream-audit.mjs [--json] --latest-temp [--latest-repo <repo>] [--latest-ref <ref>] [--latest-keep]",
+    "",
+    "Audits GenericAgent upstream drift without modifying files.",
+    "--no-remote skips git ls-remote and reports only local checkout state.",
+    "--latest-temp clones the latest upstream checkout to a temp dir, audits it, then removes it unless --latest-keep is set.",
+    "--review-file reads an audited remote-review ledger; defaults to UPSTREAM.review.json.",
+  ].join("\n");
+}
+
+function exec(command, args, cwd, options = {}) {
+  const result = spawnSync(command, args, {
+    cwd,
+    encoding: "utf8",
+    timeout: options.timeoutMs ?? 10_000,
+  });
+  if (result.status !== 0) {
+    const detail = String(result.stderr || result.stdout || "unknown error").trim();
+    throw new Error(`${command} ${args.join(" ")} failed: ${detail}`);
+  }
+  return String(result.stdout ?? "").trim();
+}
+
+function tryExec(command, args, cwd, options = {}) {
+  try {
+    return {
+      ok: true,
+      value: exec(command, args, cwd, options),
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error: compactText(error?.message ?? error, 500),
+    };
+  }
+}
+
+function compactText(value, maxLength = 240) {
+  return String(value ?? "").replace(/\s+/g, " ").trim().slice(0, maxLength);
+}
+
+function listFiles(rootDir) {
+  const rows = [];
+  function walk(currentDir) {
+    for (const entry of readdirSync(currentDir, { withFileTypes: true })) {
+      const absolute = resolve(currentDir, entry.name);
+      const rel = relative(rootDir, absolute).replaceAll("\\", "/");
+      if (entry.isDirectory()) {
+        walk(absolute);
+        continue;
+      }
+      if (!entry.isFile() || ignoredFiles.has(rel)) {
+        continue;
+      }
+      rows.push(rel);
+    }
+  }
+  walk(rootDir);
+  return rows.sort();
+}
+
+function hashFile(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+function sourceFileHashes(sourceDir) {
+  if (!existsSync(sourceDir)) return [];
+  return listFiles(sourceDir).map((file) => ({
+    path: file,
+    sha256: hashFile(resolve(sourceDir, file)),
+  }));
+}
+
+function safeReadJson(path) {
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch (error) {
+    return {
+      error: compactText(error?.message ?? error),
+    };
+  }
+}
+
+function safeReadJsonOptional(path) {
+  if (!existsSync(path)) {
+    return {
+      exists: false,
+      path,
+      value: null,
+      error: null,
+    };
+  }
+  const value = safeReadJson(path);
+  return {
+    exists: true,
+    path,
+    value: value?.error ? null : value,
+    error: value?.error ?? null,
+  };
+}
+
+function sortedStrings(value) {
+  return Array.isArray(value) ? value.map((item) => String(item)).sort() : [];
+}
+
+function arraysEqual(left, right) {
+  if (left.length !== right.length) return false;
+  return left.every((item, index) => item === right[index]);
+}
+
+function isRecord(value) {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function validateReviewRecord(record) {
+  const errors = [];
+  if (!isRecord(record)) {
+    return ["review ledger root must be an object"];
+  }
+  if (record.schema_version !== 2) {
+    errors.push("schema_version must be 2");
+  }
+  if (!isRecord(record.upstream)) {
+    errors.push("upstream must be an object");
+  } else {
+    if (!/^[0-9a-f]{40}$/i.test(String(record.upstream.reviewed_commit ?? ""))) {
+      errors.push("upstream.reviewed_commit must be a 40 character hex commit");
+    }
+    if (typeof record.upstream.reviewed_at !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(record.upstream.reviewed_at)) {
+      errors.push("upstream.reviewed_at must use YYYY-MM-DD");
+    }
+  }
+  if (!isRecord(record.decision)) {
+    errors.push("decision must be an object");
+  } else {
+    const allowedMergeModes = new Set([
+      "manual_merge_preserve_local_bridge_features",
+      "no_extension_changes",
+      "no_behavior_changes_keep_local",
+      "selective_cherry_pick",
+    ]);
+    if (!allowedMergeModes.has(record.decision.extension_merge_mode)) {
+      errors.push("decision.extension_merge_mode is unsupported");
+    }
+    if (typeof record.decision.direct_sync_allowed !== "boolean") {
+      errors.push("decision.direct_sync_allowed must be boolean");
+    }
+    if (record.decision.direct_sync_allowed === false && !String(record.decision.reason ?? "").trim()) {
+      errors.push("decision.reason is required when direct_sync_allowed=false");
+    }
+  }
+  if (!isRecord(record.extension_review)) {
+    errors.push("extension_review must be an object");
+  } else {
+    if (!Array.isArray(record.extension_review.changed_files)) {
+      errors.push("extension_review.changed_files must be an array");
+    }
+    if (!Array.isArray(record.extension_review.background_preserve_features)) {
+      errors.push("extension_review.background_preserve_features must be an array");
+    }
+    if (!Array.isArray(record.extension_review.per_file_decision)) {
+      errors.push("extension_review.per_file_decision must be an array");
+    }
+    if (!Array.isArray(record.extension_review.reviewed_source_files)
+      || record.extension_review.reviewed_source_files.length === 0
+      || record.extension_review.reviewed_source_files.some((entry) => (
+        !isRecord(entry)
+        || typeof entry.path !== "string"
+        || !/^[0-9a-f]{64}$/i.test(String(entry.sha256 ?? ""))
+      ))) {
+      errors.push("extension_review.reviewed_source_files must contain path and sha256 records");
+    }
+  }
+  return errors;
+}
+
+function compareExtension(sourceDir) {
+  if (!existsSync(sourceDir) || !statSync(sourceDir).isDirectory()) {
+    return {
+      ok: false,
+      source_exists: false,
+      source_dir: sourceDir,
+      target_dir: targetDir,
+      added: [],
+      removed: [],
+      changed: [],
+      error: "missing GenericAgent extension source",
+    };
+  }
+  const sourceFiles = listFiles(sourceDir);
+  const targetFiles = listFiles(targetDir).filter((file) => !managedExtraFiles.has(file));
+  const sourceSet = new Set(sourceFiles);
+  const targetSet = new Set(targetFiles);
+  const added = sourceFiles.filter((file) => !targetSet.has(file));
+  const removed = targetFiles.filter((file) => !sourceSet.has(file));
+  const changed = sourceFiles.filter((file) => (
+    targetSet.has(file)
+    && hashFile(resolve(sourceDir, file)) !== hashFile(resolve(targetDir, file))
+  ));
+  return {
+    ok: added.length === 0 && removed.length === 0 && changed.length === 0,
+    source_exists: true,
+    source_dir: sourceDir,
+    target_dir: targetDir,
+    added,
+    removed,
+    changed,
+    ignored: [...ignoredFiles].sort(),
+    managed_extra: [...managedExtraFiles].sort(),
+  };
+}
+
+function readTextIfExists(path) {
+  return existsSync(path) ? readFileSync(path, "utf8") : "";
+}
+
+function normalizeLineEndings(value) {
+  return String(value ?? "").replace(/\r\n/g, "\n");
+}
+
+function normalizeFinalNewline(value) {
+  const normalized = normalizeLineEndings(value);
+  return normalized.endsWith("\n") ? normalized : `${normalized}\n`;
+}
+
+function classifyExtensionFileDiff(diff, file) {
+  const source = readTextIfExists(resolve(diff.source_dir, file));
+  const target = readTextIfExists(resolve(diff.target_dir, file));
+  if (source === target) return "exact";
+  if (normalizeLineEndings(source) === normalizeLineEndings(target)) return "line_ending_only";
+  if (normalizeFinalNewline(source) === normalizeFinalNewline(target)) return "final_newline_only";
+  if (source.replace(/\s+/g, "") === target.replace(/\s+/g, "")) return "whitespace_only";
+  return "content";
+}
+
+function featureMatrixFor(filePath) {
+  const source = readTextIfExists(filePath);
+  const features = {};
+  for (const feature of ENHANCED_BRIDGE_FEATURES) {
+    features[feature.id] = {
+      ok: feature.fragments.every((fragment) => source.includes(fragment)),
+      description: feature.description,
+      fragments: [...feature.fragments],
+    };
+  }
+  const missing = Object.entries(features)
+    .filter(([, result]) => result.ok !== true)
+    .map(([id]) => id);
+  return {
+    path: filePath,
+    exists: source.length > 0,
+    ok: missing.length === 0,
+    missing,
+    features,
+  };
+}
+
+function gitStatusForGenericAgent(root) {
+  if (!existsSync(resolve(root, ".git"))) {
+    return {
+      ok: false,
+      root,
+      error: "not a git checkout",
+    };
+  }
+  const head = tryExec("git", ["rev-parse", "HEAD"], root);
+  const remote = tryExec("git", ["remote", "get-url", "origin"], root);
+  const branch = tryExec("git", ["rev-parse", "--abbrev-ref", "HEAD"], root);
+  const upstream = tryExec("git", ["rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"], root);
+  const aheadBehind = upstream.ok
+    ? tryExec("git", ["rev-list", "--left-right", "--count", `HEAD...${upstream.value}`], root)
+    : { ok: false, error: upstream.error };
+  const [ahead, behind] = aheadBehind.ok
+    ? aheadBehind.value.split(/\s+/).map((value) => Number(value))
+    : [null, null];
+  return {
+    ok: head.ok,
+    root,
+    head: head.value,
+    remote: remote.value,
+    branch: branch.value,
+    upstream: upstream.value,
+    ahead,
+    behind,
+    errors: [head, remote, branch, upstream, aheadBehind]
+      .filter((row) => row.ok !== true)
+      .map((row) => row.error),
+  };
+}
+
+function remoteHead(remoteUrl, noRemote) {
+  if (noRemote) {
+    return {
+      ok: false,
+      skipped: true,
+      reason: "disabled_by_no_remote",
+    };
+  }
+  const remote = remoteUrl || defaultUpstreamRemote;
+  const result = tryExec("git", ["ls-remote", remote, "HEAD", "refs/heads/main"], repoRoot, {
+    timeoutMs: 20_000,
+  });
+  if (!result.ok) {
+    return {
+      ok: false,
+      remote,
+      error: result.error,
+    };
+  }
+  const rows = result.value
+    .split(/\r?\n/g)
+    .map((line) => line.trim().split(/\s+/))
+    .filter((parts) => parts.length >= 2);
+  const main = rows.find((parts) => parts[1] === "refs/heads/main") ?? rows[0];
+  return {
+    ok: Boolean(main?.[0]),
+    remote,
+    commit: main?.[0],
+    refs: Object.fromEntries(rows.map((parts) => [parts[1], parts[0]])),
+  };
+}
+
+function summarizeExtensionReview(diff, localFeatures, sourceFeatures) {
+  const files = [];
+  const localMissing = Array.isArray(localFeatures.missing) ? localFeatures.missing : [];
+  const sourceMissing = Array.isArray(sourceFeatures.missing) ? sourceFeatures.missing : [];
+  const sourceMissingLocalFeatures = localFeatures.ok === true && sourceFeatures.exists === true && sourceMissing.length > 0;
+
+  for (const file of diff.changed ?? []) {
+    const diffKind = classifyExtensionFileDiff(diff, file);
+    if (diffKind === "final_newline_only" || diffKind === "line_ending_only") {
+      files.push({
+        file,
+        status: "changed",
+        diff_kind: diffKind,
+        risk: "none",
+        recommended_action: "keep_local_no_behavior_change",
+        preserve_features: [],
+        rationale: "only line-ending or final-newline formatting differs; keep local file to avoid noisy sync",
+      });
+      continue;
+    }
+    if (diffKind === "whitespace_only") {
+      files.push({
+        file,
+        status: "changed",
+        diff_kind: diffKind,
+        risk: "low",
+        recommended_action: "format_only_review_optional",
+        preserve_features: [],
+        rationale: "only whitespace differs; review only if formatting provenance matters",
+      });
+      continue;
+    }
+    if (file === "background.js" && sourceMissingLocalFeatures) {
+      files.push({
+        file,
+        status: "changed",
+        diff_kind: diffKind,
+        risk: "high",
+        recommended_action: "manual_merge_preserve_local_bridge_features",
+        preserve_features: sourceMissing,
+        rationale: "source background.js is missing local enhanced bridge capabilities required by managed-tab lifecycle, JS reverse isolation, and guarded tabId handling",
+      });
+      continue;
+    }
+    if (file === "background.js") {
+      files.push({
+        file,
+        status: "changed",
+        diff_kind: diffKind,
+        risk: "medium",
+        recommended_action: "manual_review_bridge_behavior",
+        preserve_features: [],
+        rationale: "background.js owns the extension command surface; review behavior before syncing",
+      });
+      continue;
+    }
+    if (file === "disable_dialogs.js") {
+      files.push({
+        file,
+        status: "changed",
+        diff_kind: diffKind,
+        risk: "medium",
+        recommended_action: "selective_cherry_pick_after_behavior_review",
+        preserve_features: [],
+        rationale: "dialog suppression affects visible page behavior and should be reviewed before adoption",
+      });
+      continue;
+    }
+    files.push({
+      file,
+      status: "changed",
+      diff_kind: diffKind,
+      risk: "medium",
+      recommended_action: "selective_cherry_pick_after_review",
+      preserve_features: [],
+      rationale: "changed upstream extension file requires manual review",
+    });
+  }
+
+  for (const file of diff.added ?? []) {
+    files.push({
+      file,
+      status: "added",
+      risk: "low",
+      recommended_action: "review_and_add_if_needed",
+      preserve_features: [],
+      rationale: "new upstream extension file can usually be added after manifest and behavior review",
+    });
+  }
+
+  for (const file of diff.removed ?? []) {
+    files.push({
+      file,
+      status: "removed",
+      risk: "high",
+      recommended_action: "do_not_remove_without_manual_review",
+      preserve_features: [],
+      rationale: "local extension file removal may break existing bridge/runtime assumptions",
+    });
+  }
+
+  let recommendedMergeMode = "no_extension_changes";
+  if (sourceMissingLocalFeatures) {
+    recommendedMergeMode = "manual_merge_preserve_local_bridge_features";
+  } else if (
+    diff.ok !== true
+    && files.length > 0
+    && files.every((file) => file.recommended_action === "keep_local_no_behavior_change")
+  ) {
+    recommendedMergeMode = "no_behavior_changes_keep_local";
+  } else if (diff.ok !== true) {
+    recommendedMergeMode = "selective_cherry_pick";
+  }
+
+  return {
+    recommended_merge_mode: recommendedMergeMode,
+    local_only_enhanced_features: sourceMissingLocalFeatures ? sourceMissing : [],
+    local_missing_enhanced_features: localMissing,
+    files,
+  };
+}
+
+function normalizedSourceFiles(value) {
+  return (Array.isArray(value) ? value : [])
+    .map((entry) => ({
+      path: String(entry?.path ?? ""),
+      sha256: String(entry?.sha256 ?? ""),
+    }))
+    .sort((left, right) => left.path.localeCompare(right.path));
+}
+
+function sourceFilesEqual(left, right) {
+  const normalizedLeft = normalizedSourceFiles(left);
+  const normalizedRight = normalizedSourceFiles(right);
+  return normalizedLeft.length === normalizedRight.length
+    && normalizedLeft.every((entry, index) => (
+      entry.path === normalizedRight[index].path
+      && entry.sha256 === normalizedRight[index].sha256
+    ));
+}
+
+function summarizeUpstreamReview({
+  reviewFile,
+  review,
+  remote,
+  lockedCommit,
+  extensionReview,
+  sourceCheckoutMatchesRemoteMain,
+  checkedSourceFiles,
+}) {
+  const record = review?.value ?? null;
+  const validationErrors = review?.exists !== true
+    ? []
+    : review?.error
+      ? [review.error]
+      : validateReviewRecord(record);
+  const reviewOk = review?.exists === true && validationErrors.length === 0;
+  const reviewedCommit = record?.upstream?.reviewed_commit ?? record?.upstream?.commit ?? null;
+  const reviewedRemote = record?.upstream?.remote ?? null;
+  const reviewedAt = record?.upstream?.reviewed_at ?? null;
+  const decision = record?.decision ?? null;
+  const reviewedMergeMode = decision?.extension_merge_mode
+    ?? record?.extension_review?.recommended_merge_mode
+    ?? null;
+  const reviewedChangedFiles = sortedStrings(
+    record?.extension_review?.changed_files
+      ?? record?.extension_review?.changed
+      ?? record?.extension_review?.files,
+  );
+  const currentChangedFiles = sortedStrings((extensionReview?.files ?? []).map((item) => item.file));
+  const reviewedSourceFiles = normalizedSourceFiles(record?.extension_review?.reviewed_source_files);
+  const remoteMainReviewed = reviewOk === true
+    && remote.ok === true
+    && Boolean(remote.commit)
+    && Boolean(reviewedCommit)
+    && remote.commit === reviewedCommit;
+  const currentExtensionReviewMatchesDecision = remoteMainReviewed === true
+    && sourceCheckoutMatchesRemoteMain === true
+    && reviewedMergeMode === extensionReview?.recommended_merge_mode
+    && (reviewedChangedFiles.length === 0 || arraysEqual(reviewedChangedFiles, currentChangedFiles))
+    && sourceFilesEqual(reviewedSourceFiles, checkedSourceFiles);
+  let status = "unknown_remote";
+  let stale = null;
+  let statusReason = "remote main was not checked";
+  if (review?.exists !== true) {
+    status = "missing";
+    stale = remote.ok === true && Boolean(lockedCommit) && remote.commit !== lockedCommit;
+    statusReason = review?.error ? "review ledger could not be read" : "review ledger is missing";
+  } else if (reviewOk !== true) {
+    status = "invalid";
+    stale = true;
+    statusReason = `review ledger is invalid: ${validationErrors.join("; ")}`;
+  } else if (remote.ok !== true) {
+    status = "unknown_remote";
+    stale = null;
+    statusReason = remote.skipped === true ? "remote check skipped" : (remote.error ?? "remote main unavailable");
+  } else if (remoteMainReviewed === true) {
+    status = "current";
+    stale = false;
+    statusReason = "remote main matches reviewed_commit";
+  } else {
+    status = "stale";
+    stale = true;
+    statusReason = "remote main differs from reviewed_commit";
+  }
+  const pendingRemoteReview = status === "stale"
+    || status === "invalid"
+    || (status === "missing" && stale === true);
+
+  return {
+    exists: review?.exists === true,
+    path: reviewFile,
+    ok: reviewOk,
+    error: review?.error ?? null,
+    validation_errors: validationErrors,
+    status,
+    stale,
+    status_reason: statusReason,
+    next_command: "npm run upstream:audit:latest -- --json",
+    reviewed_commit: reviewedCommit,
+    reviewed_remote: reviewedRemote,
+    reviewed_at: reviewedAt,
+    remote_main_commit: remote.commit ?? null,
+    decision: decision
+      ? {
+          extension_merge_mode: reviewedMergeMode,
+          direct_sync_allowed: decision.direct_sync_allowed === true,
+          local_extension_action: decision.local_extension_action ?? null,
+        }
+      : null,
+    remote_main_reviewed: remoteMainReviewed,
+    current_extension_review_matches_decision: currentExtensionReviewMatchesDecision,
+    pending_remote_review: pendingRemoteReview,
+    reviewed_changed_files: reviewedChangedFiles,
+    current_changed_files: currentChangedFiles,
+    reviewed_source_files_match: sourceFilesEqual(reviewedSourceFiles, checkedSourceFiles),
+  };
+}
+
+function buildRecommendation({
+  diff,
+  localFeatures,
+  sourceFeatures,
+  lockedCommit,
+  localStatus,
+  remote,
+  extensionReview,
+  upstreamReview,
+  latestCheckout,
+}) {
+  const actions = [];
+  const noBehaviorOnly = diff.ok !== true
+    && diff.added?.length === 0
+    && diff.removed?.length === 0
+    && Array.isArray(extensionReview?.files)
+    && extensionReview.files.length > 0
+    && extensionReview.files.every((file) => file.recommended_action === "keep_local_no_behavior_change");
+  const reviewedCurrentDrift = upstreamReview?.current_extension_review_matches_decision === true;
+  let safeToDirectSync = diff.ok === true || noBehaviorOnly;
+  let manualReviewRequired = false;
+  if (upstreamReview?.status === "stale") {
+    manualReviewRequired = true;
+    actions.push(`UPSTREAM.review.json is stale (${upstreamReview.reviewed_commit ?? "unknown"} -> ${upstreamReview.remote_main_commit ?? "unknown"}); run ${upstreamReview.next_command} and update the review ledger after manual absorption review.`);
+  } else if (upstreamReview?.status === "invalid") {
+    manualReviewRequired = true;
+    actions.push(`UPSTREAM.review.json is invalid (${(upstreamReview.validation_errors ?? []).join("; ")}); fix the ledger before relying on reviewed drift suppression.`);
+  } else if (upstreamReview?.status === "missing" && upstreamReview?.pending_remote_review === true) {
+    manualReviewRequired = true;
+    actions.push(`UPSTREAM.review.json is missing while remote main differs from UPSTREAM.lock.json; run ${upstreamReview.next_command} and record the manual review decision.`);
+  }
+  if (diff.source_exists !== true) {
+    safeToDirectSync = false;
+    manualReviewRequired = true;
+    actions.push("Provide a GenericAgent checkout via --source or --genericagent-root before attempting extension review.");
+  }
+  if (!diff.ok) {
+    if (noBehaviorOnly) {
+      actions.push(`Only non-behavioral extension formatting drift detected: changed=${diff.changed.length}; keep local files to avoid noisy sync.`);
+    } else if (reviewedCurrentDrift) {
+      actions.push(`Extension drift for reviewed upstream ${upstreamReview.reviewed_commit} matches UPSTREAM.review.json; keep local bridge and do not blind-sync.`);
+    } else {
+      manualReviewRequired = true;
+      actions.push(`Review extension drift before syncing: changed=${diff.changed.length} added=${diff.added.length} removed=${diff.removed.length}.`);
+    }
+  }
+  if (localFeatures.ok && sourceFeatures.exists && !sourceFeatures.ok) {
+    safeToDirectSync = false;
+    if (reviewedCurrentDrift) {
+      actions.push(`Direct sync remains disabled because reviewed upstream lacks local enhanced bridge features (${sourceFeatures.missing.join(", ")}).`);
+    } else {
+      manualReviewRequired = true;
+      actions.push(`Do not direct-sync: upstream source is missing local enhanced bridge features (${sourceFeatures.missing.join(", ")}).`);
+    }
+  }
+  if (extensionReview?.recommended_merge_mode === "manual_merge_preserve_local_bridge_features") {
+    if (reviewedCurrentDrift) {
+      actions.push("UPSTREAM.review.json records the manual-merge decision; future useful hunks still require selective cherry-pick review.");
+    } else {
+      actions.push("Use extension_review.files to cherry-pick upstream changes while preserving local bridge capabilities.");
+    }
+  }
+  if (remote.ok && lockedCommit && remote.commit !== lockedCommit) {
+    if (upstreamReview?.remote_main_reviewed === true) {
+      actions.push(`Remote main differs from UPSTREAM.lock.json (${lockedCommit} -> ${remote.commit}) but matches UPSTREAM.review.json; keep the lock at the extension baseline until an intentional extension sync.`);
+    } else if (upstreamReview?.status === "stale") {
+      actions.push(`Remote main differs from UPSTREAM.lock.json (${lockedCommit} -> ${remote.commit}); the stale review ledger must be refreshed before changing extension provenance.`);
+    } else {
+      manualReviewRequired = true;
+      actions.push(`Remote main differs from UPSTREAM.lock.json (${lockedCommit} -> ${remote.commit}); audit selective absorption before updating the lock.`);
+    }
+  }
+  if (localStatus.ok && remote.ok && localStatus.head !== remote.commit) {
+    if (upstreamReview?.remote_main_reviewed === true && latestCheckout === null) {
+      actions.push("Local GenericAgent checkout is not at remote main; latest remote drift is already reviewed in UPSTREAM.review.json, but rerun npm run upstream:audit:latest after any new remote commit.");
+    } else {
+      actions.push("Local GenericAgent checkout is not at remote main; use a fresh checkout or explicit --source for latest-source comparison.");
+      actions.push("Run npm run upstream:audit:latest for a no-write latest upstream comparison before deciding whether to update extension provenance.");
+    }
+  }
+  if (actions.length === 0) {
+    actions.push("No actionable upstream drift detected for the checked source.");
+  }
+  return {
+    safe_to_direct_sync: safeToDirectSync,
+    manual_review_required: manualReviewRequired,
+    actions,
+  };
+}
+
+function materializeLatestCheckout(args, lock) {
+  if (args.latestTemp !== true) {
+    return {
+      args,
+      latest_checkout: null,
+      cleanup: () => {},
+    };
+  }
+  const remote = args.latestRepo ?? lock?.upstream?.remote ?? defaultUpstreamRemote;
+  const tempRoot = mkdtempSync(resolve(tmpdir(), "genericagent-upstream-"));
+  const cloneArgs = ["clone", "--depth", "1", "--branch", args.latestRef, remote, tempRoot];
+  const result = spawnSync("git", cloneArgs, {
+    cwd: repoRoot,
+    encoding: "utf8",
+    timeout: 120_000,
+  });
+  if (result.status !== 0) {
+    rmSync(tempRoot, { recursive: true, force: true });
+    const detail = compactText(result.stderr || result.stdout || "unknown clone error", 500);
+    throw new Error(`git ${cloneArgs.join(" ")} failed: ${detail}`);
+  }
+  return {
+    args: {
+      ...args,
+      genericAgentRoot: tempRoot,
+      sourceDir: resolve(tempRoot, "assets", "tmwd_cdp_bridge"),
+    },
+    latest_checkout: {
+      mode: "temp_clone",
+      remote,
+      ref: args.latestRef,
+      root: tempRoot,
+      source_dir: resolve(tempRoot, "assets", "tmwd_cdp_bridge"),
+      cleanup: args.latestKeep ? "kept" : "removed_after_audit",
+    },
+    cleanup: () => {
+      if (!args.latestKeep) {
+        rmSync(tempRoot, { recursive: true, force: true });
+      }
+    },
+  };
+}
+
+function buildAudit(args) {
+  const lock = safeReadJson(lockPath);
+  const review = safeReadJsonOptional(args.reviewFile);
+  const latest = materializeLatestCheckout(args, lock);
+  const resolvedArgs = latest.args;
+  try {
+    const lockedCommit = lock?.upstream?.commit ?? null;
+    const localStatus = gitStatusForGenericAgent(resolvedArgs.genericAgentRoot);
+    const remote = remoteHead(localStatus.remote ?? lock?.upstream?.remote, args.noRemote);
+    const diff = compareExtension(resolvedArgs.sourceDir);
+    const localFeatures = featureMatrixFor(resolve(targetDir, "background.js"));
+    const sourceFeatures = featureMatrixFor(resolve(resolvedArgs.sourceDir, "background.js"));
+    const extensionReview = summarizeExtensionReview(diff, localFeatures, sourceFeatures);
+    const checkedSourceFiles = sourceFileHashes(resolvedArgs.sourceDir);
+    const sourceCheckoutMatchesLockedCommit = Boolean(localStatus.head && lockedCommit && localStatus.head === lockedCommit);
+    const sourceCheckoutMatchesRemoteMain = Boolean(localStatus.head && remote.commit && localStatus.head === remote.commit);
+    const lockMatchesRemoteMain = Boolean(lockedCommit && remote.commit && lockedCommit === remote.commit);
+    const upstreamReview = summarizeUpstreamReview({
+      reviewFile: args.reviewFile,
+      review,
+      remote,
+      lockedCommit,
+      extensionReview,
+      sourceCheckoutMatchesRemoteMain,
+      checkedSourceFiles,
+    });
+    const recommendation = buildRecommendation({
+      diff,
+      localFeatures,
+      sourceFeatures,
+      lockedCommit,
+      localStatus,
+      remote,
+      extensionReview,
+      upstreamReview,
+      latestCheckout: latest.latest_checkout,
+    });
+    return {
+      ok: diff.source_exists === true,
+      check: "genericagent-upstream-audit",
+      latest_checkout: latest.latest_checkout,
+      locked_commit: lockedCommit,
+      lock_path: lockPath,
+      local_genericagent: localStatus,
+      remote_main: remote,
+      source_dir: resolvedArgs.sourceDir,
+      extension_diff: diff,
+      extension_review: extensionReview,
+      upstream_review: upstreamReview,
+      local_extension_features: localFeatures,
+      source_extension_features: sourceFeatures,
+      checked_source: {
+        root: resolvedArgs.genericAgentRoot,
+        source_dir: resolvedArgs.sourceDir,
+        explicit_source: resolvedArgs.sourceExplicit === true,
+        latest_temp: latest.latest_checkout !== null,
+        matches_locked_commit: sourceCheckoutMatchesLockedCommit,
+        matches_remote_main: sourceCheckoutMatchesRemoteMain,
+        files: checkedSourceFiles,
+      },
+      source_checkout_matches_locked_commit: sourceCheckoutMatchesLockedCommit,
+      source_checkout_matches_remote_main: sourceCheckoutMatchesRemoteMain,
+      local_matches_locked_commit: sourceCheckoutMatchesLockedCommit,
+      local_matches_remote_main: sourceCheckoutMatchesRemoteMain,
+      lock_matches_remote_main: lockMatchesRemoteMain,
+      latest_review_recommended: remote.ok === true
+        && lockMatchesRemoteMain !== true
+        && latest.latest_checkout === null
+        && upstreamReview.remote_main_reviewed !== true,
+      latest_review_command: "npm run upstream:audit:latest",
+      safe_to_direct_sync: recommendation.safe_to_direct_sync,
+      manual_review_required: recommendation.manual_review_required,
+      recommended_actions: recommendation.actions,
+    };
+  } finally {
+    latest.cleanup();
+  }
+}
+
+function outputText(audit) {
+  process.stdout.write(`upstream_audit ok=${audit.ok} manual_review_required=${audit.manual_review_required} safe_to_direct_sync=${audit.safe_to_direct_sync}\n`);
+  process.stdout.write(`locked_commit=${audit.locked_commit ?? "unknown"}\n`);
+  process.stdout.write(`local_genericagent=${audit.local_genericagent.head ?? "unknown"} root=${audit.local_genericagent.root}\n`);
+  process.stdout.write(`remote_main=${audit.remote_main.commit ?? "unknown"} remote=${audit.remote_main.remote ?? "unknown"}\n`);
+  process.stdout.write(`checked_source matches_locked=${audit.source_checkout_matches_locked_commit} matches_remote_main=${audit.source_checkout_matches_remote_main} latest_temp=${audit.checked_source?.latest_temp === true}\n`);
+  if (audit.upstream_review?.exists === true) {
+    process.stdout.write(`upstream_review status=${audit.upstream_review.status} stale=${audit.upstream_review.stale} remote_main_reviewed=${audit.upstream_review.remote_main_reviewed} pending_remote_review=${audit.upstream_review.pending_remote_review} reviewed_commit=${audit.upstream_review.reviewed_commit ?? "unknown"} remote_main=${audit.upstream_review.remote_main_commit ?? "unknown"}\n`);
+  } else {
+    process.stdout.write(`upstream_review status=${audit.upstream_review?.status ?? "missing"} stale=${audit.upstream_review?.stale ?? "unknown"} pending_remote_review=${audit.upstream_review?.pending_remote_review ?? false}\n`);
+  }
+  const diff = audit.extension_diff;
+  process.stdout.write(`extension_diff ok=${diff.ok} changed=${diff.changed.length} added=${diff.added.length} removed=${diff.removed.length}\n`);
+  process.stdout.write(`extension_review merge_mode=${audit.extension_review.recommended_merge_mode}\n`);
+  if (diff.changed.length > 0) process.stdout.write(`changed: ${diff.changed.join(", ")}\n`);
+  if (diff.added.length > 0) process.stdout.write(`added: ${diff.added.join(", ")}\n`);
+  if (diff.removed.length > 0) process.stdout.write(`removed: ${diff.removed.join(", ")}\n`);
+  if (!audit.source_extension_features.ok && audit.source_extension_features.exists) {
+    process.stdout.write(`source_missing_enhanced_features=${audit.source_extension_features.missing.join(",")}\n`);
+  }
+  for (const item of audit.extension_review.files) {
+    const diffKind = item.diff_kind ? ` diff_kind=${item.diff_kind}` : "";
+    process.stdout.write(`review ${item.file}: risk=${item.risk} action=${item.recommended_action}${diffKind}\n`);
+  }
+  process.stdout.write("recommended_actions:\n");
+  for (const action of audit.recommended_actions) {
+    process.stdout.write(`  - ${action}\n`);
+  }
+}
+
+function run() {
+  const args = parseArgs(process.argv.slice(2));
+  if (args.help) {
+    process.stdout.write(`${usage()}\n`);
+    return 0;
+  }
+  const audit = buildAudit(args);
+  if (args.json) {
+    process.stdout.write(`${JSON.stringify(audit)}\n`);
+  } else {
+    outputText(audit);
+  }
+  return audit.ok ? 0 : 1;
+}
+
+try {
+  process.exitCode = run();
+} catch (error) {
+  process.stderr.write(`upstream-audit failed: ${String(error?.message ?? error)}\n`);
+  process.exitCode = 1;
+}

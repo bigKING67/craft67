@@ -1,0 +1,190 @@
+{
+  "schema": "design-craft.l4-screenshots.v1",
+  "case_id": "generic-review-workbench-local-l4",
+  "route": "http://127.0.0.1:4173/generic-review-workbench/",
+  "product_surface": "Generic review-operations workbench fixture",
+  "capture_context": {
+    "artifact_root": "evals/product-ui-taste/before-after/generic-review-workbench-local-l4/artifacts",
+    "capture_tool": "Google Chrome headless CLI",
+    "server": "python3 -m http.server 4173 --bind 127.0.0.1 --directory evals/fixtures/l4-pages",
+    "notes": [
+      "PNG artifacts are stored outside the repository.",
+      "Chrome headless CLI produced the screenshots; browser_evidence_bundle_ops later verified the same artifact paths, hashes, dimensions, and shared before/after keys in a dry run.",
+      "Compact responsive evidence uses 500x844 because this Chrome headless run reports a minimum effective viewport width of 500px for repeatable screenshot and dump-dom evidence."
+    ]
+  },
+  "artifacts": {
+    "before": {
+      "desktop": {
+        "tool": "chrome-headless-cli",
+        "target": "viewport",
+        "path": "evals/product-ui-taste/before-after/generic-review-workbench-local-l4/artifacts/screenshot-viewport-generic-review-workbench-before-desktop-headless-chrome.png",
+        "sha256": "db939b6b342a9833b1ec9d133c5aa1d8a6c4f87d02cdae7b9ffd723182de4da3",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 130,
+              "width": 1180,
+              "right": 1310
+            },
+            "hero_copy": {
+              "found": true,
+              "x": 130,
+              "width": 1180,
+              "right": 1310
+            },
+            "summary_card": {
+              "found": true,
+              "x": 130,
+              "width": 1180,
+              "right": 1310
+            }
+          }
+        }
+      },
+      "compact500": {
+        "tool": "chrome-headless-cli",
+        "target": "viewport",
+        "path": "evals/product-ui-taste/before-after/generic-review-workbench-local-l4/artifacts/screenshot-viewport-generic-review-workbench-before-compact500-headless-chrome.png",
+        "sha256": "7d5b355b47622fa44fd0df1016fed43347c0ac09b29f322279ae7c467b303017",
+        "dimensions": [
+          500,
+          844
+        ],
+        "viewport": {
+          "width": 500,
+          "height": 844,
+          "dpr": 1,
+          "is_mobile": true
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 35,
+              "width": 430,
+              "right": 465
+            },
+            "hero_copy": {
+              "found": true,
+              "x": 35,
+              "width": 430,
+              "right": 465
+            },
+            "summary_card": {
+              "found": true,
+              "x": 35,
+              "width": 430,
+              "right": 465
+            }
+          }
+        }
+      }
+    },
+    "after": {
+      "desktop": {
+        "tool": "chrome-headless-cli",
+        "target": "viewport",
+        "path": "evals/product-ui-taste/before-after/generic-review-workbench-local-l4/artifacts/screenshot-viewport-generic-review-workbench-after-desktop-headless-chrome.png",
+        "sha256": "96827d97a94041db18711e9502fe1978194e55cf270a20462ad9a9b33ffa2ee9",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 130,
+              "width": 1180,
+              "right": 1310
+            },
+            "hero_copy": {
+              "found": true,
+              "x": 130,
+              "width": 662,
+              "right": 792
+            },
+            "summary_card": {
+              "found": true,
+              "x": 820,
+              "width": 490,
+              "right": 1310
+            }
+          }
+        }
+      },
+      "compact500": {
+        "tool": "chrome-headless-cli",
+        "target": "viewport",
+        "path": "evals/product-ui-taste/before-after/generic-review-workbench-local-l4/artifacts/screenshot-viewport-generic-review-workbench-after-compact500-headless-chrome.png",
+        "sha256": "5fdf66b1ebde14a7612445919c9f2600ddd831a645f73b01be7d068a58121afa",
+        "dimensions": [
+          500,
+          844
+        ],
+        "viewport": {
+          "width": 500,
+          "height": 844,
+          "dpr": 1,
+          "is_mobile": true
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 35,
+              "width": 430,
+              "right": 465
+            },
+            "hero_copy": {
+              "found": true,
+              "x": 35,
+              "width": 430,
+              "right": 465
+            },
+            "summary_card": {
+              "found": true,
+              "x": 35,
+              "width": 430,
+              "right": 465
+            }
+          }
+        }
+      }
+    }
+  },
+  "layout_delta": {
+    "desktop": {
+      "before_hero_summary_treatment": "The summary repeats the metric strip as a full-width second card.",
+      "after_hero_summary_treatment": "The summary becomes a dark priority object paired with the hero, making the decision state visible in the first fold.",
+      "before_primary_work_area": "Priority rows begin lower and compete with equal metric cards.",
+      "after_primary_work_area": "Priority rows and next actions are visible beneath a lead metric strip."
+    },
+    "compact500": {
+      "horizontal_overflow": false,
+      "responsive_boundary": "Chrome headless compact capture at 500x844; exact 390px phone capture is intentionally not claimed."
+    }
+  }
+}

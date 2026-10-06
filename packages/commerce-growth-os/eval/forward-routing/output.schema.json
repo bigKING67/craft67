@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["selected_skills", "reason"],
+  "properties": {
+    "selected_skills": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "reason": {"type": "string"}
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/copy-sheet.schema.json",
+  "title": "Creative Craft Copy Sheet v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "copy_sheet_id",
+    "brief_id",
+    "direction_id",
+    "selected_route_id",
+    "status",
+    "use_scope",
+    "strategy",
+    "voice",
+    "proof_hierarchy",
+    "mandatory_copy",
+    "prohibited_copy",
+    "legal_copy",
+    "copy_routes",
+    "selected_copy_route_id",
+    "copy_units",
+    "render_method",
+    "approval",
+    "unknowns"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.copy-sheet.v1"
+    },
+    "copy_sheet_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brief_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "direction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_route_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": ["draft", "reviewed", "approved", "superseded"]
+    },
+    "use_scope": {
+      "enum": ["exploration", "internal", "public"]
+    },
+    "strategy": {
+      "type": "object",
+      "required": [
+        "objective",
+        "audience",
+        "tension",
+        "proposition",
+        "desired_response",
+        "evidence_state",
+        "evidence_refs"
+      ],
+      "properties": {
+        "objective": {"type": "string", "minLength": 1},
+        "audience": {"type": "string", "minLength": 1},
+        "tension": {"type": "string", "minLength": 1},
+        "proposition": {"type": "string", "minLength": 1},
+        "desired_response": {"type": "string", "minLength": 1},
+        "evidence_state": {"$ref": "#/$defs/evidenceState"},
+        "evidence_refs": {"$ref": "#/$defs/stringArray"}
+      },
+      "additionalProperties": false
+    },
+    "voice": {
+      "type": "object",
+      "required": ["principles", "prohibited_tones"],
+      "properties": {
+        "principles": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "prohibited_tones": {"$ref": "#/$defs/stringArray"}
+      },
+      "additionalProperties": false
+    },
+    "proof_hierarchy": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/proof"}
+    },
+    "mandatory_copy": {"$ref": "#/$defs/stringArray"},
+    "prohibited_copy": {"$ref": "#/$defs/stringArray"},
+    "legal_copy": {"$ref": "#/$defs/stringArray"},
+    "copy_routes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/copyRoute"}
+    },
+    "selected_copy_route_id": {
+      "type": ["string", "null"]
+    },
+    "copy_units": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/copyUnit"}
+    },
+    "render_method": {
+      "$ref": "#/$defs/renderMethod"
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "status",
+        "reviewed_by",
+        "reviewed_at",
+        "approved_by",
+        "approved_at",
+        "basis"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["pending", "reviewed", "approved", "rejected"]
+        },
+        "reviewed_by": {"type": ["string", "null"]},
+        "reviewed_at": {"type": ["string", "null"]},
+        "approved_by": {"type": ["string", "null"]},
+        "approved_at": {"type": ["string", "null"]},
+        "basis": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "unknowns": {"$ref": "#/$defs/stringArray"}
+  },
+  "$defs": {
+    "evidenceState": {
+      "enum": ["SPECIFIED", "OBSERVED", "INFERRED", "HYPOTHESIZED", "UNVERIFIED"]
+    },
+    "renderMethod": {
+      "enum": [
+        "provider_render",
+        "post_overlay",
+        "hybrid",
+        "live_action",
+        "typography_only",
+        "voiceover",
+        "subtitle"
+      ]
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "proof_id",
+        "priority",
+        "statement",
+        "evidence_state",
+        "evidence_refs"
+      ],
+      "properties": {
+        "proof_id": {"type": "string", "minLength": 1},
+        "priority": {"type": "integer", "minimum": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "evidence_state": {"$ref": "#/$defs/evidenceState"},
+        "evidence_refs": {"$ref": "#/$defs/stringArray"}
+      },
+      "additionalProperties": false
+    },
+    "copyRoute": {
+      "type": "object",
+      "required": [
+        "route_id",
+        "job",
+        "mechanism",
+        "intended_response",
+        "evidence_state",
+        "evidence_refs"
+      ],
+      "properties": {
+        "route_id": {"type": "string", "minLength": 1},
+        "job": {"type": "string", "minLength": 1},
+        "mechanism": {"type": "string", "minLength": 1},
+        "intended_response": {"type": "string", "minLength": 1},
+        "evidence_state": {"$ref": "#/$defs/evidenceState"},
+        "evidence_refs": {"$ref": "#/$defs/stringArray"}
+      },
+      "additionalProperties": false
+    },
+    "copyUnit": {
+      "type": "object",
+      "required": [
+        "unit_id",
+        "role",
+        "text",
+        "language",
+        "evidence_state",
+        "evidence_refs",
+        "render_method"
+      ],
+      "properties": {
+        "unit_id": {"type": "string", "minLength": 1},
+        "role": {
+          "enum": [
+            "headline",
+            "subheadline",
+            "body",
+            "cta",
+            "caption",
+            "supers",
+            "voiceover",
+            "subtitle",
+            "legal",
+            "other"
+          ]
+        },
+        "text": {"type": "string", "minLength": 1},
+        "language": {"type": "string", "minLength": 1},
+        "evidence_state": {"$ref": "#/$defs/evidenceState"},
+        "evidence_refs": {"$ref": "#/$defs/stringArray"},
+        "render_method": {"$ref": "#/$defs/renderMethod"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

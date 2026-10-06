@@ -1,0 +1,327 @@
+{
+  "schema": "money-craft.consolidated-baseline.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_ENGINEERING_BASELINE",
+  "version": "0.3.0",
+  "dirty_worktree": true,
+  "release": false,
+  "scope": "Current test suite across three existing environments, Skill parity, historical runtime evidence binding and known capability gaps. Not canonical whole-repository review.",
+  "runtime_coverage": [
+    {
+      "path": "skills/money-craft/scripts/earnings_baseline.py",
+      "sha256": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_crosscheck.py",
+      "sha256": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_drivers.py",
+      "sha256": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_update.py",
+      "sha256": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_reconciliation.py",
+      "sha256": "577768445452fba0948d10cac79ef7ed4e5b8750dbe78aa1866cdca3b9853ca5",
+      "baseline_relation": "CHANGED",
+      "evidence": "acceptance/portfolio-candidate-review-20260920.json",
+      "evidence_sha256": "a1122e1220ff5f6871c2001ce832676bfe1f2ea652b6189ae65c42d155b51122",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_rigor.py",
+      "sha256": "a1dc0c512d620fa06f40b1e50b2370041180e9f26d7f5ae4e60ef3d8b215190a",
+      "baseline_relation": "CHANGED",
+      "evidence": "acceptance/portfolio-candidate-review-20260920.json",
+      "evidence_sha256": "a1122e1220ff5f6871c2001ce832676bfe1f2ea652b6189ae65c42d155b51122",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/fred_adapter.py",
+      "sha256": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/money_craft.py",
+      "sha256": "ab4bf5312d4f7ddbde9af0f933b27ef7922d0dbc1c8297ae33e1de3fa7347402",
+      "baseline_relation": "CHANGED",
+      "evidence": "acceptance/portfolio-candidate-review-20260920.json",
+      "evidence_sha256": "a1122e1220ff5f6871c2001ce832676bfe1f2ea652b6189ae65c42d155b51122",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/portfolio_audit.py",
+      "sha256": "d44f84134947759976aca0d110a11e2414d46bb5f8a6b1bec4f0211648144dc6",
+      "baseline_relation": "ADDED",
+      "evidence": "acceptance/portfolio-candidate-review-20260920.json",
+      "evidence_sha256": "a1122e1220ff5f6871c2001ce832676bfe1f2ea652b6189ae65c42d155b51122",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/report_audit.py",
+      "sha256": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/report_renderer.py",
+      "sha256": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/research_run.py",
+      "sha256": "079cab3659ba7c3f614cf6476409764f63b37ab202e2105140ca10dd2ff251c0",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/research_workflow.py",
+      "sha256": "0833fd8a55911b38d7ace727e31ec7c8c4a1591956f03cbabbb20ce906538db1",
+      "baseline_relation": "CHANGED",
+      "evidence": "acceptance/historical-source-intake-20260919.json",
+      "evidence_sha256": "129f3f0d4136a8342e35550bfc5b515c58eb17942be198375cc3eeee72541c21",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/runtime_paths.py",
+      "sha256": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/tracking_workflow.py",
+      "sha256": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+      "baseline_relation": "UNCHANGED",
+      "evidence": "acceptance/core-closeout-20260919.json",
+      "evidence_sha256": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    },
+    {
+      "path": "skills/money-craft/scripts/yfinance_adapter.py",
+      "sha256": "660463d429197d45f9e2dcf3ff5335b7ad326a5eb319faf56d4da43cfa916320",
+      "baseline_relation": "CHANGED",
+      "evidence": "acceptance/live-runtime-20260919.json",
+      "evidence_sha256": "f1ace6cbdcda3e9a5ff049c8771e1feed671f038cd01d3a58430adb560e2d83d",
+      "scope": "Historical bounded record binding verified now; not a new code review."
+    }
+  ],
+  "skill_parity": {
+    "files": 75,
+    "source_candidate_installed_equal": true,
+    "source_hashes": {
+      "requirements-yfinance.txt": "af2a310cb859b04b2fea0b43e835974ca2c0285f8b3ab7733d82ba13d21a0b49",
+      "VERSION": "d915cc95d6ca8f47ae297713ed46d4e5c5d99ddd29fc3c61e263bdf305f2b5b0",
+      "SKILL.md": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+      "requirements-report.txt": "a8cb26c51e475c50ba9cbfbc1ed8fd8ae99cfaec3a45cf3e67e2861efb62bf38",
+      "reporting/report.css": "442e0c51856a62a8a6feab65abc38881514d30eeba499326911b85aa590a0315",
+      "reporting/report.js": "4522a90ff0aa020dd3ab2d1a14393bdb6d7adc98da24039be4b487412619c7a2",
+      "reporting/report.html": "fce898acd66bf9e3e54d52a7e2fb8620af3467c80b121ba0ab5a35d0644bf439",
+      "references/routing.md": "a3703530d3294161f60578b7eefcc361ea84c962570c2394a69332ef7c976f89",
+      "references/valuation-and-thesis.md": "6d45769766d057562750f16ce9d5452e35402ce46049a7a605df268f8c27e271",
+      "references/financial-data-and-evidence.md": "5d383f2a21fe0612794f2d7f4430ed5f2ca7961d8cadfc21372f915892361b37",
+      "references/global-investing.md": "b5d49c3a2dfecd9790252c202dcf9b86552ac844a07b07e57368dd359afa3ca2",
+      "references/portfolio-audit.md": "3f1be1c4f655585a0a021ca4ef2c9acc12e0ae94ec8ce4897a6744c69ccf31ab",
+      "references/report-rendering.md": "ff7ec6ecc4f09df1fce37448f9b59e899969fa76155f77cc5ef3f378b2d3c5b8",
+      "references/high-growth-alpha.md": "28d28ab94e4e66a9d1ec68f849050f857ad5d886cf3e3d60b2d463bea1e97f02",
+      "references/earnings-review.md": "1d082c35b4e88fe4f13f25b710aab2d75ead84a4392bb307efc51f513ec2bf6b",
+      "references/company-research.md": "4dfb0152cd57210fc14a0a6c347bea6e1c7b405404106d60589aee557203e4b7",
+      "references/screening.md": "bc1085720095632e1c48b67c004476f11f64ac5acb1ae789139e39522f61aae1",
+      "references/research-semantic-review.md": "930d924c993d68425b494e2e09db8b181fc2e3d57468d4236e0e97c25edaaafe",
+      "references/tracking-workflow.md": "861d986878f253eb619edbc1e698d9ea04ec0f292f2d6654dfa13ee7f0da05ca",
+      "agents/openai.yaml": "3f18964f6068352da4dc844116f051f5abfcbcea3ae3eb2dd80a43b5f97bec20",
+      "schemas/thesis-diff.schema.json": "4ca4aa028b77d2142d7ad1e38ea597701b58f90aa0343e5594b79edcdf52e468",
+      "schemas/research-init.schema.json": "edf7596a962d3b8b039d7f781f6566f531f9135fe5e1bdf9cd2382db82ee4140",
+      "schemas/financial-reconciliation-audit.schema.json": "09adb2c61e7b5528b788f33b22fc8da721a914354b19aaf77e14dfe8b13b12e0",
+      "schemas/company-research-plan.schema.json": "c0a9745a56d4af64751982aef59f9adc8c824d9f30c51710479bf27fcce30b34",
+      "schemas/report-render.schema.json": "89fd54cba9e65ccd0cd41a2e306668b4d1e461bac3b21e5c960074bd43acaaad",
+      "schemas/tracking-run-state.schema.json": "fdcfb9ab10b983502840c3f3c9f1e80fbdc6668ad51b4cdd2cd4ae001db8b799",
+      "schemas/data-response.schema.json": "61815ba50490cefa3141ba1360bdb0d43e4a91c408044ade474db2581f37cee2",
+      "schemas/tracking-state.schema.json": "57d5fc3cf2e2ca36369e014da81ad6ab85f805eb7de56593421feced590a287a",
+      "schemas/tracking-revision.schema.json": "a8958b0261a63db80caf68953858a0a2fbcf813854fe7c5636e329a9a7b588f9",
+      "schemas/earnings-update-input.schema.json": "13629d064381606108ea00df3eeab91b2e4bf4358fcb80a99c1ca802735d2f9d",
+      "schemas/research-collection.schema.json": "206e03f2867c08be3a7acbaf23a6258ee253287a07aadc39e13972aec90f5dc7",
+      "schemas/tracking-status.schema.json": "473285cd60336aecbe79dcf92b0166a5bedee6ba3e74123313d69508b3dc550d",
+      "schemas/research-finalize.schema.json": "3ab0028b26add5bd1bf7d6bbbdaff4268abecc01d1e2e3197a129f508a342ee9",
+      "schemas/tracking-revision.v2.schema.json": "709bf60b5fa9638a6f4e306e0e7a1e3952bb78f21d45081c796f08e477060bfb",
+      "schemas/financial-audit.schema.json": "dc43561b48ba18eb166fe57f0e7a0fd1b50eec96242ca16c074c65308f2d6df2",
+      "schemas/financial-reconciliation.schema.json": "c3ae5255bdce1a8b42e8003fee03a805f281e507abe29bd022246e6b708a9b9d",
+      "schemas/tracking-init.schema.json": "b6e8635bd894cd10167ae95307a5e32ddfa446001f3ede7c8288ee038fb8f20f",
+      "schemas/tracking-current.schema.json": "e7e1251c2e037c79db875e9a1bb4b9cc0734cc22bcf7f36e4353dc247af49d29",
+      "schemas/tracking-status.v2.schema.json": "16859c283bed2f2986e1d17dbcfcd6d89657f2b74da2852938d589e52828da83",
+      "schemas/research-completion-receipt.schema.json": "ba0ca309356a3f2fea8aec1017759aeffe52f1858a1d1cb3a4e8dcc768e42333",
+      "schemas/source-capture.schema.json": "9ef75a6e7cb72f724a04b0a64a8e92d0aefc4c1a746631819bccfce121435c6a",
+      "schemas/tracking-current.v2.schema.json": "4537ca0e39133886b942a8f7387e292ac81b32fb9146ed01c890aa7991a174a6",
+      "schemas/research-status.schema.json": "3f2b92c1b1132c88effd9d26ef79d5af103c94c8ffeceac14b153781b789b7c3",
+      "schemas/report-render-verify.schema.json": "5159851aad44458acbe49c5d3f6b32fde6cc1302dfc8d17d1056837449cbb7bb",
+      "schemas/earnings-update.schema.json": "8bf59e151bf58de7208e0e07d20e54424420a1104b56f5fed029519e3e1a33cb",
+      "schemas/tracking-verify.schema.json": "1c400b647ce6949029cf2577229117712c6a282ea91cea07d9ceab3276777bb3",
+      "schemas/thesis-update-plan.schema.json": "593702760116c5a077e50657aed0ddd183baaa61fb309c95b350440e05061598",
+      "schemas/report-audit.schema.json": "1920aa89095c3ea7acf2763e934a9670510f8853856974ea675ae1bb2cb25fa3",
+      "schemas/portfolio-input.schema.json": "a999d3bbc8efc4cfd3f3d35d07b91f59e0cf517f756cc37d0df88dd0249ef0bc",
+      "schemas/research-run-state.schema.json": "2f33a1bdf8b5e9637d6a856d5bde1ec7af2b28df4eedf862172a9f58b009ee35",
+      "schemas/official-import.schema.json": "3f90f2841d121733c25ae7a45584320fa1eab93b5e2a2e1eb944673eeb17f43d",
+      "schemas/research-case.schema.json": "f031931375699bb189185aa36cd3e752c5509a54b9c7fad5e7776e23582e6863",
+      "schemas/tracking-state.v2.schema.json": "16ffbe9dc8851de86983ed22db2cc45e50461b800b0b958cb8f2c321975fc9ab",
+      "scripts/earnings_drivers.py": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+      "scripts/fred_adapter.py": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+      "scripts/financial_rigor.py": "a1dc0c512d620fa06f40b1e50b2370041180e9f26d7f5ae4e60ef3d8b215190a",
+      "scripts/financial_reconciliation.py": "577768445452fba0948d10cac79ef7ed4e5b8750dbe78aa1866cdca3b9853ca5",
+      "scripts/earnings_update.py": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+      "scripts/earnings_crosscheck.py": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+      "scripts/portfolio_audit.py": "d44f84134947759976aca0d110a11e2414d46bb5f8a6b1bec4f0211648144dc6",
+      "scripts/report_audit.py": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+      "scripts/yfinance_adapter.py": "660463d429197d45f9e2dcf3ff5335b7ad326a5eb319faf56d4da43cfa916320",
+      "scripts/runtime_paths.py": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+      "scripts/tracking_workflow.py": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+      "scripts/report_renderer.py": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+      "scripts/research_run.py": "079cab3659ba7c3f614cf6476409764f63b37ab202e2105140ca10dd2ff251c0",
+      "scripts/earnings_baseline.py": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+      "scripts/money_craft.py": "ab4bf5312d4f7ddbde9af0f933b27ef7922d0dbc1c8297ae33e1de3fa7347402",
+      "scripts/research_workflow.py": "0833fd8a55911b38d7ace727e31ec7c8c4a1591956f03cbabbb20ce906538db1",
+      "templates/thesis.md": "2e9b8d9402f7c2d711483605bfcb5630108a3b3e07e73af3a326776884c93835",
+      "templates/report.md": "80221be333693c7c7bd3e5f9e422071e6152ec7771b380340b7650bd5193de29",
+      "templates/tracking-card.md": "722f9f9fe39ca53c25d5b66c6a12b761d4622044e822a98a20f3f1f4c7490f35",
+      "references/providers/fred.md": "432c69d9363420afc490c9a261f539a9a375f841a821d96a1945cd63184c326a",
+      "references/providers/yfinance.md": "bb515effa7c1a07df6633be458e4ebf96f55ce28edef6484e4895fb7031d3c8b",
+      "references/providers/fuyao.md": "de35ea53fc6d02d1dc1d12c00d66696a3ee169671b5def8e058ea9e2f7121c4d"
+    },
+    "candidate_manifest": "local/acceptance/20260920-target-candidate/source-hashes.json"
+  },
+  "tests": {
+    "discovered": 501,
+    "base_passed": 473,
+    "base_skipped": 28,
+    "optional_skips_executed": 28,
+    "remaining_skips": 0,
+    "failed": 0,
+    "lanes": [
+      {
+        "lane": "report",
+        "count": 23,
+        "exit_code": 0,
+        "tests": [
+          "test_report_renderer.ReportRendererTests.test_acceptance_reading_order_preserves_conclusion_and_citations_once",
+          "test_report_renderer.ReportRendererTests.test_active_body_cli_rejection_preserves_previous_output",
+          "test_report_renderer.ReportRendererTests.test_build_document_splits_primary_and_extended_views",
+          "test_report_renderer.ReportRendererTests.test_chart_candidates_follow_visible_top_level_markdown_tables",
+          "test_report_renderer.ReportRendererTests.test_cli_code_example_cannot_supply_financial_chart",
+          "test_report_renderer.ReportRendererTests.test_cli_descending_years_keep_forward_growth_and_source",
+          "test_report_renderer.ReportRendererTests.test_cli_extreme_tables_do_not_publish_nonfinite_charts",
+          "test_report_renderer.ReportRendererTests.test_cli_foreign_currency_scenarios_remain_table_only",
+          "test_report_renderer.ReportRendererTests.test_cli_nonmonetary_financial_rows_remain_table_only",
+          "test_report_renderer.ReportRendererTests.test_cli_partial_manifest_does_not_claim_complete_evidence",
+          "test_report_renderer.ReportRendererTests.test_cli_pdf_failure_preserves_prior_outputs",
+          "test_report_renderer.ReportRendererTests.test_cli_percentage_point_table_is_not_a_percentage_chart",
+          "test_report_renderer.ReportRendererTests.test_cli_preserves_ambiguous_table_without_inventing_trend",
+          "test_report_renderer.ReportRendererTests.test_cli_tiny_prices_and_zero_bars_keep_their_meaning",
+          "test_report_renderer.ReportRendererTests.test_hidden_price_cannot_override_visible_report_or_scenario",
+          "test_report_renderer.ReportRendererTests.test_markdown_body_rejects_active_html",
+          "test_report_renderer.ReportRendererTests.test_output_aliases_are_rejected_before_any_input_is_modified",
+          "test_report_renderer.ReportRendererTests.test_primary_view_never_absorbs_extended_charts_when_trend_table_missing",
+          "test_report_renderer.ReportRendererTests.test_render_cli_protects_source_and_allows_separate_html",
+          "test_report_renderer.ReportRendererTests.test_render_cli_rejects_unquoted_external_resource_before_writing",
+          "test_report_renderer.ReportRendererTests.test_render_generation_failure_preserves_existing_outputs",
+          "test_report_renderer.ReportRendererTests.test_source_template_marker_rejected_before_output_write",
+          "test_report_renderer.ReportRendererTests.test_successful_staged_render_publishes_both_outputs"
+        ],
+        "log": "local/acceptance/20260920-consolidated-report.log"
+      },
+      {
+        "lane": "data",
+        "count": 5,
+        "exit_code": 0,
+        "tests": [
+          "test_yfinance_pandas.YFinancePandasTests.test_duplicate_labels_and_zero_columns_preserve_positions",
+          "test_yfinance_pandas.YFinancePandasTests.test_nullable_cells_and_exports_use_null",
+          "test_yfinance_pandas.YFinancePandasTests.test_pandas_missing_scalars_and_invalid_date_index",
+          "test_yfinance_pandas.YFinancePandasTests.test_real_transport_exceptions_have_bounded_retry_policy",
+          "test_yfinance_pandas.YFinancePandasTests.test_timezone_filter_and_nullable_action_currency"
+        ],
+        "log": "local/acceptance/20260920-consolidated-data.log"
+      }
+    ]
+  },
+  "freeze": [
+    "Selected company earnings and cash-flow research with manual semantic review",
+    "Deterministic calculations, source binding, research/tracking lifecycle",
+    "Bounded portfolio and peer-comparison workflows",
+    "Public citation gate and new-run snapshot replay"
+  ],
+  "gaps": [
+    {
+      "id": "INDUSTRY",
+      "status": "NOT_YET_DEMONSTRATED",
+      "kind": "research_capability",
+      "next": "One bounded industry task with supply/demand sources and contradictory evidence; not another company earnings replay."
+    },
+    {
+      "id": "VALUATION",
+      "status": "RESEARCH_DEPENDENT",
+      "kind": "research_capability",
+      "next": "Company-specific sustainable earnings and comparable multiples; cannot be solved by more arithmetic tests."
+    },
+    {
+      "id": "UPSTREAM",
+      "status": "SELECTIVE_COVERAGE",
+      "kind": "upstream_intake",
+      "next": "Nine registered Git sources are not exhaustively reviewed; trigger bounded intake by concrete capability gaps."
+    },
+    {
+      "id": "HOST_CITATIONS",
+      "status": "GATE_VERIFIED_GENERATION_UNRETESTED",
+      "kind": "host_behavior",
+      "next": "Check the next genuine task under default contract; no claim that model omissions are eliminated."
+    },
+    {
+      "id": "RELEASE",
+      "status": "NOT_AUTHORIZED",
+      "kind": "delivery_boundary",
+      "next": "No commit/push/release or application transition inferred."
+    }
+  ],
+  "known_open_blockers_in_checked_engineering_scope": [],
+  "limitations": [
+    "Test passing does not establish investment returns, independent-source truth, or automated semantic correctness.",
+    "No fresh provider network, browser/PDF visual or cross-platform tests in this consolidation.",
+    "Historical review evidence is retained with its original scope; matching hash is not a fresh independent review."
+  ],
+  "artifacts": {
+    "acceptance/core-closeout-20260919.json": "635a0f5ad3e185c44e707a130cbbd6e929bf8340f5836462fdcfae3b5fd658ec",
+    "local/acceptance/20260920-target-candidate/source-hashes.json": "4791568475b8ded35a8134c979d393e01801718b60fc6c3b7d215fc482aa3bbc",
+    "local/acceptance/20260920-consolidated-tests.log": "ff1ddb1439a5fa9d313bf4566c873472189f6a17a9b2e83732441dc0dcf84ef7",
+    "local/acceptance/20260920-consolidated-report.log": "3309ccb3a93c9c64cd2b2f86073be251e0259838905e14d370b092948e7d93ed",
+    "local/acceptance/20260920-consolidated-data.log": "94d81b8a40e7edeeec941d7369c0c51006ac204a7518cb96f136f1c16aeb29b7",
+    "acceptance/public-citation-defaults-20260920.json": "1ef1f5451e47c2c092bc83b0e67f16d814045406fd8572c0e4114cc5dcdbddd8"
+  }
+}

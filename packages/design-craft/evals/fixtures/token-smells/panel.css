@@ -1,0 +1,12 @@
+:root {
+  --surface-card: #ffffff;
+}
+
+.panel {
+  color: #101828;
+  background: #f9fafb;
+  border: 1px solid #e4e7ec;
+  border-radius: 13px;
+  padding: 18px 23px;
+  box-shadow: 0 12px 36px rgba(16, 24, 40, 0.12);
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "money-craft.public-source-admission-review.v1",
+  "checked_at": "2026-09-20T10:01:46.916012+00:00",
+  "status": "PASS_BOUNDED_SOURCE_AND_CANDIDATE",
+  "blocker": "PUBLIC_SOURCE_ADMISSION_GAP",
+  "implementation": "Separate optional S31/S32 public quotation sources and import-public command; shared source import lifecycle, exact URL/hash binding and unchanged official requirements.",
+  "validation": {
+    "full_tests": 518,
+    "passed": 490,
+    "optional_dependency_skips": 28,
+    "public_admission_regressions": 11,
+    "source_checks": 19,
+    "package_checks": 7,
+    "source_candidate_files": 75,
+    "source_candidate_equal": true
+  },
+  "real_material_replay": {
+    "actor": "parent deterministic replay, not autonomous host",
+    "new_workspace": "local/acceptance/20260920-public-source-final/research",
+    "original_reports_unchanged": true,
+    "official_sources": 8,
+    "public_sources": 2,
+    "financial_calculations": 87,
+    "complete": true,
+    "assessment": {
+      "artifact_integrity": "VERIFIED",
+      "receipt_integrity": "VERIFIED",
+      "evidence_coverage": "PARTIAL",
+      "citation_binding": "VERIFIED",
+      "claim_support": "UNVERIFIED",
+      "source_freshness": "UNVERIFIED"
+    },
+    "no_new_network_capture": true,
+    "public_times": "Capture timestamps from original capture.json; observation 2026-09-18 15:00 +08:00 from saved closing-quote page and dated closing-price news. These are parent-declared inputs, not parser-proven semantic facts."
+  },
+  "first_failed_run_preserved": true,
+  "frozen_case_portability": {
+    "original_snapshot": "local/skill-evals/20260920-midea-e2e/frozen-case-original.json",
+    "original_sha256": "6c66ba42759c964809dd17c71c96d95fe4d1e43465baa1b562d172c3f9cc6f72",
+    "criteria_and_prompt_unchanged": true,
+    "change": "Portable workspace path in descriptor; review evidence pointer relocated to original bytes. Previous review retained separately."
+  },
+  "installed_unchanged": true,
+  "full_host_rerun": false,
+  "formal_archive_validation": false,
+  "release": false,
+  "reviewer": "main agent bounded implementation review and replay, not independent review",
+  "remaining": [
+    "Install/host evidence does not yet cover this version; global installation was not changed.",
+    "New full host run must still prove render/archive/guard/seal stages; core completion is not formal archive completion.",
+    "Optional dependency tests were skipped; no cross-platform or live provider verification in this patch.",
+    "Captured/observed times are caller assertions with structural checks; report semantics and source independence still require review."
+  ],
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "3a59bdf855774c5b319faa4031dcf5d85cf7d79672cca6f58d848cf1f543a5a8",
+    "skills/money-craft/scripts/research_workflow.py": "25059b642dbee89218c079c6123998e28d0a8b885b5295889245d8a1aa6d65b0",
+    "skills/money-craft/scripts/money_craft.py": "dd7168387e3e0afca754d728b0cfd8805a015224e54e0956f1205934a7a34ee4",
+    "skills/money-craft/references/company-research.md": "b2a94d163c1268217a8ec95864c3b1034fcdd8675692821371037b077c1a4a50",
+    "skills/money-craft/schemas/company-research-plan.schema.json": "9b74e087546d1654869e29df4396ebb07f12e74f31d03d755004053a1c0b496a",
+    "skills/money-craft/schemas/research-case.schema.json": "af63dee58c3064c8e499a653575c45ad0ccfcf5a294a135a068f575b6f6ba44e",
+    "skills/money-craft/schemas/research-status.schema.json": "7988fe8ded54819cff6d0041581e525c81610167f04e2c329f3ca7e4720a289e",
+    "tests/test_public_evidence.py": "6a6d718faf48ea3b7d9ed1d07a88d0f5198cd3d3fb80a9741be5d01e8c10cca7"
+  },
+  "artifact_hashes": {
+    "local/acceptance/20260920-public-source-final/source-validation.json": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684",
+    "local/acceptance/20260920-public-source-final/package-smoke.json": "5aaf50a41dc7a96a098154e15588d101262d1144760d6e1bb9459c82d1dad687",
+    "local/acceptance/20260920-public-source-final/tests.log": "a4ea2ecfd1501de98e58e25f57773562a93c1c21ef8eb8d5d8df09c930817c69",
+    "local/acceptance/20260920-public-source-final/parity.json": "f81d9b6ecb8957d6e33bdc0a5d3d25203691136963411a72b708d0975c9adfc1",
+    "local/acceptance/20260920-public-source-final/finalize.json": "18410087722025064ed1d5e648093422bf46252901a72ab86d9c585785244eec",
+    "local/acceptance/20260920-public-source-final/status.json": "f58a4256107565399fcd31f92902fde91e63fe551424aa161cd3a5e2dd848f02",
+    "local/acceptance/20260920-public-source-final/import-S31.json": "24883ac957a0242d641d24af791237897c131d7b7747c3157786f0efd0cb6766",
+    "local/acceptance/20260920-public-source-final/import-S32.json": "743eba2fe0b261f02717aa47697fb15fa6d2606831447081ed0e4037a83973a4",
+    "local/acceptance/20260920-public-source-final/research/completion-receipt.json": "f7150bdfa7dd695d9d0af58e4bdd6d4e759d9eceef3592683e9d0b73d2bfac5e",
+    "local/acceptance/20260920-public-source-final/research/evidence-manifest.json": "068b29091b964f47ed25fc67ca864b15e0867be6a69bcc53d594c486d6cf3c72"
+  },
+  "package_sha256": "caf43cf46ce8db6ee35839d38ca84397198a2bb363c0c3b7aa0b62a1fa83d679"
+}

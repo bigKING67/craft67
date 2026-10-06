@@ -1,0 +1,46 @@
+{
+  "name": "money-craft",
+  "version": "0.3.0",
+  "description": "Evidence-first global investment research and wealth decision discipline.",
+  "author": {
+    "name": "bigKING67",
+    "url": "https://github.com/bigKING67"
+  },
+  "homepage": "https://github.com/bigKING67/money-craft#readme",
+  "repository": "https://github.com/bigKING67/money-craft",
+  "license": "MIT",
+  "runtime": {
+    "python": ">=3.10"
+  },
+  "keywords": [
+    "global-investing",
+    "portfolio-analysis",
+    "fundamental-analysis",
+    "investment-research",
+    "earnings-review",
+    "agent-skill"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Money Craft",
+    "shortDescription": "Evidence-first global investment research",
+    "longDescription": "Money Craft supports global company, industry, fund, portfolio, earnings, valuation, and thesis research with source binding, exact calculations, explicit provider gaps, an optional Fuyao A-share adapter, and an isolated optional yfinance adapter for Hong Kong and U.S. secondary market data.",
+    "developerName": "bigKING67",
+    "category": "Finance",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write",
+      "Network"
+    ],
+    "websiteURL": "https://github.com/bigKING67/money-craft",
+    "defaultPrompt": [
+      "Screen this global listed company for fundamental quality and red flags.",
+      "Research this global company or industry and bind every key fact to evidence.",
+      "Compare this fund or portfolio using official product documents and explicit risk constraints.",
+      "Review the latest earnings report and explain what changed.",
+      "Create or update a scenario valuation and investment thesis."
+    ],
+    "brandColor": "#14532D"
+  }
+}

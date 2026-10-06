@@ -1,0 +1,243 @@
+{
+  "schema": "money-craft.cross-market-full-host-review.v1",
+  "status": "PASS_BOUNDED_AUTONOMOUS_HK_E2E",
+  "research_evidence_status": "PARTIAL",
+  "full_investment_research_complete": false,
+  "elapsed_seconds": 1104.469,
+  "first_pass_without_errors": false,
+  "parent_research_intervention": false,
+  "independent_semantic_reviewer": false,
+  "reviewer": "parent",
+  "core_complete": true,
+  "financial_calculations": 58,
+  "statement_reconciliations": 3,
+  "source_roles": 7,
+  "distinct_original_documents": 5,
+  "pdf_pages_parent_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "browser_parent_review": "retained actual host screenshots, 1440x1000 and 390x844 first viewport only",
+  "archive_snapshot_reverified": true,
+  "archive_verify_all_reverified": true,
+  "failed_ledger_preserved": "runs/alibaba-20250701",
+  "completed_ledger": "runs/alibaba-delivery",
+  "criteria": [
+    {
+      "criterion": "唯一港股普通股身份、报告/交易币种、财政年结、历史信息截止正确；ADS不混作普通股。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "HK:09988港元柜台、CNY报告币种、2025-07-01香港截止及ADS 1:8区分明确。"
+    },
+    {
+      "criterion": "实际读取冻结Skill并完成宿主路由；候选、全局安装和共享工具不变。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "显式冻结75文件，实际宿主路由与加载；候选/全局安装/共享投资工具未变。"
+    },
+    {
+      "criterion": "自主取得正式资料，原件和捕获时间可追溯；只用截止日前公开事实。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "7来源角色对应5原件；捕获时点与历史截止区分，当前页面导航未当历史经营证据。"
+    },
+    {
+      "criterion": "财务提取、单位、会计口径和关键算术回执可复核，来源冲突及独立性如实披露。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "58计算、3勾稽；父代理核对收入、归普通股利润、现金、受限项、股数及FCF原表，非穷尽提取审计。"
+    },
+    {
+      "criterion": "核心plan/init/import/finalize等实际使用；失败和状态不伪造，不降门禁。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "父代理回读research-delivery valid=true complete=true；不等于研究证据完整。"
+    },
+    {
+      "criterion": "商业模式、竞争、资本配置及最强反方有事实支持；缺口实际限制结论。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "报告有经营模式、竞争反证与资本配置；独立份额、客户留存及回报证据缺失实际降低结论。"
+    },
+    {
+      "criterion": "估值明确币种、股数和ADS关系、净现金及正常化边界；条件情景不称确定目标价。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "CNY普通股EPS情景不等同HKD目标价；报价、FX、日期股数及正常化缺口明确。"
+    },
+    {
+      "criterion": "现金和债务核对法人、限制及融资工具，不能将合并现金全额分配。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "现金流量表受限桥、选定债务、可转债及法人边界保留，不称全部资金可分配。"
+    },
+    {
+      "criterion": "Money Craft自有HTML/PDF内容一致、视觉实查且绑定归档产物。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "六页PDF父代理全页检查，宿主browser67宽窄首屏真实截图已回看留存；渲染和封存字节相同。"
+    },
+    {
+      "criterion": "同一执行链完成隔离归档、受保护离线回读、只读revision、current/索引及账本核验。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "同一宿主自主恢复；失败原账本保留，最终账本completed且verify通过；封存回读和verify-all通过。"
+    },
+    {
+      "criterion": "无人为中途研究补救，无账户交易、发布、共享代码修改或子代理；任务浏览器标签自行清理。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "无父会话研究补救或共享代码修改；宿主记录任务标签3个清理、服务停止，父代理未重扫用户浏览器。"
+    },
+    {
+      "criterion": "最终分别判定工程交付、研究证据、投资判断，不以流程complete掩盖PARTIAL。",
+      "verdict": "PASS_BOUNDED",
+      "basis": "最终明确工程归档通过、投资研究PARTIAL及各项UNVERIFIED，不给买卖建议。"
+    }
+  ],
+  "limitations": [
+    "historical unadjusted HKD counter quote and trading timestamp",
+    "historical FX and price-date share bridge",
+    "independent financial/competitive corroboration",
+    "normalized sustainable profitability and cloud capital returns",
+    "complete disclosure-index sweep",
+    "five-year interest-bearing debt decomposition",
+    "legal-entity cash availability and shareholder distribution bridge",
+    "No chart generated; audited tables retained.",
+    "HTML/PDF display render-time pre-seal status; later archive state is proved by receipts.",
+    "Shared host archiver retains legacy report-kami filenames internally, despite using only Money Craft native renderer; user-facing files use report.html/report.pdf. No Kami renderer was invoked.",
+    "One authored case, no statistical generalization or independent semantic review.",
+    "Initial failed ledger and later successful ledger are same host recovery, not one error-free run.",
+    "Parent source spot checks are not exhaustive external verification."
+  ],
+  "archive_file_bindings": [
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/report-kami.html",
+      "sha256": "e58e1e54c63ecbfab7b5f017cbd51e924390282e40de8744c22fc1d3ec1e3f94"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/report-kami.pdf",
+      "sha256": "52c867d51218b12d5130dad4f305243f255f592a069158ecc1bd4723883438d1"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/report.audit.json",
+      "sha256": "b656595ae1e586d6257638b337d773bb451ffec142f88d8e166696c0238e2610"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/report.md",
+      "sha256": "c40b0ab062e9873f030e4afd0c89746180d232462545cc854d651c615d0ae6b3"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S11/source-01.capture.json",
+      "sha256": "e71d3bea8335feb4fa5250629a9a89d45549f96b0f7b75044f8b8cb4efabc20e"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S11/source-01.headers.txt",
+      "sha256": "fd876f09c75e762b7a2d8270eaa39e9030b0de9da3df14de23ee456ecaebfd8d"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S11/source-01.pdf",
+      "sha256": "c7806bf5da28032e1b15dbe9a334011d65f5d69efe3bf11a9d212f64f07ca9b2"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S12/source-01.capture.json",
+      "sha256": "372dd4302d43028248661d66e9650f787e524099a7a92df919d8b9b2dbdc6ea1"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S12/source-01.headers.txt",
+      "sha256": "fd876f09c75e762b7a2d8270eaa39e9030b0de9da3df14de23ee456ecaebfd8d"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S12/source-01.pdf",
+      "sha256": "c7806bf5da28032e1b15dbe9a334011d65f5d69efe3bf11a9d212f64f07ca9b2"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S13/source-01.bin",
+      "sha256": "585d4fdfb3408cec6cc1866c704d07918528fcb12d2e11696da1adddbf171796"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S13/source-01.capture.json",
+      "sha256": "cddb6474f974e0db7a4ee8cec55a0b5cc3544b764ee44f6446a9262e85c7530f"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S13/source-01.headers.txt",
+      "sha256": "d9c4016ef7f78bfcbf620a20bb145e079adcfa15a0d8d6a888eeabd03ec1dd7f"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S18/source-01.capture.json",
+      "sha256": "408b069f6354803666ce3bc68244cd52475f456bc2659581f95b922fa7d6e976"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S18/source-01.headers.txt",
+      "sha256": "fd876f09c75e762b7a2d8270eaa39e9030b0de9da3df14de23ee456ecaebfd8d"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S18/source-01.pdf",
+      "sha256": "34c976bbe9d2fbc8dd6618bd212d94abbd56d60f51d65b3192805633b03ef337"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S20/source-01.capture.json",
+      "sha256": "12ea3dee458680fa9ddbbe5860ae86ebfb92d855365cc9ce4eba5cfb37e636df"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S20/source-01.headers.txt",
+      "sha256": "fd876f09c75e762b7a2d8270eaa39e9030b0de9da3df14de23ee456ecaebfd8d"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S20/source-01.pdf",
+      "sha256": "c7806bf5da28032e1b15dbe9a334011d65f5d69efe3bf11a9d212f64f07ca9b2"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S21/source-01.capture.json",
+      "sha256": "67ea1d85efb00ac5f03c5222ca7c97866b6816abb7d50aa6014cb038b0e77808"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S21/source-01.headers.txt",
+      "sha256": "fd876f09c75e762b7a2d8270eaa39e9030b0de9da3df14de23ee456ecaebfd8d"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S21/source-01.pdf",
+      "sha256": "e88ebc01da5aafd75d1516e4c5cc5c04f140bb0bdf78abd1b3fb6e963e6a4918"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S23/source-01.capture.json",
+      "sha256": "5a0c307813a3cf770938e21ccf11bd8c85f7fdacf068131c44cce6e39cbd64d9"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S23/source-01.headers.txt",
+      "sha256": "fd876f09c75e762b7a2d8270eaa39e9030b0de9da3df14de23ee456ecaebfd8d"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/S23/source-01.pdf",
+      "sha256": "423643d0071f1e025a438308e814ac25ae38c085f5cf62467a38a27f508a3257"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/sources/sources.manifest.json",
+      "sha256": "bb6e7bbc1e6d690565d100030d87c202ae343f2fc6b8842a00b0b4ec53c0f8a1"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/archive/09988-alibaba/2025-07-01/revisions/r0001/verify.py",
+      "sha256": "1a84b49a95d90592534ea569727adc8f66bea0540aad72f98b97d921791676ab"
+    }
+  ],
+  "artifacts": {
+    "local/skill-evals/20260921-alibaba-full-host/host/host.json": "9939ebf0894de89cc0034582f19581b7d1cf1842bc477f3d79e5789666cc63ee",
+    "local/skill-evals/20260921-alibaba-full-host/host/events.jsonl": "fbc708865cccc38562a34e90fd8806ababa6fc724e9468010f253b5a7e318d3c",
+    "local/skill-evals/20260921-alibaba-full-host/host/answer.md": "425ef75a5701726d86bc55511d4bdd97ef619c0f86f29343f37de776114466d0",
+    "local/skill-evals/20260921-alibaba-full-host/host/prompt.txt": "821b5da75ca6daea12f7d59aa160b35887ad8f32c4facf1d484e983cd02226d4",
+    "local/skill-evals/20260921-alibaba-full-host/host-tools-before.json": "2908d6bc1f6f5dfe71664e4b5dc00fb88d5024e432bd89b9ff5ec2cbb21e27e3",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/review.json": "ccf9e5901a02ad6f2fceeb270c1ad2b16c4281902d0bc6155cfd1842fa68139d",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/core-status.json": "669f509e27b2cca9815bdc9b0f89b929309e3e9351505a9693197447695eb950",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/source-spotchecks.json": "7c8bb7db07fdb4b34add331253bc7346ad8c9b85d9b0c45d4ac62dce600c1b4b",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/browser-retained.json": "3f5b4eb398cc2a2368720610a9959710432226f2ea5a0e2ae31d0d5c051b4aed",
+    "local/skill-evals/20260921-alibaba-full-host/host/workspace/delivery-status.json": "7d2c22f3476d999b29cf5c4c25eb96c5f27ed2efd633633d44dae3dfe87fdeb7",
+    "local/skill-evals/20260921-alibaba-full-host/host/workspace/research-delivery/report.md": "c40b0ab062e9873f030e4afd0c89746180d232462545cc854d651c615d0ae6b3",
+    "local/skill-evals/20260921-alibaba-full-host/host/workspace/delivery/report.pdf": "52c867d51218b12d5130dad4f305243f255f592a069158ecc1bd4723883438d1",
+    "local/skill-evals/20260921-alibaba-full-host/host/workspace/delivery/report.html": "e58e1e54c63ecbfab7b5f017cbd51e924390282e40de8744c22fc1d3ec1e3f94",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/browser-1.png": "bc7a888b66cd2b390f0d6ab370e5cd512c4384e44abb3ac89741a9455d0a5108",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/browser-2.png": "4d34add92f8adfb88b64164f22c92e455ccee2ca0b06cbd7f5f2ea933b799823",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/page-1.png": "63c5314a1fbcf9f513ed320d8718d1750a9b2c51c127aff728c09a26f5f49b51",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/page-2.png": "06bab8052e0af79ae58ae9f869ec448c06168a54fe858e1c477c4c70c0acf26b",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/page-3.png": "08010ccde4255aea7fd7e32615ff449bb39953048c32522f84bbadaded7b231f",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/page-4.png": "6ef09992d19ac9b44fcb99cdb4dd680664ab0289df7c8064d84f9acddfbab7a0",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/page-5.png": "d707c553e4a5a47cc1f1222988222d77280539300fe604e610b5c3806e49e79c",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/page-6.png": "1f51adb0eff0a5c17fed6acb15dd2ba26f9bd9682919c8f2094cd142faf69ec8",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/spread-1.png": "34319c513ffc5f023971957da903948f26986fb41071c6774c9b77280437ffa3",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/spread-2.png": "6e5285c43fa80e39fe7af6b592b606b93708731ec2a5abada47495917bfc9773",
+    "local/skill-evals/20260921-alibaba-full-host/parent-review/spread-3.png": "debb36dd0f054e3bca509683f949cac218829025bb386dc163fb76f4d3ce4be7"
+  },
+  "source_installed_candidate_sha256": "69e64c5c99818311ebbd5cf832b80408bff28e0ae72e76534fc2ba23af44542a"
+}

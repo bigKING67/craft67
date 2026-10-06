@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-run-state.schema.json",
+  "title": "Money Craft Tracking Run State",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "tracking_root",
+    "workspace",
+    "as_of",
+    "created_at",
+    "previous",
+    "update_plan_sha256",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.tracking-run-state.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tracking_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workspace": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "previous": {
+      "type": "object",
+      "required": [
+        "path",
+        "workspace_copy",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workspace_copy": {
+          "const": "previous-thesis.md"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "update_plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_research": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "execution_boundary": {
+      "type": "object",
+      "required": [
+        "network_used",
+        "account_access",
+        "automatic_trading"
+      ],
+      "properties": {
+        "network_used": {
+          "const": false
+        },
+        "account_access": {
+          "const": false
+        },
+        "automatic_trading": {
+          "const": false
+        }
+      }
+    }
+  }
+}

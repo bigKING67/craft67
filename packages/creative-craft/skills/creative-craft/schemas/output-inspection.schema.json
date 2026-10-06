@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/output-inspection.schema.json",
+  "title": "Creative Craft Output Inspection v1",
+  "type": "object",
+  "required": ["schema_version", "inspection_id", "job_id", "receipt_id", "output_asset_id", "output_sha256", "inspector", "inspected_at", "findings", "invariant_checks", "copy_checks", "technical_checks", "rights_checks", "decision", "approval", "remaining_unknowns"],
+  "properties": {
+    "schema_version": {"const": "creative-craft.output-inspection.v1"},
+    "inspection_id": {"type": "string", "minLength": 1},
+    "job_id": {"type": "string", "minLength": 1},
+    "receipt_id": {"type": "string", "minLength": 1},
+    "output_asset_id": {"type": "string", "minLength": 1},
+    "output_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "inspector": {"type": "string", "minLength": 1},
+    "inspected_at": {"type": "string", "minLength": 1},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+    "invariant_checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+    "copy_checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+    "technical_checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+    "rights_checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+    "decision": {"enum": ["needs_revision", "approved", "rejected", "deferred"]},
+    "approval": {
+      "type": "object",
+      "required": ["approved_by", "approved_at", "approval_basis"],
+      "properties": {
+        "approved_by": {"type": ["string", "null"]},
+        "approved_at": {"type": ["string", "null"]},
+        "approval_basis": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "remaining_unknowns": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "required": ["id", "status", "observation", "interpretation"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "status": {"enum": ["pass", "fail", "unknown", "not_applicable"]},
+        "observation": {"type": "string"},
+        "interpretation": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

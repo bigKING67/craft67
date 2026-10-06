@@ -1,0 +1,31 @@
+{
+  "schema": "money-craft.segment-rule-review.v1",
+  "status": "PASS_BOUNDED_SOURCE_RULE_UPDATE",
+  "changes": [
+    {
+      "path": "skills/money-craft/references/valuation-and-thesis.md",
+      "before_sha256": "6d45769766d057562750f16ce9d5452e35402ce46049a7a605df268f8c27e271",
+      "after_sha256": "386f6dc0cda414317af92f188fd219b2a98746b49b6c7d0f2cbd714c59d2221b",
+      "additive_only": true
+    },
+    {
+      "path": "skills/money-craft/references/earnings-review.md",
+      "before_sha256": "7629d7e3225c1e2cc94268ff1a3bfad5a62894350760d490c189082725cec157",
+      "after_sha256": "e4ebefdbe23eaf0516165bf8cca0a5ee7263f50ace1191e2aa4e3448e0c63170",
+      "additive_only": true
+    }
+  ],
+  "source_files": 75,
+  "installed_differences": [
+    "references/valuation-and-thesis.md",
+    "references/earnings-review.md"
+  ],
+  "installed_modified": false,
+  "quick_validate": "PASS",
+  "runtime_code_changed": false,
+  "independent_review": false,
+  "host_behavioral_eval": false,
+  "reviewer": "parent",
+  "basis": "actual Alibaba case disclosure boundaries",
+  "remaining": "candidate wording has not had fresh host behavioral acceptance"
+}

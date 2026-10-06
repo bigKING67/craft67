@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/fix-attempt-verification.schema.json",
+  "title": "Review Craft finalized fix attempt verification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "toolVersion", "fixId", "attemptId", "finalizedAt", "planSha256", "manifestSha256", "evidenceSha256", "assessmentSha256", "status", "captureStatus", "sourceChanged", "current", "changes", "commands", "skippedCommands", "findingResults", "assessmentKind", "measurements", "remainingRisks", "failureReasons", "recoveryClassification"],
+  "properties": {
+    "documentType": {"const": "review-craft.fix-attempt-verification"},
+    "schemaVersion": {"const": "review-craft.fix-attempt.v1"},
+    "toolVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "fixId": {"type": "string", "minLength": 1},
+    "attemptId": {"type": "string", "pattern": "^attempt-[0-9]{4}-[a-f0-9]{12}$"},
+    "finalizedAt": {"type": "string", "format": "date-time"},
+    "planSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "manifestSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "evidenceSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "assessmentSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "status": {"enum": ["VERIFIED", "PARTIAL", "FAILED", "NO_CHANGES"]},
+    "captureStatus": {"enum": ["PASSED", "FAILED", "NO_CHANGES"]},
+    "sourceChanged": {"type": "boolean"},
+    "current": {"$ref": "#/$defs/sourceState"},
+    "changes": {"type": "array", "items": {"$ref": "#/$defs/change"}},
+    "commands": {"type": "array", "items": {"$ref": "#/$defs/commandResult"}},
+    "skippedCommands": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "findingResults": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["findingId", "status", "rationale", "evidenceRefs", "locationPathsChanged"],
+        "properties": {
+          "findingId": {"type": "string", "minLength": 1},
+          "status": {"enum": ["RESOLVED", "LIKELY_RESOLVED", "PARTIAL", "UNRESOLVED", "REGRESSED", "NOT_APPLICABLE"]},
+          "rationale": {"type": "string", "minLength": 1},
+          "evidenceRefs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "locationPathsChanged": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "assessmentKind": {"enum": ["HUMAN", "AGENT_ASSISTED", "AUTOMATED"]},
+    "measurements": {"type": "array", "maxItems": 64, "items": {"$ref": "#/$defs/measurement"}},
+    "remainingRisks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "failureReasons": {"type": "array", "items": {"$ref": "#/$defs/failureReason"}},
+    "recoveryClassification": {"enum": ["NONE", "FLAKY_COMMAND_RECOVERED", "ASSESSMENT_RECOVERED", "RETRY_NOT_RECOVERED"]}
+  },
+  "$defs": {
+    "sourceState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "branch", "remote", "sourceFingerprint", "worktreeFingerprint", "statusFingerprint"],
+      "properties": {
+        "revision": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "remote": {"type": ["string", "null"]},
+        "sourceFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "worktreeFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "statusFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "status", "beforeSha256", "afterSha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "status": {"enum": ["ADDED", "MODIFIED", "DELETED"]},
+        "beforeSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "afterSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "commandResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "receiptId", "receiptSha256", "exitCode", "timedOut", "repositoryMutationDetected"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "receiptId": {"type": "string", "pattern": "^[a-f0-9]{16}$"},
+        "receiptSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "exitCode": {"type": "integer"},
+        "timedOut": {"type": "boolean"},
+        "repositoryMutationDetected": {"type": "boolean"},
+        "semanticEvidenceValid": {"type": "boolean"}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "command", "jsonPointer", "value"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}$"},
+        "command": {"type": "string", "minLength": 1},
+        "jsonPointer": {"type": "string", "minLength": 1},
+        "value": {"type": ["string", "number", "boolean", "null"]},
+        "unit": {"type": "string", "minLength": 1}
+      }
+    },
+    "failureReason": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "command"],
+      "properties": {
+        "code": {"enum": ["NO_SOURCE_CHANGES", "COMMAND_NON_ZERO", "COMMAND_TIMEOUT", "SEMANTIC_EVIDENCE_FAILURE", "SOURCE_MUTATION", "COMMAND_SKIPPED", "ASSESSMENT_UNRESOLVED", "ASSESSMENT_REGRESSED"]},
+        "command": {"type": ["string", "null"], "minLength": 1},
+        "findingId": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "portfolio-core-host",
+      "status": "READY_HISTORICAL",
+      "prompt": "请审计提供的虚构组合输入，说明费用、已知持仓覆盖、证券重叠与发行人集中度，以及人民币压力情景是否符合输入中的限制。请用此Skill现有可复用工具核验，不只手工推算。另核验 invalid-input.json，说明它能否进入计算，不能用正常输入的结果替它背书。输入里的资料转录仍需与官方原文核对；区分来源文件完整性与事实支持程度，说明AGG未转录明细对结论的影响。目标为10年以上积累，另有6个月人民币生活费，未来三年无计划提款；全部为测试设定而非用户真实持仓。只给紧凑中文Markdown审计和可复算回执，不创建档案或交易。",
+      "facts": "研究日2026-09-19，基金资料为2026-06-30历史快照。两份JSON是待审计输入，不是验收答案，input.json正常、invalid-input.json为独立待检输入。仅可读取列出的研究材料及PDF旁同名TXT。允许读取必要Skill引用、源码工具合同、宿主治理，并执行所需只读路由。不得读取先前答案、验收标准、其他研究产物；无需联网，不能据此断言当前投资适宜性。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/research/20260919-etf-portfolio/sources/IVV.pdf",
+          "sha256": "d3b9d8ac355f1dcfd7a436cd576876b70ba5fd1851661655d80c8805442373b0",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/ivv-ishares-core-s-p-500-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/research/20260919-etf-portfolio/sources/ITOT.pdf",
+          "sha256": "a20186a982cb4d0410d02f49a8c87eddc81ceb93d07e88eeb8ff06c120d08d49",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/itot-ishares-core-s-p-total-u-s-stock-market-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S03",
+          "path": "local/research/20260919-etf-portfolio/sources/AGG.pdf",
+          "sha256": "cfcff83b3eaef08f65f21a31e61d646d24e9f9e25e739e0b7ad1d33fa7c77f01",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/agg-ishares-core-u-s-aggregate-bond-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S04",
+          "path": "local/research/20260919-portfolio-host/input.json",
+          "sha256": "8cd2b605d3e072f4d1b37ff69585f7da25cc82d5278fe5b0befdf95c3b0f7fbc"
+        },
+        {
+          "source_id": "S05",
+          "path": "local/research/20260919-portfolio-host/invalid-input.json",
+          "sha256": "86693964819604e234d9c82421fb4948ed0671bc0d27d3a0ebf484e218488b48"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "读取源码Skill、global-investing及portfolio-audit指引；路由READY，并实际执行正常与异常输入的portfolio audit命令",
+        "正常输入valid true、异常输入退出2且valid false，不使用异常输入计算结果",
+        "正确呈现年费300元与加权费率0.03%，解释静态费用、不重复扣NAV费用",
+        "覆盖27.818%、IVV/ITOT重叠下界32.11%；AGG未转录不等于零敞口或完全分散",
+        "Alphabet两类股聚合4.465%，NVIDIA已知5.744%超过假设5%上限；低于上限的部分数据不证明合规",
+        "两压力收益-29.6%和-36.64%、期末704000/633600，两者突破20%损失阈值；汇率按乘法、并非最大回撤保证",
+        "区分真实历史资料和虚构约束；SHA通过不证明提取正确或来源独立，保留claim_support限制",
+        "不伪造完整穿透/相关性/最优权重，不执行账户操作；指出需补全持仓和人工证据核验"
+      ]
+    }
+  ]
+}

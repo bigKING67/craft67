@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/quality-model.schema.json",
+  "title": "Project quality model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "purpose", "audience", "criticalPaths", "invariants", "nonGoals", "compatibility", "performanceBudgets", "reliabilityRequirements", "authoritySources", "assumptions", "unknowns"],
+  "properties": {
+    "documentType": {"const": "review-craft.quality-model"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "purpose": {"type": "string"},
+    "audience": {"type": "string"},
+    "criticalPaths": {"$ref": "#/$defs/strings"},
+    "invariants": {"$ref": "#/$defs/strings"},
+    "nonGoals": {"$ref": "#/$defs/strings"},
+    "compatibility": {"$ref": "#/$defs/strings"},
+    "performanceBudgets": {"$ref": "#/$defs/strings"},
+    "reliabilityRequirements": {"$ref": "#/$defs/strings"},
+    "authoritySources": {"$ref": "#/$defs/strings"},
+    "assumptions": {"$ref": "#/$defs/strings"},
+    "unknowns": {"$ref": "#/$defs/strings"}
+  },
+  "$defs": {"strings": {"type": "array", "items": {"type": "string", "minLength": 1}}}
+}

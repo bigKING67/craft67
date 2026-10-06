@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "scoring": {"method": "keyword-rubric"},
+  "cases": [
+    {
+      "id": "annual_integrated_marketing",
+      "prompt": "为一个中高端消费品牌制定年度整合营销框架。",
+      "required_groups": [["business objective", "业务目标"], ["brand objective", "品牌目标"], ["audience", "人群"], ["positioning", "定位"], ["consumer journey", "消费者旅程"], ["brand communications", "品牌传播"], ["content", "内容"], ["paid", "效果"], ["CRM", "生命周期"], ["budget", "预算"], ["measurement", "衡量"], ["owner", "负责人"]],
+      "forbidden_terms": ["平均分预算", "哪个平台火就投哪个"]
+    },
+    {
+      "id": "spokesperson_selection",
+      "prompt": "品牌要选代言人，应该如何评估？",
+      "required_groups": [["brand fit", "品牌匹配"], ["audience fit", "人群匹配"], ["category", "品类"], ["reputation", "声誉", "舆情"], ["exclusivity", "排他"], ["rights", "授权"], ["term", "期限"], ["activation", "激活"], ["measurement", "衡量"], ["exit", "退出"]],
+      "forbidden_terms": ["直接按粉丝量选择", "谁最火就选谁"]
+    },
+    {
+      "id": "brand_sponsorship",
+      "prompt": "一个体育赛事赞助机会是否值得品牌参与？",
+      "required_groups": [["objective", "目标"], ["audience overlap", "人群重合"], ["association", "品牌联想"], ["rights", "权益"], ["activation cost", "激活成本"], ["reputation", "声誉"], ["measurement", "衡量"], ["exit", "退出"]],
+      "forbidden_terms": ["有曝光就值得"]
+    },
+    {
+      "id": "xiaohongshu_content_system",
+      "prompt": "建立小红书内容和达人种草体系。",
+      "required_groups": [["audience", "人群"], ["scenario", "场景"], ["keyword", "关键词"], ["content pillar", "内容支柱"], ["KOL", "KOC", "达人"], ["brief"], ["search", "搜索"], ["rights", "授权"], ["measurement", "指标"], ["refresh", "更新"]],
+      "forbidden_terms": ["批量复制同一篇"]
+    },
+    {
+      "id": "douyin_creative_system",
+      "prompt": "为抖音建立可持续的短视频创意系统。",
+      "required_groups": [["hook"], ["proof", "证据"], ["content family", "内容类型"], ["script", "脚本"], ["storyboard", "分镜"], ["variant", "变量"], ["fatigue", "疲劳"], ["landing", "承接"], ["refund", "退款"]],
+      "forbidden_terms": ["播放量越高越好"]
+    },
+    {
+      "id": "paid_media_scale",
+      "prompt": "效果广告表现不错，如何安全放量？",
+      "required_groups": [["baseline", "基线"], ["budget cap", "预算上限"], ["marginal", "边际"], ["break-even", "盈亏平衡"], ["attribution", "归因"], ["incrementality", "增量"], ["stop rule", "止损"], ["scale rule", "放量"], ["refund", "退款"], ["inventory", "库存"]],
+      "forbidden_terms": ["建议直接翻倍预算"]
+    },
+    {
+      "id": "crm_lifecycle",
+      "prompt": "设计会员、复购和老客召回体系。",
+      "required_groups": [["lifecycle", "生命周期"], ["segment", "分群"], ["replenishment", "补货"], ["member", "会员"], ["recall", "召回"], ["frequency", "频率"], ["fatigue", "疲劳"], ["opt-out", "退订"], ["LTV"], ["holdout", "对照"]],
+      "forbidden_terms": ["应该给所有人发同一张券"]
+    },
+    {
+      "id": "brand_vs_performance",
+      "prompt": "品牌预算和效果预算发生冲突时如何决策？",
+      "required_groups": [["business objective", "业务目标"], ["brand objective", "品牌目标"], ["demand creation", "需求创造"], ["demand capture", "需求承接"], ["test budget", "测试预算"], ["brand lift", "品牌提升"], ["incrementality", "增量"], ["commercial", "商业"], ["review", "复盘"]],
+      "forbidden_terms": ["预算应该全部转效果广告", "预算应该全部做品牌"]
+    }
+  ]
+}

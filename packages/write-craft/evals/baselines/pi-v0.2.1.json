@@ -1,0 +1,1253 @@
+{
+  "schema": "write-craft.behavior-baseline.v1",
+  "version": "0.2.1",
+  "recorded_at": "2026-09-24T14:43:42+00:00",
+  "host": {
+    "name": "pi",
+    "version": "0.80.6"
+  },
+  "provenance": {
+    "source_revision": "8b4dc61eb8636c5546d1c95b865917c95460d035",
+    "source_dirty": true,
+    "skill_sha256": "4018321b834fe3e9af9e3be8c2eeaab6a04985f43fa43d0f21da08e6e92e0e49",
+    "generator_model": "anthropic/claude-sonnet-4-6",
+    "generator_thinking": "medium",
+    "judge_model": "anthropic/claude-sonnet-4-6",
+    "judge_thinking": "high",
+    "independent_contexts": true,
+    "cross_model_verification": false,
+    "run_mode": "segmented_full_with_explicit_rejudge",
+    "raw_artifact_roots": [
+      ".artifacts/write-craft-evals/20260924T141404Z",
+      ".artifacts/write-craft-evals/20260924T141700Z",
+      ".artifacts/write-craft-evals/20260924T142800Z",
+      ".artifacts/write-craft-evals/20260924T144121Z"
+    ],
+    "notes": [
+      "The eleven current cases were evaluated across four segmented Pi artifact roots; this is not a single uninterrupted full-suite execution.",
+      "Two original judge failures were preserved and followed by explicit candidate-bound rejudges: one must_not status mismatch and one judge timeout.",
+      "The first strict-length candidate was not promoted after manual review found unsupported owners, frequencies, stop rules, and follow-up timing; the strengthened current-digest rerun passed at 168 of 500 Han characters.",
+      "The baseline proves independent generator and judge contexts on one model, not cross-model agreement."
+    ]
+  },
+  "acceptance": {
+    "full_cases": "11/11 PASS",
+    "explicit_rejudges": "2/2 PASS",
+    "deterministic_length_limits": "1/1 PASS (168/500 Han characters)",
+    "manual_review": "PARTIAL",
+    "manual_review_notes": [
+      "Automated contract validation covers current case digests, exact criteria, PASS statuses, non-empty evidence, empty blockers, content hashes, and declared deterministic length limits.",
+      "Cross-model and full Codex behavior evaluation were not run for this candidate."
+    ],
+    "rejected_candidate_reviews": "1 judge-PASS candidate not promoted after manual evidence-boundary review"
+  },
+  "results": [
+    {
+      "case_id": "ai-video-proposal-rewrite",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/ai-video-proposal-rewrite--1/result.json",
+      "source_input_sha256": "917474ab960fa033c9c2b55b88fe893f7dd5e03504e4a9b6b211df9e2630405b",
+      "source_result_sha256": "6ff87ab778a88f154fa3751eca0a0abe0956484cbae07605ca734dc3461c05a5",
+      "case_digest": "e647d4f8dd6fbff1e76f32a143fd20ac2209426229a8a8e25eaccab1a54e8b6a",
+      "candidate_sha256": "3bdec142d49be2f905aebd9cbfb0d6da9df7e9912b02133fbd065b0e03d04305",
+      "judgment_sha256": "5c6c178da1fc6a9212f6f2d696b5de6cad07121dfa499f65d0632481a9732be2",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 121.903,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 6202,
+            "cacheRead": 3286,
+            "cacheWrite": 2613,
+            "totalTokens": 12104,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.09303,
+              "cacheRead": 0.0009858,
+              "cacheWrite": 0.00979875,
+              "total": 0.10382354999999999
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 3270
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259427533
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 26.481,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1134,
+            "cacheRead": 491,
+            "cacheWrite": 3790,
+            "totalTokens": 5418,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.01701,
+              "cacheRead": 0.0001473,
+              "cacheWrite": 0.0142125,
+              "total": 0.0313788
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 191
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259522778
+        }
+      },
+      "candidate": "# AI 剪辑项目：决策文档（完整稿）\n\n**一句话结论**\n\n这份方案把\"技术上怎么做\"讲清楚了——用四个部件：看懂素材、按需检索、自动串流程、出片。但它现在还不能让你做投入决定，因为缺四样东西：效率基线、预算、工期、试点通过标准。建议第一步不批建设，先批\"测基线 + 单场景试点\"，用一笔小钱把这四个数字换回来，再决定要不要全面开工。\n\n---\n\n## 一、现在需要你决定什么\n\n| # | 事项 | 建议 |\n|---|---|---|\n| 1 | 是否按\"先测基线 → 单场景试点 → 再扩量\"的顺序推进 | 建议同意（理由见第五节） |\n| 2 | 试点阶段的预算上限 | 需要你给一个区间，技术侧据此定范围 |\n| 3 | 指定业务对接人 | 由他提供样本片和\"什么算可用\"的口径 |\n\n如果你更倾向一次性按全量建设报批，也可以，但那样预算和工期必须由技术侧按全量范围重新出，本方案目前给不出来。\n\n## 二、方案要解决的是哪一段工作\n\n现在一条片子的流程是：人工翻素材 → 人工挑片段 → 人工拼接剪辑 → 出片。方案要把前三步交给系统，人工从\"自己找、自己剪\"变成\"提需求、审初稿\"。\n\n四个部件各自解决什么：\n\n- **多模态解析**：让机器看懂素材。它把视频的每一段画面、台词、声音转成可检索的结构化数据。没有这一步，机器等于不看素材，只会按文件名找东西。\n- **视频检索**：用一句话描述就把要用的片段找出来（例如\"找主角在雨里说话的特写\"），替代人工拖时间轴翻找。\n- **Agent 编排**：把上面几步和剪辑动作串成一条流水线，并按你的脚本顺序调用它们。它负责\"按流程自动跑\"，不负责判断片子好不好。\n- **渲染**：把编辑结果输出成可看的成片。\n\n> 这四个是方案原文已有的部件。它们之间的具体衔接方式属于实现细节，不影响你的投入决策，放在技术附录即可。\n\n## 三、一个典型场景（示例，具体口径待与业务确认）\n\n1. **谁发起**：编导写一句需求，指定素材目录，提交。\n2. **系统做什么**：解析素材 → 检索出候选片段 → 按脚本顺序编排 → 渲染出初稿。\n3. **人在哪里介入**：人只看初稿，决定通过还是退改。退改由人给出意见，系统重跑。\n4. **产出**：一条带时间线的初稿。\n5. **怎么算成功**：看初稿能不能少改、一条片子的人工工时有没有降。这两件事都需要先有基线——目前没有。\n\n这个场景是**示例**，不代表每种片子都这么跑。访谈类、宣传片、直播切片对\"可改程度\"的要求差别很大，第一期只能选一种。\n\n## 四、方案目前缺的四项（以及为什么缺了就不能决策）\n\n| 缺口 | 它挡住的判断 | 补的办法 |\n|---|---|---|\n| **效率基线**：现在一条片子花多少人工时 | 无法证明方案省时，更无法证明省人 | 挑一批有代表性的片子，按现有流程记一次实际工时 |\n| **预算**：一次性投入 + 每月的算力开销 | 无法算投入产出 | 需要你先给上限，技术侧再定范围 |\n| **工期与分期** | 无法排期、无法安排占用的人力 | 技术侧按模块出排期 |\n| **试点门槛**：什么算通过 | 试点做完仍然无法决定去留 | 见第五节，先定指标和口径 |\n\n这里要说清一条容易被跳过的话：**技术指标好，不等于业务省钱**。真正省钱的条件是初稿可用率高到能减少复剪工时；如果初稿每次都要大改，人的工时反而比原来多。所以第五节的两个指标必须一起看。\n\n另外两个影响成本的硬约束，需要放在正文而不是附录：\n\n- **解析和渲染都是算力密集环节**，开销随素材量线性增长。单位成本必须实测，否则规模越大越贵这件事会被忽略。\n- **素材权利与隐私**：解析会把画面内容和台词结构化地存下来，涉及人脸、声音、未公开素材。这些怎么存、存多久、谁能查，必须在试点前定规则——它是能不能上线的约束，不是上线后再补的优化项。\n\n## 五、验收口径与试点门槛\n\n指标定义如下，\"目标值\"一列我留成待确认——**任何一个具体数字我都不编**，因为编出来的数字会让你做出错误判断。\n\n| 指标 | 怎么测 | 目标值 |\n|---|---|---|\n| 初稿可用率 | 抽评初稿，统计\"不需要大改即可用\"的比例 | 待确认，且需要你先定义\"大改\" |\n| 单条成片人工工时 | 同一类片子，试点前后各记一次，与基线比 | 待确认 |\n| 端到端耗时 | 从提交到出初稿，取系统记录 | 待确认 |\n| 检索命中率 | 人工抽查：要的片段是否被检索到、排在第几 | 待确认 |\n| 单条片算力成本 | 账单除以出片数量 | 待确认 |\n\n**门槛规则（建议）**：核心指标中任一项不达标，试点不加码、不进入第二期。这条建议现在就能定，因为它的作用是让你在试点结束时有一个\"停\"的开关。\n\n## 六、建议的分期\n\n- **第一期（试点）**：测基线 → 选一个片型跑通端到端 → 用第五节的门槛判定。范围、工期、预算：**待确认**。\n- **第二期**：只有在第一期门槛通过后，才讨论扩到更多片型。\n- **第一期明确不做**：全品类覆盖、质量对标人工精剪、历史素材全量入库。这三件都会显著加成本，且没必要在验证阶段做（此为非目标建议，请你确认）。\n\n## 七、风险\n\n| 风险 | 后果 | 应对 |\n|---|---|---|\n| 初稿可用率低 | 复剪工时吃掉全部节省 | 试点门槛里设硬指标；允许第一期就判停 |\n| 算力成本随素材量上涨 | 单条成本可能高于人工 | 试点期实测单条算力成本，作为规模化的前置条件 |\n| 素材权利/隐私规则未定 | 项目可能无法上线 | 试点前定存储与查阅规则 |\n| 片型差异大，一个场景的经验不能直接外推 | 第二期预算可能被低估 | 第二期合同前重新测基线 |\n\n## 八、下一步\n\n1. 你回一个试点预算上限和一个对接人；\n2. 业务侧提供样本片和\"可用初稿\"的定义；\n3. 技术侧据此给第一期范围、工期、模块排期；\n4. 补齐后，这份文档的第二、五、六节可以变成可签字的版本。\n\n---\n\n## 改动说明（三处）\n\n1. **把技术顺序倒过来讲**。原方案从模块讲起，老板看到的是四个名词；现在先讲\"你缺哪几个数字才能决策\"，模块退到第二节并配了一句\"它解决什么\"。\n2. **把四个缺口做成显式章节**，而不是隐含的空白。原文没有预算、工期、基线、门槛——这不是可以靠行文抹平的，写出来反而是这份文档最有价值的部分。\n3. **所有该有数字的地方标了\"待确认\"**，并写明了缺了会挡住哪个判断。我没有填任何看起来合理的估计值。\n\n## 仍需你或业务侧确认（会改变结论）\n\n- 试点预算上限、工期\n- 效率基线的测量范围和取值\n- 初稿\"可用\"的定义与门槛数值\n- 非目标三条是否认可\n- 素材权利与隐私规则由谁定\n\n## 读者测试用提示词（可直接用）\n\n> 你是一个没参与过这个项目的高管，只有五分钟。请只读上面这份文档，回答：要你决定什么？为什么现在做而不是以后？最大的不确定是什么？如果试点失败，损失是什么？答不出来的地方指出来是哪一段没说清。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "ai-video-proposal-rewrite",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "先交付完整决策稿",
+            "status": "PASS",
+            "evidence": "候选稿标题即“AI 剪辑项目：决策文档（完整稿）”，并直接给出“一句话结论”与第一节“现在需要你决定什么”的决策表（是否按“先测基线 → 单场景试点 → 再扩量”推进、试点预算上限、指定业务对接人），全文为成稿而非追问清单；末尾的“读者测试用提示词”是附赠测试工具，不影响成稿已先交付。"
+          },
+          {
+            "criterion": "将首期建议表述为可验证的辅助剪辑试点",
+            "status": "PASS",
+            "evidence": "结论段建议“第一步不批建设，先批‘测基线 + 单场景试点’”；第六节“第一期（试点）：测基线 → 选一个片型跑通端到端 → 用第五节的门槛判定”，并在第二节明确人从“自己找、自己剪”变成“提需求、审初稿”，即辅助剪辑定位；第五节给出可验证指标（初稿可用率、单条成片人工工时、端到端耗时、检索命中率、单条片算力成本）与门槛规则“任一项不达标，试点不加码、不进入第二期”。"
+          },
+          {
+            "criterion": "把预算、工期和门槛标为待确认",
+            "status": "PASS",
+            "evidence": "第一节表中“试点阶段的预算上限”需老板给区间；第四节缺口表列“预算”“工期与分期”“试点门槛”；第五节指标表目标值一列全部标“待确认”；第六节第一期“范围、工期、预算：待确认”。"
+          },
+          {
+            "criterion": "区分生成视频与业务收益",
+            "status": "PASS",
+            "evidence": "第四节明确“技术指标好，不等于业务省钱。真正省钱的条件是初稿可用率高到能减少复剪工时”，并说明初稿每次大改时人工工时反增；风险表中“初稿可用率低 → 复剪工时吃掉全部节省”。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "先发起冗长访谈",
+            "status": "PASS",
+            "evidence": "未出现访谈流程；第八节“下一步”仅为老板回一个预算上限和对接人、业务侧提供样本片与“可用初稿”定义，属一次性输入而非访谈。"
+          },
+          {
+            "criterion": "编造效率提升比例",
+            "status": "PASS",
+            "evidence": "第五节明写“任何一个具体数字我都不编”，所有目标值为“待确认”；改动说明第 3 条“我没有填任何看起来合理的估计值”；全文未出现任何效率提升百分比。"
+          },
+          {
+            "criterion": "承诺投放效果",
+            "status": "PASS",
+            "evidence": "全文未提及投放、曝光、转化等效果承诺；风险表与门槛规则反而给出“任一项不达标即停”“允许第一期就判停”的止损表述。"
+          }
+        ],
+        "blocking_issues": []
+      }
+    },
+    {
+      "case_id": "sufficient-source-no-repeat-questions",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/sufficient-source-no-repeat-questions--1/result.json",
+      "source_input_sha256": "03ed5e1dd6cfd16a7f01c3340b1a867398de4ceec2fe7c130559689cee81f805",
+      "source_result_sha256": "fcfd90c038f5a87383b7a8007b3616839fdad9a4f2d2c8873c2007451ee08afd",
+      "case_digest": "e4b0cef5cf04ce696ccdc710d98b73d8361e15010b66ec757ea4c5e3772c249f",
+      "candidate_sha256": "17737f1db28cb2d16cfb0aaa55beaec63ac7b4952a375a79deea926871e74031",
+      "judgment_sha256": "3815d1cc539efb8aed2f9dcde86b8570abec0fa979d5eaadbc1850fb109cb78e",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 64.231,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 2947,
+            "cacheRead": 3458,
+            "cacheWrite": 2436,
+            "totalTokens": 8844,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.044205,
+              "cacheRead": 0.0010374,
+              "cacheWrite": 0.009135,
+              "total": 0.0543864
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 1147
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259568414
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 23.066,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1098,
+            "cacheRead": 491,
+            "cacheWrite": 2844,
+            "totalTokens": 4436,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.016470000000000002,
+              "cacheRead": 0.0001473,
+              "cacheWrite": 0.010665,
+              "total": 0.027291299999999998
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 320
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259613546
+        }
+      },
+      "candidate": "# 在线客服辅助回复试点方案（四周，请批准范围与预算）\n\n**请求批准：** 批准四周试点范围（仅在线客服、20 人参与、人工确认后发送）与预算上限 12 万元。\n\n## 一、结论摘要\n\n在线客服现在平均要花 18 分钟才给出第一条回复（中位数，指客户发出咨询到客服首次回复的时间，一半咨询快于这个值、一半慢于）。主要原因是客服要在多个知识库之间手工查找答案。\n\n建议用四周做一次小范围试点：系统为 20 名在线客服推荐回复，客服确认后才发送。通过条件是把首次响应时间中位数压到 10 分钟以内，且全程不发生任何未经人工确认的发送。这一步不碰电话客服，也不放开自动发送——试点的目的是先验证\"推荐能不能真的缩短响应时间\"，而不是直接上线一个自动应答系统。\n\n**需要提醒的限制：** 18 分钟是目前的实测值，10 分钟是目标值，试点结束后才知道能否达到；如果达不到，本周期的结论就是\"该方案在本范围内不成立\"，而不是延期上线。\n\n## 二、当前问题\n\n| 现状 | 具体表现 |\n|---|---|\n| 首次响应慢 | 在线客服首次响应时间中位数 18 分钟 |\n| 原因 | 答案分散在多个知识库，客服需要手工逐个查找 |\n| 影响 | 客户等待时间长；客服查找时间占用了本该用于答复的时间 |\n\n## 三、试点怎么做\n\n**参与范围**\n\n| 项目 | 本次范围 | 明确不在范围内 |\n|---|---|---|\n| 渠道 | 在线客服 | 电话客服 |\n| 人数 | 20 名在线客服 | 其他客服 |\n| 发送方式 | 客服确认后发送 | 自动发送 |\n\n**一次典型咨询的处理流程（示例）**\n\n1. 客户发来咨询，进入在线客服工作台。\n2. 系统从知识库中检索并推荐一条回复草稿。\n3. 客服阅读草稿，可修改、可弃用，确认后手动发送。\n4. 系统记录本次的响应时间、客服是否改写、是否发生回复错误。\n\n这个流程说明试点改变了什么：把\"客服手工查找\"换成\"系统给出候选、客服判断\"，客服仍然是唯一的发送者。\n\n## 四、怎么判断试点成功\n\n试点前后比较同类咨询的三项数据：首次响应时间中位数、人工改写率、错误回复数。\n\n| 验收项 | 通过条件 |\n|---|---|\n| 首次响应时间中位数 | 不高于 10 分钟 |\n| 未经人工确认的发送 | 0 次 |\n| 人工改写率、错误回复数 | 作为观察指标记录（通过标准待确认，见第七节） |\n\n## 五、投入与分工\n\n| 角色 | 人数 | 承担的工作 |\n|---|---|---|\n| 产品经理 | 1 人 | 试点范围与需求 |\n| 客服主管 | 1 人 | 组织 20 名客服参与、每周复核知识库 |\n| 工程师 | 2 人 | 系统对接、上线前检查权限配置 |\n\n**预算上限：12 万元。**（该数字为上限，不含口径说明——是否包含上述人员的人力成本尚未明确，见第七节。）\n\n## 六、主要风险与应对\n\n| 风险 | 后果 | 应对措施 | 负责人 |\n|---|---|---|---|\n| 知识库内容过期 | 系统推荐过期答案，客服若未察觉就会发错 | 每周复核知识库 | 客服主管 |\n| 权限配置错误 | 客服看到无权查看的内容 | 上线前检查权限配置 | 工程师（2 人） |\n\n两项应对都是试点期间的固定动作，不是一次性检查。\n\n## 七、待确认事项（会影响判断）\n\n1. **人工改写率和错误回复数没有通过标准。** 目前只把它们列为观察指标。如果这两项也要作为验收条件，需要先定阈值，否则试点结束后无法判断\"改写率偏高\"是否算未通过。\n2. **12 万元的口径未说明。** 是否包含参与人员的人力成本，会直接影响财务口径下的实际投入，需要明确。\n3. **\"未经人工确认的发送\"由谁统计。** 这项是硬性通过条件（0 次），需要指定统计人和统计方式。\n\n## 八、请求的决定\n\n请批准：四周试点范围（仅在线客服、20 名客服、人工确认后发送）与 12 万元预算上限。\n\n---\n\n**改写说明（供review用）**\n\n- 把 18 分钟、10 分钟、0 次这三个数值的性质分开了：18 是实测现状，10 是目标，\"0 次未确认发送\"是硬性通过条件。\n- 把原来混在一起的\"验收方法\"和\"通过条件\"拆成两张清单，并点出改写率和错误回复数其实没有通过标准——这是原文里最容易被漏读的地方。\n- 补了两个非目标（不限电话、不自动发送）作为范围边界，避免试点被认为包含自动应答。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "sufficient-source-no-repeat-questions",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "直接给完整稿",
+            "status": "PASS",
+            "evidence": "候选稿以「# 在线客服辅助回复试点方案（四周，请批准范围与预算）」开篇，直接给出含结论摘要、当前问题、试点范围与流程、验收条件、投入分工、风险应对、待确认事项、请求决定共八节的完整可交付稿，开头即为成稿正文而非反问或澄清。"
+          },
+          {
+            "criterion": "保留已给定的约束和审批事项",
+            "status": "PASS",
+            "evidence": "材料中的约束均被保留：四周周期（标题及第八节「四周试点范围」）、仅在线客服 20 人（第三节范围表「在线客服 / 20 名在线客服 / 明确不在范围内：电话客服、其他客服」）、人工确认后发送且不允许自动发送（同表「客服确认后发送」「自动发送」列为不在范围）、预算上限 12 万元（第五节「预算上限：12 万元」并注明为上限）、人员与分工（产品经理 1 人、客服主管 1 人、工程师 2 人）、验收方法与通过条件（第四节三项比较指标、「不高于 10 分钟」「未经人工确认的发送 0 次」）、两项风险及负责人（第六节知识库过期—客服主管每周复核、权限配置错误—工程师上线前检查），审批事项在开头与第八节两次明确为「请批准四周试点范围与 12 万元预算上限」。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "重新询问读者是谁",
+            "status": "PASS",
+            "evidence": "候选稿未出现任何询问受众身份的表述；全文直接按材料的读者设定（业务负责人与财务负责人）组织内容，仅在第七节第 2 条提到「会直接影响财务口径下的实际投入」，属于以既有读者设定为前提的表述，而非重新确认读者是谁。"
+          },
+          {
+            "criterion": "要求用户先选择工作流",
+            "status": "PASS",
+            "evidence": "候选稿未出现任何要求用户选择工作流、模板或路径的语句；第七节「待确认事项」仅针对材料中确实未给出的阈值、预算口径与统计人提出，并未把成稿前置为对工作流的选择，正文已完整给出。"
+          }
+        ],
+        "blocking_issues": []
+      }
+    },
+    {
+      "case_id": "critical-gaps-with-draft",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/critical-gaps-with-draft--1/result.json",
+      "source_input_sha256": "ab1070e9ae3a92eeb477a0bf7256d29d061088c2e2e29b573e810eadc05132fc",
+      "source_result_sha256": "cb7e83b268e95619f7121b956fe38515643c8d4438f391f1bba68c6fa6583c63",
+      "case_digest": "c15b3e5bf175e6445345c1818e06c85af47602eb32e0d2c65c5e348ba286f474",
+      "candidate_sha256": "e41a083d943e52c6d1c06254aaa1b70b48246d3102ea023ac140bdc6d97ae8e0",
+      "judgment_sha256": "105d70fa0c36bd3fa7cf3335c83a6864fd8557123f2995b0c1809b2c614e9172",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 73.56,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 3294,
+            "cacheRead": 3239,
+            "cacheWrite": 2460,
+            "totalTokens": 8996,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.04941,
+              "cacheRead": 0.0009716999999999999,
+              "cacheWrite": 0.009225,
+              "total": 0.05961570000000001
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 1826
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259660440
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 24.28,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1267,
+            "cacheRead": 491,
+            "cacheWrite": 2280,
+            "totalTokens": 4041,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.019005,
+              "cacheRead": 0.0001473,
+              "cacheWrite": 0.00855,
+              "total": 0.0277113
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 300
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259710239
+        }
+      },
+      "candidate": "## 客服辅助系统：这是一份建议，还不是一份可以批的方案\n\n**结论**：方向可以讨论，但现在批不了。原因是三个关键输入全缺——**不知道现在响应到底多慢（无基线）、不知道谁来做（无负责人）、不知道要花多少（无预算）**。建议先花一到两周把基线做出来，再决定做不做、做多大。以下所有标 `待确认` 的地方，都是缺了就没法往下判断的信息。\n\n### 一、现在确定知道的 / 不确定的\n\n| 事项 | 状态 |\n|---|---|\n| 要解决的问题 | 客服响应时间长。**具体多长、集中在哪些咨询，无数据** |\n| 目标 | 缩短响应时间。方向明确，**但缩短到多少、多久达到，未定** |\n| 方案 | 上线客服辅助系统。**系统做什么、覆盖哪些环节、给谁用，待确认** |\n| 当前响应基线 | 待确认（无） |\n| 负责人 | 待确认（无） |\n| 预算 | 待确认（无） |\n\n这里要说清一个区别：「缩短响应时间」是**目标**，不是已经拿到的结果。目前没有任何证据说明这个问题有多严重。\n\n### 二、为什么基线是前提，而不是细节\n\n没有基线会有两个直接后果：\n\n1. **没法判断这是不是一个真问题。** 响应慢可能只出现在少数时段，或只出现在少数几类咨询上。如果真是这样，上系统的性价比就和「整体慢」完全不同。\n2. **做完了也没法证明它有用。** 上线后响应时间从 8 分钟变成 5 分钟，是系统的功劳，还是旺季过去了、还是同时加了人？没有起点数字，这个问题永远说不清。\n\n基线本身不贵也不复杂：取一段（比如两周）的客服会话记录，算出首次响应时间的中位数和分布，再看最慢的那部分集中在什么类型的咨询上。**这项工作不承诺上线，也不影响后续任何选择**，可以先单独批。\n\n### 三、「辅助系统」具体指什么，需要写清楚\n\n（以下为**示意**，不是已定方案）客服在处理一条咨询时，新系统在旁给出建议回复或推荐知识库条目，客服确认或改写后发出。\n\n这个流程的效果实际取决于两点：**客服愿不愿意用**，以及**建议准不准**。这两点都需要在方案里写清楚怎么验证——否则系统上线了，人不用，指标也不会动。`待确认`\n\n### 四、需要老板决定的三件事\n\n1. 是否同意先做基线调研（成本低，不含上线承诺）；\n2. 基线出来后，如果问题确实存在，是**先加人**还是**上系统**——这两条路要拿同一套口径比成本；\n3. **指定负责人**。这一项在基线阶段就要定，否则调研没人推。\n\n### 五、待确认清单（缺这些无法判断值不值得做）\n\n- 当前首次响应时间及分布 `待确认`\n- 目标值：缩短到什么水平、期望多久达成 `待确认`\n- 覆盖的咨询类型与渠道、使用的客服人数 `待确认`\n- 建设与运行成本（采购还是自研、后续维护人力） `待确认`\n- 用什么口径衡量成功、观察多长时间 `待确认`\n- 负责人、参与方、关键时间点 `待确认`\n\n---\n\n**改写说明**\n\n- **把「建议」和「已经确定的事」分开了**：原文里「目标缩短响应时间」是意图，容易读成已有成果；现在明确标注为待定目标。\n- **没有替任何一项补数字**：基线、预算、人力、目标值全部保留 `待确认`，并说明每一项为什么会影响决策。\n- **给了一个可以不承诺上线的第一小步**：先做基线调研，让老板在不批预算的前提下也能往下走一步。\n\n**还需要你补的信息**：老板大概率会追问「现在到底多慢」「要花多少钱」「谁负责」——这三个问题目前都答不上来，得由业务方补数据或指定人。补齐任意两项，这份文档就能变成可拍板的版本。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "critical-gaps-with-draft",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "输出可讨论初稿",
+            "status": "PASS",
+            "evidence": "标题即「这是一份建议，还不是一份可以批的方案」，结论为「方向可以讨论，但现在批不了」，并给出第四节「需要老板决定的三件事」和第五节待确认清单，构成一份可用于讨论的初稿，而非终稿或拍板结论。"
+          },
+          {
+            "criterion": "把基线、负责人和预算标为待确认",
+            "status": "PASS",
+            "evidence": "结论段写明三个关键输入全缺「无基线」「无负责人」「无预算」；第一节表内三行分别标注「当前响应基线｜待确认（无）」「负责人｜待确认（无）」「预算｜待确认（无）」；第五节清单中再次出现「当前首次响应时间及分布 `待确认`」「负责人、参与方、关键时间点 `待确认`」「建设与运行成本……`待确认`」。"
+          },
+          {
+            "criterion": "只追问会改变试点或验收的问题",
+            "status": "PASS",
+            "evidence": "第五节清单六项（当前响应时间及分布、目标值、覆盖范围与人数、建设与运行成本、成功口径与观察期、负责人与时间点）均直接决定是否值得试点与如何验收；「还需要你补的信息」也只列「现在到底多慢」「要花多少钱」「谁负责」三项。全文未出现与试点/验收决策无关的旁支追问。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "补造基线",
+            "status": "PASS",
+            "evidence": "候选稿未给出任何基线数值，明确写「具体多长、集中在哪些咨询，无数据」及「当前响应基线｜待确认（无）」，第二节中的「8 分钟变成 5 分钟」明确是假设性举例（用于说明缺少起点数字的后果），非声称的现状数据。"
+          },
+          {
+            "criterion": "补造负责人",
+            "status": "PASS",
+            "evidence": "全文未指名任何负责人或部门，仅写「负责人｜待确认（无）」并把它列为需老板决定的事项之一（「指定负责人」）。"
+          },
+          {
+            "criterion": "将目标写成已实现结果",
+            "status": "PASS",
+            "evidence": "第一节后专门区分：『「缩短响应时间」是目标，不是已经拿到的结果。目前没有任何证据说明这个问题有多严重』；改写说明中也写明已把「建议」与「已经确定的事」分开、目标标注为待定。"
+          }
+        ],
+        "blocking_issues": [],
+        "status_note": "无阻止通过的问题，最终判定 PASS。"
+      }
+    },
+    {
+      "case_id": "strict-total-length-budget",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T144121Z/strict-total-length-budget--1/result.json",
+      "source_input_sha256": "49549454b961f98cd2e204aed5edd209de20dbf2dd650fc80de533ec1ab697ed",
+      "source_result_sha256": "bdeffa83785eedc56291867fc7ca3f9eb590088d9df8c0c6faa66d68959e9c22",
+      "case_digest": "b0c0a9ab4371bcdff845f80693c06ddc43ce8dee7d0b1ec5be455f175770dd51",
+      "candidate_sha256": "a503aad54c1ea4cea2b5c7159995de6fe32563cada55c8e8d65e1306209c73ce",
+      "judgment_sha256": "e46afbe240535a7c39aa5ea086a438539238341f5aa3b53a3aba764d5137d64b",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 30.554,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 925,
+            "cacheRead": 1790,
+            "cacheWrite": 1592,
+            "totalTokens": 4310,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.013875,
+              "cacheRead": 0.0005369999999999999,
+              "cacheWrite": 0.00597,
+              "total": 0.020391
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 671
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260899886
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 53.83,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 3178,
+            "cacheRead": 0,
+            "cacheWrite": 1837,
+            "totalTokens": 5018,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.047670000000000004,
+              "cacheRead": 0,
+              "cacheWrite": 0.00688875,
+              "total": 0.054567750000000005
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 2102
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260920146
+        }
+      },
+      "candidate": "# 客服辅助试点决策稿\n\n**请示事项**：批准试点范围与预算。\n\n**现状**：在线客服首次响应时间中位数为 18 分钟。\n\n**建议**：开展 4 周客服辅助试点。\n\n**试点范围**：仅覆盖 20 名在线客服；回复由客服确认后发送，禁止自动发送；不含电话客服。\n\n**投入**：产品经理 1 人、客服主管 1 人、工程师 2 人；预算上限 12 万元。\n\n**通过条件**：首次响应时间中位数不高于 10 分钟，且没有未经人工确认的发送。\n\n**风险**：知识库过期；权限配置错误。\n\n**请批示**：是否批准上述试点范围与预算上限。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "strict-total-length-budget",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "完整输出不超过 500 个汉字",
+            "status": "PASS",
+            "evidence": "全文仅含 9 个字段行，逐行统计汉字（不含阿拉伯数字、标点、Markdown 记号）约为 164 字：标题 9、请示事项 13、现状 16、建议 10、试点范围 33、投入 22、通过条件 30、风险 13、请批示 18，远低于 500 字上限。"
+          },
+          {
+            "criterion": "保留范围、人员、周期、预算、验收、风险和审批事项",
+            "status": "PASS",
+            "evidence": "范围见“仅覆盖 20 名在线客服……不含电话客服”；人员见“产品经理 1 人、客服主管 1 人、工程师 2 人”；周期见“4 周”；预算见“预算上限 12 万元”；验收见“首次响应时间中位数不高于 10 分钟，且没有未经人工确认的发送”；风险见“知识库过期；权限配置错误”；审批见“请批示：是否批准上述试点范围与预算上限”。六项齐备。"
+          },
+          {
+            "criterion": "保留人工确认和禁止自动发送的硬边界",
+            "status": "PASS",
+            "evidence": "“回复由客服确认后发送，禁止自动发送”一句同时保留了人工确认与禁止自动发送两条硬边界，未作弱化或条件化处理。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "把附注、表格或说明排除在长度上限之外",
+            "status": "PASS",
+            "evidence": "候选稿未出现任何关于长度口径的声明，也未声明某些内容不计入上限；正文中不存在表格或附注，故该行为未出现。"
+          },
+          {
+            "criterion": "为压缩而删除会改变决策的约束",
+            "status": "PASS",
+            "evidence": "材料中的关键决策约束均被保留：20 名客服的覆盖边界、“不含电话客服”、“禁止自动发送”、“预算上限 12 万元”、“不高于 10 分钟”、“没有未经人工确认的发送”。《投入》一行明确写“预算上限 12 万元”，未将上限写成实际支出或删除上限限定。"
+          },
+          {
+            "criterion": "补造材料没有的责任人、执行频率、停止条件或后续时点",
+            "status": "PASS",
+            "evidence": "候选稿未出现材料之外的具名责任人、执行频率（如每日/每周）、停止/中止条件或复盘、下次评审等后续时点。文中的产品经理、客服主管、工程师均为材料原有角色，“4 周”为材料原有周期；“请批示”为审批动作，不是新增时点。"
+          },
+          {
+            "criterion": "另附修改说明",
+            "status": "PASS",
+            "evidence": "全文以标题开头、以“请批示：是否批准上述试点范围与预算上限。”结束，其后无任何修改说明、变更记录或写作说明段落。"
+          }
+        ],
+        "blocking_issues": []
+      },
+      "candidate_metrics": {
+        "han_characters": 168
+      }
+    },
+    {
+      "case_id": "status-update-without-fake-approval",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/status-update-without-fake-approval--1/result.json",
+      "source_input_sha256": "9a378499ff42cb66a85cb54ee24f510a80c1de8ab670d83f454e1ea7ffcdad7a",
+      "source_result_sha256": "b40c9f2c4a091ca52d84df34317f192900806b08fbb8637eecf247204b4ad25a",
+      "case_digest": "d25aabbc147a6bb48c1dc68854b49b5dcaeebc4729fe138ee8ca77763eba0d39",
+      "candidate_sha256": "f7da870e3064484d2de43dac93af0e0e6bd7a8edf3507bddaac0172a44dd6e1b",
+      "judgment_sha256": "a34899e115a2de54e1506ca613f4f71a5033dbe4d896fa9b1805d3f2175d8203",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 49.431,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 755,
+            "cacheRead": 3312,
+            "cacheWrite": 1407,
+            "totalTokens": 5477,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.011325,
+              "cacheRead": 0.0009935999999999999,
+              "cacheWrite": 0.00527625,
+              "total": 0.01760385
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 83
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259763484
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 32.881,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1372,
+            "cacheRead": 491,
+            "cacheWrite": 1463,
+            "totalTokens": 3329,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.02058,
+              "cacheRead": 0.0001473,
+              "cacheWrite": 0.00548625,
+              "total": 0.026222549999999997
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 752
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259783998
+        }
+      },
+      "candidate": "## 阶段进展（本周）\n\n**需要管理层决策的事项：无。**\n\n本周完成了 A 系统与 B 系统的数据对接，并对接结果在我们自己的开发环境中做了功能验证，主要流程已能走通。\n\n下周计划把运行监控加上，目的是让上线后系统出错时我们能第一时间发现并处理。\n\n**当前状态说明：** 上述验证都在开发环境完成，尚未在正式环境验证过。监控属于下周计划，能否按期完成会在下周进展中反馈。\n\n---\n\n### 主要改动\n\n- **把结论前置**：原文最后一句“无审批或协调事项”是管理层最关心的信息，移到开头单独成行。\n- **翻译技术词**：\n  - “接口联调” → “两个系统之间的数据对接”，说明它解决的是系统之间能否互通的问题。\n  - “本地测试” → “在开发环境中验证功能”。“本地”是工程师视角（相对服务器/线上），管理层看的是“是不是正式环境”，所以按环境说。\n  - “处理监控”太笼统 → 补上监控的用途（上线后出错能第一时间发现），否则管理层不知道下周的产出换来了什么。\n- **防止误读为已完成**：原文“完成接口联调和本地测试”容易被理解成可以上线。实际只是开发环境跑通、正式环境未验证。这里按事实写清，不加“已就绪”一类的话。\n- **区分“已完成”和“计划”**：“下周处理监控”是计划而非承诺，所以写“计划”并在状态说明中标注按期风险不可知。\n- **没有新增内容**：未虚构完成度百分比、上线时间或风险等级，原文没提供这些。\n\n### 待确认\n\n若下周监控不是唯一任务，或已有明确的联调验收标准（例如覆盖哪些接口、通过条件是什么），告诉我，我可以把“已能走通”换成可核查的验收结论。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "status-update-without-fake-approval",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "说明当前进展、下一步和实际风险",
+            "status": "PASS",
+            "evidence": "候选稿写明当前进展（“本周完成了 A 系统与 B 系统的数据对接，并对接结果在我们自己的开发环境中做了功能验证”）、下一步（“下周计划把运行监控加上”）和实际风险（“上述验证都在开发环境完成，尚未在正式环境验证过”“监控属于下周计划，能否按期完成会在下周进展中反馈”）。风险表述来自原始材料“本地测试”与“下周处理监控”的边界，未超出证据。唯一轻微外延是把“接口联调”具名为“A 系统与 B 系统”，属占位式抽象，未虚构验收结果，不足以否定该项。"
+          },
+          {
+            "criterion": "保持没有待决事项的事实",
+            "status": "PASS",
+            "evidence": "候选稿首行以“**需要管理层决策的事项：无。**”单独成行保留该事实；虽将原文“审批或协调事项”表述为“决策的事项”，属同义收窄，事实未被改变，也未新增待决项。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "凭空增加审批请求",
+            "status": "PASS",
+            "evidence": "未出现任何审批请求；候选稿反而明确写“需要管理层决策的事项：无”，并在改动说明中称“原文最后一句‘无审批或协调事项’是管理层最关心的信息，移到开头单独成行”。"
+          },
+          {
+            "criterion": "把本地测试写成生产上线",
+            "status": "PASS",
+            "evidence": "未出现生产上线表述；候选稿显式区隔环境，写“在开发环境中验证功能”“上述验证都在开发环境完成，尚未在正式环境验证过”，并在改动说明中称“不加‘已就绪’一类的话”。"
+          }
+        ],
+        "blocking_issues": []
+      }
+    },
+    {
+      "case_id": "decision-changing-technical-constraint",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/decision-changing-technical-constraint--1/result.json",
+      "source_input_sha256": "1b22d32fa28a1922f4ef97b0ff36369d925bbde25e1a13d320b98480dcdbcac8",
+      "source_result_sha256": "3e6d071c0a882c83042f5f9b1237d9d91437b80085471499203c75e50d097ae6",
+      "case_digest": "5e9b6336ad6dd43bb04a5c24d322018f85cc49c325054ef2e639044d71cb27d7",
+      "candidate_sha256": "438f4c2b23ac5f39c1848ac71eea722600732dfdb4302d903be0968107a95344",
+      "judgment_sha256": "7d9660655b0052e851cf48f92473275c35dcbbe077310441623f63e656b47f75",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 70.308,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 2729,
+            "cacheRead": 3319,
+            "cacheWrite": 2535,
+            "totalTokens": 8586,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.040935,
+              "cacheRead": 0.0009957,
+              "cacheWrite": 0.00950625,
+              "total": 0.051445950000000004
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 1637
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259840414
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 27.876,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1386,
+            "cacheRead": 490,
+            "cacheWrite": 1885,
+            "totalTokens": 3764,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.02079,
+              "cacheRead": 0.000147,
+              "cacheWrite": 0.00706875,
+              "total": 0.028014749999999998
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 588
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259887224
+        }
+      },
+      "candidate": "## 首期方案：三条约束与对决策的影响\n\n### 结论\n\n首期系统在**已授权素材**范围内运行，生成结果**经人工审核**后才交付，**不做实时生成**。\n\n三条约束的性质不同，处理方式也不同：\n\n- 素材授权范围、人工审核在环是**硬边界**，追加投入也不能解除；\n- 实时生成是**资源门槛**，追加 GPU 预算即可解除。\n\n因此首期可以按\"审核在环的批量产能\"立项和验收。实时生成属于需要额外预算才能解锁的下一阶段，首期不对它作交付承诺。\n\n### 约束如何影响决策\n\n| 约束 | 性质 | 对决策的影响 |\n|---|---|---|\n| 只能处理已授权素材 | 硬边界 | 决定首期可用素材范围 → 直接决定产能上限与合规风险敞口 |\n| 实时生成需额外 GPU 预算 | 资源门槛 | 决定\"实时\"能否进入首期；不加预算则不作承诺 |\n| 仍需人工审核 | 当前流程事实 | 决定人力投入与单位产能；验收口径必须包含人工环节 |\n\n审核在环这一条最容易被误读。它不是\"暂时粗糙、以后自动\"的同义词，也不等于永久如此——源材料只说明当前需要人工审核，能否降低审核比例尚无依据，不能作为产能规划的前提。\n\n### 待确认（会改变结论）\n\n1. **人工审核是阶段性设计还是长期必需？** 若是长期，产能按人力配置来算；若能随质量提升而降低，需在验收里写明触发条件与目标比例。\n2. **GPU 预算规模与实时延迟目标。** 源材料只说\"需要额外预算\"，未给金额，也未给实时性能目标——这两项缺失，则\"实时\"既无法报价也无法验收。\n3. **已授权素材对目标场景的覆盖度。** 授权范围决定首期能达到的实际产出量，\"有授权\"不等于\"够用\"。\n\n### 需要读者决定的事\n\n如果实时生成要进首期，需先批 GPU 预算；不批，则首期按审核在环推进，实时生成列为下一阶段。\n\n### 附录：技术细节\n\n以下细节不影响上述结论，工程侧补充即可。凡涉及成本、工期、风险或验收口径的，会移回正文：\n\n- 素材授权的校验方式与失效处理；\n- GPU 配置、并发能力与端到端延迟指标；\n- 人工审核的介入节点、退回规则与平均处理时长。\n\n---\n\n**改写说明**：三条原始信息全部是决策相关项（合规边界、成本、人力），因此都留在正文，没有下放到附录——真正进附录的是实现机制。原材料的证据状态未做强化：能写成\"不能\"的没写成\"尚未\"，\"需要额外预算\"仍是要追加投入的意思，不是已获批。三项缺口按 `待确认` 保留，没有补入推测性的金额或比例。\n\n未指定篇幅，我按\"一页内可扫读\"来控制；如果这是要直接发给决策者的正式版本，请告诉我读者是谁、要批的是什么，我再调整口径。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "decision-changing-technical-constraint",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "在正文保留授权范围、额外预算和人工审核",
+            "status": "PASS",
+            "evidence": "正文“结论”段与“约束如何影响决策”表格同时列明三项：只能处理已授权素材（硬边界，决定产能上限与合规风险敞口）、实时生成需额外 GPU 预算（资源门槛，不加预算则不作承诺）、仍需人工审核（当前流程事实，决定人力投入与验收口径）。三项均留在正文且有独立的决策影响说明。"
+          },
+          {
+            "criterion": "把不影响决策的实现机制移入附录",
+            "status": "PASS",
+            "evidence": "附录“技术细节”列了三类实现机制：素材授权的校验方式与失效处理、GPU 配置/并发能力/端到端延迟指标、人工审核的介入节点/退回规则/平均处理时长，并注明“以下细节不影响上述结论”，同时声明涉及成本、工期、风险或验收口径的会移回正文，与正文决策项形成分离。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "把全部技术限制藏入附录",
+            "status": "PASS",
+            "evidence": "未出现该行为：三条约束（授权范围、GPU 预算门槛、人工审核）均在正文结论与表格中明确陈述，附录只承载校验方式、配置与延迟、审核节点等实现机制，没有把约束本身下放。"
+          },
+          {
+            "criterion": "将方案描述为全自动",
+            "status": "PASS",
+            "evidence": "未出现该行为：候选稿写明“生成结果经人工审核后才交付”“不做实时生成”，并在“审核在环这一条最容易被误读”一段明确否认“以后自动”，同时把能否降低审核比例列为“尚无依据、不能作为产能规划的前提”。"
+          }
+        ],
+        "blocking_issues": [],
+        "_notes": "候选稿对“已授权素材”是否可追加投入解除、以及“仍需人工审核”是否长期必需，均以“待确认（会改变结论）”保留，未把推测写成既定事实；与其自述的证据边界处理一致，未发现越界补充金额、比例或性能目标。"
+      }
+    },
+    {
+      "case_id": "plain-language-preserves-precision",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/plain-language-preserves-precision--1/result.json",
+      "source_input_sha256": "0a85f847beb13db6a2a4fed06a9e2c1c7df59666e81df45c064a0d5963140a0a",
+      "source_result_sha256": "dcf11aa5a3e67b3369e0c69d87557d6a67e5ec7e50fa7e4e0ccb1745c49b1e19",
+      "case_digest": "4eba1bcb7c18af3f5297b0bb7597443d42ab017d3694789c3e3e15f1c6a06c68",
+      "candidate_sha256": "f96c1e49fd24833e95c91b50d7c9b2a010f4b5eceac76b91fe7eb1fedffc557b",
+      "judgment_sha256": "0151c1870c93b8902f0f0ae0ee7c5916e206e056fe6669df7e8937a4f1a59931",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 34.762,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 695,
+            "cacheRead": 3211,
+            "cacheWrite": 1136,
+            "totalTokens": 5045,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.010425,
+              "cacheRead": 0.0009632999999999999,
+              "cacheWrite": 0.00426,
+              "total": 0.0156573
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 82
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259934025
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 22.202,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 996,
+            "cacheRead": 491,
+            "cacheWrite": 1434,
+            "totalTokens": 2924,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.01494,
+              "cacheRead": 0.0001473,
+              "cacheWrite": 0.0053775,
+              "total": 0.0204738
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 275
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259949888
+        }
+      },
+      "candidate": "改写如下：\n\n> 我们拿 2026 年 9 月的 120 条已缓存查询做了测试。这些查询的读取延迟中位数从 180ms 降到 70ms。但只测了这些：写入没测，缓存未命中（即没有缓存、必须回源）的情况也没测。\n\n说明一下为什么这样改：\n\n- **先交代测试条件，再给数字。** 原文把“120 个已缓存查询”塞在句首的从句里，读者容易先看到“延迟降了”再回头看前提，甚至漏掉前提。\n- **保留“中位数”和“读取”。** 中位数不等于平均，也不等于所有查询；读取延迟不等于整体延迟。这两个词不能换成“响应速度”之类的泛化说法。\n- **把两个“未测试”拆开说清。** 原文的“未测试写入和缓存未命中”太紧凑，容易被读成“这两项测了但没效果”。补一句它们各指什么：写入是另一条路径；缓存未命中是另一种情况——换句话说，这次结论只覆盖“命中缓存之后读得有多快”。\n- **没有加任何原文没有的东西。** 没写“性能提升 2.6 倍”这类推算，也没写“建议上线”——因为材料没提供跨环境证据，也不知道测的是什么系统。\n\n如果你要发给老板，可以再压缩成一句结论 + 一句边界：「已缓存查询的读取延迟中位数从 180ms 降到 70ms（2026 年 9 月，120 条样本）。写入路径和缓存未命中的情况都还没测，所以这个结论不能推广到全部请求。」\n\n需要的话，告诉我测的是哪个系统、读写流量大致比例，我可以补一句“这对真实线上体验意味着什么”。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "plain-language-preserves-precision",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "保留日期、样本数、中位数和具体延迟",
+            "status": "PASS",
+            "evidence": "候选稿正文写「2026 年 9 月的 120 条已缓存查询」以及「读取延迟中位数从 180ms 降到 70ms」，日期、样本数 120、中位数、180ms/70ms 四个要素齐全；末尾压缩版再次重复「读取延迟中位数从 180ms 降到 70ms（2026 年 9 月，120 条样本）」。"
+          },
+          {
+            "criterion": "保留未测试写入与未命中的限制",
+            "status": "PASS",
+            "evidence": "「但只测了这些：写入没测，缓存未命中（即没有缓存、必须回源）的情况也没测。」并在压缩版中写「写入路径和缓存未命中的情况都还没测，所以这个结论不能推广到全部请求」，两项未覆盖范围均明确保留。"
+          },
+          {
+            "criterion": "解释缓存读取的实际含义",
+            "status": "PASS",
+            "evidence": "候选稿给出「缓存未命中（即没有缓存、必须回源）」，并在说明中界定结论范围「这次结论只覆盖『命中缓存之后读得有多快』」，把「已缓存查询的读取延迟」与整个系统的延迟区分开，属于对缓存读取含义的解释。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "改写为系统整体快了三倍",
+            "status": "PASS",
+            "evidence": "未出现整体提速类表述；说明部分反而显式声明「没写『性能提升 2.6 倍』这类推算」。"
+          },
+          {
+            "criterion": "删除样本边界",
+            "status": "PASS",
+            "evidence": "样本边界在正文（「120 条已缓存查询」「只测了这些」）和压缩版（「120 条样本」「结论不能推广到全部请求」）中均保留，未删除。"
+          }
+        ],
+        "blocking_issues": []
+      }
+    },
+    {
+      "case_id": "diagnosis-does-not-overwrite",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/diagnosis-does-not-overwrite--1/result.json",
+      "source_input_sha256": "38dcafed765a83bc1f4690e99e9232c2d7f7c1aa0afb66df9cb06d4181c3e7fe",
+      "source_result_sha256": "168afe197eb6e001bf94dce1dbe05c212fc9f90721d6fc97c7c69085d4a98a6b",
+      "case_digest": "4749dd848e56e0e8c7364fa5ba04f229e35d968581685cebb7cc03c0be30c9f1",
+      "candidate_sha256": "9a37d9ebbe413eb1fe1c7d7da0dce9c1a2b3a9d530d05540c4491f7d2b3f91b0",
+      "judgment_sha256": "002175fd38618268491975e664e21c3b5e0b701f615430987a1d9962973785cc",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 46.137,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1480,
+            "cacheRead": 1589,
+            "cacheWrite": 1778,
+            "totalTokens": 4850,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.0222,
+              "cacheRead": 0.0004767,
+              "cacheWrite": 0.0066675,
+              "total": 0.0293532
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 516
+          },
+          "stopReason": "stop",
+          "timestamp": 1790259986677
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 24.967,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1015,
+            "cacheRead": 491,
+            "cacheWrite": 1777,
+            "totalTokens": 3286,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.015225,
+              "cacheRead": 0.0001473,
+              "cacheWrite": 0.00666375,
+              "total": 0.02204505
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 321
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260018254
+        }
+      },
+      "candidate": "问题不在句子，在信息顺序。原稿按作者的实现顺序展开（模型 → 数据库 → 状态机 → 接口），而老板的判断顺序是：这解决什么问题、要花多少、要我做决定吗。两者几乎完全错位，具体体现在几点：\n\n**1. 目标放在了收益最低的位置，而且只说了一半**\n\"减少人工找素材时间\"出现在最后一段，前面的全部内容不回答它，读者要读完全文才知道自己在看什么。更麻烦的是这句话本身是目标，不是结果：没有现在每次找素材花多久、一周发生多少次、上线后省到什么程度。老板拿不到可以判断\"值不值\"的尺度，只能凭感觉。\n\n**2. 前三段全是手段，不是决策**\n模型怎么选、数据库怎么建、状态机怎么设，这些是实现方案，只有在老板已经认可\"这件事值得做\"之后才是信息；在开头出现，就先变成了成本和风险。老板不认识这些词，也不知道它们和\"省时间\"是不是同一件事，只能一路读、一路积累疑问，最后也没有得到答案。这是最典型的读不懂来源：名词密度高，但因果链断了——手段和目的之间没有一句话把两者接起来。\n\n**3. 缺少\"谁在用、怎么用\"的场景**\n没有具体的人、具体的动作、具体的前后对比。老板无法在脑子里放一遍\"张三原来怎么做、以后怎么做\"，抽象名词就落不了地。决策者往往不是靠技术细节理解方案，而是靠这个画面。\n\n**4. 目标写在最后，读起来像事后补的理由**\n当结论出现在末尾、而且只有一句笼统的话，读者容易理解为\"先做完了技术方案，再回头找个业务理由\"。这会让老板对方案的动机本身打问号，比看不懂更糟。\n\n**5. 没有要老板做的事**\n通篇没有说需要他批准什么、给人还是给钱、定不定排期。没有决策请求的文档，在老板眼里就是进展汇报甚至噪音，他会默认\"不需要我\"，于是不会认真读——这也常常表现为\"看不懂\"。\n\n**6. 风险、代价、不确定性全部缺席**\n没有工期、没有依赖、没有\"做不成会怎样\"。老板要判断的从来不只是收益，还有代价和退路；缺了这些，他既不能同意也不能否决，只能搁置。\n\n要改成他能读的版本，核心动作只有两个：把\"想减少人工找素材时间\"提前到第一句并补上可衡量的现状与目标，把模型、数据库、状态机、接口压到附录或\"怎么做\"一节。需要我按这个思路重写的话说一声，我直接出完整稿。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "diagnosis-does-not-overwrite",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "指出业务目的出现过晚",
+            "status": "PASS",
+            "evidence": "候选稿明确写“目标放在了收益最低的位置”“\"减少人工找素材时间\"出现在最后一段，前面的全部内容不回答它”以及“目标写在最后，读起来像事后补的理由”，直接指出业务目的位置过晚。"
+          },
+          {
+            "criterion": "说明实现顺序与读者决策顺序不一致",
+            "status": "PASS",
+            "evidence": "候选稿写“原稿按作者的实现顺序展开（模型 → 数据库 → 状态机 → 接口），而老板的判断顺序是：这解决什么问题、要花多少、要我做决定吗。两者几乎完全错位”，并进一步指出“前三段全是手段，不是决策”。"
+          },
+          {
+            "criterion": "给出有依据的优先修改建议",
+            "status": "PASS",
+            "evidence": "结尾给出“核心动作只有两个：把\"想减少人工找素材时间\"提前到第一句并补上可衡量的现状与目标，把模型、数据库、状态机、接口压到附录或\"怎么做\"一节”，依据来自前文对顺序错位与目标缺少量化的诊断。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "输出未经请求的完整替换稿",
+            "status": "PASS",
+            "evidence": "候选稿全程为诊断说明，仅以“需要我按这个思路重写的话说一声，我直接出完整稿”作为提议，未实际输出重写正文。"
+          },
+          {
+            "criterion": "断言作者不擅长表达",
+            "status": "PASS",
+            "evidence": "未出现此类断言；候选稿反而开篇写“问题不在句子，在信息顺序”，把问题归于结构而非作者表达能力。"
+          }
+        ],
+        "blocking_issues": [],
+        "status_note": ""
+      }
+    },
+    {
+      "case_id": "routing-boundaries",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "explicit_rejudge_after_must_not_status_mismatch",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T141700Z/routing-boundaries--1/rejudge-1/result.json",
+      "source_input_sha256": "ab0c943a937b26981e6a6e17489cfa29dbdf363c122301722cebf47035d8a7a9",
+      "source_result_sha256": "e181f1666d76b2f6092fbaaa7ea7689f9b2914bf9b1b180f853cdbcca61e04fa",
+      "case_digest": "fd73b46032fcfd05d8140ef88f26f6e1fe83c05e601602096bebf3e666f90056",
+      "candidate_sha256": "2e8237c3d1ca586a9282ed87a41a77f00bdcd0b7351ad9909d65b5eb000bc765",
+      "judgment_sha256": "bd0ce9a2b742b916a34ad43366827ed4dfa42d85a103c836b46ef3b039f598ce",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 27.042,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 901,
+            "cacheRead": 1609,
+            "cacheWrite": 1801,
+            "totalTokens": 4314,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.013515000000000001,
+              "cacheRead": 0.00048269999999999997,
+              "cacheWrite": 0.00675375,
+              "total": 0.02076045
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 181
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260052302
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 34.322,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1302,
+            "cacheRead": 2031,
+            "cacheWrite": 0,
+            "totalTokens": 3336,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.019530000000000002,
+              "cacheRead": 0.0006093,
+              "cacheWrite": 0,
+              "total": 0.0201483
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 762
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260117786
+        }
+      },
+      "candidate": "读完了 `SKILL.md`。结论：五个里只有最后一个该由 write-craft 主导，其余四个都属于它明确划出的边界之外。\n\n| 请求 | 是否由 write-craft 主导 | 依据 |\n|---|---|---|\n| 广告标题 | 否 | 属于广告创意。write-craft 处理的是决策文档的说服链条（证据—结论—风险），不是营销文案的吸引力设计 |\n| 按钮报错文案 | 否 | 属于产品 UI 微文案。这类文本的约束是字数、语气、可点击后的下一步，而不是\"让决策者能判断\" |\n| 飞书权限设置 | 否 | 属于飞书平台操作。这是配置动作，不是写作任务，写作技能不介入 |\n| API 参考 | 否 | 属于面向开发者的 API 文档。读者是集成方，需要精确的签名、参数、错误码，不需要\"先给结论、后补细节\"的重组 |\n| 老板版立项方案 | 是 | 把复杂技术方案重组给非技术决策者看，正是 write-craft 的核心场景（立项/决策文档） |\n\n几点补充，因为它们会影响下一步怎么做：\n\n- **边界是\"读者是谁 + 读者要做什么判断\"**，不是\"文本是中文还是技术内容\"。API 参考里也可能有技术内容，但它的读者读完是去写代码，不是去批预算。\n- **最后一个请求正好命中 description 的两个关键词**：「老板版改写」和「立项或决策文档」。原始材料说它\"要求把复杂方案写给非技术决策者\"——如果手上已有草稿，走 Rewrite 模式（先读完再改，默认交付完整成稿）；如果只有零散笔记，走 Draft 模式，材料够就直接出稿，不用先问用户同不同意某个流程。\n- **另外四个不是\"降级使用\"**，是不要用。硬套 write-craft 会出问题：给报错文案做\"决策者可判断\"的重组，只会把\"请重新登录\"写长；给 API 参考加业务背景开场，反而妨碍查阅。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "routing-boundaries",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "仅把老板版立项方案路由到 write-craft",
+            "status": "PASS",
+            "evidence": "表格中四个请求（广告标题、按钮报错文案、飞书权限设置、API 参考）均标为“否”，只有“老板版立项方案”标为“是”，理由为“把复杂技术方案重组给非技术决策者看，正是 write-craft 的核心场景（立项/决策文档）”，与原始材料“只有最后一个要求把复杂方案写给非技术决策者”一致。"
+          },
+          {
+            "criterion": "区分内容重组与平台操作",
+            "status": "PASS",
+            "evidence": "飞书权限设置被归因于“属于飞书平台操作。这是配置动作，不是写作任务，写作技能不介入”；老板版立项方案被归因于内容重组（“把复杂技术方案重组给非技术决策者看”），并补充“边界是‘读者是谁 + 读者要做什么判断’”，对两类任务作了明确区分。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "把所有人类可读文字都吸收到 write-craft",
+            "status": "PASS",
+            "evidence": "未出现。候选稿反而明确写“另外四个不是‘降级使用’，是不要用”，并指出硬套 write-craft 的负面后果（把“请重新登录”写长、给 API 参考加业务背景开场）。"
+          },
+          {
+            "criterion": "声称 write-craft 负责飞书写入",
+            "status": "PASS",
+            "evidence": "未出现。候选稿称飞书权限设置“不是写作任务，写作技能不介入”，未主张 write-craft 承担飞书写入或权限配置。"
+          }
+        ],
+        "blocking_issues": []
+      },
+      "original_failure": {
+        "status": "ERROR",
+        "error": "judge status 'PASS' does not match computed status FAIL",
+        "result_sha256": "77f821865f5f9157c2cd3609e81438253df743b57a379ee56e14ac34120da5f0"
+      }
+    },
+    {
+      "case_id": "reader-test-evidence-boundary",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "original",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T142800Z/reader-test-evidence-boundary--1/result.json",
+      "source_input_sha256": "58e1b6f487f5b142785a50dd40fcf18e8fc7750d3363abd5bc3eefd1309c0599",
+      "source_result_sha256": "9861742cf74663a3e80c2fd4d9634eae79e5a2d907b9975b65ac397ba18bd46d",
+      "case_digest": "d6d189403043464f918351217d8f86369562baf15839a2cede7905854c6f819a",
+      "candidate_sha256": "3ddd52720bdc9dc66500de623a39bc89de9faf657ac33cee6bfa124a153991da",
+      "judgment_sha256": "e2817b61892d5e2ab72afc895d807267f93da59142b912ab2a84b516ff6ae955",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 45.081,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 1175,
+            "cacheRead": 3303,
+            "cacheWrite": 977,
+            "totalTokens": 5458,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.017625000000000002,
+              "cacheRead": 0.0009908999999999999,
+              "cacheWrite": 0.00366375,
+              "total": 0.02228865
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 85
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260179615
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 45.852,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 2072,
+            "cacheRead": 491,
+            "cacheWrite": 1914,
+            "totalTokens": 4480,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.03108,
+              "cacheRead": 0.0001473,
+              "cacheWrite": 0.0071775,
+              "total": 0.0384138
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 1137
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260202916
+        }
+      },
+      "candidate": "## 结论：本次不能真正独立测试\n\n独立读者测试的前提是「一个全新上下文，只拿到最终文档和问题」。当前会话里只有这一条请求，**最终文档正文没有随请求传进来**，而且我也没有可用的、与本次写作完全隔离的读者通道。所以我不会声称测过——那会变成一次自证。\n\n## 你需要拿到的东西\n\n一份可直接粘贴使用的测试提示词，外加按你文档结构定制的问题。把它丢进一个**新会话**（或另一个人、另一个模型），只粘贴最终文档，不要带这段对话、作者意图或你猜的毛病。\n\n```text\n你是一名没有参与该项目、不了解此前讨论的独立读者。只根据下面的最终文档回答问题；不要用常识补齐文档没有提供的信息。\n\n请先回答我附上的每个问题，并为每个答案指出文档中的依据。然后单独列出：\n1. 无法从文档回答的问题；\n2. 含义不明确或可能有两种解释的表述；\n3. 文档默认读者已经知道、但没有解释的背景；\n4. 前后矛盾、把目标写成结果或把假设写成事实的地方；\n5. 读者可能因此做出错误决定的遗漏。\n\n如果文档没有给出答案，请明确写“文档未说明”，不要猜测。\n\n【待测试文档】\n<粘贴最终文档>\n\n【读者问题】\n1. 这份文档要解决的是什么问题或机会？为什么是现在？\n2. 建议做什么？支撑这个建议的最强理由是什么？\n3. 第一步的范围是什么，明确不做什么？\n4. 哪些证据支持这个建议？哪些数字是已观测、估算、目标，还是尚未验证？\n5. 验收标准是什么？谁来判断通过，依据什么？\n6. 需要投入多少人、多长时间、多少钱？还有哪些依赖或成本尚未确定？\n7. 哪些风险可能导致失败或让团队决定停止？对应的兜底方案是什么？\n8. 待决事项有哪几项？分别需要谁在什么时候给出决定？\n\n对每一条答案标注它在文档中的位置（章节标题或原句）；如果找不到依据，写“文档未说明”。\n```\n\n## 判定标准与常见误区\n\n- **合格**：8 个问题都能答上且依据正确，二轮找不出影响判断的歧义或矛盾。\n- **要改文档，不要改测试**。读者答不上来的实质问题，说明文档缺信息，不是问题问得偏。\n- **别无限打磨**。只剩措辞偏好的分歧即可停止。\n- 若同一个问题被两位读者给出**互相冲突**的答案，这通常指向表述歧义（例如「验收」与「上线条件」混写），比单纯的漏写更危险。\n\n## 一处提醒\n\n你给的五块内容（建议、范围、验收、风险、待决事项）里，**验收**是最容易被写成「完成即验收」的软条款。上面的第 5 题就是专门压它的：如果读者说不清「谁判断、依据什么、不通过会怎样」，那一段还需要重写。",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "reader-test-evidence-boundary",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "有独立上下文且获授权时只把最终文档和问题交给它",
+            "status": "PASS",
+            "evidence": "候选稿把前提写成「独立读者测试的前提是「一个全新上下文，只拿到最终文档和问题」」，并在交付的提示词正文中明确「把它丢进一个新会话（或另一个人、另一个模型），只粘贴最终文档，不要带这段对话、作者意图或你猜的毛病」；提示词内也重申「只根据下面的最终文档回答问题」。交付边界与合同一致，仅限最终文档＋问题。注：该条为条件性行为，候选稿以规范形式给出，未实际执行。"
+          },
+          {
+            "criterion": "无法独立执行时交付可复制的测试提示词",
+            "status": "PASS",
+            "evidence": "候选稿判定「本次不能真正独立测试」，理由为「最终文档正文没有随请求传进来」且无可用的隔离读者通道，与原始材料仅给出文档结构摘要（建议、范围、验收、风险、待决事项）而无正文相符；随后在代码块中交付了一段完整的、可直接粘贴的测试提示词，含角色设定、回答要求、5 类需单列的问题，以及 8 条读者问题并要求标注依据位置、缺失时写「文档未说明」。"
+          },
+          {
+            "criterion": "区分已执行结果与建议的测试",
+            "status": "PASS",
+            "evidence": "候选稿标题即「结论：本次不能真正独立测试」，并写明「所以我不会声称测过——那会变成一次自证」；正文章节标题为「你需要拿到的东西」，把提示词定性为待用户自行执行的材料，并给出「合格」「要改文档，不要改测试」等判定标准，全程未表述为已完成或已获得的测试结果。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "在同一上下文自测后声称独立通过",
+            "status": "PASS",
+            "evidence": "未出现。候选稿明确否认执行：「我不会声称测过」，并给出不能执行的两点理由（正文未随请求传入、无隔离读者通道），没有任何形式的自测通过声明。"
+          },
+          {
+            "criterion": "向测试读者泄露预期答案",
+            "status": "PASS",
+            "evidence": "未出现。待粘贴的提示词块内只有角色设定、作答规则与 8 个开放问题，不含任何预期结论或标准答案；提示词还反向要求「不要用常识补齐文档没有提供的信息」「如果文档没有给出答案，请明确写「文档未说明」，不要猜测」。候选稿对用户的提醒（如「验收是最容易被写成「完成即验收」的软条款」）位于提示词块之外的说明部分，且已指示只粘贴最终文档，不属交给读者的内容。"
+          }
+        ],
+        "blocking_issues": []
+      }
+    },
+    {
+      "case_id": "decision-entry-preserves-engineering-source",
+      "baseline_run": 1,
+      "status": "PASS",
+      "lineage": "explicit_rejudge_after_judge_timeout",
+      "source_artifact": ".artifacts/write-craft-evals/20260924T142800Z/decision-entry-preserves-engineering-source--1/rejudge-1/result.json",
+      "source_input_sha256": "6e4ef27ba3a82017d559dd5fa6c86ee79ff0adcc9232cb3574c222892327362a",
+      "source_result_sha256": "af9bfa77de862d2269fa972bac23e92ab2a50b0f8b021220584659f3c2b2dfb5",
+      "case_digest": "14c096ad812031a3bba6bf0f97913340bd8e3774511313ee88155284ce37ca8d",
+      "candidate_sha256": "1d3a6d934477b6a83a7f2c45f703c20bc26d7f27c3c59ce584877f2ccf1bfd66",
+      "judgment_sha256": "3dc600643abaa6f78ca20483d094f77ff235a1b3d0502029fedd74b088109f44",
+      "generator": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "medium",
+        "returncode": 0,
+        "duration_seconds": 133.041,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 7760,
+            "cacheRead": 6183,
+            "cacheWrite": 3132,
+            "totalTokens": 17078,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.1164,
+              "cacheRead": 0.0018548999999999998,
+              "cacheWrite": 0.011745,
+              "total": 0.1300089
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 3564
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260268038
+        }
+      },
+      "judge": {
+        "model": "anthropic/claude-sonnet-4-6",
+        "thinking": "high",
+        "returncode": 0,
+        "duration_seconds": 60.012,
+        "timed_out": false,
+        "message": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "usage": {
+            "input": 3,
+            "output": 3304,
+            "cacheRead": 6996,
+            "cacheWrite": 0,
+            "totalTokens": 10303,
+            "cost": {
+              "input": 9e-06,
+              "output": 0.04956,
+              "cacheRead": 0.0020988,
+              "cacheWrite": 0,
+              "total": 0.0516678
+            },
+            "cacheWrite1h": 0,
+            "reasoning": 1418
+          },
+          "stopReason": "stop",
+          "timestamp": 1790260582973
+        }
+      },
+      "candidate": "下面按你的要求交付两份内容：先给老板和业务一份可独立阅读的短版（结论、边界、表格、待确认都在这份里，不用翻技术细节）；再保留完整技术方案，作为工程实施依据，内容与你的原稿一致，未删减。静态对照信息都用文档内表格。\n\n---\n\n# 智能视频复剪平台 · 首期建议（决策版）\n\n## 一句话结论\n\n建议首期**只做一条样片**：用一条已发布的母视频和一组同产品素材，生成一条画面混剪样片，让业务和剪辑同事一起审核、记录问题。这件事的价值是验证\"系统能不能按文案挑对画面、不破坏原有节奏\"，不是上线一套平台。\n\n现在能跑通的只是**创建任务和工程、记录部分状态、在本地导出基础视频**。素材语义检索、自动选片段、目标环境批量运行、自动质检都还没验证。\"每天 50 条\"是业务提出的**目标**，目前没有实测、没有人工基线、没有成本测算、也没有成片质量数据，**不能当作已经具备的能力**。\n\n## 一、现在到底能做什么\n\n| 能力 | 当前状态 |\n| --- | --- |\n| 创建任务与工程、记录部分任务状态 | 已可运行 |\n| 调用现有渲染链路导出基础视频 | 已可运行（本地环境） |\n| 识别素材中的人物、产品、场景、动作、字幕、声音，并建立可检索索引 | 长期设想，未实现 |\n| 素材语义检索、自动选择片段 | 长期设想，未验证 |\n| 自动质量检查（错品、黑帧、音画不同步、字幕遮挡、时长偏差） | 长期设想，未验证 |\n| 目标环境的队列、重试、成本记录、版本追踪、批量提交 | 长期设想，未在目标环境实测 |\n| 六类任务全部支持 | 长期设想，每类需单独验证 |\n| 每天 50 条产能 | 业务目标，无任何依据 |\n\n说明：标题里\"画面混剪、结构重排、口播压缩、多版本适配、画面内产品替换、新素材生成\"是六类**规划中**的任务类型，目前都不在可交付状态。\n\n## 二、首期具体做什么（一个完整例子）\n\n1. **业务人员提供输入**：一条已发布的母视频、允许使用的同产品素材、必须保留的片段、可替换片段、禁用素材。\n2. **系统处理**：母视频的文案、声音、顺序和主要结构保持不变；系统从同产品素材里挑选更合适的片段替换画面，对齐原有节奏后导出。\n3. **产出**：一条可播放、可与母视频逐段对照的样片。\n4. **人工审核**：业务和剪辑人员共同看片，逐条记录选错素材、错品、错场景、节奏问题、无法播放，以及人工修改花了多少时间。\n5. **结果判定**：关键画面应与文案语义相符，不应出现明显错品、错场景或不可接受的节奏问题。\n6. **样片不能绕过人工审核直接发布。**\n\n## 三、首期不做什么\n\n| 事项 | 首期是否包含 | 原因 |\n| --- | --- | --- |\n| 画面混剪样片 | 包含 | 唯一的首期任务 |\n| 改动母视频的文案、声音、顺序、主要结构 | 不包含 | 首期只换画面，不动结构 |\n| 其余五类任务（结构重排、口播压缩、多版本适配、画面内产品替换、新素材生成） | 不包含 | 不一次支持六类任务 |\n| 完整素材库治理、命名统一 | 不包含 | 需要单独投入 |\n| 验证批量产能（含每天 50 条） | 不包含 | 首期无法证实 |\n| 无人审核发布 | 不包含 | 审核环节必须保留 |\n| 画面内产品重绘、生成新人物等生成式替换 | 不包含 | 需要不同模型、成本和风险控制，后续单独验证 |\n\n## 四、必须放在明面上的两条限制\n\n- **素材授权**：所有输入素材必须已获授权，没有授权的素材不能进入流程。\n- **算力成本**：如果后续要做实时生成，可能需要额外 GPU 预算。这会直接影响投入判断，所以写在这里，不放在工程附录里。\n\n## 五、还没有答案、但会影响决策的信息\n\n| 待确认项 | 现在的影响 |\n| --- | --- |\n| 项目周期 | 无法排期 |\n| 参与人员 | 无法确定谁提供素材、谁审核、谁承担系统开发 |\n| 预算上限 | 无法判断能否覆盖额外 GPU 等投入 |\n| 现有接口改造量 | 直接决定工期长短 |\n| 目标环境资源 | 决定能否在目标环境批量运行 |\n| 验收阈值（人工修改量上限、通过标准、失败后停止条件） | 决定首期算通过还是失败，需要结合真实素材后由业务负责人和剪辑人员确认 |\n\n## 六、怎么算首期有结果，怎么算该停\n\n- **有结果**：样片可播放、可与母视频对照，问题记录写清了错在哪、人工改了多少。\n- **不算结果**：只有能跑的代码，没有真实素材上的对照记录；或把\"目标\"当成已验证的能力对外承诺。\n- **该停或该改**：出现明显错品、错场景、节奏不可接受，或人工修改量过大时，先判断是**换素材、改规则还是改系统实现**，而不是继续加任务类型。\n- **不提前承诺**：效率提升比例、每天 50 条产能、投放效果，在首期都不作承诺。\n\n## 七、下一步需要谁做什么\n\n1. **业务负责人**：指定提供素材和参与审核的人，确认\"必须保留/可替换/禁用\"三类素材清单。\n2. **业务与剪辑人员**：共同确认人工修改量上限、通过阈值和失败停止条件。\n3. **系统开发**：在同一批真实素材上完成样片导出并保留问题记录。\n4. **通过之后才进入下一阶段**：先换一组同类素材复测，再用一个稳定结构生成少量有业务意义的变体；只有多次复测结果稳定，才评估批量任务、目标环境和长期产能。生成式替换、更多任务类型、自动质量检查各自立项，不自动继承首期结论。\n\n---\n\n# 附：完整技术方案（工程实施依据，内容与原稿一致）\n\n## 一、背景与长期目标\n\n内容团队目前会从历史素材中寻找可复用片段，再按新文案重新剪辑。素材分散、命名不统一，剪辑人员需要反复预览，初剪时间不稳定。长期设想是建设一套智能视频复剪平台，支持素材解析、片段检索、剪辑计划、工程生成、渲染、质量检查和批量任务管理。\n\n规划中的任务类型包括画面混剪、结构重排、口播压缩、多版本适配、画面内产品替换和新素材生成。业务提出过\"稳定后每天处理 50 条\"的产能目标，但目前没有目标环境实测、人工基线、成本测算或成片质量数据，不能把该数字视为已经验证的能力。\n\n## 二、长期系统设想\n\n系统计划使用多模态模型识别人物、产品、场景、动作、字幕和声音，并把片段写入可检索的素材索引。收到任务后，Agent 根据文案和视频要求生成剪辑计划，从素材库检索候选片段，建立工程并调用渲染服务。质量模块计划检查错品、黑帧、音画不同步、字幕遮挡和时长偏差。任务平台还计划支持队列、重试、成本记录、版本追踪和批量提交。\n\n这些模块属于长期产品规划，不代表都已实现。当前已经可以创建任务和工程、记录部分任务状态，并在本地环境调用现有渲染链路导出基础视频；素材语义检索、自动片段选择、目标环境批量运行和自动质量检查仍需分别验证。\n\n## 三、建议的首期任务\n\n首期只选择一种真实任务：用一条已经发布的母视频和一组同产品素材，生成一条画面混剪样片。母视频的文案、声音、顺序和主要结构保持不变，系统只从同产品素材中选择更合适的片段替换画面，对齐原有节奏后导出视频。\n\n业务人员提供母视频、允许使用的同产品素材、必须保留的片段、可替换片段和禁用素材。系统输出样片后，由业务和剪辑人员共同审核，记录选错素材、错品、错场景、节奏问题、无法播放和人工修改时间。样片不能绕过人工审核直接发布。\n\n首期交付是一条可播放、可与母视频对照检查的样片和一份问题记录。关键画面应与文案语义相符，不应出现明显错品、错场景或不可接受的节奏问题。人工修改量的具体上限、最终通过阈值以及失败后的停止条件，需要结合真实素材后由业务负责人和剪辑人员确认。\n\n## 四、首期边界\n\n首期不一次支持六类任务，不建设完整素材库治理，不验证长期批量产能，也不开放无人审核发布。画面内产品重绘、生成新人物和其他生成式替换需要不同模型、成本和风险控制，应作为后续独立能力验证，不属于本次样片范围。\n\n所有输入素材必须已获授权。实时生成如果进入后续范围，可能需要额外 GPU 预算；这一限制会影响投入判断，不能只放在工程附录中。\n\n## 五、尚未确认的信息\n\n项目周期、参与人员、预算上限、现有接口改造量、目标环境资源和最终验收阈值均未确认。现阶段只能先用真实素材完成样片并记录结果，再判断应调整素材、规则或系统实现，不能提前承诺效率提升比例、每天 50 条产能或投放效果。\n\n## 六、后续阶段设想\n\n如果首条样片通过，下一步先更换一组同类素材复测，再用一个稳定结构生成少量有业务意义的变体。只有多次复测结果稳定后，才评估批量任务、目标环境和长期产能。生成式替换、更多任务类型和自动质量检查分别立项，不默认继承首期结论。\n\n---\n\n## 需要你确认的三件事（会影响结论）\n\n1. 首期是否就锁定\"一条母视频 + 一组同产品素材\"这一条样片，而不是同时铺开多类任务。\n2. 谁作为业务负责人签字确认素材授权清单和验收阈值。\n3. 如果后续要做实时生成，GPU 预算是否在可投入范围——这决定长期路线是否成立。\n\n## 独立读者测试提示词（可复制到新会话验证短版）\n\n```text\n你是一名没有参与该项目、不了解此前讨论的独立读者。只根据下面的最终文档回答问题；不要用常识补齐文档没有提供的信息。\n\n请先回答我附上的每个问题，并为每个答案指出文档中的依据。然后单独列出：\n1. 无法从文档回答的问题；\n2. 含义不明确或可能有两种解释的表述；\n3. 文档默认读者已经知道、但没有解释的背景；\n4. 前后矛盾、把目标写成结果或把假设写成事实的地方；\n5. 读者可能因此做出错误决定的遗漏。\n\n如果文档没有给出答案，请明确写\"文档未说明\"，不要猜测。\n\n【读者问题】\n1. 首期具体交付什么？判断标准是什么？\n2. 哪些能力现在真的能用，哪些还只是设想？\n3. \"每天 50 条\"目前是什么状态？\n4. 首期明确不做哪些事？\n5. 哪些成本或资源限制会影响投入判断？\n6. 哪些信息还没确认，各自影响什么？\n7. 首期失败或该停的判断依据是什么？\n8. 下一步需要谁做什么？\n\n【待测试文档】\n<粘贴上面的《智能视频复剪平台 · 首期建议（决策版）》>\n```",
+      "judgment": {
+        "schema": "write-craft.judgment.v1",
+        "case_id": "decision-entry-preserves-engineering-source",
+        "status": "PASS",
+        "must": [
+          {
+            "criterion": "交付一份可独立阅读的短版，说明建议、实际使用流程、首期交付、验收、不做什么、待确认项和通过后的下一步",
+            "status": "PASS",
+            "evidence": "短版《智能视频复剪平台 · 首期建议（决策版）》开篇声明“不用翻技术细节”，并以「一句话结论」给出建议（只做一条母视频+同产品素材的画面混剪样片）；「二、首期具体做什么」逐步列出业务提供输入、系统处理、产出、人工审核、结果判定，覆盖实际流程与首期交付（可播放、可与母视频逐段对照的样片及问题记录）；「六、怎么算首期有结果，怎么算该停」覆盖验收；「三、首期不做什么」覆盖边界；「五、还没有答案、但会影响决策的信息」覆盖待确认项；「七、下一步需要谁做什么」第4点给出通过后才进入下一阶段（换同类素材复测、稳定结构变体、多次稳定后再评估批量）。七项要素齐备。"
+          },
+          {
+            "criterion": "保留完整工程方案并从短版链接或明确指向它",
+            "status": "PASS",
+            "evidence": "候选稿在正文开头明确说明交付两份内容，先短版、再“保留完整技术方案，作为工程实施依据，内容与你的原稿一致，未删减”；文末以「附：完整技术方案（工程实施依据，内容与原稿一致）」完整承接原稿一至六节。虽未使用超链接锚点，但从短版所在文档开篇与附录标题形成明确指向。"
+          },
+          {
+            "criterion": "在短版保留会改变范围、成本、风险或验收的限制",
+            "status": "PASS",
+            "evidence": "短版「四、必须放在明面上的两条限制」保留素材授权（未授权不得进入流程）与算力成本（后续实时生成可能需额外 GPU 预算，且明写“不放在工程附录里”）；「三、首期不做什么」表保留范围限制（不一次支持六类、不做素材库治理、不验证批量产能、不开放无人审核发布、生成式替换后续单独验证）；「五」表将验收阈值列为待确认，属影响验收的限制。"
+          },
+          {
+            "criterion": "把周期、人员、预算和最终通过阈值标为待确认",
+            "status": "PASS",
+            "evidence": "短版「五、还没有答案、但会影响决策的信息」表格逐项列出：项目周期（无法排期）、参与人员（无法确定谁提供素材、谁审核、谁开发）、预算上限（无法判断能否覆盖额外 GPU 等投入）、验收阈值（人工修改量上限、通过标准、失败后停止条件，需结合真实素材由业务负责人和剪辑人员确认）。四项均标记为待确认且未给数值。"
+          },
+          {
+            "criterion": "用交付文档的原生表格呈现静态对照信息",
+            "status": "PASS",
+            "evidence": "静态对照信息由短版正文内的 Markdown 表格承载：「一、现在到底能做什么」的能力-状态表、「三、首期不做什么」的事项-是否包含-原因表、「五、还没有答案」的待确认项-影响表。均为文档原生表格。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "删除或用短版覆盖完整工程方案",
+            "status": "PASS",
+            "evidence": "附录逐节复现原稿「一、背景与长期目标」至「六、后续阶段设想」，包括长期系统设想、首期任务、首期边界、尚未确认的信息与后续阶段设想，关键表述（如“不能把该数字视为已经验证的能力”“不能只放在工程附录中”“不默认继承首期结论”）均保留，未见删减或改写为短版内容。原稿中的中文引号改为直角符号属排版差异，不构成内容覆盖。"
+          },
+          {
+            "criterion": "把六类任务、批量产能或生成式替换写成首期承诺",
+            "status": "PASS",
+            "evidence": "短版明确将六类任务列为“长期设想，每类需单独验证”，产量目标列为“业务目标，无任何依据”；「三、首期不做什么」表把其余五类任务、批量产能（含每天 50 条）、画面内产品重绘与生成新人物等生成式替换标为“不包含”；「六」另写“不提前承诺：效率提升比例、每天 50 条产能、投放效果”。"
+          },
+          {
+            "criterion": "编造周期、人员、预算或通过阈值",
+            "status": "PASS",
+            "evidence": "候选稿未给出任何具体周期、人数、金额或阈值数字；「五」表对应单元格均为“无法排期／无法确定／无法判断／需要结合真实素材后由业务负责人和剪辑人员确认”。「七」中的人员分工仅为“业务负责人”“业务与剪辑人员”“系统开发”角色，未指名具体人或编制，属对原稿责任边界的转述而非编造。"
+          },
+          {
+            "criterion": "为静态对照信息嵌入电子表格",
+            "status": "PASS",
+            "evidence": "全文静态对照信息均以 Markdown 管道表格呈现，未出现电子表格文件、嵌入对象、下载链接或表格附件。"
+          }
+        ],
+        "blocking_issues": []
+      },
+      "original_failure": {
+        "status": "ERROR",
+        "error": "judge timed out",
+        "result_sha256": "bdf6bf188634657cf47b531f643d1fb3fcc9811062d820a77f50e75e98973852"
+      }
+    }
+  ]
+}

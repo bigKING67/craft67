@@ -1,0 +1,369 @@
+{
+  "schema": "money-craft.current-acceptance-status.v1",
+  "checked_at": "2026-09-21T01:31:35.095819+00:00",
+  "status": "PASS_STATUS_RECONCILIATION",
+  "scope": "Evidence and version reconciliation only; no new code review, full-suite run, host E2E run, provider refresh or release.",
+  "head": "2d33799b939fab61fa842f0dfab420ed19239f19",
+  "dirty": true,
+  "source_tree_sha256": "69e64c5c99818311ebbd5cf832b80408bff28e0ae72e76534fc2ba23af44542a",
+  "source_install_parity": true,
+  "source_file_count": 75,
+  "runtime_baseline_comparison": [
+    {
+      "path": "skills/money-craft/scripts/earnings_baseline.py",
+      "baseline_same": true,
+      "current_sha256": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_crosscheck.py",
+      "baseline_same": true,
+      "current_sha256": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_drivers.py",
+      "baseline_same": true,
+      "current_sha256": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_update.py",
+      "baseline_same": true,
+      "current_sha256": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_reconciliation.py",
+      "baseline_same": true,
+      "current_sha256": "577768445452fba0948d10cac79ef7ed4e5b8750dbe78aa1866cdca3b9853ca5",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_rigor.py",
+      "baseline_same": true,
+      "current_sha256": "a1dc0c512d620fa06f40b1e50b2370041180e9f26d7f5ae4e60ef3d8b215190a",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/fred_adapter.py",
+      "baseline_same": true,
+      "current_sha256": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/money_craft.py",
+      "baseline_same": false,
+      "current_sha256": "440d92db71f444fa20e8013128fa78f65c643d29183af566dd0fbaa55153b0c7",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/portfolio_audit.py",
+      "baseline_same": true,
+      "current_sha256": "d44f84134947759976aca0d110a11e2414d46bb5f8a6b1bec4f0211648144dc6",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/report_audit.py",
+      "baseline_same": true,
+      "current_sha256": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/report_renderer.py",
+      "baseline_same": true,
+      "current_sha256": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/research_run.py",
+      "baseline_same": false,
+      "current_sha256": "ba872842c4b7e31dd9fe6778914bb607fcce48d1aa57444bcdbb6b0e36b58310",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/research_workflow.py",
+      "baseline_same": false,
+      "current_sha256": "6accba9ec6e11b5fc8962eb7bc58470d373b0402e4bd966b491f96fd414f0980",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/runtime_paths.py",
+      "baseline_same": true,
+      "current_sha256": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/tracking_workflow.py",
+      "baseline_same": true,
+      "current_sha256": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+      "matches_additional_evidence_snapshot": true
+    },
+    {
+      "path": "skills/money-craft/scripts/yfinance_adapter.py",
+      "baseline_same": true,
+      "current_sha256": "660463d429197d45f9e2dcf3ff5335b7ad326a5eb319faf56d4da43cfa916320",
+      "matches_additional_evidence_snapshot": true
+    }
+  ],
+  "historical_e2e": {
+    "status": "PASS_BOUNDED_AUTONOMOUS_NATIVE_E2E",
+    "current_changes_from_75_file_host_snapshot": [
+      "references/financial-data-and-evidence.md",
+      "references/research-semantic-review.md"
+    ],
+    "current_full_e2e_rerun": false,
+    "all_historical_runtime_files_unchanged": true,
+    "host_artifact_bindings": [
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/prompt.txt",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/answer.md",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/stderr.txt",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/events.jsonl",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/launch.json",
+        "match": true
+      }
+    ],
+    "archive_sha256sum_bindings": [
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/report-kami.html",
+        "sha256": "6899229331fd17a79590793b06338ea46676949c41383d151b93cf42a1d8e195",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/report-kami.pdf",
+        "sha256": "f8023a8922359805e2ff783cb2d2cc5be303d660164c249cc055a71ee19d56e9",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/report.audit.json",
+        "sha256": "cb172aa49e110c170d0a8d805540ab4ef974174da829d5696ce288e4e3a1f900",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/report.md",
+        "sha256": "03e4bdc9e8f6520a82b2c26d441ee0ea56c4e83d85027255ef75b761773632e1",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S11/source-01.capture.json",
+        "sha256": "cef8a016c92b881482897afc2fd029dff2a04bcc3fa733ba9b08211ac168e80c",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S11/source-01.headers.txt",
+        "sha256": "d7d67775da8b7f39d0472b7c3dfb637e8a58f984e21b0bad450896998de9acd1",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S11/source-01.pdf",
+        "sha256": "43e7f0730b3cce0fc37301a2f43c29712bbde6ab299d97c6df345fd0c754508a",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S12/source-01.capture.json",
+        "sha256": "19d6044b37d9c3e124d0a024c293061f6c3393ccf8dd08e340daf2b23f1891dd",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S12/source-01.headers.txt",
+        "sha256": "85b0b906d6d5bdfc37e08bc66ace4ec92d7d1479b9c11cb7b0d162521a5e6b59",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S12/source-01.pdf",
+        "sha256": "3eb270b22acb7d8d8e9c32a43dc221dec3345f8e4bca02755fdbc1ee16c823de",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S13/source-01.bin",
+        "sha256": "dc4b892f37a3047ee329a2a5651d0b5e85225a43e8d95c5b4b60737d6bb42529",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S13/source-01.capture.json",
+        "sha256": "e91e2e92d1eea9450768eb1f1d5fa42296309e7058ec8d974d8d1bac2c820936",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S13/source-01.headers.txt",
+        "sha256": "59be031d952f1dc023d4f3288580d9e1f4842accdc41704bdc422be63c1bcc68",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S18/source-01.bin",
+        "sha256": "299521fd06d5896792148a31ecd67f40603bd8b34d453d858aa742f2cdda9bb0",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S18/source-01.capture.json",
+        "sha256": "fd4552fb37c0838616dd044df7c90d66a6e1c0f40bdf866ea02833be7151c62a",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S18/source-01.headers.txt",
+        "sha256": "388f1b7cef31dc1e1d45dfc078103610256bb5ee108030267f6031bf94e71c7f",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S20/source-01.bin",
+        "sha256": "4743fdd6722df8ef1f2905b8bc134bf0737bddcff4e8d1b39bbf87ccb13881dc",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S20/source-01.capture.json",
+        "sha256": "ff0f13b886052ee2a97699dc53eb18072129b7295f3a9bd0b5a3b55b3b5eb5e7",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S20/source-01.headers.txt",
+        "sha256": "34ce05f465e6164672cd59de2a1db208f47b61b9da69754a16e14543cf7e8888",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S21/source-01.capture.json",
+        "sha256": "e83238a1218122183726030528ab242d0ab175e0010084abff06cba4984a9f0b",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S21/source-01.headers.txt",
+        "sha256": "01dade6806fbcb2f67b76c44934b7652a7e9f479a887015c99a82b2e6f110a33",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S21/source-01.pdf",
+        "sha256": "e36d41ed3a32874efba3e33dc89ef7e1329e32a26e91b453cb0e9b680288a783",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S23/source-01.capture.json",
+        "sha256": "4f691fce17022622643c9df9408970472c222a035d8f112a4c9e7e1254c57e96",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S23/source-01.headers.txt",
+        "sha256": "ab08384ab6d158ccfe34ff8ab443b2859ca2e414916a310021ddc04d9b6cc967",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S23/source-01.pdf",
+        "sha256": "7c982ae6fed09ee53acab12afb1ad374b3fd6a5905c44bf0ef3130f8a8bd67fe",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S31/source-01.bin",
+        "sha256": "aba5e6a08238ceee70d1f20e945b2edeb0dbb47adaa023b0000cee12f1e83b94",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S31/source-01.capture.json",
+        "sha256": "0151e348bbe54ced74190151d46a7bb33d2cea6833c8fefaa262052dd9b73d46",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S31/source-01.headers.txt",
+        "sha256": "565c1701317bb7eaa802ca53a077e57ceb67abcab78fa8767728c006ff524408",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S32/source-01.bin",
+        "sha256": "c5b4c9a33893740ac6554331c257e22e3757cd7fa8d8550a3abb1f910fe313c6",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S32/source-01.capture.json",
+        "sha256": "4fa7f344936217a13ed89a81ce5f5b17c5517ba5999f4eba102c7e2a749865ad",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S32/source-01.headers.txt",
+        "sha256": "2af4c922796705d5070634be599d27e03104dce1a5300b8a1b503cb2975ba6b0",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S40/source-01.bin",
+        "sha256": "4b2b711ebdd5374c6019c9a579a6b9811e9a27371be0f4299a234985cfa614bb",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S40/source-01.capture.json",
+        "sha256": "85d8ccb6a2dfbf55ea347c854403484dc2248d9df726f67b78b6487a186a4bcd",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/S40/source-01.headers.txt",
+        "sha256": "8b37fa16fbdd250b639b2607613ff13d212886b45e6ace24c906f1e8e6bdfe3a",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/sources/sources.manifest.json",
+        "sha256": "095cd1eb87dfe7398eec0bf9e2c71d53830b907fa2be0eeace9789a7a8914c97",
+        "match": true
+      },
+      {
+        "path": "local/skill-evals/20260920-native-full-host-v2/host/workspace/archive/AAPL-Apple/2025-11-01/revisions/r0001/verify.py",
+        "sha256": "1a84b49a95d90592534ea569727adc8f66bea0540aad72f98b97d921791676ab",
+        "match": true
+      }
+    ],
+    "snapshot_guard_rerun": false
+  },
+  "capabilities": [
+    {
+      "area": "runtime engineering",
+      "state": "HISTORICAL_BOUNDED_REVIEW_WITH_LATER_REPAIRS",
+      "current_full_independent_review": false
+    },
+    {
+      "area": "autonomous evidence to archive",
+      "state": "PASS_BOUNDED_HISTORICAL_APPLE",
+      "current_exact_skill_rerun": false
+    },
+    {
+      "area": "liquidity semantics",
+      "state": "PASS_BOUNDED_TOPIC",
+      "real_companies": 4
+    },
+    {
+      "area": "live providers",
+      "state": "HISTORICAL_SELECTED_ENDPOINTS_PASS_NOT_REFRESHED"
+    },
+    {
+      "area": "Midea investment evidence",
+      "state": "PARTIAL",
+      "open": [
+        "P05 economic hedging pairing",
+        "P06 normalized after-tax attributable earnings"
+      ]
+    },
+    {
+      "area": "new non-US full autonomous company case",
+      "state": "NOT_YET_DEMONSTRATED_IN_RECONCILED_EVIDENCE"
+    },
+    {
+      "area": "application and release",
+      "state": "DEFERRED_NOT_AUTHORIZED_BY_ACCEPTANCE"
+    }
+  ],
+  "evidence_refs": {
+    "acceptance/consolidated-baseline-20260920.json": "87af7a6ee51325b148aecbe4beb529613c88cc3a2fa980abcf15b399942fb460",
+    "acceptance/additional-evidence-20260920.json": "0136c41e9afcdf80374ef5821acc0d7c1bd6edf04dfff40a4caed3107fe377cc",
+    "acceptance/native-full-host-v2-review-20260920.json": "3b2482aaa29b0424f4a606cb65cd69f27e9347859aeb6142cede556181380c42",
+    "acceptance/liquidity-semantics/topic-closeout-20260921.json": "280bbf9acb304ee9c4147b836349ea2bd2389fdf7429b39036dd14bb35ad4bed",
+    "acceptance/midea-integrated-20260921.json": "e2e689f7d15b435960bef60fe8d85fba5678ed946b8233cf9213691dbbd3edb6",
+    "local/skill-evals/20260920-native-full-host-v2/host/host.json": "22c20440f2e84e51d3cf54e006cb1b8526bb8fc94c5c2c358825fd43dfc49db4",
+    "local/skill-evals/20260920-native-full-host-v2/parent-review/review.json": "9e05d6e6536f25686e288c17e5714dca04c80768fcc9718824088f254ea4c98c"
+  }
+}

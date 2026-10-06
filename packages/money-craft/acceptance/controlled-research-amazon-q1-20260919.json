@@ -1,0 +1,73 @@
+{
+  "schema": "money-craft.controlled-research-use.v1",
+  "date": "2026-09-19",
+  "status": "COMPLETED_BOUNDED_OBSERVATION",
+  "subject": "US-NASDAQ:AMZN",
+  "historical_as_of": "2025-05-01",
+  "comparison": "2025Q1 vs 2024Q1",
+  "post_hoc": true,
+  "prior_task": "docs/amazon-historical-acceptance-20260919.md",
+  "research_note": "local/research/20260919-amazon-q1-followup/note.md",
+  "results": {
+    "calculation_checks": 37,
+    "report_audit_valid": true,
+    "ledger_completed": true,
+    "ledger_receipts": 5,
+    "ledger_artifacts_verified": true,
+    "frozen_skill_files_unchanged": 72
+  },
+  "conclusion": "At the stated OCF/net-income proxy, cash conversion improvement was not observed; quarterly FCF derived under issuer definition changed from positive to negative. No current investment recommendation.",
+  "source_roles": {
+    "S01": "Issuer quarterly release, primary financial source",
+    "S02": "Internal previous research task baseline only; not independent financial verification"
+  },
+  "limits": [
+    "Single issuer, no independent second financial source",
+    "Main-agent semantic review, no independent review",
+    "No full financial-reconciliation artifact, audited full thesis, track revision, or formal money archive",
+    "2024 Form 10-K appendix review and 2025 annual window remain outside this completed quarterly observation",
+    "No Skill/runtime/install changes, application, trading, commit, push or release"
+  ],
+  "artifacts": [
+    {
+      "path": "local/research/20260919-amazon-q1-followup/note.md",
+      "sha256": "15f3670ecbe25cf8f1e6aa900516e2cc72b874df3f49a722ec09adc0ae74c562"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/route.json",
+      "sha256": "29bcd19aa9e22f7897e221bc8b75f368ea161407f9860291d8426b933e5249ad"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/sources/q1-2025.pdf",
+      "sha256": "a7ebe98065b56a4f484aa5f7034fe49b2bebdf349aaaaf704891121397dbd42d"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/sources/q1-2025.capture.json",
+      "sha256": "5594a50b3801bffae2dd4298a0d3a91300a2f0d45dd3124ee36f2dcaf2547fc1"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/run-capture.json",
+      "sha256": "393569c65336c3cbbc1d79f8ceeac16e8142735041d6f398cfb14517110e3d40"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/calculations.json",
+      "sha256": "3031842d861b31feaa5c758e03b4bf61ade7ad078cbc45328bc6d46d27dde5d9"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/report-audit.json",
+      "sha256": "c65cfaba515a25efd27a09f072794760cd8f2b1ace46a396b10f09806f457d83"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/financial-audit.json",
+      "sha256": "3d91196f685e486aa882eaa6fc169438ecbac7238d6d343c4f77a1edb1cc562a"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/semantic-review.json",
+      "sha256": "404448110be92373cd32bc2cbc99762916078d87093387b34b6e8a70a8f46220"
+    },
+    {
+      "path": "local/research/20260919-amazon-q1-followup/verify.json",
+      "sha256": "c9a1ffe7592485bfa1dfa789f4a0f6335e2491459a9ac95efe134725f6ffe5f3"
+    }
+  ]
+}

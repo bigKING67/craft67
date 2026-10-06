@@ -1,0 +1,5597 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-26",
+  "title": "八字岁运目标章节逐栏坐标与局部影像定位",
+  "scope": "Coordinates for the 28 already-transcribed scan pages or spreads; ten manually verified reading anchors and nine local evidence crops.",
+  "sourceTranscription": "bazi-timing-diplomatic-transcription.json",
+  "coordinateContract": {
+    "origin": "top-left of the 300 DPI raster",
+    "unit": "pixel",
+    "boxShape": "x, y, width, height",
+    "normalizedRange": "0..1 relative to raster width and height",
+    "rendering": "pdftoppm 26.09.0 at 300 DPI to JPEG",
+    "layoutDetection": "Tesseract 5.5.3 chi_tra_vert, psm 5; only level-4 geometry retained",
+    "textAuthority": false,
+    "readingOrder": "traditional vertical text: surface and regions right-to-left, characters top-to-bottom",
+    "warning": "Vertical-line regions are navigation candidates, not a glyph facsimile or a guaranteed one-to-one compositor-column reconstruction. Anchor source boxes were manually checked against the scans."
+  },
+  "coverageSummary": {
+    "scanWitnesses": 5,
+    "pdfPagesOrSpreads": 28,
+    "surfaces": 31,
+    "verticalLineRegions": 301,
+    "manualAnchors": 10,
+    "evidenceCrops": 9
+  },
+  "witnesses": [
+    {
+      "id": "zp-world",
+      "label": "世界图书馆本《子平真诠》",
+      "sourcePdf": "tmp/pdfs/ziping-zhenquan-scan.pdf",
+      "sourcePdfSha256": "71402a780b0351b54edf121a51bc4a4a4ce5896496c35b954563ee06f1a6f620",
+      "pages": [
+        {
+          "pdfPage": 56,
+          "printedPage": "47",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1562,
+            "heightPx": 2808
+          },
+          "transcriptionPointer": "/witnesses/0/pages/0",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 219,
+                "y": 112,
+                "width": 1078,
+                "height": 2583
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1157,
+                    "y": 572,
+                    "width": 91,
+                    "height": 1672
+                  },
+                  "boxNormalized": {
+                    "x": 0.740717,
+                    "y": 0.203704,
+                    "width": 0.058259,
+                    "height": 0.595442
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1049,
+                    "y": 613,
+                    "width": 97,
+                    "height": 1633
+                  },
+                  "boxNormalized": {
+                    "x": 0.671575,
+                    "y": 0.218305,
+                    "width": 0.0621,
+                    "height": 0.581553
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 950,
+                    "y": 573,
+                    "width": 94,
+                    "height": 1675
+                  },
+                  "boxNormalized": {
+                    "x": 0.608195,
+                    "y": 0.20406,
+                    "width": 0.060179,
+                    "height": 0.59651
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 849,
+                    "y": 574,
+                    "width": 91,
+                    "height": 1674
+                  },
+                  "boxNormalized": {
+                    "x": 0.543534,
+                    "y": 0.204416,
+                    "width": 0.058259,
+                    "height": 0.596154
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 693,
+                    "y": 617,
+                    "width": 189,
+                    "height": 1632
+                  },
+                  "boxNormalized": {
+                    "x": 0.443662,
+                    "y": 0.219729,
+                    "width": 0.120999,
+                    "height": 0.581197
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 643,
+                    "y": 576,
+                    "width": 89,
+                    "height": 1634
+                  },
+                  "boxNormalized": {
+                    "x": 0.411652,
+                    "y": 0.205128,
+                    "width": 0.056978,
+                    "height": 0.581909
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 520,
+                    "y": 578,
+                    "width": 108,
+                    "height": 1672
+                  },
+                  "boxNormalized": {
+                    "x": 0.332907,
+                    "y": 0.20584,
+                    "width": 0.069142,
+                    "height": 0.595442
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 439,
+                    "y": 579,
+                    "width": 87,
+                    "height": 1672
+                  },
+                  "boxNormalized": {
+                    "x": 0.28105,
+                    "y": 0.206197,
+                    "width": 0.055698,
+                    "height": 0.595442
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 335,
+                    "y": 622,
+                    "width": 104,
+                    "height": 1629
+                  },
+                  "boxNormalized": {
+                    "x": 0.214469,
+                    "y": 0.22151,
+                    "width": 0.066581,
+                    "height": 0.580128
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 216,
+                    "y": 706,
+                    "width": 80,
+                    "height": 1351
+                  },
+                  "boxNormalized": {
+                    "x": 0.138284,
+                    "y": 0.251425,
+                    "width": 0.051216,
+                    "height": 0.481125
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 57,
+          "printedPage": "48",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1571,
+            "heightPx": 2825
+          },
+          "transcriptionPointer": "/witnesses/0/pages/1",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 220,
+                "y": 113,
+                "width": 1084,
+                "height": 2599
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1169,
+                    "y": 560,
+                    "width": 85,
+                    "height": 1683
+                  },
+                  "boxNormalized": {
+                    "x": 0.744112,
+                    "y": 0.19823,
+                    "width": 0.054106,
+                    "height": 0.595752
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1059,
+                    "y": 563,
+                    "width": 92,
+                    "height": 1681
+                  },
+                  "boxNormalized": {
+                    "x": 0.674093,
+                    "y": 0.199292,
+                    "width": 0.058561,
+                    "height": 0.595044
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 943,
+                    "y": 567,
+                    "width": 108,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.600255,
+                    "y": 0.200708,
+                    "width": 0.068746,
+                    "height": 0.578761
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 851,
+                    "y": 564,
+                    "width": 97,
+                    "height": 1679
+                  },
+                  "boxNormalized": {
+                    "x": 0.541693,
+                    "y": 0.199646,
+                    "width": 0.061744,
+                    "height": 0.594336
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 742,
+                    "y": 604,
+                    "width": 101,
+                    "height": 1639
+                  },
+                  "boxNormalized": {
+                    "x": 0.472311,
+                    "y": 0.213805,
+                    "width": 0.06429,
+                    "height": 0.580177
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 642,
+                    "y": 568,
+                    "width": 99,
+                    "height": 1675
+                  },
+                  "boxNormalized": {
+                    "x": 0.408657,
+                    "y": 0.201062,
+                    "width": 0.063017,
+                    "height": 0.59292
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 549,
+                    "y": 567,
+                    "width": 88,
+                    "height": 1676
+                  },
+                  "boxNormalized": {
+                    "x": 0.349459,
+                    "y": 0.200708,
+                    "width": 0.056015,
+                    "height": 0.593274
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 437,
+                    "y": 611,
+                    "width": 99,
+                    "height": 1632
+                  },
+                  "boxNormalized": {
+                    "x": 0.278167,
+                    "y": 0.216283,
+                    "width": 0.063017,
+                    "height": 0.577699
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 330,
+                    "y": 590,
+                    "width": 107,
+                    "height": 1652
+                  },
+                  "boxNormalized": {
+                    "x": 0.210057,
+                    "y": 0.20885,
+                    "width": 0.068109,
+                    "height": 0.584779
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 232,
+                    "y": 569,
+                    "width": 97,
+                    "height": 1672
+                  },
+                  "boxNormalized": {
+                    "x": 0.147677,
+                    "y": 0.201416,
+                    "width": 0.061744,
+                    "height": 0.591858
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 58,
+          "printedPage": "49",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1571,
+            "heightPx": 2825
+          },
+          "transcriptionPointer": "/witnesses/0/pages/2",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 220,
+                "y": 113,
+                "width": 1084,
+                "height": 2599
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1200,
+                    "y": 575,
+                    "width": 157,
+                    "height": 1677
+                  },
+                  "boxNormalized": {
+                    "x": 0.763845,
+                    "y": 0.20354,
+                    "width": 0.099936,
+                    "height": 0.593628
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1152,
+                    "y": 573,
+                    "width": 101,
+                    "height": 1680
+                  },
+                  "boxNormalized": {
+                    "x": 0.733291,
+                    "y": 0.202832,
+                    "width": 0.06429,
+                    "height": 0.59469
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1044,
+                    "y": 572,
+                    "width": 108,
+                    "height": 1681
+                  },
+                  "boxNormalized": {
+                    "x": 0.664545,
+                    "y": 0.202478,
+                    "width": 0.068746,
+                    "height": 0.595044
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 937,
+                    "y": 572,
+                    "width": 114,
+                    "height": 1680
+                  },
+                  "boxNormalized": {
+                    "x": 0.596435,
+                    "y": 0.202478,
+                    "width": 0.072565,
+                    "height": 0.59469
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 846,
+                    "y": 570,
+                    "width": 104,
+                    "height": 1682
+                  },
+                  "boxNormalized": {
+                    "x": 0.538511,
+                    "y": 0.20177,
+                    "width": 0.0662,
+                    "height": 0.595398
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 746,
+                    "y": 570,
+                    "width": 101,
+                    "height": 1681
+                  },
+                  "boxNormalized": {
+                    "x": 0.474857,
+                    "y": 0.20177,
+                    "width": 0.06429,
+                    "height": 0.595044
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 646,
+                    "y": 570,
+                    "width": 95,
+                    "height": 1680
+                  },
+                  "boxNormalized": {
+                    "x": 0.411203,
+                    "y": 0.20177,
+                    "width": 0.060471,
+                    "height": 0.59469
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 530,
+                    "y": 570,
+                    "width": 116,
+                    "height": 1695
+                  },
+                  "boxNormalized": {
+                    "x": 0.337365,
+                    "y": 0.20177,
+                    "width": 0.073838,
+                    "height": 0.6
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 429,
+                    "y": 571,
+                    "width": 115,
+                    "height": 1678
+                  },
+                  "boxNormalized": {
+                    "x": 0.273074,
+                    "y": 0.202124,
+                    "width": 0.073202,
+                    "height": 0.593982
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 328,
+                    "y": 572,
+                    "width": 110,
+                    "height": 1676
+                  },
+                  "boxNormalized": {
+                    "x": 0.208784,
+                    "y": 0.202478,
+                    "width": 0.070019,
+                    "height": 0.593274
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 215,
+                    "y": 706,
+                    "width": 76,
+                    "height": 1511
+                  },
+                  "boxNormalized": {
+                    "x": 0.136856,
+                    "y": 0.249912,
+                    "width": 0.048377,
+                    "height": 0.534867
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 59,
+          "printedPage": "50",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1563,
+            "heightPx": 2826
+          },
+          "transcriptionPointer": "/witnesses/0/pages/3",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 219,
+                "y": 113,
+                "width": 1078,
+                "height": 2600
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1156,
+                    "y": 610,
+                    "width": 97,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.739603,
+                    "y": 0.215853,
+                    "width": 0.06206,
+                    "height": 0.579264
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1037,
+                    "y": 610,
+                    "width": 114,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.663468,
+                    "y": 0.215853,
+                    "width": 0.072937,
+                    "height": 0.578556
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 942,
+                    "y": 607,
+                    "width": 105,
+                    "height": 1639
+                  },
+                  "boxNormalized": {
+                    "x": 0.602687,
+                    "y": 0.214791,
+                    "width": 0.067179,
+                    "height": 0.579972
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 842,
+                    "y": 605,
+                    "width": 99,
+                    "height": 1639
+                  },
+                  "boxNormalized": {
+                    "x": 0.538708,
+                    "y": 0.214084,
+                    "width": 0.06334,
+                    "height": 0.579972
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 734,
+                    "y": 604,
+                    "width": 103,
+                    "height": 1640
+                  },
+                  "boxNormalized": {
+                    "x": 0.46961,
+                    "y": 0.21373,
+                    "width": 0.065899,
+                    "height": 0.580326
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 619,
+                    "y": 606,
+                    "width": 117,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.396033,
+                    "y": 0.214437,
+                    "width": 0.074856,
+                    "height": 0.579618
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 519,
+                    "y": 606,
+                    "width": 113,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.332054,
+                    "y": 0.214437,
+                    "width": 0.072297,
+                    "height": 0.57891
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 425,
+                    "y": 605,
+                    "width": 103,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.271913,
+                    "y": 0.214084,
+                    "width": 0.065899,
+                    "height": 0.579618
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 317,
+                    "y": 727,
+                    "width": 115,
+                    "height": 1515
+                  },
+                  "boxNormalized": {
+                    "x": 0.202815,
+                    "y": 0.257254,
+                    "width": 0.073576,
+                    "height": 0.536093
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 199,
+                    "y": 602,
+                    "width": 126,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.127319,
+                    "y": 0.213022,
+                    "width": 0.080614,
+                    "height": 0.578556
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 60,
+          "printedPage": "51",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1562,
+            "heightPx": 2824
+          },
+          "transcriptionPointer": "/witnesses/0/pages/4",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 219,
+                "y": 113,
+                "width": 1078,
+                "height": 2598
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1156,
+                    "y": 620,
+                    "width": 93,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.740077,
+                    "y": 0.219547,
+                    "width": 0.059539,
+                    "height": 0.579674
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1052,
+                    "y": 622,
+                    "width": 93,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.673496,
+                    "y": 0.220255,
+                    "width": 0.059539,
+                    "height": 0.57932
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 932,
+                    "y": 581,
+                    "width": 117,
+                    "height": 1678
+                  },
+                  "boxNormalized": {
+                    "x": 0.596671,
+                    "y": 0.205737,
+                    "width": 0.074904,
+                    "height": 0.594193
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 838,
+                    "y": 620,
+                    "width": 103,
+                    "height": 1639
+                  },
+                  "boxNormalized": {
+                    "x": 0.536492,
+                    "y": 0.219547,
+                    "width": 0.065941,
+                    "height": 0.580382
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 734,
+                    "y": 619,
+                    "width": 107,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.46991,
+                    "y": 0.219193,
+                    "width": 0.068502,
+                    "height": 0.580028
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 647,
+                    "y": 580,
+                    "width": 90,
+                    "height": 1677
+                  },
+                  "boxNormalized": {
+                    "x": 0.414213,
+                    "y": 0.205382,
+                    "width": 0.057618,
+                    "height": 0.593839
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 529,
+                    "y": 580,
+                    "width": 110,
+                    "height": 1678
+                  },
+                  "boxNormalized": {
+                    "x": 0.338668,
+                    "y": 0.205382,
+                    "width": 0.070423,
+                    "height": 0.594193
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 450,
+                    "y": 747,
+                    "width": 63,
+                    "height": 612
+                  },
+                  "boxNormalized": {
+                    "x": 0.288092,
+                    "y": 0.264518,
+                    "width": 0.040333,
+                    "height": 0.216714
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 333,
+                    "y": 622,
+                    "width": 98,
+                    "height": 1632
+                  },
+                  "boxNormalized": {
+                    "x": 0.213188,
+                    "y": 0.220255,
+                    "width": 0.06274,
+                    "height": 0.577904
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 209,
+                    "y": 584,
+                    "width": 105,
+                    "height": 1673
+                  },
+                  "boxNormalized": {
+                    "x": 0.133803,
+                    "y": 0.206799,
+                    "width": 0.067222,
+                    "height": 0.592422
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 61,
+          "printedPage": "52",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1595,
+            "heightPx": 2810
+          },
+          "transcriptionPointer": "/witnesses/0/pages/5",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 223,
+                "y": 112,
+                "width": 1101,
+                "height": 2585
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1164,
+                    "y": 589,
+                    "width": 101,
+                    "height": 1604
+                  },
+                  "boxNormalized": {
+                    "x": 0.729781,
+                    "y": 0.209609,
+                    "width": 0.063323,
+                    "height": 0.570819
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1069,
+                    "y": 590,
+                    "width": 96,
+                    "height": 1602
+                  },
+                  "boxNormalized": {
+                    "x": 0.670219,
+                    "y": 0.209964,
+                    "width": 0.060188,
+                    "height": 0.570107
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 956,
+                    "y": 592,
+                    "width": 105,
+                    "height": 1602
+                  },
+                  "boxNormalized": {
+                    "x": 0.599373,
+                    "y": 0.210676,
+                    "width": 0.065831,
+                    "height": 0.570107
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 858,
+                    "y": 594,
+                    "width": 101,
+                    "height": 1600
+                  },
+                  "boxNormalized": {
+                    "x": 0.537931,
+                    "y": 0.211388,
+                    "width": 0.063323,
+                    "height": 0.569395
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 770,
+                    "y": 599,
+                    "width": 87,
+                    "height": 1597
+                  },
+                  "boxNormalized": {
+                    "x": 0.482759,
+                    "y": 0.213167,
+                    "width": 0.054545,
+                    "height": 0.568327
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 633,
+                    "y": 598,
+                    "width": 120,
+                    "height": 1628
+                  },
+                  "boxNormalized": {
+                    "x": 0.396865,
+                    "y": 0.212811,
+                    "width": 0.075235,
+                    "height": 0.579359
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 535,
+                    "y": 596,
+                    "width": 115,
+                    "height": 1630
+                  },
+                  "boxNormalized": {
+                    "x": 0.335423,
+                    "y": 0.2121,
+                    "width": 0.0721,
+                    "height": 0.580071
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 462,
+                    "y": 597,
+                    "width": 85,
+                    "height": 1632
+                  },
+                  "boxNormalized": {
+                    "x": 0.289655,
+                    "y": 0.212456,
+                    "width": 0.053292,
+                    "height": 0.580783
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 338,
+                    "y": 598,
+                    "width": 104,
+                    "height": 1597
+                  },
+                  "boxNormalized": {
+                    "x": 0.211912,
+                    "y": 0.212811,
+                    "width": 0.065204,
+                    "height": 0.568327
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 238,
+                    "y": 599,
+                    "width": 103,
+                    "height": 1600
+                  },
+                  "boxNormalized": {
+                    "x": 0.149216,
+                    "y": 0.213167,
+                    "width": 0.064577,
+                    "height": 0.569395
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 62,
+          "printedPage": "53",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1595,
+            "heightPx": 2810
+          },
+          "transcriptionPointer": "/witnesses/0/pages/6",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 223,
+                "y": 112,
+                "width": 1101,
+                "height": 2585
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1257,
+                    "y": 602,
+                    "width": 86,
+                    "height": 1630
+                  },
+                  "boxNormalized": {
+                    "x": 0.788088,
+                    "y": 0.214235,
+                    "width": 0.053918,
+                    "height": 0.580071
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1153,
+                    "y": 599,
+                    "width": 87,
+                    "height": 1624
+                  },
+                  "boxNormalized": {
+                    "x": 0.722884,
+                    "y": 0.213167,
+                    "width": 0.054545,
+                    "height": 0.577936
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1034,
+                    "y": 722,
+                    "width": 100,
+                    "height": 1511
+                  },
+                  "boxNormalized": {
+                    "x": 0.648276,
+                    "y": 0.25694,
+                    "width": 0.062696,
+                    "height": 0.537722
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 948,
+                    "y": 598,
+                    "width": 86,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.594357,
+                    "y": 0.212811,
+                    "width": 0.053918,
+                    "height": 0.581851
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 839,
+                    "y": 598,
+                    "width": 95,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.526019,
+                    "y": 0.212811,
+                    "width": 0.059561,
+                    "height": 0.582206
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 728,
+                    "y": 598,
+                    "width": 106,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.456426,
+                    "y": 0.212811,
+                    "width": 0.066458,
+                    "height": 0.582206
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 640,
+                    "y": 596,
+                    "width": 89,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.401254,
+                    "y": 0.2121,
+                    "width": 0.055799,
+                    "height": 0.582918
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 536,
+                    "y": 598,
+                    "width": 94,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.33605,
+                    "y": 0.212811,
+                    "width": 0.058934,
+                    "height": 0.582206
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 424,
+                    "y": 599,
+                    "width": 103,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.265831,
+                    "y": 0.213167,
+                    "width": 0.064577,
+                    "height": 0.581851
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 305,
+                    "y": 599,
+                    "width": 118,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.191223,
+                    "y": 0.213167,
+                    "width": 0.073981,
+                    "height": 0.581851
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zp-1926",
+      "label": "1926 文明书局秦慎安校勘本《子平真诠》第2卷",
+      "sourcePdf": "tmp/pdfs/ziping-1926-vol2.pdf",
+      "sourcePdfSha256": "b1ac0a7dd4dc260647b65bd9338ad815fc0855d78e0ea01ed428237b28eb61c8",
+      "pages": [
+        {
+          "pdfPage": 43,
+          "printedPage": "30",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1647,
+            "heightPx": 2280
+          },
+          "transcriptionPointer": "/witnesses/1/pages/0",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 231,
+                "y": 91,
+                "width": 1186,
+                "height": 2098
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1229,
+                    "y": 322,
+                    "width": 72,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.746205,
+                    "y": 0.141228,
+                    "width": 0.043716,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1145,
+                    "y": 322,
+                    "width": 71,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.695203,
+                    "y": 0.141228,
+                    "width": 0.043109,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1059,
+                    "y": 322,
+                    "width": 70,
+                    "height": 1641
+                  },
+                  "boxNormalized": {
+                    "x": 0.642987,
+                    "y": 0.141228,
+                    "width": 0.042502,
+                    "height": 0.719737
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 974,
+                    "y": 320,
+                    "width": 74,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.591378,
+                    "y": 0.140351,
+                    "width": 0.04493,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 887,
+                    "y": 321,
+                    "width": 70,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.538555,
+                    "y": 0.140789,
+                    "width": 0.042502,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 801,
+                    "y": 323,
+                    "width": 71,
+                    "height": 1485
+                  },
+                  "boxNormalized": {
+                    "x": 0.486339,
+                    "y": 0.141667,
+                    "width": 0.043109,
+                    "height": 0.651316
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 717,
+                    "y": 421,
+                    "width": 50,
+                    "height": 147
+                  },
+                  "boxNormalized": {
+                    "x": 0.435337,
+                    "y": 0.184649,
+                    "width": 0.030358,
+                    "height": 0.064474
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 630,
+                    "y": 320,
+                    "width": 69,
+                    "height": 1639
+                  },
+                  "boxNormalized": {
+                    "x": 0.382514,
+                    "y": 0.140351,
+                    "width": 0.041894,
+                    "height": 0.71886
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 546,
+                    "y": 323,
+                    "width": 68,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.331512,
+                    "y": 0.141667,
+                    "width": 0.041287,
+                    "height": 0.717105
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 461,
+                    "y": 320,
+                    "width": 68,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.279903,
+                    "y": 0.140351,
+                    "width": 0.041287,
+                    "height": 0.717544
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 376,
+                    "y": 318,
+                    "width": 69,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.228294,
+                    "y": 0.139474,
+                    "width": 0.041894,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C12",
+                  "boxPx": {
+                    "x": 289,
+                    "y": 320,
+                    "width": 70,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.175471,
+                    "y": 0.140351,
+                    "width": 0.042502,
+                    "height": 0.717544
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 44,
+          "printedPage": "31",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1647,
+            "heightPx": 2280
+          },
+          "transcriptionPointer": "/witnesses/1/pages/1",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 231,
+                "y": 91,
+                "width": 1186,
+                "height": 2098
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1291,
+                    "y": 322,
+                    "width": 76,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.783849,
+                    "y": 0.141228,
+                    "width": 0.046145,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1209,
+                    "y": 325,
+                    "width": 71,
+                    "height": 1633
+                  },
+                  "boxNormalized": {
+                    "x": 0.734062,
+                    "y": 0.142544,
+                    "width": 0.043109,
+                    "height": 0.716228
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1124,
+                    "y": 327,
+                    "width": 71,
+                    "height": 1634
+                  },
+                  "boxNormalized": {
+                    "x": 0.682453,
+                    "y": 0.143421,
+                    "width": 0.043109,
+                    "height": 0.716667
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 1039,
+                    "y": 324,
+                    "width": 72,
+                    "height": 1634
+                  },
+                  "boxNormalized": {
+                    "x": 0.630844,
+                    "y": 0.142105,
+                    "width": 0.043716,
+                    "height": 0.716667
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 952,
+                    "y": 325,
+                    "width": 73,
+                    "height": 1633
+                  },
+                  "boxNormalized": {
+                    "x": 0.578021,
+                    "y": 0.142544,
+                    "width": 0.044323,
+                    "height": 0.716228
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 850,
+                    "y": 325,
+                    "width": 91,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.51609,
+                    "y": 0.142544,
+                    "width": 0.055252,
+                    "height": 0.717105
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 782,
+                    "y": 324,
+                    "width": 71,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.474803,
+                    "y": 0.142105,
+                    "width": 0.043109,
+                    "height": 0.717105
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 696,
+                    "y": 323,
+                    "width": 71,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.422587,
+                    "y": 0.141667,
+                    "width": 0.043109,
+                    "height": 0.717105
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 610,
+                    "y": 325,
+                    "width": 71,
+                    "height": 1633
+                  },
+                  "boxNormalized": {
+                    "x": 0.37037,
+                    "y": 0.142544,
+                    "width": 0.043109,
+                    "height": 0.716228
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 524,
+                    "y": 323,
+                    "width": 71,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.318154,
+                    "y": 0.141667,
+                    "width": 0.043109,
+                    "height": 0.717105
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 438,
+                    "y": 323,
+                    "width": 72,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.265938,
+                    "y": 0.141667,
+                    "width": 0.043716,
+                    "height": 0.717544
+                  }
+                },
+                {
+                  "id": "C12",
+                  "boxPx": {
+                    "x": 350,
+                    "y": 319,
+                    "width": 74,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.212508,
+                    "y": 0.139912,
+                    "width": 0.04493,
+                    "height": 0.718421
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 45,
+          "printedPage": "32",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1647,
+            "heightPx": 2280
+          },
+          "transcriptionPointer": "/witnesses/1/pages/2",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 231,
+                "y": 91,
+                "width": 1186,
+                "height": 2098
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1262,
+                    "y": 338,
+                    "width": 69,
+                    "height": 1622
+                  },
+                  "boxNormalized": {
+                    "x": 0.766242,
+                    "y": 0.148246,
+                    "width": 0.041894,
+                    "height": 0.711404
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1167,
+                    "y": 339,
+                    "width": 77,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.708561,
+                    "y": 0.148684,
+                    "width": 0.046752,
+                    "height": 0.718421
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1092,
+                    "y": 340,
+                    "width": 65,
+                    "height": 447
+                  },
+                  "boxNormalized": {
+                    "x": 0.663024,
+                    "y": 0.149123,
+                    "width": 0.039466,
+                    "height": 0.196053
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 1005,
+                    "y": 446,
+                    "width": 52,
+                    "height": 348
+                  },
+                  "boxNormalized": {
+                    "x": 0.6102,
+                    "y": 0.195614,
+                    "width": 0.031573,
+                    "height": 0.152632
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 917,
+                    "y": 338,
+                    "width": 71,
+                    "height": 1635
+                  },
+                  "boxNormalized": {
+                    "x": 0.55677,
+                    "y": 0.148246,
+                    "width": 0.043109,
+                    "height": 0.717105
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 814,
+                    "y": 341,
+                    "width": 87,
+                    "height": 1632
+                  },
+                  "boxNormalized": {
+                    "x": 0.494232,
+                    "y": 0.149561,
+                    "width": 0.052823,
+                    "height": 0.715789
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 744,
+                    "y": 339,
+                    "width": 69,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.45173,
+                    "y": 0.148684,
+                    "width": 0.041894,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 657,
+                    "y": 342,
+                    "width": 72,
+                    "height": 1388
+                  },
+                  "boxNormalized": {
+                    "x": 0.398907,
+                    "y": 0.15,
+                    "width": 0.043716,
+                    "height": 0.608772
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 572,
+                    "y": 442,
+                    "width": 51,
+                    "height": 445
+                  },
+                  "boxNormalized": {
+                    "x": 0.347298,
+                    "y": 0.19386,
+                    "width": 0.030965,
+                    "height": 0.195175
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 483,
+                    "y": 342,
+                    "width": 72,
+                    "height": 1634
+                  },
+                  "boxNormalized": {
+                    "x": 0.29326,
+                    "y": 0.15,
+                    "width": 0.043716,
+                    "height": 0.716667
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 400,
+                    "y": 340,
+                    "width": 69,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.242866,
+                    "y": 0.149123,
+                    "width": 0.041894,
+                    "height": 0.718421
+                  }
+                },
+                {
+                  "id": "C12",
+                  "boxPx": {
+                    "x": 315,
+                    "y": 340,
+                    "width": 69,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.191257,
+                    "y": 0.149123,
+                    "width": 0.041894,
+                    "height": 0.717544
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 46,
+          "printedPage": "33",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1647,
+            "heightPx": 2280
+          },
+          "transcriptionPointer": "/witnesses/1/pages/3",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 231,
+                "y": 91,
+                "width": 1186,
+                "height": 2098
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1291,
+                    "y": 320,
+                    "width": 79,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.783849,
+                    "y": 0.140351,
+                    "width": 0.047966,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1206,
+                    "y": 320,
+                    "width": 77,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.73224,
+                    "y": 0.140351,
+                    "width": 0.046752,
+                    "height": 0.717982
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1122,
+                    "y": 321,
+                    "width": 74,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.681239,
+                    "y": 0.140789,
+                    "width": 0.04493,
+                    "height": 0.717544
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 1037,
+                    "y": 320,
+                    "width": 73,
+                    "height": 1638
+                  },
+                  "boxNormalized": {
+                    "x": 0.62963,
+                    "y": 0.140351,
+                    "width": 0.044323,
+                    "height": 0.718421
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 943,
+                    "y": 319,
+                    "width": 84,
+                    "height": 1639
+                  },
+                  "boxNormalized": {
+                    "x": 0.572556,
+                    "y": 0.139912,
+                    "width": 0.051002,
+                    "height": 0.71886
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 867,
+                    "y": 319,
+                    "width": 72,
+                    "height": 1640
+                  },
+                  "boxNormalized": {
+                    "x": 0.526412,
+                    "y": 0.139912,
+                    "width": 0.043716,
+                    "height": 0.719298
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 780,
+                    "y": 319,
+                    "width": 71,
+                    "height": 1242
+                  },
+                  "boxNormalized": {
+                    "x": 0.473588,
+                    "y": 0.139912,
+                    "width": 0.043109,
+                    "height": 0.544737
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 697,
+                    "y": 418,
+                    "width": 53,
+                    "height": 349
+                  },
+                  "boxNormalized": {
+                    "x": 0.423194,
+                    "y": 0.183333,
+                    "width": 0.03218,
+                    "height": 0.15307
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 608,
+                    "y": 320,
+                    "width": 72,
+                    "height": 1642
+                  },
+                  "boxNormalized": {
+                    "x": 0.369156,
+                    "y": 0.140351,
+                    "width": 0.043716,
+                    "height": 0.720175
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 514,
+                    "y": 321,
+                    "width": 82,
+                    "height": 1636
+                  },
+                  "boxNormalized": {
+                    "x": 0.312083,
+                    "y": 0.140789,
+                    "width": 0.049787,
+                    "height": 0.717544
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 437,
+                    "y": 321,
+                    "width": 72,
+                    "height": 1640
+                  },
+                  "boxNormalized": {
+                    "x": 0.265331,
+                    "y": 0.140789,
+                    "width": 0.043716,
+                    "height": 0.719298
+                  }
+                },
+                {
+                  "id": "C12",
+                  "boxPx": {
+                    "x": 350,
+                    "y": 321,
+                    "width": 75,
+                    "height": 1637
+                  },
+                  "boxNormalized": {
+                    "x": 0.212508,
+                    "y": 0.140789,
+                    "width": 0.045537,
+                    "height": 0.717982
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dts-ming",
+      "label": "明末长庚馆刊《滴天髓》",
+      "sourcePdf": "tmp/pdfs/ditiansui-ming-scan.pdf",
+      "sourcePdfSha256": "af8cc3ae1e2d6de6e11c6d677c43c9c0519193f18dfba2e16690bfa131a7715d",
+      "pages": [
+        {
+          "pdfPage": 66,
+          "printedPage": "47",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 4091,
+            "heightPx": 3032
+          },
+          "transcriptionPointer": "/witnesses/2/pages/0",
+          "surfaces": [
+            {
+              "id": "right",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 2086,
+                "y": 121,
+                "width": 1759,
+                "height": 2789
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "R01",
+                  "boxPx": {
+                    "x": 3356,
+                    "y": 424,
+                    "width": 223,
+                    "height": 2269
+                  },
+                  "boxNormalized": {
+                    "x": 0.820337,
+                    "y": 0.139842,
+                    "width": 0.05451,
+                    "height": 0.748351
+                  }
+                },
+                {
+                  "id": "R02",
+                  "boxPx": {
+                    "x": 3186,
+                    "y": 589,
+                    "width": 145,
+                    "height": 623
+                  },
+                  "boxNormalized": {
+                    "x": 0.778783,
+                    "y": 0.194261,
+                    "width": 0.035444,
+                    "height": 0.205475
+                  }
+                },
+                {
+                  "id": "R03",
+                  "boxPx": {
+                    "x": 2956,
+                    "y": 445,
+                    "width": 148,
+                    "height": 2133
+                  },
+                  "boxNormalized": {
+                    "x": 0.722562,
+                    "y": 0.146768,
+                    "width": 0.036177,
+                    "height": 0.703496
+                  }
+                },
+                {
+                  "id": "R04",
+                  "boxPx": {
+                    "x": 2828,
+                    "y": 589,
+                    "width": 168,
+                    "height": 2097
+                  },
+                  "boxNormalized": {
+                    "x": 0.691274,
+                    "y": 0.194261,
+                    "width": 0.041066,
+                    "height": 0.691623
+                  }
+                },
+                {
+                  "id": "R05",
+                  "boxPx": {
+                    "x": 2616,
+                    "y": 365,
+                    "width": 206,
+                    "height": 2340
+                  },
+                  "boxNormalized": {
+                    "x": 0.639452,
+                    "y": 0.120383,
+                    "width": 0.050354,
+                    "height": 0.771768
+                  }
+                },
+                {
+                  "id": "R06",
+                  "boxPx": {
+                    "x": 2446,
+                    "y": 587,
+                    "width": 182,
+                    "height": 2110
+                  },
+                  "boxNormalized": {
+                    "x": 0.597898,
+                    "y": 0.193602,
+                    "width": 0.044488,
+                    "height": 0.69591
+                  }
+                },
+                {
+                  "id": "R07",
+                  "boxPx": {
+                    "x": 2274,
+                    "y": 114,
+                    "width": 194,
+                    "height": 2578
+                  },
+                  "boxNormalized": {
+                    "x": 0.555854,
+                    "y": 0.037599,
+                    "width": 0.047421,
+                    "height": 0.850264
+                  }
+                },
+                {
+                  "id": "R08",
+                  "boxPx": {
+                    "x": 2158,
+                    "y": 596,
+                    "width": 113,
+                    "height": 2111
+                  },
+                  "boxNormalized": {
+                    "x": 0.527499,
+                    "y": 0.19657,
+                    "width": 0.027622,
+                    "height": 0.69624
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            },
+            {
+              "id": "left",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 245,
+                "y": 121,
+                "width": 1759,
+                "height": 2789
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "L01",
+                  "boxPx": {
+                    "x": 1526,
+                    "y": 614,
+                    "width": 164,
+                    "height": 2076
+                  },
+                  "boxNormalized": {
+                    "x": 0.373014,
+                    "y": 0.202507,
+                    "width": 0.040088,
+                    "height": 0.684697
+                  }
+                },
+                {
+                  "id": "L02",
+                  "boxPx": {
+                    "x": 1360,
+                    "y": 461,
+                    "width": 181,
+                    "height": 2205
+                  },
+                  "boxNormalized": {
+                    "x": 0.332437,
+                    "y": 0.152045,
+                    "width": 0.044243,
+                    "height": 0.727243
+                  }
+                },
+                {
+                  "id": "L03",
+                  "boxPx": {
+                    "x": 1214,
+                    "y": 465,
+                    "width": 173,
+                    "height": 2192
+                  },
+                  "boxNormalized": {
+                    "x": 0.296749,
+                    "y": 0.153364,
+                    "width": 0.042288,
+                    "height": 0.722955
+                  }
+                },
+                {
+                  "id": "L04",
+                  "boxPx": {
+                    "x": 1051,
+                    "y": 621,
+                    "width": 152,
+                    "height": 2054
+                  },
+                  "boxNormalized": {
+                    "x": 0.256905,
+                    "y": 0.204815,
+                    "width": 0.037155,
+                    "height": 0.677441
+                  }
+                },
+                {
+                  "id": "L05",
+                  "boxPx": {
+                    "x": 891,
+                    "y": 450,
+                    "width": 145,
+                    "height": 2206
+                  },
+                  "boxNormalized": {
+                    "x": 0.217795,
+                    "y": 0.148417,
+                    "width": 0.035444,
+                    "height": 0.727573
+                  }
+                },
+                {
+                  "id": "L06",
+                  "boxPx": {
+                    "x": 680,
+                    "y": 449,
+                    "width": 193,
+                    "height": 2226
+                  },
+                  "boxNormalized": {
+                    "x": 0.166219,
+                    "y": 0.148087,
+                    "width": 0.047177,
+                    "height": 0.734169
+                  }
+                },
+                {
+                  "id": "L07",
+                  "boxPx": {
+                    "x": 468,
+                    "y": 436,
+                    "width": 204,
+                    "height": 2217
+                  },
+                  "boxNormalized": {
+                    "x": 0.114397,
+                    "y": 0.143799,
+                    "width": 0.049866,
+                    "height": 0.731201
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 67,
+          "printedPage": "48",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 4091,
+            "heightPx": 3032
+          },
+          "transcriptionPointer": "/witnesses/2/pages/1",
+          "surfaces": [
+            {
+              "id": "right",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 2086,
+                "y": 121,
+                "width": 1759,
+                "height": 2789
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "R01",
+                  "boxPx": {
+                    "x": 3378,
+                    "y": 459,
+                    "width": 162,
+                    "height": 2194
+                  },
+                  "boxNormalized": {
+                    "x": 0.825715,
+                    "y": 0.151385,
+                    "width": 0.039599,
+                    "height": 0.723615
+                  }
+                },
+                {
+                  "id": "R02",
+                  "boxPx": {
+                    "x": 3168,
+                    "y": 627,
+                    "width": 177,
+                    "height": 2054
+                  },
+                  "boxNormalized": {
+                    "x": 0.774383,
+                    "y": 0.206794,
+                    "width": 0.043266,
+                    "height": 0.677441
+                  }
+                },
+                {
+                  "id": "R03",
+                  "boxPx": {
+                    "x": 2972,
+                    "y": 604,
+                    "width": 190,
+                    "height": 2089
+                  },
+                  "boxNormalized": {
+                    "x": 0.726473,
+                    "y": 0.199208,
+                    "width": 0.046443,
+                    "height": 0.688984
+                  }
+                },
+                {
+                  "id": "R04",
+                  "boxPx": {
+                    "x": 2833,
+                    "y": 596,
+                    "width": 152,
+                    "height": 2117
+                  },
+                  "boxNormalized": {
+                    "x": 0.692496,
+                    "y": 0.19657,
+                    "width": 0.037155,
+                    "height": 0.698219
+                  }
+                },
+                {
+                  "id": "R05",
+                  "boxPx": {
+                    "x": 2652,
+                    "y": 592,
+                    "width": 189,
+                    "height": 2113
+                  },
+                  "boxNormalized": {
+                    "x": 0.648252,
+                    "y": 0.195251,
+                    "width": 0.046199,
+                    "height": 0.6969
+                  }
+                },
+                {
+                  "id": "R06",
+                  "boxPx": {
+                    "x": 2496,
+                    "y": 434,
+                    "width": 158,
+                    "height": 2254
+                  },
+                  "boxNormalized": {
+                    "x": 0.61012,
+                    "y": 0.14314,
+                    "width": 0.038621,
+                    "height": 0.743404
+                  }
+                },
+                {
+                  "id": "R07",
+                  "boxPx": {
+                    "x": 2323,
+                    "y": 605,
+                    "width": 276,
+                    "height": 2121
+                  },
+                  "boxNormalized": {
+                    "x": 0.567832,
+                    "y": 0.199538,
+                    "width": 0.067465,
+                    "height": 0.699538
+                  }
+                },
+                {
+                  "id": "R08",
+                  "boxPx": {
+                    "x": 2120,
+                    "y": 428,
+                    "width": 201,
+                    "height": 2300
+                  },
+                  "boxNormalized": {
+                    "x": 0.518211,
+                    "y": 0.141161,
+                    "width": 0.049132,
+                    "height": 0.758575
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            },
+            {
+              "id": "left",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 245,
+                "y": 121,
+                "width": 1759,
+                "height": 2789
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "L01",
+                  "boxPx": {
+                    "x": 1725,
+                    "y": 455,
+                    "width": 184,
+                    "height": 2278
+                  },
+                  "boxNormalized": {
+                    "x": 0.421657,
+                    "y": 0.150066,
+                    "width": 0.044977,
+                    "height": 0.751319
+                  }
+                },
+                {
+                  "id": "L02",
+                  "boxPx": {
+                    "x": 1568,
+                    "y": 455,
+                    "width": 150,
+                    "height": 1064
+                  },
+                  "boxNormalized": {
+                    "x": 0.38328,
+                    "y": 0.150066,
+                    "width": 0.036666,
+                    "height": 0.350923
+                  }
+                },
+                {
+                  "id": "L03",
+                  "boxPx": {
+                    "x": 1194,
+                    "y": 627,
+                    "width": 174,
+                    "height": 2044
+                  },
+                  "boxNormalized": {
+                    "x": 0.29186,
+                    "y": 0.206794,
+                    "width": 0.042532,
+                    "height": 0.674142
+                  }
+                },
+                {
+                  "id": "L04",
+                  "boxPx": {
+                    "x": 1014,
+                    "y": 452,
+                    "width": 215,
+                    "height": 2226
+                  },
+                  "boxNormalized": {
+                    "x": 0.247861,
+                    "y": 0.149077,
+                    "width": 0.052554,
+                    "height": 0.734169
+                  }
+                },
+                {
+                  "id": "L05",
+                  "boxPx": {
+                    "x": 854,
+                    "y": 453,
+                    "width": 187,
+                    "height": 2238
+                  },
+                  "boxNormalized": {
+                    "x": 0.208751,
+                    "y": 0.149406,
+                    "width": 0.04571,
+                    "height": 0.738127
+                  }
+                },
+                {
+                  "id": "L06",
+                  "boxPx": {
+                    "x": 532,
+                    "y": 454,
+                    "width": 157,
+                    "height": 2228
+                  },
+                  "boxNormalized": {
+                    "x": 0.130042,
+                    "y": 0.149736,
+                    "width": 0.038377,
+                    "height": 0.734828
+                  }
+                },
+                {
+                  "id": "L07",
+                  "boxPx": {
+                    "x": 417,
+                    "y": 455,
+                    "width": 212,
+                    "height": 2250
+                  },
+                  "boxNormalized": {
+                    "x": 0.101931,
+                    "y": 0.150066,
+                    "width": 0.051821,
+                    "height": 0.742084
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 68,
+          "printedPage": "49",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 4091,
+            "heightPx": 3032
+          },
+          "transcriptionPointer": "/witnesses/2/pages/2",
+          "surfaces": [
+            {
+              "id": "right",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 2086,
+                "y": 121,
+                "width": 1759,
+                "height": 2789
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "R01",
+                  "boxPx": {
+                    "x": 3459,
+                    "y": 448,
+                    "width": 120,
+                    "height": 2235
+                  },
+                  "boxNormalized": {
+                    "x": 0.845515,
+                    "y": 0.147757,
+                    "width": 0.029333,
+                    "height": 0.737137
+                  }
+                },
+                {
+                  "id": "R02",
+                  "boxPx": {
+                    "x": 3013,
+                    "y": 490,
+                    "width": 164,
+                    "height": 2212
+                  },
+                  "boxNormalized": {
+                    "x": 0.736495,
+                    "y": 0.161609,
+                    "width": 0.040088,
+                    "height": 0.729551
+                  }
+                },
+                {
+                  "id": "R03",
+                  "boxPx": {
+                    "x": 2836,
+                    "y": 605,
+                    "width": 148,
+                    "height": 2118
+                  },
+                  "boxNormalized": {
+                    "x": 0.693229,
+                    "y": 0.199538,
+                    "width": 0.036177,
+                    "height": 0.698549
+                  }
+                },
+                {
+                  "id": "R04",
+                  "boxPx": {
+                    "x": 2661,
+                    "y": 627,
+                    "width": 153,
+                    "height": 2095
+                  },
+                  "boxNormalized": {
+                    "x": 0.650452,
+                    "y": 0.206794,
+                    "width": 0.037399,
+                    "height": 0.690963
+                  }
+                },
+                {
+                  "id": "R05",
+                  "boxPx": {
+                    "x": 2465,
+                    "y": 508,
+                    "width": 153,
+                    "height": 1803
+                  },
+                  "boxNormalized": {
+                    "x": 0.602542,
+                    "y": 0.167546,
+                    "width": 0.037399,
+                    "height": 0.594657
+                  }
+                },
+                {
+                  "id": "R06",
+                  "boxPx": {
+                    "x": 2324,
+                    "y": 624,
+                    "width": 123,
+                    "height": 2085
+                  },
+                  "boxNormalized": {
+                    "x": 0.568076,
+                    "y": 0.205805,
+                    "width": 0.030066,
+                    "height": 0.687665
+                  }
+                },
+                {
+                  "id": "R07",
+                  "boxPx": {
+                    "x": 2127,
+                    "y": 468,
+                    "width": 184,
+                    "height": 2229
+                  },
+                  "boxNormalized": {
+                    "x": 0.519922,
+                    "y": 0.154354,
+                    "width": 0.044977,
+                    "height": 0.735158
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            },
+            {
+              "id": "left",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 245,
+                "y": 121,
+                "width": 1759,
+                "height": 2789
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "L01",
+                  "boxPx": {
+                    "x": 1641,
+                    "y": 452,
+                    "width": 255,
+                    "height": 2274
+                  },
+                  "boxNormalized": {
+                    "x": 0.401124,
+                    "y": 0.149077,
+                    "width": 0.062332,
+                    "height": 0.75
+                  }
+                },
+                {
+                  "id": "L02",
+                  "boxPx": {
+                    "x": 1576,
+                    "y": 473,
+                    "width": 117,
+                    "height": 2180
+                  },
+                  "boxNormalized": {
+                    "x": 0.385236,
+                    "y": 0.156003,
+                    "width": 0.028599,
+                    "height": 0.718997
+                  }
+                },
+                {
+                  "id": "L03",
+                  "boxPx": {
+                    "x": 1464,
+                    "y": 1178,
+                    "width": 92,
+                    "height": 815
+                  },
+                  "boxNormalized": {
+                    "x": 0.357859,
+                    "y": 0.388522,
+                    "width": 0.022488,
+                    "height": 0.268799
+                  }
+                },
+                {
+                  "id": "L04",
+                  "boxPx": {
+                    "x": 1384,
+                    "y": 477,
+                    "width": 127,
+                    "height": 2206
+                  },
+                  "boxNormalized": {
+                    "x": 0.338304,
+                    "y": 0.157322,
+                    "width": 0.031044,
+                    "height": 0.727573
+                  }
+                },
+                {
+                  "id": "L05",
+                  "boxPx": {
+                    "x": 1170,
+                    "y": 608,
+                    "width": 155,
+                    "height": 1946
+                  },
+                  "boxNormalized": {
+                    "x": 0.285994,
+                    "y": 0.200528,
+                    "width": 0.037888,
+                    "height": 0.641821
+                  }
+                },
+                {
+                  "id": "L06",
+                  "boxPx": {
+                    "x": 1026,
+                    "y": 626,
+                    "width": 145,
+                    "height": 2053
+                  },
+                  "boxNormalized": {
+                    "x": 0.250794,
+                    "y": 0.206464,
+                    "width": 0.035444,
+                    "height": 0.677111
+                  }
+                },
+                {
+                  "id": "L07",
+                  "boxPx": {
+                    "x": 867,
+                    "y": 605,
+                    "width": 147,
+                    "height": 2060
+                  },
+                  "boxNormalized": {
+                    "x": 0.211929,
+                    "y": 0.199538,
+                    "width": 0.035933,
+                    "height": 0.67942
+                  }
+                },
+                {
+                  "id": "L08",
+                  "boxPx": {
+                    "x": 723,
+                    "y": 605,
+                    "width": 106,
+                    "height": 2076
+                  },
+                  "boxNormalized": {
+                    "x": 0.176729,
+                    "y": 0.199538,
+                    "width": 0.025911,
+                    "height": 0.684697
+                  }
+                },
+                {
+                  "id": "L09",
+                  "boxPx": {
+                    "x": 562,
+                    "y": 617,
+                    "width": 122,
+                    "height": 2056
+                  },
+                  "boxNormalized": {
+                    "x": 0.137375,
+                    "y": 0.203496,
+                    "width": 0.029822,
+                    "height": 0.6781
+                  }
+                },
+                {
+                  "id": "L10",
+                  "boxPx": {
+                    "x": 446,
+                    "y": 571,
+                    "width": 94,
+                    "height": 2116
+                  },
+                  "boxNormalized": {
+                    "x": 0.10902,
+                    "y": 0.188325,
+                    "width": 0.022977,
+                    "height": 0.697889
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dts-1936",
+      "label": "1936 乾乾书社《滴天髓辑要》",
+      "sourcePdf": "tmp/pdfs/ditiansui-jiyao-1936.pdf",
+      "sourcePdfSha256": "6b1a6030178fc7379b6b635315d8431b401dd189b6a030fd2509b27207b9716f",
+      "pages": [
+        {
+          "pdfPage": 25,
+          "printedPage": "20",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 7784,
+            "heightPx": 12071
+          },
+          "transcriptionPointer": "/witnesses/3/pages/0",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 311,
+                "y": 483,
+                "width": 7083,
+                "height": 11105
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 5793,
+                    "y": 1708,
+                    "width": 469,
+                    "height": 6125
+                  },
+                  "boxNormalized": {
+                    "x": 0.744219,
+                    "y": 0.141496,
+                    "width": 0.060252,
+                    "height": 0.507414
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 5329,
+                    "y": 2020,
+                    "width": 421,
+                    "height": 8975
+                  },
+                  "boxNormalized": {
+                    "x": 0.684609,
+                    "y": 0.167343,
+                    "width": 0.054085,
+                    "height": 0.743518
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 4812,
+                    "y": 2016,
+                    "width": 434,
+                    "height": 8992
+                  },
+                  "boxNormalized": {
+                    "x": 0.618191,
+                    "y": 0.167012,
+                    "width": 0.055755,
+                    "height": 0.744926
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 4333,
+                    "y": 2016,
+                    "width": 400,
+                    "height": 4017
+                  },
+                  "boxNormalized": {
+                    "x": 0.556655,
+                    "y": 0.167012,
+                    "width": 0.051387,
+                    "height": 0.332781
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 3804,
+                    "y": 2325,
+                    "width": 300,
+                    "height": 891
+                  },
+                  "boxNormalized": {
+                    "x": 0.488695,
+                    "y": 0.19261,
+                    "width": 0.038541,
+                    "height": 0.073813
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 3204,
+                    "y": 1695,
+                    "width": 487,
+                    "height": 6659
+                  },
+                  "boxNormalized": {
+                    "x": 0.411614,
+                    "y": 0.140419,
+                    "width": 0.062564,
+                    "height": 0.551653
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 2758,
+                    "y": 2020,
+                    "width": 425,
+                    "height": 8996
+                  },
+                  "boxNormalized": {
+                    "x": 0.354317,
+                    "y": 0.167343,
+                    "width": 0.054599,
+                    "height": 0.745257
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 2241,
+                    "y": 2008,
+                    "width": 442,
+                    "height": 9021
+                  },
+                  "boxNormalized": {
+                    "x": 0.287898,
+                    "y": 0.166349,
+                    "width": 0.056783,
+                    "height": 0.747328
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 1737,
+                    "y": 2037,
+                    "width": 421,
+                    "height": 8988
+                  },
+                  "boxNormalized": {
+                    "x": 0.22315,
+                    "y": 0.168752,
+                    "width": 0.054085,
+                    "height": 0.744594
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 1233,
+                    "y": 2016,
+                    "width": 429,
+                    "height": 9000
+                  },
+                  "boxNormalized": {
+                    "x": 0.158402,
+                    "y": 0.167012,
+                    "width": 0.055113,
+                    "height": 0.745589
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 716,
+                    "y": 2037,
+                    "width": 429,
+                    "height": 8988
+                  },
+                  "boxNormalized": {
+                    "x": 0.091984,
+                    "y": 0.168752,
+                    "width": 0.055113,
+                    "height": 0.744594
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 26,
+          "printedPage": "21",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 7438,
+            "heightPx": 12084
+          },
+          "transcriptionPointer": "/witnesses/3/pages/1",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 298,
+                "y": 483,
+                "width": 6769,
+                "height": 11117
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 6212,
+                    "y": 1820,
+                    "width": 405,
+                    "height": 9213
+                  },
+                  "boxNormalized": {
+                    "x": 0.835171,
+                    "y": 0.150612,
+                    "width": 0.05445,
+                    "height": 0.762413
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 5683,
+                    "y": 2070,
+                    "width": 434,
+                    "height": 8984
+                  },
+                  "boxNormalized": {
+                    "x": 0.764049,
+                    "y": 0.171301,
+                    "width": 0.058349,
+                    "height": 0.743462
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 5183,
+                    "y": 2066,
+                    "width": 429,
+                    "height": 8976
+                  },
+                  "boxNormalized": {
+                    "x": 0.696827,
+                    "y": 0.17097,
+                    "width": 0.057677,
+                    "height": 0.7428
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 4671,
+                    "y": 2062,
+                    "width": 412,
+                    "height": 8984
+                  },
+                  "boxNormalized": {
+                    "x": 0.627991,
+                    "y": 0.170639,
+                    "width": 0.055391,
+                    "height": 0.743462
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 4166,
+                    "y": 2045,
+                    "width": 417,
+                    "height": 9001
+                  },
+                  "boxNormalized": {
+                    "x": 0.560097,
+                    "y": 0.169232,
+                    "width": 0.056063,
+                    "height": 0.744869
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 3646,
+                    "y": 2058,
+                    "width": 420,
+                    "height": 5750
+                  },
+                  "boxNormalized": {
+                    "x": 0.490186,
+                    "y": 0.170308,
+                    "width": 0.056467,
+                    "height": 0.475836
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 3104,
+                    "y": 1816,
+                    "width": 425,
+                    "height": 9234
+                  },
+                  "boxNormalized": {
+                    "x": 0.417316,
+                    "y": 0.150281,
+                    "width": 0.057139,
+                    "height": 0.764151
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 2587,
+                    "y": 2054,
+                    "width": 409,
+                    "height": 8988
+                  },
+                  "boxNormalized": {
+                    "x": 0.347809,
+                    "y": 0.169977,
+                    "width": 0.054988,
+                    "height": 0.743793
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 2083,
+                    "y": 2054,
+                    "width": 408,
+                    "height": 8971
+                  },
+                  "boxNormalized": {
+                    "x": 0.280048,
+                    "y": 0.169977,
+                    "width": 0.054853,
+                    "height": 0.742387
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 1545,
+                    "y": 2050,
+                    "width": 438,
+                    "height": 8592
+                  },
+                  "boxNormalized": {
+                    "x": 0.207717,
+                    "y": 0.169646,
+                    "width": 0.058887,
+                    "height": 0.711023
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 1104,
+                    "y": 2658,
+                    "width": 250,
+                    "height": 6434
+                  },
+                  "boxNormalized": {
+                    "x": 0.148427,
+                    "y": 0.21996,
+                    "width": 0.033611,
+                    "height": 0.53244
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 27,
+          "printedPage": "22",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 7700,
+            "heightPx": 12100
+          },
+          "transcriptionPointer": "/witnesses/3/pages/2",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 308,
+                "y": 484,
+                "width": 7007,
+                "height": 11132
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 5609,
+                    "y": 1804,
+                    "width": 404,
+                    "height": 9209
+                  },
+                  "boxNormalized": {
+                    "x": 0.728442,
+                    "y": 0.149091,
+                    "width": 0.052468,
+                    "height": 0.761074
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 5067,
+                    "y": 2025,
+                    "width": 437,
+                    "height": 8896
+                  },
+                  "boxNormalized": {
+                    "x": 0.658052,
+                    "y": 0.167355,
+                    "width": 0.056753,
+                    "height": 0.735207
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 4596,
+                    "y": 2021,
+                    "width": 387,
+                    "height": 7717
+                  },
+                  "boxNormalized": {
+                    "x": 0.596883,
+                    "y": 0.167025,
+                    "width": 0.05026,
+                    "height": 0.637769
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 4075,
+                    "y": 1795,
+                    "width": 400,
+                    "height": 9205
+                  },
+                  "boxNormalized": {
+                    "x": 0.529221,
+                    "y": 0.148347,
+                    "width": 0.051948,
+                    "height": 0.760744
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 3550,
+                    "y": 2016,
+                    "width": 433,
+                    "height": 4331
+                  },
+                  "boxNormalized": {
+                    "x": 0.461039,
+                    "y": 0.166612,
+                    "width": 0.056234,
+                    "height": 0.357934
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 3033,
+                    "y": 2321,
+                    "width": 275,
+                    "height": 2666
+                  },
+                  "boxNormalized": {
+                    "x": 0.393896,
+                    "y": 0.191818,
+                    "width": 0.035714,
+                    "height": 0.220331
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 2529,
+                    "y": 1691,
+                    "width": 392,
+                    "height": 6188
+                  },
+                  "boxNormalized": {
+                    "x": 0.328442,
+                    "y": 0.139752,
+                    "width": 0.050909,
+                    "height": 0.511405
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 1958,
+                    "y": 2004,
+                    "width": 458,
+                    "height": 8984
+                  },
+                  "boxNormalized": {
+                    "x": 0.254286,
+                    "y": 0.16562,
+                    "width": 0.059481,
+                    "height": 0.742479
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 1504,
+                    "y": 1995,
+                    "width": 412,
+                    "height": 8997
+                  },
+                  "boxNormalized": {
+                    "x": 0.195325,
+                    "y": 0.164876,
+                    "width": 0.053506,
+                    "height": 0.743554
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 983,
+                    "y": 1879,
+                    "width": 408,
+                    "height": 9109
+                  },
+                  "boxNormalized": {
+                    "x": 0.127662,
+                    "y": 0.155289,
+                    "width": 0.052987,
+                    "height": 0.75281
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 433,
+                    "y": 2004,
+                    "width": 433,
+                    "height": 8959
+                  },
+                  "boxNormalized": {
+                    "x": 0.056234,
+                    "y": 0.16562,
+                    "width": 0.056234,
+                    "height": 0.740413
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dts-1947",
+      "label": "1947 上海大东书局《滴天髓阐微》",
+      "sourcePdf": "tmp/pdfs/ditiansui-chanwei-scan.pdf",
+      "sourcePdfSha256": "d6a7d1daf6513ce9fb9940ff8331b96804c10cdafbeac00d4d3d0a37229e1803",
+      "pages": [
+        {
+          "pdfPage": 501,
+          "printedPage": "113",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/0",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1249,
+                    "y": 448,
+                    "width": 141,
+                    "height": 1803
+                  },
+                  "boxNormalized": {
+                    "x": 0.795541,
+                    "y": 0.190476,
+                    "width": 0.089809,
+                    "height": 0.766582
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1145,
+                    "y": 451,
+                    "width": 129,
+                    "height": 1801
+                  },
+                  "boxNormalized": {
+                    "x": 0.729299,
+                    "y": 0.191752,
+                    "width": 0.082166,
+                    "height": 0.765731
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1036,
+                    "y": 501,
+                    "width": 114,
+                    "height": 1748
+                  },
+                  "boxNormalized": {
+                    "x": 0.659873,
+                    "y": 0.21301,
+                    "width": 0.072611,
+                    "height": 0.743197
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 963,
+                    "y": 452,
+                    "width": 76,
+                    "height": 739
+                  },
+                  "boxNormalized": {
+                    "x": 0.613376,
+                    "y": 0.192177,
+                    "width": 0.048408,
+                    "height": 0.314201
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 703,
+                    "y": 449,
+                    "width": 143,
+                    "height": 1798
+                  },
+                  "boxNormalized": {
+                    "x": 0.447771,
+                    "y": 0.190901,
+                    "width": 0.091083,
+                    "height": 0.764456
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 633,
+                    "y": 449,
+                    "width": 81,
+                    "height": 1800
+                  },
+                  "boxNormalized": {
+                    "x": 0.403185,
+                    "y": 0.190901,
+                    "width": 0.051592,
+                    "height": 0.765306
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 534,
+                    "y": 502,
+                    "width": 95,
+                    "height": 1744
+                  },
+                  "boxNormalized": {
+                    "x": 0.340127,
+                    "y": 0.213435,
+                    "width": 0.06051,
+                    "height": 0.741497
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 407,
+                    "y": 452,
+                    "width": 127,
+                    "height": 1794
+                  },
+                  "boxNormalized": {
+                    "x": 0.259236,
+                    "y": 0.192177,
+                    "width": 0.080892,
+                    "height": 0.762755
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 502,
+          "printedPage": "114",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/1",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1306,
+                    "y": 454,
+                    "width": 86,
+                    "height": 1803
+                  },
+                  "boxNormalized": {
+                    "x": 0.831847,
+                    "y": 0.193027,
+                    "width": 0.054777,
+                    "height": 0.766582
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1210,
+                    "y": 542,
+                    "width": 70,
+                    "height": 1716
+                  },
+                  "boxNormalized": {
+                    "x": 0.770701,
+                    "y": 0.230442,
+                    "width": 0.044586,
+                    "height": 0.729592
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1105,
+                    "y": 544,
+                    "width": 85,
+                    "height": 1713
+                  },
+                  "boxNormalized": {
+                    "x": 0.703822,
+                    "y": 0.231293,
+                    "width": 0.05414,
+                    "height": 0.728316
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 1001,
+                    "y": 542,
+                    "width": 82,
+                    "height": 1715
+                  },
+                  "boxNormalized": {
+                    "x": 0.63758,
+                    "y": 0.230442,
+                    "width": 0.052229,
+                    "height": 0.729167
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 886,
+                    "y": 543,
+                    "width": 71,
+                    "height": 1715
+                  },
+                  "boxNormalized": {
+                    "x": 0.564331,
+                    "y": 0.230867,
+                    "width": 0.045223,
+                    "height": 0.729167
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 776,
+                    "y": 542,
+                    "width": 84,
+                    "height": 1544
+                  },
+                  "boxNormalized": {
+                    "x": 0.494268,
+                    "y": 0.230442,
+                    "width": 0.053503,
+                    "height": 0.656463
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 655,
+                    "y": 518,
+                    "width": 86,
+                    "height": 1733
+                  },
+                  "boxNormalized": {
+                    "x": 0.417197,
+                    "y": 0.220238,
+                    "width": 0.054777,
+                    "height": 0.73682
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 547,
+                    "y": 521,
+                    "width": 86,
+                    "height": 1733
+                  },
+                  "boxNormalized": {
+                    "x": 0.348408,
+                    "y": 0.221514,
+                    "width": 0.054777,
+                    "height": 0.73682
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 437,
+                    "y": 520,
+                    "width": 86,
+                    "height": 1732
+                  },
+                  "boxNormalized": {
+                    "x": 0.278344,
+                    "y": 0.221088,
+                    "width": 0.054777,
+                    "height": 0.736395
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 328,
+                    "y": 516,
+                    "width": 87,
+                    "height": 1302
+                  },
+                  "boxNormalized": {
+                    "x": 0.208917,
+                    "y": 0.219388,
+                    "width": 0.055414,
+                    "height": 0.553571
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 218,
+                    "y": 579,
+                    "width": 89,
+                    "height": 1670
+                  },
+                  "boxNormalized": {
+                    "x": 0.138854,
+                    "y": 0.246173,
+                    "width": 0.056688,
+                    "height": 0.710034
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 503,
+          "printedPage": "115",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2284
+          },
+          "transcriptionPointer": "/witnesses/4/pages/2",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 91,
+                "width": 1225,
+                "height": 2101
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1261,
+                    "y": 560,
+                    "width": 103,
+                    "height": 1604
+                  },
+                  "boxNormalized": {
+                    "x": 0.803185,
+                    "y": 0.245184,
+                    "width": 0.065605,
+                    "height": 0.702277
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1170,
+                    "y": 564,
+                    "width": 80,
+                    "height": 1601
+                  },
+                  "boxNormalized": {
+                    "x": 0.745223,
+                    "y": 0.246935,
+                    "width": 0.050955,
+                    "height": 0.700963
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1065,
+                    "y": 562,
+                    "width": 83,
+                    "height": 1604
+                  },
+                  "boxNormalized": {
+                    "x": 0.678344,
+                    "y": 0.24606,
+                    "width": 0.052866,
+                    "height": 0.702277
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 953,
+                    "y": 562,
+                    "width": 89,
+                    "height": 1583
+                  },
+                  "boxNormalized": {
+                    "x": 0.607006,
+                    "y": 0.24606,
+                    "width": 0.056688,
+                    "height": 0.693082
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 857,
+                    "y": 566,
+                    "width": 82,
+                    "height": 1596
+                  },
+                  "boxNormalized": {
+                    "x": 0.54586,
+                    "y": 0.247811,
+                    "width": 0.052229,
+                    "height": 0.698774
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 753,
+                    "y": 564,
+                    "width": 83,
+                    "height": 1603
+                  },
+                  "boxNormalized": {
+                    "x": 0.479618,
+                    "y": 0.246935,
+                    "width": 0.052866,
+                    "height": 0.701839
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 641,
+                    "y": 567,
+                    "width": 88,
+                    "height": 1595
+                  },
+                  "boxNormalized": {
+                    "x": 0.40828,
+                    "y": 0.248249,
+                    "width": 0.056051,
+                    "height": 0.698336
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 545,
+                    "y": 563,
+                    "width": 81,
+                    "height": 1603
+                  },
+                  "boxNormalized": {
+                    "x": 0.347134,
+                    "y": 0.246497,
+                    "width": 0.051592,
+                    "height": 0.701839
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 432,
+                    "y": 562,
+                    "width": 90,
+                    "height": 1604
+                  },
+                  "boxNormalized": {
+                    "x": 0.275159,
+                    "y": 0.24606,
+                    "width": 0.057325,
+                    "height": 0.702277
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 226,
+                    "y": 566,
+                    "width": 91,
+                    "height": 1600
+                  },
+                  "boxNormalized": {
+                    "x": 0.143949,
+                    "y": 0.247811,
+                    "width": 0.057962,
+                    "height": 0.700525
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 504,
+          "printedPage": "116",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/3",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1289,
+                    "y": 560,
+                    "width": 91,
+                    "height": 1677
+                  },
+                  "boxNormalized": {
+                    "x": 0.821019,
+                    "y": 0.238095,
+                    "width": 0.057962,
+                    "height": 0.71301
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1182,
+                    "y": 556,
+                    "width": 89,
+                    "height": 1681
+                  },
+                  "boxNormalized": {
+                    "x": 0.752866,
+                    "y": 0.236395,
+                    "width": 0.056688,
+                    "height": 0.714711
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1073,
+                    "y": 559,
+                    "width": 90,
+                    "height": 1680
+                  },
+                  "boxNormalized": {
+                    "x": 0.683439,
+                    "y": 0.23767,
+                    "width": 0.057325,
+                    "height": 0.714286
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 964,
+                    "y": 559,
+                    "width": 89,
+                    "height": 1678
+                  },
+                  "boxNormalized": {
+                    "x": 0.614013,
+                    "y": 0.23767,
+                    "width": 0.056688,
+                    "height": 0.713435
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 856,
+                    "y": 564,
+                    "width": 84,
+                    "height": 369
+                  },
+                  "boxNormalized": {
+                    "x": 0.545223,
+                    "y": 0.239796,
+                    "width": 0.053503,
+                    "height": 0.156888
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 747,
+                    "y": 565,
+                    "width": 89,
+                    "height": 1674
+                  },
+                  "boxNormalized": {
+                    "x": 0.475796,
+                    "y": 0.240221,
+                    "width": 0.056688,
+                    "height": 0.711735
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 639,
+                    "y": 559,
+                    "width": 90,
+                    "height": 1680
+                  },
+                  "boxNormalized": {
+                    "x": 0.407006,
+                    "y": 0.23767,
+                    "width": 0.057325,
+                    "height": 0.714286
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 532,
+                    "y": 566,
+                    "width": 88,
+                    "height": 1613
+                  },
+                  "boxNormalized": {
+                    "x": 0.338854,
+                    "y": 0.240646,
+                    "width": 0.056051,
+                    "height": 0.685799
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 422,
+                    "y": 565,
+                    "width": 89,
+                    "height": 1491
+                  },
+                  "boxNormalized": {
+                    "x": 0.26879,
+                    "y": 0.240221,
+                    "width": 0.056688,
+                    "height": 0.633929
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 315,
+                    "y": 566,
+                    "width": 86,
+                    "height": 1676
+                  },
+                  "boxNormalized": {
+                    "x": 0.200637,
+                    "y": 0.240646,
+                    "width": 0.054777,
+                    "height": 0.712585
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 200,
+                    "y": 570,
+                    "width": 93,
+                    "height": 1670
+                  },
+                  "boxNormalized": {
+                    "x": 0.127389,
+                    "y": 0.242347,
+                    "width": 0.059236,
+                    "height": 0.710034
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 505,
+          "printedPage": "117",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/4",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1310,
+                    "y": 564,
+                    "width": 94,
+                    "height": 1681
+                  },
+                  "boxNormalized": {
+                    "x": 0.834395,
+                    "y": 0.239796,
+                    "width": 0.059873,
+                    "height": 0.714711
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1202,
+                    "y": 564,
+                    "width": 87,
+                    "height": 1682
+                  },
+                  "boxNormalized": {
+                    "x": 0.765605,
+                    "y": 0.239796,
+                    "width": 0.055414,
+                    "height": 0.715136
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1094,
+                    "y": 566,
+                    "width": 87,
+                    "height": 1675
+                  },
+                  "boxNormalized": {
+                    "x": 0.696815,
+                    "y": 0.240646,
+                    "width": 0.055414,
+                    "height": 0.71216
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 980,
+                    "y": 563,
+                    "width": 93,
+                    "height": 126
+                  },
+                  "boxNormalized": {
+                    "x": 0.624204,
+                    "y": 0.239371,
+                    "width": 0.059236,
+                    "height": 0.053571
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 750,
+                    "y": 446,
+                    "width": 108,
+                    "height": 1803
+                  },
+                  "boxNormalized": {
+                    "x": 0.477707,
+                    "y": 0.189626,
+                    "width": 0.06879,
+                    "height": 0.766582
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 648,
+                    "y": 448,
+                    "width": 115,
+                    "height": 1800
+                  },
+                  "boxNormalized": {
+                    "x": 0.412739,
+                    "y": 0.190476,
+                    "width": 0.073248,
+                    "height": 0.765306
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 543,
+                    "y": 502,
+                    "width": 108,
+                    "height": 1745
+                  },
+                  "boxNormalized": {
+                    "x": 0.34586,
+                    "y": 0.213435,
+                    "width": 0.06879,
+                    "height": 0.741922
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 426,
+                    "y": 452,
+                    "width": 126,
+                    "height": 1796
+                  },
+                  "boxNormalized": {
+                    "x": 0.271338,
+                    "y": 0.192177,
+                    "width": 0.080255,
+                    "height": 0.763605
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 327,
+                    "y": 634,
+                    "width": 93,
+                    "height": 1614
+                  },
+                  "boxNormalized": {
+                    "x": 0.20828,
+                    "y": 0.269558,
+                    "width": 0.059236,
+                    "height": 0.686224
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 211,
+                    "y": 637,
+                    "width": 101,
+                    "height": 433
+                  },
+                  "boxNormalized": {
+                    "x": 0.134395,
+                    "y": 0.270833,
+                    "width": 0.064331,
+                    "height": 0.184099
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 506,
+          "printedPage": "118",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/5",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1237,
+                    "y": 452,
+                    "width": 139,
+                    "height": 1799
+                  },
+                  "boxNormalized": {
+                    "x": 0.787898,
+                    "y": 0.192177,
+                    "width": 0.088535,
+                    "height": 0.764881
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1168,
+                    "y": 455,
+                    "width": 74,
+                    "height": 1797
+                  },
+                  "boxNormalized": {
+                    "x": 0.743949,
+                    "y": 0.193452,
+                    "width": 0.047134,
+                    "height": 0.764031
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 507,
+          "printedPage": "119",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/6",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1249,
+                    "y": 457,
+                    "width": 126,
+                    "height": 1797
+                  },
+                  "boxNormalized": {
+                    "x": 0.795541,
+                    "y": 0.194303,
+                    "width": 0.080255,
+                    "height": 0.764031
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1153,
+                    "y": 455,
+                    "width": 110,
+                    "height": 1795
+                  },
+                  "boxNormalized": {
+                    "x": 0.734395,
+                    "y": 0.193452,
+                    "width": 0.070064,
+                    "height": 0.76318
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1026,
+                    "y": 510,
+                    "width": 128,
+                    "height": 1744
+                  },
+                  "boxNormalized": {
+                    "x": 0.653503,
+                    "y": 0.216837,
+                    "width": 0.081529,
+                    "height": 0.741497
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 965,
+                    "y": 459,
+                    "width": 60,
+                    "height": 613
+                  },
+                  "boxNormalized": {
+                    "x": 0.61465,
+                    "y": 0.195153,
+                    "width": 0.038217,
+                    "height": 0.260629
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 733,
+                    "y": 461,
+                    "width": 114,
+                    "height": 1791
+                  },
+                  "boxNormalized": {
+                    "x": 0.466879,
+                    "y": 0.196003,
+                    "width": 0.072611,
+                    "height": 0.76148
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 629,
+                    "y": 542,
+                    "width": 90,
+                    "height": 1710
+                  },
+                  "boxNormalized": {
+                    "x": 0.400637,
+                    "y": 0.230442,
+                    "width": 0.057325,
+                    "height": 0.727041
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 531,
+                    "y": 543,
+                    "width": 81,
+                    "height": 1711
+                  },
+                  "boxNormalized": {
+                    "x": 0.338217,
+                    "y": 0.230867,
+                    "width": 0.051592,
+                    "height": 0.727466
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 426,
+                    "y": 543,
+                    "width": 75,
+                    "height": 951
+                  },
+                  "boxNormalized": {
+                    "x": 0.271338,
+                    "y": 0.230867,
+                    "width": 0.047771,
+                    "height": 0.404337
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 298,
+                    "y": 518,
+                    "width": 97,
+                    "height": 1731
+                  },
+                  "boxNormalized": {
+                    "x": 0.189809,
+                    "y": 0.220238,
+                    "width": 0.061783,
+                    "height": 0.735969
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 188,
+                    "y": 518,
+                    "width": 99,
+                    "height": 1729
+                  },
+                  "boxNormalized": {
+                    "x": 0.119745,
+                    "y": 0.220238,
+                    "width": 0.063057,
+                    "height": 0.735119
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 508,
+          "printedPage": "120",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/7",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1308,
+                    "y": 542,
+                    "width": 87,
+                    "height": 1743
+                  },
+                  "boxNormalized": {
+                    "x": 0.833121,
+                    "y": 0.230442,
+                    "width": 0.055414,
+                    "height": 0.741071
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1175,
+                    "y": 542,
+                    "width": 112,
+                    "height": 1743
+                  },
+                  "boxNormalized": {
+                    "x": 0.748408,
+                    "y": 0.230442,
+                    "width": 0.071338,
+                    "height": 0.741071
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1095,
+                    "y": 465,
+                    "width": 84,
+                    "height": 137
+                  },
+                  "boxNormalized": {
+                    "x": 0.697452,
+                    "y": 0.197704,
+                    "width": 0.053503,
+                    "height": 0.058248
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 874,
+                    "y": 484,
+                    "width": 85,
+                    "height": 1803
+                  },
+                  "boxNormalized": {
+                    "x": 0.556688,
+                    "y": 0.205782,
+                    "width": 0.05414,
+                    "height": 0.766582
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 750,
+                    "y": 488,
+                    "width": 117,
+                    "height": 1798
+                  },
+                  "boxNormalized": {
+                    "x": 0.477707,
+                    "y": 0.207483,
+                    "width": 0.074522,
+                    "height": 0.764456
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 610,
+                    "y": 541,
+                    "width": 138,
+                    "height": 1746
+                  },
+                  "boxNormalized": {
+                    "x": 0.388535,
+                    "y": 0.230017,
+                    "width": 0.087898,
+                    "height": 0.742347
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 528,
+                    "y": 491,
+                    "width": 107,
+                    "height": 1796
+                  },
+                  "boxNormalized": {
+                    "x": 0.336306,
+                    "y": 0.208759,
+                    "width": 0.068153,
+                    "height": 0.763605
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 425,
+                    "y": 679,
+                    "width": 105,
+                    "height": 1239
+                  },
+                  "boxNormalized": {
+                    "x": 0.270701,
+                    "y": 0.28869,
+                    "width": 0.066879,
+                    "height": 0.526786
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 509,
+          "printedPage": "121",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/8",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1229,
+                    "y": 486,
+                    "width": 136,
+                    "height": 1805
+                  },
+                  "boxNormalized": {
+                    "x": 0.782803,
+                    "y": 0.206633,
+                    "width": 0.086624,
+                    "height": 0.767432
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1151,
+                    "y": 485,
+                    "width": 79,
+                    "height": 1805
+                  },
+                  "boxNormalized": {
+                    "x": 0.733121,
+                    "y": 0.206207,
+                    "width": 0.050318,
+                    "height": 0.767432
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1013,
+                    "y": 541,
+                    "width": 131,
+                    "height": 1749
+                  },
+                  "boxNormalized": {
+                    "x": 0.645223,
+                    "y": 0.230017,
+                    "width": 0.083439,
+                    "height": 0.743622
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 948,
+                    "y": 485,
+                    "width": 65,
+                    "height": 1803
+                  },
+                  "boxNormalized": {
+                    "x": 0.603822,
+                    "y": 0.206207,
+                    "width": 0.041401,
+                    "height": 0.766582
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 838,
+                    "y": 672,
+                    "width": 87,
+                    "height": 1242
+                  },
+                  "boxNormalized": {
+                    "x": 0.533758,
+                    "y": 0.285714,
+                    "width": 0.055414,
+                    "height": 0.528061
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 624,
+                    "y": 486,
+                    "width": 85,
+                    "height": 1800
+                  },
+                  "boxNormalized": {
+                    "x": 0.397452,
+                    "y": 0.206633,
+                    "width": 0.05414,
+                    "height": 0.765306
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 514,
+                    "y": 570,
+                    "width": 85,
+                    "height": 1717
+                  },
+                  "boxNormalized": {
+                    "x": 0.327389,
+                    "y": 0.242347,
+                    "width": 0.05414,
+                    "height": 0.730017
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 420,
+                    "y": 572,
+                    "width": 74,
+                    "height": 1473
+                  },
+                  "boxNormalized": {
+                    "x": 0.267516,
+                    "y": 0.243197,
+                    "width": 0.047134,
+                    "height": 0.626276
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 299,
+                    "y": 547,
+                    "width": 91,
+                    "height": 1737
+                  },
+                  "boxNormalized": {
+                    "x": 0.190446,
+                    "y": 0.232568,
+                    "width": 0.057962,
+                    "height": 0.73852
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 192,
+                    "y": 547,
+                    "width": 89,
+                    "height": 1733
+                  },
+                  "boxNormalized": {
+                    "x": 0.122293,
+                    "y": 0.232568,
+                    "width": 0.056688,
+                    "height": 0.73682
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 510,
+          "printedPage": "122",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/9",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1308,
+                    "y": 514,
+                    "width": 90,
+                    "height": 1743
+                  },
+                  "boxNormalized": {
+                    "x": 0.833121,
+                    "y": 0.218537,
+                    "width": 0.057325,
+                    "height": 0.741071
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1176,
+                    "y": 505,
+                    "width": 111,
+                    "height": 1751
+                  },
+                  "boxNormalized": {
+                    "x": 0.749045,
+                    "y": 0.214711,
+                    "width": 0.070701,
+                    "height": 0.744473
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1090,
+                    "y": 514,
+                    "width": 88,
+                    "height": 1745
+                  },
+                  "boxNormalized": {
+                    "x": 0.694268,
+                    "y": 0.218537,
+                    "width": 0.056051,
+                    "height": 0.741922
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 977,
+                    "y": 513,
+                    "width": 90,
+                    "height": 271
+                  },
+                  "boxNormalized": {
+                    "x": 0.622293,
+                    "y": 0.218112,
+                    "width": 0.057325,
+                    "height": 0.115221
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 861,
+                    "y": 453,
+                    "width": 93,
+                    "height": 1804
+                  },
+                  "boxNormalized": {
+                    "x": 0.548408,
+                    "y": 0.192602,
+                    "width": 0.059236,
+                    "height": 0.767007
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 779,
+                    "y": 547,
+                    "width": 70,
+                    "height": 615
+                  },
+                  "boxNormalized": {
+                    "x": 0.496178,
+                    "y": 0.232568,
+                    "width": 0.044586,
+                    "height": 0.26148
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 654,
+                    "y": 516,
+                    "width": 89,
+                    "height": 1738
+                  },
+                  "boxNormalized": {
+                    "x": 0.416561,
+                    "y": 0.219388,
+                    "width": 0.056688,
+                    "height": 0.738946
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 547,
+                    "y": 517,
+                    "width": 88,
+                    "height": 1735
+                  },
+                  "boxNormalized": {
+                    "x": 0.348408,
+                    "y": 0.219813,
+                    "width": 0.056051,
+                    "height": 0.73767
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 423,
+                    "y": 514,
+                    "width": 104,
+                    "height": 1732
+                  },
+                  "boxNormalized": {
+                    "x": 0.269427,
+                    "y": 0.218537,
+                    "width": 0.066242,
+                    "height": 0.736395
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 336,
+                    "y": 514,
+                    "width": 83,
+                    "height": 120
+                  },
+                  "boxNormalized": {
+                    "x": 0.214013,
+                    "y": 0.218537,
+                    "width": 0.052866,
+                    "height": 0.05102
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 224,
+                    "y": 456,
+                    "width": 85,
+                    "height": 1794
+                  },
+                  "boxNormalized": {
+                    "x": 0.142675,
+                    "y": 0.193878,
+                    "width": 0.05414,
+                    "height": 0.762755
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        },
+        {
+          "pdfPage": 511,
+          "printedPage": "123",
+          "raster": {
+            "dpi": 300,
+            "widthPx": 1570,
+            "heightPx": 2352
+          },
+          "transcriptionPointer": "/witnesses/4/pages/10",
+          "surfaces": [
+            {
+              "id": "page",
+              "readingOrder": "right-to-left; within each vertical region top-to-bottom",
+              "searchBoundsPx": {
+                "x": 188,
+                "y": 94,
+                "width": 1225,
+                "height": 2164
+              },
+              "verticalLineRegions": [
+                {
+                  "id": "C01",
+                  "boxPx": {
+                    "x": 1294,
+                    "y": 544,
+                    "width": 70,
+                    "height": 630
+                  },
+                  "boxNormalized": {
+                    "x": 0.824204,
+                    "y": 0.231293,
+                    "width": 0.044586,
+                    "height": 0.267857
+                  }
+                },
+                {
+                  "id": "C02",
+                  "boxPx": {
+                    "x": 1172,
+                    "y": 521,
+                    "width": 89,
+                    "height": 1739
+                  },
+                  "boxNormalized": {
+                    "x": 0.746497,
+                    "y": 0.221514,
+                    "width": 0.056688,
+                    "height": 0.739371
+                  }
+                },
+                {
+                  "id": "C03",
+                  "boxPx": {
+                    "x": 1062,
+                    "y": 520,
+                    "width": 89,
+                    "height": 1741
+                  },
+                  "boxNormalized": {
+                    "x": 0.676433,
+                    "y": 0.221088,
+                    "width": 0.056688,
+                    "height": 0.740221
+                  }
+                },
+                {
+                  "id": "C04",
+                  "boxPx": {
+                    "x": 943,
+                    "y": 520,
+                    "width": 98,
+                    "height": 1740
+                  },
+                  "boxNormalized": {
+                    "x": 0.600637,
+                    "y": 0.221088,
+                    "width": 0.06242,
+                    "height": 0.739796
+                  }
+                },
+                {
+                  "id": "C05",
+                  "boxPx": {
+                    "x": 846,
+                    "y": 520,
+                    "width": 85,
+                    "height": 803
+                  },
+                  "boxNormalized": {
+                    "x": 0.538854,
+                    "y": 0.221088,
+                    "width": 0.05414,
+                    "height": 0.341412
+                  }
+                },
+                {
+                  "id": "C06",
+                  "boxPx": {
+                    "x": 739,
+                    "y": 546,
+                    "width": 58,
+                    "height": 279
+                  },
+                  "boxNormalized": {
+                    "x": 0.470701,
+                    "y": 0.232143,
+                    "width": 0.036943,
+                    "height": 0.118622
+                  }
+                },
+                {
+                  "id": "C07",
+                  "boxPx": {
+                    "x": 628,
+                    "y": 457,
+                    "width": 85,
+                    "height": 1803
+                  },
+                  "boxNormalized": {
+                    "x": 0.4,
+                    "y": 0.194303,
+                    "width": 0.05414,
+                    "height": 0.766582
+                  }
+                },
+                {
+                  "id": "C08",
+                  "boxPx": {
+                    "x": 534,
+                    "y": 549,
+                    "width": 79,
+                    "height": 1713
+                  },
+                  "boxNormalized": {
+                    "x": 0.340127,
+                    "y": 0.233418,
+                    "width": 0.050318,
+                    "height": 0.728316
+                  }
+                },
+                {
+                  "id": "C09",
+                  "boxPx": {
+                    "x": 427,
+                    "y": 547,
+                    "width": 74,
+                    "height": 1714
+                  },
+                  "boxNormalized": {
+                    "x": 0.271975,
+                    "y": 0.232568,
+                    "width": 0.047134,
+                    "height": 0.728741
+                  }
+                },
+                {
+                  "id": "C10",
+                  "boxPx": {
+                    "x": 321,
+                    "y": 545,
+                    "width": 72,
+                    "height": 1715
+                  },
+                  "boxNormalized": {
+                    "x": 0.204459,
+                    "y": 0.231718,
+                    "width": 0.04586,
+                    "height": 0.729167
+                  }
+                },
+                {
+                  "id": "C11",
+                  "boxPx": {
+                    "x": 211,
+                    "y": 545,
+                    "width": 79,
+                    "height": 1710
+                  },
+                  "boxNormalized": {
+                    "x": 0.134395,
+                    "y": 0.231718,
+                    "width": 0.050318,
+                    "height": 0.727041
+                  }
+                }
+              ],
+              "regionStatus": "layout candidates; manual evidence crops remain authoritative for cited readings"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "id": "A01",
+      "witnessId": "zp-world",
+      "pdfPage": 61,
+      "printedPage": "52",
+      "reading": "亦作清論",
+      "decision": "visible across two consecutive columns in this witness",
+      "verticalLineRegionRefs": [
+        "page:C02",
+        "page:C03"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/zp-world-61-qinglun.jpg",
+        "sha256": "ee85c10aadde3d44bd01ed853cc61a87e719d2cca47c292298419a91471d2fdf",
+        "bytes": 290312,
+        "artifactRaster": {
+          "widthPx": 500,
+          "heightPx": 2200
+        },
+        "sourceBoxPx": {
+          "x": 900,
+          "y": 500,
+          "width": 500,
+          "height": 2200
+        }
+      }
+    },
+    {
+      "id": "A02",
+      "witnessId": "zp-1926",
+      "pdfPage": 45,
+      "printedPage": "32",
+      "reading": "亦作清出",
+      "decision": "visible witness reading; retained despite suspect syntax",
+      "verticalLineRegionRefs": [
+        "page:C12"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/zp-1926-45-qingchu.jpg",
+        "sha256": "f176229be93416dfce1532b538c526bd1cbad72be8fa9ca19cc1beec2087ca4f",
+        "bytes": 219305,
+        "artifactRaster": {
+          "widthPx": 520,
+          "heightPx": 1500
+        },
+        "sourceBoxPx": {
+          "x": 170,
+          "y": 500,
+          "width": 520,
+          "height": 1500
+        }
+      }
+    },
+    {
+      "id": "A03",
+      "witnessId": "zp-1926",
+      "pdfPage": 45,
+      "printedPage": "32",
+      "reading": "壬生戌下闕",
+      "decision": "explicit printed lacuna; no cross-witness completion",
+      "verticalLineRegionRefs": [
+        "page:C08"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/zp-1926-45-lacuna.jpg",
+        "sha256": "cd298738456b0bcbf53ce5f842a32e37d9645e0098de75d197cc86bc6f1cb08d",
+        "bytes": 256970,
+        "artifactRaster": {
+          "widthPx": 520,
+          "heightPx": 1500
+        },
+        "sourceBoxPx": {
+          "x": 540,
+          "y": 450,
+          "width": 520,
+          "height": 1500
+        }
+      }
+    },
+    {
+      "id": "A04",
+      "witnessId": "dts-ming",
+      "pdfPage": 66,
+      "printedPage": "47",
+      "reading": "主譬如吾身",
+      "decision": "no 日 is visible before 主; retained as printed",
+      "verticalLineRegionRefs": [
+        "right:R06"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-ming-66-zhu.jpg",
+        "sha256": "59a3fdd254f6adfad781d62111bbcc98e99ed9b8d168f585a991ce2d783da420",
+        "bytes": 394309,
+        "artifactRaster": {
+          "widthPx": 1400,
+          "heightPx": 2400
+        },
+        "sourceBoxPx": {
+          "x": 2200,
+          "y": 300,
+          "width": 1400,
+          "height": 2400
+        }
+      }
+    },
+    {
+      "id": "A05",
+      "witnessId": "dts-ming",
+      "pdfPage": 67,
+      "printedPage": "48",
+      "reading": "大。則運自降。吉。",
+      "decision": "visible but syntactically suspect; not normalized from later witnesses",
+      "verticalLineRegionRefs": [
+        "left:L01"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-ming-67-zijiangji.jpg",
+        "sha256": "4d66d45045c26fd5d2c74818096e92a74b9ee31129bc3fd198310258c913538e",
+        "bytes": 179635,
+        "artifactRaster": {
+          "widthPx": 750,
+          "heightPx": 2200
+        },
+        "sourceBoxPx": {
+          "x": 1400,
+          "y": 300,
+          "width": 750,
+          "height": 2200
+        }
+      }
+    },
+    {
+      "id": "A06",
+      "witnessId": "dts-ming",
+      "pdfPage": 68,
+      "printedPage": "49",
+      "reading": "喜水則甚利",
+      "decision": "material reading opposite to the 1936 and 1947 不吉 branch",
+      "verticalLineRegionRefs": [
+        "right:R04"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-ming-68-continuity.jpg",
+        "sha256": "285e83fd9a26e101d9bc398692ba5d4d4580b3354727ffb10c706225caeb89c9",
+        "bytes": 558029,
+        "artifactRaster": {
+          "widthPx": 1800,
+          "heightPx": 2700
+        },
+        "sourceBoxPx": {
+          "x": 1350,
+          "y": 150,
+          "width": 1800,
+          "height": 2700
+        }
+      }
+    },
+    {
+      "id": "A07",
+      "witnessId": "dts-ming",
+      "pdfPage": 68,
+      "printedPage": "49",
+      "reading": "喜陰則｜辛與酉為好。此皆宜例推以見。｜貞元",
+      "decision": "verified cross-leaf continuation: right leaf R07 continues at left leaf L01; next chapter starts at L02",
+      "verticalLineRegionRefs": [
+        "right:R07",
+        "left:L01",
+        "left:L02"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-ming-68-continuity.jpg",
+        "sha256": "285e83fd9a26e101d9bc398692ba5d4d4580b3354727ffb10c706225caeb89c9",
+        "bytes": 558029,
+        "artifactRaster": {
+          "widthPx": 1800,
+          "heightPx": 2700
+        },
+        "sourceBoxPx": {
+          "x": 1350,
+          "y": 150,
+          "width": 1800,
+          "height": 2700
+        }
+      }
+    },
+    {
+      "id": "A08",
+      "witnessId": "dts-1936",
+      "pdfPage": 27,
+      "printedPage": "22",
+      "reading": "喜水則不吉",
+      "decision": "visible later branch; opposed to the late-Ming 甚利 reading",
+      "verticalLineRegionRefs": [
+        "page:C03"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-1936-27-buji.jpg",
+        "sha256": "abf4dcacbd65cae62fc674a591bad1a0aac203501a9c774afbb9be68e8641d6e",
+        "bytes": 197062,
+        "artifactRaster": {
+          "widthPx": 444,
+          "heightPx": 2200
+        },
+        "sourceBoxPx": {
+          "x": 4000,
+          "y": 1500,
+          "width": 1900,
+          "height": 9400
+        }
+      }
+    },
+    {
+      "id": "A09",
+      "witnessId": "dts-1947",
+      "pdfPage": 510,
+      "printedPage": "122",
+      "reading": "喜水則不吉",
+      "decision": "visible in the labelled 原注 layer",
+      "verticalLineRegionRefs": [
+        "page:C06"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-1947-510-buji.jpg",
+        "sha256": "4ca30e35da94ae974bd676f718e16f757c6b4ce37c3a6eb5caeb7ceecb89b462",
+        "bytes": 227153,
+        "artifactRaster": {
+          "widthPx": 420,
+          "heightPx": 1800
+        },
+        "sourceBoxPx": {
+          "x": 520,
+          "y": 450,
+          "width": 420,
+          "height": 1800
+        }
+      }
+    },
+    {
+      "id": "A10",
+      "witnessId": "dts-1947",
+      "pdfPage": 505,
+      "printedPage": "117",
+      "reading": "是年進而中",
+      "decision": "visible but syntactically suspect; retained as printed",
+      "verticalLineRegionRefs": [
+        "page:C08"
+      ],
+      "evidence": {
+        "path": "docs/research/evidence/bazi-timing-column-locators/dts-1947-505-jinerzhong.jpg",
+        "sha256": "94db4711c01f9f608aee5e457a66bcfaac853aae6eb92b1737f7f133abb08308",
+        "bytes": 305622,
+        "artifactRaster": {
+          "widthPx": 850,
+          "heightPx": 1450
+        },
+        "sourceBoxPx": {
+          "x": 180,
+          "y": 750,
+          "width": 850,
+          "height": 1450
+        }
+      }
+    }
+  ],
+  "notClaimed": [
+    "OCR text accuracy",
+    "glyph-level bounding boxes",
+    "complete compositor-column reconstruction",
+    "full-book collation or stemma",
+    "authorship ruling",
+    "metaphysical validity or predictive accuracy"
+  ],
+  "stemmaMatrix": "bazi-timing-stemma-matrix.json",
+  "blindReviewPacket": "bazi-timing-blind-review/packet.json"
+}

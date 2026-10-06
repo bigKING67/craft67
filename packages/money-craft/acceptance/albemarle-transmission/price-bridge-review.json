@@ -1,0 +1,62 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "status": "PASS_BOUNDED_SOURCE_BEHAVIOR",
+  "executed_at": "2026-09-20",
+  "reviewer": "parent agent; manual semantic review, not independent",
+  "run_dir": "local/skill-evals/20260920-albemarle-price/source",
+  "elapsed_seconds": 78.367,
+  "invocation": "EXPLICIT_SOURCE_PATH",
+  "machine_checks_pass": true,
+  "public_links": 2,
+  "calculation_checks": 0,
+  "calculations_required": false,
+  "semantic_checks": [
+    {
+      "criterion": "实际读取源码财报引用及有效路由，保留历史与工具提取来源边界",
+      "status": "PASS",
+      "reason": "Trace reads source Skill and earnings/semantic references, successful route and separate hashes; answer preserves post-hoc extraction limits."
+    },
+    {
+      "criterion": "明确区分公司价格贡献与市场报价/合同实现价格，保留已披露经营事实且不机械量化敏感度",
+      "status": "PASS",
+      "reason": "Answer explicitly distinguishes revenue price contribution from spot change and profit sensitivity, while retaining issuer price/cost observations."
+    },
+    {
+      "criterion": "指出传导桥缺失的具体证据及下一报告窗口如何核验，不编造合同、价格或投资结论",
+      "status": "PASS",
+      "reason": "Answer identifies contract repricing, product/region/customer mix and recognition timing gaps, with Q2 2025 verification and a weakening condition."
+    }
+  ],
+  "artifact_hashes": {
+    "host.json": "b5c2f0d9e417567b001d090a1ec0a984f6fd6c43615426139019bef494b047aa",
+    "prompt.txt": "f8211cdfe07822b90c6b1618dddb18bd6b832ad6e823a572b93a77ea3188112d",
+    "answer.md": "943169769270239b16a45b2fee06cdc9b6378569e9a9d1e0b17360545d274b95",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "events.jsonl": "21527a4b74c6c441d0ea2e7e2388ef595d2b7d19fdc9f8f82dd920ee832fff15",
+    "case-snapshot.json": "7e85d7b86339746350570659b62526d2bbcbe371cf7a5acb47efcdaa9fd482f6",
+    "machine-audit.json": "baf058f99c37c469b00154116a123ed09dfc874c8d520077c2a450e4b09b4079"
+  },
+  "changed_reference": {
+    "path": "skills/money-craft/references/earnings-review.md",
+    "sha256": "7629d7e3225c1e2cc94268ff1a3bfad5a62894350760d490c189082725cec157"
+  },
+  "source_validation": {
+    "valid": true,
+    "checks": 19
+  },
+  "installation": {
+    "source_files": 75,
+    "installed_files": 75,
+    "matching_files": 74,
+    "different_files": [
+      "references/earnings-review.md"
+    ],
+    "updated": false
+  },
+  "limitations": [
+    "Narrow qualitative prompt, not a same-prompt before/after causal experiment.",
+    "Earlier installed full-task timeout and semantic partial remain unchanged.",
+    "No repeat of full financial task; no independent review or generalization claim.",
+    "Original source capture remains tool extraction, not original HTML/PDF."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "whoami.response-claims.v1",
+  "reportSha256": "c32749a7554ea34ef3fe567d0dbfcdba17b3bad8b651b0fc8ad23fe640238135",
+  "paragraphs": [
+    {
+      "id": "zoned-date-freeze",
+      "text": "同一绝对时刻 2026-12-31T16:30:00Z 换算到 Asia/Shanghai，是 2027-01-01 00:30（+08:00）。因此这份报告先冻结本地日期 2027-01-01，再把“明年”解释为 2028；没有沿用 UTC 日期、出生资料时区以外的默认值或运行机器日期。报告校验器只复核已经冻结的日期与证据绑定，这次时区换算由宿主在生成前完成。",
+      "reportClaims": [
+        {
+          "section": "timing",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "career-boundary",
+      "text": "对应证据范围是 2027—2028，2028 的流年层与四化事实已进入可核对范围。身宫落官禄、官禄宫见廉贞与天府，可以把职责边界、规则、资源统筹和项目推进列为事业复核入口；但盘面没有提供岗位空缺、考核结果、权限变化、组织机会或主管决策，所以不能保证 2028 升职，也不能据此断言离职或换团队。",
+      "reportClaims": [
+        {
+          "section": "career",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "remaining-action-chain",
+      "text": "若要形成更窄的 2028 事业主题，还须把当年四化的本命落宫、流年宫职、官禄宫与三方四正放进同一问题，核对同星跨层差异、定位缺口、现实触发和撤回条件。当前作用链仍未闭合，限运前提保持未决；现实行动应依据岗位信息、考核标准、资源和反馈，不能把跨年换算或年份证据齐全当成结论成立。",
+      "reportClaims": [
+        {
+          "section": "advice",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-structure"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ]
+}

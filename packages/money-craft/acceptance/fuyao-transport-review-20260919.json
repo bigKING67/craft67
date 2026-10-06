@@ -1,0 +1,43 @@
+{
+  "schema": "money-craft.fuyao-transport-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Fuyao redirects, response cleanup, lengths, JSON errors and Retry-After",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "e71a82393e75ae264489da7cd65291517f2890d1026eb97cbaada0b2375be8d0",
+    "tests/test_fuyao_transport.py": "96938697fa18a81e72f943dc0c020fdaf64061214ac42d2704736acdad514878",
+    "tests/test_fuyao_https.py": "c4369815e25c5dea7d41d41d3a68fbda07d07c3030c811331cf0342dd40430be"
+  },
+  "validation": {
+    "transport_tests": 10,
+    "default_opener_tls_tests": 4,
+    "full_tests": 442,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 9,
+    "initial_red_errors": 1,
+    "wire_evidence": "Temporary trusted loopback TLS with production default opener: same-host redirect success; downgrade/crosshost blocked before target; oversized redirect rejected; truncated final/redirect retries3; HTTP503 retries3 and400 once."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "initial_finding": "P2 redirect finally close error overwrote rejection and leaked cleanup detail; accepted and fixed",
+    "final_verdict": "No remaining blockers in bounded scope; 14 tests pass without skips",
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "e71a82393e75ae264489da7cd65291517f2890d1026eb97cbaada0b2375be8d0",
+      "tests/test_fuyao_transport.py": "96938697fa18a81e72f943dc0c020fdaf64061214ac42d2704736acdad514878",
+      "tests/test_fuyao_https.py": "c4369815e25c5dea7d41d41d3a68fbda07d07c3030c811331cf0342dd40430be"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "No real provider requests or credentials; local POSIX TLS only.",
+    "Explicit HTTP base_url remains supported; production default is HTTPS.",
+    "Complete response semantics, duplicate JSON keys and arbitrary I/O errors are not closed.",
+    "CLI remains PARTIAL; no app, commit, push or release."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "money-craft.native-full-host-review.v2",
+  "status": "PASS_BOUNDED_AUTONOMOUS_NATIVE_E2E",
+  "scope": "one independent AAPL historical research and native delivery case",
+  "elapsed_seconds": 972.505,
+  "timed_out": false,
+  "final_answer_delivered": true,
+  "parent_research_intervention": false,
+  "candidate_and_global_install_unchanged": true,
+  "shared_tools_unchanged": true,
+  "research_core_complete": true,
+  "research_evidence_status": "PARTIAL",
+  "archive_snapshot_ok": true,
+  "archive_verify_all_ok": true,
+  "archive_warnings": [],
+  "ledger_artifacts_ok": true,
+  "source_items_hashed": 10,
+  "delivery_artifacts_hashed": 15,
+  "validated_html_pdf_byte_parity": true,
+  "security_metadata_preserved": true,
+  "archive_attempts": 2,
+  "first_pass_without_errors": false,
+  "autonomous_recovery": true,
+  "pdf_pages": 7,
+  "limitations": [
+    "Single case only; not proof of all companies or providers",
+    "Full accessibility suite not run",
+    "Static preview labels preserved; sealed status is external receipt truth",
+    "Research has declared independent-source and historical-data gaps"
+  ],
+  "evidence_root": "local/skill-evals/20260920-native-full-host-v2"
+}

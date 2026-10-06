@@ -1,0 +1,28 @@
+{
+  "schema_version": "creative-craft.concept-routes.v1",
+  "brief_id": "brief-tbd",
+  "routes": [
+    {
+      "route_id": "route-1",
+      "name": "TBD",
+      "premise": "TBD",
+      "tension_or_insight": "TBD",
+      "mechanism": "TBD",
+      "hook": "TBD",
+      "architecture": "TBD",
+      "visual_world": "TBD",
+      "copy_world": "TBD",
+      "sound_world": "TBD",
+      "hero_moment": "TBD",
+      "asset_system": [],
+      "feasibility": {
+        "image": "TBD",
+        "video": "TBD"
+      },
+      "risks": [],
+      "why_it_may_win": "TBD",
+      "falsification": "TBD",
+      "decision": "SELECT"
+    }
+  ]
+}

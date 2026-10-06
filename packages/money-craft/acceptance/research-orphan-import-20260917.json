@@ -1,0 +1,50 @@
+{
+  "schema": "money-craft.research-orphan-import.v1",
+  "date": "2026-09-17",
+  "scope": "Registered official pending-source canonical PDF/HTML and production UUID staging orphan detection",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "b44c49bc48d64355b0df14ed4aa8b6bfdbf93baca82c2e7aec054cfdc5ee7caf",
+    "tests/test_research_run.py": "aa65b40e72bb8941cb439367fbba4c38444e8c3364ca3c78e1a6f7384c07268e",
+    "skills/money-craft/references/company-research.md": "d389dc80493322046c20b0a6306e75cf615e4e15ef00b8d5b8e02245a2568af1"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Optional source evidence published before case update could be ignored while status/finalize succeeded.",
+    "after": "Registered pending-source canonical evidence and standard staging remnants produce incomplete_import before further processing; preserve all files."
+  },
+  "validation": {
+    "research_tests": 38,
+    "full_tests": 301,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regression": "Old runtime allowed status after real optional-source CLI killed between evidence and case publication; three static orphan fixtures also failed to reject.",
+    "real_cli": "Optional S18 import killed after evidence publication and after case publication, with mandatory sources/report ready. Status/finalize exit4 incomplete_import; bytes preserved, no receipt.",
+    "static_cases": [
+      "canonical PDF",
+      "canonical HTML",
+      "production UUID staging"
+    ]
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 38,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "b44c49bc48d64355b0df14ed4aa8b6bfdbf93baca82c2e7aec054cfdc5ee7caf",
+      "tests/test_research_run.py": "aa65b40e72bb8941cb439367fbba4c38444e8c3364ca3c78e1a6f7384c07268e"
+    },
+    "additional_probes": "Canonical FIFO rejected by name without reading; unknown S99 and non-UUID names ignored. Reviewer-reported temporary fixtures."
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T060032309854Z"
+  },
+  "limits": [
+    "No automatic repair or adoption of interrupted evidence; preserve workspace and start a new run.",
+    "Unknown names, unregistered source IDs, other transaction windows and initialization remain outside this fix.",
+    "Lifecycle remains PARTIAL; no power-loss, Windows or network-filesystem acceptance.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No live provider, app, commit, push or release."
+  ]
+}

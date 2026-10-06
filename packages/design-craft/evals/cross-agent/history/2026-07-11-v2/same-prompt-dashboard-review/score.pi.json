@@ -1,0 +1,60 @@
+{
+  "schema": "design-craft.cross-agent-score.v2",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "pi 0.80.3",
+  "model": "deepseek/deepseek-v4-pro",
+  "reasoning_profile": "high",
+  "runner_os": "macOS arm64",
+  "date": "2026-07-11",
+  "prompt_sha256": "b622939ec19d093fc5bee6bc06d93f29f1016f47db66505642bd8752e74f584b",
+  "scorecard_sha256": "bb7c6d619794a0bf8b483f5d297d67aaf6767d4ac7c14a3a96e8b48a60d7571e",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "487e45d780f51c00d954e9f29ded8dd4a138498d",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "skill_tree_sha256": "2f460d2c23e797f38aa08f7cf193b13cd539462571d621bcdb1f69cb42c7e761",
+  "skill_path": "~/Documents/sixseven/codeproject/design-craft/skills/design-craft",
+  "command_summary": "pi 0.80.3 --no-session --no-extensions --no-context-files with read-only tools, deepseek/deepseek-v4-pro, high thinking, explicit canonical design-craft 0.5.0, and the exact benchmark prompt; final Markdown normalized only for trailing whitespace",
+  "output_path": "pi-output.md",
+  "output_sha256": "373c1c45b133beafe261d8a0475001b54dd9341d15bc79168d7f9f297b41ac4e",
+  "score": 93,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Keeps the calm token-backed enterprise-console direction and optimizes around the operator's immediate triage job."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 14,
+      "note": "Uses the relevant dashboard, taste, design-move, foundational, and validation references, with modest audit-detail overhead."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Rejects card soup, decorative charting, and generic tips in favor of a lead-risk and exception-driven decision surface."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 13,
+      "note": "Correctly labels L0 static evidence, but presents an exact 35/100 score from prose-only evidence where a wider score band would be more defensible."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 14,
+      "note": "Clearly lists unverified states and runtime behavior, although a few omissions are phrased too strongly as absent or impossible rather than merely undescribed."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Delivers the expected lead metric, support strip, exception queue, task-first table, and contextual help, with a few speculative fixed structures and metrics."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "Remains read-only and dashboard-specific, but includes more scoring detail, invented examples, and multi-phase procedure than the prompt needs."
+    }
+  }
+}

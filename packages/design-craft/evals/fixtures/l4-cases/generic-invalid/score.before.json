@@ -1,0 +1,57 @@
+{
+  "case_id": "generic-l4-invalid-before",
+  "evidence_level": "L4",
+  "expected_score": 84,
+  "acceptable_range": [
+    82,
+    85
+  ],
+  "maturity_band": "intentionally invalid",
+  "screenshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile",
+      "css_size": [
+        390,
+        844
+      ],
+      "dimensions": [
+        780,
+        1688
+      ],
+      "artifact_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "focus": "verified in fixture metadata",
+    "empty": "not applicable to fixture"
+  },
+  "required_findings": [
+    "The before score is intentionally higher than the after score.",
+    "The strict validator should reject this fixture.",
+    "The validation file still contains placeholders."
+  ],
+  "false_positive_guards": [
+    "Do not accept this fixture as real evidence.",
+    "Do not ignore placeholder validation text.",
+    "Do not ignore missing shared artifact keys."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "money-craft.yfinance-frame-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Position-preserving table export and dimension checks",
+  "source_hashes": {
+    "skills/money-craft/scripts/yfinance_adapter.py": "60fba4cbd62a66fabb4009eebae03b4cbb55caf15b126fd2f491f7c3fb0feef1",
+    "tests/test_yfinance_adapter.py": "6938d8641075d28976b78745c7fad5920469e18a6d184e518ee12f7ec08abf52"
+  },
+  "findings": [
+    "Avoid label-based reselection that changes data with repeated labels.",
+    "Validate full row width and row count before column truncation.",
+    "Reviewer found zero-column pandas iterator yields no rows; fixed explicit empty-row representation and corrected fixture."
+  ],
+  "validation": {
+    "yfinance_tests": 15,
+    "full_tests": 396,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 2,
+    "initial_red_errors": 2
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No remaining blockers in bounded frame scope",
+    "tests": 15,
+    "extra_evidence": "Executed actual pandas DataFrame.itertuples function extracted from existing local source for zero-column case. Full pandas runtime was not loaded.",
+    "source_hashes": {
+      "skills/money-craft/scripts/yfinance_adapter.py": "60fba4cbd62a66fabb4009eebae03b4cbb55caf15b126fd2f491f7c3fb0feef1",
+      "tests/test_yfinance_adapter.py": "6938d8641075d28976b78745c7fad5920469e18a6d184e518ee12f7ec08abf52"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T084456032790Z"
+  },
+  "limits": [
+    "Current verification venv lacks pandas; existing data-runtime Python link is broken. No installation or environment repair performed.",
+    "Numeric types, dates, serialization and live Provider remain outside this closure.",
+    "No app, commit, push or release."
+  ]
+}

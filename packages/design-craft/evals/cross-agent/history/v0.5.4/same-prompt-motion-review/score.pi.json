@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v4",
+  "task_id": "same-prompt-motion-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "0.80.6",
+  "model": "codex/gpt-5.5",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "high",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-25",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_json_sha256": "5b0b6a0d6df83ce49b9e2c598a9cdd79149efca50a9e12069667bc008462d183",
+  "contract_sha256": "907627714e2c4078558dba2e0449c2df2bf1d6d7db5e91e0f1e8b2017c22d0c9",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "b9c7932c4cb77b672a2a63952a6e0a6869ae002a724a5b244bdac330ea1df16d",
+  "skill_version": "0.5.4",
+  "skill_source_commit": "0239d83a826a51206953c411c564da72c51c4425",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "0aacdc6e7ec587121f24fce3b055814b907aebda0663d54d42e84d36f2b5e5f5",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-5.5 --thinking high",
+  "output_path": "pi-output.md",
+  "output_sha256": "5734681b5d1979d9de452afaee7bbc9b8ca765ac99cd7baab4371cf1585fbeaf",
+  "score": 98,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Correctly centers a calm repeatedly used web operations sheet and context-preserving direct manipulation, but introduces a desktop qualifier not supplied by the prompt."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Selects direct-manipulation, pointer ownership, transform tracking, interruption, velocity handoff, endpoint projection, boundary resistance, Reduced Motion, accessibility, performance, and touch validation guidance."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Limits motion to causal acknowledgement, 1:1 drag, short settle, and snap-state feedback while rejecting layout animation, transition-all, whole-sheet scale, and large Reduced Motion travel."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the review static-only and avoids claiming observed smoothness, computed-style conflict, frame rate, touch feel, responsive behavior, or full-component accessibility."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates snippet-visible values and missing mechanisms from unverified runtime cascade interaction, compensating code, device touch, responsiveness, accessibility, and performance."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Provides eight moves covering capture, grab-offset transforms, interruption, CSS-px/s velocity handoff, bounded authorized projection, resistance, cleanup, and Reduced Motion, but does not define snap-target hysteresis."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "Remains read-only and motion-specific, respects the five-finding and eight-move limits, and stays within the cap at 84 logical lines."
+    }
+  }
+}

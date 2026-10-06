@@ -1,0 +1,77 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "loss-to-profit",
+      "category": "泛化财报解读",
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "prompt": "这家公司半年报是不是利润暴增、经营反转了？帮我简短判断。",
+      "facts": "离线合成公司 CN-SH:600001，普通A股，CNY，研究日及截止日2026-09-16，最新报告2026H1。S01为合成正式报告，同期间同口径，单位百万元：2025H1营业收入80，归母净利润-8；2026H1营业收入100，归母净利润4，其中归母口径非经常性损益6；2025H1归母口径非经常性损益0。经营现金流去年-2、今年-3。没有季度数据、非经常性损益明细或订单信息。",
+      "criteria": [
+        "归母扭亏、改善12，负基数不输出常规利润同比增长百分比；收入增长25%。",
+        "归母利润/收入-10%到4%，改善14个百分点；不能写成增长14%。",
+        "扣非归母从-8到-2，仍亏损；不能把归母盈利等同核心经营已反转。",
+        "现金流仍负且恶化，短期数据不能证明持续反转；不捏造非经常损益原因。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "restated-dilution",
+      "category": "泛化财报解读",
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "prompt": "今年收入利润都涨了，是不是每股盈利也一样强？旧报告里的数字还能直接比吗？",
+      "facts": "离线合成公司 CN-SZ:000001，普通A股，CNY，研究日及截止2026-09-16。S01=2025原年报：营业收入100百万元、归母净利润10百万元、加权平均普通股10百万股、基本EPS1元。S02=2026H1正式报告，列有2025H1重述前收入40、归母利润4、重述后收入50、归母利润5；重述原因为已披露会计差错更正。2026H1收入60、归母利润6。S02载明两个H1期间加权平均普通股分别为2025H1的10百万股、2026H1的15百万股，均无优先股和稀释性工具，不涉及拆股送股及追溯股数调整。S02未给2025H1原始报告文件，未说明OCF是否随重述变化。无股价。",
+      "criteria": [
+        "同比使用2025H1重述后50/5而非原全年100/10或重述前40/4；收入利润均增长20%。",
+        "EPS用加权平均普通股：0.5元到0.4元，下降20%，不能因利润增20%推断每股同样增长。",
+        "归母利润/收入均10%，保留重述前后区分，旧全年与半年不可直接同比。",
+        "不覆盖历史原披露；现金流影响未知，无股价不能推出便宜或买入。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "historical-open-earnings",
+      "category": "正式年报局部解读",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL_FILINGS",
+      "prompt": "读一下这两份年报：2024年生意和赚钱能力比上一年怎么样？现金表现是否支持这个判断？请用关键数字解释，简短回答。",
+      "facts": "对象贵州茅台酒股份有限公司，CN-SH:600519，上海普通A股，报告与交易币种CNY。今天的分析执行日是2026-09-16，指定历史信息截止日为2025-04-03，最新指定报告为2024年度报告。S01=2023年报（发行人登记披露日2024-04-03），S02=2024年报（发行人登记披露日2025-04-03）。两份PDF在2026-09-16重新获取，属于post-hoc历史回放，不是当年捕获；禁止引入截止日后的经营数据。请实际读取原始PDF所需页码并核对哈希，不读取以前的报告答案或验收摘要。所需主要会计数据在两份PDF第5页，可以用pdftotext输出到stdout。没有独立第二信息源、价格、市场一致预期或其他附件；两份报告属于同一发行人，不能冒充独立双源。不要形成买卖结论或完整公司研究。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260916/historical-source/600519-2023-annual-report.pdf",
+          "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2024/05/2024050716531754477.pdf",
+          "sha256": "2125ff97a452ea79b0d784e2432f7d224b6aecc330b644b593477d69e22f4ed1"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/skill-evals/20260916/historical-source/600519-2024-annual-report.pdf",
+          "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/04/2025040817542019660.pdf",
+          "sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30"
+        }
+      ],
+      "criteria": [
+        "实际读取原始PDF并核对哈希；营业收入、归母利润和OCF来源单位正确。",
+        "给出营业收入及归母利润同比，指出归母利润增速略低于收入；不把利润金额增长直接等同盈利率提高。",
+        "自发比较归母利润/营业收入及百分点变化，定义准确且不冒充毛利率。",
+        "现金流同比和辅助现金比率可复算；不因合并OCF/归母利润就证明所有盈利质量或因果。",
+        "保留历史截止与post-hoc获取、同发行人来源限制，无当前估值或买卖结论。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/research-status.schema.json",
+  "title": "Money Craft research status",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "run_id",
+    "identity",
+    "as_of",
+    "plan_sha256",
+    "stages",
+    "missing_sources",
+    "provider_gaps",
+    "reconciliation",
+    "assessment",
+    "ready_for_report",
+    "complete",
+    "network_used_by_status",
+    "warnings"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.research-status.v1"
+    },
+    "valid": {
+      "const": true
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "identity": {
+      "type": "object"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "stages": {
+      "type": "object"
+    },
+    "missing_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provider_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provider_results": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "official_results": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "reconciliation": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "assessment": {
+      "type": "object",
+      "required": [
+        "artifact_integrity",
+        "receipt_integrity",
+        "evidence_coverage",
+        "citation_binding",
+        "claim_support",
+        "source_freshness"
+      ],
+      "properties": {
+        "artifact_integrity": {
+          "enum": [
+            "VERIFIED",
+            "STALE",
+            "INVALID"
+          ]
+        },
+        "receipt_integrity": {
+          "enum": [
+            "VERIFIED",
+            "PENDING",
+            "STALE",
+            "INVALID"
+          ]
+        },
+        "evidence_coverage": {
+          "enum": [
+            "COMPLETE",
+            "PARTIAL",
+            "PENDING"
+          ]
+        },
+        "citation_binding": {
+          "enum": [
+            "VERIFIED",
+            "INVALID"
+          ]
+        },
+        "claim_support": {
+          "const": "UNVERIFIED"
+        },
+        "source_freshness": {
+          "const": "UNVERIFIED"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ready_for_report": {
+      "type": "boolean"
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "network_used_by_status": {
+      "const": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "public_results": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": false
+}

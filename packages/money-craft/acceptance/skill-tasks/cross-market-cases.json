@@ -1,0 +1,34 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "historical-msft-gaap",
+      "category": "US GAAP与非GAAP局部解读",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL_RELEASE",
+      "prompt": "微软这季净利润增长60%，能不能理解成主营赚钱能力也提升了60%？请根据这份公告，解释业绩到底强在哪里，哪些数字不能混着比。简短回答并给关键计算。",
+      "facts": "证券US-NASDAQ:MSFT，NASDAQ普通股，报告及交易币种USD。分析执行日2026-09-16；历史信息截止2026-01-28，指定报告为FY2026 Q2官方业绩公告。S01为发行人原始HTML，实际获取于2026-09-16，属于post-hoc历史回放，不是当时捕获。请实际读取原文并核对SHA-256，可用Python HTMLParser提取表格与正文。仅此一份发行人来源，没有独立第二来源、完整10-Q、股价或市场一致预期；不使用其他时期数据或联网补充。不创建完整公司研究或买卖结论。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260916/msft-source/fy26q2-release.html",
+          "url": "https://news.microsoft.com/source/2026/01/28/microsoft-cloud-and-ai-strength-drives-second-quarter-results-3/",
+          "sha256": "409e454bfd680d5b83ee614a7a8ec9348b5cede1b2e087739b51d223587af812"
+        }
+      ],
+      "criteria": [
+        "实际读取原始HTML并核对哈希，明确FY2026Q2截至2025-12-31的三个月，不误写2026自然年第二季度或半年累计。",
+        "区分GAAP净利润24108到38458、调整后25047到30875（百万美元），两边同口径同比；不能用调整后本期对GAAP上期。",
+        "识别2025同期OpenAI投资损失939与2026本期投资收益7583的调整方向，不把GAAP增长60%当主营同比或现金增幅。",
+        "收入69632到81273，营业利润31653到38275；至少比较营业利润率或明确口径净利率与百分点，避免混淆美元报告增速和固定汇率增速。",
+        "非GAAP为补充且不等于现金流，未提供现金流不得推断现金改善；管理层自称超预期不当作独立一致预期证据。",
+        "保留单一发行人、历史截止/post-hoc与局部材料限制，无当前估值或买卖结论。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

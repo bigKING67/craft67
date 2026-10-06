@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/evaluation/scorecard.schema.json",
+  "title": "design-craft cross-agent scorecard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "task_id", "criteria"],
+  "properties": {
+    "schema": {"const": "design-craft.cross-agent-scorecard.v1"},
+    "task_id": {"type": "string", "minLength": 1},
+    "criteria": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "weight", "pass_evidence", "deduction_trigger"],
+        "properties": {
+          "id": {
+            "enum": [
+              "style_authority",
+              "reference_selection",
+              "anti_generic_redesign",
+              "evidence_level",
+              "verified_boundary",
+              "design_moves",
+              "scope_control"
+            ]
+          },
+          "label": {"type": "string", "minLength": 8},
+          "weight": {"type": "integer", "minimum": 1, "maximum": 100},
+          "pass_evidence": {"type": "string", "minLength": 8},
+          "deduction_trigger": {"type": "string", "minLength": 8}
+        }
+      }
+    }
+  }
+}

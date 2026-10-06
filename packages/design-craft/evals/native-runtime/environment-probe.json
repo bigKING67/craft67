@@ -1,0 +1,27 @@
+{
+  "schema": "design-craft.native-runtime-probe.v1",
+  "generated_at": "2026-07-12T02:40:02Z",
+  "host": {
+    "system": "Darwin",
+    "release": "24.6.0",
+    "machine": "arm64"
+  },
+  "ios": {
+    "xcode_select_path": "/Library/Developer/CommandLineTools",
+    "xcodebuild_path": "/usr/bin/xcodebuild",
+    "simctl_path": null,
+    "available_simulators": [],
+    "ready": false,
+    "detail": "simctl unavailable"
+  },
+  "android": {
+    "adb_path": null,
+    "emulator_path": null,
+    "available_avds": [],
+    "connected_devices": [],
+    "connected_device_count": 0,
+    "device_ready": false,
+    "ready": false,
+    "detail": "adb unavailable"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "blind_map_sha256": "a59c2768c5cbad556414546577747e0894be38e32218f0a50776ce857b3ff185",
+  "blind_packet_sha256": "5f0e92b1549023bca96e6b6dced0b0e8bac30f25e6730eff51857877db0af1fc",
+  "case_id": "impeccable-production-ablation",
+  "focused_variant": "impeccable",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "526c900bdd11aee5590a7890357d5bced333083f8a4e4fa2de23c5dcf6c27156",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "25b2054b0600198d8bf3fc798f89d3c259a7cb275796dbd5c904457de7c1ea7e",
+    "runner_os": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.155.1"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "8ab06e3fbd808dfb94de68b17ca25a94d56d3e15c485f64756f3528fdfdae4ce",
+  "judgment_sha256": "fc5d545beee35a9a02189d1d629b5ca80446ec902cd4f8858474c03624e7b17f",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "rationale": "B is the strongest because it combines complete failure-state and hostile-data coverage with explicit tablet and accessibility repairs, contextual detector interpretation, bounded-work performance remedies, provisional numeric validation gates, and precise rollback triggers. It also follows the requested audit-first sequence and scope more closely than A or C.",
+  "recorded_at": "2026-09-19T12:46:51Z",
+  "results": {
+    "baseline": {
+      "blind_label": "C",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 13,
+        "mode_sequence": 8,
+        "production_fixes": 20,
+        "responsive_accessibility": 15
+      },
+      "score": 94,
+      "summary": "Thorough and implementation-ready across reliability, accessibility, hostile data, and recovery. Its stated sequence does not explicitly begin with audit, its performance acceptance criteria lack concrete thresholds, and the response substantially exceeds the requested line limit."
+    },
+    "design-craft": {
+      "blind_label": "B",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 10,
+        "hostile_data": 20,
+        "measured_performance": 15,
+        "mode_sequence": 10,
+        "production_fixes": 20,
+        "responsive_accessibility": 15
+      },
+      "score": 100,
+      "summary": "Fully satisfies the requested production audit: priorities are coherent, fixes and acceptance conditions are actionable, static evidence is distinguished from runtime hypotheses, and provisional quantitative performance gates are paired with rollback conditions while remaining concise."
+    },
+    "impeccable": {
+      "blind_label": "A",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 14,
+        "mode_sequence": 10,
+        "production_fixes": 20,
+        "responsive_accessibility": 14
+      },
+      "score": 96,
+      "summary": "Exceptionally comprehensive and evidence-disciplined, with strong recovery and implementation detail. It loses points for omitting a concrete touch-target repair, leaving performance thresholds largely to later agreement, and substantially exceeding the 180-line constraint."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "1941a30865724592c32ea8a4440e36e85cedc2d19bad7d65c9e4300de81ccd7b",
+  "scorecard_sha256": "b82445ccf5f79e3dcebbf76c7b4133151b0f54a6c8ddc3e348d7d0d5348230a2",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "19f0a64276e6804ea3430763f8cbc3dc70c05bae33fcec62e8a1bf2cf13be0df",
+      "run_path": "run.baseline.json",
+      "run_sha256": "c1cd754ea073c4da13db8ed463858d3065b735c17e61bafee092d07353c41c8c",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "f198b78bdeebe3a4888fe807a97f2ea67237bf7952a2feb8a1895a48e50764ef",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "bdbe37ef9952c8ade0ac66a5b44b3f1586a6c3b8d728a592ed4f0a1a817c4ab9",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "c6889c56ba6a1b51b0d2a08d7098cf2a7e69541d3d08db6d36cc3e6f03805407"
+      },
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-production-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "c6889c56ba6a1b51b0d2a08d7098cf2a7e69541d3d08db6d36cc3e6f03805407",
+          "sha256": "b4f925c164f3216fb6c9953f6b14d1d7a44c167920584898328c46cacd71b129",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "8da53f99d4ac651deeb72b63faf8c6522d009ea69e5aee5e9362e2a89fc1105b"
+      },
+      "thinking": "high"
+    },
+    "impeccable": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.impeccable.md",
+      "output_sha256": "9fac53c3c5e97152166ef69b65c91ce3bfe9b73f80ec0cadc0afa6ed0c23ec34",
+      "run_path": "run.impeccable.json",
+      "run_sha256": "9e34efdc280ec8031dd7d4d61cec29c39e688a98b863e092d8fb064b6f0525db",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {
+        "upstreams/impeccable/.agents/skills/impeccable": {
+          "kind": "tree",
+          "projected_tree_sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

@@ -1,0 +1,60 @@
+{
+  "as_of": "2025-04-30",
+  "security_id": "US-NASDAQ:MSFT",
+  "currency": "USD",
+  "unit": "USD million",
+  "periods": {
+    "quarter": [
+      "2025-01-01",
+      "2025-03-31"
+    ],
+    "quarter_prior": [
+      "2024-01-01",
+      "2024-03-31"
+    ],
+    "ytd": [
+      "2024-07-01",
+      "2025-03-31"
+    ],
+    "ytd_prior": [
+      "2023-07-01",
+      "2024-03-31"
+    ]
+  },
+  "values": {
+    "q_rev": "70066",
+    "qp_rev": "61858",
+    "q_op": "32000",
+    "qp_op": "27581",
+    "q_net": "25824",
+    "qp_net": "21939",
+    "q_ocf": "37044",
+    "qp_ocf": "31917",
+    "y_ocf": "93515",
+    "yp_ocf": "81353",
+    "q_capex": "16745",
+    "qp_capex": "10952",
+    "y_capex": "47472",
+    "yp_capex": "30604",
+    "q_financing": "-13036",
+    "q_investing": "-12714",
+    "q_fx": "52",
+    "q_cash_start": "17482",
+    "cash_end": "28828",
+    "y_financing": "-40855",
+    "y_investing": "-42027",
+    "y_fx": "-120",
+    "y_cash_start": "18315",
+    "q_gross": "48147",
+    "qp_gross": "43353"
+  },
+  "locators": {
+    "S01": "INCOME STATEMENTS and CASH FLOWS STATEMENTS; column order: three months 2025/2024, nine months 2025/2024; selected comparable tables only",
+    "S02": "Amy Hood: total company results, capital expenditures, cash flows, Q4 outlook; 21.4 and 16.7 billion are rounded speech values"
+  },
+  "limitations": [
+    "Two issuer documents are not independent source lineages.",
+    "No full 10-Q or lease-note review; no full company valuation.",
+    "Historical page captured in 2026, not a point-in-time original capture."
+  ]
+}

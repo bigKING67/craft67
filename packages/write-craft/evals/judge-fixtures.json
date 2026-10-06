@@ -1,0 +1,699 @@
+{
+  "schema": "write-craft.judge-fixtures.v1",
+  "fixtures": [
+    {
+      "id": "editorial-omits-gap-unrelated-to-explanation",
+      "case": {
+        "id": "judge-gap-explanation",
+        "request": "只解释拟议方案怎样使用，不需要比较新旧流程。",
+        "expected": {"must": ["保留拟建设状态、输入、清单和人工复核"], "must_not": ["补造旧流程或节省时间"]}
+      },
+      "source": "拟建设订单核对助手。运营提交订单与发货记录，系统列出不一致项，由运营复核。尚未测量耗时。材料未说明旧核对流程。",
+      "candidate": "拟建设的订单核对助手接收运营提交的订单与发货记录，列出不一致项，由运营复核。尚未测量耗时。材料未说明旧核对流程，因此本文无法比较新旧流程。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "editorial-keeps-gap-needed-for-comparison",
+      "case": {
+        "id": "judge-gap-comparison",
+        "request": "解释拟议方案，并根据材料比较新旧核对流程；资料不足时说明比较限制。",
+        "expected": {"must": ["保留拟建设状态、输入、清单和人工复核", "明确旧流程材料缺失限制了新旧流程比较"], "must_not": ["补造旧流程或节省时间"]}
+      },
+      "source": "拟建设订单核对助手。运营提交订单与发货记录，系统列出不一致项，由运营复核。尚未测量耗时。材料未说明旧核对流程。",
+      "candidate": "拟建设的订单核对助手接收运营提交的订单与发货记录，列出不一致项，由运营复核。尚未测量耗时。材料未说明旧核对流程，因此本文无法比较新旧流程。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    },
+    {
+      "id": "editorial-records-short-update-redundancy",
+      "case": {
+        "id": "judge-editorial-short-update",
+        "request": "把进展写成可直接发送的短消息。",
+        "expected": {"must": ["保留本周完成、下周计划和无协调事项"], "must_not": ["把完成测试写成测试通过"]}
+      },
+      "source": "本周完成接口联调和本地测试；下周补充监控；当前没有需要管理层协调的事项。",
+      "candidate": "本周完成接口联调和本地测试，下周补充监控。\n\n本周完成：接口联调和本地测试。\n下周计划：补充监控。\n需协调事项：无。当前没有需要管理层协调的事项。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "editorial-accepts-boundary-with-new-acceptance-check",
+      "case": {
+        "id": "judge-editorial-useful-boundary",
+        "request": "整理范围和验收说明，保留两节方便分别查阅。",
+        "expected": {"must": ["保留人工审核边界和未审核时的发布检查"], "must_not": ["增加自动发布能力"]}
+      },
+      "source": "系统生成视频初稿，由剪辑人员修改和审核后发布。验收时检查未审核视频不能发布。",
+      "candidate": "## 范围\n系统生成初稿，由剪辑人员修改、审核后发布。\n\n## 验收\n检查未审核的视频不能发布。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    },
+    {
+      "id": "reject-observed-adjacent-evidence-paraphrase",
+      "case": {
+        "id": "judge-observed-presentation-repetition",
+        "request": "把材料改成可以直接放进飞书的老板版，同时把层级和强调做好。不要把每节都做成彩色卡片，也不要用 emoji 装饰标题。",
+        "expected": {
+          "must": [
+            "交付可直接阅读的完整老板版，而不是单独的美化建议",
+            "用清楚的标题、首屏摘要和少量语义强调呈现首期建议",
+            "把当前状态与历史证据边界清楚区分",
+            "保留业务输入、系统动作、人工判断、非目标和待确认项",
+            "保持内容层级与飞书平台写入操作的职责边界"
+          ],
+          "must_not": [
+            "把每个标题都加 emoji、星级、分隔线或装饰性色彩",
+            "相邻句段仅换词重复同一结论或证据边界，没有新增事实、条件、理由、行动或有用对照；有独立阅读作用的摘要与正文重申不因此自动判错",
+            "用颜色作为区分已验证、待确认、风险或不通过的唯一方式",
+            "要求更换自定义字体或用多套字号手工制造层级",
+            "声称 Write Craft 已经执行飞书写入或权限配置",
+            "把范围方案写成已经完成代码、部署或生产验证",
+            "把历史 50 张演练写成真实选图质量或目标环境产能证明",
+            "补造工期、投入、预算或最终达标门槛"
+          ]
+        }
+      },
+      "source": "建议先验证一份用已有商品图制作的详情页样稿。业务提供一套现有详情页、同商品图片和允许替换的版位；系统选图、裁切、排版并导出；业务人员对照原详情页判断是否可用。当前只是范围方案，尚未修改代码或部署。历史 50 张本地演练使用固定方案重复输出，不能证明真实选图质量或目标环境产能。首期不做批量生产和生成式商品换图。工期、投入、预算上限和最终达标门槛待确认。",
+      "candidate": "# 详情页样稿验证：首期先验一份样稿，不做批量生产\n\n**建议先验证一份用已有商品图制作的详情页样稿。** 当前只是范围方案：尚未修改代码，也尚未部署。工期、投入、预算上限和最终达标门槛待确认。\n\n## 这次验证怎么做\n\n业务提供一套现有详情页、同商品图片和允许替换的版位。系统从图片中选图、裁切、排版并导出样稿。业务人员对照原详情页，判断这份样稿是否可用。\n\n建议首期只验证这一份样稿。首期不做批量生产，也不做生成式商品换图。\n\n## 已有演练的边界\n\n过去 50 张演练都在本地完成，并且使用固定方案重复输出，因此不能证明真实选图质量，也不能证明目标环境的产能。\n\n这 50 张演练不能作为真实图片下选图质量或目标环境产能的依据。\n\n## 待确认\n\n以下四项未定，目前还不能判断这次验证的周期、资源投入和成本上限，也没有最终的达标判定标准：\n\n- 工期\n- 投入\n- 预算上限\n- 最终达标门槛\n",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "accept-observed-presentation-with-duplicate-removed",
+      "case": {
+        "id": "judge-presentation-duplicate-removed",
+        "request": "把材料改成可以直接放进飞书的老板版，同时把层级和强调做好。不要把每节都做成彩色卡片，也不要用 emoji 装饰标题。",
+        "expected": {
+          "must": [
+            "交付可直接阅读的完整老板版，而不是单独的美化建议",
+            "用清楚的标题、首屏摘要和少量语义强调呈现首期建议",
+            "把当前状态与历史证据边界清楚区分",
+            "保留业务输入、系统动作、人工判断、非目标和待确认项",
+            "保持内容层级与飞书平台写入操作的职责边界"
+          ],
+          "must_not": [
+            "把每个标题都加 emoji、星级、分隔线或装饰性色彩",
+            "相邻句段仅换词重复同一结论或证据边界，没有新增事实、条件、理由、行动或有用对照；有独立阅读作用的摘要与正文重申不因此自动判错",
+            "用颜色作为区分已验证、待确认、风险或不通过的唯一方式",
+            "要求更换自定义字体或用多套字号手工制造层级",
+            "声称 Write Craft 已经执行飞书写入或权限配置",
+            "把范围方案写成已经完成代码、部署或生产验证",
+            "把历史 50 张演练写成真实选图质量或目标环境产能证明",
+            "补造工期、投入、预算或最终达标门槛"
+          ]
+        }
+      },
+      "source": "建议先验证一份用已有商品图制作的详情页样稿。业务提供一套现有详情页、同商品图片和允许替换的版位；系统选图、裁切、排版并导出；业务人员对照原详情页判断是否可用。当前只是范围方案，尚未修改代码或部署。历史 50 张本地演练使用固定方案重复输出，不能证明真实选图质量或目标环境产能。首期不做批量生产和生成式商品换图。工期、投入、预算上限和最终达标门槛待确认。",
+      "candidate": "# 详情页样稿验证：首期先验一份样稿，不做批量生产\n\n**建议先验证一份用已有商品图制作的详情页样稿。** 当前只是范围方案：尚未修改代码，也尚未部署。工期、投入、预算上限和最终达标门槛待确认。\n\n## 这次验证怎么做\n\n业务提供一套现有详情页、同商品图片和允许替换的版位。系统从图片中选图、裁切、排版并导出样稿。业务人员对照原详情页，判断这份样稿是否可用。\n\n建议首期只验证这一份样稿。首期不做批量生产，也不做生成式商品换图。\n\n## 已有演练的边界\n\n过去 50 张演练都在本地完成，并且使用固定方案重复输出，因此不能证明真实选图质量，也不能证明目标环境的产能。\n\n## 待确认\n\n以下四项未定，目前还不能判断这次验证的周期、资源投入和成本上限，也没有最终的达标判定标准：\n\n- 工期\n- 投入\n- 预算上限\n- 最终达标门槛\n",
+      "expected_status": "PASS"
+    },
+    {
+      "id": "reject-redundant-scenario-paragraph",
+      "case": {
+        "id": "judge-scenario-concision",
+        "request": "给业务说明方案。案例之后不要重复整套用途、输出和人工边界；不要附无关缺失信息清单。",
+        "expected": {
+          "must": [
+            "保留拟议流程和不自动修改库存的边界"
+          ],
+          "must_not": [
+            "完整场景之后新增仅重复用途、输出和人工边界的段落",
+            "罗列与本次方案说明无关的缺失事实"
+          ]
+        }
+      },
+      "source": "拟建设仓库差异核对助手。仓管提交盘点数量和账面库存，系统列出差异货品及两边数量。仓管决定是否复点，系统不修改库存。目标是减少人工核对时间，尚未开展耗时对比。真实样例由作者以后补充，当前不申请审批。材料未说明人工流程、具体货品或历史错误。",
+      "candidate": "使用场景示意：仓管将盘点数量和账面库存交给拟建设的助手，系统列出差异货品及两边数量，仓管决定是否复点。系统不修改库存。\n\n目标是减少人工核对时间，目前尚未开展耗时对比。真实样例由作者以后补充。本文只说明方案，不申请审批。\n\n这套助手承担的只是比对并列出差异这一步，是否复点仍由仓管判断，账面库存也不会被系统改动。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "accept-concise-scenario-with-boundary",
+      "case": {
+        "id": "judge-scenario-concision-positive",
+        "request": "给业务说明方案。案例之后不要重复整套用途、输出和人工边界；不要附无关缺失信息清单。",
+        "expected": {
+          "must": [
+            "保留拟议流程和不自动修改库存的边界"
+          ],
+          "must_not": [
+            "完整场景之后新增仅重复用途、输出和人工边界的段落",
+            "罗列与本次方案说明无关的缺失事实"
+          ]
+        }
+      },
+      "source": "拟建设仓库差异核对助手。仓管提交盘点数量和账面库存，系统列出差异货品及两边数量。仓管决定是否复点，系统不修改库存。目标是减少人工核对时间，尚未开展耗时对比。真实样例由作者以后补充，当前不申请审批。材料未说明人工流程、具体货品或历史错误。",
+      "candidate": "使用场景示意：仓管将盘点数量和账面库存交给拟建设的助手，系统列出差异货品及两边数量，仓管决定是否复点。系统不修改库存。\n\n目标是减少人工核对时间，目前尚未开展耗时对比。真实样例由作者以后补充。本文只说明方案，不申请审批。",
+      "expected_status": "PASS"
+    },
+    {
+      "id": "reject-irrelevant-absence-inventory",
+      "case": {
+        "id": "judge-scenario-absence",
+        "request": "给业务说明方案。案例之后不要重复整套用途、输出和人工边界；不要附无关缺失信息清单。",
+        "expected": {
+          "must": [
+            "保留拟议流程和不自动修改库存的边界"
+          ],
+          "must_not": [
+            "完整场景之后新增仅重复用途、输出和人工边界的段落",
+            "罗列与本次方案说明无关的缺失事实"
+          ]
+        }
+      },
+      "source": "拟建设仓库差异核对助手。仓管提交盘点数量和账面库存，系统列出差异货品及两边数量。仓管决定是否复点，系统不修改库存。目标是减少人工核对时间，尚未开展耗时对比。真实样例由作者以后补充，当前不申请审批。材料未说明人工流程、具体货品或历史错误。",
+      "candidate": "使用场景示意：仓管将盘点数量和账面库存交给拟建设的助手，系统列出差异货品及两边数量，仓管决定是否复点。系统不修改库存。\n\n目标是减少人工核对时间，目前尚未开展耗时对比。真实样例由作者以后补充。本文只说明方案，不申请审批。\n\n材料未说明具体货品或历史错误记录，这些不在本文能说明的范围内。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "accept-useful-boundary-in-acceptance",
+      "case": {
+        "id": "judge-scenario-useful-emphasis",
+        "request": "给业务说明方案。案例之后不要重复整套用途、输出和人工边界；不要附无关缺失信息清单。",
+        "expected": {
+          "must": [
+            "保留拟议流程和不自动修改库存的边界"
+          ],
+          "must_not": [
+            "完整场景之后新增仅重复用途、输出和人工边界的段落",
+            "罗列与本次方案说明无关的缺失事实"
+          ]
+        }
+      },
+      "source": "拟建设仓库差异核对助手。仓管提交盘点数量和账面库存，系统列出差异货品及两边数量。仓管决定是否复点，系统不修改库存。目标是减少人工核对时间，尚未开展耗时对比。真实样例由作者以后补充，当前不申请审批。材料未说明人工流程、具体货品或历史错误。验收时应核对库存未被自动修改。",
+      "candidate": "使用场景示意：仓管将盘点数量和账面库存交给拟建设的助手，系统列出差异货品及两边数量，仓管决定是否复点。系统不修改库存。\n\n目标是减少人工核对时间，目前尚未开展耗时对比。真实样例由作者以后补充。本文只说明方案，不申请审批。\n\n验收时核对库存是否保持未被自动修改。",
+      "expected_status": "PASS"
+    },
+    {
+      "id": "accept-faithful-workflow-explanation",
+      "case": {
+        "id": "judge-positive-explanation",
+        "request": "请把原材料改写成给业务负责人的方案说明。",
+        "expected": {
+          "must": [
+            "准确说明系统从已有素材中寻找片段、安排顺序并形成初稿"
+          ],
+          "must_not": [
+            "增加自动发布、生成新视频或效果承诺"
+          ]
+        }
+      },
+      "source": "系统检索已有素材片段，生成剪辑时间线并渲染初稿；剪辑人员审核后才能发布。",
+      "candidate": "系统会从已有素材中寻找合适片段、安排先后顺序并合成一版初稿，再由剪辑人员审核；它不会自动发布。",
+      "expected_status": "PASS"
+    },
+    {
+      "id": "accept-status-update-without-approval",
+      "case": {
+        "id": "judge-positive-no-approval",
+        "request": "请把原材料改写成简短的阶段进展。",
+        "expected": {
+          "must": [
+            "保留当前进展、下一步和没有待协调事项"
+          ],
+          "must_not": [
+            "凭空新增审批请求或生产状态"
+          ]
+        }
+      },
+      "source": "本周完成接口联调和本地测试，下周补监控；当前没有需要管理层审批或协调的事项。",
+      "candidate": "本周已完成接口联调和本地测试，下周补充监控。目前没有需要管理层审批或协调的事项。",
+      "expected_status": "PASS"
+    },
+    {
+      "id": "reject-status-strengthening",
+      "case": {
+        "id": "judge-negative-status",
+        "request": "请改写状态说明，并保留事实边界。",
+        "expected": {
+          "must": [
+            "保留只完成本地测试的状态"
+          ],
+          "must_not": [
+            "把完成测试写成测试通过或已经上线"
+          ]
+        }
+      },
+      "source": "已完成本地测试；没有说明测试是否通过，也没有正式环境信息。",
+      "candidate": "系统已通过测试并正式上线。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "reject-omitted-human-control",
+      "case": {
+        "id": "judge-negative-human-control",
+        "request": "请把客服方案改写成业务说明。",
+        "expected": {
+          "must": [
+            "保留客服确认后才能发送的条件"
+          ],
+          "must_not": [
+            "将方案描述为自动发送"
+          ]
+        }
+      },
+      "source": "系统只推荐回复，客服确认后才能发送；禁止自动发送。",
+      "candidate": "系统会自动生成并发送客服回复。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "reject-invented-approval-process",
+      "case": {
+        "id": "judge-negative-invented-approval",
+        "request": "请把材料改成业务负责人能看懂的方案说明。",
+        "expected": {
+          "must": [
+            "保留方案当前只用于说明且预算未知"
+          ],
+          "must_not": [
+            "把信息缺口改成新的试点、审批请求或责任人安排"
+          ]
+        }
+      },
+      "source": "方案用于说明现有构想，预算尚未确定。",
+      "candidate": "建议批准两周试点，并指定产品经理在下周补齐预算。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "reject-policy-as-capability",
+      "case": {
+        "id": "judge-negative-policy-capability",
+        "request": "请把客服试点材料改写成业务说明。",
+        "expected": {
+          "must": [
+            "保留回复必须由客服确认后发送的项目规则"
+          ],
+          "must_not": [
+            "把当前禁止自动发送写成系统不具备自动发送能力"
+          ]
+        }
+      },
+      "source": "本期不允许自动发送；系统推荐回复后，必须由客服确认才能发送。",
+      "candidate": "系统只推荐回复，客服确认后发送；系统不具备自动发送能力。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "reject-expanded-gap-list",
+      "case": {
+        "id": "judge-negative-expanded-gaps",
+        "request": "请按材料写一份方案说明，不改变方案范围。",
+        "expected": {
+          "must": [
+            "保留预算、工期、效率基线和验收阈值未知"
+          ],
+          "must_not": [
+            "把来源列出的未知扩成版权、持续成本或审批流程等新的必填缺口"
+          ]
+        }
+      },
+      "source": "方案包含解析、检索和渲染模块；预算、工期、效率基线和验收阈值尚未确定。",
+      "candidate": "预算、工期、效率基线和验收阈值待确认；此外，版权归属、持续运维成本和审批流程也是立项前必须补齐的三项。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "reject-component-gaps-as-explanation",
+      "case": {
+        "id": "judge-negative-component-gap-explanation",
+        "request": "请按材料写一份方案说明，不改变范围，也不要补造事实。",
+        "expected": {
+          "must": [
+            "说明解析、检索和渲染三个已有模块"
+          ],
+          "must_not": [
+            "把模块名称扩成来源未列出的输入、输出、负责人、质量标准或错误处理缺口"
+          ]
+        }
+      },
+      "source": "方案包含解析、检索和渲染模块；预算和验收阈值尚未确定。",
+      "candidate": "方案包含解析、检索和渲染三个模块。材料还没有说明解析接收哪些输入、检索由谁发起、渲染输出什么规格、准确率达到多少算可用，以及出错时谁负责接管；这些也是方案进入决策前需要补齐的信息。预算和验收阈值同样待确认。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "reject-trial-implies-rollout-decision",
+      "case": {
+        "id": "judge-negative-trial-rollout",
+        "request": "请按材料直接改写成管理层可读的完整稿。",
+        "expected": {
+          "must": [
+            "保留四周试点、比较指标和本次审批事项"
+          ],
+          "must_not": [
+            "从试点与指标比较推导出来源未说明的后续推广决定或规则"
+          ]
+        }
+      },
+      "source": "建议用四周做客服辅助试点，比较首次响应时间、人工改写率和错误回复数；需要管理层批准四周试点范围和 12 万元预算。",
+      "candidate": "建议批准四周客服辅助试点和 12 万元预算，并比较首次响应时间、人工改写率和错误回复数。试点结束后，是否继续推广将根据这些指标的对比结果决定。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "accept-ledger-bounded-term-explanation",
+      "case": {
+        "id": "judge-positive-ledger-term-explanation",
+        "request": "请把模块清单解释给业务负责人，不要补造项目能力。",
+        "expected": {
+          "must": [
+            "保留只知道渲染模块名称、产物形态未说明的边界"
+          ],
+          "must_not": [
+            "把通用术语解释写成本方案已具备的能力或确定产物"
+          ]
+        },
+        "semantic_contract": {
+          "facts": [
+            "材料只列出渲染模块名称",
+            "材料没有说明本方案的产物形态"
+          ],
+          "allowed_inferences": [
+            "可以说明渲染一词通常涉及把处理结果形成可呈现内容，但必须明确这不是本方案已经确定的产物"
+          ],
+          "forbidden_inferences": [
+            "断言本方案已经能够输出成片、视频初稿或其他确定产物"
+          ],
+          "unknowns": [
+            {"topic": "本方案产物形态", "state": "not_stated"}
+          ],
+          "reader_truths": [],
+          "reader_misreadings": []
+        }
+      },
+      "source": "材料只列出渲染模块名称，没有说明本方案的产物形态。",
+      "candidate": "按通用术语，渲染通常涉及把处理结果形成可呈现的内容；这只是词义说明，材料没有说明本方案最终产出什么，不能据此认定已经能够生成成片或视频初稿。",
+      "expected_status": "PASS"
+    },
+    {
+      "id": "reject-ledger-not-stated-as-undetermined",
+      "case": {
+        "id": "judge-negative-ledger-absence-state",
+        "request": "请按材料改写验收说明，未提供的信息不要改变状态。",
+        "expected": {
+          "must": [
+            "准确说明人工改写率会被比较但材料没有给通过阈值"
+          ],
+          "must_not": [
+            "把材料未说明的阈值写成尚未确定或待确认"
+          ]
+        },
+        "semantic_contract": {
+          "facts": [
+            "试点会比较人工改写率",
+            "材料没有提供人工改写率通过阈值"
+          ],
+          "allowed_inferences": [
+            "可以写材料没有把人工改写率列为通过条件"
+          ],
+          "forbidden_inferences": [
+            "把人工改写率通过阈值写成尚未确定、待确认或以后必须补齐"
+          ],
+          "unknowns": [
+            {"topic": "人工改写率是否存在通过阈值", "state": "not_stated"}
+          ],
+          "reader_truths": [],
+          "reader_misreadings": []
+        }
+      },
+      "source": "试点会比较人工改写率；材料没有给出人工改写率的通过阈值。",
+      "candidate": "试点会比较人工改写率，其通过阈值尚未确定。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "pyramid-reject-unsupported-parent",
+      "case": {
+        "id": "pyramid-judge-unsupported-parent",
+        "request": "把材料写成给负责人的选择建议，说明选择依据，不要把共有能力当成选择理由。",
+        "expected": {
+          "must": [
+            "保留建议、交付时间、三周要求与共有能力",
+            "理由支持所建议的选择"
+          ],
+          "must_not": [
+            "把共有能力当成选甲的区别性理由",
+            "编造成本或其他差异"
+          ]
+        }
+      },
+      "source": "建议选甲。甲两周交付，乙六周交付；要求三周内交付。甲乙都支持导出报表，也都支持按月份查询。",
+      "candidate": "建议选甲，理由是支持报表导出、支持按月份查询。甲两周交付，乙六周交付；要求三周内交付。两方案均有上述查询和导出能力。",
+      "expected_status": "FAIL",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "pyramid-accept-unsupported-parent",
+      "case": {
+        "id": "pyramid-judge-unsupported-parent",
+        "request": "把材料写成给负责人的选择建议，说明选择依据，不要把共有能力当成选择理由。",
+        "expected": {
+          "must": [
+            "保留建议、交付时间、三周要求与共有能力",
+            "理由支持所建议的选择"
+          ],
+          "must_not": [
+            "把共有能力当成选甲的区别性理由",
+            "编造成本或其他差异"
+          ]
+        }
+      },
+      "source": "建议选甲。甲两周交付，乙六周交付；要求三周内交付。甲乙都支持导出报表，也都支持按月份查询。",
+      "candidate": "建议选甲：甲两周交付，能满足三周内交付的要求；乙需要六周。两方案都支持导出报表和按月份查询，这两项能力不构成选择差异。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    },
+    {
+      "id": "pyramid-reject-mixed-peers",
+      "case": {
+        "id": "pyramid-judge-mixed-peers",
+        "request": "整理成一份简明方案说明，区分选择理由、执行步骤和目标。",
+        "expected": {
+          "must": [
+            "保留建议、理由、步骤和未验证目标",
+            "分组应区分理由、步骤和目标"
+          ],
+          "must_not": [
+            "把执行步骤和目标都列为选择理由",
+            "将目标写成已有效果"
+          ]
+        }
+      },
+      "source": "建议沿用现有表格，理由是成员都已有访问权限，不必重新开通。执行时先整理字段，再由组长试填。目标是减少汇总时间，尚未计时。",
+      "candidate": "建议沿用现有表格，有三个理由：成员已有访问权限，不必重新开通；先整理字段，再由组长试填；目标是减少汇总时间，尚未计时。",
+      "expected_status": "FAIL",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "pyramid-accept-mixed-peers",
+      "case": {
+        "id": "pyramid-judge-mixed-peers",
+        "request": "整理成一份简明方案说明，区分选择理由、执行步骤和目标。",
+        "expected": {
+          "must": [
+            "保留建议、理由、步骤和未验证目标",
+            "分组应区分理由、步骤和目标"
+          ],
+          "must_not": [
+            "把执行步骤和目标都列为选择理由",
+            "将目标写成已有效果"
+          ]
+        }
+      },
+      "source": "建议沿用现有表格，理由是成员都已有访问权限，不必重新开通。执行时先整理字段，再由组长试填。目标是减少汇总时间，尚未计时。",
+      "candidate": "建议沿用现有表格，因为成员已有访问权限，不必重新开通。执行时先整理字段，再由组长试填。目标是减少汇总时间，尚未计时。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    },
+    {
+      "id": "pyramid-reject-heading-restatement",
+      "case": {
+        "id": "pyramid-judge-heading-restatement",
+        "request": "写成一条可直接发送的短汇报，不要重复相同事项。",
+        "expected": {
+          "must": [
+            "保留完成事项、下周工作和未核实状态"
+          ],
+          "must_not": [
+            "标题与正文重复同一整套信息",
+            "把编号核对完成写成附件完整"
+          ]
+        }
+      },
+      "source": "本周完成档案编号核对，下周整理缺失附件；尚未核实附件完整性。",
+      "candidate": "**已核对编号，下周整理附件，完整性未核实**\n本周完成档案编号核对。下周整理缺失附件。附件完整性尚未核实。",
+      "expected_status": "FAIL",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "pyramid-accept-heading-restatement",
+      "case": {
+        "id": "pyramid-judge-heading-restatement",
+        "request": "写成一条可直接发送的短汇报，不要重复相同事项。",
+        "expected": {
+          "must": [
+            "保留完成事项、下周工作和未核实状态"
+          ],
+          "must_not": [
+            "标题与正文重复同一整套信息",
+            "把编号核对完成写成附件完整"
+          ]
+        }
+      },
+      "source": "本周完成档案编号核对，下周整理缺失附件；尚未核实附件完整性。",
+      "candidate": "本周完成档案编号核对，下周整理缺失附件；附件完整性尚未核实。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    },
+    {
+      "id": "pyramid-reject-table-restatement",
+      "case": {
+        "id": "pyramid-judge-table-restatement",
+        "request": "写成给业务的简明方案说明，流程只解释一次；表格有新增信息才保留。",
+        "expected": {
+          "must": [
+            "保留拟建状态、流程、人工确认、不自动派单和费用未知"
+          ],
+          "must_not": [
+            "正文和表格无新增信息地重讲整套流程",
+            "新增派单能力"
+          ]
+        }
+      },
+      "source": "拟建报修分类工具。员工填写设备编号和故障描述，工具给出分类建议，由维修员确认。工具不自动派单。费用待确认。",
+      "candidate": "拟建报修分类工具：员工填写设备编号和故障描述，工具给出分类建议，由维修员确认。工具不自动派单，费用待确认。\n\n|步骤|内容|\n|---|---|\n|提交|员工填写设备编号和故障描述|\n|分类|工具给出分类建议|\n|确认|维修员确认|",
+      "expected_status": "FAIL",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "pyramid-accept-table-restatement",
+      "case": {
+        "id": "pyramid-judge-table-restatement",
+        "request": "写成给业务的简明方案说明，流程只解释一次；表格有新增信息才保留。",
+        "expected": {
+          "must": [
+            "保留拟建状态、流程、人工确认、不自动派单和费用未知"
+          ],
+          "must_not": [
+            "正文和表格无新增信息地重讲整套流程",
+            "新增派单能力"
+          ]
+        }
+      },
+      "source": "拟建报修分类工具。员工填写设备编号和故障描述，工具给出分类建议，由维修员确认。工具不自动派单。费用待确认。",
+      "candidate": "拟建的报修分类工具接收员工填写的设备编号和故障描述，给出分类建议，由维修员确认。工具不自动派单，费用待确认。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    },
+    {
+      "id": "optional-fields-preserved",
+      "case": {
+        "request": "改成一段简洁的方案说明，保留登记要求和当前状态。",
+        "expected": {
+          "must": [
+            "保留登记内容、行政周一汇总和未试行状态",
+            "保留姓名和电话不要求填写的含义"
+          ],
+          "must_not": [
+            "将非必填改成禁止填写或不采集"
+          ]
+        },
+        "id": "judge-optional-fields-preserved"
+      },
+      "source": "拟用纸质表登记会议室设备故障。登记人填写设备编号、故障现象和发现日期；不要求留下姓名或联系电话。行政每周一汇总，尚未试行。",
+      "candidate": "拟用纸质表登记设备编号、故障现象和发现日期，不要求填写姓名或联系电话。行政每周一汇总，目前尚未试行。",
+      "expected_status": "PASS"
+    },
+    {
+      "id": "optional-fields-not-prohibited",
+      "case": {
+        "request": "改成一段简洁的方案说明，保留登记要求和当前状态。",
+        "expected": {
+          "must": [
+            "保留登记内容、行政周一汇总和未试行状态",
+            "保留姓名和电话不要求填写的含义"
+          ],
+          "must_not": [
+            "将非必填改成禁止填写或不采集"
+          ]
+        },
+        "id": "judge-optional-fields-not-prohibited"
+      },
+      "source": "拟用纸质表登记会议室设备故障。登记人填写设备编号、故障现象和发现日期；不要求留下姓名或联系电话。行政每周一汇总，尚未试行。",
+      "candidate": "拟用纸质表登记设备编号、故障现象和发现日期，不采集姓名或联系电话。行政每周一汇总，目前尚未试行。",
+      "expected_status": "FAIL"
+    },
+    {
+      "id": "nonadjacent-scope-repetition",
+      "case": {
+        "request": "整理成负责人能了解运行办法和限制的小方案，表达精炼。",
+        "expected": {
+          "must": [
+            "保留借用范围、采购排除、交接双方动作、未试用与费用未询价"
+          ],
+          "must_not": [
+            "增加审批或改变范围、角色和状态"
+          ]
+        },
+        "id": "judge-nonadjacent-scope-repetition"
+      },
+      "source": "拟在前台试用纸质交接卡，登记当天未办完的借用事项，不含采购。交班人写物品、存放位置和下一步动作，接班人处理后写日期。方案未试用，印制费用未询价。",
+      "candidate": "拟在前台试用纸质交接卡，登记当天未办完的借用事项，不含采购。目前尚未试用，印制费用未询价。\n\n## 运行办法\n交班人写物品、存放位置和下一步动作，接班人处理后写日期。\n\n## 已知限制\n该办法只处理借用事项，采购不在范围内。试用尚未开始，印制费用仍待询价。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "merged-scope-and-status",
+      "case": {
+        "request": "整理成负责人能了解运行办法和限制的小方案，表达精炼。",
+        "expected": {
+          "must": [
+            "保留借用范围、采购排除、交接双方动作、未试用与费用未询价"
+          ],
+          "must_not": [
+            "增加审批或改变范围、角色和状态"
+          ]
+        },
+        "id": "judge-merged-scope-and-status"
+      },
+      "source": "拟在前台试用纸质交接卡，登记当天未办完的借用事项，不含采购。交班人写物品、存放位置和下一步动作，接班人处理后写日期。方案未试用，印制费用未询价。",
+      "candidate": "拟在前台试用纸质交接卡，登记当天未办完的借用事项，不含采购。交班人写物品、存放位置和下一步动作，接班人处理后写日期。\n\n方案尚未试用，印制费用未询价。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    },
+    {
+      "id": "decisive-reason-after-details",
+      "case": {
+        "request": "重组为负责人能判断是否采购的方案说明，清楚组织建议与依据，避免逐项堆材料。",
+        "expected": {
+          "must": [
+            "保留建议甲、4周内启用要求、甲3周乙6周的比较",
+            "保留共同能力、费用及人员分工"
+          ],
+          "must_not": [
+            "制造其他优劣或把采购写成已批准"
+          ]
+        },
+        "id": "judge-decisive-reason-after-details"
+      },
+      "source": "展会报名系统需要在4周内启用。建议选甲，甲3周可交付并启用，乙6周可启用。两者都支持名单导出，每年费用均为2万元。甲由供应商维护，导出文件交给会务组，行政负责收集报名信息。负责人需要决定是否按该方案采购。",
+      "candidate": "建议采购甲系统，请负责人决定是否采购。\n\n## 维护\n甲由供应商维护。\n\n## 数据使用\n行政收集报名信息，导出文件交给会务组。\n\n## 共同条件\n两者都支持名单导出，每年费用均为2万元。\n\n## 时间要求\n展会报名系统需要在4周内启用，甲3周可交付并启用，乙6周可启用。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NEEDS_EDIT"
+    },
+    {
+      "id": "decisive-reason-supports-opening",
+      "case": {
+        "request": "重组为负责人能判断是否采购的方案说明，清楚组织建议与依据，避免逐项堆材料。",
+        "expected": {
+          "must": [
+            "保留建议甲、4周内启用要求、甲3周乙6周的比较",
+            "保留共同能力、费用及人员分工"
+          ],
+          "must_not": [
+            "制造其他优劣或把采购写成已批准"
+          ]
+        },
+        "id": "judge-decisive-reason-supports-opening"
+      },
+      "source": "展会报名系统需要在4周内启用。建议选甲，甲3周可交付并启用，乙6周可启用。两者都支持名单导出，每年费用均为2万元。甲由供应商维护，导出文件交给会务组，行政负责收集报名信息。负责人需要决定是否按该方案采购。",
+      "candidate": "建议采购甲系统：展会要求4周内启用，甲3周可交付并启用，乙需要6周。请负责人决定是否采购。\n\n两者均支持名单导出，每年费用均为2万元，这两项没有差异。采用甲后由供应商维护，行政收集报名信息，导出文件交给会务组。",
+      "expected_status": "PASS",
+      "expected_editorial_status": "NO_ISSUES_FOUND"
+    }
+  ]
+}

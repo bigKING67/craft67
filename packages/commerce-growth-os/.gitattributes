@@ -1,0 +1,4 @@
+# Preserve verbatim model evidence, including Markdown hard line breaks.
+eval/regression-answers/commercial_smoke.txt whitespace=-blank-at-eol
+eval/regression-answers/full_commerce_scope_failure.txt whitespace=-blank-at-eol
+eval/regression-answers/commercial_revenue_basis_failure.txt whitespace=-blank-at-eol

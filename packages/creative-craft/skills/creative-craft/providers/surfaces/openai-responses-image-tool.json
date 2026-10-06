@@ -1,0 +1,11 @@
+{
+  "schema_version": "creative-craft.surface.v1",
+  "surface_id": "openai.responses_image_tool",
+  "provider": "OpenAI",
+  "label": "OpenAI Responses API Image Generation Tool",
+  "available": true,
+  "verified_at": "2026-08-04",
+  "provider_profiles": ["openai.gpt-image-2.2026-04-21"],
+  "modes": ["multi_turn", "generate", "edit"],
+  "notes": ["This surface requires a Responses API model plus the image generation tool; it is not a direct model-field alias.", "Creative Craft includes no network adapter."]
+}

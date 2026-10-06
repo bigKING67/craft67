@@ -1,0 +1,554 @@
+{
+  "values": {
+    "price": "96.70",
+    "shares": "455.576464",
+    "weighted_diluted": "461.8",
+    "debt_current": "1636",
+    "debt_noncurrent": "14304",
+    "finance_lease": "2161",
+    "operating_lease": "3935",
+    "cash": "4762",
+    "short_investments": "3893",
+    "issuer_net_debt": "12047",
+    "net_income": "4091",
+    "eps": "8.86",
+    "eps_2023": "8.94",
+    "eps_2022": "5.98",
+    "eps_2021": "14.10",
+    "eps_2020": "8.64",
+    "ocf": "7367",
+    "capex": "2891",
+    "guidance_low": "8.80",
+    "guidance_high": "9.80",
+    "capex_low": "4000",
+    "capex_high": "5000",
+    "analyst_eps": "9.15",
+    "analyst_pe": "15",
+    "analyst_spot_pe": "12.3",
+    "wmt_price": "97.25",
+    "wmt_eps": "2.41",
+    "market_cap": "44054.24406880",
+    "debt": "15940",
+    "book_net_debt": "11178",
+    "issuer_net_debt_check": "12047",
+    "operating_cash_remainder": "869",
+    "ev_book": "55232.24406880",
+    "ev_short_investments_only": "56101.24406880",
+    "ev_operating_lease_included": "59167.24406880",
+    "pe_reported": "10.91422121896162528216704288939052",
+    "pe_forward_low": "9.867346938775510204081632653061224",
+    "pe_forward_high": "10.98863636363636363636363636363636",
+    "wmt_reported_pe": "40.35269709543568464730290456431535",
+    "fcf_proxy": "4476",
+    "capex_sum": "9000",
+    "capex_mid": "4500",
+    "fcf_capex_low": "3367",
+    "fcf_capex_mid": "2867",
+    "fcf_capex_high": "2367",
+    "five_year_eps_sum": "46.52",
+    "five_year_eps_mean": "9.304",
+    "eps_reconstructed": "8.858813339107838891294932871372889",
+    "bear_stress": "73.554",
+    "bear_stress_price_difference": "-23.146",
+    "bear_stress_relative_price_difference": "-0.2393588417786970010341261633919338",
+    "base_external": "137.25",
+    "base_external_price_difference": "40.55",
+    "base_external_relative_price_difference": "0.4193381592554291623578076525336091",
+    "bull_guidance": "147.00",
+    "bull_guidance_price_difference": "50.30",
+    "bull_guidance_relative_price_difference": "0.5201654601861427094105480868665977",
+    "grid_eps_2022_pe_reported": "65.26704288939051918735891647855531",
+    "grid_eps_2022_analyst_spot_pe": "73.554",
+    "grid_eps_2022_analyst_pe": "89.70",
+    "grid_eps_pe_reported": "96.70000000000000000000000000000001",
+    "grid_eps_analyst_spot_pe": "108.978",
+    "grid_eps_analyst_pe": "132.90",
+    "grid_guidance_high_pe_reported": "106.9593679458239277652370203160271",
+    "grid_guidance_high_analyst_spot_pe": "120.540",
+    "grid_guidance_high_analyst_pe": "147.00"
+  },
+  "sensitivity_grid": [
+    {
+      "eps": "5.98",
+      "pe": "10.91422121896162528216704288939052",
+      "value": "65.26704288939051918735891647855531"
+    },
+    {
+      "eps": "5.98",
+      "pe": "12.3",
+      "value": "73.554"
+    },
+    {
+      "eps": "5.98",
+      "pe": "15",
+      "value": "89.70"
+    },
+    {
+      "eps": "8.86",
+      "pe": "10.91422121896162528216704288939052",
+      "value": "96.70000000000000000000000000000001"
+    },
+    {
+      "eps": "8.86",
+      "pe": "12.3",
+      "value": "108.978"
+    },
+    {
+      "eps": "8.86",
+      "pe": "15",
+      "value": "132.90"
+    },
+    {
+      "eps": "9.80",
+      "pe": "10.91422121896162528216704288939052",
+      "value": "106.9593679458239277652370203160271"
+    },
+    {
+      "eps": "9.80",
+      "pe": "12.3",
+      "value": "120.540"
+    },
+    {
+      "eps": "9.80",
+      "pe": "15",
+      "value": "147.00"
+    }
+  ],
+  "negative_semantic_cases": [
+    {
+      "variant": "double_finance_lease",
+      "value": "57393.24406880",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: finance lease already in debt"
+    },
+    {
+      "variant": "double_short_investment",
+      "value": "51339.24406880",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: cash already includes short investments"
+    },
+    {
+      "variant": "weighted_shares_market_cap",
+      "value": "44656.060",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: period average is not outstanding shares"
+    },
+    {
+      "variant": "debt_subtracted_from_pe",
+      "value": "24.53594705454318641008636477761503",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: subtracting this from EPS x PE double-counts capital structure"
+    }
+  ],
+  "schema": "money-craft.target-valuation-result.v1",
+  "as_of": "2025-04-30",
+  "status": "PASS_BOUNDED_RECONSTRUCTION",
+  "valuation_status": "CONDITIONAL_NOT_FAIR_VALUE",
+  "source_hashes": {
+    "S02": "cc5eab890121b9a46d4eda35a22bf46d86e2d83ccee959b1811b1a3a20b1771b",
+    "S03": "385aa86b20333cfe224b9c0b8348cba90be496ab6303c9d682325a9c251f1601",
+    "S04": "29adb0c7fef838f934adbdf88812fecb4873fb8382262285e4792e6b380ae9f5",
+    "S06": "9b60cedf710d708d306aefc53136134e6a9149e94e28a0c39a8471021935c030",
+    "S07": "5a45ec4d9495c0c544bc8360cd140caadb9b2f68b9a66709a4e1041d93975e52",
+    "S09": "91f454d6518617c0a77a4641d0b309a31068bc41f1684a283e4aa6d492e3c46c",
+    "S01": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271",
+    "S08": "d3eaf5782e1642f33c6301f1849a830354590c3b733a868d9f180b17dd582744"
+  },
+  "calculations": [
+    {
+      "id": "C01",
+      "operation": "multiply",
+      "inputs": [
+        "96.70",
+        "455.576464"
+      ],
+      "expected": "44054.24406880",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C02",
+      "operation": "add",
+      "inputs": [
+        "1636",
+        "14304"
+      ],
+      "expected": "15940",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C03",
+      "operation": "subtract",
+      "inputs": [
+        "15940",
+        "4762"
+      ],
+      "expected": "11178",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C04",
+      "operation": "subtract",
+      "inputs": [
+        "15940",
+        "3893"
+      ],
+      "expected": "12047",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C05",
+      "operation": "subtract",
+      "inputs": [
+        "4762",
+        "3893"
+      ],
+      "expected": "869",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C06",
+      "operation": "add",
+      "inputs": [
+        "44054.24406880",
+        "11178"
+      ],
+      "expected": "55232.24406880",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C07",
+      "operation": "add",
+      "inputs": [
+        "44054.24406880",
+        "12047"
+      ],
+      "expected": "56101.24406880",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C08",
+      "operation": "add",
+      "inputs": [
+        "55232.24406880",
+        "3935"
+      ],
+      "expected": "59167.24406880",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C09",
+      "operation": "divide",
+      "inputs": [
+        "96.70",
+        "8.86"
+      ],
+      "expected": "10.91422121896162528216704288939052",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C10",
+      "operation": "divide",
+      "inputs": [
+        "96.70",
+        "9.80"
+      ],
+      "expected": "9.867346938775510204081632653061224",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C11",
+      "operation": "divide",
+      "inputs": [
+        "96.70",
+        "8.80"
+      ],
+      "expected": "10.98863636363636363636363636363636",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C12",
+      "operation": "divide",
+      "inputs": [
+        "97.25",
+        "2.41"
+      ],
+      "expected": "40.35269709543568464730290456431535",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C13",
+      "operation": "subtract",
+      "inputs": [
+        "7367",
+        "2891"
+      ],
+      "expected": "4476",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C14",
+      "operation": "add",
+      "inputs": [
+        "4000",
+        "5000"
+      ],
+      "expected": "9000",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C15",
+      "operation": "divide",
+      "inputs": [
+        "9000",
+        "2"
+      ],
+      "expected": "4500",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C16",
+      "operation": "subtract",
+      "inputs": [
+        "7367",
+        "4000"
+      ],
+      "expected": "3367",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C17",
+      "operation": "subtract",
+      "inputs": [
+        "7367",
+        "4500"
+      ],
+      "expected": "2867",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C18",
+      "operation": "subtract",
+      "inputs": [
+        "7367",
+        "5000"
+      ],
+      "expected": "2367",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C19",
+      "operation": "add",
+      "inputs": [
+        "8.86",
+        "8.94",
+        "5.98",
+        "14.10",
+        "8.64"
+      ],
+      "expected": "46.52",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C20",
+      "operation": "divide",
+      "inputs": [
+        "46.52",
+        "5"
+      ],
+      "expected": "9.304",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C21",
+      "operation": "divide",
+      "inputs": [
+        "4091",
+        "461.8"
+      ],
+      "expected": "8.858813339107838891294932871372889",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C22",
+      "operation": "multiply",
+      "inputs": [
+        "5.98",
+        "12.3"
+      ],
+      "expected": "73.554",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C23",
+      "operation": "subtract",
+      "inputs": [
+        "73.554",
+        "96.70"
+      ],
+      "expected": "-23.146",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C24",
+      "operation": "divide",
+      "inputs": [
+        "-23.146",
+        "96.70"
+      ],
+      "expected": "-0.2393588417786970010341261633919338",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C25",
+      "operation": "multiply",
+      "inputs": [
+        "9.15",
+        "15"
+      ],
+      "expected": "137.25",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C26",
+      "operation": "subtract",
+      "inputs": [
+        "137.25",
+        "96.70"
+      ],
+      "expected": "40.55",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C27",
+      "operation": "divide",
+      "inputs": [
+        "40.55",
+        "96.70"
+      ],
+      "expected": "0.4193381592554291623578076525336091",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C28",
+      "operation": "multiply",
+      "inputs": [
+        "9.80",
+        "15"
+      ],
+      "expected": "147.00",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C29",
+      "operation": "subtract",
+      "inputs": [
+        "147.00",
+        "96.70"
+      ],
+      "expected": "50.30",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C30",
+      "operation": "divide",
+      "inputs": [
+        "50.30",
+        "96.70"
+      ],
+      "expected": "0.5201654601861427094105480868665977",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C31",
+      "operation": "multiply",
+      "inputs": [
+        "5.98",
+        "10.91422121896162528216704288939052"
+      ],
+      "expected": "65.26704288939051918735891647855531",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C32",
+      "operation": "multiply",
+      "inputs": [
+        "5.98",
+        "12.3"
+      ],
+      "expected": "73.554",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C33",
+      "operation": "multiply",
+      "inputs": [
+        "5.98",
+        "15"
+      ],
+      "expected": "89.70",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C34",
+      "operation": "multiply",
+      "inputs": [
+        "8.86",
+        "10.91422121896162528216704288939052"
+      ],
+      "expected": "96.70000000000000000000000000000001",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C35",
+      "operation": "multiply",
+      "inputs": [
+        "8.86",
+        "12.3"
+      ],
+      "expected": "108.978",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C36",
+      "operation": "multiply",
+      "inputs": [
+        "8.86",
+        "15"
+      ],
+      "expected": "132.90",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C37",
+      "operation": "multiply",
+      "inputs": [
+        "9.80",
+        "10.91422121896162528216704288939052"
+      ],
+      "expected": "106.9593679458239277652370203160271",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C38",
+      "operation": "multiply",
+      "inputs": [
+        "9.80",
+        "12.3"
+      ],
+      "expected": "120.540",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C39",
+      "operation": "multiply",
+      "inputs": [
+        "9.80",
+        "15"
+      ],
+      "expected": "147.00",
+      "tolerance": "0.000001"
+    }
+  ],
+  "input_sha256": "11d7571163f70129629b4a022fa32168de390272d8c526ce57f44d93d3e6a4a3",
+  "template_sha256": "5bde773506c8927db92fe07ea8833fdfc027aff0eb48684eb6805238dd3a886d"
+}

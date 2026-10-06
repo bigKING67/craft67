@@ -1,0 +1,51 @@
+{
+  "rationale": "C 是唯一逐项无缺口覆盖机器评分卡的输出。相比 A，它明确规定速度的空间和时间单位，并直接处理 translate 与 press-scale 的 transform 所有权；相比 B，它不仅用速度偏置选点，还给出投影端点、范围钳制、有效 snap 选择和释放速度延续。C 还明确声明静态代码不能证明流畅度或布局成本，并在 150 行预算内提供了最小、可执行的运行时验证方案。",
+  "results": [
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 10,
+        "direct_manipulation": 15,
+        "evidence_honesty": 13,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 9,
+        "velocity_projection": 14
+      },
+      "label": "A",
+      "summary": "静态证据边界、直接操控、动画打断、降动效路径和最小验证计划都很完整。主要扣分是开头仍作出少量未实测的体感预测，速度缺少明确单位，并且没有像 C 那样直接说明位移与按压缩放的 transform 所有权冲突。",
+      "total": 96
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 7,
+        "direct_manipulation": 15,
+        "evidence_honesty": 13,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 8
+      },
+      "label": "B",
+      "summary": "准确覆盖抓取偏移、拖拽状态、指针捕获、输入锁定、布局属性、宽泛 transition、按压缩放和 Reduced Motion。明显缺口是没有给出速度单位、投影端点或向 settle 动画传递释放速度；同时篇幅显著超过 150 行，削弱了范围控制。",
+      "total": 88
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 10,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 15
+      },
+      "label": "C",
+      "summary": "完整满足全部评分点：严格区分静态证据与运行时未知，要求从当前呈现值无跳变地中断，明确 CSS px/s、投影端点和速度传递，并用分层 transform 解决所有权冲突；Reduced Motion 与验证计划也具体且克制。",
+      "total": 100
+    }
+  ],
+  "winner": "C"
+}

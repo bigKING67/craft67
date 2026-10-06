@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://design-craft.local/contracts/comp-fidelity-report.schema.json",
+  "title": "Design Craft Comp Fidelity Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "verdict", "case_id", "observed_at", "coordinate_space",
+    "measurement_policy", "inputs", "overall_metrics", "regions",
+    "artifacts", "advisory", "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "design-craft.comp-fidelity-report.v1" },
+    "verdict": { "const": "measurement_only" },
+    "case_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "coordinate_space": { "$ref": "#/$defs/coordinateSpace" },
+    "measurement_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alignment", "changed_pixel_delta", "color_channels"],
+      "properties": {
+        "alignment": { "const": "exact_coordinates_no_registration_or_resize" },
+        "changed_pixel_delta": { "$ref": "#/$defs/unitNumber" },
+        "color_channels": { "const": "8_bit_srgb_bytes_alpha_ignored" }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "rendered", "spec"],
+      "properties": {
+        "reference": { "$ref": "#/$defs/imageInput" },
+        "rendered": { "$ref": "#/$defs/imageInput" },
+        "spec": { "$ref": "#/$defs/fileInput" }
+      }
+    },
+    "overall_metrics": { "$ref": "#/$defs/metrics" },
+    "regions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 24,
+      "items": { "$ref": "#/$defs/region" }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heatmap", "side_by_side"],
+      "properties": {
+        "heatmap": { "$ref": "#/$defs/artifact" },
+        "side_by_side": { "$ref": "#/$defs/artifact" }
+      }
+    },
+    "advisory": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/advisory" }
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "coordinateSpace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1, "maximum": 8192 },
+        "height": { "type": "integer", "minimum": 1, "maximum": 16384 }
+      }
+    },
+    "fileInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "bytes", "sha256"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "pattern": "^[^/\\\\]+$" },
+        "bytes": { "type": "integer", "minimum": 1, "maximum": 1048576 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "imageInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "bytes", "sha256", "width", "height"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "pattern": "^[^/\\\\]+$" },
+        "bytes": { "type": "integer", "minimum": 1, "maximum": 67108864 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "width": { "type": "integer", "minimum": 1, "maximum": 8192 },
+        "height": { "type": "integer", "minimum": 1, "maximum": 16384 }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mean_delta", "rmse", "max_delta_threshold", "changed_pixel_ratio",
+        "reference_luminance", "rendered_luminance", "signed_luminance_shift",
+        "reference_edge_energy", "rendered_edge_energy", "edge_energy_delta"
+      ],
+      "properties": {
+        "mean_delta": { "$ref": "#/$defs/unitNumber" },
+        "rmse": { "$ref": "#/$defs/unitNumber" },
+        "max_delta_threshold": { "$ref": "#/$defs/unitNumber" },
+        "changed_pixel_ratio": { "$ref": "#/$defs/unitNumber" },
+        "reference_luminance": { "$ref": "#/$defs/unitNumber" },
+        "rendered_luminance": { "$ref": "#/$defs/unitNumber" },
+        "signed_luminance_shift": { "type": "number", "minimum": -1, "maximum": 1 },
+        "reference_edge_energy": { "$ref": "#/$defs/unitNumber" },
+        "rendered_edge_energy": { "$ref": "#/$defs/unitNumber" },
+        "edge_energy_delta": { "$ref": "#/$defs/unitNumber" }
+      }
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "box", "salience", "dimensions", "note", "metrics", "artifacts"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "box": {
+          "type": "array",
+          "prefixItems": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "integer", "minimum": 0 },
+            { "type": "integer", "minimum": 1 },
+            { "type": "integer", "minimum": 1 }
+          ],
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "salience": { "enum": ["primary", "secondary", "supporting"] },
+        "dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["geometry", "type", "material", "ground", "controls", "content"] }
+        },
+        "note": { "type": "string", "minLength": 1 },
+        "metrics": { "$ref": "#/$defs/metrics" },
+        "artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pair", "heatmap"],
+          "properties": {
+            "pair": { "$ref": "#/$defs/artifact" },
+            "heatmap": { "$ref": "#/$defs/artifact" }
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "width", "height"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$" },
+        "bytes": { "type": "integer", "minimum": 1, "maximum": 67108864 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "width": { "type": "integer", "minimum": 1, "maximum": 16384 },
+        "height": { "type": "integer", "minimum": 1, "maximum": 16384 }
+      }
+    },
+    "advisory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "failed_metrics", "thresholds"],
+      "properties": {
+        "status": { "enum": ["within", "outside"] },
+        "failed_metrics": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["mean_delta", "changed_pixel_ratio", "rmse"] }
+        },
+        "thresholds": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "mean_delta": { "$ref": "#/$defs/unitNumber" },
+            "changed_pixel_ratio": { "$ref": "#/$defs/unitNumber" },
+            "rmse": { "$ref": "#/$defs/unitNumber" }
+          }
+        }
+      }
+    },
+    "unitNumber": { "type": "number", "minimum": 0, "maximum": 1 }
+  }
+}

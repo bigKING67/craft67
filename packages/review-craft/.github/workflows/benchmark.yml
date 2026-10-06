@@ -1,0 +1,145 @@
+name: Runtime performance gates and telemetry
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * *"
+    - cron: "47 3 * * 0"
+  workflow_dispatch:
+    inputs:
+      tier:
+        description: Benchmark tier
+        required: true
+        default: pr
+        type: choice
+        options: [pr, nightly, weekly]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: benchmark-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pr-smoke:
+    if: >-
+      github.event_name == 'pull_request' ||
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && inputs.tier == 'pr')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.event.before || github.sha }}
+          path: benchmark-baseline
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: benchmark-current
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          download-from-astral-mirror: false
+          enable-cache: true
+      - name: Install baseline dependencies
+        working-directory: benchmark-baseline
+        run: uv sync --locked --group dev
+      - name: Install current dependencies
+        working-directory: benchmark-current
+        run: uv sync --locked --group dev
+      - name: Run 1k baseline
+        working-directory: benchmark-baseline
+        run: >-
+          uv run --locked python scripts/benchmark_runtime.py run
+          --sizes 1000 --repetitions 3 --warmups 1
+          --output ../benchmark-baseline-1k.json
+      - name: Run 1k current candidate
+        working-directory: benchmark-current
+        run: >-
+          uv run --locked python scripts/benchmark_runtime.py run
+          --sizes 1000 --repetitions 3 --warmups 1
+          --output artifacts/benchmark-pr-1k.json
+      - name: Enforce 20 percent relative regression limit
+        working-directory: benchmark-current
+        run: >-
+          uv run --locked python scripts/benchmark_runtime.py compare
+          --baseline ../benchmark-baseline-1k.json
+          --result artifacts/benchmark-pr-1k.json
+          --max-regression-percent 20
+          --output artifacts/benchmark-pr-comparison.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: benchmark-pr-1k
+          path: |
+            benchmark-baseline-1k.json
+            benchmark-current/artifacts/benchmark-pr-1k.json
+            benchmark-current/artifacts/benchmark-pr-comparison.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  nightly:
+    if: >-
+      (github.event_name == 'schedule' && github.event.schedule == '17 3 * * *') ||
+      (github.event_name == 'workflow_dispatch' && inputs.tier == 'nightly')
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          download-from-astral-mirror: false
+          enable-cache: true
+      - run: uv sync --locked --group dev
+      - name: Run 1k and 10k telemetry
+        run: >-
+          uv run --locked python scripts/benchmark_runtime.py run
+          --sizes 1000,10000 --repetitions 5 --warmups 1
+          --output artifacts/benchmark-nightly.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: benchmark-nightly
+          path: artifacts/benchmark-nightly.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+  weekly:
+    if: >-
+      (github.event_name == 'schedule' && github.event.schedule == '47 3 * * 0') ||
+      (github.event_name == 'workflow_dispatch' && inputs.tier == 'weekly')
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          download-from-astral-mirror: false
+          enable-cache: true
+      - run: uv sync --locked --group dev
+      - name: Run 100k telemetry
+        run: >-
+          uv run --locked python scripts/benchmark_runtime.py run
+          --sizes 100000 --repetitions 3 --warmups 1
+          --output artifacts/benchmark-weekly-100k.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: benchmark-weekly-100k
+          path: artifacts/benchmark-weekly-100k.json
+          if-no-files-found: ignore
+          retention-days: 30

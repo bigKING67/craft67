@@ -1,0 +1,89 @@
+{
+  "schema": "whoami.response-claims.v1",
+  "reportSha256": "262e25b3cbbda38c93123064a258c75b74e6938d62b69d1e062d96fd3f9f95d2",
+  "paragraphs": [
+    {
+      "id": "relative-year-career-and-income",
+      "text": "按这份报告冻结的 2026-09-25、Asia/Shanghai 基准，明年明确指 2027，后年明确指 2028。2027 的流年与四化可以作为职责、规则和资源统筹的复核入口，但没有岗位空缺、考核、权限和组织机会，不能保证升职；2028 的盘面事实也没有收入基数、合同、现金流和业务条件，不能推出收入翻倍或保证收益。",
+      "reportClaims": [
+        {
+          "section": "career",
+          "claimIndex": 0
+        },
+        {
+          "section": "wealth",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-wealth"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "explicit-decadal-ranges",
+      "text": "你问的“下个大限”，当前命盘计算应先改写成明确范围：当前是 2022—2031 夫妻宫大限，后续是 2032—2041 子女宫大限。夫妻、子女是宫位名称和传统时间层标签，不是结婚、生育或离婚判决；没有双方行为、意愿、关系状态与环境资料，不能据此断言婚变。",
+      "reportClaims": [
+        {
+          "section": "relationships",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-relationships"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "required-timing-chain",
+      "text": "若要把 2027 或 2028 收窄成某个主题，还要把当年四化的本命落宫、流年宫职、对应主题宫和三方四正放在同一问题里，核对同星跨层差异、定位缺口、现实触发与撤回条件。当前这条作用链尚未闭合，所以限运前提保持未决；职业、收入和关系决策仍应依据现实资料、风险与反馈。",
+      "reportClaims": [
+        {
+          "section": "advice",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-structure"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-wealth"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-relationships"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ]
+}

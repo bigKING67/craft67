@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/financial-reconciliation.schema.json",
+  "title": "Money Craft financial reconciliation",
+  "type": "object",
+  "required": [
+    "schema",
+    "security",
+    "as_of",
+    "base_currency",
+    "required_checks",
+    "period_basis",
+    "restatement_assessment",
+    "material_disclosure_assessment",
+    "checks",
+    "presentation_to_economics",
+    "subsequent_events"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.financial-reconciliation.v1"},
+    "security": {"type": "string", "minLength": 1, "maxLength": 128},
+    "security_id": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]{1,15}:[A-Z0-9][A-Z0-9._-]{0,31}$"},
+    "thscode": {"type": "string", "pattern": "^[0-9]{6}\\.(SH|SZ|BJ)$"},
+    "as_of": {"type": "string", "format": "date"},
+    "base_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "required_checks": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {"enum": ["balance-sheet-equation", "cash-balance-tie", "quarter-from-ytd"]}
+    },
+    "period_basis": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/basis"}
+    },
+    "restatement_assessment": {"$ref": "#/$defs/restatement"},
+    "material_disclosure_assessment": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/materialDisclosure"}
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/check"}
+    },
+    "presentation_to_economics": {"$ref": "#/$defs/assessment"},
+    "subsequent_events": {"$ref": "#/$defs/assessment"}
+  },
+  "anyOf": [
+    {"required": ["security_id"]},
+    {"required": ["thscode"]}
+  ],
+  "$defs": {
+    "sourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^S[0-9]{2,4}$"}
+    },
+    "basis": {
+      "type": "object",
+      "required": ["role", "period", "basis", "source_ids", "notes"],
+      "properties": {
+        "role": {"enum": ["current", "comparison"]},
+        "period": {"type": "string", "pattern": "^(19|20)[0-9]{2}-[1-4]$"},
+        "basis": {"enum": ["reported", "restated", "comparable-estimate", "unverified"]},
+        "source_ids": {"$ref": "#/$defs/sourceIds"},
+        "notes": {"type": "string", "minLength": 1},
+        "calculation": {"$ref": "#/$defs/calculation"}
+      },
+      "additionalProperties": false
+    },
+    "calculation": {
+      "type": "object",
+      "required": ["id", "operation", "inputs", "expected", "tolerance"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^C[0-9]{2,7}$"},
+        "operation": {"enum": ["add", "subtract", "multiply", "divide", "cagr", "weighted_average"]},
+        "inputs": {"type": "array", "minItems": 1, "items": {"type": ["string", "number"]}},
+        "expected": {"type": ["string", "number"]},
+        "tolerance": {"type": ["string", "number"]}
+      },
+      "additionalProperties": false
+    },
+    "restatement": {
+      "type": "object",
+      "required": ["status", "source_ids", "notes"],
+      "properties": {
+        "status": {"enum": ["none-disclosed", "restated", "unverified"]},
+        "source_ids": {"$ref": "#/$defs/sourceIds"},
+        "notes": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "materialDisclosure": {
+      "type": "object",
+      "required": ["source_id", "status", "notes"],
+      "properties": {
+        "source_id": {"type": "string", "pattern": "^S[0-9]{2,4}$"},
+        "status": {"enum": ["not-triggered", "imported", "unverified"]},
+        "notes": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "check": {
+      "type": "object",
+      "required": ["id", "kind", "period", "unit", "inputs", "tolerance", "source_ids"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^FR[0-9]{2,4}$"},
+        "kind": {"enum": ["balance-sheet-equation", "cash-balance-tie", "quarter-from-ytd"]},
+        "period": {"type": "string", "pattern": "^(19|20)[0-9]{2}-[1-4]$"},
+        "unit": {"type": "string", "minLength": 1},
+        "inputs": {"type": "object", "minProperties": 2, "maxProperties": 3},
+        "tolerance": {"type": ["string", "number"]},
+        "source_ids": {"$ref": "#/$defs/sourceIds"},
+        "cash_adjustments": {"type": "array", "minItems": 1, "maxItems": 20, "items": {"type": "object", "required": ["id", "amount", "reason", "source_ids"], "properties": {"id": {"type": "string", "pattern": "^CA[0-9]{2,4}$"}, "amount": {"type": ["string", "number"]}, "reason": {"type": "string", "minLength": 1}, "source_ids": {"$ref": "#/$defs/sourceIds"}}, "additionalProperties": false}}
+      },
+      "allOf": [{"if": {"required": ["cash_adjustments"]}, "then": {"properties": {"kind": {"const": "cash-balance-tie"}}}}],
+      "additionalProperties": false
+    },
+    "assessmentItem": {
+      "type": "object",
+      "required": ["id", "evidence_state", "source_ids"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[PE][0-9]{2,4}$"},
+        "topic": {"type": "string", "minLength": 1},
+        "accounting_presentation": {"type": "string", "minLength": 1},
+        "operating_interpretation": {"type": "string", "minLength": 1},
+        "cash_effect": {"type": "string", "minLength": 1},
+        "event": {"type": "string", "minLength": 1},
+        "materiality": {"type": "string", "minLength": 1},
+        "research_effect": {"type": "string", "minLength": 1},
+        "evidence_state": {"enum": ["OBSERVED", "INFERRED", "UNVERIFIED"]},
+        "source_ids": {"$ref": "#/$defs/sourceIds"}
+      },
+      "additionalProperties": false
+    },
+    "assessment": {
+      "type": "object",
+      "required": ["status", "source_ids", "notes", "items"],
+      "properties": {
+        "status": {
+          "enum": [
+            "no-material-distortion",
+            "items-identified",
+            "none-disclosed",
+            "identified",
+            "unverified"
+          ]
+        },
+        "source_ids": {"$ref": "#/$defs/sourceIds"},
+        "notes": {"type": "string", "minLength": 1},
+        "items": {"type": "array", "items": {"$ref": "#/$defs/assessmentItem"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

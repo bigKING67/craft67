@@ -1,0 +1,795 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-26",
+  "title": "八字岁运目标章节版本关系证据矩阵",
+  "scope": "Local relationship signals for the already-collated target chapters in 子平真诠 and 滴天髓; five scan witnesses and two web transcription/editorial aids.",
+  "sourceArtifacts": {
+    "materialVariants": "bazi-timing-collation.json",
+    "diplomaticTranscription": "bazi-timing-diplomatic-transcription.json",
+    "columnLocators": "bazi-timing-column-locators.json"
+  },
+  "method": {
+    "unitOfComparison": "one explicitly located discriminating reading, coverage boundary, or editorial-layer feature",
+    "comparisonRule": "compare only the same feature inside the same work; missing or unverified states do not count as agreement or disagreement",
+    "noSimilarityScore": true,
+    "reason": "the feature set is intentionally enriched for differences and is not a random sample of either whole book; numeric similarity would be misleading",
+    "directionRule": "shared readings can show branch compatibility but cannot establish direct descent, chronology, authorship, or a unique base text without independent bibliographic evidence",
+    "webRule": "web transcriptions are editorial/reference nodes, not scan witnesses; mixed alignment or flattened layers must not be treated as manuscript ancestry"
+  },
+  "coverageSummary": {
+    "works": 2,
+    "scanWitnesses": 5,
+    "webReferenceNodes": 2,
+    "discriminatingFeatures": 16,
+    "pairwiseRelations": 9,
+    "directDescentEdges": 0
+  },
+  "works": [
+    {
+      "id": "ZP",
+      "title": "《子平真诠》目标三章",
+      "nodes": [
+        {
+          "id": "zp-world",
+          "type": "scan-witness",
+          "label": "世界图书馆本《子平真诠》",
+          "coverage": "complete for ZP-25, ZP-26 and ZP-28"
+        },
+        {
+          "id": "zp-1926",
+          "type": "scan-witness",
+          "label": "1926 文明书局秦慎安校勘本第2卷",
+          "coverage": "complete for ZP-25 and ZP-28; explicitly lacunose in ZP-26"
+        },
+        {
+          "id": "zp-dongli",
+          "type": "web-transcription-editorial",
+          "label": "东里书斋章节转录与校记",
+          "coverage": "complete web transcription for the three target chapters; includes later editorial notes"
+        }
+      ],
+      "features": [
+        {
+          "id": "ZP-F01",
+          "topic": "论行运首句",
+          "evidenceRefs": [
+            "ZP-25-01"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "reading",
+              "value": "配命中八字之喜忌"
+            },
+            "zp-1926": {
+              "status": "reading",
+              "value": "配八字之喜忌"
+            },
+            "zp-dongli": {
+              "status": "reading",
+              "value": "配八字之喜忌"
+            }
+          }
+        },
+        {
+          "id": "ZP-F02",
+          "topic": "食带煞例的语序",
+          "evidenceRefs": [
+            "ZP-25-02"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "reading-order",
+              "value": "运逢印｜煞重身轻而运来助食"
+            },
+            "zp-1926": {
+              "status": "reading-order",
+              "value": "运逢印｜煞重身轻而运来助食"
+            },
+            "zp-dongli": {
+              "status": "editorial-reordering",
+              "value": "显式把“身轻”移到“运逢印”之前"
+            }
+          }
+        },
+        {
+          "id": "ZP-F03",
+          "topic": "相冲缓急的词序",
+          "evidenceRefs": [
+            "ZP-25-09"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "reading",
+              "value": "冲时日则缓"
+            },
+            "zp-1926": {
+              "status": "reading",
+              "value": "冲日时则缓"
+            },
+            "zp-dongli": {
+              "status": "reading",
+              "value": "冲时日则缓"
+            }
+          }
+        },
+        {
+          "id": "ZP-F04",
+          "topic": "论行运章节结语",
+          "evidenceRefs": [
+            "ZP-25-13"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "reading",
+              "value": "于外格取运章"
+            },
+            "zp-1926": {
+              "status": "reading",
+              "value": "于各格取运章"
+            },
+            "zp-dongli": {
+              "status": "edited-reading",
+              "value": "于各格取运章；并校记原作外"
+            }
+          }
+        },
+        {
+          "id": "ZP-F05",
+          "topic": "论行运成格变格完整性",
+          "evidenceRefs": [
+            "ZP-26-03",
+            "ZP-26-04",
+            "ZP-26-05",
+            "ZP-26-06",
+            "A03"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "complete",
+              "value": "全章保存"
+            },
+            "zp-1926": {
+              "status": "explicit-lacuna",
+              "value": "壬生戌下闕后跳章"
+            },
+            "zp-dongli": {
+              "status": "complete-web-transcription",
+              "value": "网页保存全章转录"
+            }
+          }
+        },
+        {
+          "id": "ZP-F06",
+          "topic": "命运二支会局读法",
+          "evidenceRefs": [
+            "ZP-28-02",
+            "A01",
+            "A02"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "reading",
+              "value": "亦作清論"
+            },
+            "zp-1926": {
+              "status": "visible-suspect-reading",
+              "value": "亦作清出"
+            },
+            "zp-dongli": {
+              "status": "reading",
+              "value": "亦作清論"
+            }
+          }
+        },
+        {
+          "id": "ZP-F07",
+          "topic": "会局与月令透清的原局措辞",
+          "evidenceRefs": [
+            "ZP-28-03"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "reading",
+              "value": "命中原有"
+            },
+            "zp-1926": {
+              "status": "reading",
+              "value": "柱中原有"
+            },
+            "zp-dongli": {
+              "status": "reading",
+              "value": "命中原有"
+            }
+          }
+        },
+        {
+          "id": "ZP-F08",
+          "topic": "干支发用句",
+          "evidenceRefs": [
+            "ZP-28-04"
+          ],
+          "states": {
+            "zp-world": {
+              "status": "reading",
+              "value": "支以為干之生地"
+            },
+            "zp-1926": {
+              "status": "reading",
+              "value": "支為干之生地"
+            },
+            "zp-dongli": {
+              "status": "reading",
+              "value": "支以為干之生地"
+            }
+          }
+        }
+      ],
+      "pairwiseRelations": [
+        {
+          "nodes": [
+            "zp-world",
+            "zp-1926"
+          ],
+          "sharedFeatureIds": [
+            "ZP-F02"
+          ],
+          "divergentFeatureIds": [
+            "ZP-F01",
+            "ZP-F03",
+            "ZP-F04",
+            "ZP-F06",
+            "ZP-F07",
+            "ZP-F08"
+          ],
+          "asymmetricCoverageFeatureIds": [
+            "ZP-F05"
+          ],
+          "assessment": "The scans share the same target-chapter structure and many non-discriminating passages, but the sampled distinguishing loci form two visible reading profiles. The explicit lacuna prevents treating zp-1926 as a complete base for ZP-26.",
+          "directionality": "undetermined"
+        },
+        {
+          "nodes": [
+            "zp-world",
+            "zp-dongli"
+          ],
+          "sharedFeatureIds": [
+            "ZP-F03",
+            "ZP-F06",
+            "ZP-F07",
+            "ZP-F08"
+          ],
+          "divergentFeatureIds": [
+            "ZP-F01",
+            "ZP-F02",
+            "ZP-F04"
+          ],
+          "asymmetricCoverageFeatureIds": [
+            "ZP-F05"
+          ],
+          "assessment": "Dongli often follows the world witness at later loci, while also applying explicit editorial reordering and notes. It is an edited reference node, not a diplomatic proxy for zp-world.",
+          "directionality": "not-applicable-to-web-editorial-node"
+        },
+        {
+          "nodes": [
+            "zp-1926",
+            "zp-dongli"
+          ],
+          "sharedFeatureIds": [
+            "ZP-F01",
+            "ZP-F04"
+          ],
+          "divergentFeatureIds": [
+            "ZP-F02",
+            "ZP-F03",
+            "ZP-F06",
+            "ZP-F07",
+            "ZP-F08"
+          ],
+          "asymmetricCoverageFeatureIds": [
+            "ZP-F05"
+          ],
+          "assessment": "Dongli selects the 1926-style opening and 各 reading but follows another profile at several later loci and supplies text absent after the 1926 lacuna. This is a mixed editorial alignment.",
+          "directionality": "not-applicable-to-web-editorial-node"
+        }
+      ],
+      "profileConclusion": {
+        "directDescentEdges": [],
+        "signals": [
+          {
+            "profile": "zp-world",
+            "featureIds": [
+              "ZP-F01",
+              "ZP-F03",
+              "ZP-F04",
+              "ZP-F06",
+              "ZP-F07",
+              "ZP-F08"
+            ],
+            "description": "命中 opening, 冲时日, 外格, 清论, 命中原有, 支以为"
+          },
+          {
+            "profile": "zp-1926",
+            "featureIds": [
+              "ZP-F01",
+              "ZP-F03",
+              "ZP-F04",
+              "ZP-F05",
+              "ZP-F06",
+              "ZP-F07",
+              "ZP-F08"
+            ],
+            "description": "shorter opening, 冲日时, 各格, explicit lacuna, 清出, 柱中原有, 支为"
+          },
+          {
+            "profile": "zp-dongli",
+            "featureIds": [
+              "ZP-F01",
+              "ZP-F02",
+              "ZP-F03",
+              "ZP-F04",
+              "ZP-F05",
+              "ZP-F06",
+              "ZP-F07",
+              "ZP-F08"
+            ],
+            "description": "mixed alignment plus explicit modern editorial interventions"
+          }
+        ],
+        "inference": "At least two scan reading profiles are visible in the target chapters. The web transcription is composite/editorial. Direct copying direction and a unique base text remain undetermined."
+      }
+    },
+    {
+      "id": "DTS",
+      "title": "《滴天髓》岁运论",
+      "nodes": [
+        {
+          "id": "dts-ming",
+          "type": "scan-witness",
+          "label": "明末长庚馆刊本",
+          "coverage": "complete early verse, explanation and 战冲和好 examples; labels absent"
+        },
+        {
+          "id": "dts-1936",
+          "type": "scan-witness",
+          "label": "1936《滴天髓辑要》",
+          "coverage": "complete printed chapter with parenthetical editorial glosses; no Ren commentary"
+        },
+        {
+          "id": "dts-1947",
+          "type": "scan-witness",
+          "label": "1947《滴天髓阐微》",
+          "coverage": "complete chapter with explicit 原注 and 任氏曰 layers"
+        },
+        {
+          "id": "dts-wikisource",
+          "type": "web-transcription",
+          "label": "维基文库岁运论页面",
+          "coverage": "continuous web text; author/editor layers are flattened"
+        }
+      ],
+      "features": [
+        {
+          "id": "DTS-F01",
+          "topic": "核心句战冲词序",
+          "evidenceRefs": [
+            "DTS-09-01"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "reading",
+              "value": "戰沖視其孰降"
+            },
+            "dts-1936": {
+              "status": "reading",
+              "value": "衝戰視其孰降"
+            },
+            "dts-1947": {
+              "status": "reading",
+              "value": "戰沖視其孰降"
+            },
+            "dts-wikisource": {
+              "status": "reading",
+              "value": "衝戰視其孰降"
+            }
+          }
+        },
+        {
+          "id": "DTS-F02",
+          "topic": "吾身句主语",
+          "evidenceRefs": [
+            "DTS-09-02",
+            "A04"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "visible-suspect-reading",
+              "value": "主譬如吾身"
+            },
+            "dts-1936": {
+              "status": "reading",
+              "value": "日主譬如吾身"
+            },
+            "dts-1947": {
+              "status": "reading",
+              "value": "日主譬如吾身"
+            },
+            "dts-wikisource": {
+              "status": "unverified-in-current-matrix",
+              "value": null
+            }
+          }
+        },
+        {
+          "id": "DTS-F03",
+          "topic": "早期解释与后世评注的层标签",
+          "evidenceRefs": [
+            "DTS-09-02",
+            "DTS-09-03"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "unlabeled-early-layer",
+              "value": "不标原注或任氏曰"
+            },
+            "dts-1936": {
+              "status": "editorial-compilation-layer",
+              "value": "正文与括注同页；不含任氏曰"
+            },
+            "dts-1947": {
+              "status": "explicit-layering",
+              "value": "原注与任氏曰分列"
+            },
+            "dts-wikisource": {
+              "status": "flattened-web-layer",
+              "value": "连续展示，层标签不足"
+            }
+          }
+        },
+        {
+          "id": "DTS-F04",
+          "topic": "乙庚化金与子丑合化括注",
+          "evidenceRefs": [
+            "DTS-09-04",
+            "DTS-09-06",
+            "DTS-09-08"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "absent",
+              "value": "两条括注均不见"
+            },
+            "dts-1936": {
+              "status": "present-editorial-gloss",
+              "value": "乙庚化金；子丑合而化土"
+            },
+            "dts-1947": {
+              "status": "absent-from-original-note",
+              "value": "原注层不见"
+            },
+            "dts-wikisource": {
+              "status": "present-flattened",
+              "value": "连续收录两条括注"
+            }
+          }
+        },
+        {
+          "id": "DTS-F05",
+          "topic": "何谓和的喜水判断",
+          "evidenceRefs": [
+            "DTS-09-08",
+            "A06",
+            "A08",
+            "A09"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "reading",
+              "value": "喜水則甚利"
+            },
+            "dts-1936": {
+              "status": "reading",
+              "value": "喜水則不吉"
+            },
+            "dts-1947": {
+              "status": "original-note-reading",
+              "value": "喜水則不吉"
+            },
+            "dts-wikisource": {
+              "status": "1936-style-reading",
+              "value": "喜水則不吉"
+            }
+          }
+        },
+        {
+          "id": "DTS-F06",
+          "topic": "任氏评注与命例",
+          "evidenceRefs": [
+            "DTS-09-03",
+            "DTS-09-05",
+            "DTS-09-07",
+            "DTS-09-09",
+            "DTS-09-11"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "absent",
+              "value": "不见"
+            },
+            "dts-1936": {
+              "status": "absent",
+              "value": "不见"
+            },
+            "dts-1947": {
+              "status": "present-explicit",
+              "value": "任氏曰及命例"
+            },
+            "dts-wikisource": {
+              "status": "absent",
+              "value": "页面不含该层"
+            }
+          }
+        },
+        {
+          "id": "DTS-F07",
+          "topic": "何谓好基础例解完整性",
+          "evidenceRefs": [
+            "DTS-09-10",
+            "A07"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "complete-cross-leaf",
+              "value": "喜陰則｜辛與酉為好。此皆宜例推以見。"
+            },
+            "dts-1936": {
+              "status": "complete",
+              "value": "完整到辛与酉为好"
+            },
+            "dts-1947": {
+              "status": "complete-original-note",
+              "value": "原注完整到辛与酉为好"
+            },
+            "dts-wikisource": {
+              "status": "complete-web-transcription",
+              "value": "完整展示基础例解"
+            }
+          }
+        },
+        {
+          "id": "DTS-F08",
+          "topic": "何谓战末段运降句",
+          "evidenceRefs": [
+            "DTS-09-04",
+            "A05"
+          ],
+          "states": {
+            "dts-ming": {
+              "status": "visible-suspect-reading",
+              "value": "大。則運自降。吉。"
+            },
+            "dts-1936": {
+              "status": "reading-with-gloss",
+              "value": "運自不得不降。亦保無患。"
+            },
+            "dts-1947": {
+              "status": "original-note-reading",
+              "value": "則運自降歲。亦保無患。"
+            },
+            "dts-wikisource": {
+              "status": "unverified-in-current-matrix",
+              "value": null
+            }
+          }
+        }
+      ],
+      "pairwiseRelations": [
+        {
+          "nodes": [
+            "dts-ming",
+            "dts-1936"
+          ],
+          "sharedFeatureIds": [
+            "DTS-F06",
+            "DTS-F07"
+          ],
+          "divergentFeatureIds": [
+            "DTS-F01",
+            "DTS-F02",
+            "DTS-F04",
+            "DTS-F05",
+            "DTS-F08"
+          ],
+          "layerDifferenceFeatureIds": [
+            "DTS-F03"
+          ],
+          "assessment": "The witnesses preserve the same early section sequence but differ at several discriminating readings; 1936 also carries an editorial-gloss layer absent from the Ming witness. They are distinct sampled profiles.",
+          "directionality": "undetermined"
+        },
+        {
+          "nodes": [
+            "dts-ming",
+            "dts-1947"
+          ],
+          "sharedFeatureIds": [
+            "DTS-F01",
+            "DTS-F04",
+            "DTS-F07"
+          ],
+          "divergentFeatureIds": [
+            "DTS-F02",
+            "DTS-F05",
+            "DTS-F08"
+          ],
+          "asymmetricLayerFeatureIds": [
+            "DTS-F03",
+            "DTS-F06"
+          ],
+          "assessment": "The Ming witness and the 1947 原注 layer share 戰沖 and the absence of 1936-style parentheses, but conflict on 主/日主, 甚利/不吉 and the 运降 wording. The 1947 edition adds explicit Ren commentary. Shared signals do not prove direct descent.",
+          "directionality": "undetermined"
+        },
+        {
+          "nodes": [
+            "dts-ming",
+            "dts-wikisource"
+          ],
+          "sharedFeatureIds": [
+            "DTS-F06",
+            "DTS-F07"
+          ],
+          "divergentFeatureIds": [
+            "DTS-F01",
+            "DTS-F04",
+            "DTS-F05"
+          ],
+          "unverifiedFeatureIds": [
+            "DTS-F02",
+            "DTS-F08"
+          ],
+          "layerDifferenceFeatureIds": [
+            "DTS-F03"
+          ],
+          "assessment": "The web page follows a different sampled branch at the core order, glosses and 喜水 reading, while flattening layers. It is not a proxy for the Ming scan.",
+          "directionality": "not-applicable-to-web-node"
+        },
+        {
+          "nodes": [
+            "dts-1936",
+            "dts-1947"
+          ],
+          "sharedFeatureIds": [
+            "DTS-F02",
+            "DTS-F05",
+            "DTS-F07"
+          ],
+          "divergentFeatureIds": [
+            "DTS-F01",
+            "DTS-F04",
+            "DTS-F06",
+            "DTS-F08"
+          ],
+          "layerDifferenceFeatureIds": [
+            "DTS-F03"
+          ],
+          "assessment": "The editions share 日主 and 不吉 readings but have different core order, gloss policy, layer structure and 运降 wording. Local agreement is insufficient for a parent-child claim.",
+          "directionality": "undetermined"
+        },
+        {
+          "nodes": [
+            "dts-1936",
+            "dts-wikisource"
+          ],
+          "sharedFeatureIds": [
+            "DTS-F01",
+            "DTS-F04",
+            "DTS-F05",
+            "DTS-F06",
+            "DTS-F07"
+          ],
+          "divergentFeatureIds": [],
+          "unverifiedFeatureIds": [
+            "DTS-F02",
+            "DTS-F08"
+          ],
+          "layerDifferenceFeatureIds": [
+            "DTS-F03"
+          ],
+          "assessment": "The web page tracks the 1936-style branch at every currently verified discriminating locus, including parentheses, but flattens the source layers. Textual dependence or copying direction is not established.",
+          "directionality": "not-applicable-to-web-node"
+        },
+        {
+          "nodes": [
+            "dts-1947",
+            "dts-wikisource"
+          ],
+          "sharedFeatureIds": [
+            "DTS-F05",
+            "DTS-F07"
+          ],
+          "divergentFeatureIds": [
+            "DTS-F01",
+            "DTS-F04",
+            "DTS-F06"
+          ],
+          "unverifiedFeatureIds": [
+            "DTS-F02",
+            "DTS-F08"
+          ],
+          "layerDifferenceFeatureIds": [
+            "DTS-F03"
+          ],
+          "assessment": "The web page shares the 不吉 branch and complete basic example but differs from the 1947 edition in core order, glosses and Ren layer. It cannot stand in for the labelled 1947 text.",
+          "directionality": "not-applicable-to-web-node"
+        }
+      ],
+      "profileConclusion": {
+        "directDescentEdges": [],
+        "signals": [
+          {
+            "profile": "dts-ming",
+            "featureIds": [
+              "DTS-F01",
+              "DTS-F02",
+              "DTS-F04",
+              "DTS-F05",
+              "DTS-F06",
+              "DTS-F07",
+              "DTS-F08"
+            ],
+            "description": "戰沖, 主, no 1936 parentheses, 甚利, no Ren layer, complete cross-leaf 好 example, suspect 运降 wording"
+          },
+          {
+            "profile": "dts-1936",
+            "featureIds": [
+              "DTS-F01",
+              "DTS-F02",
+              "DTS-F03",
+              "DTS-F04",
+              "DTS-F05",
+              "DTS-F06",
+              "DTS-F07",
+              "DTS-F08"
+            ],
+            "description": "衝戰, 日主, editorial parentheses, 不吉, no Ren layer"
+          },
+          {
+            "profile": "dts-1947",
+            "featureIds": [
+              "DTS-F01",
+              "DTS-F02",
+              "DTS-F03",
+              "DTS-F04",
+              "DTS-F05",
+              "DTS-F06",
+              "DTS-F07",
+              "DTS-F08"
+            ],
+            "description": "戰沖, 日主, labelled 原注, no 1936 parentheses in 原注, 不吉, explicit 任氏曰"
+          },
+          {
+            "profile": "dts-wikisource",
+            "featureIds": [
+              "DTS-F01",
+              "DTS-F03",
+              "DTS-F04",
+              "DTS-F05",
+              "DTS-F06",
+              "DTS-F07"
+            ],
+            "description": "tracks the 1936-style branch at verified loci but flattens layers"
+          }
+        ],
+        "inference": "The sampled evidence shows at least three scan edition profiles. Ming and 1947 share some branch signals; 1936 and the web page share another set. Conflicting mixed readings prevent a directed stemma."
+      }
+    }
+  ],
+  "crossWorkDecision": "No relationship is inferred across 子平真诠 and 滴天髓; their matrices answer separate textual questions.",
+  "notClaimed": [
+    "whole-book stemma",
+    "direct parent-child copying relationship",
+    "chronology beyond catalogued edition dates",
+    "authorship attribution",
+    "canonical or uniquely correct text",
+    "metaphysical validity or predictive accuracy"
+  ],
+  "blindReviewPacket": "bazi-timing-blind-review/packet.json"
+}

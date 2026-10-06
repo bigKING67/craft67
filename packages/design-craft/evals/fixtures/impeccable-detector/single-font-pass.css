@@ -1,0 +1,13 @@
+:root {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+body {
+  font-size: 1rem;
+  font-weight: 400;
+}

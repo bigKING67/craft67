@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://3d-craft.local/schemas/validation.v1.schema.json",
+  "title": "3D-Craft validation report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "candidate_sha256", "status", "gates", "evidence", "issues", "repairs", "delivery"],
+  "properties": {
+    "schema": {"const": "3d-craft.validation.v1"},
+    "candidate_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "status": {"enum": ["PASS", "FAIL", "UNVERIFIED", "BLOCKED"]},
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "evidence", "note"],
+        "properties": {
+          "id": {"$ref": "#/$defs/gate"},
+          "status": {"enum": ["PASS", "FAIL", "UNVERIFIED", "BLOCKED"]},
+          "evidence": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "note": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "evidence": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["severity", "gate", "message"],
+        "properties": {
+          "severity": {"enum": ["P0", "P1", "P2", "P3"]},
+          "gate": {"$ref": "#/$defs/gate"},
+          "message": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "repairs": {"type": "array", "maxItems": 3, "items": {"$ref": "#/$defs/repair"}},
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["files", "commands", "unverified"],
+      "properties": {
+        "files": {"type": "array", "items": {"$ref": "#/$defs/file"}},
+        "commands": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "unverified": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    }
+  },
+  "$defs": {
+    "gate": {"enum": ["authority", "reproduction", "scene_integrity", "identity", "gltf", "cross_runtime", "web_runtime", "delivery"]},
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "repair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate", "hypothesis", "change", "candidate_hash", "verdict"],
+      "properties": {
+        "gate": {"$ref": "#/$defs/gate"},
+        "hypothesis": {"type": "string", "minLength": 1},
+        "change": {"type": "string", "minLength": 1},
+        "candidate_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "verdict": {"enum": ["improved", "regressed", "unchanged"]}
+      }
+    }
+  }
+}

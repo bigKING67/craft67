@@ -1,0 +1,7 @@
+结论：不直接翻倍，先确认 baseline、商业 break-even 和增量，再按 10%-20% 的预算步长安全放量。已确认事实只有“效果广告表现不错”；当前 ROI、毛利、CAC、退款、库存和 attribution 未提供，因此必须先补齐。
+
+Growth Lead 为每轮测试设置 budget cap、受众、素材、落地页、归因窗和主指标；Commercial Strategy 给出可承受 CAC、盈亏平衡 ROI 和目标利润。放量看 marginal CAC、边际 ROI、支付转化、退款、库存、履约和自然需求，不用平均 ROI 代替边际表现。Analytics Owner 用 holdout、区域/人群对照或可比基线判断 incrementality，并区分平台归因和真实增量。
+
+建议每次增加 10%-20%，观察至少一个完整转化与退款窗口；连续两个观察窗满足边际经济性、增量、退款和库存护栏后才再次增加。Stop rule：边际表现持续低于 break-even、退款或履约恶化、库存进入风险线，立即暂停新增预算并回到上一稳定档。Scale rule：增量成立、边际贡献稳定、素材和受众未疲劳、服务能力可承接，再小步放量。
+
+如果新客首单允许亏损，必须把复购率、回购周期、毛利和 LTV 写入可承受 CAC，不能用假设中的未来复购替代已验证回收。周度 Review 由 Growth、Commercial、Operations 和 Analytics 共同做继续、增加、减少、停止或补实验的决定。

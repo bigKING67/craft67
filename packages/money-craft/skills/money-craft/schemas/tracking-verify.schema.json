@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-verify.schema.json",
+  "title": "Money Craft Tracking Verify",
+  "type": "object",
+  "required": ["schema", "valid", "tracking_root", "require_read_only", "current", "revision_count", "revisions", "working_count", "warnings", "errors", "network_used"],
+  "properties": {
+    "schema": {"const": "money-craft.tracking-verify.v1"},
+    "valid": {"type": "boolean"},
+    "tracking_root": {"type": "string", "minLength": 1},
+    "require_read_only": {"type": "boolean"},
+    "current": {"type": ["object", "null"]},
+    "revision_count": {"type": "integer", "minimum": 0},
+    "revisions": {"type": "array", "items": {"type": "object"}},
+    "working_count": {"type": "integer", "minimum": 0},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "errors": {"type": "array", "items": {"type": "string"}},
+    "network_used": {"const": false}
+  }
+}

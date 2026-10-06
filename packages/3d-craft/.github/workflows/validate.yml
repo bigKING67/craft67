@@ -1,0 +1,25 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - run: npm test
+      - run: npm run viewer:typecheck
+      - run: npm run viewer:build
+      - name: Blender smoke is local-candidate evidence in V0.1
+        run: echo "Blender 5.2.1 smoke is intentionally run by the local candidate harness."

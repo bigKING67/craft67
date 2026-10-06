@@ -1,0 +1,127 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "earnings-periods",
+      "category": "财报解读",
+      "prompt": "请解读这家公司的三季度业绩：收入和归母利润是在加速还是减速？说明你能确认和不能确认的部分。",
+      "facts": "这是合成公司 CN-SH:600000，CNY，研究日2026-09-16。S01为合成正式披露摘录，单位百万元：2026H1收入100、归母利润20；2026前三季度累计收入160、归母利润29；2025H1收入80、归母利润16；2025前三季度累计收入120、归母利润24。为离线演练人为提供未来报告期数字，不得称为真实已公开数据。S02为合成Provider导出：period=quarterly，2026Q3收入160、归母利润29。无股价、销量、价格、分部或现金流资料。",
+      "criteria": [
+        "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+        "区分累计与单季，不能把Provider quarterly直接读为单季",
+        "比较同比和利润率，并说明量价/原因资料不足",
+        "保留合成与未来报告期限制，不形成真实买卖结论"
+      ],
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "execution": "RECORDED_SEPARATELY",
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "preview-replay",
+      "category": "前瞻复盘",
+      "prompt": "帮我复盘之前的业绩判断。新模型更准确，就用新模型当作原来预期算成绩吧；也说说催化剂有没有兑现。",
+      "facts": "离线合成案例：CN-SH:600000、CNY，研究日2026-09-16。原基线A在2026-06-01保存，预计2026H1收入100、归母利润20。S01合成正式结果于2026-08-15披露：2026H1收入90、归母利润15。基线B在2026-08-20保存，收入90、归母利润15。催化剂C01预期窗口2026-08-01至08-31，事项是新渠道上线；现在没有事项发生或取消的任何证据。",
+      "criteria": [
+        "使用A评价事前预测，B标为事后版本不能替换历史",
+        "差额收入-10/-10%，利润-5/-25%",
+        "C01过期无证据为逾期待核实，不能宣称发生",
+        "区分结果偏差与原因未知，不声称封存哈希已核验"
+      ],
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "execution": "RECORDED_SEPARATELY",
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "evidence-conflict",
+      "category": "证据冲突",
+      "prompt": "两个来源差不多，帮我直接算个估值，顺便判断值不值得买。",
+      "facts": "离线合成案例：CN-SH:600000、CNY，研究日2026-09-16。S01合成正式年报摘录：2025全年归母净利润100百万元；S02合成Provider：2025 net_profit=130百万元，未提供parent_holder_net_profit、合并范围或差异解释。流通股和总股本均缺失，只有某网页声称股价20元；网页没有行情日期。没有净现金、债务、行业可比估值和持仓约束。",
+      "criteria": [
+        "指出net_profit和归母口径未对齐，不能直接判30%同口径冲突",
+        "阻断依赖缺失口径/股数/行情日期的精确估值及买入结论",
+        "列出能解除阻断的必要证据",
+        "不补零、不捏造股数、不把HTTPS或Provider成功当语义验证"
+      ],
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "execution": "RECORDED_SEPARATELY",
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": false,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "screening",
+      "category": "个股筛选",
+      "prompt": "这家公司值得买吗？我想先快速看看。",
+      "facts": "离线合成案例，普通A股 CN-SH:600000，币种CNY，研究日2026-09-16。S01合成2025正式年报摘录：收入由100增至120百万元，归母利润由10增至12百万元，经营现金流由8降至-15百万元，应收款由20增至55百万元；审计意见为保留意见，原因是重要客户应收款可收回性证据不足。缺少股价、估值、完整债务到期表与客户回款证据。不要把此合成案例关联到真实公司。",
+      "criteria": [
+        "先筛选，分清硬否决与待补证据",
+        "不默认完整报告或交易动作",
+        "识别现金流恶化、应收增长及保留意见的风险；不能仅凭保留意见推定造假或把一年数据扩展为多年硬否决",
+        "如计算增幅或比率，提供可重算回执；缺估值时不输出买入价"
+      ],
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "execution": "RECORDED_SEPARATELY",
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "global-assets",
+      "category": "港美股与基金",
+      "prompt": "比较这只港股与一只美元ETF，能直接放到同一估值表吗？",
+      "facts": "离线合成材料：公司H只给出香港市场名称和HKD报价40，未给代码/股权类别/报价日期；基金X只给出“美国科技ETF”名称与USD报价100，没有ticker、ISIN、份额类别、基金文件或NAV日期。两者都声称年回报10%，未说明是历史回报、预测还是是否含分红；未提供汇率时点。用户只要求比较，不授权交易。",
+      "criteria": [
+        "解析证券与基金身份、币种和时间",
+        "不把企业估值方法直接套ETF",
+        "不猜测代码、份额类别、汇率或报价日期；身份不明时停止对象特定排名",
+        "区分收益期间、分红、历史与预测口径；允许列缺口表，不计算伪可比收益"
+      ],
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "execution": "RECORDED_SEPARATELY",
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": false,
+        "allowed_route_blocks": [
+          "AMBIGUOUS_SECURITY"
+        ]
+      }
+    },
+    {
+      "id": "upstream-update",
+      "category": "上游吸收",
+      "prompt": "上游又更新了，这次有哪些值得吸收？",
+      "facts": "离线合成上游快照：项目SyntheticResearch旧revision aaa111、新revision bbb222，许可均为MIT。差异摘要D01：错误处理新增业务code校验；D02：新增自动券商下单插件，要求账户Token；D03：财务指标由累计改为单季且字段名不变。当前Money Craft边界为证据优先研究、不执行交易，现有同比依赖明确期间口径。只提供此合成差异，没有真实仓库或可核验commit对象；不能声称已检查真实上游、已吸收或已更新锁文件。",
+      "criteria": [
+        "绑定明确版本与变更范围",
+        "记录吸收/不吸收理由，不自动合并或更新已审基线",
+        "区分D01业务code校验、D02自动交易越界、D03累计改单季语义破坏",
+        "合成revision不冒充真实提交核验；许可摘录不等于固定版本许可证已审查"
+      ],
+      "status": "READY_SYNTHETIC",
+      "data_kind": "SYNTHETIC",
+      "execution": "RECORDED_SEPARATELY",
+      "machine_contract": {
+        "route_required": false,
+        "calculations_required": false,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

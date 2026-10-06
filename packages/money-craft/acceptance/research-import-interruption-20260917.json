@@ -1,0 +1,58 @@
+{
+  "schema": "money-craft.research-import-interruption.v1",
+  "date": "2026-09-17",
+  "scope": "Official import exception cleanup and interruption after case publication",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "ed8946a82e65f8070024b73b61ecf19f37fe249f6261e96a152a14bebade3079",
+    "tests/test_research_run.py": "f91f42e9a5d9810e4470ba92d1602de8abbf98450b6eeaeb1631bbd4924a7ec2",
+    "skills/money-craft/references/company-research.md": "2a9574462ba195313ccada5ee5a32d84ce9977a95ee3c19badcb3b36749b9d1d"
+  },
+  "findings": [
+    {
+      "status": "FIXED",
+      "before": "Case published then writer raised; cleanup deleted the referenced evidence.",
+      "after": "Cleanup requires original case bytes and owned destination inode; published or uncertain state preserves evidence."
+    },
+    {
+      "status": "FIXED",
+      "before": "Case imported without completion event could pass status and proceed to finalize.",
+      "after": "load_workspace rejects incomplete_import; state-limit preflight prevents known event exhaustion before evidence writes."
+    }
+  ],
+  "validation": {
+    "research_tests": 37,
+    "full_tests": 300,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regressions": "Old after-case fixture deleted evidence; old event-failure fixture did not reject status.",
+    "real_cli": "Kill import immediately after case.json publication; evidence remains, status/finalize exit4 incomplete_import, directory bytes unchanged, no receipt created.",
+    "fault_injection": [
+      "before-case failure rolls back owned evidence",
+      "after-case and event failure preserve evidence and block use",
+      "state-limit prevents writes"
+    ]
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 37,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "ed8946a82e65f8070024b73b61ecf19f37fe249f6261e96a152a14bebade3079",
+      "tests/test_research_run.py": "f91f42e9a5d9810e4470ba92d1602de8abbf98450b6eeaeb1631bbd4924a7ec2"
+    },
+    "additional_probes": "Different destination inode preserved; unreadable case preserves evidence; exact event-limit blocks without mutation. Reviewer-reported isolated temporary fixtures."
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T055208828468Z"
+  },
+  "limits": [
+    "No in-place automatic repair: preserve failed workspace and create a new run.",
+    "Lifecycle remains PARTIAL: journal/transaction recovery, pre-case kill orphans, other interruption windows, initialization competition remain open.",
+    "Source-ID event presence is not proof of event authenticity or full event-to-metadata reconciliation.",
+    "No Windows, network filesystem or power-loss durability acceptance.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No live provider, app, commit, push or release."
+  ]
+}

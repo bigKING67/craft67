@@ -1,0 +1,13 @@
+interface:
+  display_name: "browser67 JS Reverse"
+  short_description: "Trace browser signatures, hooks, and network evidence"
+  default_prompt: "Use $js-reverse to trace browser signatures and request initiators, capture bounded hook/network evidence, and build a reproducible local reconstruction."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "js-reverse"
+      description: "browser67 JS reverse MCP for request tracing, hooks, evidence export, and local rebuild workflows."
+
+policy:
+  allow_implicit_invocation: true

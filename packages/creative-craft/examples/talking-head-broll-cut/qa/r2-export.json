@@ -1,0 +1,53 @@
+{
+  "schema_version": "creative-craft.render-qa.v1",
+  "qa_id": "qa-r2",
+  "project_id": "talk-broll",
+  "revision": 2,
+  "revision_sha256": "e6e962b76567b3b2209a61b412626e6283a99719680d18c1a40e77146777ca96",
+  "render": {
+    "kind": "export",
+    "file": "renders/r2-export.synthetic",
+    "sha256": "c915cee84c13d4e3730b68f79beec7cfbdec6e439ae70d5eea301f486018d33b",
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "duration_seconds": 15.0,
+    "has_audio": true
+  },
+  "tool": {
+    "name": "synthetic-fixture",
+    "version": "0"
+  },
+  "created_at": "2026-10-02T00:00:00Z",
+  "checks": [
+    {
+      "id": "duration",
+      "category": "structure",
+      "status": "pass",
+      "observation": "Synthetic check; no real render was measured."
+    }
+  ],
+  "samples": [
+    {
+      "id": "s-talk2",
+      "time_seconds": 14.0,
+      "reason": "item_mid",
+      "item_id": "talk2",
+      "file": "qa/s-talk2.png",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "boundary_clips": [],
+  "contact_sheet": null,
+  "verdict": "pass",
+  "review": {
+    "status": "done",
+    "reviewer": "synthetic-agent",
+    "reviewer_kind": "agent",
+    "decision": "accept",
+    "findings": []
+  },
+  "unverified": [
+    "Synthetic fixture: no real render, frames or audio were inspected."
+  ]
+}

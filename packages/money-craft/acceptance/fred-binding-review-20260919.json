@@ -1,0 +1,44 @@
+{
+  "schema": "money-craft.fred-binding-review.v1",
+  "date": "2026-09-19",
+  "scope": "Series identity, search row identity shape, vintage date shape and exact as-of response admission",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "1f34421946199564e3b9fb436473e23b0042138c9c7c95f0b9b87493f028977e",
+    "tests/test_fred_adapter.py": "86e1da24a00ce9fc699d06d664f60db41dc45a8dc0e2118cbc73703c456f3bd4",
+    "skills/money-craft/references/providers/fred.md": "ebe773a6cf589437b66f33af7c773bbe59c20f3ec3e684d4eabbb006bd0f8771"
+  },
+  "findings": {
+    "status": "FIXED",
+    "before": "Array-only series/search/vintage checks admitted wrong identities and malformed dates; historical single-day responses were not bound to the requested day.",
+    "after": "Unique requested series identity; nonempty string search identities; canonical vintage dates; exact as-of envelope and row validity interval containing requested day."
+  },
+  "validation": {
+    "fred_tests": 23,
+    "full_tests": 368,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 30,
+    "real_cli": "Two injected subprocess CLI cases return EXIT_SCHEMA for wrong series identity and wrong as-of date; no capture directory or synthetic credential in output."
+  },
+  "review": {
+    "mode": "parent scoped implementation and regression review",
+    "independent_agent_review": "NOT_RUN"
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T014100267681Z"
+  },
+  "official_contract_sources": [
+    "https://fred.stlouisfed.org/docs/api/fred/series.html",
+    "https://fred.stlouisfed.org/docs/api/fred/series_vintagedates.html",
+    "https://fred.stlouisfed.org/docs/api/fred/realtime_period.html"
+  ],
+  "limits": [
+    "FRED remains PARTIAL; arbitrary realtime ranges, observation bounds, unit transforms, pagination and remaining network errors are not closed.",
+    "Observations/vintages do not return series identity; request/capture association is not independent proof of numerical origin.",
+    "No live Provider data, new host Skill injection, app, commit, push or release.",
+    "Existing HTTPError fixture ResourceWarnings remain."
+  ]
+}

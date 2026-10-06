@@ -1,0 +1,59 @@
+{
+  "case_id": "ops-dashboard-decision-surface-l4-before",
+  "evidence_level": "L4",
+  "expected_score": 79,
+  "acceptable_range": [
+    77,
+    81
+  ],
+  "maturity_band": "clean but generic dashboard calibration fixture",
+  "screenshot_sha256": "ebbfac6ad45fa9cc93252326d8d12892a75367812cc82f7e94875805af54c34e",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "ebbfac6ad45fa9cc93252326d8d12892a75367812cc82f7e94875805af54c34e",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "compact500",
+      "css_size": [
+        500,
+        844
+      ],
+      "dimensions": [
+        500,
+        844
+      ],
+      "artifact_sha256": "cbbbf386e5867058cc322b8d8cf635a4cdd74beb6da58693aeedcd0b72f65d1c",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "responsive_fit": "verified at desktop and compact500 through screenshot artifacts plus dump-dom layout metrics",
+    "primary_action_visibility": "not verified as a decisive action; the before variant has routine overview controls but no first-fold dispatch object",
+    "loading_empty_error": "not applicable to this static calibration fixture",
+    "focus_keyboard_hover": "not claimed; CSS focus-visible exists, but no pointer or keyboard traversal artifact was captured"
+  },
+  "required_findings": [
+    "The before variant is visually tidy but overview-first: headline, metrics, queue table, chart, and notes all compete as equal dashboard ingredients.",
+    "The metric cards create card soup because risk, throughput, handoff, and age share the same surface treatment despite different operational urgency.",
+    "The first actionable owner assignment is hidden in interpretation rather than visible as a dispatch decision."
+  ],
+  "false_positive_guards": [
+    "Do not score this above the low 80s because the dashboard still asks the operator to infer priority from equal overview modules.",
+    "Do not treat the local fixture as proof of production data, authenticated routing, backend integration, or real workflow behavior.",
+    "Do not claim exact 390px phone coverage; compact responsive evidence is explicitly limited to 500x844 in this run."
+  ]
+}

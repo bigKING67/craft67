@@ -1,0 +1,556 @@
+{
+  "schema": "money-craft.target-q1-replay-result.v1",
+  "valid": true,
+  "as_of": "2025-05-21",
+  "prior_review_sha256": "e4c4fb6dd867e1246fe39f10f34821c3cbeef795861a3f8b7797cf392305d388",
+  "values": {
+    "revenue": "23846",
+    "revenue_prior": "24531",
+    "op_income": "1472",
+    "op_prior": "1296",
+    "net_income": "1036",
+    "net_prior": "942",
+    "gain_pretax": "593",
+    "gain_aftertax": "441",
+    "eps": "2.27",
+    "eps_adjustment": "0.97",
+    "eps_adjusted": "1.30",
+    "eps_prior": "2.03",
+    "inventory": "13048",
+    "inventory_prior": "11730",
+    "ocf": "275",
+    "ocf_prior": "1101",
+    "capex": "790",
+    "capex_prior": "674",
+    "investing": "-787",
+    "financing": "-1363",
+    "cash_start": "4762",
+    "cash_end": "2887",
+    "repurchase_cash": "250",
+    "repurchase_announced": "251",
+    "dividends": "510",
+    "old_low": "8.80",
+    "old_high": "9.80",
+    "new_adjusted_low": "7.00",
+    "new_adjusted_high": "9.00",
+    "new_gaap_low": "8.00",
+    "new_gaap_high": "10.00",
+    "adjusted_op": "879",
+    "adjusted_net": "595",
+    "gain_tax": "152",
+    "adjusted_eps_check": "1.30",
+    "revenue_delta": "-685",
+    "revenue_change": "-0.02792385145326321796910032204149851",
+    "revenue_pct": "-2.792385145326321796910032204149851",
+    "op_income_delta": "176",
+    "op_income_change": "0.1358024691358024691358024691358025",
+    "op_income_pct": "13.58024691358024691358024691358025",
+    "adjusted_op_delta": "-417",
+    "adjusted_op_change": "-0.3217592592592592592592592592592593",
+    "adjusted_op_pct": "-32.17592592592592592592592592592593",
+    "net_income_delta": "94",
+    "net_income_change": "0.09978768577494692144373673036093418",
+    "net_income_pct": "9.978768577494692144373673036093418",
+    "adjusted_net_delta": "-347",
+    "adjusted_net_change": "-0.3683651804670912951167728237791932",
+    "adjusted_net_pct": "-36.83651804670912951167728237791932",
+    "inventory_delta": "1318",
+    "inventory_change": "0.1123614663256606990622335890878090",
+    "inventory_pct": "11.23614663256606990622335890878090",
+    "ocf_delta": "-826",
+    "ocf_change": "-0.7502270663033605812897366030881017",
+    "ocf_pct": "-75.02270663033605812897366030881017",
+    "op_income_margin": "0.06172943051245491906399396125136291",
+    "op_income_margin_pct": "6.172943051245491906399396125136291",
+    "adjusted_op_margin": "0.03686152813889121865302356789398641",
+    "adjusted_op_margin_pct": "3.686152813889121865302356789398641",
+    "prior_margin": "0.05283111165464106640577228812522930",
+    "prior_margin_pct": "5.283111165464106640577228812522930",
+    "adjusted_margin_change": "-0.01596958351574984775274872023124289",
+    "adjusted_margin_change_pp": "-1.596958351574984775274872023124289",
+    "fcf": "-515",
+    "fcf_prior": "427",
+    "cash_change": "-1875",
+    "cash_end_check": "2887",
+    "old_sum": "18.60",
+    "old_mid": "9.30",
+    "new_adjusted_sum": "16.00",
+    "new_adjusted_mid": "8.00",
+    "new_gaap_sum": "18.00",
+    "new_gaap_mid": "9.00",
+    "adjusted_mid_change": "-1.30",
+    "low_change": "-1.80",
+    "high_change": "-0.80"
+  },
+  "calculations": [
+    {
+      "id": "C01",
+      "operation": "subtract",
+      "inputs": [
+        "1472",
+        "593"
+      ],
+      "expected": "879",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C02",
+      "operation": "subtract",
+      "inputs": [
+        "1036",
+        "441"
+      ],
+      "expected": "595",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C03",
+      "operation": "subtract",
+      "inputs": [
+        "593",
+        "441"
+      ],
+      "expected": "152",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C04",
+      "operation": "subtract",
+      "inputs": [
+        "2.27",
+        "0.97"
+      ],
+      "expected": "1.30",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C05",
+      "operation": "subtract",
+      "inputs": [
+        "23846",
+        "24531"
+      ],
+      "expected": "-685",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C06",
+      "operation": "divide",
+      "inputs": [
+        "-685",
+        "24531"
+      ],
+      "expected": "-0.02792385145326321796910032204149851",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C07",
+      "operation": "multiply",
+      "inputs": [
+        "-0.02792385145326321796910032204149851",
+        "100"
+      ],
+      "expected": "-2.792385145326321796910032204149851",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C08",
+      "operation": "subtract",
+      "inputs": [
+        "1472",
+        "1296"
+      ],
+      "expected": "176",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C09",
+      "operation": "divide",
+      "inputs": [
+        "176",
+        "1296"
+      ],
+      "expected": "0.1358024691358024691358024691358025",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C10",
+      "operation": "multiply",
+      "inputs": [
+        "0.1358024691358024691358024691358025",
+        "100"
+      ],
+      "expected": "13.58024691358024691358024691358025",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C11",
+      "operation": "subtract",
+      "inputs": [
+        "879",
+        "1296"
+      ],
+      "expected": "-417",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C12",
+      "operation": "divide",
+      "inputs": [
+        "-417",
+        "1296"
+      ],
+      "expected": "-0.3217592592592592592592592592592593",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C13",
+      "operation": "multiply",
+      "inputs": [
+        "-0.3217592592592592592592592592592593",
+        "100"
+      ],
+      "expected": "-32.17592592592592592592592592592593",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C14",
+      "operation": "subtract",
+      "inputs": [
+        "1036",
+        "942"
+      ],
+      "expected": "94",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C15",
+      "operation": "divide",
+      "inputs": [
+        "94",
+        "942"
+      ],
+      "expected": "0.09978768577494692144373673036093418",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C16",
+      "operation": "multiply",
+      "inputs": [
+        "0.09978768577494692144373673036093418",
+        "100"
+      ],
+      "expected": "9.978768577494692144373673036093418",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C17",
+      "operation": "subtract",
+      "inputs": [
+        "595",
+        "942"
+      ],
+      "expected": "-347",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C18",
+      "operation": "divide",
+      "inputs": [
+        "-347",
+        "942"
+      ],
+      "expected": "-0.3683651804670912951167728237791932",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C19",
+      "operation": "multiply",
+      "inputs": [
+        "-0.3683651804670912951167728237791932",
+        "100"
+      ],
+      "expected": "-36.83651804670912951167728237791932",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C20",
+      "operation": "subtract",
+      "inputs": [
+        "13048",
+        "11730"
+      ],
+      "expected": "1318",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C21",
+      "operation": "divide",
+      "inputs": [
+        "1318",
+        "11730"
+      ],
+      "expected": "0.1123614663256606990622335890878090",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C22",
+      "operation": "multiply",
+      "inputs": [
+        "0.1123614663256606990622335890878090",
+        "100"
+      ],
+      "expected": "11.23614663256606990622335890878090",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C23",
+      "operation": "subtract",
+      "inputs": [
+        "275",
+        "1101"
+      ],
+      "expected": "-826",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C24",
+      "operation": "divide",
+      "inputs": [
+        "-826",
+        "1101"
+      ],
+      "expected": "-0.7502270663033605812897366030881017",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C25",
+      "operation": "multiply",
+      "inputs": [
+        "-0.7502270663033605812897366030881017",
+        "100"
+      ],
+      "expected": "-75.02270663033605812897366030881017",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C26",
+      "operation": "divide",
+      "inputs": [
+        "1472",
+        "23846"
+      ],
+      "expected": "0.06172943051245491906399396125136291",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C27",
+      "operation": "multiply",
+      "inputs": [
+        "0.06172943051245491906399396125136291",
+        "100"
+      ],
+      "expected": "6.172943051245491906399396125136291",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C28",
+      "operation": "divide",
+      "inputs": [
+        "879",
+        "23846"
+      ],
+      "expected": "0.03686152813889121865302356789398641",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C29",
+      "operation": "multiply",
+      "inputs": [
+        "0.03686152813889121865302356789398641",
+        "100"
+      ],
+      "expected": "3.686152813889121865302356789398641",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C30",
+      "operation": "divide",
+      "inputs": [
+        "1296",
+        "24531"
+      ],
+      "expected": "0.05283111165464106640577228812522930",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C31",
+      "operation": "multiply",
+      "inputs": [
+        "0.05283111165464106640577228812522930",
+        "100"
+      ],
+      "expected": "5.283111165464106640577228812522930",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C32",
+      "operation": "subtract",
+      "inputs": [
+        "0.03686152813889121865302356789398641",
+        "0.05283111165464106640577228812522930"
+      ],
+      "expected": "-0.01596958351574984775274872023124289",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C33",
+      "operation": "multiply",
+      "inputs": [
+        "-0.01596958351574984775274872023124289",
+        "100"
+      ],
+      "expected": "-1.596958351574984775274872023124289",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C34",
+      "operation": "subtract",
+      "inputs": [
+        "275",
+        "790"
+      ],
+      "expected": "-515",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C35",
+      "operation": "subtract",
+      "inputs": [
+        "1101",
+        "674"
+      ],
+      "expected": "427",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C36",
+      "operation": "add",
+      "inputs": [
+        "275",
+        "-787",
+        "-1363"
+      ],
+      "expected": "-1875",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C37",
+      "operation": "add",
+      "inputs": [
+        "4762",
+        "-1875"
+      ],
+      "expected": "2887",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C38",
+      "operation": "add",
+      "inputs": [
+        "8.80",
+        "9.80"
+      ],
+      "expected": "18.60",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C39",
+      "operation": "divide",
+      "inputs": [
+        "18.60",
+        "2"
+      ],
+      "expected": "9.30",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C40",
+      "operation": "add",
+      "inputs": [
+        "7.00",
+        "9.00"
+      ],
+      "expected": "16.00",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C41",
+      "operation": "divide",
+      "inputs": [
+        "16.00",
+        "2"
+      ],
+      "expected": "8.00",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C42",
+      "operation": "add",
+      "inputs": [
+        "8.00",
+        "10.00"
+      ],
+      "expected": "18.00",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C43",
+      "operation": "divide",
+      "inputs": [
+        "18.00",
+        "2"
+      ],
+      "expected": "9.00",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C44",
+      "operation": "subtract",
+      "inputs": [
+        "8.00",
+        "9.30"
+      ],
+      "expected": "-1.30",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C45",
+      "operation": "subtract",
+      "inputs": [
+        "7.00",
+        "8.80"
+      ],
+      "expected": "-1.80",
+      "tolerance": "0.000001"
+    },
+    {
+      "id": "C46",
+      "operation": "subtract",
+      "inputs": [
+        "9.00",
+        "9.80"
+      ],
+      "expected": "-0.80",
+      "tolerance": "0.000001"
+    }
+  ],
+  "status": "PASS_BOUNDED_RETROSPECTIVE_REVIEW",
+  "prediction_score": "NOT_APPLICABLE",
+  "input_sha256": "c51167efb72d2db33446e323119032c7787b0b05b95e444a82d587ae2e7f503f",
+  "source_hashes": {
+    "S02": "cc5eab890121b9a46d4eda35a22bf46d86e2d83ccee959b1811b1a3a20b1771b",
+    "S01": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271",
+    "S12": "48f720395cbb6755ec9c3323bdd582b3703ea0bf231c7a848499b1d4b3607de9"
+  }
+}

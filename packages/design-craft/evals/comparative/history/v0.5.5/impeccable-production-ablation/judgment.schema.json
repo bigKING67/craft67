@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["results", "winner", "rationale"],
+  "properties": {
+    "results": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["label", "criteria", "total", "summary"],
+        "properties": {
+          "label": {"enum": ["A", "B", "C"]},
+          "criteria": {
+            "type": "object",
+            "required": [
+              "mode_sequence",
+              "hostile_data",
+              "responsive_accessibility",
+              "measured_performance",
+              "detector_reconciliation",
+              "production_fixes",
+              "evidence_scope"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "mode_sequence": {"type": "integer", "minimum": 0, "maximum": 10},
+              "hostile_data": {"type": "integer", "minimum": 0, "maximum": 20},
+              "responsive_accessibility": {"type": "integer", "minimum": 0, "maximum": 15},
+              "measured_performance": {"type": "integer", "minimum": 0, "maximum": 15},
+              "detector_reconciliation": {"type": "integer", "minimum": 0, "maximum": 10},
+              "production_fixes": {"type": "integer", "minimum": 0, "maximum": 20},
+              "evidence_scope": {"type": "integer", "minimum": 0, "maximum": 10}
+            }
+          },
+          "total": {"type": "integer", "minimum": 0, "maximum": 100},
+          "summary": {"type": "string", "minLength": 20}
+        },
+        "additionalProperties": false
+      }
+    },
+    "winner": {"enum": ["A", "B", "C"]},
+    "rationale": {"type": "string", "minLength": 40}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "status": "PASS_BOUNDED_SOURCE_TASK",
+  "date": "2026-09-20",
+  "reviewer": "main agent manual review; not independent",
+  "run_dir": "local/skill-evals/20260920-disclosure-tie/source-blind",
+  "elapsed_seconds": 273.615,
+  "invocation": "EXPLICIT_SOURCE_PATH",
+  "machine_checks_pass": true,
+  "financial_checks": 20,
+  "semantic_checks": [
+    {
+      "criterion": "实际读取源码Skill与财务证据引用且路由成功",
+      "status": "PASS",
+      "reason": "Trace shows source SKILL.md, revised financial-data-and-evidence.md, semantic review reference, successful route and exact excerpt hash check."
+    },
+    {
+      "criterion": "无提示主动按销量单价和单位成本复算并发现与披露综合毛利率不一致",
+      "status": "PASS",
+      "reason": "Answer reconstructs product revenues and costs and explicitly contrasts computed and disclosed aggregate margins without a discrepancy hint in the prompt."
+    },
+    {
+      "criterion": "保留披露值与复算值且不将差异擅自解释为舍入",
+      "status": "PASS",
+      "reason": "Answer states cause is unverified, refuses one-percent shortcut and unsupported rounding; failed equality diagnostic retained in command output."
+    },
+    {
+      "criterion": "区分项目假设、实际订单和集团净利润；不凭未决值给确定估值",
+      "status": "PASS",
+      "reason": "Answer separates feasibility inputs, demand projections, orders, gross profit, net profit and IRR; blocks deterministic valuation pending reconciliation."
+    },
+    {
+      "criterion": "相对建设及达产年份不当作确定公历时间",
+      "status": "PASS",
+      "reason": "Answer preserves project-relative years and explicitly declines mapping to certain calendar years."
+    },
+    {
+      "criterion": "最终关键计算回执通过，说明同源及历史回放边界",
+      "status": "PASS",
+      "reason": "Final answer has 20 valid calculation receipts and registered public source link; historical, excerpt-only and non-independent peer-data limits stated."
+    }
+  ],
+  "artifact_hashes": {
+    "prompt.txt": "91cd608ea1e4951fccc780ce530f960bd6e3dc0561b8eb50569d20b3d6cc1d12",
+    "answer.md": "52dec92410a96e887b8fc51cb3d09c5bcdd8d115eaa0439c5e48d89aeb3108b3",
+    "events.jsonl": "0b95ce60af9ada53859c28ce087cb62e3b076f3969f64fd94c8eaf8556dedfe0",
+    "host.json": "1ad639670c390574201705468769234c0a8656a86835585e6ef9a7b2c95e5758",
+    "machine-audit.json": "13e0640a6094f1575d5d9bcfd9aea5063928dc14e65d2a140bfcdd1c2cd1333d",
+    "case-snapshot.json": "879d5c247f730012fc620cac64678b9937d28766588870608670c0f152b8972a"
+  },
+  "limits": [
+    "One historical two-page excerpt case, not broad or repeated-run generalization.",
+    "Explicit source Skill path; automatic global installed Skill discovery and upgraded installation not tested.",
+    "Machine audit verifies arithmetic and bindings, manual semantic review verifies bounded interpretation.",
+    "No current investment recommendation, external corroboration or whole-repository release acceptance."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "blocking_reasons": [],
+  "created_at": "2026-08-17T04:00:00Z",
+  "references": [
+    {
+      "adapt": [
+        "Use one high-signal community promise as the entry point instead of stacking multiple marketing sections above the fold.",
+        "Let real event or portfolio evidence enter the viewport early without competing with the primary message.",
+        "Preserve hierarchy across breakpoints even when navigation changes orientation."
+      ],
+      "card_id": "peekpaper-2026-08-11-design-meetup",
+      "reject": [
+        "Do not reuse the event artwork, identity, copy, or exact typographic scale and spacing.",
+        "Do not infer event-card interaction, ticketing behavior, or accessibility from static captures.",
+        "The user must immediately operate controls, compare records, or complete a transactional workflow."
+      ],
+      "role": "structure",
+      "unverified": [
+        "interaction: partial",
+        "accessibility: partial",
+        "performance: partial"
+      ]
+    },
+    {
+      "adapt": [
+        "Demonstrate a mobile product inside its native device context before relying on explanatory copy.",
+        "Use a small number of social fragments to establish emotional context around concrete product proof.",
+        "Reduce decorative fragments and strengthen the direct acquisition action on mobile."
+      ],
+      "card_id": "peekpaper-2026-08-11-locket",
+      "reject": [
+        "Do not reuse user photos, stickers, interface screens, identity, copy, or exact device composition.",
+        "Do not infer retention, sharing behavior, privacy, or app performance from the landing page.",
+        "The target is a desktop operational product or the device mockup would obscure the primary workflow."
+      ],
+      "role": "responsive",
+      "unverified": [
+        "interaction: partial",
+        "accessibility: partial",
+        "performance: partial"
+      ]
+    }
+  ],
+  "schema": "design-craft.visual-reference-pack.v1",
+  "status": "ready",
+  "task": {
+    "audience": "frontend leads and design engineers preparing a visual release review",
+    "authority_refs": [
+      "evals/visual-reference/target-validation/reference-assisted-product-landing/PRODUCT.md",
+      "evals/visual-reference/target-validation/reference-assisted-product-landing/DESIGN.md"
+    ],
+    "primary_job": "understand the offer, inspect a concrete review bundle, and start a review or open the sample report",
+    "surface_mode": "Persuade"
+  }
+}

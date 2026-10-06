@@ -1,0 +1,22 @@
+{
+  "reviewer": "parent",
+  "independent": false,
+  "a_shares_date": "2026-09-18",
+  "a_share_balance": "OBSERVED",
+  "h_share_balance_date": "2026-09-16",
+  "h_share_balance_on_18": "UNVERIFIED",
+  "exchange_a_price": "UNVERIFIED",
+  "full_group_market_cap": "UNVERIFIED",
+  "post_close_disclosure": true,
+  "visual_pages": [
+    "S27:2",
+    "S28:1",
+    "S28:2",
+    "S29:2"
+  ],
+  "calculations": 12,
+  "core_imported": false,
+  "review_sha256": "8dfbce06d61d620e357c6845ddafa150ccd18399adc3266c3e0ee6a88ce50deb",
+  "ledger_verified": true,
+  "status": "PASS_A_SHARE_BALANCE_FULL_VALUATION_UNVERIFIED"
+}

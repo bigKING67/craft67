@@ -1,0 +1,52 @@
+{
+  "schema": "money-craft.tracking-publication-review.v1",
+  "date": "2026-09-17",
+  "scope": "Bounded finalize exception cleanup, not general crash recovery or concurrent read consistency",
+  "findings": [
+    {
+      "before": "Failure setting destination permissions after rename leaves an orphan revision.",
+      "after": "Mark revision published immediately after rename so pre-pointer failure cleans up owned destination."
+    },
+    {
+      "before": "Directory fsync failure after atomic current replacement deletes the referenced revision.",
+      "after": "Preserve destination if current refers to it or pointer cannot safely be read; surface original failure and retain workspace."
+    }
+  ],
+  "source_hashes": {
+    "skills/money-craft/scripts/tracking_workflow.py": "a2780737efd64671bc1751cde7f8f4fa32f60bb844d8ddec14985173035110d5",
+    "skills/money-craft/references/tracking-workflow.md": "e0c45a8233d29c0841916eac2131c76a52fd982d32f140abd11d837a587aa9eb",
+    "tests/test_tracking_workflow.py": "2d00b9b1e3823508ecdf228a279ac01121d824d517993c650de4f4394fa738f1"
+  },
+  "validation": {
+    "tracking_tests": 19,
+    "full_tests": 270,
+    "skips": 0,
+    "package_checks": 8,
+    "mechanism": "Subprocess invoking actual CLI main track check, with os.chmod/os.replace/os.fsync fault injection at three publication phases.",
+    "before_fix": "Regression failed for orphan revision and dangling current; pre-replace failure already rolled back.",
+    "after_fix": "All phases return error and preserve workspace. Pre-pointer phases leave no staged/final revision and clean retry verifies. Post-replace phase verifies, stale retry cannot create t0002, fresh initialization succeeds.",
+    "source_checks": 19
+  },
+  "independent_review": {
+    "agent": "publication_failure_review",
+    "verdict": "NO_BLOCKING_FINDINGS",
+    "source_sha256": "a2780737efd64671bc1751cde7f8f4fa32f60bb844d8ddec14985173035110d5",
+    "tracking_tests": 19,
+    "additional_observations": [
+      "Existing two-revision history preserved on third-revision chmod and pre-pointer failure; retry verified.",
+      "Post-replace failure plus unreadable current preserved third revision/workspace; verification passed after reads recovered."
+    ],
+    "evidence_boundary": "Additional branches reported by independent reviewer temporary probes, not persisted regression transcripts."
+  },
+  "limits": [
+    "Deterministic injected I/O failures, not physical power loss or SIGKILL.",
+    "No Windows/network filesystem or concurrent-reader validation.",
+    "Pointer unreadability deliberately preserves destination; no automatic repair.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T031000848660Z"
+  }
+}

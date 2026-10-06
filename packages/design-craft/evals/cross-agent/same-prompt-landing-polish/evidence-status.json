@@ -1,0 +1,22 @@
+{
+  "schema": "design-craft.cross-agent-status.v1",
+  "task_id": "same-prompt-landing-polish",
+  "hosts": {
+    "codex": {
+      "status": "pending",
+      "reason": "This active definition has not yet admitted a current-source v4 run."
+    },
+    "pi": {
+      "status": "pending",
+      "reason": "This active definition has not yet admitted a current-source v4 run."
+    },
+    "cursor": {
+      "status": "pending",
+      "reason": "This active definition has not yet admitted a current-source v4 run."
+    },
+    "claude": {
+      "status": "pending",
+      "reason": "This active definition has not yet admitted a current-source v4 run."
+    }
+  }
+}

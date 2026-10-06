@@ -1,0 +1,62 @@
+{
+  "schema": "money-craft.commercial-evidence-review.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_SOURCE_CASE",
+  "reviewer": "main agent manual review, not independent",
+  "run_dir": "local/skill-evals/20260920-commercial-evidence/source",
+  "elapsed_seconds": 173.061,
+  "frozen_case_sha256": "75dd95b6fb21cfb37ba488f93174d547aa9ae5692af446ff79461f4e4291f707",
+  "machine_checks_pass": true,
+  "financial_checks": 11,
+  "semantic_checks": [
+    {
+      "criterion": "自动加载适用Skill并路由成功，关键计算回执通过",
+      "status": "PASS",
+      "reason": "Source Skill and revised references read; earnings route READY; 11 valid receipts."
+    },
+    {
+      "criterion": "框架不计订单、定点生命周期配套不当年度保证采购，不与生效订单重复加总",
+      "status": "PASS",
+      "reason": "Lifecycle quantity distinguished from annual committed procurement; framework not counted as order."
+    },
+    {
+      "criterion": "生效订单合同金额100万美元有信息价值但非保证兑现；未发出60万、寄售10万、已确认30万区分，不把全部收入未确认部分都武断定义为在手订单",
+      "status": "PASS",
+      "reason": "Effective cancellable contract recognized; unshipped, consigned and revenue-recognized quantities separated without double counting."
+    },
+    {
+      "criterion": "已实现毛利6万美元、毛利率20%，不外推订单净利；寄售不认收入",
+      "status": "PASS",
+      "reason": "Batch gross profit and margin computed; missing expenses/taxes/attribution prevent net-profit extrapolation."
+    },
+    {
+      "criterion": "现金收取15万美元与收入30万美元分开，预收不认收入；不把应收和订单再加到收入",
+      "status": "PASS",
+      "reason": "Recognized-revenue collections separated from advance; no inference of overdue debt without aging."
+    },
+    {
+      "criterion": "未决取消及交付、费用与净利、同源限制明确，不声称没有订单",
+      "status": "PASS",
+      "reason": "Conditional future realization and issuer-only evidence distinguished from actual progress."
+    }
+  ],
+  "source_validation_checks_passed": 20,
+  "artifact_hashes": {
+    "prompt.txt": "b73266d58495f6a30e77e645b12971dd738177d2843181850c6644be8d0b9114",
+    "answer.md": "b3d4b548363925c0b60af78e652b4ccdfb51af6a6775abc886176e24676fc2be",
+    "events.jsonl": "7e65e9c8cd7f179675527776ed2bfde27a879facf11d90d4554345d8fb3f4b08",
+    "host.json": "46c060416a6d793043a07a39faeb77ebcab54e9197f6ccd03f36b08e3c8c265f",
+    "machine-audit.json": "2a45521d6e58a7078fea01c7a64a55f606c5a86ed0e0cc5d978df1f9d1ae1592"
+  },
+  "changed_references": [
+    "references/financial-data-and-evidence.md",
+    "references/research-semantic-review.md"
+  ],
+  "runtime_code_changed": false,
+  "global_install_updated": false,
+  "limits": [
+    "Single synthetic mixed-state sample, not legal or accounting certification or broad generalization.",
+    "Explicit source path; global installed behavior not tested for this revision.",
+    "No commit, push or publication."
+  ]
+}

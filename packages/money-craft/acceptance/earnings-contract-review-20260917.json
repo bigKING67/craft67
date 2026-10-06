@@ -1,0 +1,60 @@
+{
+  "schema": "money-craft.earnings-contract-review.v1",
+  "date": "2026-09-17",
+  "scope": "Whole earnings_update and earnings_baseline modules, relevant tests/helpers; bounded offline contract review",
+  "source_hashes": {
+    "skills/money-craft/scripts/earnings_update.py": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+    "skills/money-craft/scripts/earnings_baseline.py": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+    "skills/money-craft/references/earnings-review.md": "726987dfcad4a3e78c6f9e492dc78ad80ae5f738a1a88e004cf5bc44bbf17829",
+    "tests/test_earnings_update.py": "a2292e971e8f212eaba4a677de61db44ca77f2933e14040fa5cab06aac7e7b38",
+    "tests/test_earnings_baseline.py": "2c7b3343cd36e9dce5f8ed696ded87407f32231750c1ce823a4ff5099867e6f2"
+  },
+  "findings": [
+    {
+      "severity": "P2",
+      "before": "Annual one-day, quarterly one-year and YTD two-year expectations could seal successfully.",
+      "after": "Preview validation reuses shared fiscal-window length/basis checks before publication.",
+      "status": "FIXED_LOCAL"
+    },
+    {
+      "severity": "P2",
+      "before": "Research as_of=2099-01-01 produced valid earnings update and tracking proposal.",
+      "after": "Update entry rejects research date after host local civil day. Positive fixtures use 2026-09-01, still after prior thesis.",
+      "status": "FIXED_LOCAL"
+    }
+  ],
+  "kept_contracts": [
+    "Restated comparison does not overwrite frozen prior valuation values.",
+    "Dated expectations predate first actual disclosure and bind contemporaneous sources.",
+    "Seal does not overwrite prior files; replay preserves baseline and does not auto-confirm thesis."
+  ],
+  "validation": {
+    "targeted_tests": 34,
+    "full_tests": 274,
+    "package_checks": 8,
+    "source_checks": 19,
+    "regressions_failed_before_fix": true
+  },
+  "independent_review": {
+    "agent": "earnings_contract_review",
+    "verdict": "NO_UNRESOLVED_FINDINGS",
+    "tests": 34,
+    "source_hashes": {
+      "skills/money-craft/scripts/earnings_update.py": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+      "skills/money-craft/scripts/earnings_baseline.py": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73"
+    },
+    "additional_observations": "Restated profit/shares modify comparison only; prior valuation retains original inputs. Prior-source-after-thesis and actual-source-before-period-end mutations rejected.",
+    "evidence_boundary": "Additional probes reported by reviewer, raw temporary probe transcripts not registered."
+  },
+  "limits": [
+    "Offline synthetic tests do not verify issuer extraction or external timestamps.",
+    "Host local civil calendar governs research date; no multi-host timezone proof.",
+    "Existing invalid-period baselines are rejected on inspect/replay, not migrated or rewritten.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T032941992498Z"
+  }
+}

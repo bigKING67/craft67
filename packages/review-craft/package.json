@@ -1,0 +1,41 @@
+{
+  "name": "@bigking67/review-craft",
+  "version": "0.7.3",
+  "description": "Evidence-driven engineering review, validation, remediation planning, and quality governance for real codebases.",
+  "license": "MIT",
+  "author": "bigKING67",
+  "homepage": "https://github.com/bigKING67/review-craft#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigKING67/review-craft.git"
+  },
+  "files": [
+    ".codex-plugin",
+    "skills/review-craft",
+    "!skills/review-craft/**/__pycache__",
+    "!skills/review-craft/**/*.pyc",
+    "!skills/review-craft/**/*.pyo",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "VERSION"
+  ],
+  "keywords": [
+    "pi-package",
+    "agent-skill",
+    "engineering-review",
+    "architecture",
+    "maintainability",
+    "performance",
+    "repository-governance"
+  ],
+  "pi": {
+    "skills": ["skills/review-craft"]
+  },
+  "scripts": {
+    "validate": "uv run --locked python scripts/validate.py",
+    "test": "uv run --locked python -m unittest discover -s tests -p test_*.py",
+    "package:check": "python3 scripts/package_check.py",
+    "release:gate": "python3 scripts/release_gate.py"
+  }
+}

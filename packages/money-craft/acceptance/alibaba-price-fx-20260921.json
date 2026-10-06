@@ -1,0 +1,99 @@
+{
+  "schema": "money-craft.historical-price-fx-supplement.v1",
+  "status": "PASS_BOUNDED_REFERENCE_BASIS",
+  "research_evidence_status": "PARTIAL",
+  "security_id": "HK:09988",
+  "as_of": "2025-07-01T23:59:59+08:00",
+  "quote_date": "2025-06-30",
+  "quote_currency": "HKD",
+  "close": "109.80",
+  "price_evidence": "Yahoo unadjusted Close, corroborated contemporary news; no official exchange daily quote captured",
+  "fx_date": "2025-06-30",
+  "fx_value": "0.91195",
+  "fx_unit": "CNY/HKD",
+  "fx_type": "central_parity",
+  "fx_primary_page_readable": false,
+  "fx_evidence": "contemporaneous Sina republication of CFETS notice",
+  "spot_fx_verified": false,
+  "reference_price_cny": "100.1321100",
+  "gaap_pe_reference": "14.94509104477611940298507462686567",
+  "adjusted_pe_reference": "12.24108924205378973105134474327628",
+  "calculations_passed": 3,
+  "archive_seal_files_verified": 27,
+  "archive_modified": false,
+  "autonomous_e2e_rerun": false,
+  "full_investment_research_complete": false,
+  "report": "docs/alibaba-price-fx-20260921.md",
+  "artifacts": [
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/build_supplement.py",
+      "bytes": 7560,
+      "sha256": "bd0ca9e0c5ca9ee2ef7a91ec23d9e4dcd48217389026f0095f558755c192888e"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/calculation-audit.json",
+      "bytes": 812,
+      "sha256": "436d7d373e6d166eccf6cc9493357b9c0a2f714747adce553ba7613febc805b3"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/calendar.pdf",
+      "bytes": 267510,
+      "sha256": "517377ccb83466229d20d262dc8e1acfa168036e58cc4c0edc9d3b60ebc38980"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/calendar.txt",
+      "bytes": 3099,
+      "sha256": "949799c5ac70452c11e833757d33e5fe2cd034ec8d2d2bea10ca222e06af33ba"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/captures.json",
+      "bytes": 1830,
+      "sha256": "50d28d2f7108f100517204fca2ab6ac50f906614cf138c0a3c054761cb08ad81"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/conflict-stnn.html",
+      "bytes": 30397,
+      "sha256": "7c43c04ca1f7fd09a4d9a250f4a9273164c800c6a441eff47839e99c12fe0b9a"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/fx-sina.html",
+      "bytes": 95804,
+      "sha256": "8cd498b6cc6fc34812cf1e5ec16de5a115e8e40a888af79fdf5c7064b4340c78"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/history.json",
+      "bytes": 1626,
+      "sha256": "16ee291712c18ea87a0709c263bcc6c835ea7352f2dde5e54f1cdff351dc8a4f"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/hkej.html",
+      "bytes": 52463,
+      "sha256": "cc4ab78744cb19c4a67a201c9f7ff337a5b0dc64c50673d42ce306d0298aabcb"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/pbc.html",
+      "bytes": 1669,
+      "sha256": "a777adabcdeb84a5e1f7c3712fab464aa7e856f04f6c97703ed6e7ee2f912fec"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/route.json",
+      "bytes": 2905,
+      "sha256": "5a4fd8a656210d4b5e9503afb36630dc044a6fc15461f970306fd28612d3bb41"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/yahoo/S24/capture.json",
+      "bytes": 384,
+      "sha256": "474c1d97dc7e497e6d1d5e92806c9e2f5c90560ca71afdacbcc0a233f1620550"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/yahoo/S24/request.json",
+      "bytes": 325,
+      "sha256": "df6095ed21e2a991707fea4d6244aafaaaeff55c940f14d4ad5b5224414af25c"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-price-fx/yahoo/S24/response.json",
+      "bytes": 1308,
+      "sha256": "fa0a2a16a03a8b0b47d0c31ca6c99f2898b702386a4a96b11163c7a9f2701684"
+    }
+  ]
+}

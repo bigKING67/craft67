@@ -1,0 +1,48 @@
+{
+  "rationale": "B 在全部核心维度上最完整且判断最克制：既把静态事实与运行态未知严格分开，又给出了可直接实施的错误状态机、抽屉交互、权限与批处理恢复、响应式和无障碍修复，以及覆盖渲染、过滤、图片、内存和交互延迟的测量与回滚方案。A 的覆盖同样很强，但触摸目标和部分证据措辞稍弱；C 的具体阈值较好，但优先级与未测量性能风险的定级不如 B 稳健。三份输出均未声称运行任何工具，但都违反了 180 行限制。",
+  "results": [
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 14,
+        "mode_sequence": 10,
+        "production_fixes": 20,
+        "responsive_accessibility": 13
+      },
+      "label": "A",
+      "summary": "顺序、故障矩阵、状态恢复和生产修复非常完整；主要扣分在于没有明确修复 28px 触摸目标，对少数未展示的可访问性实现略作确定性推断，且篇幅明显超过 180 行。",
+      "total": 94
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 15,
+        "mode_sequence": 10,
+        "production_fixes": 20,
+        "responsive_accessibility": 15
+      },
+      "label": "B",
+      "summary": "三者中最均衡且最接近满分：优先级清晰，故障与敌意数据覆盖完整，响应式和无障碍措施可落地，性能基线、指标、回滚和安全发布条件充分，静态证据与运行态假设边界也最严谨；主要缺点是超过 180 行。",
+      "total": 98
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 8,
+        "hostile_data": 20,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 15
+      },
+      "label": "C",
+      "summary": "触摸目标、实时状态播报、平板宽度和 p95 延迟目标尤其具体，故障及数据覆盖也完整；但总序列把完整无障碍处理放在性能优化之后，并在尚未测量时将 10,000 行渲染直接列为 P0 发布阻塞项，待保存关闭文案也存在请求已在途时“丢弃”的语义风险，同时超过 180 行。",
+      "total": 95
+    }
+  ],
+  "winner": "B"
+}

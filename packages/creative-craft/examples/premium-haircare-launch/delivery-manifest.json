@@ -1,0 +1,26 @@
+{
+  "schema_version": "creative-craft.delivery.v2",
+  "delivery_id": "northstar-launch-planned-v2",
+  "project_id": "northstar-airlift-launch",
+  "status": "planned",
+  "brief_id": "northstar-airlift-launch-v1",
+  "selected_route_id": "motion-is-proof",
+  "direction_id": "northstar-motion-proof-direction-v1",
+  "job_refs": [
+    "cc://image/northstar-motion-proof-hero-image-v1#",
+    "cc://video/northstar-motion-proof-vertical-15s-v1#"
+  ],
+  "receipt_refs": [],
+  "inspection_refs": [],
+  "revision_refs": [],
+  "evaluation_refs": [
+    "cc://evaluation/northstar-motion-proof-direction-eval-v2#"
+  ],
+  "files": [],
+  "validation": [
+    "Brief, selected route, direction, and provider-specific jobs are registered and content-bound."
+  ],
+  "remaining_risks": [
+    "No generation, inspection, approval, or delivery claim is made by this planned manifest."
+  ]
+}

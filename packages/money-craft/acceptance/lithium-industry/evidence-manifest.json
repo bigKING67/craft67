@@ -1,0 +1,26 @@
+{
+  "sources": [
+    {
+      "source_id": "S01",
+      "path": "local/evidence/20260920-lithium/iea.html",
+      "url": "https://www.iea.org/reports/global-ev-outlook-2025/executive-summary",
+      "sha256": "5b229ea86c942ea8e520e65c39b966affa88e8dccdef14266ad12c5da3dd73a7",
+      "publication_label": "2025-05-14",
+      "captured_at": "2026-09-20T05:53:06.931552+00:00",
+      "bytes": 262448,
+      "post_hoc": true
+    },
+    {
+      "source_id": "S02",
+      "path": "local/evidence/20260920-lithium/usgs.pdf",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-lithium.pdf",
+      "sha256": "7ec5654133aa5ef64fcfd6d4d23ac64a58f06f51bf1231576ebd8f595ad9257b",
+      "publication_label": "2025-01",
+      "captured_at": "2026-09-20T05:53:06.931982+00:00",
+      "bytes": 746901,
+      "post_hoc": true
+    }
+  ],
+  "as_of": "2025-05-31",
+  "captured_post_hoc": true
+}

@@ -1,0 +1,3 @@
+# Expected findings template
+
+- TODO

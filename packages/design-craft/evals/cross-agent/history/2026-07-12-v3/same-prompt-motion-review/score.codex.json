@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v3",
+  "task_id": "same-prompt-motion-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.144.1",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-12",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_sha256": "ba56e288dc04a5c411768339f7969ee1b2e6403ca82b4ef551fab675f969978b",
+  "contract_sha256": "4037c3cf05d7cbb1fa968da25c0ae1f8a322dac49129b98070435f2ce6340c3d",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "cbf2601964b7268e3142191c2f9278ca334519e6daa6bcc9c95f966992afda97",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "f04e1050f63f2ed0a3d9970935d04129b771efca",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "c165a78d91eed7392b33659633efb756acbe03c1a0a06b16c8889604854f72f8",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "d8c1e4b942ff98f30e3ead7c399a34bc6e5775663c42f149d6269f5876f843f4",
+  "score": 100,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Uses the calm high-frequency operations context to preserve direct manipulation while rejecting spectacle and input lockout."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Applies motion quality, interaction physics, transform ownership, accessibility, performance, and runtime-validation guidance."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Keeps only causal motion and removes delayed tracking, broad transitions, layout-property motion, and decorative scale feedback."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels source-verifiable defects separately from unverified lag, frame rate, browser arbitration, touch feel, and device behavior."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates explicit source defects from runtime geometry, capture, event arbitration, Reduced Motion, and performance outcomes."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Covers pointer capture, grab offset, local coordinates, presentation-value interruption, CSS px/s velocity, projection, bounds, snapping, and Reduced Motion."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "Remains motion-specific, read-only, decisive, and within the 150-line budget at 137 lines."
+    }
+  }
+}

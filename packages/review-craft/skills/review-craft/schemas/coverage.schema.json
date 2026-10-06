@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/coverage.schema.json",
+  "title": "Review coverage",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "inventoryFingerprint", "files", "excluded", "summary"],
+  "properties": {
+    "documentType": {"const": "review-craft.coverage"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "inventoryFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "files": {"type": "array", "items": {"$ref": "#/$defs/file"}},
+    "excluded": {"type": "array", "items": {"$ref": "#/$defs/excluded"}},
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "reviewed", "deferred"],
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "reviewed": {"type": "integer", "minimum": 0},
+        "deferred": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "required": ["path", "kind", "sizeBytes", "sha256", "binary", "classification", "disposition", "reason", "evidenceRefs"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["file", "symlink", "other", "unreadable", "deleted"]},
+        "sizeBytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "binary": {"type": "boolean"},
+        "classification": {"enum": ["source", "generated", "vendored"]},
+        "disposition": {"enum": ["PENDING", "REVIEWED", "COVERED_BY_PARENT", "GENERATED", "VENDORED", "BINARY", "OUT_OF_SCOPE", "UNREADABLE", "DEFERRED"]},
+        "reason": {"type": "string"},
+        "evidenceRefs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "coveredBy": {"type": "string", "minLength": 1},
+        "linkTarget": {"type": "string"},
+        "readError": {"type": "string"},
+        "diffStatus": {"enum": ["A", "C", "D", "M", "R", "T", "U", "X"]},
+        "previousPath": {"type": "string", "minLength": 1},
+        "untracked": {"type": "boolean"},
+        "sourceIdentity": {"type": "object", "additionalProperties": false, "required": ["executable", "gitlink", "checkout"], "properties": {"executable": {"type": ["boolean", "null"]}, "gitlink": {"type": ["string", "null"], "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"}, "checkout": {"type": ["string", "null"], "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"}}}
+      },
+      "additionalProperties": false
+    },
+    "excluded": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "reason"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "reason": {"type": "string", "minLength": 1}}
+    }
+  }
+}

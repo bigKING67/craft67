@@ -1,0 +1,111 @@
+{
+  "mode": "review",
+  "profile": "agent-project",
+  "focusDimensions": [],
+  "diffBase": null,
+  "scope": ["."],
+  "exclude": [
+    ".git/**",
+    ".venv/**",
+    "dist/**",
+    "node_modules/**",
+    "**/__pycache__/**",
+    "**/*.pyc"
+  ],
+  "generated": [],
+  "vendored": [],
+  "commands": {
+    "unit-tests": {
+      "argv": [".venv/bin/python", "-B", "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
+      "timeoutSeconds": 120
+    },
+    "ruff": {
+      "argv": [".venv/bin/ruff", "check", "skills/creative-craft/scripts", "scripts", "tests"],
+      "timeoutSeconds": 120
+    },
+    "unique-items-benchmark": {
+      "argv": [".venv/bin/python", "-B", "scripts/benchmark_unique_items.py"],
+      "timeoutSeconds": 120,
+      "evidenceClaims": [
+        {
+          "id": "linear-scaling-bound",
+          "kind": "benchmark",
+          "jsonPointer": "/passed",
+          "equals": true
+        }
+      ]
+    },
+    "schema-parity": {
+      "argv": [".venv/bin/python", "-B", "scripts/validate_schemas.py"],
+      "timeoutSeconds": 120
+    },
+    "repository-validation": {
+      "argv": ["python3", "-B", "scripts/validate.py"],
+      "timeoutSeconds": 180
+    },
+    "host-smoke": {
+      "argv": ["python3", "-B", "scripts/host_smoke.py", "--json"],
+      "timeoutSeconds": 180,
+      "evidenceClaims": [
+        {
+          "id": "host-runtime",
+          "kind": "runtime",
+          "jsonPointer": "/valid",
+          "equals": true
+        }
+      ]
+    },
+    "package-boundary": {
+      "argv": ["python3", "-B", "scripts/check_package.py"],
+      "timeoutSeconds": 120,
+      "evidenceClaims": [
+        {
+          "id": "package-boundary",
+          "kind": "package",
+          "jsonPointer": "/valid",
+          "equals": true
+        }
+      ]
+    },
+    "exact-package-runtime": {
+      "argv": ["python3", "-B", "scripts/review_package_evidence.py"],
+      "timeoutSeconds": 240,
+      "evidenceClaims": [
+        {
+          "id": "safe-package",
+          "kind": "package",
+          "jsonPointer": "/claims/package_safe",
+          "equals": true
+        },
+        {
+          "id": "isolated-package-install",
+          "kind": "isolated-install",
+          "jsonPointer": "/claims/isolated_install",
+          "equals": true
+        },
+        {
+          "id": "packaged-runtime",
+          "kind": "runtime",
+          "jsonPointer": "/claims/runtime",
+          "equals": true
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "exact-package",
+          "pathJsonPointer": "/artifact/path",
+          "sha256JsonPointer": "/artifact/sha256",
+          "sizeBytesJsonPointer": "/artifact/size_bytes",
+          "maxBytes": 150000
+        }
+      ]
+    }
+  },
+  "policy": {
+    "allowNetwork": false,
+    "allowInstall": false,
+    "allowRepositoryMutation": false,
+    "outputOutsideRepository": true
+  },
+  "reportLanguage": "zh-CN"
+}

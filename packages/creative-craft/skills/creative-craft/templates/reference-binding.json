@@ -1,0 +1,22 @@
+{
+  "schema_version": "creative-craft.reference-binding.v1",
+  "binding_id": "reference-binding-tbd",
+  "project_id": "project-tbd",
+  "reference_pack_id": "reference-pack-tbd",
+  "pack_version": "0.1.0",
+  "source": {
+    "repository_or_uri": null,
+    "ref": null,
+    "commit": null,
+    "pack_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "snapshot": {
+    "path": ".creative-craft/reference-snapshots/reference-pack-tbd",
+    "tree_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "selected_reference_ids": ["reference-tbd"],
+  "imported_at": "1970-01-01T00:00:00Z",
+  "imported_by": "TBD",
+  "previous_binding_id": null,
+  "reason": "TBD"
+}

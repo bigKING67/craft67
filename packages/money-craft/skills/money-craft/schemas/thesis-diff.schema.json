@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/thesis-diff.schema.json",
+  "title": "Money Craft thesis diff",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "identity",
+    "previous",
+    "current",
+    "signal",
+    "hypotheses",
+    "red_lines",
+    "sections",
+    "sources",
+    "appended_update",
+    "audits",
+    "warnings"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.thesis-diff.v1"},
+    "valid": {"const": true},
+    "identity": {"type": "object"},
+    "previous": {"type": "object"},
+    "current": {"type": "object"},
+    "signal": {"enum": ["NO_MATERIAL_CHANGE", "CHANGED", "REVIEW_REQUIRED", "CRITICAL_REVIEW"]},
+    "hypotheses": {"$ref": "#/$defs/recordDiff"},
+    "red_lines": {"$ref": "#/$defs/recordDiff"},
+    "sections": {"type": "object"},
+    "sources": {"type": "object"},
+    "appended_update": {"type": "object"},
+    "audits": {"type": "object"},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "recordDiff": {
+      "type": "object",
+      "required": ["added", "removed", "changed", "status_transitions"],
+      "properties": {
+        "added": {"type": "array", "items": {"type": "object"}},
+        "removed": {"type": "array", "items": {"type": "object"}},
+        "changed": {"type": "array", "items": {"type": "object"}},
+        "status_transitions": {"type": "array", "items": {"type": "object"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

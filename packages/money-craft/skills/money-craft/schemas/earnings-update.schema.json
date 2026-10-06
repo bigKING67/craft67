@@ -1,0 +1,113 @@
+{
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "security_id",
+    "as_of",
+    "currency",
+    "previous_thesis_sha256",
+    "input_sha256",
+    "sources",
+    "evidence_assessment",
+    "comparison_basis",
+    "metrics",
+    "expectations",
+    "valuation",
+    "tracking_handoff",
+    "automatic_trading",
+    "network_used",
+    "errors"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.earnings-update.v1"
+    },
+    "valid": {
+      "type": "boolean"
+    },
+    "security_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "currency": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previous_thesis_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "sources": {
+      "type": "object"
+    },
+    "evidence_assessment": {
+      "type": "object",
+      "required": [
+        "file_integrity",
+        "extraction_accuracy",
+        "claim_support"
+      ],
+      "properties": {
+        "file_integrity": {
+          "const": "VERIFIED"
+        },
+        "extraction_accuracy": {
+          "const": "UNVERIFIED"
+        },
+        "claim_support": {
+          "const": "UNVERIFIED"
+        }
+      }
+    },
+    "comparison_basis": {
+      "enum": [
+        "unchanged",
+        "restated",
+        "unverified"
+      ]
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "expectations": {
+      "type": "array"
+    },
+    "valuation": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "tracking_handoff": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "automatic_trading": {
+      "const": false
+    },
+    "network_used": {
+      "const": false
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/earnings-update.schema.json",
+  "title": "Earnings update calculation and tracking handoff receipt"
+}

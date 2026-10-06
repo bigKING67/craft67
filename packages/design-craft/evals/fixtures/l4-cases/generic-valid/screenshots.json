@@ -1,0 +1,57 @@
+{
+  "schema": "design-craft.l4-screenshots.v1",
+  "case_id": "generic-l4-valid",
+  "route": "http://127.0.0.1:4173/review-workbench",
+  "artifacts": {
+    "before": {
+      "desktop": {
+        "tool": "tmwd_browser.browser_screenshot_ops",
+        "target": "viewport",
+        "path": "/tmp/design-craft-generic-before-desktop.png",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false
+        }
+      }
+    },
+    "after": {
+      "desktop": {
+        "tool": "tmwd_browser.browser_screenshot_ops",
+        "target": "viewport",
+        "path": "/tmp/design-craft-generic-after-desktop.png",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false
+        }
+      }
+    }
+  },
+  "layout_delta": {
+    "desktop": {
+      "workbench_top": {
+        "before": 520,
+        "after": 430
+      }
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/reference-pack.schema.json",
+  "title": "Creative Craft Reference Pack v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "reference_pack_id",
+    "name",
+    "version",
+    "status",
+    "classification",
+    "owner",
+    "purpose",
+    "reviewed_at",
+    "review_after",
+    "supersedes",
+    "entities",
+    "asset_ledger",
+    "source_references"
+  ],
+  "properties": {
+    "schema_version": {"const": "creative-craft.reference-pack.v1"},
+    "reference_pack_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "name": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"enum": ["draft", "reviewed", "superseded", "revoked"]},
+    "classification": {"enum": ["public", "internal", "confidential", "restricted"]},
+    "owner": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "reviewed_at": {"type": ["string", "null"]},
+    "review_after": {"type": ["string", "null"]},
+    "supersedes": {"type": ["string", "null"]},
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "reference_id",
+          "entity_type",
+          "name",
+          "relationship",
+          "summary",
+          "source_refs",
+          "observations",
+          "transferable_principles",
+          "non_transferable_elements",
+          "applicable_to",
+          "reference_roles",
+          "rights_policy",
+          "prohibited_use",
+          "asset_refs",
+          "may_override_primary_brand"
+        ],
+        "properties": {
+          "reference_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+          "entity_type": {
+            "enum": [
+              "brand",
+              "company",
+              "team",
+              "agency",
+              "creator",
+              "campaign",
+              "product",
+              "content-series",
+              "visual-system",
+              "retail-space",
+              "film",
+              "photography",
+              "packaging",
+              "editorial-system",
+              "social-account",
+              "other"
+            ]
+          },
+          "name": {"type": "string", "minLength": 1},
+          "relationship": {"const": "reference"},
+          "summary": {"type": "string"},
+          "source_refs": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "observations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["observation_id", "dimension", "evidence_state", "statement", "evidence_refs"],
+              "properties": {
+                "observation_id": {"type": "string", "minLength": 1},
+                "dimension": {"type": "string", "minLength": 1},
+                "evidence_state": {
+                  "enum": ["OBSERVED", "INFERRED", "HYPOTHESIZED", "UNVERIFIED"]
+                },
+                "statement": {"type": "string", "minLength": 1},
+                "evidence_refs": {
+                  "type": "array",
+                  "items": {"type": "string", "minLength": 1},
+                  "uniqueItems": true
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "transferable_principles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "principle_id",
+                "derived_from",
+                "statement",
+                "application_scope",
+                "adaptation_required",
+                "must_preserve_primary_brand"
+              ],
+              "properties": {
+                "principle_id": {"type": "string", "minLength": 1},
+                "derived_from": {
+                  "type": "array",
+                  "items": {"type": "string", "minLength": 1},
+                  "uniqueItems": true
+                },
+                "statement": {"type": "string", "minLength": 1},
+                "application_scope": {
+                  "type": "array",
+                  "items": {"type": "string", "minLength": 1},
+                  "uniqueItems": true
+                },
+                "adaptation_required": {"type": "boolean"},
+                "must_preserve_primary_brand": {
+                  "type": "array",
+                  "items": {"type": "string", "minLength": 1},
+                  "uniqueItems": true
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "non_transferable_elements": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "applicable_to": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "reference_roles": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "rights_policy": {
+            "enum": ["research_only", "principle_only", "approved_reference_input", "unverified"]
+          },
+          "prohibited_use": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "asset_refs": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "may_override_primary_brand": {"const": false}
+        },
+        "additionalProperties": false
+      }
+    },
+    "asset_ledger": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "source_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "authority", "uri", "captured_at", "sha256", "notes"],
+        "properties": {
+          "source_id": {"type": "string", "minLength": 1},
+          "authority": {
+            "enum": ["official", "public", "owner-supplied", "internal", "research"]
+          },
+          "uri": {"type": "string", "minLength": 1},
+          "captured_at": {"type": ["string", "null"]},
+          "snapshot_path": {"type": ["string", "null"]},
+          "sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

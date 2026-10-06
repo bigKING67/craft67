@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/fix-plan.schema.json",
+  "title": "Review Craft fix plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "toolVersion", "fixId", "createdAt", "review", "baseline", "selections", "verification", "authorization"],
+  "properties": {
+    "documentType": {"const": "review-craft.fix-plan"},
+    "schemaVersion": {"const": "review-craft.fix.v1"},
+    "toolVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "fixId": {"type": "string", "pattern": "^rcf-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{12}(?:-[0-9]+)?$"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "manifestSha256", "targetIdentity", "repositoryName"],
+      "properties": {
+        "runId": {"type": "string", "minLength": 1},
+        "manifestSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "targetIdentity": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "repositoryName": {"type": "string", "minLength": 1}
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "branch", "remote", "sourceFingerprint", "worktreeFingerprint", "statusFingerprint"],
+      "properties": {
+        "revision": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "remote": {"type": ["string", "null"]},
+        "sourceFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "worktreeFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "statusFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "selections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["findingId", "findingSha256", "decisionId", "decisionSha256", "decision", "locationPaths", "verificationCriteria"],
+        "properties": {
+          "findingId": {"type": "string", "minLength": 1},
+          "findingSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "decisionId": {"type": "string", "minLength": 1},
+          "decisionSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "decision": {"enum": ["CLEAN_UP", "MERGE", "REPLACE", "REWRITE", "DELETE", "DOCUMENT"]},
+          "locationPaths": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "verificationCriteria": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commands", "commandConfigSha256"],
+      "properties": {
+        "commands": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "commandConfigSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceMutation", "runtimeMutatesSource"],
+      "properties": {
+        "sourceMutation": {"const": "EXPLICIT_USER_REQUIRED"},
+        "runtimeMutatesSource": {"const": false}
+      }
+    }
+  }
+}

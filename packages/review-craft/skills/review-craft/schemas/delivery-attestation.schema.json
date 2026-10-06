@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/delivery-attestation.schema.json",
+  "title": "Review Craft delivery attestation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "toolVersion", "deliveryId", "attestedAt", "status", "fix", "sourceArtifacts", "localSource", "push", "githubActions", "githubRelease", "npmPackage", "remainingRisks"],
+  "properties": {
+    "documentType": {"const": "review-craft.delivery-attestation"},
+    "schemaVersion": {"const": "review-craft.delivery.v1"},
+    "toolVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "deliveryId": {"type": "string", "pattern": "^rcd-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{12}(?:-(?:[2-9]|[1-9][0-9]+))?$"},
+    "attestedAt": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["VERIFIED", "PARTIAL", "FAILED"]},
+    "fix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixId", "reviewRunId", "reviewTargetIdentity", "repositoryName", "verificationStatus", "planSha256", "assessmentSha256", "verificationSha256", "sourceConfigurationSha256"],
+      "properties": {
+        "fixId": {"type": "string", "minLength": 1},
+        "reviewRunId": {"type": "string", "minLength": 1},
+        "reviewTargetIdentity": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "repositoryName": {"type": "string", "minLength": 1},
+        "verificationStatus": {"const": "VERIFIED"},
+        "planSha256": {"$ref": "#/$defs/sha256"},
+        "assessmentSha256": {"$ref": "#/$defs/sha256"},
+        "verificationSha256": {"$ref": "#/$defs/sha256"},
+        "sourceConfigurationSha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "sourceArtifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixPlan", "fixAssessment", "fixVerification", "sourceConfiguration"],
+      "properties": {
+        "fixPlan": {"$ref": "#/$defs/artifact"},
+        "fixAssessment": {"$ref": "#/$defs/artifact"},
+        "fixVerification": {"$ref": "#/$defs/artifact"},
+        "sourceConfiguration": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "localSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "isGitRepository", "clean", "stableDuringCollection", "revision", "branch", "remote", "sourceFingerprint", "worktreeFingerprint", "statusFingerprint", "expectedSourceFingerprint", "sourceMatchesVerification", "failureReasons"],
+      "properties": {
+        "status": {"enum": ["VERIFIED", "FAILED"]},
+        "isGitRepository": {"type": "boolean"},
+        "clean": {"type": "boolean"},
+        "stableDuringCollection": {"type": "boolean"},
+        "revision": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "remote": {"type": ["string", "null"]},
+        "sourceFingerprint": {"$ref": "#/$defs/sha256"},
+        "worktreeFingerprint": {"$ref": "#/$defs/sha256"},
+        "statusFingerprint": {"$ref": "#/$defs/sha256"},
+        "expectedSourceFingerprint": {"$ref": "#/$defs/sha256"},
+        "sourceMatchesVerification": {"type": "boolean"},
+        "failureReasons": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "push": {"$ref": "#/$defs/pushProof"},
+    "githubActions": {"$ref": "#/$defs/githubActionsProof"},
+    "githubRelease": {"$ref": "#/$defs/unimplementedProof"},
+    "npmPackage": {"$ref": "#/$defs/unimplementedProof"},
+    "remainingRisks": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "sizeBytes"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "sizeBytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "job": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status", "conclusion", "startedAt", "completedAt", "url"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "status": {"type": ["string", "null"]},
+        "conclusion": {"type": ["string", "null"]},
+        "startedAt": {"type": ["string", "null"]},
+        "completedAt": {"type": ["string", "null"]},
+        "url": {"type": ["string", "null"]}
+      }
+    },
+    "pushProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requested", "status", "remote", "branch", "localSha", "remoteSha", "evidence", "failureReasons"],
+      "properties": {
+        "requested": {"type": "boolean"},
+        "status": {"enum": ["VERIFIED", "FAILED", "NOT_REQUESTED"]},
+        "remote": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "localSha": {"type": ["string", "null"]},
+        "remoteSha": {"type": ["string", "null"]},
+        "evidence": {"$ref": "#/$defs/nullableArtifact"},
+        "failureReasons": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "githubActionsProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requested", "status", "runId", "headSha", "workflowName", "runStatus", "conclusion", "url", "jobs", "evidence", "failureReasons"],
+      "properties": {
+        "requested": {"type": "boolean"},
+        "status": {"enum": ["VERIFIED", "FAILED", "NOT_REQUESTED"]},
+        "runId": {"type": ["integer", "null"], "minimum": 1},
+        "headSha": {"type": ["string", "null"]},
+        "workflowName": {"type": ["string", "null"]},
+        "runStatus": {"type": ["string", "null"]},
+        "conclusion": {"type": ["string", "null"]},
+        "url": {"type": ["string", "null"]},
+        "jobs": {"type": "array", "items": {"$ref": "#/$defs/job"}},
+        "evidence": {"$ref": "#/$defs/nullableArtifact"},
+        "failureReasons": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "nullableArtifact": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["path", "sha256", "sizeBytes"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "sizeBytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "unimplementedProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": {"const": "NOT_VERIFIED"},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

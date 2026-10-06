@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/release/artifact-observation.schema.json",
+  "title": "design-craft selected GitHub artifact observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source_commit", "repository", "artifact"],
+  "properties": {
+    "schema": {"const": "design-craft.github-artifact-observation.v1"},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "size_in_bytes",
+        "digest",
+        "expired",
+        "created_at",
+        "updated_at",
+        "workflow_run"
+      ],
+      "properties": {
+        "id": {"type": "integer", "minimum": 1},
+        "name": {"type": "string", "minLength": 1},
+        "size_in_bytes": {"type": "integer", "minimum": 1},
+        "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "expired": {"const": false},
+        "created_at": {"type": "string", "minLength": 1},
+        "updated_at": {"type": "string", "minLength": 1},
+        "workflow_run": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "head_branch", "head_sha"],
+          "properties": {
+            "id": {"type": "integer", "minimum": 1},
+            "head_branch": {"const": "main"},
+            "head_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+          }
+        }
+      }
+    }
+  }
+}

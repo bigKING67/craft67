@@ -1,0 +1,18 @@
+{
+  "schema": "money-craft.report-audit.v1",
+  "valid": true,
+  "metadata": {
+    "schema": "money-craft.report.v1",
+    "workflow": "research",
+    "security": "美的集团",
+    "thscode": "000333.SZ",
+    "as_of": "2026-08-23",
+    "data_cutoff": "2026-08-23T12:42:37.772301Z",
+    "base_currency": "CNY",
+    "provider_status": "configured_full_matrix_passed"
+  },
+  "source_count": 17,
+  "citation_count": 17,
+  "warnings": [],
+  "errors": []
+}

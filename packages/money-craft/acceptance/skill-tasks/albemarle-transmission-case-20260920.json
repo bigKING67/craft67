@@ -1,0 +1,43 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "albemarle-transmission-blind",
+      "status": "READY_HISTORICAL",
+      "prompt": "请分析Albemarle（US-NYSE:ALB普通股，交易和报告币种USD）在2024年第四季度与2025年第一季度的经营变化：锂行业变化如何传到公司收入、盈利与现金创造？这些资料支持多强的经营修复判断，接下来应如何核验？请给必要的可复算比较。历史研究截止2025-05-31，本次在2026年回放；不需要完整公司报告、估值或买卖建议。",
+      "facts": "仅以下官方披露提取记录可作为事实输入。JSON文件解码后是检索工具的带行号文本，不是原始HTML或PDF；原件直接下载返回403。实际捕获日2026-09-20，历史版本一致性未核实。可以使用正常Skill引用和计算工具；不得读取项目acceptance目录、其他会话答案、主代理报告或验收标准。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/evidence/20260920-albemarle/annual-web.json",
+          "sha256": "49a0e4275c3f2214b828a0f518416ebd026ddfd5c4803326e1c06f5157838bbd",
+          "url": "https://investors.albemarle.com/news-and-events/news/news-details/2025/Albemarle-Reports-Fourth-Quarter-and-Full-Year-2024-Results/",
+          "published_at": "2025-02-12",
+          "capture_kind": "web_tool_extracted_text_json_string"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-albemarle/q1-web.json",
+          "sha256": "dcabadb9f685f026edf701b638ede818da69b0b53965534687099985ebf77799",
+          "url": "https://www.albemarle.com/sites/default/files/q4/attachments/Q12025_pressrelease.pdf",
+          "published_at": "2025-04-30",
+          "capture_kind": "web_tool_extracted_text_json_string"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "实际隐式加载安装版Money Craft和相关引用；路由有效，身份及历史回放限制清晰",
+        "不把市场现货价格机械等同公司合同实现价或收入弹性；无价格桥时明确缺口",
+        "区分分部与集团以及调整后EBITDA与GAAP利润；收入比率不当价格beta或单位经济性",
+        "识别Q4负利润基数及LCM减记，避免负基数百分比增长误导",
+        "从现金流原表计算OCF减资本支出，识别客户预付款和削减资本支出的影响；不当可持续或可分配现金",
+        "不按分部收入占比分配集团现金流；同发行人多份披露不当独立双源",
+        "下一复查有报告期或披露事件窗口及判断变动条件；不编造发布日期，不形成买卖结论"
+      ]
+    }
+  ]
+}

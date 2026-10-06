@@ -1,0 +1,98 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "subtract",
+      "actual": "36000",
+      "expected": "36000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "divide",
+      "actual": "0.1764705882352941176470588235294118",
+      "expected": "0.1764705882352941176470588235294118",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "multiply",
+      "actual": "17.64705882352941176470588235294118",
+      "expected": "17.64705882352941176470588235294118",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "subtract",
+      "actual": "50000",
+      "expected": "50000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "divide",
+      "actual": "0.2941176470588235294117647058823529",
+      "expected": "0.2941176470588235294117647058823529",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "multiply",
+      "actual": "29.41176470588235294117647058823529",
+      "expected": "29.41176470588235294117647058823529",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "subtract",
+      "actual": "-5100",
+      "expected": "-5100",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "divide",
+      "actual": "-0.3517241379310344827586206896551724",
+      "expected": "-0.3517241379310344827586206896551724",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C09",
+      "operation": "multiply",
+      "actual": "-35.17241379310344827586206896551724",
+      "expected": "-35.17241379310344827586206896551724",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C10",
+      "operation": "subtract",
+      "actual": "20000",
+      "expected": "20000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

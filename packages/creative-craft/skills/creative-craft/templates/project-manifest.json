@@ -1,0 +1,8 @@
+{
+  "schema_version": "creative-craft.project-manifest.v2",
+  "project_id": "project-tbd",
+  "manifest_id": "manifest-tbd",
+  "contract_version": "0.3",
+  "copy_policy": "required",
+  "artifacts": []
+}

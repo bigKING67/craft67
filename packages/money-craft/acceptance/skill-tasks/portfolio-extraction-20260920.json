@@ -1,0 +1,127 @@
+{
+  "schema": "money-craft.portfolio-extraction-acceptance.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_AFTER_AUDITOR_FIX",
+  "case_sha256": "e821d109549945f6ce9049b00162a3bc5951ee7a6ce479838488aecb2ccc149b",
+  "invocation": "EXPLICIT_SOURCE_PATH",
+  "host_elapsed_seconds": 371.644,
+  "route": "READY",
+  "extraction_assertions": 50,
+  "core_and_answer_calculations": 71,
+  "manual_criteria_passed": 8,
+  "auditor_regression_tests": 23,
+  "previous_markdown_host_recheck": "PASS",
+  "first_attempt": {
+    "host_exit_code": 0,
+    "machine_checks_pass": false,
+    "errors": [
+      "CALCULATION_RECEIPTS_REQUIRED"
+    ],
+    "reason": "Auditor recognized only Markdown comment receipts, while host emitted exact native core JSON. Original answer and failure preserved."
+  },
+  "fix": {
+    "scope": "acceptance tooling only",
+    "contract": "Recognize native portfolio JSON only when equal to a successful observed command output; then recompute receipts. Reject unbound/modified output, bad arithmetic, empty successful receipts and duplicate JSON keys. Rejected-input JSON supplies no calculations.",
+    "not_proven": "Trace parity does not certify invocation authenticity or source semantics."
+  },
+  "code": [
+    {
+      "path": "scripts/audit_skill_task.py",
+      "sha256": "74cf87aaf8602214cc1b84a8b75add640aae9035a29d8a8d30521247ff3d57c3"
+    },
+    {
+      "path": "tests/test_skill_task_audit.py",
+      "sha256": "e5bafe8381eb4de7218d4f38e776aca08ae934965705f80b43e5f435d589d88f"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "local/research/20260920-portfolio-extraction/auditor-tests.log",
+      "sha256": "5457e3f6be5d7a5e0c91258de8b07282d6be35b8468a17bcff191275d715e68f"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/baseline.json",
+      "sha256": "f9af63f63a52c9c7bd6a7a699af60102de21b6d0352331846d918ea8d987dc14"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/calculation-audit.json",
+      "sha256": "5f3cc9d3a2968539b7439483f665f9e0cc94183633d1d9a761a11e005d4f7332"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/check_extraction.py",
+      "sha256": "5ae2db8be1ccf14d14e4bdbdddcbc41ea5a1b6065125b7cbcfe689ecddd509a6"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/cli-replay.json",
+      "sha256": "b41cb30d1af97a19c6a6356454b8090cecb3a28f0fe62c119e6b23bf009d6f23"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/extracted-input.json",
+      "sha256": "7dfac12ca3ca8427db366330b43923dd81bbe6dfe3065befc020344d864dcc13"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/extraction-check.json",
+      "sha256": "1f43bf67157e5c856528e1385b0b449e298a7859634482d78efe28b9d4e922e1"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/frozen-verify.json",
+      "sha256": "2e9c464805b019403da6b40103760f30354868a82744562bdac494694880fdc7"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host/answer.md",
+      "sha256": "804d24df85c45fb4873dc5659827e68e80f65fcf3a78f8a61e81bf0082e741b6"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host/case-snapshot.json",
+      "sha256": "384bcdabedef440f515a16a86714b2b7a00fcb047c7bad0c74b94499c2aa5e78"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host/events.jsonl",
+      "sha256": "5620fac14b41082e37387a8cdcb5be6f3178f70c83b8ed0e719c21ab98c83a9c"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host/host.json",
+      "sha256": "efd0a7f1c847b3aad40c27001fe28ada604240ae5a4e0ee10fd14a5b413dabd5"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host/machine-audit.json",
+      "sha256": "b71ec3959205b220aa0455e2615d613864a12efee5f7f81f2147dc3123f25f60"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host/prompt.txt",
+      "sha256": "7a382187be86390f99631dee7879a9fb16713d2d13d411c9aeb7db3e640b6921"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/host-core-result.json",
+      "sha256": "6808fd720b1e1000de2fe6108a77dd2705852e8e46539a984bf5141d2562dabd"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/independent-reference.json",
+      "sha256": "fb79a2e748523ba565f7d98f9eb3f1d461d95333fc7b7a755d99ffc8baeac00b"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/machine-audit-rechecked.json",
+      "sha256": "4999f79540aa9d0ae05db0801db0dd3363bdee65a6970bb69a03584bcc02f9da"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/manual-review.json",
+      "sha256": "8494c539a31ac11c84cef81e3a124741c699a7ff1a0407b3c2eb42c93f9d1dfd"
+    },
+    {
+      "path": "local/research/20260920-portfolio-extraction/previous-host-rechecked.json",
+      "sha256": "59c18ead440ce3a64931912d87485f2e96a745d6c36ec1cdfe5fda3b5f1632f7"
+    }
+  ],
+  "limits": [
+    "Three specified factsheets, explicitly requested top holdings and an instructed read-only API workflow; not arbitrary-document parsing.",
+    "LOCAL identity labels apply to matching literal names/classes in this dated manager disclosure; cross-provider identity resolution not tested.",
+    "No full AGG look-through, optimization, current suitability or return prediction.",
+    "Primary-agent semantic review, not independent-agent review.",
+    "Global install and Skill/core files unchanged; implicit discovery and new installed version not tested.",
+    "No application, commit, push or release."
+  ]
+}

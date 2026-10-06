@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/fix-attempt-assessment.schema.json",
+  "title": "Review Craft post-command fix attempt assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "fixId", "attemptId", "evidenceSha256", "kind", "assessor", "assessedAt", "findings", "measurements", "remainingRisks"],
+  "properties": {
+    "documentType": {"const": "review-craft.fix-attempt-assessment"},
+    "schemaVersion": {"const": "review-craft.fix-attempt.v1"},
+    "fixId": {"type": "string", "minLength": 1},
+    "attemptId": {"type": "string", "pattern": "^attempt-[0-9]{4}-[a-f0-9]{12}$"},
+    "evidenceSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "kind": {"enum": ["HUMAN", "AGENT_ASSISTED", "AUTOMATED"]},
+    "assessor": {"type": "string", "minLength": 1},
+    "assessedAt": {"type": "string", "format": "date-time"},
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["findingId", "status", "rationale", "evidenceRefs"],
+        "properties": {
+          "findingId": {"type": "string", "minLength": 1},
+          "status": {"enum": ["RESOLVED", "LIKELY_RESOLVED", "PARTIAL", "UNRESOLVED", "REGRESSED", "NOT_APPLICABLE"]},
+          "rationale": {"type": "string", "minLength": 1},
+          "evidenceRefs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "measurements": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "command", "jsonPointer", "value"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}$"},
+          "command": {"type": "string", "minLength": 1},
+          "jsonPointer": {"type": "string", "minLength": 1},
+          "value": {"type": ["string", "number", "boolean", "null"]},
+          "unit": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "remainingRisks": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  }
+}

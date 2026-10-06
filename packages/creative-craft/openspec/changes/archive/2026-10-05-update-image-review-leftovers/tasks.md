@@ -1,0 +1,2 @@
+- [x] Path alias, claim release, profile-derived models, CLI and revision-cap fixes.
+- [x] Regression tests; 110/110 image tests, smokes pass.

@@ -1,0 +1,39 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "historical-600519-margins",
+      "category": "正式年报局部解读",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL_FILINGS",
+      "prompt": "请基于两份原始年报，比较贵州茅台2024年与2023年的营业收入、归母利润和经营现金流。收入与利润增速是否匹配？归母利润/营业收入这个明确口径的利润率如何变化，现金转化有什么变化？只做这几个指标的局部历史分析，说明能确认和不能确认的部分。",
+      "facts": "对象贵州茅台酒股份有限公司，CN-SH:600519，上海普通A股，报告与交易币种CNY。今天的分析执行日是2026-09-16，指定历史信息截止日为2025-04-03，最新指定报告为2024年度报告。S01=2023年报（发行人登记披露日2024-04-03），S02=2024年报（发行人登记披露日2025-04-03）。两份PDF在2026-09-16重新获取，属于post-hoc历史回放，不是当年捕获；禁止引入截止日后的经营数据。请实际读取原始PDF所需页码并核对哈希，不读取以前的报告答案或验收摘要。所需主要会计数据在两份PDF第5页，可以用pdftotext输出到stdout。没有独立第二信息源、价格、市场一致预期或其他附件；两份报告属于同一发行人，不能冒充独立双源。不要形成买卖结论或完整公司研究。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260916/historical-source/600519-2023-annual-report.pdf",
+          "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2024/05/2024050716531754477.pdf",
+          "sha256": "2125ff97a452ea79b0d784e2432f7d224b6aecc330b644b593477d69e22f4ed1"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/skill-evals/20260916/historical-source/600519-2024-annual-report.pdf",
+          "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/04/2025040817542019660.pdf",
+          "sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30"
+        }
+      ],
+      "criteria": [
+        "实际读取两份原始PDF且核对哈希，关键数字绑定正确来源和第5页定位。",
+        "使用营业收入而非营业总收入、归母利润而非净利润；2023年比较列与原始报告对齐，保留币种单位。",
+        "给出收入/归母利润/OCF同比以及两期归母利润/营业收入，百分点变化有可复算回执。",
+        "OCF/归母利润只作明确口径辅助比较，不推断合并净利润现金含量或现金改善原因已证实。",
+        "历史截止日与2026执行获取日分离；同源限制明确，无超预期、当前估值或买卖结论。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

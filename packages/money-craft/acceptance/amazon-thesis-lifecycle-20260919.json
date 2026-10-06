@@ -1,0 +1,163 @@
+{
+  "schema": "money-craft.thesis-lifecycle-acceptance.v1",
+  "checked_at_utc": "2026-09-19T14:36:11.361702+00:00",
+  "status": "PASS_BOUNDED_TRACKING_WITH_RESEARCH_BLOCKED",
+  "security_id": "US-NASDAQ:AMZN",
+  "baseline_as_of": "2025-02-07",
+  "update_as_of": "2026-02-06",
+  "execution": "post-hoc historical replay; main-agent research and installed-host behavioral evaluation",
+  "research": {
+    "report": {
+      "path": "local/research/20260919-amazon-thesis/baseline-v3/report.md",
+      "sha256": "a9f3534c0863e5a219acdc30502e758da6bbd694900726b32b9a74134d1a234e",
+      "bytes": 17695
+    },
+    "thesis": {
+      "path": "local/research/20260919-amazon-thesis/baseline-v3/thesis.md",
+      "sha256": "42d9279ecd699d7dd3a3eea156c6cdb73706ae03ad46c6414688b441f58c7da9",
+      "bytes": 17097
+    },
+    "structure_audit": true,
+    "baseline_calculations": 38,
+    "financial_reconciliation_arithmetic_passed": 3,
+    "complete": false,
+    "completion_receipt_present": false,
+    "blocking_error": "material_disclosure_assessment[1].status must be resolved before finalization",
+    "blocker": "S19 official management Q&A missing; governance/normalization/independent financial verification also incomplete",
+    "valuation": "Three historical anchored conditional EPS expressions; no unsupported multiple/discount rate, target price or safety-margin claim"
+  },
+  "tracking": {
+    "revisions": [
+      "t0001",
+      "t0002"
+    ],
+    "current": {
+      "path": "local/research/20260919-amazon-thesis/tracking/revisions/t0002/thesis.md",
+      "sha256": "ca09e4ce1175fb93b2e0d1041919cccc804590a6d54a638e8b64264c18f5b9a8",
+      "bytes": 24793
+    },
+    "integrity": "VERIFIED",
+    "freshness": "STALE",
+    "status": "WEAKENED",
+    "score": null,
+    "current_calculation_receipts": 60,
+    "same_date_second_revision": "Additive review correction: FX, useful-life changes and independently checked FTC settlement; first revision preserved",
+    "formal_money_archive": false
+  },
+  "host": {
+    "full_thesis_attempt": {
+      "status": "TIMEOUT",
+      "timeout_seconds": 300,
+      "answer_present": false,
+      "artifact": {
+        "path": "local/research/20260919-amazon-thesis/host-baseline/host.json",
+        "sha256": "0a39c1a6893e008c230d1d670fb9bd0753eb3fed29f5145a69b49aea9aa15250",
+        "bytes": 28497
+      }
+    },
+    "bounded_update": {
+      "status": "PASS_BOUNDED",
+      "implicit_installed_skill_read": true,
+      "criteria_passed": 6,
+      "calculations_passed": 11,
+      "artifacts": [
+        {
+          "path": "local/research/20260919-amazon-thesis/host-update/host.json",
+          "sha256": "902ce58256e8a642d76209d7b9c6af3646855b468aece28da38b37a9d18954d9",
+          "bytes": 22235
+        },
+        {
+          "path": "local/research/20260919-amazon-thesis/host-update/machine-audit.json",
+          "sha256": "0cef87b23923d2d61eb9cf5d8ffac4f6f641025dea16cffd72d00bc6cc6d101d",
+          "bytes": 4495
+        },
+        {
+          "path": "local/research/20260919-amazon-thesis/host-update/semantic-review.json",
+          "sha256": "5822426e4ffc9a881174df9b34f7f792ccba37ca70af44a7b96824b9a3b4b4a9",
+          "bytes": 1921
+        }
+      ]
+    },
+    "current_patch_replayed": false
+  },
+  "core_fix": "acceptance/historical-source-intake-20260919.json",
+  "global_install": {
+    "modified": false,
+    "source_parity": false,
+    "different_source_files": [
+      "skills/money-craft/references/company-research.md",
+      "skills/money-craft/scripts/money_craft.py",
+      "skills/money-craft/scripts/research_workflow.py"
+    ],
+    "package_installed_smoke_passed": true
+  },
+  "ledger": {
+    "completed_bounded_stages": true,
+    "receipts": 12,
+    "artifacts_verified": true,
+    "does_not_override_research_gate": true
+  },
+  "browser": {
+    "runtime": "browser67",
+    "source": "S13 event disclosure index",
+    "capture": "HTTP200 anonymous fetch credentials omit; HTML title and release link checked",
+    "managed_tab_created": 1,
+    "managed_tab_closed_verified": 1,
+    "remaining_unkept": 0,
+    "unrelated_tabs_modified": false
+  },
+  "artifacts": [
+    {
+      "path": "local/research/20260919-amazon-thesis/run-verify.json",
+      "sha256": "557afed345ddbbe23fd5dcf21209551b6b5ed10f174aa1614dcbf18707a60993",
+      "bytes": 354
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/track-verify-r2.json",
+      "sha256": "dffc029a9aba59e81da4b5463fbc0faed2cf4ad4568dd9fdd685ea28cdb549d8",
+      "bytes": 1254
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/track-status-r2.json",
+      "sha256": "a24ce14fb0c814e57c9f766cf8ec6c4fb6309b51f806a859318f382d8e078693",
+      "bytes": 1532
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/semantic-review.json",
+      "sha256": "b99dab43557c0c6f359ba132547c9deaf87f139cd667840c69c0f92b88168b97",
+      "bytes": 3119
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/finalize-reviewed.json",
+      "sha256": "d3dbb453aa3e263ce48b27a60bb4d42d11b54a801085828f8be00422a6519a45",
+      "bytes": 27686
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/baseline-report-final.json",
+      "sha256": "ce4e012be95a63b64c9bdcb86ab2f507a730be1ec6dea8b2bcc3b77a35758860",
+      "bytes": 1143
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/baseline-financial-final.json",
+      "sha256": "bc76edd60c747aca5e085c8d4edfb65a741f273bb04626a3e4d1a61fa0ceefd1",
+      "bytes": 8945
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/current-report-final.json",
+      "sha256": "703cbfdc8998f4b6a11ebde734f1f40716815be9f1c2347e24b4751966e64709",
+      "bytes": 1219
+    },
+    {
+      "path": "local/research/20260919-amazon-thesis/current-financial-final.json",
+      "sha256": "fbb846611425ba1b5f1c140e2578a9880f442825488f49a2df05fc77bb375287",
+      "bytes": 14093
+    }
+  ],
+  "limitations": [
+    "Same issuer lineage for financial statements; FTC independently corroborates only the specific settlement",
+    "No complete governance/proxy/Q&A review",
+    "No current investment recommendation or return prediction",
+    "Full natural-language research has not passed; narrower update succeeded",
+    "No commit, push, release, global installation or application work"
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "schema": "money-craft.portfolio-daily-baseline.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_DAILY_INSTALL",
+  "version": "0.3.0",
+  "source_commit": "2d33799b939fab61fa842f0dfab420ed19239f19",
+  "source_dirty": true,
+  "release": false,
+  "authorized_scope": "User continued the proposed bounded review, frozen candidate, daily global install update and natural-language acceptance. No commit/push/release.",
+  "review": {
+    "path": "acceptance/portfolio-candidate-review-20260920.json",
+    "sha256": "a1122e1220ff5f6871c2001ce832676bfe1f2ea652b6189ae65c42d155b51122"
+  },
+  "checks": {
+    "independent_P2_fixed": "VERIFIED",
+    "candidate_suite_total": 493,
+    "candidate_suite_passed": 470,
+    "candidate_suite_optional_markdown_skips": 23,
+    "report_runtime_suite_passed": 64,
+    "subsequent_acceptance_auditor_tests": 24,
+    "package_checks": 8,
+    "source_checks_before_install": 19,
+    "source_candidate_installed_files": 75,
+    "isolated_positive_negative_cli": "PASS",
+    "installed_natural_route": "READY",
+    "installed_result_assertions": 46,
+    "host_calculations": 80,
+    "core_calculations": 71,
+    "supplemental_host_calculations": 9,
+    "manual_semantic_criteria": 8,
+    "previous_full_JSON_calculations": 71,
+    "previous_Markdown_calculations": 13
+  },
+  "installed_host": {
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "elapsed_seconds": 192.571,
+    "actual_skill_root": "~/.agents/skills/money-craft",
+    "original_machine_result": "CALCULATION_RECEIPTS_REQUIRED because stdout receipts allowed by prompt were not recognized",
+    "corrected_machine_result": "PASS after triple canonical input digest binding and arithmetic audit",
+    "answer_changed": false
+  },
+  "backup": "~/.agents/.skills-backups/money-craft.20260919T162729741400Z",
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-install-candidate/frozen-candidate.json",
+      "sha256": "d4f317566a7deca19fed10d837ec625ab9fb291ffacc9ceaea7fcf8d47ce454e"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/tests-data.log",
+      "sha256": "406e9659c678d1ae83d060ccc80e8c3c1a3cb532af63ae3b21d957cb853e81fe"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/tests-renderer.log",
+      "sha256": "544dcba4621aa8d0ddf2340f15fc0d5d61aad5c94c1cd5ca71c1cb7ac5da5df6"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed-tests-data.log",
+      "sha256": "b0d69dfce991a6d4878e15c4c8fe5b4db5c763cbaa88eeb51f4795eeb97c11f7"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed-tests-renderer.log",
+      "sha256": "9f43450574ad01eed030dd2c54c15e8f917484abd998645eff488913acbd44c9"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/receipt-binding-tests.log",
+      "sha256": "a05d07d586dadcbf61ed947214113e852f52f13e0a20fac8e6ef46486e3d8181"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host-result.json",
+      "sha256": "c0302990761dbc63dae869228c23bda91cc8b39db9b97f9a904c6405eab3489d"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-result-check.json",
+      "sha256": "5f6f257eeb2e16176e0b82f9297f0d7e9970c9b218983ac29b0efc4e842e76ef"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host-rechecked.json",
+      "sha256": "67d1e99a099165d50ee6f5f0d7c99f21112e68a3eea2c26c85a8258841a4847a"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/native-json-rechecked.json",
+      "sha256": "4999f79540aa9d0ae05db0801db0dd3363bdee65a6970bb69a03584bcc02f9da"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/markdown-rechecked.json",
+      "sha256": "59c18ead440ce3a64931912d87485f2e96a745d6c36ec1cdfe5fda3b5f1632f7"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/post-host-parity.json",
+      "sha256": "70b15633afbfa171ed4351c78690578cff3ab3b59f89bee6e8b63128d43e60bc"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-manual-review.json",
+      "sha256": "00a89bb7c8ebf7b4770733904a328580bc105ccff30c2c4c44f53affa13b2a0e"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/bigking67-money-craft-0.3.0.tgz",
+      "sha256": "cdecea7685a773ad36dc031848408415596abca1fd1ab669e8923ada26b99d21"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/frozen.json",
+      "sha256": "f5d00b168cf41b783af4fe3a3d914ed394779c2e1b8b524a92c7111896b6ab4f"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/npm-pack.json",
+      "sha256": "bf595d678da8c5547e1abee1da69a27f6a0f5a6521cdffa7536a824f5e8a0f15"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/package-smoke.json",
+      "sha256": "5aaf50a41dc7a96a098154e15588d101262d1144760d6e1bb9459c82d1dad687"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/package-policy.json",
+      "sha256": "a4d34b435e134991bd96ecb6d41dbadb304b25b613e932fa02c20ec02b703d8f"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/isolated-install.json",
+      "sha256": "1d3a3772b6df3eeac9d476994dad329778fcc937ab5723589f29bd812600e7fb"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/isolated-valid.json",
+      "sha256": "b41cb30d1af97a19c6a6356454b8090cecb3a28f0fe62c119e6b23bf009d6f23"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/isolated-invalid.json",
+      "sha256": "68fcce0f367d95f0c428f0a7e8745c385dbd48a76afc8f3ff618335fc00b1dc5"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/global-install.json",
+      "sha256": "d6215eb52773582833d78ad10e0d6cd9b85267b46c87ef0a840d3d2fdd18f147"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/fixed/global-parity.json",
+      "sha256": "648bd84cda80fbdb66d73f08e825e77562a804cf9e1bed9b45ab615c53fb4d15"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host/answer.md",
+      "sha256": "6d6a0d52258fb1a168aecbf3b5f5b36ba478c65e2df577e9fe7c3a32d17e65da"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host/case-snapshot.json",
+      "sha256": "a751ac2776cec8a1d07fedc8825ab177d335d7afa29e69527964b73f81fbd8df"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host/events.jsonl",
+      "sha256": "6a0ca7f0674add0932126348e3f301621134b9031250ac06e9c2c0258bedbec8"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host/host.json",
+      "sha256": "bbbab65f5ad262ef66c099a8dad11a441f8b8dbdb6784729571997eef569521e"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host/machine-audit.json",
+      "sha256": "af175feb7bc2c37802b8d062c9a04761a38fd814e4ba3ad99d45462e79a0fd12"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host/prompt.txt",
+      "sha256": "da02707ba42512756557fb717aad14f091748c6dcdddf64983c4345ec13ceca2"
+    },
+    {
+      "path": "local/acceptance/20260920-install-candidate/installed-host/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limits": [
+    "Scoped portfolio capability only; not complete Money Craft domain certification.",
+    "Three historical factsheets and fictional portfolio; not arbitrary PDF parsing or current suitability.",
+    "Snapshot-local labels do not establish global security identity; no complete bond look-through, optimizer or drawdown guarantee.",
+    "Natural invocation verified in this fresh Codex host only; other hosts not tested.",
+    "Uncommitted version0.3.0 local candidate, not a release."
+  ]
+}

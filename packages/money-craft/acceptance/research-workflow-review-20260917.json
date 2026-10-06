@@ -1,0 +1,59 @@
+{
+  "schema": "money-craft.research-workflow-review.v1",
+  "date": "2026-09-17",
+  "scope": "Complete research_workflow and bounded duplicate-heading change in report_audit; not full research_run lifecycle",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_workflow.py": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+    "skills/money-craft/scripts/report_audit.py": "d79365d725c88cd99d843235aecfa3401e53168c77327ad91d6a53096d5def80",
+    "skills/money-craft/references/company-research.md": "7cb22acf549df596c88648d5197a00b12bf210711c1fd82d624c5398f698d28a",
+    "skills/money-craft/references/tracking-workflow.md": "861d986878f253eb619edbc1e698d9ea04ec0f292f2d6654dfa13ee7f0da05ca",
+    "tests/test_workflow.py": "52435784852505f6dddd72c746f53a092ae972ee505798ae5402fa40d6d366eb"
+  },
+  "findings": [
+    {
+      "before": "Fact-only and source-definition-only thesis changes returned NO_MATERIAL_CHANGE.",
+      "after": "Facts section hashed and source changes participate in CHANGED, preserving stronger state signals."
+    },
+    {
+      "before": "A-share fiscal label could conflict with explicit period end; annual report could be later than latest report.",
+      "after": "A-share calendar end bound to quarter; annual fiscal tuple not later than latest. Non-A fiscal offsets preserved."
+    },
+    {
+      "before": "Duplicate contract heading could hide a second BROKEN hypothesis table while audits passed.",
+      "after": "Report audit rejects duplicate required headings and thesis core hypothesis/update-history headings."
+    }
+  ],
+  "validation": {
+    "workflow_tests": 18,
+    "audit_tests": 27,
+    "full_tests": 285,
+    "package_checks": 8,
+    "source_checks": 19,
+    "regressions_failed_before_fix": true
+  },
+  "independent_review": {
+    "agent": "research_workflow_review",
+    "verdict": "NO_UNRESOLVED_FINDINGS",
+    "workflow_tests": 18,
+    "audit_tests": 27,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_workflow.py": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+      "skills/money-craft/scripts/report_audit.py": "d79365d725c88cd99d843235aecfa3401e53168c77327ad91d6a53096d5def80"
+    },
+    "additional_controls": 4,
+    "additional_observations": "Valid A-share explicit end and non-A fiscal offset accepted; future non-A annual rejected; duplicate ordinary appendix headings allowed.",
+    "evidence_boundary": "Additional compatibility controls reported by reviewer, raw temporary transcript not persisted."
+  },
+  "limits": [
+    "Structural changes are not investment-materiality judgments.",
+    "No automatic changes to old sealed archives; duplicate contract headings now fail audits.",
+    "report_audit whole-module and research_run whole-lifecycle coverage remain incomplete.",
+    "No live source accuracy or provider freshness verification.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T034123242753Z"
+  }
+}

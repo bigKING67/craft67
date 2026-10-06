@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.report-chart-labels.v1",
+  "date": "2026-09-17",
+  "scope": "Nonzero numeric labels, bounded extreme text and proportional zero/tiny bars",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "554c75ff9320db09cce61dd1cdeeb27afbe2c85ffb99c6e8649d66ff548c9e53",
+    "tests/test_report_renderer.py": "9f24e7be2da7ab8383f188a28d058eccc2fe26793d6165c862cfbd6de4668a4f",
+    "skills/money-craft/references/report-rendering.md": "0b1948a2efac97b0a4834a0b1d416c43ffaaec36f13a3415a7ecf2b1bc9c51aa"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Tiny nonzero values rounded to zero; very large values expanded into long labels; minimum widths gave zero values visible positive bars.",
+    "after": "Scientific notation for tiny or large magnitudes, normalized signed zero, proportional bar widths without minimum floors."
+  },
+  "validation": {
+    "renderer_tests": 41,
+    "full_tests": 331,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 7,
+    "real_cli": "Zero scenario width is zero, tiny positive width remains positive, current price and Base title use scientific notation; source bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 41,
+    "skipped_tests": 0,
+    "additional_boundary_assertions": 25,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "554c75ff9320db09cce61dd1cdeeb27afbe2c85ffb99c6e8649d66ff548c9e53",
+      "tests/test_report_renderer.py": "9f24e7be2da7ab8383f188a28d058eccc2fe26793d6165c862cfbd6de4668a4f"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T094326783260Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "Unit inference, binary floating-point precision and complete SVG geometry await review.",
+    "Subpixel bars may not be visible; labels and source table retain values.",
+    "Real PDF engine and visual acceptance unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

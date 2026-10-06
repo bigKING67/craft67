@@ -1,0 +1,815 @@
+{
+  "schema": "whoami.report.v6",
+  "chartId": "a3fee7834bc85e84bff82e9ad80e72c9678383d5948ea7ae4d76e2094cb97789",
+  "evidenceId": "3d0b34bd617494d53f269cc99fa79edf01647a9ebb72b0fc6a806970d096ea9e",
+  "mode": "combined",
+  "timeReference": {
+    "asOfDate": "2026-09-25",
+    "timeZone": "Asia/Shanghai"
+  },
+  "title": "合成样例｜2000年8月16日寅时：八字与紫微综合解读（2024—2028）",
+  "uncertainty": "此为合成资料的端到端演示，不对应真实用户。以公历 2000-08-16 04:00、东经120度、Asia/Shanghai、女性为输入，采用真太阳时与子初换日。核心将时刻校正为 03:55:15.836；本例离时辰边界并不近，但均时差为 NOAA 近似值，不能声称秒级出生精度。以下是传统命理的条件性解读，不证明现实事件或作医疗、投资、婚姻决定。八字年份以立春为界，紫微流年以农历新年为界。",
+  "sections": [
+    {
+      "id": "summary",
+      "claims": [
+        {
+          "text": "这张盘的传统解读主线是主动承担、整合资源和持续迭代。八字日主为丙火，生在申月，日支午、时支寅仍给丙火留有根气；紫微命宫紫微、身宫落官禄且有廉贞天府。一个可在现实中尝试、而非由双盘共同证明的工作方式是：在有目标、权限和资源边界的场景里，越能把判断落成制度、作品或项目，越容易发挥；只靠情绪冲刺或为了证明自己而承担过量责任，反而消耗大。\n\n2024—2028 落在八字辛巳大运（2023-07 至 2033-07）和紫微 23—32 岁夫妻大限（2022—2031）。这里的‘夫妻大限’不等同于必然结婚，更适合理解为合作、承诺、边界与互相选择被推到台前的十年。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.bazi.dayMaster",
+            "C1-300a9bf9.bazi.month",
+            "C1-300a9bf9.bazi.day",
+            "C1-300a9bf9.bazi.hour",
+            "C1-300a9bf9.bazi.cycles",
+            "C1-300a9bf9.ziwei.base",
+            "C1-300a9bf9.ziwei.palace-4",
+            "C1-300a9bf9.ziwei.palace-8",
+            "C1-300a9bf9.ziwei.cycles"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-bazi-structure",
+            "C1-300a9bf9.R-ziwei-事业",
+            "C1-300a9bf9.R-ziwei-关系"
+          ],
+          "conditions": "以给定出生时刻、真太阳时、全书派紫微设置为前提；‘发挥’是传统结构解释，不是职位、收入或关系结果的保证。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "climate"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "bazi-timing"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-structure"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "claims": [
+        {
+          "text": "八字的底图是庚辰、甲申、丙午、庚寅。申月令使金的环境感很强，天干又见两庚；但丙火坐午，并在寅中见丙、甲，不能只按‘金多火少’下结论。更贴切的描述是：你往往既在意效率、价值与结果，也需要由学习、意义感或创造冲动来点燃行动。申寅冲是一条结构线索，容易把‘要稳定掌控’和‘要主动开新路’同时放进心里；它可以成为转型能力，也可能在节奏过快时表现为反复拉扯，并不直接等于坏事。\n\n紫微命宫紫微、福德宫破军并见文昌禄存，补充了这一点：自我要求和改造旧结构的冲动可以并存。适合把大的判断拆成能复盘的阶段成果，以免把一次选择当成不可回头的身份判断。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.bazi.year",
+            "C1-300a9bf9.bazi.month",
+            "C1-300a9bf9.bazi.day",
+            "C1-300a9bf9.bazi.hour",
+            "C1-300a9bf9.bazi.roots",
+            "C1-300a9bf9.bazi.relations",
+            "C1-300a9bf9.ziwei.palace-4",
+            "C1-300a9bf9.ziwei.palace-6"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-bazi-structure"
+          ],
+          "conditions": "这是基于月令、透干、通根和宫位的综合阅读；五行出现次数只作描述，不是性格测量或强弱总分。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-structure"
+            }
+          ],
+          "premiseStatus": "conditional"
+        }
+      ]
+    },
+    {
+      "id": "career",
+      "claims": [
+        {
+          "text": "职业上更值得争取的是有清晰责任、能调动资源、允许你同时处理规则与人的岗位。紫微官禄宫为廉贞、天府，身宫亦在官禄，财帛宫武曲化权、天相并带天马；传统上这类组合更能支持管理、经营、专业项目统筹、策略与资源配置，而不是只做没有决策权的重复执行。八字两庚偏财与甲偏印同见，也可以把它读成‘学习/判断’和‘价值兑现’都要落到现实项目里。\n\n2024—2028 的年度柱提供逐年复核入口，但现有论证没有证明甲辰、乙巳、丙午、丁未、戊申分别对应补能力、展示、流程化或转型等固定任务，因此不把五年排成行动日程。可直接核对的窄差异是：2026 丙午与本命日柱同柱；2028 戊申的申再次进入原局申寅冲结构。它们只说明要继续复核同柱和冲的实际作用，不能推出升职、离职、换团队、换城市或扩张。职责、预算、协作接口和退出条件应在每次现实机会出现时检查，不必等待特定命理年份。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.bazi.year",
+            "C1-300a9bf9.bazi.month",
+            "C1-300a9bf9.bazi.day",
+            "C1-300a9bf9.bazi.hour",
+            "C1-300a9bf9.bazi.relations",
+            "C1-300a9bf9.bazi.cycles",
+            "C1-300a9bf9.ziwei.palace-0",
+            "C1-300a9bf9.ziwei.palace-4",
+            "C1-300a9bf9.ziwei.palace-8",
+            "C1-300a9bf9.ziwei.cycles"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-bazi-timing",
+            "C1-300a9bf9.R-ziwei-事业"
+          ],
+          "conditions": "职业方向仍取决于能力、机会、行业和具体选择；运年事实没有完成作用强弱、制化、四化落宫与现实触发条件的逐年论证，不能推出固定任务或特定事件。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "bazi-timing"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-career"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "wealth",
+      "claims": [
+        {
+          "text": "财务主题的重点是用能力和规则建立可持续的议价权。八字明透两庚，紫微财帛宫的武曲化权、天相和天马，均可作为重视资源、效率、执行与外部流动的传统线索。它更适合支持预算、定价、长期专业积累和多渠道收入的思路。\n\n扶抑层面可以先把‘财荷相对根印支持是否过重’列为优先比较：申中庚偏财透在年、时，说明财的作用不能忽略；但午中丁根未见直接六冲、寅中丙根虽受申冲而没有被自动删除，月干甲偏印也在支持侧。若后续能论证日主偏弱且财是主要负荷，才进入比劫帮身任财的分支；若根印足以承担财荷，这条分支就不能沿用。两庚也不是两份独立的财旺证明。\n\n风险控制要与这个结构配套：当机会多、推进欲强时，预先设定现金流底线、单项风险上限和复盘周期。这样既保留行动力，也避免把短期结果当成能力的唯一证明。命理不构成投资建议，任何投资、借贷、创业或大额消费仍应基于实际财务资料和专业意见。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.bazi.year",
+            "C1-300a9bf9.bazi.month",
+            "C1-300a9bf9.bazi.day",
+            "C1-300a9bf9.bazi.hour",
+            "C1-300a9bf9.bazi.monthExposure",
+            "C1-300a9bf9.bazi.wealthReview",
+            "C1-300a9bf9.bazi.rootDetails",
+            "C1-300a9bf9.bazi.relations",
+            "C1-300a9bf9.ziwei.palace-0",
+            "C1-300a9bf9.ziwei.palace-8"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-财运",
+            "C1-300a9bf9.R-bazi-structure",
+            "C1-300a9bf9.R-bazi-month-exposure",
+            "C1-300a9bf9.R-bazi-wealth-review",
+            "C1-300a9bf9.R-bazi-root-review"
+          ],
+          "conditions": "扶抑分支以普通格、偏弱、财为主要负荷及比劫实际可用同时成立为前提；这里只把星曜、十神当作传统资源配置线索，不含收益率、盈亏或投资方向预测。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-wealth"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "claims": [
+        {
+          "text": "关系与合作的关键字是尊重、节奏和边界。紫微夫妻宫七杀庙，配右弼、火星；当前又处在夫妻大限。传统上，这更适合读为容易遇到有主见、行动快或对承诺标准高的人与合作，而不是替你判定某段关系的结局。火星提示的是沟通升级时要避免用强度代替清晰度；右弼则提醒可以借助共同目标、第三方协调或明确分工。\n\n八字的申寅冲也与这种‘既想推进、又要保留自主’的体验相呼应。可执行的做法是：在确认关系或合作前，把时间投入、金钱、决策权和冲突处理方式说清；发生分歧时先复述对方的具体诉求，再讨论方案。它比用命盘给关系贴标签更可靠。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.bazi.relations",
+            "C1-300a9bf9.ziwei.palace-2",
+            "C1-300a9bf9.ziwei.cycles"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-bazi-timing",
+            "C1-300a9bf9.R-ziwei-关系"
+          ],
+          "conditions": "宫位和冲合只提供传统关系结构线索；现实关系质量取决于双方行为、沟通和环境，不可由此断言婚恋事件。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-relationships"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "claims": [
+        {
+          "text": "2024—2028 的八字流年依次为甲辰、乙巳、丙午、丁未、戊申，且均在辛巳大运内；紫微则均位于 2022—2031 的夫妻大限，流年四化分别为：2024 廉贞、破军、武曲、太阳；2025 天机、天梁、紫微、太阴；2026 天同、天机、文昌、廉贞；2027 太阴、天同、天机、巨门；2028 贪狼、太阴、右弼、天机（顺序均为禄、权、科、忌）。\n\n这些年表与星名清单只提供复核入口，不能单独把五年排成校准、学习、展示、流程化或扩张等行动顺序。若要给某一年的具体主题，至少要继续核对四化的本命落宫与当年宫职、主题宫星曜、三方四正、同星跨层差异，以及八字年度作用是否针对同一个问题完成论证；缺少这些条件时，规划仍按现实目标、资源、风险和反馈推进。还要注意：八字年度从立春起算，紫微年度从农历新年起算，同一公历年的起算边界并不相同。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.bazi.cycles",
+            "C1-300a9bf9.ziwei.cycles",
+            "C1-300a9bf9.bazi.relations"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-bazi-timing",
+            "C1-300a9bf9.R-ziwei-事业",
+            "C1-300a9bf9.R-ziwei-关系"
+          ],
+          "conditions": "紫微四化顺序按 context 的禄、权、科、忌读取；星名清单没有完成逐年作用论证，不能据此分配年度任务或替代实际的职业、财务与关系判断。",
+          "confidence": "high",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "bazi-timing"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        },
+        {
+          "text": "以2026年为例，流年四化为天同化禄、天机化权、文昌化科、廉贞化忌，分别定位本命疾厄、兄弟、福德、官禄宫；本例当年的流年宫职与这些本命宫名恰好相同，其他年份不可照搬。天同同时带生年忌，2022—2031大限也见天同化忌，这些是不同时间层，不能用流年禄抹去其他层的标记。\n\n这些定位为讨论个人状态、协作、精神投入与工作议题提供了传统分析入口；具体解释还需结合宫内星曜、三方四正与现实背景，不能把疾厄宫直接解释成疾病，也不能把官禄宫化忌直接解释成失业。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-300a9bf9.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-ziwei-transformations"
+          ],
+          "conditions": "仅年度层面的传统线索，未计算流月流日或具体事件时刻；跨层四化不当作独立概率证据。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "claims": [
+        {
+          "text": "无论采用哪种传统解释，最有用的现实动作有三件：第一，同时只保留一个可量化的主目标，配一个停止条件，避免目标与责任无限扩张；第二，把重要合作写成可讨论的约定，包括谁决定、谁执行和复盘触发条件；第三，把学习、输出和资源盘点连成闭环，例如每完成一个项目就留下方法文档、案例和可复用的人际连接。\n\n关于用神，这份资料仍不足以给唯一、绝对的‘喜某一行’，但也不再停在泛泛的‘无法判断’。午中丁根未见直接六冲，寅中丙根虽受申冲，月干甲印又透，可以条件性确认日主并非无根、存在支持基础；申月庚偏财同干透在年、时，则说明财荷必须进入优先比较。下一步的顺序应是先比较根印支持与财荷，再判断强弱和主要负荷；只有得到‘偏弱且财为主要负荷’的结论，才讨论比劫帮身任财。若根印足以承担财荷，这条扶抑分支就不成立。\n\n调候层也能收窄一步：在所选 1926 年《穷通宝鉴》的‘七月丙火’条目下，壬水进入优先复核候选；本盘壬只藏于申而没有透干，原文还要求壬多时另看戊制，因此这不能改写成‘唯一喜水’或现实中的补水建议。这里列出的根气证据同样来自具体藏干：午中丁与丙日主同属火但不同干，寅中丙与日主同干。未见直接六冲不等于根气稳定，受冲也不等于根已经删除；两庚透出也不是两份独立的财旺证明。格局、调候和扶抑仍须分开，现实建议不能冒充自动算出的喜用结论。",
+          "kind": "advice",
+          "factRefs": [
+            "C1-300a9bf9.bazi.year",
+            "C1-300a9bf9.bazi.month",
+            "C1-300a9bf9.bazi.day",
+            "C1-300a9bf9.bazi.hour",
+            "C1-300a9bf9.bazi.roots",
+            "C1-300a9bf9.bazi.visibleElements",
+            "C1-300a9bf9.bazi.monthExposure",
+            "C1-300a9bf9.bazi.wealthReview",
+            "C1-300a9bf9.ziwei.palace-0",
+            "C1-300a9bf9.ziwei.palace-8",
+            "C1-300a9bf9.bazi.rootDetails"
+          ],
+          "ruleRefs": [
+            "C1-300a9bf9.R-bazi-structure",
+            "C1-300a9bf9.R-ziwei-财运",
+            "C1-300a9bf9.R-ziwei-事业",
+            "C1-300a9bf9.R-bazi-root-review",
+            "C1-300a9bf9.R-bazi-month-exposure",
+            "C1-300a9bf9.R-bazi-wealth-review"
+          ],
+          "conditions": "建议是低风险的工作与沟通习惯；用神表述明确保留不确定性，不以天干五行计数取代月令、透干和通根判断。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "climate"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-career"
+            },
+            {
+              "candidate": "C1-300a9bf9",
+              "topic": "ziwei-wealth"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    }
+  ],
+  "baziReasoning": [
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "strength",
+      "status": "conditional",
+      "conclusion": "在普通格假设下，当前至少可以收窄为‘并非无根，存在支持基础’：午中丁根未见直接六冲，寅中丙同干根虽受申冲，月干甲偏印又透。申月及年、时两庚偏财仍是必须比较的负荷，因此本项不据此定身强或偏强。",
+      "supportRefs": [
+        "C1-300a9bf9.bazi.dayMaster",
+        "C1-300a9bf9.bazi.month",
+        "C1-300a9bf9.bazi.rootDetails",
+        "C1-300a9bf9.bazi.hour"
+      ],
+      "counterRefs": [
+        "C1-300a9bf9.bazi.relations",
+        "C1-300a9bf9.bazi.year",
+        "C1-300a9bf9.bazi.monthExposure",
+        "C1-300a9bf9.bazi.wealthReview"
+      ],
+      "counterReview": "午根未见直接六冲不等于根气稳定；寅根受申冲也不能自动删除。甲印透出是另一类支持，申月财星同干透于年、时则是负荷线索；这些同源事实不能按数量相加成强弱分数。",
+      "conditions": "只在普通格假设、午根与甲印仍能参与作用时成立；它确认的是支持基础，不是最终强弱。若特殊取法、合化或根印失效成为决定性条件，须重新判断。",
+      "alternatives": "若财耗相对根印占优，可转入偏弱分支；若根印足以承担财荷，可再讨论相对可任负荷。现阶段不把任一分支升级为身强。",
+      "ruleRefs": [
+        "C1-300a9bf9.R-bazi-structure",
+        "C1-300a9bf9.R-bazi-root-review",
+        "C1-300a9bf9.R-bazi-month-exposure",
+        "C1-300a9bf9.R-bazi-wealth-review"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "pattern",
+      "status": "conditional",
+      "conclusion": "月支申藏庚壬戊；庚为丙日主的偏财，透在年干和时干，当前财格复核因此确认‘偏财格候选入口已满足’。这只确认候选身份，不确认成格；壬七杀与戊食神未在年、月、时干同干透出。",
+      "supportRefs": [
+        "C1-300a9bf9.bazi.month",
+        "C1-300a9bf9.bazi.year",
+        "C1-300a9bf9.bazi.hour",
+        "C1-300a9bf9.bazi.dayMaster",
+        "C1-300a9bf9.bazi.monthExposure",
+        "C1-300a9bf9.bazi.wealthReview"
+      ],
+      "counterRefs": [
+        "C1-300a9bf9.bazi.rootDetails",
+        "C1-300a9bf9.bazi.relations",
+        "C1-300a9bf9.bazi.wealthReview"
+      ],
+      "counterReview": "庚两透不能作为两份独立成格证明。年干庚偏财与月干甲偏印相邻，构成财印位置风险；时干庚与月甲隔日主，不能用这一隔位对抵消年、月相邻风险。寅申冲与未透壬、戊的作用仍需另行核验。",
+      "conditions": "条件性结论仅以月支庚偏财同干透于年、时及当前财格候选入口复核满足为前提。八组前提中本例只有财印显干并见；相邻柱位已核对，但合化或通关是否改变风险、财印相克的实际作用、旺衰、救应及最终成格仍未裁定。其余组未见显干不等于藏干没有相关星。财旺生官的显干分支入口未满足，本模块不据此否定暗官或其他取法。",
+      "alternatives": "若月藏庚并非同干透出，财格候选入口即不满足；即使入口满足，普通格与特殊格也不得混用，未完成成败规则前不把候选格名作为后文建议的既定前提。",
+      "ruleRefs": [
+        "C1-300a9bf9.R-bazi-structure",
+        "C1-300a9bf9.R-bazi-month-exposure",
+        "C1-300a9bf9.R-bazi-wealth-review"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "climate",
+      "status": "conditional",
+      "conclusion": "在所选 1926 年《穷通宝鉴》版本的‘七月丙火’条目下，壬水进入调候优先复核候选。本盘申中藏壬、戊，但二者均未在年、月、时干同干透出；这里只确认来源特定的候选身份，不确认壬已有效、唯一喜水或最终用神已定。",
+      "supportRefs": [
+        "C1-300a9bf9.bazi.month",
+        "C1-300a9bf9.bazi.dayMaster"
+      ],
+      "counterRefs": [
+        "C1-300a9bf9.bazi.monthExposure"
+      ],
+      "counterReview": "月支藏壬、戊只证明藏干存在，不能改写成壬透或戊透。原文紧接着要求壬多时另取戊制，说明候选不能脱离多寡和制衡条件；当前事实也没有提供统一强度阈值。",
+      "conditions": "只在同一候选确为丙日、申月且采用本次核验的版本口径时成立。壬的透藏、是否可称多、戊的制衡及全局作用仍须核对；调候是传统术语，不是实际气象、健康诊断或补水建议。",
+      "alternatives": "其他日主或月支须读取对应来源，不能套用本条。调候与扶抑、月令格局分别解决不同问题，壬水候选不能替代财荷与根印比较或格局成败判断。",
+      "ruleRefs": [
+        "C1-300a9bf9.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "balance",
+      "status": "conditional",
+      "conclusion": "暂不选定扶抑用神，但可以把‘财荷相对根印支持是否过重’列为第一比较分支：申月庚偏财同干透在年、时，财的显性负荷不能忽略；午根、受冲的寅根与甲印则构成必须同时比较的支持侧。若后续判定日主偏弱且财为主要负荷，可讨论比劫帮身任财；若支持足以承担财荷，这条分支不成立。",
+      "supportRefs": [
+        "C1-300a9bf9.bazi.dayMaster",
+        "C1-300a9bf9.bazi.month",
+        "C1-300a9bf9.bazi.year",
+        "C1-300a9bf9.bazi.hour",
+        "C1-300a9bf9.bazi.rootDetails",
+        "C1-300a9bf9.bazi.monthExposure",
+        "C1-300a9bf9.bazi.wealthReview"
+      ],
+      "counterRefs": [
+        "C1-300a9bf9.bazi.relations"
+      ],
+      "counterReview": "两庚显现不证明财已成为主要负荷；午根未见直接冲、寅根受冲与甲印透出也不能互相抵消。财印相邻风险、未透食神和七杀的作用仍须分别核验，不能按出现次数取胜。",
+      "conditions": "比劫方向只在普通格、日主偏弱、财为主要负荷且比劫实际可用同时成立时讨论；任一前提不成立就退出该分支。",
+      "alternatives": "若根印足以承担财荷，或食伤、官杀成为主要负荷，应改用对应分支重新论证；本项不推出确定喜木火或忌金水。",
+      "ruleRefs": [
+        "C1-300a9bf9.R-bazi-structure",
+        "C1-300a9bf9.R-bazi-root-review",
+        "C1-300a9bf9.R-bazi-month-exposure",
+        "C1-300a9bf9.R-bazi-wealth-review"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "selection",
+      "status": "unresolved",
+      "conclusion": "本例仍保留最终用神未决。扶抑只有在日主偏弱、财为主要负荷且比劫实际可用时，才进入比劫方向；调候只确认所选版本下的壬水复核候选；偏财格入口也没有给出格局用神。三项处在不同语境，当前既没有一个已成立的具体方向，也没有形成可合并的统一喜用。",
+      "supportRefs": [
+        "C1-300a9bf9.bazi.dayMaster",
+        "C1-300a9bf9.bazi.month",
+        "C1-300a9bf9.bazi.rootDetails",
+        "C1-300a9bf9.bazi.year",
+        "C1-300a9bf9.bazi.hour",
+        "C1-300a9bf9.bazi.monthExposure",
+        "C1-300a9bf9.bazi.wealthReview"
+      ],
+      "counterRefs": [
+        "C1-300a9bf9.bazi.relations"
+      ],
+      "counterReview": "午根、受冲寅根、甲印和两庚财分别描述支持与负荷，不能按出现次数得出强弱。扶抑潜在的比劫方向与调候壬水候选也不能互相投票或抵消；偏财格候选身份同样不是格局取用。",
+      "conditions": "若只提出某一语境的限定候选，须先给出具体方向、完整前提、反证和撤回条件；若要形成跨口径最终答案，还须分别完成强弱、主要负荷、比劫可用性、格局成败，以及调候候选的透藏、多寡与制衡核验，并解释三种语境如何一致或分工。",
+      "alternatives": "若确认偏弱、财为主要负荷且比劫可用，可仅在普通格扶抑范围提出比劫候选；若这些前提不成立，就撤回该方向并重新比较其他负荷。调候改用其他版本也须重列来源与条件。学习、表达、复盘等一般建议不证明补某五行有效。",
+      "ruleRefs": [
+        "C1-300a9bf9.R-bazi-structure",
+        "C1-300a9bf9.R-bazi-root-review",
+        "C1-300a9bf9.R-bazi-month-exposure",
+        "C1-300a9bf9.R-bazi-wealth-review"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "bazi-timing",
+      "status": "unresolved",
+      "years": [
+        2024,
+        2025,
+        2026,
+        2027,
+        2028
+      ],
+      "conclusion": "2024—2028 均落在辛巳大运；年度柱可复算，但当前只确认运年范围与立春边界，没有完成各年作用对具体主题的裁定。",
+      "supportRefs": [
+        "C1-300a9bf9.bazi.cycles",
+        "C1-300a9bf9.bazi.relations"
+      ],
+      "counterRefs": [],
+      "counterReview": "已核对五个流年仍在同一大运，并检查原局关系入口；未核验各流年制化、同柱或冲的现实触发，不能把年序写成行动日程。",
+      "conditions": "适用范围仅为 2024—2028，八字年度按立春切换；若出生资料、起运口径或所问主题改变，需重算并重审。",
+      "alternatives": "年度事实可作为后续逐年分析入口；在作用链未闭合前，现实计划仍按目标、资源和反馈安排。",
+      "ruleRefs": [
+        "C1-300a9bf9.R-bazi-timing"
+      ],
+      "timingChain": {
+        "target": "general",
+        "cycleRefs": [
+          "C1-300a9bf9.bazi.cycles"
+        ],
+        "annualReviews": [
+          {
+            "year": 2024,
+            "pillar": "甲辰",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-300a9bf9.bazi.relations"
+            ],
+            "review": "2024 年甲辰：只确认该立春流年位于辛巳大运，并以本命干支关系为复核入口；具体主题与现实结果未裁定。"
+          },
+          {
+            "year": 2025,
+            "pillar": "乙巳",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-300a9bf9.bazi.relations"
+            ],
+            "review": "2025 年乙巳：只确认该立春流年位于辛巳大运，并以本命干支关系为复核入口；具体主题与现实结果未裁定。"
+          },
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-300a9bf9.bazi.relations"
+            ],
+            "review": "2026 年丙午：只确认该立春流年位于辛巳大运，并以本命干支关系为复核入口；具体主题与现实结果未裁定。"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-300a9bf9.bazi.relations"
+            ],
+            "review": "2027 年丁未：只确认该立春流年位于辛巳大运，并以本命干支关系为复核入口；具体主题与现实结果未裁定。"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-300a9bf9.bazi.relations"
+            ],
+            "review": "2028 年戊申：只确认该立春流年位于辛巳大运，并以本命干支关系为复核入口；具体主题与现实结果未裁定。"
+          }
+        ],
+        "crossLayerReview": "本命干支关系、辛巳大运与各立春流年已经分层；尚未完成逐年制化、主题落点和现实触发的联合复核。",
+        "missingLinks": [
+          "缺少逐年制化与主题落点的传统复核",
+          "缺少可核验的现实目标、事件与反馈资料"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "当前报告没有绑定可核验的现实目标、事件或反馈，只能保留时间骨架。",
+          "source": null
+        },
+        "withdrawalConditions": "出生资料、起运口径、所问主题或现实资料变化时，撤回本链并重新计算与复核。"
+      }
+    }
+  ],
+  "ziweiReasoning": [
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-structure",
+      "status": "conditional",
+      "conclusion": "命身宫及所引本命宫星曜已经定位，可形成范围明确的本命结构阅读；这只确认传统主题入口，不定性完整人格或现实结果。",
+      "counterReview": "已检查单星不能脱离宫位、关联宫和命身位置单独下结论；尚未把星曜组合换算成现实人格测量。",
+      "conditions": "仅在当前出生候选和全书派设置下成立；须联读命身宫、主题宫与三方四正，资料变化后重算。",
+      "alternatives": "若相关宫位为空、星曜定位改变或现实资料不支持，只保留宫位事实，不沿用性格化解释。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.palace-4",
+        "C1-300a9bf9.ziwei.palace-6"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-career",
+      "status": "conditional",
+      "conclusion": "官禄、命身及关联宫事实可形成事业主题的条件性阅读，但不能由星曜直接推出职业、升迁或工作结果。",
+      "counterReview": "已检查主题宫不能由单星或单一四化独断；跨层四化与现实职责尚需逐项核对。",
+      "conditions": "具体判断须同时说明官禄宫、命身宫、三方四正、时间层和现实职业条件。",
+      "alternatives": "若联宫信息不一致或现实角色不匹配，退回为工作方式的复盘问题，不给职业定性。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.palace-8"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-wealth",
+      "status": "conditional",
+      "conclusion": "财帛及关联宫事实可形成资源主题的条件性阅读，但不构成收入、收益、投资方向或风险承受能力证明。",
+      "counterReview": "已检查财帛宫不能脱离官禄、福德、迁移等关联宫，也不以化禄或化权直接断财。",
+      "conditions": "资源判断须与主题宫、关联宫、时间层及真实现金流、合同和风险资料共同核对。",
+      "alternatives": "现实财务资料不支持时，只保留预算和复盘建议，不沿用盘面收益叙述。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.palace-0"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-财运"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-relationships",
+      "status": "conditional",
+      "conclusion": "夫妻及关联宫事实可形成关系与合作主题的条件性阅读，但不能推出婚恋事件、对象性格或关系结局。",
+      "counterReview": "已检查夫妻宫须与命身、福德、官禄等关联宫联读，四化并存也不自动抵消或定吉凶。",
+      "conditions": "只讨论沟通、承诺与边界主题；现实关系仍取决于双方行为、意愿和环境。",
+      "alternatives": "若现实对象、关系类型或时间范围不同，退回为沟通复盘问题，不给事件判断。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.base",
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.palace-2"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-关系"
+      ]
+    },
+    {
+      "candidate": "C1-300a9bf9",
+      "topic": "ziwei-timing",
+      "status": "unresolved",
+      "conclusion": "大限、流年与四化的年份、星名和已定位宫位可复算，但作用轻重、跨层取舍和现实触发尚未完成，不能据此生成固定年度行动日程。",
+      "counterReview": "已检查本命落宫与流年宫职分层、同星跨层异化和定位缺口；未计算宫干飞化、自化、流月流日或事件强度。",
+      "conditions": "给年度主题前须补齐本命落宫、流年宫职、主题宫星曜、三方四正、跨层差异及现实触发与撤回条件。",
+      "alternatives": "条件不足时只报告年表和定位事实；行动时机按现实目标、资源、风险与反馈决定。",
+      "supportRefs": [
+        "C1-300a9bf9.ziwei.transformations",
+        "C1-300a9bf9.ziwei.cycles",
+        "C1-300a9bf9.ziwei.palace-4",
+        "C1-300a9bf9.ziwei.palace-6",
+        "C1-300a9bf9.ziwei.palace-8",
+        "C1-300a9bf9.ziwei.palace-0",
+        "C1-300a9bf9.ziwei.palace-2"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-300a9bf9.R-ziwei-transformations"
+      ],
+      "timingChain": {
+        "target": "general",
+        "years": [
+          2024,
+          2025,
+          2026,
+          2027,
+          2028
+        ],
+        "transformationRefs": [
+          "C1-300a9bf9.ziwei.transformations"
+        ],
+        "cycleRefs": [
+          "C1-300a9bf9.ziwei.cycles"
+        ],
+        "palaceRefs": [
+          "C1-300a9bf9.ziwei.palace-4",
+          "C1-300a9bf9.ziwei.palace-6",
+          "C1-300a9bf9.ziwei.palace-8",
+          "C1-300a9bf9.ziwei.palace-0",
+          "C1-300a9bf9.ziwei.palace-2"
+        ],
+        "crossLayerReview": "已区分本命落宫、流年宫职、大限与流年四化；同星跨层信息并存时不相互抵消，也不直接换算为现实事件。",
+        "missingLinks": [
+          "现实目标、经历和约束尚未绑定",
+          "目标主题的逐年作用关系尚未闭合"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "当前资料只有命盘计算事实，没有可核对的现实触发记录。",
+          "source": null
+        },
+        "withdrawalConditions": "出生资料、时间层定位、主题宫联读或现实反馈发生变化时，撤回当前年度主题并重新核对。"
+      }
+    }
+  ],
+  "crossSystem": [
+    {
+      "target": "career",
+      "years": [],
+      "relationship": "insufficient",
+      "text": "本项讨论本命结构能否支持“自主承担与组织资源”的工作方式。八字所引丙火根气只说明结构支持线索，尚未完成到职业行为的论证；紫微命身宫与官禄宫可提供主题观察，但不足以弥补八字推理缺口。因此目前不登记为两体系共同支持。可以把相应工作方式作为现实中待检验的建议，不作为双盘已验证的性格结论。",
+      "factRefs": [
+        "C1-300a9bf9.bazi.day",
+        "C1-300a9bf9.bazi.hour",
+        "C1-300a9bf9.ziwei.palace-4",
+        "C1-300a9bf9.ziwei.palace-8"
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "pattern"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "climate"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "selection"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-structure"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "target": "general",
+      "years": [],
+      "relationship": "insufficient",
+      "text": "八字关于旺衰、调候、扶抑与格局的证据不应被简化成唯一用神；紫微宫位也不能把现实收入、婚恋或健康结果直接定性。两套体系只能提供传统观察角度，现实选择仍须用具体资料验证。",
+      "factRefs": [
+        "C1-300a9bf9.bazi.month",
+        "C1-300a9bf9.bazi.roots",
+        "C1-300a9bf9.ziwei.palace-0",
+        "C1-300a9bf9.ziwei.palace-2"
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "pattern"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "climate"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "selection"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-wealth"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-relationships"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ],
+  "assertions": []
+}

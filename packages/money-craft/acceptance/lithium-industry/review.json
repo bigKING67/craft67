@@ -1,0 +1,112 @@
+{
+  "schema": "money-craft.lithium-industry-review.v1",
+  "status": "PASS_BOUNDED_PARENT_COMPLETED_DELIVERY",
+  "as_of": "2025-05-31",
+  "execution_date": "2026-09-20",
+  "scope": "Global lithium mine/salt-battery-electric-car sufficient-condition question; not full industry investment research",
+  "parent": {
+    "route": "industry-value-chain-map",
+    "route_status": "READY",
+    "route_initial_attempt": "Invalid intent/market enums; corrected before dependent research",
+    "calculation_count": 10,
+    "semantic_reviewer": "parent_agent"
+  },
+  "host": {
+    "elapsed_seconds": 190.119,
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "route": {
+      "state": "READY",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "state": "READY",
+          "error_code": null
+        }
+      ],
+      "ready": true
+    },
+    "source_hashes_verified": [
+      {
+        "source_id": "S01",
+        "hash_verified": true
+      },
+      {
+        "source_id": "S02",
+        "hash_verified": true
+      }
+    ],
+    "calculation_count": 8,
+    "public_citations": [
+      {
+        "source_id": "S01",
+        "registered_public_link": true
+      },
+      {
+        "source_id": "S02",
+        "registered_public_link": true
+      }
+    ],
+    "machine_checks_pass": true,
+    "default_contract_applied": true,
+    "snapshot_reaudit_same_contract": true,
+    "first_pass_public_links": true,
+    "semantic_criteria": [
+      {
+        "criterion": "自然选用安装Skill及行业引用、有效路由；限定全球三环节与历史窗口",
+        "status": "PASS",
+        "evidence": "Installed Skill and industry reference read; industry-map route READY; historical window and post-hoc limits explicit."
+      },
+      {
+        "criterion": "销量与锂需求不作机械同比映射；2025展望与2024观察分开",
+        "status": "PASS",
+        "evidence": "Does not convert car growth directly to lithium growth; car count and battery intensity bridge remains missing; no forecast presented as realized result."
+      },
+      {
+        "criterion": "产量排除美国且是锂含量吨，消费估计/修订基数、库存与口径差异明确，差额不认证为市场盈余",
+        "status": "PASS",
+        "evidence": "US exclusion, lithium-content tonnes, revised base and estimates explicit; mechanical balance and battery-use estimate are not claimed as refined-salt/EV supply balance."
+      },
+      {
+        "criterion": "碳酸锂价格与锂含量数量分开；不同地域、时段及现货/合同不可拼接为同一价格序列",
+        "status": "PASS",
+        "evidence": "Chinese CIF spot Jan-Nov comparison distinct from US contracts, Australian spodumene and global annual average."
+      },
+      {
+        "criterion": "供给扩张与需求增长反证需求必然带来涨价；不同机构不冒充同指标独立交叉验证",
+        "status": "PASS",
+        "evidence": "Explains demand growth and price decline coexist; different institutions not claimed as independent confirmation of each metric."
+      },
+      {
+        "criterion": "有反方、具体下一窗口与可观察条件；无公司alpha、仓位或确定价格预测",
+        "status": "PARTIAL_WINDOW_MISSING",
+        "evidence": "Observable conditions and counterevidence supplied, but no explicit dated review window in raw answer; parent appended next-quarter/annual-review window in a separate delivery copy."
+      }
+    ],
+    "independent_execution": true,
+    "independent_semantic_review": false,
+    "raw_delivery_status": "NEEDS_EXPLICIT_REVIEW_WINDOW",
+    "parent_addition": "Review window appended in separate copy; raw answer unchanged",
+    "fresh_host_retest": "NOT_RUN"
+  },
+  "limitations": [
+    "Different source institutions are not independent duplicate measurement of each claim.",
+    "Historical pages captured post hoc; exact historical snapshot parity unverified.",
+    "No cost curve, full inventory bridge, stock selection, valuation or AI performance score.",
+    "No Skill/runtime modifications or global installation in this case."
+  ],
+  "artifacts": {
+    "acceptance/lithium-industry/report.md": "e94a6c324f8cb2ffcccfde34dc964fe62dd7f3cfde83b8d3a2b635b52c3b1c32",
+    "acceptance/lithium-industry/financial-audit.json": "edd21360d4bd6fe0751c3b16a219ddbce53058dacf24bdc7d3928f363bf474ec",
+    "acceptance/lithium-industry/calculations.json": "a08ff9456ef7c0de4697cfa62b7030c46f3f6b928079b3c87a3afdd506168043",
+    "acceptance/lithium-industry/claim-review.json": "07cddc66e2d6decfc5dcc7e136dff20943ddb0db0f05f710966ed104da107377",
+    "acceptance/lithium-industry/evidence-manifest.json": "9c65887a5983a09e8a219be1b6398bb06425f91120b809348da1e08a7eaf0242",
+    "acceptance/lithium-industry/host-answer-reviewed.md": "e2909f9b9139a66014a709dfa353dcbf19e111b0416d597775ae5ed32521020e",
+    "acceptance/lithium-industry/host-answer-reviewed-audit.json": "f1f49c6d1e602610d8a789f395954fe51d8689882c47635ae0a3f8bbf8d9be4f",
+    "local/skill-evals/20260920-lithium/installed/host.json": "bc9c2393f883798d800bcfb311b1cd8ac0588238ef1e058f23c90d349d237993",
+    "local/skill-evals/20260920-lithium/installed/answer.md": "a20d1d6d49df1e0fd2f17b9f65c3e209342822938cff4c6242b5f155f893cba0",
+    "local/skill-evals/20260920-lithium/installed/events.jsonl": "c6c668b1a2a50421d94b30bb06e260a7d7bb10ab211707afdc3631853df5136f",
+    "local/skill-evals/20260920-lithium/installed/case-snapshot.json": "149bf589ba1be88badbc7865d7c52e18c72ec8fe7645792a4ca578b406268119",
+    "local/skill-evals/20260920-lithium/installed/machine-audit.json": "4165f1f964035dedcdbce4e898288416a3eedd628d77050d5a39a66f521ccfd6",
+    "acceptance/skill-tasks/lithium-industry-case-20260920.json": "42174459d0d994b1ec02753e8a748d80b1922310d2991d9cf17c1205147c0dfd"
+  }
+}

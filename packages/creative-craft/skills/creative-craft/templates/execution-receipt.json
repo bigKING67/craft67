@@ -1,0 +1,22 @@
+{
+  "schema_version": "creative-craft.execution-receipt.v1",
+  "receipt_id": "receipt-tbd",
+  "job_id": "job-tbd",
+  "job_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "provider_profile": "openai.gpt-image-2.2026-04-21",
+  "execution_surface": "openai.image_api",
+  "model": "gpt-image-2",
+  "snapshot": "gpt-image-2-2026-04-21",
+  "host": "host-tbd",
+  "operator": "operator-tbd",
+  "started_at": "1970-01-01T00:00:00Z",
+  "completed_at": "1970-01-01T00:00:00Z",
+  "outcome": "failed",
+  "request_or_prompt_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "parameters": {},
+  "provider_execution_id": null,
+  "outputs": [],
+  "provider_errors": [],
+  "moderation_result": null,
+  "limitations": ["Template only; no provider execution occurred."]
+}

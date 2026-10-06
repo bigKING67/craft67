@@ -1,0 +1,14 @@
+.codex/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
+dist/
+build/
+node_modules/
+review-craft-runs/
+*.log
+.DS_Store

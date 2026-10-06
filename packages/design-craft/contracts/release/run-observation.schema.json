@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/release/run-observation.schema.json",
+  "title": "design-craft selected GitHub workflow run observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "kind", "source_commit", "run"],
+  "properties": {
+    "schema": {"const": "design-craft.github-run-observation.v1"},
+    "kind": {"enum": ["native", "physical", "benchmark", "certification"]},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "attempt",
+        "workflow",
+        "workflow_name",
+        "event",
+        "head_branch",
+        "head_sha",
+        "status",
+        "conclusion",
+        "url",
+        "repository"
+      ],
+      "properties": {
+        "id": {"type": "integer", "minimum": 1},
+        "attempt": {"type": "integer", "minimum": 1},
+        "workflow": {"enum": [".github/workflows/native-runtime.yml", ".github/workflows/physical-device.yml", ".github/workflows/benchmark.yml", ".github/workflows/release-certify.yml"]},
+        "workflow_name": {"enum": ["Native runtime evidence", "Physical device evidence", "Performance benchmark", "Release certification"]},
+        "event": {"enum": ["push", "workflow_dispatch"]},
+        "head_branch": {"type": "string", "minLength": 1},
+        "head_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "status": {"const": "completed"},
+        "conclusion": {"const": "success"},
+        "url": {"type": "string", "pattern": "^https://github\\.com/[^/]+/[^/]+/actions/runs/[1-9][0-9]*$"},
+        "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"kind": {"const": "native"}}},
+      "then": {
+        "properties": {
+          "run": {
+            "properties": {
+              "workflow": {"const": ".github/workflows/native-runtime.yml"},
+              "workflow_name": {"const": "Native runtime evidence"},
+              "event": {"const": "push"},
+              "head_branch": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"kind": {"const": "benchmark"}}},
+      "then": {
+        "properties": {
+          "run": {
+            "properties": {
+              "workflow": {"const": ".github/workflows/benchmark.yml"},
+              "workflow_name": {"const": "Performance benchmark"},
+              "event": {"const": "workflow_dispatch"},
+              "head_branch": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"kind": {"const": "physical"}}},
+      "then": {
+        "properties": {
+          "run": {
+            "properties": {
+              "workflow": {"const": ".github/workflows/physical-device.yml"},
+              "workflow_name": {"const": "Physical device evidence"},
+              "event": {"const": "workflow_dispatch"},
+              "head_branch": {"const": "main"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"kind": {"const": "certification"}}},
+      "then": {
+        "properties": {
+          "run": {
+            "properties": {
+              "workflow": {"const": ".github/workflows/release-certify.yml"},
+              "workflow_name": {"const": "Release certification"},
+              "event": {"const": "workflow_dispatch"},
+              "head_branch": {"const": "main"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

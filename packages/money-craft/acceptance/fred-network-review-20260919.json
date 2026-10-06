@@ -1,0 +1,42 @@
+{
+  "schema": "money-craft.fred-network-review.v1",
+  "date": "2026-09-19",
+  "scope": "HTTP error body lifecycle, transport read exceptions and bounded retries",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "9ed1d1754c187255427c4fd8c5041cc49db7bbf9ca4f77e07077ed314b3fb941",
+    "tests/test_fred_adapter.py": "a0b2ccac6130036664095af708f43f0da6611cb5a92b41336986f760a844a217",
+    "skills/money-craft/references/providers/fred.md": "f2db75d8122596c13126af1ae79b67d71ebe17b7e034d8e7f88bc151ab49878b"
+  },
+  "findings": {
+    "status": "FIXED",
+    "before": "HTTP error bodies were not explicitly closed; read exceptions escaped structured handling; HTTP protocol read failures bypassed retries; nonfinite retry delays were accepted.",
+    "after": "HTTP status preserved with observable read/close failure diagnostics; response closure attempted before retry; HTTP protocol exceptions become network_error; finite retry delay required."
+  },
+  "validation": {
+    "fred_tests": 30,
+    "full_tests": 375,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 4,
+    "initial_red_errors": 4,
+    "real_cli": "Injected IncompleteRead exhausts exactly three attempts, returns EXIT_TRANSIENT with network_error and creates no capture; synthetic key absent from output.",
+    "test_correction": "CLI regression initially expected EXIT_PROVIDER; corrected to existing EXIT_TRANSIENT contract for retryable errors. Production exit mapping unchanged."
+  },
+  "review": {
+    "mode": "parent scoped implementation and regression review",
+    "independent_agent_review": "NOT_RUN"
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T014441738439Z"
+  },
+  "limits": [
+    "FRED remains PARTIAL: arbitrary real-time ranges, observation bounds, units, pagination and remaining protocol paths await closure.",
+    "Offline injected transport and subprocess CLI evidence only; no live Provider or new host Skill injection.",
+    "Three attempts bound retry count, not total wall-clock duration; HTTP-date Retry-After is not implemented.",
+    "FRED targeted tests emitted no ResourceWarnings; full suite still contains ResourceWarnings elsewhere.",
+    "No application, commit, push or release."
+  ]
+}

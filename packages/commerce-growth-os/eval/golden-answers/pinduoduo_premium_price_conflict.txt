@@ -1,0 +1,15 @@
+Decision: 不建议把 same hero SKU 同款同规格直接在 Pinduoduo 拼多多卖得更便宜。
+
+Confirmed facts: premium beauty brand, old inventory, wants lower price on Pinduoduo.
+
+Assumptions: hero SKU is still the Tmall/Douyin/JD price anchor and review asset.
+
+Economics: first calculate channel net profit after platform fee, subsidy, logistics, refund, service, and clearance discount. Define minimum profit price and forbidden floor price before any launch.
+
+Alternative: use channel-exclusive spec, clearance SKU, old packaging, smaller/larger pack, gift separation, or old model. Make clearance objective separate from long-term brand/profit strategy.
+
+Risk: price conflict, unauthorized sellers, cross-channel complaint, review damage, beauty efficacy/claim expectation gap, and brand price memory.
+
+Stop rule: stop if Tmall/Douyin/JD customers compare prices or unauthorized low-price sellers increase. Scale rule: expand only if clearance inventory reduces without review damage, price complaints, or forbidden floor price breach.
+
+Mechanism: separate the clearance identity and price line before listing, then measure inventory reduction against brand and profit damage. Owner: commercial lead with channel-governance owner. Success signal: inventory clears above the profit floor without cross-channel complaints. Next review: weekly until clearance closes.

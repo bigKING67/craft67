@@ -1,0 +1,97 @@
+{
+  "schema_version": "creative-craft.sources.v1",
+  "verified_at": "2026-08-04",
+  "sources": [
+    {
+      "id": "design-craft",
+      "authority": "project-owner",
+      "url": "https://github.com/bigKING67/design-craft",
+      "used_for": [
+        "repository conventions",
+        "authority ordering",
+        "reference routing",
+        "validation boundaries"
+      ]
+    },
+    {
+      "id": "review-craft",
+      "authority": "project-owner",
+      "url": "https://github.com/bigKING67/review-craft",
+      "used_for": [
+        "evidence discipline",
+        "decision vocabulary pattern",
+        "evaluation boundaries",
+        "delivery honesty"
+      ]
+    },
+    {
+      "id": "openai-gpt-image-2-model",
+      "authority": "official",
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-2",
+      "used_for": [
+        "model identity",
+        "snapshot",
+        "modalities",
+        "endpoints"
+      ]
+    },
+    {
+      "id": "openai-image-generation-guide",
+      "authority": "official",
+      "url": "https://developers.openai.com/api/docs/guides/image-generation",
+      "used_for": [
+        "API choice",
+        "editing",
+        "high fidelity input",
+        "output options",
+        "limits"
+      ]
+    },
+    {
+      "id": "openai-image-prompting-guide",
+      "authority": "official",
+      "url": "https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide",
+      "used_for": [
+        "prompt structure",
+        "reference roles",
+        "preservation",
+        "iteration"
+      ]
+    },
+    {
+      "id": "seedance-2.5-model",
+      "authority": "official",
+      "url": "https://seed.bytedance.com/en/seedance2_5",
+      "used_for": [
+        "model positioning",
+        "30-second storytelling",
+        "editing and reference positioning"
+      ]
+    },
+    {
+      "id": "seedance-2.5-launch",
+      "authority": "official",
+      "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+      "used_for": [
+        "reference limits",
+        "extension",
+        "timestamp editing",
+        "green screen",
+        "camera editing",
+        "known limitations"
+      ]
+    },
+    {
+      "id": "seedance-2.5-user-guide",
+      "authority": "project-owner-supplied-official-guide",
+      "url": "https://bytedance.larkoffice.com/wiki/NjnWwvf4BiFYFLk2RzrcEgaunGf",
+      "access_note": "Review manually when updating platform-specific behavior."
+    },
+    {
+      "id": "seedance-2.5-prompt-guide",
+      "authority": "project-owner-supplied-official-guide",
+      "url": "https://bytedance.larkoffice.com/docx/OsiUdR1OxoDqvnxsK8LczYx7nPd",
+      "access_note": "Review manually when updating prompt syntax or examples."
+    }
+  ]
+}

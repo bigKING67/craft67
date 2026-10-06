@@ -1,0 +1,165 @@
+{
+  "blind_map_sha256": "857c5baaad906929a8dcb7b2dd0b53d4d34c9cccfa117259ecbac011d3cf48d1",
+  "blind_packet_sha256": "b12f7129735b05c2b85e26e7df2508861e2d18d2e026e54058f30ef9306ef924",
+  "case_id": "emil-motion-planning-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "4e25597423e67e7483e8c286cf3b889dd988302df9336f19ecabfe3cf32b3a9f",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "8a62bef75c29cab6b25c239d8a8356e9e6f297ee7898ca4d404d77eb292925e3",
+    "runner_os": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.155.1"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "b90b0fc1ec877d783cbffba9848944df30f73b9a7270c094a1cab2d7c37d9e71",
+  "judgment_sha256": "d3f8776e82d35f4ec1e5ce9dfbbf16b82df07c647e1e9468d5ef18e8d6cb8dba",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "rationale": "B best satisfies the scorecard because it combines honest static recon with the strongest treatment of property cost, transform origin, interruption, pointer tracking, primitive capability checks, Reduced Motion, and later runtime measurement. A is safer and nearly as implementation-ready but does not examine the drag path or measurable performance as deeply. C contains useful findings and verification steps, yet its speculative framework and gesture code materially reduce technical reliability.",
+  "recorded_at": "2026-09-19T12:37:54Z",
+  "results": {
+    "baseline": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility_performance": 9,
+        "evidence_recon": 15,
+        "plan_self_containment": 20,
+        "prioritization": 9,
+        "project_conventions": 10,
+        "purpose_frequency": 10,
+        "technical_accuracy": 12,
+        "verification_quality": 9
+      },
+      "score": 94,
+      "summary": "Strong static-evidence discipline, excellent convention reuse, and fully self-contained plans. It is comparatively lighter on pointer-path mechanics, animation interruption from the current presentation value, and explicit measured performance checks."
+    },
+    "design-craft": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility_performance": 10,
+        "evidence_recon": 15,
+        "plan_self_containment": 20,
+        "prioritization": 9,
+        "project_conventions": 10,
+        "purpose_frequency": 10,
+        "technical_accuracy": 14,
+        "verification_quality": 10
+      },
+      "score": 98,
+      "summary": "The most complete and technically balanced output. It distinguishes observations from runtime unknowns, preserves existing tokens and semantics, addresses origin, interruption, pointer ownership, Reduced Motion, and trace-based verification, while keeping speculative primitive changes conditional on source inspection."
+    },
+    "emil": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility_performance": 9,
+        "evidence_recon": 14,
+        "plan_self_containment": 19,
+        "prioritization": 7,
+        "project_conventions": 7,
+        "purpose_frequency": 8,
+        "technical_accuracy": 8,
+        "verification_quality": 9
+      },
+      "score": 81,
+      "summary": "Well structured and broadly evidence-aware, but several concrete prescriptions outrun the snippets: an unconfirmed framework-specific origin variable, unsupported spring options, absolute client-coordinate transforms that may overwrite existing transforms, ambiguous velocity units, and an unsupported assertion that the palette should have zero motion."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "a06d975f9da69fa9bea87362ee0e4f90bdc790e552561e6b6ac96f650bb53a88",
+  "scorecard_sha256": "ea04fd4fce3cbad1a31129f3b8ea45be2bca0ec334b07598a3d5223e41260d48",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "c0de4d7ae432979bdbc71e04a3b333fd94469bddbdd377353f07c43efeff2279",
+      "run_path": "run.baseline.json",
+      "run_sha256": "bba090ac0e87bec319193e14de6ac33046906b1c7fbc557ea007fba8582f2d05",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "386bacb4dcc0e20d54d2e349fd14563d0ca905bb2618b1214769f21306ab45a5",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "24c6cea5ef824d75678987bbffe8e08597c628ac8e5f3a5f1b001e6060c9bbae",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "6109f47269d38f29a10aefcce9ae7f9e507361ff241e6ce6b8af2e8d58376d75"
+      },
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-motion-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "6109f47269d38f29a10aefcce9ae7f9e507361ff241e6ce6b8af2e8d58376d75",
+          "sha256": "ad51a65df0c61a97a6e8b6c61127e96f7408fbb67e46af5ee170aa6d1d2de621",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "8da53f99d4ac651deeb72b63faf8c6522d009ea69e5aee5e9362e2a89fc1105b"
+      },
+      "thinking": "high"
+    },
+    "emil": {
+      "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.emil.md",
+      "output_sha256": "442d6d4c8479678d73cae80fce421372efc6b28be9c4191e085d2f075422a1b9",
+      "run_path": "run.emil.json",
+      "run_sha256": "99853d830711073f5cbe4e6d9d88c3cd774b3ba8c2d7b42591be4bf225c64026",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+      "source_fingerprints": {
+        "upstreams/emilkowalski-skills/skills/apple-design": {
+          "kind": "tree",
+          "projected_tree_sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/improve-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/review-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

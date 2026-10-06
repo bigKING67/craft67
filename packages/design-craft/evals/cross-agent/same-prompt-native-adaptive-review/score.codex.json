@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.155.1",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "date": "2026-09-19",
+  "prompt_sha256": "61f2e14e7f03ad0f21bff2db3770e0b6c0ffba120aa7598dab1f73411256b2bd",
+  "scorecard_json_sha256": "260126ae8e6eb6765184f92ad040b5e32995c941f559d654a303a0d5305e210f",
+  "contract_sha256": "69f694db240266e509b7efd666c627880175a7cf132ddde3ad651c4820f37122",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "f39dfbfd7a4cc24dbf85e3c03d177caab03e9f4ed22e28b6680f9d3d34e30762",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "2c4cc3ccb6b176b1b70794840c1f59c71d41a855",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "8da53f99d4ac651deeb72b63faf8c6522d009ea69e5aee5e9362e2a89fc1105b",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "behavior_domain": "skill-native-adaptive-review",
+  "behavior_sha256": "25a6403a98502e80a953c597c6ccbd23f86fdbd35516a8fbaff91fe0ba907a55",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "2e957cf06b110792986ec697586356527b732509c388276a86df3064013ccaff",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "098e7bbf201f2432ad5a48020c0a1ea49d0f58f7ce31c754acbe5f9ac520f14d",
+  "score": 97,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Resolves the stated adaptive product and honors shared semantic authority with platform-native divergence."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 13,
+      "note": "Applies native iOS, Android, adaptive and validation concepts; exact reference reads are not independently established by the retained final output and manifest."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Focuses on native navigation, scalable type, reachability and window structure rather than decorative styling."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels L0 prompt-only review and distinguishes manual routing from an unexecuted planner; no build or runtime pass claimed."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates supplied facts and numerical deductions from source, accessibility, rendering, recovery and device behavior that remain unverified."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Eight concrete moves and a detailed parity matrix address all main defects. Android Remove animations permits a fade as an option instead of requiring immediate state under fully disabled animations."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "64 lines, five blockers and eight moves; recovery suggestions support the explicit interruption-preservation product requirement."
+    }
+  }
+}

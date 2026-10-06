@@ -1,0 +1,39 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "albemarle-price-transmission-source",
+      "status": "READY_HISTORICAL",
+      "prompt": "基于这两份业绩披露，请简要判断锂行业变化如何传到Albemarle（US-NYSE:ALB普通股，交易与报告币种USD）的收入和盈利：目前能下哪些判断，哪些还不能下，下一次如何核验？历史截止2025-05-31，2026年回放。仅作局部定性解读，正文不超过450汉字，不作数值测算、估值或买卖判断。",
+      "facts": "仅以下官方披露提取记录可作为事实输入。JSON文件解码后是检索工具的带行号文本，不是原始HTML或PDF；原件直接下载返回403。实际捕获日2026-09-20，历史版本一致性未核实。可以使用正常Skill引用和计算工具；不得读取项目acceptance目录、其他会话答案、主代理报告或验收标准。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/evidence/20260920-albemarle/annual-web.json",
+          "sha256": "49a0e4275c3f2214b828a0f518416ebd026ddfd5c4803326e1c06f5157838bbd",
+          "url": "https://investors.albemarle.com/news-and-events/news/news-details/2025/Albemarle-Reports-Fourth-Quarter-and-Full-Year-2024-Results/",
+          "published_at": "2025-02-12",
+          "capture_kind": "web_tool_extracted_text_json_string"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-albemarle/q1-web.json",
+          "sha256": "dcabadb9f685f026edf701b638ede818da69b0b53965534687099985ebf77799",
+          "url": "https://www.albemarle.com/sites/default/files/q4/attachments/Q12025_pressrelease.pdf",
+          "published_at": "2025-04-30",
+          "capture_kind": "web_tool_extracted_text_json_string"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": false
+      },
+      "criteria": [
+        "实际读取源码财报引用及有效路由，保留历史与工具提取来源边界",
+        "明确区分公司价格贡献与市场报价/合同实现价格，保留已披露经营事实且不机械量化敏感度",
+        "指出传导桥缺失的具体证据及下一报告窗口如何核验，不编造合同、价格或投资结论"
+      ]
+    }
+  ]
+}

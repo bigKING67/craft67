@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commerce Growth OS｜全域电商增长操盘中枢"
+  short_description: "跨商业、Marketing、运营与数据的电商经营诊断和组合决策。"
+  default_prompt: "Use $commerce-growth-os to orchestrate the smallest necessary commerce specialists, resolve cross-domain conflicts, and produce an evidence-based operating decision."

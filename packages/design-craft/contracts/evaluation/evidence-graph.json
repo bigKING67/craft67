@@ -1,0 +1,111 @@
+{
+  "schema": "design-craft.evidence-graph.v2",
+  "domains": {
+    "skill-core": {
+      "extends": [],
+      "include": [
+        "skills/design-craft/SKILL.md",
+        "skills/design-craft/references/design-move-library.md",
+        "skills/design-craft/references/foundational-visual-principles.md",
+        "skills/design-craft/references/intent-map.md",
+        "skills/design-craft/references/product-context.md",
+        "skills/design-craft/references/product-design-principles.md",
+        "skills/design-craft/references/report-quality.md",
+        "skills/design-craft/references/source-map.md",
+        "skills/design-craft/references/surface-playbooks.md",
+        "skills/design-craft/references/validation-contract.md"
+      ]
+    },
+    "skill-visual-critique": {
+      "extends": ["skill-core"],
+      "include": [
+        "skills/design-craft/references/design-system-contract.md",
+        "skills/design-craft/references/impeccable-workflow.md",
+        "skills/design-craft/references/product-ui-taste-review.md",
+        "skills/design-craft/references/taste-score-calibration.md",
+        "skills/design-craft/references/visual-judgment.md"
+      ]
+    },
+    "skill-production-review": {
+      "extends": ["skill-visual-critique"],
+      "include": [
+        "skills/design-craft/references/architecture-quality.md",
+        "skills/design-craft/references/engineering-quality.md",
+        "skills/design-craft/references/performance-quality.md",
+        "skills/design-craft/references/project-structure.md"
+      ]
+    },
+    "skill-motion-review": {
+      "extends": ["skill-core"],
+      "include": [
+        "skills/design-craft/references/interaction-physics.md",
+        "skills/design-craft/references/motion-audit-planning.md",
+        "skills/design-craft/references/motion-patterns.md",
+        "skills/design-craft/references/motion-quality.md",
+        "skills/design-craft/references/motion-vocabulary.md"
+      ]
+    },
+    "skill-native-adaptive-review": {
+      "extends": ["skill-core"],
+      "include": [
+        "skills/design-craft/references/adaptive-quality.md",
+        "skills/design-craft/references/android-quality.md",
+        "skills/design-craft/references/architecture-quality.md",
+        "skills/design-craft/references/design-system-contract.md",
+        "skills/design-craft/references/engineering-quality.md",
+        "skills/design-craft/references/interaction-physics.md",
+        "skills/design-craft/references/ios-quality.md",
+        "skills/design-craft/references/performance-quality.md",
+        "skills/design-craft/references/project-structure.md"
+      ]
+    },
+    "performance": {
+      "extends": [],
+      "include": [
+        ".github/workflows/benchmark.yml",
+        "benchmarks/README.md",
+        "contracts/benchmark/*.json",
+        "tools/design_craft/benchmark/*.py"
+      ]
+    },
+    "native-runtime": {
+      "extends": [],
+      "include": [
+        ".github/workflows/native-runtime.yml",
+        "contracts/release/native-bundle.schema.json",
+        "evals/native-runtime/fixtures/**/*",
+        "scripts/design_craft_native_runtime_*.py",
+        "scripts/native_runtime_*.sh",
+        "tools/design_craft/release/native_*.py"
+      ]
+    },
+    "release": {
+      "extends": [],
+      "include": [
+        ".github/workflows/release-*.yml",
+        "Makefile",
+        "contracts/release/*.json",
+        "tools/design_craft/release/*.py"
+      ]
+    }
+  },
+  "bindings": {
+    "cross_agent": {
+      "same-prompt-dashboard-review": "skill-production-review",
+      "same-prompt-landing-polish": "skill-visual-critique",
+      "same-prompt-motion-review": "skill-motion-review",
+      "same-prompt-native-adaptive-review": "skill-native-adaptive-review"
+    },
+    "comparative": {
+      "emil-motion-ablation": "skill-motion-review",
+      "emil-motion-planning-ablation": "skill-motion-review",
+      "impeccable-production-ablation": "skill-production-review",
+      "taste-visual-critique-ablation": "skill-visual-critique"
+    },
+    "operational": {
+      "native_runtime": "native-runtime",
+      "performance": "performance",
+      "release": "release"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "@bigking67/creative-craft",
+  "version": "0.3.2",
+  "private": true,
+  "description": "Agent skill for distinctive campaign concepts, copy, art direction, image and video briefs, critique, and optional traceable production.",
+  "license": "MIT",
+  "author": "bigKING67",
+  "homepage": "https://github.com/bigKING67/creative-craft#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigKING67/creative-craft.git"
+  },
+  "files": [
+    ".codex-plugin",
+    "skills/creative-craft",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "VERSION",
+    "sources.lock.json",
+    "!skills/creative-craft/**/__pycache__",
+    "!skills/creative-craft/**/*.pyc",
+    "!skills/creative-craft/**/*.pyo"
+  ],
+  "keywords": [
+    "pi-package",
+    "agent-skill",
+    "creative-strategy",
+    "creative-direction",
+    "image-generation",
+    "video-generation",
+    "gpt-image-2",
+    "seedance",
+    "creative-operations"
+  ],
+  "pi": {
+    "skills": [
+      "skills/creative-craft"
+    ]
+  },
+  "creativeCraft": {
+    "python": ">=3.10",
+    "releaseStatus": "unreleased-candidate",
+    "publishedInstallTag": "v0.3.0"
+  },
+  "scripts": {
+    "doctor": "python3 skills/creative-craft/scripts/creative_craft.py doctor",
+    "self-test": "python3 skills/creative-craft/scripts/creative_craft.py self-test",
+    "lint": "ruff check skills/creative-craft/scripts scripts tests",
+    "schema": "python3 scripts/validate_schemas.py",
+    "benchmark": "python3 scripts/benchmark_unique_items.py",
+    "validate": "python3 scripts/validate.py",
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py'",
+    "eval:check": "python3 scripts/evaluate_agent_quality.py check",
+    "host-smoke": "python3 scripts/host_smoke.py",
+    "package-check": "python3 scripts/check_package.py"
+  }
+}

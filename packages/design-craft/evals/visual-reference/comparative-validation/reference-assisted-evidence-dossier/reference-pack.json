@@ -1,0 +1,55 @@
+{
+  "blocking_reasons": [],
+  "created_at": "2026-08-17T06:05:00Z",
+  "references": [
+    {
+      "adapt": [
+        "Surround an abstract infrastructure proposition with concrete product proof rather than decorative imagery alone.",
+        "Use two calls to action for evaluation and commercial intent after a concise explanation.",
+        "On mobile, linearize and reduce proof fragments instead of shrinking the desktop constellation."
+      ],
+      "card_id": "peekpaper-2026-08-11-lightspark",
+      "reject": [
+        "Do not reuse product screenshots, transaction data, brand assets, copy, or the exact glowing composition.",
+        "Do not infer API capability, security, or production reliability from marketing imagery.",
+        "The task is an authenticated operational dashboard where real data density and controls must dominate."
+      ],
+      "role": "structure",
+      "unverified": [
+        "interaction: partial",
+        "accessibility: partial",
+        "performance: partial"
+      ]
+    },
+    {
+      "adapt": [
+        "Lead with a human outcome and use restrained clinical annotations to connect emotion with measurable evidence.",
+        "Translate a desktop QR conversion path into a direct mobile call to action.",
+        "Use whitespace to separate the trust proposition from navigation and secondary detail."
+      ],
+      "card_id": "peekpaper-2026-08-11-nue",
+      "reject": [
+        "Do not reuse the portrait, biomarker values, medical language, brand assets, or exact sparse composition.",
+        "Do not infer clinical validity, service quality, compliance, or privacy controls from visual treatment.",
+        "The surface presents clinical decisions or operational health records that require dense, explicit evidence and controls."
+      ],
+      "role": "responsive",
+      "unverified": [
+        "interaction: partial",
+        "accessibility: partial",
+        "performance: partial"
+      ]
+    }
+  ],
+  "schema": "design-craft.visual-reference-pack.v1",
+  "status": "ready",
+  "task": {
+    "audience": "Product, security, and procurement leaders",
+    "authority_refs": [
+      "PRODUCT.md",
+      "DESIGN.md"
+    ],
+    "primary_job": "Evaluate whether current release evidence justifies a pilot",
+    "surface_mode": "Persuade"
+  }
+}

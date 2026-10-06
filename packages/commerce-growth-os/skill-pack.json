@@ -1,0 +1,108 @@
+{
+  "schema_version": 2,
+  "pack_version": "2.2.0",
+  "minimum_installer_version": "2.2.0",
+  "pack_name": "consumer-brand-commerce-marketing-suite",
+  "default_install_root": "~/.agents/skills",
+  "duplicate_discovery_roots": ["~/.codex/skills"],
+  "skills": [
+    {
+      "name": "commerce-growth-os",
+      "source": "skills/commerce/commerce-growth-os",
+      "routing_terms": ["全域", "90天", "90 天", "完整经营方案", "跨渠道增长", "跨专业"],
+      "resources": [
+        {"source": "shared/contracts", "target": "references/contracts"},
+        {"source": "shared/currentness", "target": "references/currentness"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"},
+        {"source": "shared/platform-overlays", "target": "references/platform-overlays"}
+      ]
+    },
+    {
+      "name": "commerce-commercial-strategy",
+      "source": "skills/commerce/commerce-commercial-strategy",
+      "routing_terms": ["ROI", "CAC", "LTV", "利润", "毛利", "货盘", "价盘", "坑位费", "佣金", "值不值得", "渠道冲突"],
+      "resources": [
+        {"source": "shared/contracts/answer-quality-rubric.md", "target": "references/contracts/answer-quality-rubric.md"},
+        {"source": "shared/contracts/category-overlay-contract.md", "target": "references/contracts/category-overlay-contract.md"},
+        {"source": "shared/currentness", "target": "references/currentness"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"}
+      ]
+    },
+    {
+      "name": "commerce-operations",
+      "source": "skills/commerce/commerce-operations",
+      "routing_terms": ["运营SOP", "店铺运营", "直播排品", "自播运营", "活动排期", "履约", "客服", "售后", "退款", "库存协同"],
+      "resources": [
+        {"source": "shared/contracts/answer-quality-rubric.md", "target": "references/contracts/answer-quality-rubric.md"},
+        {"source": "shared/contracts/category-overlay-contract.md", "target": "references/contracts/category-overlay-contract.md"},
+        {"source": "shared/currentness", "target": "references/currentness"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"},
+        {"source": "shared/platform-overlays/operations", "target": "references/platform-overlays"}
+      ]
+    },
+    {
+      "name": "commerce-analytics",
+      "source": "skills/commerce/commerce-analytics",
+      "routing_terms": ["数据分析", "指标口径", "周报", "月报", "漏斗", "归因", "Cohort", "异常诊断", "数据质量", "LTV"],
+      "resources": [
+        {"source": "shared/contracts/answer-quality-rubric.md", "target": "references/contracts/answer-quality-rubric.md"},
+        {"source": "shared/contracts/category-overlay-contract.md", "target": "references/contracts/category-overlay-contract.md"},
+        {"source": "shared/currentness", "target": "references/currentness"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"},
+        {"source": "shared/platform-overlays/analytics", "target": "references/platform-overlays"}
+      ]
+    },
+    {
+      "name": "consumer-marketing-os",
+      "source": "skills/marketing/consumer-marketing-os",
+      "routing_terms": ["年度营销", "整合营销", "全年营销", "新品上市营销", "完整新品上市", "营销预算分配", "优先级冲突", "品牌和效果", "营销战略"],
+      "resources": [
+        {"source": "shared/contracts", "target": "references/contracts"},
+        {"source": "shared/currentness", "target": "references/currentness"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"},
+        {"source": "shared/platform-overlays/content-social", "target": "references/platform-overlays/content-social"},
+        {"source": "shared/platform-overlays/growth-performance", "target": "references/platform-overlays/growth-performance"}
+      ]
+    },
+    {
+      "name": "brand-strategy-communications",
+      "source": "skills/marketing/brand-strategy-communications",
+      "routing_terms": ["品牌定位", "品牌宣传", "品牌代言人", "品牌大使", "公关", "PR", "赞助", "联名", "舆情", "危机传播"],
+      "resources": [
+        {"source": "shared/contracts/endorsement-plan.md", "target": "references/contracts/endorsement-plan.md"},
+        {"source": "shared/contracts/campaign-brief.md", "target": "references/contracts/campaign-brief.md"},
+        {"source": "shared/contracts/answer-quality-rubric.md", "target": "references/contracts/answer-quality-rubric.md"},
+        {"source": "shared/contracts/category-overlay-contract.md", "target": "references/contracts/category-overlay-contract.md"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"}
+      ]
+    },
+    {
+      "name": "content-creative-social-marketing",
+      "source": "skills/marketing/content-creative-social-marketing",
+      "routing_terms": ["小红书内容", "抖音内容", "内容矩阵", "KOL", "KOC", "达人Brief", "达人 brief", "短视频脚本", "分镜", "创意方向"],
+      "resources": [
+        {"source": "shared/contracts/content-plan.md", "target": "references/contracts/content-plan.md"},
+        {"source": "shared/contracts/campaign-brief.md", "target": "references/contracts/campaign-brief.md"},
+        {"source": "shared/contracts/answer-quality-rubric.md", "target": "references/contracts/answer-quality-rubric.md"},
+        {"source": "shared/contracts/category-overlay-contract.md", "target": "references/contracts/category-overlay-contract.md"},
+        {"source": "shared/currentness", "target": "references/currentness"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"},
+        {"source": "shared/platform-overlays/content-social", "target": "references/platform-overlays"}
+      ]
+    },
+    {
+      "name": "growth-performance-lifecycle-marketing",
+      "source": "skills/marketing/growth-performance-lifecycle-marketing",
+      "routing_terms": ["千川", "聚光", "万相台", "效果广告", "付费媒体", "Media Mix", "搜索营销", "CRM", "会员营销", "复购", "召回", "增量实验"],
+      "resources": [
+        {"source": "shared/contracts/growth-experiment.md", "target": "references/contracts/growth-experiment.md"},
+        {"source": "shared/contracts/marketing-strategy.md", "target": "references/contracts/marketing-strategy.md"},
+        {"source": "shared/contracts/answer-quality-rubric.md", "target": "references/contracts/answer-quality-rubric.md"},
+        {"source": "shared/contracts/category-overlay-contract.md", "target": "references/contracts/category-overlay-contract.md"},
+        {"source": "shared/currentness", "target": "references/currentness"},
+        {"source": "shared/category-overlays", "target": "references/category-overlays"},
+        {"source": "shared/platform-overlays/growth-performance", "target": "references/platform-overlays"}
+      ]
+    }
+  ]
+}

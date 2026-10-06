@@ -1,0 +1,17 @@
+Decision: test JD next quarter only if price line, service, and unit economics are ready; do not just open another store.
+
+Confirmed facts: premium smart home device, Xiaohongshu seeding is good, Tmall reviews exist.
+
+Assumptions: need model/spec, warranty, after-sale cost, logistics, platform fee, coupon, review target, and inventory by model.
+
+Channel role: JD should handle search, trust, authenticity, logistics, invoice/warranty, after-sale, and high-intent comparison. It should not directly copy Tmall if price and service value differ.
+
+Economics: calculate unit economics and channel net profit after fee, coupon, logistics, warranty reserve, refund, replacement, and service.
+
+Launch test: one hero model plus one bundle/service SKU. Use Xiaohongshu content and Tmall reviews to build JD title, parameter table, review, Q&A, service promise, and detail page.
+
+Risk: price comparison, weak review base, after-sale burden, and model/spec confusion.
+
+Stop rule: stop if search clicks do not convert or after-sale/refund cost exceeds plan. Scale rule: expand only when JD search CVR, review quality, service score, and channel net profit are stable.
+
+Mechanism: launch one model and one service bundle, validate search-to-after-sale economics, then decide expansion. Owner: commercial lead with JD operations and service owners. Success signal: profitable search conversion, stable service cost, and launch-quality reviews. Next review: weekly during the test and once after the first complete after-sale window.

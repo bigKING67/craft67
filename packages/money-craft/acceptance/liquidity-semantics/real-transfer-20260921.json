@@ -1,0 +1,140 @@
+{
+  "schema": "money-craft.liquidity-real-transfer.v1",
+  "date": "2026-09-21",
+  "status": "PASS_BOUNDED",
+  "host": "codex-cli 0.155.1",
+  "real_companies": 2,
+  "host_runs": 2,
+  "first_attempt_passed": 2,
+  "criteria_passed": 8,
+  "calculations_passed": 13,
+  "skill_modified": false,
+  "source_installed_sha256": "69e64c5c99818311ebbd5cf832b80408bff28e0ae72e76534fc2ba23af44542a",
+  "full_core_acceptance": false,
+  "reviewer": "parent",
+  "independent_review": false,
+  "limits": [
+    "Historical 2025 annual reports only; not current liquidity or stock recommendations.",
+    "Single issuer source per company; SEC and issuer copies are not independent.",
+    "Cases authored for this task; not held-out statistical generalization.",
+    "No explicit Skill entry in prompts, but evidence paths disclose repository name and existing host rules direct selection.",
+    "No filesystem-level isolation of criteria; completed command trace review found no criteria/other-answer reads.",
+    "Successful arithmetic does not validate every economic claim.",
+    "Local raw evidence is required for replay; fixture alone is not a portable evidence package."
+  ],
+  "runs": [
+    {
+      "case_id": "liquidity-real-apple",
+      "status": "PASS_BOUNDED",
+      "host_exit": 0,
+      "timed_out": false,
+      "machine_pass": true,
+      "route": "READY",
+      "calculations_passed": 3,
+      "reviewer": "parent",
+      "independent_review": false,
+      "criteria": [
+        {
+          "criterion": "实际读取全局Skill及现金债务语义规则，成功路由并读取原始表格。",
+          "verdict": "PASS",
+          "basis": "实际cat全局SKILL及sed语义条款，读取摘要和原HTML合并范围段落；READY路由。"
+        },
+        {
+          "criterion": "复算35934+18763+77723=132420，单位百万美元，区分现金与证券及流动性分类。",
+          "verdict": "PASS",
+          "basis": "合计132420百万美元，两条表内桥均复算一致。"
+        },
+        {
+          "criterion": "不将合并合计当作母公司立即可分配现金，也不把非流动列报当作绝对禁止出售；缺失条件不设零。",
+          "verdict": "PASS",
+          "basis": "拒绝合并资产合计等于母公司分配额；区分期限分类与出售可能性，未保证随时足额变现。"
+        },
+        {
+          "criterion": "记录历史时点、单一发行人来源及当前/独立核验限制，保留公开链接和计算回执。",
+          "verdict": "PASS",
+          "basis": "标记历史余额日、post-hoc捕获、单源局限；公开链接和3条计算回执完整。"
+        }
+      ],
+      "additional_observation": "未把2024受限托管金额套入2025，未把2025缺少对应脚注当成无限制证明。",
+      "observed_reads": [
+        "/bin/zsh -lc 'cat ~/.codex/rules/investment.md ~/.agents/skills/money-craft/SKILL.md'",
+        "/bin/zsh -lc 'shasum -a 256 local/skill-evals/20260921-liquidity-transfer/evidence/apple-excerpt.txt\ncat local/skill-evals/20260921-liquidity-transfer/evidence/apple-excerpt.txt'",
+        "/bin/zsh -lc \"cat ~/.codex/tools/investment_route_plan.sh\nrg -n '现金、债务|法人|母公司|受限|到期' ~/.agents/skills/money-craft/references/research-semantic-review.md\nrg --files ~/.agents/skills/money-craft | rg 'financial_rigor.py\"'$'\"'\n\"",
+        "/bin/zsh -lc 'shasum -a 256 local/skill-evals/20260921-liquidity-transfer/evidence/apple-excerpt.txt'",
+        "/bin/zsh -lc \"sed -n '30,47p' ~/.agents/skills/money-craft/references/research-semantic-review.md\nrg -n 'write|mkdir|open\\\\(|choices=|add_argument|http|subprocess' ~/.codex/tools/investment_route_core.py\nhead -65 ~/.agents/skills/money-craft/scripts/financial_rigor.py\"",
+        "/bin/zsh -lc \"python3 -B -c 'from pathlib import Path; import hashlib,re; from html import unescape; p=Path(\\\"local/skill-evals/20260921-liquidity-transfer/evidence/apple.html\\\"); b=p.read_bytes(); print(hashlib.sha256(b).hexdigest()); s=\\\" \\\".join(unescape(re.sub(\\\"<[\"'^>]+>\",\" \",b.decode())).split()); term=\"include the accounts\"; i=s.find(term); print(s[max(0,i-150):i+600] if i>=0 else \"not found\")'\"'\""
+      ],
+      "artifacts": {
+        "local/skill-evals/20260921-liquidity-transfer/apple/prompt.txt": "e385a16da0f066c5af196766e08a97e8491afa836b57a8a0323ce1b78a82ff5f",
+        "local/skill-evals/20260921-liquidity-transfer/apple/case-snapshot.json": "f72f40a3bc51da96c4b03e6c0136b1c0552dfb45dda86a70dd038cd4dc405dfb",
+        "local/skill-evals/20260921-liquidity-transfer/apple/events.jsonl": "b852c8889e1145e053a3901880bc68061edf57b5cca3ecebc6c68d5a41fc1b3c",
+        "local/skill-evals/20260921-liquidity-transfer/apple/answer.md": "dbc0adf76b3af90ba7f71bd382b6af319e72a241b6027f13e89b88be0bf61536",
+        "local/skill-evals/20260921-liquidity-transfer/apple/host.json": "00cf8f8c889e48bb024b40b5bec82f470c8ff7703736df5c3d94073707a1a46b",
+        "local/skill-evals/20260921-liquidity-transfer/apple/machine-audit.json": "6c7da5f35272d9678bdbc692b1fb7fca739d43d35e5add6658408378237fa412"
+      }
+    },
+    {
+      "case_id": "liquidity-real-amazon",
+      "status": "PASS_BOUNDED",
+      "host_exit": 0,
+      "timed_out": false,
+      "machine_pass": true,
+      "route": "READY",
+      "calculations_passed": 10,
+      "reviewer": "parent",
+      "independent_review": false,
+      "criteria": [
+        {
+          "criterion": "实际读取全局Skill及现金债务语义规则，成功路由并读取原始表格。",
+          "verdict": "PASS",
+          "basis": "实际cat全局SKILL及sed语义条款，读取原文摘录；READY路由。"
+        },
+        {
+          "criterion": "复算受限300+2996=3296，90106-3296=86810；不得从86810重复扣减。",
+          "verdict": "PASS",
+          "basis": "受限3296与现金86810勾稽，重复扣到83514被明确否定。"
+        },
+        {
+          "criterion": "识别126325-3296=123029已经排除受限项，不能再扣；123029与86810资产范围不同。",
+          "verdict": "PASS",
+          "basis": "区分126325扣减前与123029扣减后，后者再扣错误；现金与含证券合计不同。"
+        },
+        {
+          "criterion": "不将余额当作立即可分配现金；保留历史时点、单源限制、公开链接及计算回执。",
+          "verdict": "PASS",
+          "basis": "不认定立即可分配金额或将未知设零；历史及单源局限、公开链接和10条计算回执完整。"
+        }
+      ],
+      "additional_observation": "附加复核公允价值分项、成本至公允价值桥和期限桶，未把不同资产范围混加。",
+      "observed_reads": [
+        "/bin/zsh -lc 'cat ~/.codex/rules/investment.md ~/.agents/skills/money-craft/SKILL.md'",
+        "/bin/zsh -lc 'shasum -a 256 local/skill-evals/20260921-liquidity-transfer/evidence/amazon-excerpt.txt; cat local/skill-evals/20260921-liquidity-transfer/evidence/amazon-excerpt.txt'",
+        "/bin/zsh -lc \"cat ~/.codex/tools/investment_route_plan.sh; rg -n '现金、债务|受限|分配|到期|def audit_text' ~/.agents/skills/money-craft/references/research-semantic-review.md ~/.agents/skills/money-craft/scripts/financial_rigor.py; date '+%Y-%m-%d %Z'\"",
+        "/bin/zsh -lc 'shasum -a 256 local/skill-evals/20260921-liquidity-transfer/evidence/amazon-excerpt.txt'",
+        "/bin/zsh -lc \"sed -n '34,43p' ~/.agents/skills/money-craft/references/research-semantic-review.md; rg -n 'write|mkdir|open\\\\(|requests|urllib|subprocess|add_argument|choices=' ~/.codex/tools/investment_route_core.py; sed -n '1,155p' ~/.agents/skills/money-craft/scripts/financial_rigor.py\""
+      ],
+      "artifacts": {
+        "local/skill-evals/20260921-liquidity-transfer/amazon/prompt.txt": "45f45d46b756f1a32c2f09a41180b30abda86b1db1ebda98d0b9bf0455c84897",
+        "local/skill-evals/20260921-liquidity-transfer/amazon/case-snapshot.json": "3cc01878396f2752ed8978c6af33427795433bca3e0f6f39b469b84675b4ad13",
+        "local/skill-evals/20260921-liquidity-transfer/amazon/events.jsonl": "461c8d81439b2d70882d8a41bf95731f548b50f5b3fb83e2afdfcd864a7f6590",
+        "local/skill-evals/20260921-liquidity-transfer/amazon/answer.md": "ab1159831caa63c4e3a91f2205879274501fbfcd52c2c08bd0e651257e440825",
+        "local/skill-evals/20260921-liquidity-transfer/amazon/host.json": "3963d0dea0209d7df6ade18f6074a1e07d3d202be8a0e64093b5e68564cf3882",
+        "local/skill-evals/20260921-liquidity-transfer/amazon/machine-audit.json": "bdf8328ef4d6e55d6fb24084c10771fdb8d1dd518da9369a4067ee2b7dd0bb57"
+      }
+    }
+  ],
+  "supporting_artifacts": {
+    "acceptance/skill-tasks/liquidity-real-cases-20260921.json": "4199aed0cc4dafcb8c7301515bbbbd015860fe31d50037df65de6b33024edb52",
+    "local/skill-evals/20260921-liquidity-transfer/source-intake.json": "a0e51e95ef15d17374bbf514599d5b48d3ce9940f8bd378c47e5a39f8dd7a729",
+    "local/skill-evals/20260921-liquidity-transfer/boundary-checks.json": "7c68599e82accf3807d4802418944e0f814b1e6467cb3b24c714f902b5de4f4d",
+    "local/skill-evals/20260921-liquidity-transfer/parent-calculations.json": "22143cd2987deb5d305821d267009de8bd131897058abdaeba8f226ca8eb7b56",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/amazon-capture.json": "cbdfb9fd76eb896ef4b39c63697fc46a8ac7e3e9e4173f8c2e6fc2e2b7afdbe5",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/amazon-excerpt.txt": "5c0ff955a2e5328090ff3b5530cb4afc887b537770e68f06f24c2f15f5b28057",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/amazon.pdf": "63196177ef83756ddfaff5aacda547f0eabac4669c0f6144bcee8401cd8cfbfc",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/amazon.txt": "087dc018270e93f3f96e4e67be67d223d941100690edb04e237c642b7748101a",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/apple-capture.json": "7bafa733cde6e3ff05f4734ad9fc8866ebfe4ce8b687d4a28ddfdce94b3a5eed",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/apple-excerpt.txt": "14b8d0f8f01f8532ee9572d0f87ab20f46f709328bd314296c6c3b43eeb6cab3",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/apple.html": "eb08113db1fa3b847936c68ddf7bd9c31b5d708c14794c94355fd38ac3846850",
+    "local/skill-evals/20260921-liquidity-transfer/evidence/apple.txt": "c3d2fb96d59049bb59dd539216fdcdc76c84c9ed2461c78d17c0332842772033"
+  }
+}

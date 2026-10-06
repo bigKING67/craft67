@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/research-collection.schema.json",
+  "title": "Money Craft provider collection result",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "identity_verified",
+    "network_boundary",
+    "network_requests_attempted",
+    "passed",
+    "provider_gaps",
+    "terminal",
+    "total",
+    "complete",
+    "results"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.research-collection.v1"},
+    "valid": {"type": "boolean"},
+    "identity_verified": {"type": "boolean"},
+    "network_boundary": {"const": "explicit-provider-collection"},
+    "network_requests_attempted": {"type": "integer", "minimum": 0},
+    "passed": {"type": "integer", "minimum": 0},
+    "provider_gaps": {"type": "integer", "minimum": 0},
+    "terminal": {"type": "integer", "minimum": 0},
+    "total": {"type": "integer", "minimum": 0},
+    "complete": {"type": "boolean"},
+    "results": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false
+}

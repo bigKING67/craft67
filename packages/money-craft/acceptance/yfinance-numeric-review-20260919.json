@@ -1,0 +1,39 @@
+{
+  "schema": "money-craft.yfinance-numeric-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Snapshot nine numeric fields after scalar normalization",
+  "source_hashes": {
+    "skills/money-craft/scripts/yfinance_adapter.py": "a5d018e47acad1e1df3f7531a9c54a6a8c0e810ae513f6e7b4619dad9621b837",
+    "tests/test_yfinance_adapter.py": "d8c66a2d1dc24adf111a5f8459ab1c8969ec712b38d58bc213618ed11f505e60"
+  },
+  "finding": "Nonmissing strings, bools and containers previously counted as usable quotes; now reject malformed snapshot without retry. Missing and zero semantics retained.",
+  "validation": {
+    "yfinance_tests": 17,
+    "full_tests": 398,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 14
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No blockers in declared snapshot scope",
+    "tests": 17,
+    "additional_boundary_cases": 99,
+    "source_hashes": {
+      "skills/money-craft/scripts/yfinance_adapter.py": "a5d018e47acad1e1df3f7531a9c54a6a8c0e810ae513f6e7b4619dad9621b837",
+      "tests/test_yfinance_adapter.py": "d8c66a2d1dc24adf111a5f8459ab1c8969ec712b38d58bc213618ed11f505e60"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T084941114209Z"
+  },
+  "limits": [
+    "No economic range, currency, cross-field consistency, frame numeric or date validation claim.",
+    "No real pandas/yfinance or live Provider validation.",
+    "No app, commit, push or release."
+  ]
+}

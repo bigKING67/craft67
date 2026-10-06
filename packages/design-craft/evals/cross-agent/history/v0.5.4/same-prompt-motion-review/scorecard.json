@@ -1,0 +1,55 @@
+{
+  "schema": "design-craft.cross-agent-scorecard.v1",
+  "task_id": "same-prompt-motion-review",
+  "criteria": [
+    {
+      "id": "style_authority",
+      "label": "Style authority and product context",
+      "weight": 15,
+      "pass_evidence": "Checks product context, component role, and motion policy first.",
+      "deduction_trigger": "Applies flashy default animation without product need."
+    },
+    {
+      "id": "reference_selection",
+      "label": "Reference selection",
+      "weight": 15,
+      "pass_evidence": "Selects motion quality, interaction physics, design-system, and validation references.",
+      "deduction_trigger": "Ignores gesture guidance or loads unrelated references."
+    },
+    {
+      "id": "anti_generic_redesign",
+      "label": "Anti-generic redesign",
+      "weight": 15,
+      "pass_evidence": "Questions whether motion should exist and avoids decorative animation.",
+      "deduction_trigger": "Treats more animation as automatically better."
+    },
+    {
+      "id": "evidence_level",
+      "label": "Evidence level labeling",
+      "weight": 15,
+      "pass_evidence": "Labels timing and performance evidence as static, observed, or unverified.",
+      "deduction_trigger": "Claims smoothness or runtime performance without browser evidence."
+    },
+    {
+      "id": "verified_boundary",
+      "label": "Verified/unverified boundary",
+      "weight": 15,
+      "pass_evidence": "Separates inspected behavior from unverified focus, reduced-motion, and interruption.",
+      "deduction_trigger": "Claims interaction states without testing them."
+    },
+    {
+      "id": "design_moves",
+      "label": "Concrete design moves",
+      "weight": 15,
+      "pass_evidence": "Proposes transform tracking, interruption, velocity handoff, boundaries, and reduced motion.",
+      "deduction_trigger": "Says only to make it smoother or recommends transition-all."
+    },
+    {
+      "id": "scope_control",
+      "label": "Scope control and unrelated changes",
+      "weight": 10,
+      "pass_evidence": "Keeps recommendations within motion behavior and decisive validation.",
+      "deduction_trigger": "Suggests unrelated changes or buries priorities in an overlong review."
+    }
+  ]
+}

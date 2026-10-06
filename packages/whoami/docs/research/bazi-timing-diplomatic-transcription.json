@@ -1,0 +1,709 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-26",
+  "title": "八字岁运目标章节页级外交转录底稿",
+  "scope": [
+    "《子平真诠》论行运",
+    "《子平真诠》论行运成格变格",
+    "《子平真诠》论支中喜忌逢运透清",
+    "《滴天髓》岁运论"
+  ],
+  "transcriptionPolicy": {
+    "authority": "listed scan witness",
+    "readingOrder": "traditional vertical columns, right to left; characters top to bottom",
+    "layoutFidelity": "page or leaf-side boundaries and reading order are preserved; line and column wrapping is reflowed",
+    "preserved": [
+      "witness-specific wording and visible traditional character forms",
+      "printed punctuation",
+      "printed chapter and layer labels",
+      "printed lacuna labels",
+      "page or leaf-side boundaries",
+      "1947 natal charts as separate structured blocks"
+    ],
+    "notPreserved": [
+      "exact glyph shape",
+      "exact line and column coordinates",
+      "running headers and page furniture",
+      "handwritten marginalia outside the printed target text"
+    ],
+    "notClaimed": [
+      "a normalized critical edition",
+      "a complete stemma",
+      "a unique correct reading",
+      "settled authorship",
+      "the validity of traditional theory or prediction"
+    ],
+    "ocrUse": "locator only; every retained reading was checked against the rendered scan",
+    "crossWitnessCompletion": "forbidden: absent or interrupted text is never silently supplied from another witness"
+  },
+  "witnesses": [
+    {
+      "id": "zp-world",
+      "label": "世界图书馆本《子平真诠》",
+      "sourcePdf": "tmp/pdfs/ziping-zhenquan-scan.pdf",
+      "sha256": "71402a780b0351b54edf121a51bc4a4a4ce5896496c35b954563ee06f1a6f620",
+      "completeness": "complete for all three target chapters",
+      "pages": [
+        {
+          "pdfPage": 56,
+          "printedPage": "47",
+          "sections": [
+            "ZP-25"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "【論行運】論運與看命無二法也。看命以四柱干支配月令之喜忌而取運。則又以運之干支配八字之喜忌。故運中每運行一字。即必以此一字配命中八字而統觀之。為喜為忌吉凶判然矣。何為喜。命中所喜我得而助之者是也。如官用印以制傷。而運助印。財生官而身輕。而運助身。印帶財以為忌而運劫財。食帶煞以成格而運逢印。煞重身輕而運來助食。傷官佩印而運行官煞。羊刃用官而運助財鄉。月劫用財而運行傷食。如此之類皆美運也。何為忌。命中所忌我逆而施之者是也。如正官無印而運行傷。財不透食而運行煞。印綬用官而運合官。食神帶煞而運行財。七煞食制而運逢梟。傷官佩印而運行財。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 57,
+          "printedPage": "48",
+          "sections": [
+            "ZP-25"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "羊刃用煞而運逢食。建祿用官而運逢傷。如此之類皆敗運也。其有似喜而實忌者何也。如官逢印運而本命有合。印逢官運而本命用煞之類是也。有似忌而實喜者何也。如官逢傷運而命透印。財行煞運而命透食之類是也。又有行干而不行支者何也。如丙生子月亥年。逢丙丁則幫身。逢巳午則相沖是也。又有行支而不行干者何也。如甲生酉月。辛金透而官猶弱。逢申酉則官植根。逢庚辛則混煞重官之類是也。又有干同一類而不兩行者何也。如丁生亥月而年透壬官。逢丙則幫身。逢丁則合官之類是也。又有支同一類而不兩行者何也。如戊生卯月巳年。逢申則自坐長生。逢酉則會巳以傷官之類是也。又有同是相沖而分緩急何也。沖年月則急。沖時日則緩也。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 58,
+          "printedPage": "49",
+          "sections": [
+            "ZP-25",
+            "ZP-26"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "又有同是相沖而分輕重者何也。運本美而逢沖則輕。運既忌而又沖則重也。又有逢沖而不沖者何也。如甲用酉官。行卯則沖。而本命巳酉有相會則沖無力。年支亥未則卯逢年會而不沖月官之類是也。又有一沖而得兩沖者何也。如乙用申官。兩申並而不沖一寅。運又逢寅。則運與本命合成二寅以沖二申之類是也。此皆取運之要法。其備細則又於外格取運章詳之。【論行運成格變格】命之格局。成於八字。然配之以運。亦有成格變格之權。成格變格。比之喜忌禍福尤重。何為成格。本命用神成而未全。運從而就之者是也。如丁生辰月。透壬為官。而運逢申子以會之。乙生辰月。或申或子。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 59,
+          "printedPage": "50",
+          "sections": [
+            "ZP-26"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "會印成局。而運逢壬癸以透之。如此之類皆成格也。何為變格。如丁生辰月。透壬為官。而運又逢戊透出辰中傷官。壬生戌月。丁己並透。而支又會寅會午。作財旺生官矣。而運逢戊土。透出戌中七煞。壬生亥月。透己為用。作建祿用官矣。而運逢卯未。會亥成木。又化建祿為傷。如此之類皆變格也。然亦有逢成格而不喜者何也。如壬生午月。運透己官。而本命有甲之類是也。又有逢變格而不忌者何也。如丁生辰月。透壬用官。運逢戊而命有甲。壬生亥月。透己用官。運逢卯未會傷。而命有庚辛之類是也。成格變格。關係甚大。取運者其細詳之。"
+            }
+          ],
+          "boundaryNote": "the following printed chapter is outside this transcription scope"
+        },
+        {
+          "pdfPage": 60,
+          "printedPage": "51",
+          "sections": [
+            "ZP-28"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "【論支中喜忌逢運透清】支中喜忌固與干有別矣。而逢運透清。則靜而待用者。正得其用。而"
+            }
+          ],
+          "boundaryNote": "the page begins with the end of the preceding chapter, omitted as out of scope"
+        },
+        {
+          "pdfPage": 61,
+          "printedPage": "52",
+          "sections": [
+            "ZP-28"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "喜忌之驗。於此乃見。何謂透清。如甲用酉官。逢辰未即為財。而運透戊。逢午未即為傷。而運透丁之類是也。若命與運二支會局。亦作清論。如甲用酉官。本命有午。而運逢寅戌之類。然則在年則重在日次之。至於時生於午。而運逢寅戌會局。則緩而不急矣。雖格之成敗高低。八字已有定論。與命中原有不同。而此五年中亦能為其禍福。若月令之物。而運中透清。則與命中原有者。不甚相懸。即前篇所謂行運成格變格也。故凡一八字到手。必須逐干逐支上下統看。支以為干之生地。干以為支之發用。如命中有一甲字。則統觀四支有寅亥未卯等字否。有一字。皆甲木之根也。有一亥字。則統觀四干有壬甲二字否。有壬則亥為壬祿。以壬水用。有甲則亥為甲長生以甲木用。有"
+            }
+          ]
+        },
+        {
+          "pdfPage": 62,
+          "printedPage": "53",
+          "sections": [
+            "ZP-28"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "壬甲俱全則一以祿為根一則以長生為根。二者並用。取運亦用此術。將本命八字逐干逐支配之而已。"
+            }
+          ],
+          "boundaryNote": "the following printed chapter is outside this transcription scope"
+        }
+      ]
+    },
+    {
+      "id": "zp-1926",
+      "label": "1926 文明书局秦慎安校勘本《子平真诠》第2卷",
+      "sourcePdf": "tmp/pdfs/ziping-1926-vol2.pdf",
+      "sha256": "b1ac0a7dd4dc260647b65bd9338ad815fc0855d78e0ea01ed428237b28eb61c8",
+      "completeness": "ZP-25 and ZP-28 complete; ZP-26 explicitly lacunose after 壬生戌下闕",
+      "pages": [
+        {
+          "pdfPage": 43,
+          "printedPage": "30",
+          "sections": [
+            "ZP-25"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "論行運。論運與看命無二法也。看命以四柱干支配月令之喜忌而取運則又以運之干支配八字之喜忌。故運中每行一字即必以此一字配命中八字而統觀之。為喜為忌吉凶判然矣。何謂喜。命中所喜我得而助之者是也。如官用印以制傷。而運助印。財生官而身輕。而運助身。印帶財以為忌而運劫財。食帶煞以成格而運逢印。煞重身輕而運來助食。傷官佩印而運行官煞。陽刃用官而運助財鄉。月劫用財而運行傷食。如此之類。"
+            }
+          ],
+          "boundaryNote": "the page begins with the end of the preceding chapter, omitted as out of scope"
+        },
+        {
+          "pdfPage": 44,
+          "printedPage": "31",
+          "sections": [
+            "ZP-25"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "皆美運也。何謂忌。命中所忌我逆而施之者是也。如正官無印而運行傷。財不透食而運行煞。印綬用官而運合官。食神帶煞而運行財。七煞食制而運逢梟。傷官佩印而運行財。陽刃用煞而運逢食。建祿用官而運逢傷。如此之類皆敗運也。其有似喜而實忌者何也。如官逢印運而本命有合。印逢官運而本命用煞之類是也。有似忌而實喜者何也。如官逢傷運而命透印。財行煞運而命透食之類是也。又有行干而不行支者何也。如丙生子月亥年。逢丙丁則幫身。逢巳午則相沖是也。又有行支而不行干者何也。如甲生酉月。辛金透而官猶弱。逢申酉則官植根。逢庚辛則混雜重官之類是也。又有干同一類而不兩行者何也。如丁生亥月而年透壬官。逢丙則幫身。逢丁則合官之類是也。又有支同一類而不兩行者何也。如戊生卯月巳年。逢申則自坐長生。逢酉則會巳以傷官之類是也。又有同是相沖而分緩急者何也。沖年月則急。沖日時則緩也。又有同是相沖而分輕重者何也。運本美而逢沖則輕。運既忌而又沖則重也。又有逢沖而不沖何也。如甲用酉官。行卯則沖。而本命巳酉相會則沖無力。年支亥未則卯逢年"
+            }
+          ]
+        },
+        {
+          "pdfPage": 45,
+          "printedPage": "32",
+          "sections": [
+            "ZP-25",
+            "ZP-26",
+            "ZP-28"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "會而不沖月官之類是也。又有一沖而得兩沖者何也。如乙用申官。兩申並而不沖一寅。運又逢寅則運與本命合成二寅以沖二申之類是也。此皆取運之要法。其備細則又於各格取運章詳之。論行運成格變格。命之格局成於八字。然配之以運亦有成格變格之權。成格變格比之喜忌禍福尤重。何謂成格。本命用神成而未全。運從而就之者是也。如丁生辰月透壬為官而運逢申子以會之。乙生辰月或申或子會印成局而運逢壬癸以透之。如此之類皆成格也。何謂變格。如丁生辰月透壬為官而運又逢戊透出辰中傷官。壬生戌下闕。論支中喜忌逢運透清。支中喜忌固與干有別也。而逢運透清則靜而待用者正得其用。而喜忌之驗於此乃見。何謂透清。如甲用酉官逢辰未即為財。而運透戊。逢午未即為傷。而運透丁之類是也。若命與運二支會局亦作清出。如甲用酉官。本命有午。而運逢寅戌之類。然在年則"
+            }
+          ],
+          "lacuna": {
+            "section": "ZP-26",
+            "printedMarker": "下闕",
+            "after": "壬生戌",
+            "completionFromOtherWitness": false
+          }
+        },
+        {
+          "pdfPage": 46,
+          "printedPage": "33",
+          "sections": [
+            "ZP-28"
+          ],
+          "blocks": [
+            {
+              "layer": "base-text",
+              "text": "重在日次之。至於時生午。而運逢寅戌會局則緩而不急矣。雖格之成敗高低。八字已有定論。與柱中原有者不同。而此五年中亦能為其禍福。若月令之物。而運中透清則與柱中原有者不甚相懸。即前篇所謂行運成格變格也。故凡一八字到手。必須逐干逐支上下統看。支為干之生地。干為支之發用。如命中有一甲。則統觀四支有寅亥未卯等字否。有一字皆甲木之根也。有一亥字。則統觀四干有壬甲二字否。有壬則亥為壬祿。以壬水用。有甲則亥為甲長生。以甲木用。有壬甲俱全則一以祿為根一以長生為根。二者並用。取運亦用此術。將本命八字逐干逐支配之而已。"
+            }
+          ],
+          "boundaryNote": "the following printed chapter is outside this transcription scope"
+        }
+      ]
+    },
+    {
+      "id": "dts-ming",
+      "label": "明末长庚馆刊《滴天髓》",
+      "sourcePdf": "tmp/pdfs/ditiansui-ming-scan.pdf",
+      "sha256": "af8cc3ae1e2d6de6e11c6d677c43c9c0519193f18dfba2e16690bfa131a7715d",
+      "completeness": "the witness enters 歲運 at PDF 66 and completes the 何為好 sentence across the PDF 68 right-to-left leaf boundary; the following column starts 貞元",
+      "pages": [
+        {
+          "pdfPage": 66,
+          "printedPage": "47",
+          "sections": [
+            "DTS-09"
+          ],
+          "parts": [
+            {
+              "leafSide": "right",
+              "blocks": [
+                {
+                  "layer": "unlabeled-early-text",
+                  "text": "○歲運。休咎係乎運。尤係乎歲。戰沖視其孰降。和好視其孰切。主譬如吾身。局中之神。譬之舟馬。引從之人物也。大運譬所歷之地。故重地支。未嘗無天干。太歲譬所遇之人。故重天干。未嘗"
+                }
+              ]
+            },
+            {
+              "leafSide": "left",
+              "blocks": [
+                {
+                  "layer": "unlabeled-early-text",
+                  "text": "無地支。必先明一日主。配合七字。推其輕重。看喜行何運。忌行何運。如甲日以氣機看春。以人心看仁。以物理看木。大率看氣機。而物在其中。遇庚辛申酉字。即看而行之于秋。斷伐其生生之機。又看喜與不喜。而運欲生甲伐甲之地。可斷其休咎矣。夫一生休咎。即驗于是。詳論歲運戰沖和好之勢。而得勝負適從之機。則休咎了然在目。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pdfPage": 67,
+          "printedPage": "48",
+          "sections": [
+            "DTS-09"
+          ],
+          "parts": [
+            {
+              "leafSide": "right",
+              "blocks": [
+                {
+                  "layer": "unlabeled-early-text",
+                  "text": "○何為戰。如丙運庚年。謂之運伐歲。日主喜庚。要丙降。得戊得壬者吉。日主喜丙。則歲運不肯降。得戊己以和為妙。如庚坐寅午。丙之力量大。則歲亦不得不降。降之其亦保無禍。庚運丙年。謂之歲伐運。日主喜庚。得戊己以和丙者吉。日主喜丙。則運不降歲。又不可戊己洩丙助庚。若庚坐寅午。丙之力量"
+                }
+              ]
+            },
+            {
+              "leafSide": "left",
+              "blocks": [
+                {
+                  "layer": "unlabeled-early-text",
+                  "text": "大。則運自降。吉。○何為沖。如子運午年。謂之運沖歲。日主喜子。則要助子。又得年之干頭。乃制午之神。或午之黨多。干頭遇丙戊甲字者必凶。如午運子年。謂之歲沖運。日主喜午。而子午之黨多。干頭助子者必凶。日主喜子。而午之黨少。干頭助子者必吉。若午重子輕。則歲不降。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pdfPage": 68,
+          "printedPage": "49",
+          "sections": [
+            "DTS-09"
+          ],
+          "parts": [
+            {
+              "leafSide": "right",
+              "blocks": [
+                {
+                  "layer": "unlabeled-early-text",
+                  "text": "亦無咎。○何為和。如乙運庚年。庚運乙年。則和。日主喜金則吉。日主喜木則不吉。子運丑年。丑運子年。日主喜土吉。喜水則甚利。○何為好。如庚運辛年。辛運庚年。申運酉年。酉運申年。則好。日主喜陽。則庚與申為好。喜陰則"
+                }
+              ]
+            },
+            {
+              "leafSide": "left",
+              "sections": [
+                "DTS-09"
+              ],
+              "boundaryNote": "the first column completes 何為好; the following column starts the next chapter 貞元",
+              "blocks": [
+                {
+                  "layer": "unlabeled-early-text",
+                  "text": "辛與酉為好。此皆宜例推以見。"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "uncertainOrSuspectReadings": [
+        {
+          "locator": "PDF 66 right leaf",
+          "reading": "主譬如吾身",
+          "status": "visible",
+          "note": "later witnesses read 日主; no 日 is visible before 主 in this scan"
+        },
+        {
+          "locator": "PDF 67 left leaf",
+          "reading": "大。則運自降。吉。",
+          "status": "visible-but-syntactically-suspect",
+          "note": "retained as printed; not normalized from later witnesses"
+        },
+        {
+          "locator": "PDF 68 right leaf",
+          "reading": "喜水則甚利",
+          "status": "visible",
+          "note": "opposes the later 不吉 branch and is therefore retained as a material witness reading"
+        }
+      ]
+    },
+    {
+      "id": "dts-1936",
+      "label": "1936 乾乾书社《滴天髓辑要》",
+      "sourcePdf": "tmp/pdfs/ditiansui-jiyao-1936.pdf",
+      "sha256": "6b1a6030178fc7379b6b635315d8431b401dd189b6a030fd2509b27207b9716f",
+      "completeness": "complete for the printed 歲運論 chapter; parenthetical glosses are preserved inside the editorial layer",
+      "pages": [
+        {
+          "pdfPage": 25,
+          "printedPage": "20",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "verse",
+              "text": "歲運論。休咎係乎運。尤係乎歲。衝戰視其孰降。和好視其孰切。"
+            },
+            {
+              "layer": "explanation",
+              "text": "日主譬如吾身。局中之神譬如舟馬引從。大運譬如所歷之地。故重地支。未嘗無天干。太歲譬如所遇之人。故重天干。未嘗無地支。必先明一日主。配合七字。推其輕重。看其喜行何運。如甲日以氣機看春。以人心看仁。以物理看木。大率看氣機而物在其中。遇庚辛申酉字。即看其和何令。又看春之喜忌。及行運生甲伐甲之地。故詳論歲運戰衝和好之勢。而得勝負適從之機。則"
+            }
+          ]
+        },
+        {
+          "pdfPage": 26,
+          "printedPage": "21",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "explanation",
+              "text": "休咎了然在目。"
+            },
+            {
+              "layer": "early-example-with-parenthetical-glosses",
+              "text": "▲何謂戰。如丙運庚年。謂之運伐歲。日主喜庚。要丙降。在得戊得壬者吉。日主喜丙。歲不肯降。得戊己和之為妙。（太歲為尊神。故以和解為上。）如庚坐寅年。則丙之力量大。歲自不得不降。（勢大則太歲無權。）可保無禍。如庚運丙年。謂之歲伐運。日主喜庚。得戊己以和丙者吉。日主喜丙。運不肯降。歲又不可制。（運管十年。與命較親。）得戊己洩而助庚亦吉。若庚坐寅午。則丙之力量大。運自不得不降。亦保無患。▲何謂衝。如子運午年。謂之運沖歲。日主喜子。則要助子。又得年干乃制午之神更妙。若午之黨多。或干頭遇丙戊甲者必凶。如午運子年。謂之歲沖運。日干喜午。而子之黨多。干頭又助子。必凶。日干喜子。而午之黨少。干頭亦不助午。必吉。若午重子輕。則歲不降。亦無咎。（其勢已成。歲力不能為禍。）"
+            }
+          ]
+        },
+        {
+          "pdfPage": 27,
+          "printedPage": "22",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "early-example-with-parenthetical-glosses",
+              "text": "▲何謂和。如乙運庚年。庚運乙年。則和。（乙庚化金）日主喜金則吉。日主喜木則不吉。子運丑年。丑運子年。則和。日主喜土則吉。（子丑合而化土）喜水則不吉。▲何謂好。如庚運辛年。辛運庚年。申運酉年。酉運申年。則好。日主喜陽。則庚與申為好。日主喜陰。則辛與酉為好。"
+            }
+          ],
+          "boundaryNote": "the next printed chapter is 體用論"
+        }
+      ]
+    },
+    {
+      "id": "dts-1947",
+      "label": "1947 上海大东书局《滴天髓阐微》",
+      "sourcePdf": "tmp/pdfs/ditiansui-chanwei-scan.pdf",
+      "sha256": "d6a7d1daf6513ce9fb9940ff8331b96804c10cdafbeac00d4d3d0a37229e1803",
+      "completeness": "complete for the printed 歲運 chapter, with 原注 and 任氏曰 layers kept separate",
+      "pages": [
+        {
+          "pdfPage": 501,
+          "printedPage": "113",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "chapter-title",
+              "text": "歲運。"
+            }
+          ],
+          "boundaryNote": "the page otherwise contains the end of the preceding chapter"
+        },
+        {
+          "pdfPage": 502,
+          "printedPage": "114",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "verse",
+              "text": "休咎係乎運。尤係乎歲。戰沖視其孰降。和好視其孰切。"
+            },
+            {
+              "layer": "original-note",
+              "text": "〔原注〕日主譬如吾身。局中之神譬之舟馬引從之人。大運譬所歷之地。故重地支。未嘗無天干。太歲譬所遇之人。故重天干。未嘗無地支。必先明一日主。配合七字。權其輕重。看喜行何運。忌行何運。如甲日以氣機看春。以人心看仁。以物理看木。大率看氣機而餘在其中。遇庚辛申酉字面。如春而行之於秋。斷伐其生生之機。又看喜與不喜。而行運生甲伐甲之地。可斷其休咎也。太歲一至。休咎即顯。於是詳論戰沖和好之勢。而得勝負適從之機。則休咎了然在目。"
+            },
+            {
+              "layer": "Ren-commentary",
+              "text": "任氏曰。富貴雖定乎格局。窮通實係乎運途。所謂命好不如運好也。日主如我之身。局中喜神用神是我所用之人。運途乃我所臨之地。故以地支為重。要天干不背。相生相扶為美。故一運看十年。切勿上下截看。不可使蓋頭截腳。如上下截看。不論蓋頭截腳。則吉凶不驗矣。如喜行木運。必要甲寅乙卯。次則甲辰乙亥壬寅癸卯。喜行火運。必要"
+            }
+          ]
+        },
+        {
+          "pdfPage": 503,
+          "printedPage": "115",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-commentary",
+              "text": "丙午丁未。次則丙寅丁卯丙戌丁巳。喜行土運。必要戊午己未戊戌己巳。次則戊辰己丑。喜行金運。必要庚申辛酉。次則戊申己酉庚辰辛巳。喜行水運。必要壬子癸亥。次則壬申癸酉辛亥庚子。寧使天干生地支。弗使地支生天干。天干生地支而蔭厚。地支生天干而氣洩。何謂蓋頭。如喜木運而遇庚寅辛卯。喜火運而遇壬午癸巳。喜土運而遇甲戌甲辰乙丑乙未。喜金運而遇丙申丁酉。喜水運而遇戊子己亥。何謂截腳。如喜木運而遇甲申乙酉乙丑乙巳。喜火運而遇丙子丁丑丙申丁酉丁亥。喜土運而遇戊寅己卯戊子己酉戊申。喜金運而遇庚午辛巳庚寅辛卯庚子。喜水運而遇壬寅癸卯壬午癸未壬辰癸巳是也。蓋干頭喜支。運以重支。則吉凶減半。截腳喜干。支不載干。則十年皆否。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 504,
+          "printedPage": "116",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-commentary",
+              "text": "假如喜行木運。而遇庚寅辛卯。庚辛本為凶運。而金絕寅卯。謂之無根。雖有十分之凶。而減其半。如原局天干有丙丁透露。得回制之能。又減其半。或再遇太歲逢丙丁。制其庚辛。則無凶矣。寅卯本為吉運。因蓋頭有庚辛之剋。雖有十分之吉。亦減其半。如原局地支有申酉之沖。不但無吉而反凶矣。又如喜木運。遇甲申乙酉。木絕于申酉。謂之不載。故甲乙之運不吉。如原局天干又透庚辛。或太歲干頭遇庚辛。必凶無疑。所以十年皆凶。如原局天干透壬癸。或太歲干頭逢壬癸。能洩金生木。則和平無凶矣。故運逢吉不見其吉。運逢凶不見其凶者。緣蓋頭截腳之故也。太歲管一年否泰。如所遇之人。故以天干為重。然地支不可不究。雖有與神之生剋。不可與日主運途之沖戰。最凶者天剋地沖。歲運沖剋。日"
+            }
+          ]
+        },
+        {
+          "pdfPage": 505,
+          "printedPage": "117",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-commentary",
+              "text": "主旺相。雖凶無礙。日主休囚。必罹凶咎。日犯歲君。日主旺相無咎。日主休囚必凶。歲君犯日亦同此論。故太歲宜和。不可與大運一端論也。如運逢木吉。歲逢木反凶者。皆戰沖不和之故也。依此而推。則吉凶無不驗矣。"
+            },
+            {
+              "layer": "Ren-case",
+              "chart": {
+                "pillars": [
+                  "庚辰",
+                  "丁亥",
+                  "庚辰",
+                  "丁丑"
+                ],
+                "luckPillars": [
+                  "戊子",
+                  "己丑",
+                  "庚寅",
+                  "辛卯",
+                  "壬辰",
+                  "癸巳"
+                ]
+              },
+              "text": "庚辰日元。生于亥月。天干丁火並透。辰亥皆藏甲乙。足以用火。初運戊子己丑。晦火生金。未遂所願。庚運丙午年。庚坐寅支截腳。天干兩丁足可敵一庚。又逢丙午年。捷南宮。是年進而中。丁未又連捷。榜下知縣。寅運官資頗豐。辛卯截腳。局中丁火回剋。仕至郡守。壬辰水生庫根。至壬申年。兩丁皆傷。不祿。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 506,
+          "printedPage": "118",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-case",
+              "chart": {
+                "pillars": [
+                  "乙未",
+                  "戊子",
+                  "庚辰",
+                  "丁丑"
+                ],
+                "luckPillars": [
+                  "丁亥",
+                  "丙戌",
+                  "乙酉",
+                  "甲申",
+                  "癸未",
+                  "壬午"
+                ]
+              },
+              "text": "庚辰日元。生于子月。未土穿破子水。天干木火皆得辰未之餘氣。足以用木生火。丙運入泮。癸酉年行乙運。癸合戊化火。酉是丁火長生。均以此年必中。殊不知乙酉截腳之木。非木也。實金也。癸酉年水逢金生。又在冬令。焉能合戊化火。必剋丁火無疑。酉中純金。乃火之死地。陰火長生之說。俗傳之謬也。恐今八月又建辛酉。局中木火皆傷。防生不測之災。竟卒于省中。"
+            },
+            {
+              "layer": "Ren-case",
+              "chart": {
+                "pillars": [
+                  "戊子",
+                  "乙卯",
+                  "丙寅",
+                  "丁酉"
+                ],
+                "luckPillars": [
+                  "丙辰",
+                  "丁巳",
+                  "戊午",
+                  "己未",
+                  "庚申",
+                  "辛酉"
+                ]
+              },
+              "text": "丙寅日元。生于卯月。木火並旺。土金皆傷。水亦休囚。初運丙辰丁巳。遺業消靡。戊午己未。燥土不能生金洩火。經營虧空萬金。逃出外方。交庚申辛酉二十年。竟獲居奇之利。發財十餘萬。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 507,
+          "printedPage": "119",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-case",
+              "chart": {
+                "pillars": [
+                  "丙申",
+                  "癸巳",
+                  "丙午",
+                  "甲午"
+                ],
+                "luckPillars": [
+                  "甲午",
+                  "乙未",
+                  "丙申",
+                  "丁酉",
+                  "戊戌",
+                  "己亥"
+                ]
+              },
+              "text": "丙午日元。生于巳月午時。群比爭財。逼乾癸水。初運甲午。刃劫猖狂。父母早亡。乙未助刃。家業敗盡。交丙申丁酉。火蓋頭。且局中巳午回剋金。貧乏之甚。交戊戌稍能立腳。"
+            },
+            {
+              "layer": "original-note",
+              "text": "何為戰。〔原注〕如丙運庚年。謂之運伐歲。日主喜庚。要丙降。得戊得壬者吉。日主喜丙。則歲不降運。得戊己以和為妙。如庚坐寅午。丙之力量大。則歲運亦不得不降。降之亦保無禍。庚運丙年。謂之歲伐運。日主喜庚。得戊己以和丙者吉。日主喜丙。則運不降歲。又不可用戊己洩丙助庚。若庚坐寅午。丙之力量大。則運自降歲。亦保無患。"
+            },
+            {
+              "layer": "Ren-commentary",
+              "text": "任氏曰。戰者剋也。如丙運庚年。謂之運剋歲。日主喜庚。要丙坐子辰。庚坐申辰。又局中得戊己洩丙。得壬癸剋丙則吉。如丙坐午寅。局中又無水土"
+            }
+          ]
+        },
+        {
+          "pdfPage": 508,
+          "printedPage": "120",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-commentary",
+              "text": "制化。必凶。如庚運丙年。謂之歲剋運。日主喜庚則凶。喜丙則吉。喜庚者要庚坐申辰。丙坐子辰。又局中逢水土制化者吉。反此必凶。喜丙者依此而推。"
+            },
+            {
+              "layer": "Ren-case",
+              "chart": {
+                "pillars": [
+                  "辛卯",
+                  "甲午",
+                  "丙辰",
+                  "庚寅"
+                ],
+                "luckPillars": [
+                  "癸巳",
+                  "壬辰",
+                  "辛卯",
+                  "庚寅",
+                  "己丑",
+                  "戊子"
+                ]
+              },
+              "text": "丙火生于午月。旺刃當權。支全寅卯辰。土從木類。庚辛兩不通根。初交癸巳壬辰。金逢生助。家業饒裕。其樂自如。辛卯金截腳。刑喪破耗。家業十敗八九。庚運丙寅年。剋妻。庚坐寅支截腳。丙寅歲剋運。又庚絕丙生。局中無制化之神。于甲午月木從火勢。凶禍連綿。得疾而亡。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 509,
+          "printedPage": "121",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-case",
+              "chart": {
+                "pillars": [
+                  "辛卯",
+                  "甲午",
+                  "乙卯",
+                  "乙酉"
+                ],
+                "luckPillars": [
+                  "癸巳",
+                  "壬辰",
+                  "辛卯",
+                  "庚寅",
+                  "己丑",
+                  "戊子"
+                ]
+              },
+              "text": "乙木生于午月。卯酉緊沖日祿。月干甲木臨絕。五行無水。夏火當權洩氣。傷官用劫。所忌者金。初運壬辰癸巳。印透生扶。平順之境。辛卯運。惟辛酉年沖去卯木。刑喪剋破。至庚運丙寅年。所忌者金。而丙火剋去之。局中無土水洩制丙火。又火逢生。金坐絕。入泮。得舒眉曲也。"
+            },
+            {
+              "layer": "original-note",
+              "text": "何為沖。〔原注〕如子運午年。謂之運沖歲。日主喜子。則要助子。又得年之干頭。遇制午之神。或午之黨多。干頭遇戊甲字者必凶。如午運子年。謂之歲沖運。日主喜午而子之黨多。干頭助子者必凶。日主喜子。而午之黨少。干頭助子者必吉。若午重子輕。則歲不降。亦無咎。"
+            },
+            {
+              "layer": "Ren-commentary",
+              "text": "任氏曰。沖者破也。如子運午年。謂之運沖歲。日主喜子。要干頭逢庚壬。午之干頭逢甲丙。亦無咎。如子之干頭遇丙戊。午之干頭遇庚壬。亦有咎。"
+            }
+          ]
+        },
+        {
+          "pdfPage": 510,
+          "printedPage": "122",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "Ren-commentary",
+              "text": "日主喜午。子之干頭逢甲戊。午之干頭逢甲丙。則吉。如子之干頭遇庚壬。午之干頭遇甲丙。則凶。如午運子年。謂之歲沖運。日主喜午。要午之干頭逢丙戊。子之干頭遇甲丙。則吉。如午之干頭遇丙戊。子之干頭遇庚壬。必凶。餘可類推。"
+            },
+            {
+              "layer": "original-note",
+              "text": "何為和。〔原注〕如乙運庚年。庚運乙年。則和。日主喜金則吉。日主喜木則不吉。子運丑年。丑運子年。日主喜土則吉。喜水則不吉。"
+            },
+            {
+              "layer": "Ren-commentary",
+              "text": "任氏曰。和者合也。如乙運庚年。庚運乙年。合而能化。喜金則吉。合而不化。反為羈絆。不顧日主之喜我。則不吉矣。喜庚亦然。所以喜庚者必要木金得地。乙木無根。則合化為美矣。若子丑之合。不化亦是剋水。喜水者必不吉也。"
+            },
+            {
+              "layer": "original-note",
+              "text": "何為好。〔原注〕如庚運辛年。辛運庚年。申運酉年。酉運申年。則好。日主喜陽。則庚與申為好。喜"
+            }
+          ]
+        },
+        {
+          "pdfPage": 511,
+          "printedPage": "123",
+          "sections": [
+            "DTS-09"
+          ],
+          "blocks": [
+            {
+              "layer": "original-note",
+              "text": "陰。則辛與酉為好。凡此皆宜例推。"
+            },
+            {
+              "layer": "Ren-commentary",
+              "text": "任氏曰。好者類相同也。如庚運申年。辛運酉年。是為真好。乃支之祿旺。自我本氣歸垣。如家室之可住。如庚運辛年。辛運庚年。乃天干之助。如朋友之幫扶。究竟不甚關切。必先要旺運通根。自然依附為好。如運無根氣。其見勢衰而無依附之情。非為好也。"
+            }
+          ],
+          "boundaryNote": "the next printed chapter is 貞元"
+        }
+      ],
+      "uncertainOrSuspectReadings": [
+        {
+          "locator": "PDF 505 / printed 117",
+          "reading": "是年進而中",
+          "status": "visible-but-syntactically-suspect",
+          "note": "the characters are visible after enlargement, but the phrase is syntactically suspect; it is retained as printed and must not support a substantive conclusion"
+        }
+      ]
+    }
+  ],
+  "coverageSummary": {
+    "scanWitnesses": 5,
+    "pdfPagesOrSpreadsInspected": 28,
+    "targetSections": 4,
+    "explicitLacunae": 1,
+    "unmarkedInterruptions": 0,
+    "runtimeChange": false,
+    "crossLeafContinuations": 1
+  },
+  "columnLocator": "bazi-timing-column-locators.json",
+  "stemmaMatrix": "bazi-timing-stemma-matrix.json",
+  "blindReviewPacket": "bazi-timing-blind-review/packet.json"
+}

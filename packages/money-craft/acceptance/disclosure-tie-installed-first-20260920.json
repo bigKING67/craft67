@@ -1,0 +1,24 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "status": "FAIL_ROUTE_GATE_RESEARCH_BEHAVIOR_PASS",
+  "reviewer": "main agent manual review, not independent",
+  "run_dir": "local/skill-evals/20260920-disclosure-tie/installed-blind",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "elapsed_seconds": 266.095,
+  "machine_checks_pass": false,
+  "financial_checks": 20,
+  "reason": "ROUTE_REQUIRED_NOT_VERIFIED: host treated provided-material restriction as permission to omit local route.",
+  "semantic_observations": [
+    "Global installed Skill and updated financial evidence reference loaded.",
+    "Unprompted product-level recalculation and aggregate mismatch detection.",
+    "Both figures retained; rounding not asserted; deterministic valuation blocked.",
+    "Project assumptions, orders, gross versus net profit and relative project years separated."
+  ],
+  "artifact_hashes": {
+    "answer.md": "4874118f051cbfba621c1dd4c460597f191ea4452fc78bc5e316eac3c19f83a6",
+    "events.jsonl": "5dbce4d8a16564a5bc6e8fbda792bb245119eec6d4c6a879cfddefb0655a77ca",
+    "host.json": "593470e3e170b729140f1efc2ffb88073a1ff6956d0efda0ef10ce2bbb545f6f",
+    "machine-audit.json": "b33262880bc6d37db1418506cbb47c6f4f1d9583e8accddf38c8720426e3df93"
+  },
+  "followup": "Separate scope-clarified prompt, not identical-prompt retry or replacement of this failure."
+}

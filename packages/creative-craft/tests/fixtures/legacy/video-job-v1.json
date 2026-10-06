@@ -1,0 +1,23 @@
+{
+  "schema_version": "creative-craft.video-job.v1",
+  "job_id": "legacy-video-job",
+  "brief_id": "legacy-brief",
+  "status": "draft",
+  "provider_profile": "bytedance.seedance-2.5.2026-07-31",
+  "task_type": "text_to_video",
+  "execution_mode": "single_pass",
+  "intended_use": "Legacy compatibility fixture",
+  "duration_seconds": 5,
+  "format": {"aspect_ratio": "9:16", "resolution_target": "platform-default", "language": "en"},
+  "premise": "TBD",
+  "end_state": "TBD",
+  "references": [],
+  "continuity_locks": [],
+  "timeline": [{"start": 0, "end": 5, "visual": "TBD", "action": "TBD", "camera": "TBD", "audio": "TBD"}],
+  "environment": {"lighting": "TBD", "materials": "TBD", "physics": "TBD"},
+  "dialogue_audio": {"dialogue": [], "voice": "", "ambience": "TBD", "effects": [], "music": "TBD"},
+  "edit": {"range": null, "change": [], "preserve": []},
+  "exclude": [],
+  "inspection": ["Legacy compatibility only"],
+  "rights": {"status": "UNVERIFIED", "notes": ""}
+}

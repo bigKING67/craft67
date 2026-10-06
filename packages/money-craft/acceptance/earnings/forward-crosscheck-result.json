@@ -1,0 +1,66 @@
+{
+  "schema": "money-craft.earnings-crosscheck.v1",
+  "valid": true,
+  "security_id": "CN-SH:600519",
+  "as_of": "2026-09-15",
+  "baseline_sha256": "725e8175e6a2de554fcd4971d2761ebd7f28de371891765b60078d7cc0df78c6",
+  "input_sha256": "2decb10ed3d465c170da45521af5d9ea449ab2fb5e841338b5158421fd1b4ba7",
+  "provider_response_sha256": "bc54f1ff8cc1223c462f3076b0307051bd3b7ae80b980e3333d8545a986f4cb9",
+  "provider_fetched_at": "2026-09-14T17:06:38.175392Z",
+  "captured_after_baseline": true,
+  "numeric_status": "MATCHED",
+  "provider_vintage": "CURRENT_SNAPSHOT_NOT_POINT_IN_TIME",
+  "source_lineage": "SEPARATE_PROVIDER_CHANNEL_ISSUER_ORIGIN_NOT_INDEPENDENT",
+  "research_readiness": "PARTIAL",
+  "coverage_scope": "ONLY_DECLARED_CHECKS_NOT_ALL_BASELINE_DEPENDENCIES",
+  "checks": [
+    {
+      "metric": "revenue",
+      "year": 2026,
+      "quarter": 2,
+      "kind": "ytd",
+      "relative_difference": "0",
+      "status": "MATCHED"
+    },
+    {
+      "metric": "net_income",
+      "year": 2026,
+      "quarter": 2,
+      "kind": "ytd",
+      "relative_difference": "0",
+      "status": "MATCHED"
+    },
+    {
+      "metric": "revenue",
+      "year": 2025,
+      "quarter": 2,
+      "kind": "ytd",
+      "relative_difference": "0",
+      "status": "MATCHED"
+    },
+    {
+      "metric": "net_income",
+      "year": 2025,
+      "quarter": 2,
+      "kind": "ytd",
+      "relative_difference": "0",
+      "status": "MATCHED"
+    },
+    {
+      "metric": "revenue",
+      "year": 2025,
+      "quarter": 3,
+      "kind": "quarter",
+      "relative_difference": "0",
+      "status": "MATCHED"
+    },
+    {
+      "metric": "net_income",
+      "year": 2025,
+      "quarter": 3,
+      "kind": "quarter",
+      "relative_difference": "0",
+      "status": "MATCHED"
+    }
+  ]
+}

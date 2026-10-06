@@ -1,0 +1,78 @@
+{
+  "schema": "money-craft.portfolio-host-acceptance.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED_EXPLICIT_SOURCE",
+  "case_id": "portfolio-core-host",
+  "case_path": "acceptance/skill-tasks/portfolio-core-case-20260919.json",
+  "case_sha256": "a70a486ad765eca5539a224a07058014f15c0305707b59fde13659828cc4fb9c",
+  "invocation": "EXPLICIT_SOURCE_PATH",
+  "elapsed_seconds": 238.286,
+  "route": "READY",
+  "machine_checks_pass": true,
+  "answer_calculations_passed": 13,
+  "core_calculations": 71,
+  "manual_criteria_passed": 8,
+  "source_frozen": true,
+  "installed_unchanged": true,
+  "artifacts": [
+    {
+      "path": "local/research/20260919-portfolio-host/baseline.json",
+      "sha256": "bfdb4155c865941e3f33a708667729ec26c4a9b97b6471776bb99e1713334cf6"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/frozen-verify.json",
+      "sha256": "177d46b10facc22cd641bc1dee193aea71be1a8d9e7c31875d0362d75dd1efdf"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/host/answer.md",
+      "sha256": "d95bc5edbe09510ad8f2c78d804aa11cb6e4bb34677dd893802380c4f6a602fe"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/host/case-snapshot.json",
+      "sha256": "340fd4dc213b63d908538f8341c3cce97baf5e271884c43659001a0d61922920"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/host/events.jsonl",
+      "sha256": "07cb96ba8bfe8c103340dade266ed47d5ba7c42324f8d52f762ba81a3b21bb78"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/host/host.json",
+      "sha256": "78db8064db4afcf00f889bf2c786ec621888fff7528ed91fea0bcb38e67aa986"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/host/machine-audit.json",
+      "sha256": "59c18ead440ce3a64931912d87485f2e96a745d6c36ec1cdfe5fda3b5f1632f7"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/host/prompt.txt",
+      "sha256": "82bf6022323036ec0e56dd67590a0a717cd6e1fddb44e442786adf869f2b05e0"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/host/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/input.json",
+      "sha256": "8cd2b605d3e072f4d1b37ff69585f7da25cc82d5278fe5b0befdf95c3b0f7fbc"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/invalid-input.json",
+      "sha256": "86693964819604e234d9c82421fb4948ed0671bc0d27d3a0ebf484e218488b48"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/manual-review.json",
+      "sha256": "8a74b512c24f0dde0abaf7be741b66156d69b5c33b16a260f1b21137725b52d9"
+    },
+    {
+      "path": "local/research/20260919-portfolio-host/observed-cli.json",
+      "sha256": "ad193b9edda72970ed13e476fe69a08c95580218c8ba56fd58f2f182741a3679"
+    }
+  ],
+  "limits": [
+    "Supplied normalized input, not autonomous extraction into the input schema.",
+    "Explicit source-path execution; implicit discovery and installed new version not tested.",
+    "Manual review by primary agent; not independent review.",
+    "Historical factsheets and synthetic portfolio; no live suitability, full look-through or optimization.",
+    "No application, global install replacement, commit, push or release."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "design-craft.cross-agent-scorecard.v1",
+  "task_id": "same-prompt-landing-polish",
+  "criteria": [
+    {
+      "id": "style_authority",
+      "label": "Style authority and product context",
+      "weight": 15,
+      "pass_evidence": "Checks brand authority and the product promise before recommending polish.",
+      "deduction_trigger": "Replaces the page with a stock SaaS landing template."
+    },
+    {
+      "id": "reference_selection",
+      "label": "Reference selection",
+      "weight": 15,
+      "pass_evidence": "Selects visual judgment, principles, design moves, taste, and validation references.",
+      "deduction_trigger": "Loads unrelated references or ignores product-taste guidance."
+    },
+    {
+      "id": "anti_generic_redesign",
+      "label": "Anti-generic redesign",
+      "weight": 15,
+      "pass_evidence": "Finds vague copy, equal cards, generic gradients, and missing proof sequence.",
+      "deduction_trigger": "Adds decorative effects without improving product specificity."
+    },
+    {
+      "id": "evidence_level",
+      "label": "Evidence level labeling",
+      "weight": 15,
+      "pass_evidence": "Labels static, browser, responsive, or before/after evidence.",
+      "deduction_trigger": "Assigns a high score without evidence level or anti-inflation limits."
+    },
+    {
+      "id": "verified_boundary",
+      "label": "Verified/unverified boundary",
+      "weight": 15,
+      "pass_evidence": "Separates visible hierarchy from unverified conversion and interaction behavior.",
+      "deduction_trigger": "Claims conversion, performance, or mobile polish without proof."
+    },
+    {
+      "id": "design_moves",
+      "label": "Concrete design moves",
+      "weight": 15,
+      "pass_evidence": "Proposes a specific claim, proof-first hero, varied rhythm, and CTA hierarchy.",
+      "deduction_trigger": "Says only to make the page premium without implementable moves."
+    },
+    {
+      "id": "scope_control",
+      "label": "Scope control and unrelated changes",
+      "weight": 10,
+      "pass_evidence": "Keeps recommendations within landing UI, copy hierarchy, and evidence.",
+      "deduction_trigger": "Suggests unrelated architecture or backend changes."
+    }
+  ]
+}

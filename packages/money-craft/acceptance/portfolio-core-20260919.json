@@ -1,0 +1,136 @@
+{
+  "schema": "money-craft.portfolio-core-acceptance.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED_SOURCE",
+  "scope": "Offline source-bound long-only portfolio arithmetic, CLI and Skill guidance",
+  "base_commit": "2d33799b939fab61fa842f0dfab420ed19239f19",
+  "dirty_worktree": true,
+  "files": [
+    {
+      "path": "skills/money-craft/scripts/portfolio_audit.py",
+      "sha256": "d44f84134947759976aca0d110a11e2414d46bb5f8a6b1bec4f0211648144dc6"
+    },
+    {
+      "path": "skills/money-craft/scripts/money_craft.py",
+      "sha256": "ab4bf5312d4f7ddbde9af0f933b27ef7922d0dbc1c8297ae33e1de3fa7347402"
+    },
+    {
+      "path": "skills/money-craft/schemas/portfolio-input.schema.json",
+      "sha256": "a999d3bbc8efc4cfd3f3d35d07b91f59e0cf517f756cc37d0df88dd0249ef0bc"
+    },
+    {
+      "path": "skills/money-craft/references/portfolio-audit.md",
+      "sha256": "16b939f4c7b4186123a047d5313604344415fddcfbe0d25dba7d1d236d79c52a"
+    },
+    {
+      "path": "skills/money-craft/references/global-investing.md",
+      "sha256": "b5d49c3a2dfecd9790252c202dcf9b86552ac844a07b07e57368dd359afa3ca2"
+    },
+    {
+      "path": "tests/test_portfolio_audit.py",
+      "sha256": "f4fc220aa52a34dd70f0156c524c6bbf150dd3cca136e9503ea44c61a4e26c1c"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "local/research/20260919-portfolio-core/audit.json",
+      "sha256": "4d2e9325902a5dbb145275d64e3319dd099445746c38ae6066a742d6ceb80d67"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/calculation-audit.json",
+      "sha256": "920e9f0d484fbfa0b7230c52cfff43d2597f42c53980d1958e09b725491d6913"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/input.json",
+      "sha256": "c19120e6c6e6a8c5c25fe72bef72d176936eaad703b57fe88132fb9bd8066a61"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/package-smoke.json",
+      "sha256": "5aaf50a41dc7a96a098154e15588d101262d1144760d6e1bb9459c82d1dad687"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/tests-data-runtime.log",
+      "sha256": "929bb73ae82d32f3a693fa70fef66390543306cbf358b874d1842037052ebc44"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/tests-renderer.log",
+      "sha256": "9ae5832c98941289fd2f883fe2c3f60d977e4fbc516d78375d72ce34f7ea05af"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/tests-venv.log",
+      "sha256": "fadefbdc7673a1d6fe0979ddf1350e9a005cb39675cef1588a8ea4680b1b901b"
+    },
+    {
+      "path": "local/research/20260919-portfolio-core/tests.log",
+      "sha256": "bf55f3ea4ac4d339aaeeb6f21cc37513814ca01df0f115cd0296db5f3310ed1c"
+    }
+  ],
+  "checks": {
+    "new_tests": 7,
+    "new_invalid_input_variants": 18,
+    "data_runtime_suite": {
+      "run": 488,
+      "passed": 465,
+      "skipped_optional_markdown": 23
+    },
+    "report_runtime_renderer_suite": {
+      "run": 64,
+      "passed": 64,
+      "skipped": 0
+    },
+    "source_validation": 19,
+    "existing_package_smoke": 7,
+    "real_material_calculation_receipts": 71,
+    "diff_whitespace": "PASS"
+  },
+  "first_attempt": {
+    "system_python_suite": "FAILED",
+    "failures": 5,
+    "cause": "CLI re-exec into selected data runtime drops in-process os.replace instrumentation; isolated venv suite and selected data runtime suite pass without weakening tests",
+    "log": "local/research/20260919-portfolio-core/tests.log"
+  },
+  "review": {
+    "kind": "primary-agent bounded source review",
+    "independent_review": false,
+    "checked": [
+      "source identity/date/hash binding",
+      "partial holdings cannot imply complete exposures",
+      "security vs issuer aggregation",
+      "FX sign and multiplicative conversion",
+      "risk breach is not input failure",
+      "Decimal input boundaries and calculation replay"
+    ]
+  },
+  "fixture": {
+    "materials": "IVV/ITOT/AGG official factsheets, snapshot 2026-06-30, captured 2026-09-19",
+    "portfolio": "synthetic, not actual user assets",
+    "weights": [
+      "0.5",
+      "0.3",
+      "0.2"
+    ],
+    "principal_cny": "1000000",
+    "max_loss": "0.2",
+    "max_issuer_weight": "0.05",
+    "agg_positions": "not transcribed; unknown",
+    "static_fee_cny": "300",
+    "known_coverage": "0.27818",
+    "equity_pair_overlap_lower_bound": "0.3211",
+    "scenario_returns": [
+      "-0.296",
+      "-0.3664"
+    ]
+  },
+  "limits": [
+    "Hash verification does not authenticate official source or extracted assertions.",
+    "Declared complete coverage and issuer mapping require human source review.",
+    "No full look-through, correlation, optimization or drawdown guarantees.",
+    "New command has not been exercised by a natural-language host task.",
+    "Global installation unchanged; old frozen-host evidence does not cover new source.",
+    "No application, commit, push or release."
+  ]
+}

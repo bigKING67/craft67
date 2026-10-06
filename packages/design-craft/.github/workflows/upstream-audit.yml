@@ -1,0 +1,56 @@
+name: Upstream audit
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Build actionable upstream audit
+        id: audit
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          python3 scripts/upstream_absorption_report.py
+          --remote-details
+          --fail-on-unreviewed
+          --summary-file "$GITHUB_STEP_SUMMARY"
+          > upstream-audit.txt 2>&1
+      - name: Upload exact audit report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: upstream-audit-${{ github.run_id }}
+          path: upstream-audit.txt
+          retention-days: 30
+      - name: Open or update review issue
+        if: steps.audit.outcome == 'failure'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const maintainIssue = require('./.github/scripts/upstream_review_issue.cjs');
+            await maintainIssue({ github, context, mode: 'drift' });
+      - name: Close resolved review issue
+        if: steps.audit.outcome == 'success'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const maintainIssue = require('./.github/scripts/upstream_review_issue.cjs');
+            await maintainIssue({ github, context, mode: 'resolved' });
+      - name: Fail on unreviewed upstream drift
+        if: steps.audit.outcome == 'failure'
+        run: exit 1

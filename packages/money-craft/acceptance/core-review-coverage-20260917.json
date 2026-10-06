@@ -1,0 +1,198 @@
+{
+  "schema": "money-craft.core-review-coverage.v1",
+  "date": "2026-09-19",
+  "scope": "skills/money-craft/scripts/*.py (top-level Python runtime only)",
+  "exclusions": [
+    "Repository tooling and tests are supporting evidence, not runtime denominator.",
+    "Skill prose, references, schemas, templates, upstreams and dependencies are outside this inventory and require separate acceptance."
+  ],
+  "status_semantics": {
+    "REVIEWED_BOUNDED": "Whole file read and declared invariants checked at recorded hash; not unrestricted correctness proof.",
+    "PARTIAL": "Review closure incomplete: named paths only, unreviewed branches or explicit unresolved findings remain.",
+    "PENDING": "No current file-level review closure; existence of tests is not review evidence."
+  },
+  "counts": {
+    "REVIEWED_BOUNDED": 15,
+    "PARTIAL": 0,
+    "PENDING": 0
+  },
+  "file_count": 15,
+  "line_count": 10593,
+  "files": [
+    {
+      "path": "skills/money-craft/scripts/earnings_baseline.py",
+      "sha256": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+      "lines": 189,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查前瞻封存、哈希/关联模型、披露时间与回放边界；修复预期期间长度准入。"
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_crosscheck.py",
+      "sha256": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+      "lines": 111,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "累计转单季、阈值、日期、证券/币种绑定与结果分级；12 项合成测试。"
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_drivers.py",
+      "sha256": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+      "lines": 127,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "历史勾稽、情景排序、单变量敏感性及顺序归因；12 项合成测试。"
+    },
+    {
+      "path": "skills/money-craft/scripts/earnings_update.py",
+      "sha256": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+      "lines": 291,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查来源/期间、重述比较与冻结旧估值、预期首披及 tracking 提案；修复未来研究日期准入。"
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_reconciliation.py",
+      "sha256": "7bfd04d8da339fbda508f979eb18dc31d4e05fd67dbc586243c47ef392ce0635",
+      "lines": 535,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查报表等式、期间/来源合同和异常输入；修复溢出、JSON 小数精度、枚举类型与期间绑定。 2026-09-19增量复核现金范围桥：仅cash-balance-tie接受1至20项有来源的有符号调整；保留原值、精确Decimal与旧直接等式，结构/来源错误仍阻断。3项新增回归、真实合并报表与负向验收见research-e2e-20260919.json；本轮未重做独立全文审查。",
+      "previous_reviewed_sha256": "9bf8642e0cdc9a560e4d248efeaa11f749cd64716074d1806e1fdf3f985394d9"
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_rigor.py",
+      "sha256": "44bbdf45d5b8b08737296cb0018683971c0ba62872bce9e1968be1651176c44b",
+      "lines": 208,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查 Decimal 运算、容差与收据解析；修复多行/损坏收据漏审，极大 JSON 整数转结构化错误。"
+    },
+    {
+      "path": "skills/money-craft/scripts/fred_adapter.py",
+      "sha256": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+      "lines": 508,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件阅读及独立复核完成；修复Decimal解析逃逸/跳转体无界读取与异常关闭，默认opener受控TLS通过；真实FRED、跨平台及来源语义另列限制。"
+    },
+    {
+      "path": "skills/money-craft/scripts/money_craft.py",
+      "sha256": "6523b3e76b658877a0fb0ebf3f361afa4882910138950a844b54bbc9ca9b5f75",
+      "lines": 2139,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件 CLI/配置/Provider/委派/错误语义与独立复核闭合；凭据HTTP头准入、日期上界和UTF8响应补齐。"
+    },
+    {
+      "path": "skills/money-craft/scripts/report_audit.py",
+      "sha256": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+      "lines": 219,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查元数据、章节/来源解析、引用与占位符；修复索引后漏审、空来源跨行、非规范日期。文件编码/I/O及 Markdown 全语法不作保证。"
+    },
+    {
+      "path": "skills/money-craft/scripts/report_renderer.py",
+      "sha256": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+      "lines": 1905,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件与独立复核闭合；同树可见数据投影、状态列绑定、审计计数、可信资产及SVG数值；真实三页PDF和宽窄/明暗HTML另附产物证据。"
+    },
+    {
+      "path": "skills/money-craft/scripts/research_run.py",
+      "sha256": "079cab3659ba7c3f614cf6476409764f63b37ab202e2105140ca10dd2ff251c0",
+      "lines": 1911,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件研究生命周期与独立复核闭合；JSON运行时错误、请求/原始证据/manifest/状态及完成收据合同已验证。"
+    },
+    {
+      "path": "skills/money-craft/scripts/research_workflow.py",
+      "sha256": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+      "lines": 840,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查计划身份/期间/Provider 路由及论文解析/diff；修复报告期矛盾、事实与来源变化漏报。"
+    },
+    {
+      "path": "skills/money-craft/scripts/runtime_paths.py",
+      "sha256": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+      "lines": 217,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件核查路径优先级/legacy/显式env及常量文件名调用；修复symlink绕过、半加载与空进程变量覆盖；POSIX有界验证，父目录/同inode并发/Windows/NFS不保证。"
+    },
+    {
+      "path": "skills/money-craft/scripts/tracking_workflow.py",
+      "sha256": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+      "lines": 1023,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "整文件初始化、工作区/版本/历史/状态与独立复核闭合；run-state身份/日期/绑定/执行边界与JSON错误准入补齐。"
+    },
+    {
+      "path": "skills/money-craft/scripts/yfinance_adapter.py",
+      "sha256": "660463d429197d45f9e2dcf3ff5335b7ad326a5eb319faf56d4da43cfa916320",
+      "lines": 370,
+      "status": "REVIEWED_BOUNDED",
+      "scope_note": "全文及直接CLI独立复核完成，真实pandas/缺失/类型/日期/导出/超时有界验证；真实Yahoo与证券/财务事实仍需另验，见yfinance-review-boundaries.md。 2026-09-19真实运行后增量复核：仅SQLite两种明确锁冲突纳入既有三次重试，其他OperationalError仍不可重试；3项新增回归、476项全量通过。详见live-runtime-20260919.json。",
+      "previous_reviewed_sha256": "5fce407420628b6348fc1003b0b1165e353fdcd8d713a404aeecb9d20756516c"
+    }
+  ],
+  "freshness": "Any changed hash invalidates that file review binding; new/deleted files require denominator refresh.",
+  "evidence": [
+    "acceptance/earnings-math-review-20260917.json",
+    "docs/core-review-status.md",
+    "acceptance/earnings-contract-review-20260917.json",
+    "acceptance/financial-core-review-20260917.json",
+    "acceptance/research-workflow-review-20260917.json",
+    "acceptance/report-audit-review-20260917.json",
+    "acceptance/research-evidence-lifecycle-20260917.json",
+    "acceptance/research-no-clobber-20260917.json",
+    "acceptance/research-workspace-lock-20260917.json",
+    "acceptance/research-import-interruption-20260917.json",
+    "acceptance/research-orphan-import-20260917.json",
+    "acceptance/research-finalize-recovery-20260917.json",
+    "acceptance/research-collection-interruption-20260917.json",
+    "acceptance/research-init-lock-20260917.json",
+    "acceptance/research-lifecycle-boundaries-20260917.json",
+    "acceptance/report-render-paths-20260917.json",
+    "acceptance/report-template-expansion-20260917.json",
+    "acceptance/report-resource-attributes-20260917.json",
+    "acceptance/report-body-audit-20260917.json",
+    "acceptance/report-render-staging-20260917.json",
+    "acceptance/report-chart-scalars-20260917.json",
+    "acceptance/report-chart-overflow-20260917.json",
+    "acceptance/report-chart-labels-20260917.json",
+    "acceptance/report-scenario-units-20260917.json",
+    "acceptance/report-yoy-units-20260917.json",
+    "acceptance/report-financial-units-20260917.json",
+    "acceptance/report-year-order-20260917.json",
+    "acceptance/report-evidence-display-20260917.json",
+    "acceptance/report-table-selection-20260917.json",
+    "acceptance/runtime-paths-review-20260919.json",
+    "acceptance/fred-response-review-20260919.json",
+    "acceptance/fred-transport-review-20260919.json",
+    "acceptance/fred-credential-review-20260919.json",
+    "acceptance/fred-binding-review-20260919.json",
+    "acceptance/fred-network-review-20260919.json",
+    "acceptance/fred-pagination-review-20260919.json",
+    "acceptance/fred-closeout-review-20260919.json",
+    "acceptance/fred-vintage-range-review-20260919.json",
+    "acceptance/fred-https-review-20260919.json",
+    "acceptance/yfinance-admission-review-20260919.json",
+    "acceptance/yfinance-frame-review-20260919.json",
+    "acceptance/yfinance-numeric-review-20260919.json",
+    "acceptance/yfinance-cells-review-20260919.json",
+    "acceptance/yfinance-dates-review-20260919.json",
+    "acceptance/yfinance-pandas-review-20260919.json",
+    "acceptance/yfinance-closeout-review-20260919.json",
+    "acceptance/cli-provider-errors-review-20260919.json",
+    "acceptance/cli-preflight-review-20260919.json",
+    "acceptance/cli-provider-conflicts-review-20260919.json",
+    "acceptance/cli-empty-dates-review-20260919.json",
+    "acceptance/cli-runtime-review-20260919.json",
+    "acceptance/cli-probe-review-20260919.json",
+    "acceptance/cli-yfinance-probe-review-20260919.json",
+    "acceptance/fuyao-credential-review-20260919.json",
+    "acceptance/fuyao-transport-review-20260919.json",
+    "acceptance/fuyao-response-review-20260919.json",
+    "acceptance/fuyao-identity-review-20260919.json",
+    "acceptance/research-missing-rows-review-20260919.json",
+    "acceptance/research-capture-content-review-20260919.json",
+    "acceptance/research-request-binding-review-20260919.json",
+    "acceptance/research-yfinance-binding-review-20260919.json",
+    "acceptance/research-manifest-coverage-review-20260919.json",
+    "acceptance/research-finalization-binding-review-20260919.json",
+    "acceptance/research-state-contract-review-20260919.json",
+    "acceptance/core-closeout-20260919.json"
+  ]
+}

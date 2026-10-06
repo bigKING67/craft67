@@ -1,0 +1,48 @@
+{
+  "schema": "money-craft.report-yoy-units.v1",
+  "date": "2026-09-17",
+  "scope": "Explicit percentage units for YoY selection and chart values",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "5ffcc3c9a9202d776d6012ec0c4bbdce67e31a49202537a6dddd2922ce474052",
+    "tests/test_report_renderer.py": "b40c5ce77403597e9371d409f10a9ad285055044d66747f6545b533a17f2af57",
+    "skills/money-craft/references/report-rendering.md": "e8e319c6b1c70d762ff22ab0d850a6c280988011a8b946660eb1f7d34b9b3ca0"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Headers containing YoY with percentage points, money or basis points admitted scalars into a percent chart.",
+    "after": "Full header match plus explicit percent unit in header or cell; ambiguous bare scalars and incompatible headers rejected."
+  },
+  "validation": {
+    "renderer_tests": 46,
+    "full_tests": 336,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 6,
+    "real_cli": "Percentage-point table retained, YoY chart omitted, ordinary financial chart retained; source bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 46,
+    "skipped_tests": 0,
+    "additional_boundary_assertions": 11,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "5ffcc3c9a9202d776d6012ec0c4bbdce67e31a49202537a6dddd2922ce474052",
+      "tests/test_report_renderer.py": "b40c5ce77403597e9371d409f10a9ad285055044d66747f6545b533a17f2af57"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T114304196535Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "Financial units, multi-column YoY selection, full geometry and actual PDF/visual acceptance remain unverified.",
+    "No implicit ratio-to-percent or unit conversion.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

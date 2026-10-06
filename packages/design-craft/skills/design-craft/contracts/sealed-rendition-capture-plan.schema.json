@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://design-craft.local/contracts/sealed-rendition-capture-plan.schema.json",
+  "title": "Design Craft Sealed Rendition Capture Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "gate_id", "prepared_at", "spec", "output_root", "authority",
+    "capture_order", "captures", "capture_owner", "source_writes_allowed", "closeout"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.sealed-rendition-capture-plan.v1"},
+    "gate_id": {"$ref": "#/$defs/slug"},
+    "prepared_at": {"type": "string", "format": "date-time"},
+    "spec": {"$ref": "#/$defs/fileRecord"},
+    "output_root": {"type": "string", "minLength": 1},
+    "authority": {"type": "object"},
+    "capture_order": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/slug"}
+    },
+    "captures": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {"$ref": "#/$defs/capture"}
+    },
+    "capture_owner": {"const": "external_runtime"},
+    "source_writes_allowed": {"const": false},
+    "closeout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "comparison_engine", "strict_validation_required",
+        "global_pixel_pass_threshold", "human_visual_decision_required"
+      ],
+      "properties": {
+        "comparison_engine": {"const": "design-craft.comp-fidelity-report.v1"},
+        "strict_validation_required": {"const": true},
+        "global_pixel_pass_threshold": {"type": "null"},
+        "human_visual_decision_required": {"const": true}
+      }
+    }
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fileRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "imageRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "width", "height"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1}
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordinal", "id", "kind", "source", "reference", "comparison_spec",
+        "rendered_path", "contract"
+      ],
+      "properties": {
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 12},
+        "id": {"$ref": "#/$defs/slug"},
+        "kind": {"enum": ["browser_viewport", "pdf_page"]},
+        "source": {"$ref": "#/$defs/fileRecord"},
+        "reference": {"$ref": "#/$defs/imageRecord"},
+        "comparison_spec": {"$ref": "#/$defs/fileRecord"},
+        "rendered_path": {"type": "string", "minLength": 1},
+        "runtime_receipt_path": {"type": "string", "minLength": 1},
+        "contract": {"type": "object"}
+      }
+    }
+  }
+}

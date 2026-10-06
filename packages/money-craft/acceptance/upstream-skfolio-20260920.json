@@ -1,0 +1,196 @@
+{
+  "schema": "money-craft.upstream-skfolio-review.v1",
+  "date": "2026-09-20",
+  "status": "BOUNDED_REVIEW_COMPLETE_RUNTIME_DEFERRED",
+  "revision": "c99fcf71349e2df4a7a1033ee85ca2e9ced9abee",
+  "scope": "Portfolio data admission mechanisms and registered-path correction",
+  "source_count_observed": 10,
+  "source_observations": [
+    {
+      "id": "ai-berkshire",
+      "state": "review_required",
+      "changed_paths": 636,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:17.080898+00:00"
+    },
+    {
+      "id": "anthropic-financial-services",
+      "state": "review_required",
+      "changed_paths": 1,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:18.506813+00:00"
+    },
+    {
+      "id": "dexter",
+      "state": "review_required",
+      "changed_paths": 0,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:21.542875+00:00"
+    },
+    {
+      "id": "lean",
+      "state": "review_required",
+      "changed_paths": 33,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:22.288621+00:00"
+    },
+    {
+      "id": "myinvestpilot",
+      "state": "unavailable",
+      "changed_paths": 0,
+      "evidence": "cached",
+      "checked_at": null
+    },
+    {
+      "id": "openbb",
+      "state": "review_required",
+      "changed_paths": 0,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:26.703227+00:00"
+    },
+    {
+      "id": "qlib",
+      "state": "review_required",
+      "changed_paths": 0,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:27.464368+00:00"
+    },
+    {
+      "id": "rd-agent",
+      "state": "review_required",
+      "changed_paths": 0,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:30.724388+00:00"
+    },
+    {
+      "id": "skfolio",
+      "state": "review_required",
+      "changed_paths": 45,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:34.046633+00:00"
+    },
+    {
+      "id": "trading-agents",
+      "state": "review_required",
+      "changed_paths": 85,
+      "evidence": "live",
+      "checked_at": "2026-09-19T16:46:37.190959+00:00"
+    }
+  ],
+  "reviewed_files": [
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/skfolio/skfolio/c99fcf71349e2df4a7a1033ee85ca2e9ced9abee/LICENSE",
+      "bytes": 1526,
+      "git_blob_sha1": "96b2a96a077c8daad196a2fc093e585942f67101",
+      "sha256": "07b8dfceb7b319e5145e7b1594d2cdaf94d924d78166d28951d4b360a4dc5844",
+      "coverage": "FULL"
+    },
+    {
+      "path": "README.rst",
+      "url": "https://raw.githubusercontent.com/skfolio/skfolio/c99fcf71349e2df4a7a1033ee85ca2e9ced9abee/README.rst",
+      "bytes": 28130,
+      "git_blob_sha1": "b4db53cff16da69560fc0cfb00fb41e4ee7c5bc6",
+      "sha256": "fe951f16c4d00a6a623bb86a326292993e19c7e326d8a67ea826569f96ccee6e",
+      "coverage": "PARTIAL: introduction, installation and Key Concepts (lines54-144)"
+    },
+    {
+      "path": "pyproject.toml",
+      "url": "https://raw.githubusercontent.com/skfolio/skfolio/c99fcf71349e2df4a7a1033ee85ca2e9ced9abee/pyproject.toml",
+      "bytes": 6106,
+      "git_blob_sha1": "c7df63f445a4a9c6499e91f6494e7a00d7547f32",
+      "sha256": "b913fb2b6780603c3f02bf7bd05b96b6a239f2b6045cecf6c36897630e1fef84",
+      "coverage": "PARTIAL: project metadata and dependency groups (lines1-135)"
+    },
+    {
+      "path": "src/skfolio/preprocessing/_returns.py",
+      "url": "https://raw.githubusercontent.com/skfolio/skfolio/c99fcf71349e2df4a7a1033ee85ca2e9ced9abee/src/skfolio/preprocessing/_returns.py",
+      "bytes": 4730,
+      "git_blob_sha1": "02c62642f296fae22c6ac762ef37ad48ec2861f8",
+      "sha256": "072c1ac92b4c5155c0f133874132f1e43c3e9e770f155d1a11f085a48fa346da",
+      "coverage": "FULL"
+    },
+    {
+      "path": "src/skfolio/base.py",
+      "url": "https://raw.githubusercontent.com/skfolio/skfolio/c99fcf71349e2df4a7a1033ee85ca2e9ced9abee/src/skfolio/base.py",
+      "bytes": 8320,
+      "git_blob_sha1": "84ccb200a7613caea7ee877dddfe55020071b288",
+      "sha256": "1bc172d9d71b4638e89b82ae99a5776119f58b34d5fcd07ca94dbe455e28f0ff",
+      "coverage": "FULL"
+    },
+    {
+      "path": "src/skfolio/pre_selection/_select_complete.py",
+      "url": "https://raw.githubusercontent.com/skfolio/skfolio/c99fcf71349e2df4a7a1033ee85ca2e9ced9abee/src/skfolio/pre_selection/_select_complete.py",
+      "bytes": 3963,
+      "git_blob_sha1": "cb7e2720fdbbaba13cb5d9726227d46e22eb506b",
+      "sha256": "efb404a71d597e22e948aaf40a54bf725ccaa6e87c80724fc220e4c2e2f4c4fb",
+      "coverage": "FULL"
+    },
+    {
+      "path": "tests/test_preprocessing/test_returns.py",
+      "url": "https://raw.githubusercontent.com/skfolio/skfolio/c99fcf71349e2df4a7a1033ee85ca2e9ced9abee/tests/test_preprocessing/test_returns.py",
+      "bytes": 3178,
+      "git_blob_sha1": "a9b86163dee83380d1daa927af8b72941809c1dd",
+      "sha256": "3751413305717ac13886af3687faa76ff1cc1031e335799b99848f43f6752bd6",
+      "coverage": "FULL"
+    }
+  ],
+  "behavior_checks": 4,
+  "runtime_dependency_added": false,
+  "reviewed_revision_advanced": false,
+  "absorbed_revision_advanced": false,
+  "tracking_fix": {
+    "old": "README.md",
+    "new": "README.rst",
+    "added": [
+      "pyproject.toml",
+      "tests/test_preprocessing/test_returns.py"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "local/upstream-review/20260920/status-before.json",
+      "sha256": "be46d45a8c8b3f7dbc26f4783c56de14b03149b36a118ed8498719a1bffed388"
+    },
+    {
+      "path": "local/upstream-review/20260920/skfolio-tree.json",
+      "sha256": "bff40b49489e41f373fb89bb86f3b2134d3639408adb822d67e4dc276a13cce5"
+    },
+    {
+      "path": "local/upstream-review/20260920/skfolio-capture.json",
+      "sha256": "9cb6ded585c45efceb0b40b2e70d1848a7343a27f4f0d3c039cfada5d013777d"
+    },
+    {
+      "path": "local/upstream-review/20260920/probe_returns.py",
+      "sha256": "121295e1fd8a70d54f6739142a4ab6df39bcd86b577475c38ac9ef4eacc93fa2"
+    },
+    {
+      "path": "local/upstream-review/20260920/returns-probe.json",
+      "sha256": "b76c16bad99137bfacc7779a9771d9c6db9edf42945a15c66cfbc00b969bef5a"
+    },
+    {
+      "path": "local/upstream-review/20260920/tracking-tests.log",
+      "sha256": "d9532388983a68cb2317c34d256ed88e3c08a5528fdac308ac18b7f8d732aaa5"
+    },
+    {
+      "path": "local/upstream-review/20260920/source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+    },
+    {
+      "path": "local/upstream-review/20260920/closeout-verification.json",
+      "sha256": "9b329b04d5e9eb7bb09ea5f05fd92e85c50bc829a9b2ae7be6de66cb82d42933"
+    }
+  ],
+  "limits": [
+    "Original45-path change set not fully reviewed.",
+    "No optimizer, solver or full upstream package execution.",
+    "Current Money Craft Skill/core/global install remain frozen.",
+    "MyInvestPilot current complete browser snapshot unavailable."
+  ],
+  "validation": {
+    "tracking_tests": 30,
+    "source_checks": 19,
+    "fixed_tree_registered_paths": 7,
+    "frozen_skill_install_files": 75
+  }
+}

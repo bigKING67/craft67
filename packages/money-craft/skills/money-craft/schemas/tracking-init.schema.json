@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-init.schema.json",
+  "title": "Money Craft Tracking Init",
+  "type": "object",
+  "required": ["schema", "valid", "workspace", "run_id", "tracking_root", "previous", "editable_files", "immutable_files", "execution_boundary"],
+  "properties": {
+    "schema": {"const": "money-craft.tracking-init.v1"},
+    "valid": {"const": true},
+    "workspace": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "tracking_root": {"type": "string", "minLength": 1},
+    "previous": {"type": "object"},
+    "editable_files": {"type": "array", "items": {"type": "string"}},
+    "immutable_files": {"type": "array", "items": {"type": "string"}},
+    "execution_boundary": {
+      "type": "object",
+      "required": ["network_used", "account_access", "automatic_trading"],
+      "properties": {
+        "network_used": {"const": false},
+        "account_access": {"const": false},
+        "automatic_trading": {"const": false}
+      }
+    }
+  }
+}

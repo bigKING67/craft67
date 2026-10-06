@@ -1,0 +1,38 @@
+{
+  "schema": "money-craft.cli-probe-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Dependency probe Unicode decoding and local module discovery failures",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "3ea7c7c50bc613cefe598ac71958ed14d9d176f3b51ffa1adceffa30b0fb2a51",
+    "tests/test_cli_runtime.py": "c160f76420fecc24f7634eabd45e3bab1b801f83a1336704c92f08b3878e6187"
+  },
+  "validation": {
+    "target_tests": 5,
+    "full_tests": 420,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_errors": 3,
+    "real_cli": "doctor --json with invalid UTF-8 launcher: exit 0, all dependencies false, structured UnicodeDecodeError diagnostic, no traceback"
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "KEEP; no blockers in bounded scope",
+    "extra_checks": "Current and cross-venv positive/missing modules; partial success then failure; no exception detail leakage",
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "3ea7c7c50bc613cefe598ac71958ed14d9d176f3b51ffa1adceffa30b0fb2a51",
+      "tests/test_cli_runtime.py": "c160f76420fecc24f7634eabd45e3bab1b801f83a1336704c92f08b3878e6187"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Module discoverability does not prove successful import or native library readiness.",
+    "Remaining CLI and other platform branches not closed.",
+    "No real Provider/network acceptance or global environment repair."
+  ]
+}

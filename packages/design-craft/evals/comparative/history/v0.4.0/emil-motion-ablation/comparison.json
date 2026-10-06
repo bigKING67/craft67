@@ -1,0 +1,120 @@
+{
+  "blind_map_sha256": "2d1ff03360bb583b8723e166cf03560fdbc125458caec0326f39888b61abf57b",
+  "blind_packet_sha256": "f08079e7f01f34aefbb7997e145ab848a38e6374f72bc90ab28a4916d345f755",
+  "case_id": "emil-motion-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "961db2d23b7a6f8c48da83dcb4def89b048daa93671a1f1cd9751727155579ff",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "b141d59e07f88a52fd729d749c18cab5f391bb7d99c63be21f3ee3a09013b0e7",
+    "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.144.1"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "6fc7376df30d7cff1ac8faf21ce6bcd63c76f72365458cfe0812ec88b16cd701",
+  "judgment_sha256": "4c502bf78477d75123f74b597843bd1b3760e1e793fe1aa2aba1ba352c8c4cc8",
+  "prompt_sha256": "32a158dae9908cefce2747965d6451cf024eb3a877438295898a75412e11e0c8",
+  "rationale": "C 以最短且在行数预算内的结构覆盖了全部关键缺陷，并且是三个输出中唯一明确给出速度单位、单调时间戳、投影端点边界处理以及 translate/scale 分层所有权的方案。B 在释放速度向 spring 的连续传递上更明确，但缺少单位且略冗长；A 内容全面，却在速度连续性、单位和输出预算方面落后。",
+  "recorded_at": "2026-07-12T13:24:36Z",
+  "results": {
+    "baseline": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 7,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 12
+      },
+      "score": 94,
+      "summary": "静态证据边界清楚，完整识别抓取偏移、指针捕获、动画锁定、布局属性和无障碍问题；但速度方案未明确单位，也未明确把释放速度作为新 settle 的初速度，且整体篇幅与验证计划明显超出“最小、150 行内”的约束。"
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 10,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 14
+      },
+      "score": 99,
+      "summary": "最符合约束且证据标签最紧凑：明确覆盖一比一跟随、抓取偏移、指针所有权、当前呈现值中断、CSS px/s、投影吸附、transform 分层所有权和非前庭 Reduced Motion 路径。速度用于投影已说明，但将其作为 settle 初速度的连续性仍不如 B 明确。"
+    },
+    "emil": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 14
+      },
+      "score": 98,
+      "summary": "覆盖面和可执行性很强，尤其明确要求从当前呈现位置中断、基于投影位置选吸附点，并将释放速度传入 spring；主要缺口是没有定义速度单位，输出也略显超过要求的最小篇幅。"
+    }
+  },
+  "schema": "design-craft.comparative-result.v3",
+  "scorecard_json_sha256": "8138c39d53d54e9513c89c172ab2cc5b53135fb06c58c4f42f99179b3b2f1c7e",
+  "scorecard_sha256": "4e6fc43fa81eccdc74cb468c01451b751f9c871290729d09bda67542fd98d038",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "4a72efb68e4fef70d8d70b013adce1bc099c4ec47f6f21c5ef1b3351d9e5b7d9",
+      "run_path": "run.baseline.json",
+      "run_sha256": "29429eee9f349e4a7d6b6e27b31091997c02e98cef0e2981b613936e3e883e7b",
+      "skill_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "13a4a7b50da1a95355cc6ba6ab6fac1768e75a5f13861be4798c452025b9c462",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "9b6536e546a4719ed92dca66e5cbb78ba9bc7d3b383814118bcb590e8e4fae65",
+      "skill_trees": {
+        "skills/design-craft": "c165a78d91eed7392b33659633efb756acbe03c1a0a06b16c8889604854f72f8"
+      },
+      "thinking": "high"
+    },
+    "emil": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.emil.md",
+      "output_sha256": "9211cd1b5a5a9ddc4e06a2a83670c14f89f95bf8cf9c00379e0071a319674965",
+      "run_path": "run.emil.json",
+      "run_sha256": "53c6f74372329b6c0bb16c8a0d2637c6e6d2082e5c2d41534c1a95f6ce38d3ae",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

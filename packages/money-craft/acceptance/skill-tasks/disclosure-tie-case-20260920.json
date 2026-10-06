@@ -1,0 +1,35 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "disclosure-tie-blind",
+      "status": "READY_HISTORICAL",
+      "prompt": "请分析五洲新春（CN-SH:603667普通A股，交易和报告币种CNY）募投项目的经营潜力：根据所给资料，达产收入和盈利能力如何，能支持多强的判断，下一步应核验什么？请给必要的可复算比较。历史研究截止2025-11-18，本次为2026年回放；不需要完整公司报告或买卖建议。",
+      "facts": "以下是发行人2025年11月问询回复第7-1-21至22页的原文文本提取。历史材料仅用于给定时点的研究；未提供后续经营数据。原PDF本地已捕获并校验；文本提取可能丢失排版。只读取提供的材料及必要Skill引用，不读取主代理报告或其他会话。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/evidence/20260920-603667/inquiry-unit-economics-excerpt.txt",
+          "sha256": "b24fddf43f8a53c6382739165e0c65cd129509ad87bcd4492c77a6bb7ae022f1",
+          "url": "https://stockmc.xueqiu.com/202511/603667_20251118_KEV9.pdf",
+          "published_at": "2025-11-18",
+          "capture_kind": "pdf_text_excerpt",
+          "parent_pdf_sha256": "83879b51cf0f12aebdf36306112d8857c95b44060f9f7c8ea926edcb7eb1c01f"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "实际读取源码Skill与财务证据引用且路由成功",
+        "无提示主动按销量单价和单位成本复算并发现与披露综合毛利率不一致",
+        "保留披露值与复算值且不将差异擅自解释为舍入",
+        "区分项目假设、实际订单和集团净利润；不凭未决值给确定估值",
+        "相对建设及达产年份不当作确定公历时间",
+        "最终关键计算回执通过，说明同源及历史回放边界"
+      ]
+    }
+  ]
+}

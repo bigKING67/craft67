@@ -1,0 +1,34 @@
+{
+  "command": "pi --print --no-session --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-5.5 --thinking high --skill '$VARIANT_SKILL_1'",
+  "contract_sha256": "485dfcb152f2726e548985a99126ab3c6e414ba3aa9ef4711d5d46ab5017a1e7",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 138.511,
+  "host": "pi",
+  "host_version": "0.80.6",
+  "installed_skill_paths": {
+    "upstreams/impeccable/.agents/skills/impeccable": "$VARIANT_WORKSPACE/.pi/skills/01-impeccable"
+  },
+  "model": "codex/gpt-5.5",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.impeccable.md",
+  "output_sha256": "8efaf40f878fbfe3c3975f257dd15ae6ecff62c43ff53d824d57e0072f95a678",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "returncode": 0,
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v3",
+  "skill_install_mode": "isolated_project_copy",
+  "skill_trees": {
+    "upstreams/impeccable/.agents/skills/impeccable": "1fe1c4b76825c9538d5379a0a5d3d00378cf9420ce498f5b9309b79c888cc410"
+  },
+  "started_at": "2026-07-25T05:52:32Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "high",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 600,
+  "variant": "impeccable",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "841bf5378b3e4dfb72c13aa4693b9ccf10dd7d2d47ca08924f5dd82aa3562ac8",
+  "worktree_before_sha256": "841bf5378b3e4dfb72c13aa4693b9ccf10dd7d2d47ca08924f5dd82aa3562ac8",
+  "worktree_unchanged": true
+}

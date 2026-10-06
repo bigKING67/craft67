@@ -1,0 +1,56 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-001",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "b6db7af5525fc8d9b7d3244ecba405049387dcc0eeeca02830ff3411a946cb15",
+    "bytes": 5366
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "09ad3e586ebc90fd351a935ddf9cc9bbe13c600596b7df527a471d23c5260393",
+    "bytes": 663
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "86306562e1a6987533733fadb72a4a3cfd0547421b14c8eb38a479280f71f4b8",
+    "bytes": 981
+  },
+  "cases": [
+    {
+      "id": "uncertain-cycle-and-provenance",
+      "input": {
+        "path": "input.json",
+        "sha256": "e2cf783a94a7bc78aaf482d9a65dbd06f62308aa135141c297ca73f782894359",
+        "bytes": 271
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "ae2311ed08fce92839e848351dd3ac262785026e059b8effa3eb0d4340d84dc8",
+        "bytes": 55593
+      },
+      "response": {
+        "path": "response.md",
+        "sha256": "47c5298f3509d41ccaf267f014149c77bd8b2202ae325cfa232d1d9641024d41",
+        "bytes": 2022
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

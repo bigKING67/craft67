@@ -1,0 +1,63 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "holdout-aapl-tax-cash",
+      "category": "新公司真实披露与季度现金流边界",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL_FILINGS",
+      "prompt": "苹果这期净利润大降但营收增长，主营经营是不是明显恶化了？现金流能支持这个判断吗？请用本期和可比期的关键数字解释，说明能确认和不能确认的部分。",
+      "facts": "对象Apple Inc.，US-NASDAQ:AAPL，NASDAQ普通股，交易与报告币种USD。历史as_of和信息截止日2024-10-31，指定报告FY2024第四财季财务报表。执行日2026-09-19；原始PDF今天匿名获取，属于post-hoc历史回放，不是当年捕获。只使用指定文件，实际读取PDF并核对SHA256与页码；可用pdftotext向stdout提取。不读取本地其他答案或验收标准。不引入其他时期经营数据、现价或一致预期。只有一个发行人来源，不能冒充独立双源；不生成完整公司研究或买卖建议。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260919-holdout/sources/aapl-fy24q4.pdf",
+          "url": "https://images.apple.com/newsroom/pdfs/fy2024-q4/FY24_Q4_Consolidated_Financial_Statements.pdf",
+          "sha256": "af9646018330484238d357f1168ae74194fd768f4ea9921e4b2828c88309320c"
+        }
+      ],
+      "criteria": [
+        "实际读取PDF并核对哈希，引用正确页码；FY2024Q4为截至2024-09-28三个月，金额百万美元，EPS美元，不能误作自然年Q4或全年。",
+        "使用季度收入94930/89498、营业利润29591/26969、GAAP净利润14736/22956，比较方向与同比正确。",
+        "以第4页税项10246和调整净利润24982解释GAAP下滑；不把非GAAP当法定净利润或现金，也不凭本期调整后对上期GAAP宣称已完整统一所有调整。",
+        "至少明确一个营业利润率的同口径比较与百分点变化，支持经营与税后表现分离，不把税项变化直接当作主营恶化。",
+        "识别现金流表为十二个月：OCF118254/110543；不得冒充Q4单季现金或把现金税款26102当季度10246费用；材料不足时明确缺少九个月现金流。",
+        "区分历史截止与本次获取/执行日期，保留同源/未审计简表与原因证据边界，不给当前估值买卖结论。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "holdout-tencent-profit-cash",
+      "category": "港股全年季度与IFRS非IFRS现金分层",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL_RELEASE",
+      "prompt": "腾讯2024年利润涨得比收入快，是否已经证明盈利质量和现金转化一起改善？请区分全年和第四季度，给出关键比较与计算，解释哪些结论尚不能确认。",
+      "facts": "对象腾讯控股有限公司，HK:00700，HKEX普通股港币柜台，交易币种HKD、报告币种CNY。历史as_of和信息截止日2025-03-19，指定2024全年及第四季度业绩公告。执行日2026-09-19；原始PDF今天匿名获取，属于post-hoc历史回放，不是当年捕获。只使用指定文件，实际读取PDF并核对SHA256与页码；可用pdftotext向stdout提取。不读取本地其他答案或验收标准。不引入其他时期经营数据、现价或一致预期。只有一个发行人来源，不能冒充独立双源；不生成完整公司研究或买卖建议。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260919-holdout/sources/tencent-fy2024.pdf",
+          "url": "https://static.www.tencent.com/uploads/2025/03/19/81cb1f36bec218d27d6e0b24eec012b6.pdf",
+          "sha256": "257bc5cc7450f36bf6f48d406efda4186ea8d314bd1234ec458e60969436227f"
+        }
+      ],
+      "criteria": [
+        "实际读取PDF/核哈希/定位页码，全年截至2024-12-31与Q4三个月分开；报告RMB million不写成HKD，美元便利换算不是本次估值汇率。",
+        "全年收入660257/609015、IFRS归属股东利润194073/115216、nonIFRS归属利润222703/157688对应同口径同比；不以全年本期对季度上期，不混利润总额。",
+        "季度收入172446/155196与nonIFRS归属利润55312/42681单列同口径比较，不把全年68%自动套到第四季。",
+        "比较全年IFRS或nonIFRS营业利润率及百分点，说明盈利增速快于收入；区分披露四舍五入margin和自行计算的精确比率。",
+        "用披露的FCF1553亿元同比下降7%、capex768亿元同比增长221%反驳利润增长就证明现金转化改善；nonIFRS调整包含股份支付/投资损益等，不等于经营现金流，原因与管理层叙述区分。",
+        "保留单发行人及历史回放限制：全年audited、Q4unaudited；不能把调整后利润当确定核心现金，不能据此输出当前估值买卖判断。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+.heroCard {
+  width: 960px;
+  padding: 19px;
+  color: #334155;
+  background: #f8fafc;
+  border-radius: 17px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+  transition: all 280ms ease;
+}
+
+.floatingMetric {
+  position: absolute;
+  left: 27px;
+  top: 31px;
+}

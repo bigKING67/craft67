@@ -1,0 +1,225 @@
+{
+  "schema": "review-craft.upstreams.v2",
+  "sources": [
+    {
+      "id": "tt-a1i/simplify-codebase",
+      "repository": "https://github.com/tt-a1i/simplify-codebase",
+      "branch": "main",
+      "reviewedRevision": "5da55efcb52db690e7406f06f827a23b15da2706",
+      "reviewedAt": "2026-09-05",
+      "license": "MIT",
+      "status": "selective_absorbed",
+      "sourcePaths": [
+        "SKILL.md",
+        "references/investigation.md",
+        "references/boundaries-and-lifecycle.md",
+        "references/execution-and-recovery.md",
+        "references/decision-records.md"
+      ],
+      "reviewedBlobs": {
+        "SKILL.md": "38144f313b24614ab17cea156eec99197557dc81",
+        "references/investigation.md": "68e4367420f7cf66afb782204c170ce9a1fb637a",
+        "references/boundaries-and-lifecycle.md": "d9e9b6ea2718dcd35b4a1832ef5a2cfa3e181540",
+        "references/execution-and-recovery.md": "2974d996f076cd13568f277dd72c783119cad85c",
+        "references/decision-records.md": "797da388d0e065260d215ac63855d814e5bf844f"
+      },
+      "absorbedSurfaces": [
+        "maintenance-obligation model",
+        "consumer classification",
+        "simplification proof record",
+        "boundary and lifecycle analysis",
+        "vertical cut completeness",
+        "replacement dependency evaluation",
+        "widening verification rings",
+        "stable finding identity and verified locus disclosure",
+        "concise decision-relevant delivery"
+      ],
+      "excludedSurfaces": [
+        "Survey and Change runtime",
+        "Focused and Broad mode matrix",
+        "automatic source mutation",
+        "subagent orchestration",
+        "independent scoring and reporting",
+        "historical finding integration as a supported runtime",
+        "unverified topology or relationship claims",
+        "optional cleanup-map renderer and visual companion workflow"
+      ]
+    },
+    {
+      "id": "cursor/plugins#cursor-team-kit/skills/thermo-nuclear-code-quality-review",
+      "repository": "https://github.com/cursor/plugins",
+      "branch": "main",
+      "reviewedRevision": "53e579f1481697931fc44f5445171397cfa2b24b",
+      "reviewedAt": "2026-09-22",
+      "license": "MIT",
+      "status": "selective_absorbed",
+      "sourcePaths": [
+        "cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md"
+      ],
+      "reviewedBlobs": {
+        "cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md": "ac76a2bc88bb2d895e83ab1788aa584a82346cfc"
+      },
+      "absorbedSurfaces": [
+        "diff-oriented structural regression delta",
+        "canonical ownership and placement validation",
+        "half-applied state and atomicity investigation"
+      ],
+      "excludedSurfaces": [
+        "hard universal file-line blocker",
+        "presumptive refactor blocker",
+        "default ambitious source rewrite",
+        "automatic parallelization without timing or concurrency evidence",
+        "Cursor Task subagent orchestration",
+        "harsh review rhetoric as evidence"
+      ]
+    },
+    {
+      "id": "alibaba/open-code-review#review-runtime-contracts",
+      "repository": "https://github.com/alibaba/open-code-review",
+      "branch": "main",
+      "reviewedRevision": "bccbc15f785269400735d5255540c231e6c02b6d",
+      "reviewedAt": "2026-09-22",
+      "license": "Apache-2.0",
+      "status": "selective_absorbed",
+      "sourcePaths": [
+        "internal/session/manifest.go",
+        "internal/session/resume_identity.go",
+        "internal/diff/resolver.go",
+        "internal/config/rules/system_rules.go",
+        "internal/model/preview.go",
+        "internal/agent/preview.go",
+        "skills/open-code-review/SKILL.md",
+        "internal/agent/selection.go",
+        "internal/agent/preview_run_test.go",
+        "internal/diff/git.go",
+        "internal/diff/git_cquoted_test.go",
+        "internal/scan/provider.go",
+        "internal/scan/provider_paths_test.go"
+      ],
+      "reviewedBlobs": {
+        "internal/session/manifest.go": "6a113b246aff438ba881b3112991c0086fd95661",
+        "internal/session/resume_identity.go": "e318b99dbd0fc31723618def470294add53cedfa",
+        "internal/diff/resolver.go": "8443dfd70924bf1df5028b5063980bf7142b3023",
+        "internal/config/rules/system_rules.go": "403c46a56e2d5b6fed40dfb00826ce3174aec0dd",
+        "internal/model/preview.go": "7d3ed22b80c0cf437338331e6c0291b65d56352a",
+        "internal/agent/preview.go": "2873ed7e4a542261115ea19791c7976e11a6e686",
+        "skills/open-code-review/SKILL.md": "01317b749e475294236fc85999a4f277c88bbc5a",
+        "internal/agent/selection.go": "771c616f9c21f475eb9895aec49fa6d0b1924f13",
+        "internal/agent/preview_run_test.go": "81082b0a9f1dfa12719e0b0d5c0608fc8a0b3413",
+        "internal/diff/git.go": "babfd1e7e2743cca1956504b9b8fe6d09bfec07b",
+        "internal/diff/git_cquoted_test.go": "e8d13d5d03a95e6692b4675f89c233b7ab7eca09",
+        "internal/scan/provider.go": "a0471ed3bc32195d4c830a920dad966a5e8ca617",
+        "internal/scan/provider_paths_test.go": "681f4dc1d76c90077649b077f3d6d2cc0755a886"
+      },
+      "absorbedSurfaces": [
+        "deterministic source-location anchoring with source-side and span-digest closure",
+        "sealed coverage denominator bound one-to-one to canonical inventory",
+        "canonical-inventory-bound plain-text inputs for automatic profiling",
+        "explicit skip reasons for unavailable or untrusted automatic-profile inputs",
+        "shared eligibility decisions across fast preflight, coverage, and budget validation",
+        "selection parity tests distinguishing accounted files from budget-eligible files",
+        "Git path identity preserves filename whitespace and separates protocol terminators from path bytes, backed by real Git fixtures"
+      ],
+      "watchSurfaces": [
+        "coverage-derived run terminal states",
+        "content-bound review resume and lineage",
+        "preview exclusion reasons and rule provenance",
+        "public-safe failure summaries"
+      ],
+      "excludedSurfaces": [
+        "Go CLI and provider runtime dependency",
+        "LLM semantic grouping as coverage authority",
+        "mandatory subagent orchestration",
+        "default test-file exclusion",
+        "automatic target-source mutation",
+        "silent candidate filtering",
+        "self-reported benchmark claims as release evidence",
+        "general project-rule loading or automatic rule execution",
+        "upstream deletion exclusions, credential path lists, and token thresholds",
+        "preview command, SARIF, and provider integrations"
+      ]
+    },
+    {
+      "id": "Egonex-AI/Understand-Anything",
+      "repository": "https://github.com/Egonex-AI/Understand-Anything",
+      "branch": "main",
+      "reviewedRevision": "6df3065f1d8ddc2ce3615314d1d493f36d6b1c80",
+      "reviewedAt": "2026-09-21",
+      "license": "MIT",
+      "status": "selective_absorbed",
+      "sourcePaths": [
+        "LICENSE",
+        "docs/incremental/source-evidence-audit.md",
+        "understand-anything-plugin/packages/core/src/plugins/symbol-evidence.ts",
+        "understand-anything-plugin/packages/core/src/plugins/symbol-scopes.test.ts",
+        "understand-anything-plugin/packages/core/src/staleness.ts",
+        "understand-anything-plugin/packages/core/src/fingerprint.ts",
+        "understand-anything-plugin/packages/core/src/change-classifier.ts",
+        "understand-anything-plugin/skills/understand-diff/SKILL.md",
+        "understand-anything-plugin/agents/graph-reviewer.md"
+      ],
+      "reviewedBlobs": {
+        "LICENSE": "5df102e8a2e29cdfb881ae7ec5040f2766564680",
+        "docs/incremental/source-evidence-audit.md": "11948226cded0803ce46ca2efa6418a274244b1e",
+        "understand-anything-plugin/packages/core/src/plugins/symbol-evidence.ts": "adc779389755aa450407ca993a295f574bd765e6",
+        "understand-anything-plugin/packages/core/src/plugins/symbol-scopes.test.ts": "e474e7e21cdc2c491457b9bf098fc05fdf89803c",
+        "understand-anything-plugin/packages/core/src/staleness.ts": "93bb06d8d4ed6ca369e449f7eeea0fa8db1e10f4",
+        "understand-anything-plugin/packages/core/src/fingerprint.ts": "66d904d5b07fa46c1dc73613f5ff96b27a492168",
+        "understand-anything-plugin/packages/core/src/change-classifier.ts": "0ab9a5614820870fdce2e16dd2af20e042cdd42a",
+        "understand-anything-plugin/skills/understand-diff/SKILL.md": "13880f31b183f03cace421f0c6fb1d1a66f4be0e",
+        "understand-anything-plugin/agents/graph-reviewer.md": "3b32d37adb570db5c9d1ef510f95091588cc5e99"
+      },
+      "watchSurfaces": [
+        "automated symbol identity, scope resolution, and verified-deletion comparison",
+        "dependency relationships guiding bounded change-impact investigation",
+        "project-scoped freshness with explicit dirty, stale, and unknown states"
+      ],
+      "excludedSurfaces": [
+        "knowledge-graph runtime and dashboard product",
+        "mandatory multi-agent orchestration",
+        "automatic update hooks and target-repository artifact writes",
+        "structural-fingerprint cosmetic classification as permission to skip logic review",
+        "graph schema or referential integrity as canonical review coverage proof",
+        "second inventory, scoring, reporting, or evidence authority",
+        "upstream runtime, host-support, or performance claims without local verification"
+      ],
+      "absorbedSurfaces": [
+        "candidate-scoped absence-evidence guidance separating observations, coverage gaps, and dynamic consumers",
+        "composition-based dependency-evidence tests and simplification verification guidance"
+      ]
+    },
+    {
+      "id": "cloudflare/security-audit-skill",
+      "repository": "https://github.com/cloudflare/security-audit-skill",
+      "branch": "main",
+      "reviewedRevision": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+      "reviewedAt": "2026-09-22",
+      "license": "MIT",
+      "status": "selective_absorbed",
+      "sourcePaths": [
+        "LICENSE",
+        "skills/security-audit/SKILL.md",
+        "skills/security-audit/VALIDATION-AND-REPORTING.md"
+      ],
+      "reviewedBlobs": {
+        "LICENSE": "6dbc9ecb3a5b9080e95b962869e8c7ab16cfdc20",
+        "skills/security-audit/SKILL.md": "92178dad304d3f63e37582a297026a7874e12c62",
+        "skills/security-audit/VALIDATION-AND-REPORTING.md": "5e200d7387e665e53e0e4190fa4a5814c334c507"
+      },
+      "absorbedSurfaces": [
+        "actively disprove candidates through existing controls",
+        "record decisive unresolved validation blockers",
+        "renew independent assessment when final finding content changes, implemented locally with canonical document binding",
+        "distinguish schema validity from factual verification"
+      ],
+      "excludedSurfaces": [
+        "full vulnerability audit and attack-class library",
+        "mandatory multi-agent orchestration",
+        "second finding ledger, scoring, or report authority",
+        "automatic source mutation or target execution",
+        "sandbox implementation",
+        "upstream host-support and performance claims"
+      ]
+    }
+  ]
+}

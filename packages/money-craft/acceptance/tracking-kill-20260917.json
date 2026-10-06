@@ -1,0 +1,45 @@
+{
+  "schema": "money-craft.tracking-kill-review.v1",
+  "date": "2026-09-17",
+  "scope": "Bounded fail-closed retry following SIGKILL at current replacement boundary",
+  "finding": {
+    "before": "CLI killed after revision publication but before current replacement; retry incorrectly returned valid=true and sealed t0002 on invalid history.",
+    "after": "Under existing lock, validate any existing history before finalization; invalid_history preserves artifacts and refuses extension.",
+    "status": "FIXED_LOCAL"
+  },
+  "source_hashes": {
+    "skills/money-craft/scripts/tracking_workflow.py": "fe7b1b75708f2f039c31630cb2e6fbf6810078ff7e2c8d732a467f1ad698314d",
+    "skills/money-craft/references/tracking-workflow.md": "6ea5c1f9586776a23fa12b6a4da5c30314b35bf067125f7900552829f245fba1",
+    "tests/test_tracking_workflow.py": "890a0a157654954cb9f06470acf92596343b207edee58967e69b77268f055680"
+  },
+  "validation": {
+    "tracking_tests": 21,
+    "full_tests": 272,
+    "package_checks": 8,
+    "test": "test_killed_publication_cannot_extend_invalid_history",
+    "mechanism": "Separate actual CLI main writer paused immediately before/after current os.replace then POSIX SIGKILL; fresh verify and retry CLI subprocesses bounded by timeouts.",
+    "before_pointer": "verify invalid; retry invalid_history; no t0002; all file bytes preserved.",
+    "after_pointer": "verify valid; retry stale_previous; no t0002; all file bytes preserved.",
+    "lock_release": "Fresh CLI verify and check return after killed lock owner, without manual lock-file deletion.",
+    "source_checks": 19
+  },
+  "independent_review": {
+    "agent": "tracking_kill_review",
+    "verdict": "NO_BLOCKING_FINDINGS",
+    "source_sha256": "fe7b1b75708f2f039c31630cb2e6fbf6810078ff7e2c8d732a467f1ad698314d",
+    "tracking_tests": 21,
+    "scope": "Same two first-publication SIGKILL windows and existing tracking regressions; no independent later-revision kill probe."
+  },
+  "limits": [
+    "Not automatic recovery; no orphan promotion or archive edits.",
+    "Only two SIGKILL windows, not arbitrary crash points or physical power loss.",
+    "Hidden staging cleanup, Windows and network filesystems unverified.",
+    "Full existing-history validation adds work to finalization; no performance benchmark claimed.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T031910921758Z"
+  }
+}

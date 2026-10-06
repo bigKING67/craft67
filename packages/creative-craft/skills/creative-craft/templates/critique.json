@@ -1,0 +1,20 @@
+{
+  "schema_version": "creative-craft.critique.v1",
+  "critique_id": "critique-tbd",
+  "asset_id": "asset-001",
+  "observations": [],
+  "interpretations": [],
+  "performance_hypotheses": [],
+  "decisions": [
+    {
+      "decision": "KEEP",
+      "evidence": "TBD",
+      "reason": "TBD",
+      "preserve": [],
+      "action": [],
+      "validation": [],
+      "confidence": "low"
+    }
+  ],
+  "unknowns": []
+}

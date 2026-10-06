@@ -1,0 +1,36 @@
+{
+  "command": "pi --print --no-session --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-5.5 --thinking high --skill '$VARIANT_SKILL_1' --skill '$VARIANT_SKILL_2'",
+  "contract_sha256": "9982847aa02610d7840eea6647b935c359dcdac7337bbe5ff3ebd29ee938d86b",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 51.722,
+  "host": "pi",
+  "host_version": "0.80.6",
+  "installed_skill_paths": {
+    "upstreams/taste-skill/skills/redesign-skill": "$VARIANT_WORKSPACE/.pi/skills/02-redesign-skill",
+    "upstreams/taste-skill/skills/taste-skill": "$VARIANT_WORKSPACE/.pi/skills/01-taste-skill"
+  },
+  "model": "codex/gpt-5.5",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.taste.md",
+  "output_sha256": "6ebfb5cc990a6b718331f9d5ae9bbd69faa4f84f69a1f0ae65be436de5470c96",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "returncode": 0,
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v3",
+  "skill_install_mode": "isolated_project_copy",
+  "skill_trees": {
+    "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+    "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+  },
+  "started_at": "2026-07-23T11:25:25Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "high",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 600,
+  "variant": "taste",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "4f1f10c88a2f9c108e58be0ac4f9078938f4b4237944d1a99330916a67b99831",
+  "worktree_before_sha256": "4f1f10c88a2f9c108e58be0ac4f9078938f4b4237944d1a99330916a67b99831",
+  "worktree_unchanged": true
+}

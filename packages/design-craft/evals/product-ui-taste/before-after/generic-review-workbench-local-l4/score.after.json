@@ -1,0 +1,59 @@
+{
+  "case_id": "generic-review-workbench-local-l4-after",
+  "evidence_level": "L4",
+  "expected_score": 91,
+  "acceptable_range": [
+    89,
+    92
+  ],
+  "maturity_band": "production-ready calibration fixture",
+  "screenshot_sha256": "96827d97a94041db18711e9502fe1978194e55cf270a20462ad9a9b33ffa2ee9",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "96827d97a94041db18711e9502fe1978194e55cf270a20462ad9a9b33ffa2ee9",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "compact500",
+      "css_size": [
+        500,
+        844
+      ],
+      "dimensions": [
+        500,
+        844
+      ],
+      "artifact_sha256": "5fdf66b1ebde14a7612445919c9f2600ddd831a645f73b01be7d068a58121afa",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "responsive_fit": "verified at desktop and compact500 through screenshot artifacts plus dump-dom layout metrics",
+    "primary_action_visibility": "verified in the desktop screenshot; the action is paired with the priority-review panel instead of floating as generic chrome",
+    "loading_empty_error": "not applicable to this static calibration fixture",
+    "focus_keyboard_hover": "not claimed; no pointer or keyboard interaction artifact was captured"
+  },
+  "required_findings": [
+    "The after variant promotes the open review risk into a dark priority object in the first fold, making the unresolved decision state immediately legible.",
+    "The metric strip now has one lead queue card and quieter supporting metrics, which gives the operator a clearer scan order.",
+    "The priority-review panel and next-action rail read as the primary work area, not as a late secondary section beneath overview cards."
+  ],
+  "false_positive_guards": [
+    "Do not score above 92 because this is a generic calibration fixture without product-specific visual language, real data variation, or full interaction-state coverage.",
+    "Do not claim production readiness beyond static local fixture behavior; no authenticated app route, network request, or backend state was exercised.",
+    "Do not claim exact 390px phone coverage; compact responsive evidence is explicitly limited to 500x844 in this run."
+  ]
+}

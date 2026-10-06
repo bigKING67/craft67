@@ -1,0 +1,58 @@
+{
+  "schema": "money-craft.upstream-doc-refresh.v1",
+  "date": "2026-09-20",
+  "source_id": "myinvestpilot",
+  "status": "PASS_NO_DOCUMENT_CHANGES",
+  "captured_at": "2026-09-19T17:05:05.866Z",
+  "previous_observed_at": "2026-09-14T15:48:03.941Z",
+  "method": "browser67-expanded-sidebar-and-public-article-text-and-structure",
+  "catalog_expansion_rounds": [
+    6,
+    8,
+    10,
+    0
+  ],
+  "catalog_complete": true,
+  "page_count": 155,
+  "successful_pages": 155,
+  "content_pages": 149,
+  "navigation_pages": 6,
+  "added": 0,
+  "removed_from_catalog": 0,
+  "changed": 0,
+  "normalizer": "article-text-structure.v1",
+  "revision": "bd9718319a04f466f9aa323ce7d391eadc0b7225945253336c99b3abb5cc5fa6",
+  "capture_sha256": "ba65e600f9bb8977c7b535220f9ea9e3456655fda8126dfd3be8d7a54ff53bb7",
+  "capture_bytes": 1539329,
+  "snapshot_sha256": "4ab9698805d8932b0827fb6003717bb6800477f638111263deb9e3510c7a3c5e",
+  "private_capture": "~/.local/share/money-craft/upstream-captures/20260920-myinvestpilot/capture.json",
+  "decision": "retain_existing_scoped_decisions_no_new_absorption",
+  "review_scope": "Complete catalog and all normalized page fingerprints compared; no changed bodies requiring new semantic review. Historical reading remains dated 2026-09-14.",
+  "lock_change": "observed.checked_at only; reviewed and absorbed revisions unchanged",
+  "runtime_changed": false,
+  "limits": [
+    "No provider runtime, membership, engine source or licensing verification",
+    "No claim of byte-identical HTTP HTML; normalizer ignores page decoration and trailing update date",
+    "Other upstream reviews remain pending"
+  ],
+  "browser_cleanup": {
+    "closed": 1,
+    "verified": 1,
+    "remaining_unkept": 0,
+    "errors": 0
+  },
+  "validation": {
+    "upstream_tests": {
+      "passed": 30,
+      "failed": 0
+    },
+    "source_validation": {
+      "passed": 19,
+      "failed": 0
+    },
+    "frozen_source_and_global_install": {
+      "files": 75,
+      "parity": true
+    }
+  }
+}

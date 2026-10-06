@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/review-craft/schemas/runtime-result.schema.json",
+  "title": "Review Craft runtime benchmark result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "runtimeVersion",
+    "startedAt",
+    "completedAt",
+    "source",
+    "environment",
+    "parameters",
+    "measurements",
+    "contentSha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "review-craft.runtime-benchmark.v1"
+    },
+    "runtimeVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "dirty",
+        "dirtyFingerprint",
+        "treeSha256",
+        "runnerSha256"
+      ],
+      "properties": {
+        "revision": {"type": ["string", "null"]},
+        "dirty": {"type": "boolean"},
+        "dirtyFingerprint": {"$ref": "#/$defs/sha256"},
+        "treeSha256": {"$ref": "#/$defs/sha256"},
+        "runnerSha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["python", "platform", "machine", "processor"],
+      "properties": {
+        "python": {"type": "string"},
+        "platform": {"type": "string"},
+        "machine": {"type": "string"},
+        "processor": {"type": "string"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizes", "repetitions", "warmups", "fileBytes", "modules", "git"],
+      "properties": {
+        "sizes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 1}
+        },
+        "repetitions": {"type": "integer", "minimum": 1},
+        "warmups": {"type": "integer", "minimum": 0},
+        "fileBytes": {"type": "integer", "minimum": 32},
+        "modules": {"type": "integer", "minimum": 1},
+        "git": {"type": "boolean"}
+      }
+    },
+    "measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fileCount", "totalBytes", "operations"],
+        "properties": {
+          "fileCount": {"type": "integer", "minimum": 1},
+          "totalBytes": {"type": "integer", "minimum": 1},
+          "operations": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/$defs/operation"
+            }
+          }
+        }
+      }
+    },
+    "contentSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "nullableNumber": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wallMs",
+        "cpuMs",
+        "pythonAllocatedPeakBytes",
+        "inputBlocks",
+        "outputBlocks"
+      ],
+      "properties": {
+        "wallMs": {"type": "number", "minimum": 0},
+        "cpuMs": {"type": "number", "minimum": 0},
+        "processPeakRssBytes": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "pythonAllocatedPeakBytes": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "inputBlocks": {"type": ["integer", "null"], "minimum": 0},
+        "outputBlocks": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p50WallMs",
+        "p95WallMs",
+        "p50CpuMs",
+        "p95CpuMs",
+        "p95PythonAllocatedPeakBytes",
+        "p50InputBlocks",
+        "p95InputBlocks",
+        "p50OutputBlocks",
+        "p95OutputBlocks"
+      ],
+      "properties": {
+        "p50WallMs": {"$ref": "#/$defs/nullableNumber"},
+        "p95WallMs": {"$ref": "#/$defs/nullableNumber"},
+        "p50CpuMs": {"$ref": "#/$defs/nullableNumber"},
+        "p95CpuMs": {"$ref": "#/$defs/nullableNumber"},
+        "p95PythonAllocatedPeakBytes": {"$ref": "#/$defs/nullableNumber"},
+        "p95ProcessPeakRssBytes": {"$ref": "#/$defs/nullableNumber"},
+        "p50FilesPerSecond": {"$ref": "#/$defs/nullableNumber"},
+        "p95FilesPerSecond": {"$ref": "#/$defs/nullableNumber"},
+        "p50InputBlocks": {"$ref": "#/$defs/nullableNumber"},
+        "p95InputBlocks": {"$ref": "#/$defs/nullableNumber"},
+        "p50OutputBlocks": {"$ref": "#/$defs/nullableNumber"},
+        "p95OutputBlocks": {"$ref": "#/$defs/nullableNumber"}
+      }
+    },
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["samples", "summary", "memoryScope"],
+      "properties": {
+        "samples": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/sample"}
+        },
+        "summary": {"$ref": "#/$defs/summary"},
+        "memoryScope": {
+          "enum": ["PYTHON_PROCESS", "NOT_CAPTURED_FOR_SUBPROCESS"]
+        }
+      }
+    }
+  }
+}

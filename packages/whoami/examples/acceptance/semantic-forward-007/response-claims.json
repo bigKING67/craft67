@@ -1,0 +1,89 @@
+{
+  "schema": "whoami.response-claims.v1",
+  "reportSha256": "57e78420c963839e8754a6658ad4e362122e667dd348237573525bebe92f6c2e",
+  "paragraphs": [
+    {
+      "id": "timing-boundary",
+      "text": "不能从四化星名和年份清单直接排出一张确定事件表。当前可复算的是2024—2028仍在同一紫微大限内，以及各年禄、权、科、忌对应的星曜、部分本命落宫和流年宫职；这些层次只是进一步分析的入口，不能单独证明哪年升职、收入变化或关系结果。",
+      "reportClaims": [
+        {
+          "section": "timing",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "natal-topic-boundaries",
+      "text": "本命层可以形成条件性主题：命宫紫微，身宫落官禄，官禄宫见廉贞、天府；财帛宫见武曲化权、天相与天马；夫妻宫见七杀、右弼与火星。它们可用于复盘职责与资源配置、现金流与风险边界、合作中的承诺和沟通节奏，却不是职位、收益或婚恋事件的保证。",
+      "reportClaims": [
+        {
+          "section": "career",
+          "claimIndex": 0
+        },
+        {
+          "section": "wealth",
+          "claimIndex": 0
+        },
+        {
+          "section": "relationships",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-wealth"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-relationships"
+        }
+      ],
+      "premiseStatus": "conditional"
+    },
+    {
+      "id": "required-annual-chain",
+      "text": "若要讨论某一年的窄主题，还须把该年四化的本命落宫与流年宫职、对应主题宫星曜、三方四正、同星跨层差异和定位缺口放在同一问题中解释，并写明现实触发与撤回条件。在这条作用链完成前，报告保留限运前提未决；职业、财务和关系行动继续依据现实目标、资料、风险与反馈决定。",
+      "reportClaims": [
+        {
+          "section": "advice",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-structure"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-career"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-wealth"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-relationships"
+        },
+        {
+          "candidate": "C1-300a9bf9",
+          "topic": "ziwei-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ]
+}

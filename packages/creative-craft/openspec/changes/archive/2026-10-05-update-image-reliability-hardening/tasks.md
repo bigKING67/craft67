@@ -1,0 +1,5 @@
+- [x] Preserve paid Provider evidence and recover it offline.
+- [x] Enforce outputs outside the project and unify render byte limits.
+- [x] Candidate list tolerance, audited unlock, incomplete-create diagnosis.
+- [x] Durable writes, Python bridge hardening, QA accuracy fixes.
+- [x] Regression tests; image and video module suites pass.

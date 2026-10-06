@@ -1,0 +1,76 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "target-valuation-historical",
+      "status": "READY_HISTORICAL",
+      "prompt": "请用所附原始材料分析 Target Corporation（US-NYSE:TGT，普通股，交易与报告币种USD）截至2025-04-30的估值。这是2026年执行的历史回放。请建立最近披露股本下的市值和企业价值桥，区分报告利润与可持续盈利，核对行情差异；用Walmart（当时US-NYSE:WMT）作为经营和估值参照，说明能否直接套用倍数。比较三种有来源依据的条件情景，说明外部分析师观点是否足以支持合理价值或安全边际，并给反方与下一次验证条件。需要有实际数字和可复算回执，不创建正式档案或tracking版本。",
+      "facts": "仅以下指定原始PDF/HTML/JSON是事实来源；可读取同目录同名txt作定位辅助。公开材料是事后下载，并非历史时点捕获。来源中的截止日之后市场概况/价格不得用于当时决策。只评估给定披露，未提供完整事件检索或精确当日资本结构。不得读取本案例生成脚本、报告、验收标准、派生结果或其他会话答案；此限制不禁止读取/执行正常Skill和审计工具。",
+      "evidence": [
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-target-valuation/guidance.html",
+          "sha256": "cc5eab890121b9a46d4eda35a22bf46d86e2d83ccee959b1811b1a3a20b1771b",
+          "url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings"
+        },
+        {
+          "source_id": "S03",
+          "path": "local/evidence/20260920-target-valuation/analyst.pdf",
+          "sha256": "385aa86b20333cfe224b9c0b8348cba90be496ab6303c9d682325a9c251f1601",
+          "url": "https://www.suredividend.com/wp-content/uploads/2025/03/TGT-2025-03-12.pdf"
+        },
+        {
+          "source_id": "S04",
+          "path": "local/evidence/20260920-target-valuation/price-chartexchange.html",
+          "sha256": "29adb0c7fef838f934adbdf88812fecb4873fb8382262285e4792e6b380ae9f5",
+          "url": "https://chartexchange.com/symbol/nyse-tgt/historical/"
+        },
+        {
+          "source_id": "S06",
+          "path": "local/evidence/20260920-target-valuation/price-statmuse.html",
+          "sha256": "9b60cedf710d708d306aefc53136134e6a9149e94e28a0c39a8471021935c030",
+          "url": "https://www.statmuse.com/money/ask/what-was-the-price-of-target-in-april-2025"
+        },
+        {
+          "source_id": "S07",
+          "path": "local/evidence/20260920-target-valuation/price-yahoo.json",
+          "sha256": "5a45ec4d9495c0c544bc8360cd140caadb9b2f68b9a66709a4e1041d93975e52",
+          "url": "https://query1.finance.yahoo.com/v8/finance/chart/TGT?period1=1745971200&period2=1746057600&interval=1d&events=div%2Csplits"
+        },
+        {
+          "source_id": "S09",
+          "path": "local/evidence/20260920-target-valuation/wmt-price-yahoo.json",
+          "sha256": "91f454d6518617c0a77a4641d0b309a31068bc41f1684a283e4aa6d492e3c46c",
+          "url": "https://query1.finance.yahoo.com/v8/finance/chart/WMT?period1=1745971200&period2=1746057600&interval=1d&events=div%2Csplits"
+        },
+        {
+          "source_id": "S01",
+          "path": "local/research/20260920-retail-peer/sources/target-2024.pdf",
+          "sha256": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271",
+          "url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf"
+        },
+        {
+          "source_id": "S08",
+          "path": "local/research/20260920-retail-peer/sources/walmart-2025.html",
+          "sha256": "d3eaf5782e1642f33c6301f1849a830354590c3b733a868d9f180b17dd582744",
+          "url": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-25-000021/wmt-20250131.htm"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "使用源码Skill和有效研究路由，不读取既有答案/标准",
+        "价格使用明确Close；复权和不同快照不冒充同口径独立双源",
+        "实际股数与加权稀释股数区分；三种日期分别披露，市值/EV为滞后余额估算",
+        "净债务分母正确；融资租赁不重复、经营租赁口径明确，不重复扣短投",
+        "正常化与管理层调整/指引区分；周期低点/多年均值不自动正常化",
+        "Walmart仅有限可比，不用之后披露的Q1，不机械赋值其PE",
+        "三情景注明外部预测/研究假设，不把计算通过提升为独立公允价值；PE法不再次扣债",
+        "关键结果算术正确且覆盖；明确反方影响和下一期验证；保留独立来源与历史补抓限制"
+      ]
+    }
+  ]
+}

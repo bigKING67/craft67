@@ -1,0 +1,25 @@
+{
+  "status": "PASS_SCOPED_CASH_DEBT_RECONCILIATION",
+  "research_status": "PARTIAL",
+  "calculations": 20,
+  "synthesis_calculations": 68,
+  "source_sha256": "576dd80e353e53296a800b03e9889a9cbb2e8b91fa2ab3c1dace7c10159179b8",
+  "visual_pages": [
+    146,
+    164,
+    168,
+    177,
+    196
+  ],
+  "reviewer": "parent",
+  "independent": false,
+  "cash_available_for_distribution": "UNVERIFIED",
+  "complete_net_debt": "UNVERIFIED",
+  "full_finalize_rerun": false,
+  "old_synthesis_sha256": "439f4950a648d7f62255949e9c547c8dcd652fe8ef3d43475c4a4421f8fb7df0",
+  "review_sha256": "2b922754b0684a64b5eabe6741c7c72a154c4ce83331e11a72bbab420c6c1ddd",
+  "synthesis_sha256": "00fd63b231473d62883945d53273120777cb390e8110ebdc01a87968b0b9416b",
+  "six_item_debt_thousand_cny": "83639509",
+  "cash_equivalents_thousand_cny": "74614244",
+  "contractual_1y_thousand_cny": "60658256"
+}

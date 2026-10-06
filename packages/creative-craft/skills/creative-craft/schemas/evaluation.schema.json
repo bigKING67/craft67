@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/evaluation.schema.json",
+  "title": "Creative Craft Evaluation v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evaluation_id",
+    "target_id",
+    "stage",
+    "brief_id",
+    "gates",
+    "dimensions",
+    "recommendation",
+    "remaining_unknowns"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.evaluation.v1"
+    },
+    "evaluation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "enum": [
+        "route",
+        "direction",
+        "output",
+        "delivery"
+      ]
+    },
+    "brief_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gates": {
+      "type": "object",
+      "required": [
+        "rights_clear",
+        "brief_locked",
+        "deliverable_specified",
+        "actual_output_observed"
+      ],
+      "properties": {
+        "rights_clear": {
+          "type": "boolean"
+        },
+        "brief_locked": {
+          "type": "boolean"
+        },
+        "deliverable_specified": {
+          "type": "boolean"
+        },
+        "actual_output_observed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "weight",
+          "score",
+          "evidence_state",
+          "evidence",
+          "confidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "weight": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "evidence_state": {
+            "enum": [
+              "SPECIFIED",
+              "OBSERVED",
+              "INFERRED",
+              "HYPOTHESIZED",
+              "UNVERIFIED"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recommendation": {
+      "type": "string"
+    },
+    "remaining_unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

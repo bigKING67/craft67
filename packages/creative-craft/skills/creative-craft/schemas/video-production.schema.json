@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/video-production.schema.json",
+  "title": "Creative Craft Video Production v1",
+  "description": "Stage state for one video production: digest-bound artifacts, approvals, revision rounds, budget ledger, and an append-only event log. Gates are enforced by the CLI, not by this document.",
+  "type": "object",
+  "required": ["schema_version", "production_id", "plan", "edit_project", "policy", "stages", "revision_rounds", "current_revision", "ledger", "events"],
+  "properties": {
+    "schema_version": {"const": "creative-craft.video-production.v1"},
+    "production_id": {"type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$"},
+    "plan": {
+      "type": ["object", "null"],
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "edit_project": {
+      "type": ["object", "null"],
+      "required": ["path"],
+      "properties": {"path": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "policy": {
+      "type": "object",
+      "required": ["approval_required", "max_revision_rounds", "budget"],
+      "properties": {
+        "approval_required": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/stage_id"}},
+        "max_revision_rounds": {"type": "integer", "minimum": 0, "maximum": 20},
+        "export_requires_human_review": {"type": "boolean"},
+        "budget": {
+          "type": "object",
+          "required": ["currency", "cap", "mode"],
+          "properties": {
+            "currency": {"type": "string", "minLength": 1},
+            "cap": {"type": ["number", "null"], "minimum": 0},
+            "mode": {"enum": ["observe", "warn", "cap"]}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "stages": {"type": "array", "minItems": 9, "maxItems": 9, "items": {"$ref": "#/$defs/stage"}},
+    "revision_rounds": {"type": "integer", "minimum": 0},
+    "current_revision": {"type": ["integer", "null"], "minimum": 1},
+    "ledger": {"type": "array", "items": {"$ref": "#/$defs/ledger_entry"}},
+    "events": {"type": "array", "items": {"$ref": "#/$defs/event"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "stage_id": {"enum": ["brief", "reference", "plan", "select", "generate", "assemble", "inspect", "revise", "export"]},
+    "stage": {
+      "type": "object",
+      "required": ["id", "status", "artifacts", "approval", "note"],
+      "properties": {
+        "id": {"$ref": "#/$defs/stage_id"},
+        "status": {"enum": ["pending", "in_progress", "awaiting_approval", "completed", "skipped", "blocked"]},
+        "artifacts": {"type": "array", "items": {"$ref": "#/$defs/artifact"}},
+        "approval": {
+          "type": ["object", "null"],
+          "required": ["by", "at", "note"],
+          "properties": {
+            "by": {"type": "string", "minLength": 1},
+            "at": {"type": "string", "minLength": 1},
+            "note": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "note": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "artifact": {
+      "type": "object",
+      "required": ["kind", "path", "sha256"],
+      "properties": {
+        "kind": {"enum": ["brief", "reference", "production-plan", "video-job", "execution-receipt", "edit-document", "render-qa", "media", "note"]},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "ledger_entry": {
+      "type": "object",
+      "required": ["id", "stage", "description", "estimate", "actual", "status", "provider_job_id"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$"},
+        "stage": {"$ref": "#/$defs/stage_id"},
+        "description": {"type": "string", "minLength": 1},
+        "estimate": {"type": "number", "minimum": 0},
+        "actual": {"type": ["number", "null"], "minimum": 0},
+        "status": {"enum": ["reserved", "settled", "released"]},
+        "provider_job_id": {"type": ["string", "null"], "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "required": ["at", "stage", "action", "detail"],
+      "properties": {
+        "at": {"type": "string", "minLength": 1},
+        "stage": {"enum": ["production", "brief", "reference", "plan", "select", "generate", "assemble", "inspect", "revise", "export"]},
+        "action": {"type": "string", "minLength": 1},
+        "detail": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

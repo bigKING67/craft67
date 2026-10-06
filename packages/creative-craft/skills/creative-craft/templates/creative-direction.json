@@ -1,0 +1,28 @@
+{
+  "schema_version": "creative-craft.creative-direction.v1",
+  "direction_id": "direction-tbd",
+  "brief_id": "brief-tbd",
+  "selected_route_id": "route-1",
+  "status": "draft",
+  "message_hierarchy": [],
+  "visual_world": [],
+  "copy_direction": [],
+  "image_art_direction": [],
+  "video_treatment": [],
+  "script": [],
+  "storyboard": [],
+  "shot_plan": [],
+  "motion_direction": [],
+  "sound_direction": [],
+  "performance_direction": [],
+  "reference_roles": [],
+  "invariants": [],
+  "deliverables": [],
+  "approval": {
+    "status": "pending",
+    "approved_by": null,
+    "approved_at": null,
+    "basis": ""
+  },
+  "remaining_unknowns": []
+}

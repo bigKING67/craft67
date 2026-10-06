@@ -1,0 +1,25 @@
+Judgment: premium outdoor apparel should be planned around style, fit, return risk, and seasonal inventory before channel tactics.
+
+Evidence status: category and channel scope are confirmed; size-level demand, return reasons, and service capacity remain assumptions to verify.
+
+Business model: model contribution profit after return freight, exchange logistics, defective rate, samples, creator commission, and markdown. Do not chase GMV if return loss is unstable.
+
+Assortment: entry apparel SKU, hero outdoor jacket, profit accessory, outfit bundle, seasonal capsule, size-inclusive core, and member early-access color.
+
+Price ladder: official launch price, daily price, member benefit, outfit bundle price, seasonal campaign price, clearance price for old season, minimum profit price, forbidden floor price.
+
+Channel jobs: Xiaohongshu for style/occasion and buyer show; Douyin for try-on and movement demo; Tmall for review/detail/search; JD for logistics/trust if service and inventory are ready.
+
+Content: style matrix, outdoor scenario, fit/版型 explanation, size chart, model height/weight, material proof, color difference note, buyer show, return/exchange policy.
+
+Content quality gate: every asset must match the approved size/specification sheet and show material, fit, color, and use limits without hiding exceptions. Rights/usage boundary: record model, creator, music, image, channel, territory, and usage term before reuse. Refresh rule: retire or update any asset when the SKU, size guidance, season, rights term, or measured return reason changes.
+
+Fulfillment/refund/after-sale: inventory by size/color, return reason tagging, exchange CS script, defective stitching/zipper/fabric watchlist.
+
+Stop rule: stop channel/SKU if return rate or size complaints exceed plan. Scale rule: scale only when payment CVR, return, buyer show quality, and seasonal inventory are stable.
+
+Review cadence: weekly size-color inventory and return review; monthly seasonal markdown governance.
+
+Mechanism: use size/fit evidence and reason-coded returns to gate channel and SKU expansion. Owner: operations lead with merchandising, content, service, and warehouse owners. Success signal: payment CVR improves while size returns and aging inventory remain below threshold.
+
+Exception and recovery: isolate affected size-color inventory, correct content or size guidance, and reopen only after the defect is verified. Escalation: quality, safety, or repeated fit issues go to the accountable product owner before more traffic is released.

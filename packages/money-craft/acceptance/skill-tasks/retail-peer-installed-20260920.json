@@ -1,0 +1,103 @@
+{
+  "schema": "money-craft.peer-installed-closeout.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_INSTALLED_NATURAL_LANGUAGE_CASE",
+  "version": "0.3.0",
+  "release_status": "unreleased-dirty-worktree-candidate",
+  "source_head": "2d33799b939fab61fa842f0dfab420ed19239f19",
+  "scope": "Receipt precision guidance and retail historical peer comparison",
+  "changed_skill_files": [
+    "references/financial-data-and-evidence.md"
+  ],
+  "delivery_files": 75,
+  "source_candidate_installed_parity": true,
+  "frozen_manifest_sha256": "a27551b2cad516763c7bbb69277c25053bf94c9b7923c0ab52140349678c7163",
+  "package": {
+    "path": "local/acceptance/20260920-peer-install/bigking67-money-craft-0.3.0.tgz",
+    "sha256": "e03282eaaceb5acbe73132ad8d5d1867543f4e0b99426d2045cf7d4cdb5991e1",
+    "checks_passed": 7
+  },
+  "install": {
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260920T030412877887Z",
+    "backup_matches_previous_frozen": true
+  },
+  "host": {
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "elapsed_seconds": 439.726,
+    "exit_code": 0,
+    "timed_out": false,
+    "route": "READY",
+    "calculation_receipts_passed": 23,
+    "semantic_criteria_passed": 8,
+    "prompt_identical_to_clean_scope_failure": true,
+    "observed_final_text_audit": true,
+    "source_hashes_verified": 3
+  },
+  "manual_review": {
+    "schema": "money-craft.peer-installed-semantic.v1",
+    "reviewer": "parent_review_of_independent_host_output",
+    "criteria": [
+      {
+        "criterion": "自然触发安装Money Craft并取得有效路由；无读取已有答案或验收标准",
+        "status": "PASS",
+        "evidence": "Trace loads installed Skill without explicit path in prompt; valid earnings route before research; no prior-answer/rubric reads observed."
+      },
+      {
+        "criterion": "保持历史截止和补抓边界；发行人材料不冒充独立双源",
+        "status": "PASS",
+        "evidence": "Answer retains historical cutoff, execution date, historical identity and issuer-only evidence limitation; no current valuation claim."
+      },
+      {
+        "criterion": "区分真实财年结束日、52/53周及Walmart海外合并滞后，不强行年化为同口径增长",
+        "status": "PASS",
+        "evidence": "Actual fiscal windows, 52/53 weeks and one-month foreign consolidation lag identified; no mechanical annualization."
+      },
+      {
+        "criterion": "正确识别Target Net sales包含其他收入，Costco及Walmart另列收入；统一并说明计算分母",
+        "status": "PASS",
+        "evidence": "Total revenue denominator aligned and Target Net sales explicitly includes other revenue; Costco/Walmart extra income not double-counted."
+      },
+      {
+        "criterion": "使用Target重分类后比较列，不将重分类解释为经营效率提升",
+        "status": "PASS",
+        "evidence": "Target current comparison columns and cost reclassification identified; no operating-profit benefit attributed to reclassification."
+      },
+      {
+        "criterion": "关键增长/利润率计算与原文一致且回执完整；报告同比不冒充同店增长",
+        "status": "PASS",
+        "evidence": "23 final receipts verified; reported growth, approximate extra-week adjustment and same-store growth distinguished; FCF proxy limited."
+      },
+      {
+        "criterion": "区分集团与Sam’s Club分部，不用集团市值套分部盈利作为PE；可比组理由落到业务差异",
+        "status": "PASS",
+        "evidence": "Business-based peer subgroups; Sam’s Club operating comparison does not become independently traded valuation; no group/segment multiple mixing."
+      },
+      {
+        "criterion": "缺同日价格/资本结构/盈利预期时不编造倍数、目标价或安全边际；给出具体补证条件",
+        "status": "PASS",
+        "evidence": "No unsupported price targets or multiples; missing historical prices, capital structure, TTM and normalization inputs listed with next observation windows."
+      }
+    ],
+    "independent_execution": true,
+    "independent_semantic_reviewer": false,
+    "generalization_claim": false
+  },
+  "source_checks_passed": 19,
+  "historical_failures_preserved": "acceptance/skill-tasks/retail-peer-host-20260920.json",
+  "host_artifact_hashes": {
+    "prompt.txt": "aab4f4d1ff6dbd07f8b08d33881566a8c8c6b22cdd7a7828ac23aaca249614e8",
+    "answer.md": "97ca23e789d80cf1d230cae89c6d6f977b7525243a1b21d840972e22ab377d1f",
+    "host.json": "6106058463e7996fb48408cffdc9c8095cebc1956b2aad1f7bb02f8d90fe8937",
+    "events.jsonl": "3e2c6aa8a40a189787efa7994b560820a7de3492a6d2261c094512cbd32c589f",
+    "machine-audit.json": "22bdbb7974a1f80d1570e801fcd7bab208dd0c6219e4661333b1a8765e46f6c2",
+    "manual-review.json": "c3dcec8779a2c2ddada6b1c13366f28d7d861708f6834ae3cb5d00b7dff1be3f"
+  },
+  "answer": "local/skill-evals/20260920-retail-peer/installed-fix/answer.md",
+  "limits": [
+    "Single controlled historical case, not broad forecasting or comps accuracy proof",
+    "Independent second-source financial verification and valuation data remain absent",
+    "Semantic criteria reviewed by parent; arithmetic audit does not validate investment claims",
+    "Not a formal money archive or release; no commit or push"
+  ]
+}

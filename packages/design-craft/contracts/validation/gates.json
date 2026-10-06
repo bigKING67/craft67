@@ -1,0 +1,236 @@
+{
+  "schema": "design-craft.validation-gates.v1",
+  "gates": [
+    {
+      "id": "skill-schema",
+      "command": ["python3", "-m", "tools.design_craft.validation.skill_schema", "--check", "skills/design-craft"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "repository-contracts",
+      "command": ["python3", "-m", "tools.design_craft.validation.repository_contracts", "--check"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "tooling-contracts",
+      "command": ["python3", "-m", "tools.design_craft.validation.tooling_contracts", "--check"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "lint",
+      "command": ["python3", "scripts/design_craft_lint.py", "--check"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "package-boundary",
+      "command": ["python3", "scripts/design_craft_package_validate.py", "--check", "--validate"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 240,
+      "execution": "parallel",
+      "priority": 60
+    },
+    {
+      "id": "public-repository",
+      "command": ["python3", "scripts/design_craft_public_repo_validate.py", "--check", "--validate"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 240,
+      "execution": "parallel",
+      "priority": 75
+    },
+    {
+      "id": "workflow-contract",
+      "command": ["python3", "scripts/design_craft_workflow_validate.py", "--check", "--validate"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "upstream-review-contract",
+      "command": ["node", "tests/contract/test_upstream_review_issue.cjs"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "upstream-absorption-report",
+      "command": ["python3", "scripts/upstream_absorption_report.py", "--check"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "taste-absorption",
+      "command": ["python3", "scripts/design_craft_taste_absorption.py", "--check", "--strict"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "impeccable-absorption",
+      "command": ["python3", "scripts/design_craft_impeccable_absorption.py", "--check", "--strict"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "emil-absorption",
+      "command": ["python3", "scripts/design_craft_emil_absorption.py", "--check", "--strict"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "cross-agent-run-self-check",
+      "command": ["python3", "scripts/design_craft_cross_agent_run.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "cross-agent-validator-self-check",
+      "command": ["python3", "scripts/design_craft_cross_agent_validate.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "comparative-run-self-check",
+      "command": ["python3", "scripts/design_craft_comparative_run.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "comparative-judge-self-check",
+      "command": ["python3", "scripts/design_craft_comparative_judge.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "comparative-validator-self-check",
+      "command": ["python3", "scripts/design_craft_comparative_validate.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel",
+      "priority": 80
+    },
+    {
+      "id": "native-runtime-self-check",
+      "command": ["python3", "scripts/design_craft_native_runtime_validate.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel",
+      "priority": 90
+    },
+    {
+      "id": "github-checks-self-check",
+      "command": ["python3", "scripts/design_craft_github_checks.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "github-governance-self-check",
+      "command": ["python3", "scripts/design_craft_github_governance.py", "--check"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "install-verifier-self-check",
+      "command": ["python3", "scripts/design_craft_install_verify.py", "--check"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel",
+      "priority": 70
+    },
+    {
+      "id": "route-pack-self-check",
+      "command": ["python3", "scripts/design_craft_codex_route_pack.py", "--check"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "maturity-self-check",
+      "command": ["python3", "scripts/design_craft_maturity.py", "--check"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "parallel"
+    },
+    {
+      "id": "source-test-suite",
+      "command": ["python3", "scripts/design_craft_parallel_unittest.py", "--jobs", "8", "--include-discover-dir=tests/unit", "--include-discover-dir=tests/integration", "--include-discover-dir=tests/adversarial", "--include-target=tests.contract.test_installer"],
+      "profiles": ["contracts", "portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 900,
+      "execution": "parallel",
+      "priority": 100
+    },
+    {
+      "id": "development-maturity",
+      "command": ["python3", "scripts/design_craft_maturity.py", "--profile", "development"],
+      "profiles": ["portable", "local", "operational-release", "certified-release"],
+      "timeout_seconds": 600,
+      "execution": "serial",
+      "depends_on": [
+        "skill-schema",
+        "repository-contracts",
+        "tooling-contracts",
+        "lint",
+        "package-boundary",
+        "public-repository",
+        "workflow-contract",
+        "upstream-review-contract",
+        "upstream-absorption-report",
+        "taste-absorption",
+        "impeccable-absorption",
+        "emil-absorption",
+        "cross-agent-run-self-check",
+        "cross-agent-validator-self-check",
+        "comparative-run-self-check",
+        "comparative-judge-self-check",
+        "comparative-validator-self-check",
+        "native-runtime-self-check",
+        "github-checks-self-check",
+        "github-governance-self-check",
+        "install-verifier-self-check",
+        "route-pack-self-check",
+        "maturity-self-check",
+        "source-test-suite"
+      ]
+    },
+    {
+      "id": "install-provenance",
+      "command": ["make", "install-verify"],
+      "profiles": ["local", "operational-release", "certified-release"],
+      "timeout_seconds": 120,
+      "execution": "serial",
+      "depends_on": ["development-maturity"]
+    },
+    {
+      "id": "operational-evidence",
+      "command": ["make", "maturity-operational"],
+      "profiles": ["operational-release"],
+      "timeout_seconds": 1800,
+      "execution": "serial",
+      "depends_on": ["install-provenance"]
+    },
+    {
+      "id": "certified-evidence",
+      "command": ["make", "maturity-certified"],
+      "profiles": ["certified-release"],
+      "timeout_seconds": 1800,
+      "execution": "serial",
+      "depends_on": ["install-provenance"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "calendar": "solar",
+  "date": "1991-10-12",
+  "time": "11:40:00",
+  "gender": "female",
+  "place": "合成东经120度",
+  "longitude": 120,
+  "timeZone": "Asia/Shanghai",
+  "timeBasis": "true-solar",
+  "dayBoundary": "zi",
+  "uncertaintyMinutes": 0
+}

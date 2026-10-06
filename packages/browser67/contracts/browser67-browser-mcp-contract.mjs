@@ -1,0 +1,326 @@
+#!/usr/bin/env node
+import assert from "node:assert/strict";
+import { assertFileSchemePreflight } from "./browser67-browser-mcp-contract/file-scheme.mjs";
+import { promises as fs } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { createRpcClient } from "./browser67-browser-mcp-contract/rpc-client.mjs";
+import {
+  assertTextJsonContent,
+  firstJsonContent,
+  firstOutcomeContent,
+} from "./browser67-browser-mcp-contract/rpc-content.mjs";
+import {
+  startExecuteErrorTmwdLinkServer,
+  startHangingTmwdLinkServer,
+} from "./browser67-browser-mcp-contract/tmwd-link-fixtures.mjs";
+import { assertExecuteJsFallbackPolicy } from "./browser67-browser-mcp-contract/fallback-policy.mjs";
+import { assertNativeCapabilitySurface } from "./browser67-browser-mcp-contract/native-surface.mjs";
+import { assertNativeInputOpsContract } from "./browser67-browser-mcp-contract/native-input-ops.mjs";
+import { assertNativeLiveProofGateContract } from "./browser67-browser-mcp-contract/native-live-proof-gate.mjs";
+import { assertOptionalLiveProofContract } from "./browser67-browser-mcp-contract/optional-live-proofs.mjs";
+import { assertPhysicalLiveGateContract } from "./browser67-browser-mcp-contract/physical-live-gate.mjs";
+import { assertFileDownloadClipboardOpsContract } from "./browser67-browser-mcp-contract/file-download-clipboard-ops.mjs";
+import { assertTabLifecycleOpsContract } from "./browser67-browser-mcp-contract/tab-lifecycle-ops.mjs";
+import { assertAuthOpsContract } from "./browser67-browser-mcp-contract/auth-ops.mjs";
+import { assertConsoleOpsContract } from "./browser67-browser-mcp-contract/console-ops.mjs";
+import { assertToolSurface } from "./browser67-browser-mcp-contract/tool-surface.mjs";
+import { assertReadinessLjqCtrlProbeContract } from "./browser67-browser-mcp-contract/readiness-audit.mjs";
+import { assertManagedTabCleanupBaselineContract } from "./browser67-browser-mcp-contract/managed-tab-cleanup.mjs";
+import { assertRunWaitHealthOpsContract } from "./browser67-browser-mcp-contract/run-wait-health-ops.mjs";
+import { assertScreenshotOpsContract } from "./browser67-browser-mcp-contract/screenshot-ops.mjs";
+import { assertEvidenceBundleOpsContract } from "./browser67-browser-mcp-contract/evidence-bundle-ops.mjs";
+import { assertAdoptionBrowserInstanceBinding } from "./browser67-browser-mcp-contract/adoption-browser-instance.mjs";
+
+function parseArgs(argv) {
+  const parsed = {
+    timeout_ms: 8_000,
+    ws_endpoint: "ws://127.0.0.1:9",
+  };
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = argv[index] ?? "";
+    if (token === "--timeout-ms") {
+      const raw = argv[index + 1] ?? "";
+      const value = Number(raw);
+      if (!Number.isFinite(value) || value <= 0) {
+        throw new Error("invalid --timeout-ms value");
+      }
+      parsed.timeout_ms = Math.floor(value);
+      index += 1;
+      continue;
+    }
+    if (token === "--ws-endpoint") {
+      const raw = argv[index + 1] ?? "";
+      if (!raw) {
+        throw new Error("invalid --ws-endpoint value");
+      }
+      parsed.ws_endpoint = raw;
+      index += 1;
+      continue;
+    }
+    if (!token) {
+      continue;
+    }
+    throw new Error(`unknown argument: ${token}`);
+  }
+  return parsed;
+}
+
+async function runContractCase(label, callback) {
+  try {
+    return await callback();
+  } catch (error) {
+    if (error instanceof Error) {
+      error.message = `[${label}] ${error.message}`;
+    }
+    throw error;
+  }
+}
+
+async function run() {
+  const cli = parseArgs(process.argv.slice(2));
+  await runContractCase("native-capability-surface", assertNativeCapabilitySurface);
+  await runContractCase("native-live-proof-gate", assertNativeLiveProofGateContract);
+  await runContractCase("optional-live-proofs", assertOptionalLiveProofContract);
+  await runContractCase("physical-live-gate", assertPhysicalLiveGateContract);
+  await runContractCase("readiness-ljqctrl", assertReadinessLjqCtrlProbeContract);
+  await runContractCase("managed-tab-cleanup-baseline", assertManagedTabCleanupBaselineContract);
+  await runContractCase("adoption-browser-instance", assertAdoptionBrowserInstanceBinding);
+
+  const previousTabRegistryPath = process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH;
+  const previousLoginProfileDir = process.env.BROWSER_STRUCTURED_LOGIN_PROFILE_DIR;
+  const previousRunRoot = process.env.BROWSER_STRUCTURED_RUN_ROOT;
+  const tmpTabRegistryPath = path.join(
+    os.tmpdir(),
+    `tmwd-tab-registry-contract-${process.pid}-${Date.now()}.json`,
+  );
+  const tmpLoginProfileDir = await fs.mkdtemp(path.join(os.tmpdir(), "tmwd-login-profiles-contract-"));
+  const tmpRunRoot = await fs.mkdtemp(path.join(os.tmpdir(), "tmwd-run-ops-contract-"));
+  let tmpTooManyLoginProfileDir;
+  await fs.writeFile(
+    path.join(tmpLoginProfileDir, "alpha-site.env"),
+    [
+      "PROFILE_ID=alpha-site",
+      "ALLOWED_ORIGINS=http://alpha.example",
+      "USERNAME=alpha-user",
+      "PASSWORD=alpha-password",
+      "LOGIN_PATH_PATTERN=/sign-in",
+      "USERNAME_SELECTOR=#email",
+      "PASSWORD_SELECTOR=#password",
+      "SUBMIT_SELECTOR=button[type=\"submit\"]",
+      "SUCCESS_PATH_NOT=/sign-in",
+      "",
+    ].join("\n"),
+    { mode: 0o600 },
+  );
+  await fs.writeFile(
+    path.join(tmpLoginProfileDir, "contract-site.env"),
+    [
+      "PROFILE_ID=contract-site",
+      "ALLOWED_ORIGINS=http://example.test,http://127.0.0.1:3000",
+      "USERNAME=contract-user",
+      "PASSWORD=contract-password",
+      "LOGIN_PATH_PATTERN=/login",
+      "USERNAME_SELECTOR=#username",
+      "PASSWORD_SELECTOR=#password",
+      "SUBMIT_SELECTOR=button[type=\"submit\"]",
+      "SUCCESS_PATH_NOT=/login",
+      "",
+    ].join("\n"),
+    { mode: 0o600 },
+  );
+  tmpTooManyLoginProfileDir = await fs.mkdtemp(path.join(os.tmpdir(), "tmwd-login-profiles-overflow-contract-"));
+  await Promise.all(Array.from({ length: 201 }, async (_item, index) => fs.writeFile(
+    path.join(tmpTooManyLoginProfileDir, `overflow-${String(index).padStart(3, "0")}.env`),
+    "",
+    { mode: 0o600 },
+  )));
+  process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH = tmpTabRegistryPath;
+  process.env.BROWSER_STRUCTURED_LOGIN_PROFILE_DIR = tmpLoginProfileDir;
+  process.env.BROWSER_STRUCTURED_RUN_ROOT = tmpRunRoot;
+  const rpc = createRpcClient();
+  let hangingTmwdLinkServer;
+  let executeErrorTmwdLinkServer;
+  try {
+    hangingTmwdLinkServer = await startHangingTmwdLinkServer();
+    executeErrorTmwdLinkServer = await startExecuteErrorTmwdLinkServer();
+    const init = await rpc.call(
+      "initialize",
+      {
+        protocolVersion: "2024-11-05",
+        capabilities: {},
+        clientInfo: {
+          name: "browser67-browser-mcp-contract",
+          version: "1.0.0",
+        },
+      },
+      cli.timeout_ms,
+    );
+    assert.equal(typeof init?.result?.serverInfo?.name, "string");
+    assert.equal(init.result.serverInfo.name, "browser67-tmwd-browser");
+    rpc.notify("notifications/initialized", {});
+
+    await runContractCase("tool-surface", () => assertToolSurface({ rpc, timeoutMs: cli.timeout_ms }));
+
+    const missingScriptCall = await rpc.call(
+      "tools/call",
+      {
+        name: "browser_execute_js",
+        arguments: {
+          tmwd_mode: "tmwd",
+          tmwd_transport: "ws",
+        },
+      },
+      cli.timeout_ms,
+    );
+    assert.equal(missingScriptCall?.result?.isError, true);
+    assertTextJsonContent(missingScriptCall.result, "browser_execute_js missing script error");
+    const missingScriptOutcome = firstOutcomeContent(missingScriptCall.result);
+    assert.equal(missingScriptOutcome?.schema, "browser67.tool-outcome.v3");
+    assert.equal(missingScriptOutcome?.ok, false);
+    assert.equal(missingScriptOutcome?.status, "failed");
+    assert.equal(missingScriptOutcome?.page, null);
+    assert.equal(missingScriptOutcome?.error?.code, "INVALID_ARGUMENT");
+    assert.equal(missingScriptOutcome?.error?.retryable, false);
+    assert.equal(missingScriptOutcome?.meta?.tool, "browser_execute_js");
+    assert.equal(Array.isArray(missingScriptOutcome?.warnings), true);
+    assert.equal(Array.isArray(missingScriptOutcome?.artifacts), true);
+    const missingScriptPayload = firstJsonContent(missingScriptCall.result);
+    assert.equal(missingScriptPayload?.error_code, "INVALID_ARGUMENT");
+    assert.equal(missingScriptPayload?.retryable, false);
+
+    const nativeInputSummary = await runContractCase("native-input-ops", () => assertNativeInputOpsContract({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+    }));
+
+    const ioOpsSummary = await runContractCase("file-download-clipboard-ops", () => assertFileDownloadClipboardOpsContract({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+    }));
+
+    const consoleOpsSummary = await runContractCase("console-ops", () => assertConsoleOpsContract({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+    }));
+
+    await runContractCase("file-scheme-preflight", () => assertFileSchemePreflight({
+      rpc, timeoutMs: cli.timeout_ms, registryPath: tmpTabRegistryPath,
+    }));
+    const tabLifecycleSummary = await runContractCase("tab-lifecycle-ops", () => assertTabLifecycleOpsContract({
+      registryPath: tmpTabRegistryPath,
+      rpc,
+      timeoutMs: cli.timeout_ms,
+    }));
+
+    await runContractCase("auth-ops", () => assertAuthOpsContract({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+      tmpLoginProfileDir,
+      tmpTooManyLoginProfileDir,
+    }));
+
+    const runWaitHealthSummary = await runContractCase("run-wait-health-ops", () => assertRunWaitHealthOpsContract({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+      runRoot: tmpRunRoot,
+    }));
+
+    const screenshotSummary = await runContractCase("screenshot-ops", () => assertScreenshotOpsContract({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+    }));
+
+    const evidenceBundleSummary = await runContractCase("evidence-bundle-ops", () => assertEvidenceBundleOpsContract({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+    }));
+
+    const fallbackSummary = await runContractCase("execute-js-fallback-policy", () => assertExecuteJsFallbackPolicy({
+      rpc,
+      timeoutMs: cli.timeout_ms,
+      wsEndpoint: cli.ws_endpoint,
+      hangingLinkEndpoint: hangingTmwdLinkServer.endpoint,
+      executeErrorLinkEndpoint: executeErrorTmwdLinkServer.endpoint,
+      registryPath: tmpTabRegistryPath,
+    }));
+
+    process.stdout.write(
+      `${JSON.stringify({
+        ok: true,
+        initialize_ok: true,
+        tools_list_ok: true,
+        tool_call_error_ok: true,
+        tool_call_error_code: fallbackSummary.errorPayload.error_code,
+        tool_call_retryable: fallbackSummary.errorPayload.retryable,
+        tool_call_policy_ignored_error_code: fallbackSummary.policyIgnoredPayload?.error_code,
+        tool_call_transport_attempts: fallbackSummary.errorPayload.transport_attempts,
+        tool_call_auto_fallback_error_code: fallbackSummary.autoFallbackPayload?.error_code,
+        tool_call_auto_fallback_status: fallbackSummary.autoFallbackPayload?.native_auto_fallback?.status,
+        tool_call_strict_auto_fallback_status: fallbackSummary.strictAutoFallbackPayload?.native_auto_fallback?.status,
+        tool_call_aggressive_auto_fallback_status: fallbackSummary.aggressiveAutoFallbackPayload?.native_auto_fallback?.status,
+        tool_call_invalid_policy_normalized: fallbackSummary.invalidPolicyPayload?.native_auto_fallback?.policy,
+        tool_call_timeout_balanced_status: fallbackSummary.timeoutBalancedPayload?.native_auto_fallback?.status,
+        tool_call_timeout_aggressive_status: fallbackSummary.timeoutAggressivePayload?.native_auto_fallback?.status,
+        tool_call_exec_error_balanced_status: fallbackSummary.executionErrorBalancedPayload?.native_auto_fallback?.status,
+        tool_call_exec_error_aggressive_status: fallbackSummary.executionErrorAggressivePayload?.native_auto_fallback?.status,
+        native_input_capabilities_ok: true,
+        native_input_platform: nativeInputSummary.nativeCapabilitiesPayload?.platform,
+        native_input_supported_actions: nativeInputSummary.nativeCapabilitiesPayload?.supported_actions,
+        native_input_dry_run_ok: true,
+        native_input_dry_run_next_step: nativeInputSummary.nativeDryRunPayload?.next_step,
+        native_input_unsupported_ok: true,
+        native_input_error_code: nativeInputSummary.nativeUnsupportedPayload?.error_code,
+        wrapper_file_ops_ok: ioOpsSummary.filePlanPayload?.status === "success",
+        wrapper_download_ops_ok: ioOpsSummary.downloadPreparePayload?.status === "success",
+        wrapper_tab_lifecycle_ok: true,
+        wrapper_tab_lifecycle_unmanaged_ignored: tabLifecycleSummary.tabCloseUnmanagedPayload?.unmanaged_tabs_ignored,
+        wrapper_auth_ops_ok: true,
+        wrapper_clipboard_ops_ok: ioOpsSummary.clipboardDryRunPayload?.status === "success",
+        wrapper_console_ops_ok: consoleOpsSummary.missing_action_error_code === "INVALID_ARGUMENTS",
+        wrapper_run_ops_ok: Boolean(runWaitHealthSummary.run_id),
+        wrapper_screenshot_ops_ok: screenshotSummary.missing_clip_error_code === "INVALID_ARGUMENT",
+        wrapper_evidence_bundle_ops_ok: evidenceBundleSummary.schema === "design-craft.l4-screenshots.v1",
+        wrapper_transport_health_status: runWaitHealthSummary.transport_health_status,
+        ws_endpoint: cli.ws_endpoint,
+      })}\n`,
+    );
+  } finally {
+    await rpc.close();
+    if (previousTabRegistryPath === undefined) {
+      delete process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH;
+    } else {
+      process.env.BROWSER_STRUCTURED_TAB_REGISTRY_PATH = previousTabRegistryPath;
+    }
+    if (previousLoginProfileDir === undefined) {
+      delete process.env.BROWSER_STRUCTURED_LOGIN_PROFILE_DIR;
+    } else {
+      process.env.BROWSER_STRUCTURED_LOGIN_PROFILE_DIR = previousLoginProfileDir;
+    }
+    if (previousRunRoot === undefined) {
+      delete process.env.BROWSER_STRUCTURED_RUN_ROOT;
+    } else {
+      process.env.BROWSER_STRUCTURED_RUN_ROOT = previousRunRoot;
+    }
+    if (hangingTmwdLinkServer && typeof hangingTmwdLinkServer.close === "function") {
+      await hangingTmwdLinkServer.close();
+    }
+    if (executeErrorTmwdLinkServer && typeof executeErrorTmwdLinkServer.close === "function") {
+      await executeErrorTmwdLinkServer.close();
+    }
+    await fs.rm(tmpTabRegistryPath, { force: true });
+    await fs.rm(tmpLoginProfileDir, { recursive: true, force: true });
+    await fs.rm(tmpRunRoot, { recursive: true, force: true });
+    if (tmpTooManyLoginProfileDir) {
+      await fs.rm(tmpTooManyLoginProfileDir, { recursive: true, force: true });
+    }
+  }
+}
+
+try {
+  await run();
+} catch (error) {
+  const details = error instanceof Error ? (error.stack ?? error.message) : String(error);
+  process.stderr.write(`browser67-browser-mcp-contract failed: ${details}\n`);
+  process.exitCode = 1;
+}

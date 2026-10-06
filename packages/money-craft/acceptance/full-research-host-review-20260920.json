@@ -1,0 +1,95 @@
+{
+  "schema": "money-craft.full-research-host-review.v1",
+  "status": "FAIL_FULL_E2E_RENDER_GATE_ORDERING",
+  "date": "2026-09-20",
+  "elapsed_seconds": 969.462,
+  "exit_code": 0,
+  "timed_out": false,
+  "candidate_unchanged": true,
+  "global_install_unchanged": true,
+  "host_tools_unchanged": true,
+  "parent_intervention_during_host": false,
+  "parent_deterministic_checks": {
+    "snapshot": true,
+    "current": true,
+    "all": true,
+    "ledger": true
+  },
+  "core_complete": true,
+  "calculations": 67,
+  "reconciliation_checks": 3,
+  "raw_capture_objects": 10,
+  "unique_capture_urls": 7,
+  "pdf_pages": 8,
+  "content_units_checked_by_host": 164,
+  "criteria": {
+    "E01": "PASS",
+    "E02": "PASS_WITH_DISCLOSED_GAPS",
+    "E03": "PASS_WITH_DISCLOSED_GAPS",
+    "E04": "PASS_BOUNDED_PARENT_REVIEW",
+    "E05": "PASS_WITH_DISCLOSED_GAPS",
+    "E06": "PASS",
+    "E07": "FAIL_REQUIRED_RENDER_CHECKS_NOT_CLOSED_BEFORE_SEAL",
+    "E08": "PASS_INTEGRITY_ONLY"
+  },
+  "failures": [
+    "Four PDF lint lines contain prohibited em dash range separators",
+    "Generic HTML content coverage remains indeterminate",
+    "Required render checks not all closed before stage completion and seal"
+  ],
+  "financial_evidence_gaps_are_not_the_e2e_failure_reason": true,
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260920-full-research-host/host/host.json",
+      "sha256": "545e568e50dbfeeae0d1ef2c94ba46812713b0580f9210cb0b2a98541b65ba8f"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/host/answer.md",
+      "sha256": "20d739f3c926256f05e884a6e36732a7e06959bb39fe542419cb5080e4073548"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/host/workspace/delivery-status.json",
+      "sha256": "39dec9ff672fe15270995dfca17cd7427c345d90af2ebd7c10db258fee654b1c"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/host/workspace/logs/pdf-markdown-check.txt",
+      "sha256": "5eb43bc4b8c5be7364fcb13614fb2736efe89a8108d4f93919fcd9e16716502f"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/host/workspace/logs/kami-content-check-retry.txt",
+      "sha256": "478a1269186c12462a7645a15907f4f572a156062ea1e6e2c7a8b35bdbe4e23f"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/host/workspace/logs/content-coverage.json",
+      "sha256": "895af5cdb4fb2be182fe169a6c262732643b24a3de5b425623ee606c9f52dfcb"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/parent-review/review.json",
+      "sha256": "32e5573d0563deb28f0c55e3817125b1ea28e382d8fe8c417e79d97dbccf6590"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/parent-review/core.json",
+      "sha256": "e9297c236d95b6fe49b04822741eb9efe29cd73bdd4a3cd457f2864a90899d83"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/parent-review/source-readback.json",
+      "sha256": "02ca19b3909836ad28337e3e8bea679f04d5239d0a19c17d0c41cf2b717a276f"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/parent-review/snapshot.json",
+      "sha256": "fb08bcea899980741982ae0daf0f2c7d1421f804b2a399270cb4310eb04077e8"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/parent-review/current.json",
+      "sha256": "81f9b3ca5cf91b1b3d4935dfffa900f51f53b20fb26185c49c0610afcafa00ae"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/parent-review/all.json",
+      "sha256": "0ab0ee4479fdb30dc183d262ed835e37f6af635b3afa771b4ab91c271316ab70"
+    },
+    {
+      "path": "local/skill-evals/20260920-full-research-host/parent-review/ledger.json",
+      "sha256": "c61e2d6430694a769da97188e32ad7ffdc59d7ad40925d34e78c654fd63fd2c8"
+    }
+  ]
+}

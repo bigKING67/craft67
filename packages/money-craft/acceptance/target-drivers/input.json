@@ -1,0 +1,91 @@
+{
+  "schema": "money-craft.target-driver-hurdle.v1",
+  "as_of": "2025-04-30",
+  "execution_date": "2026-09-20",
+  "security_id": "US-NYSE:TGT",
+  "currency": "USD",
+  "unit": "USD million except per-share and ratios",
+  "historical_period": {
+    "start": "2024-02-04",
+    "end": "2025-02-01"
+  },
+  "forecast_period": {
+    "start": "2025-02-02",
+    "end": "2026-01-31"
+  },
+  "historical": {
+    "revenue": "106566",
+    "operating_income": "5566",
+    "net_interest": "411",
+    "other_income": "106",
+    "pretax": "5261",
+    "income_tax": "1170",
+    "net_income": "4091",
+    "weighted_diluted_shares": "461.8"
+  },
+  "assumptions": {
+    "revenue_growth": "0.01",
+    "tax_rates": [
+      "0.23",
+      "0.235",
+      "0.24"
+    ],
+    "eps_hurdles": [
+      "8.80",
+      "9.15",
+      "9.80"
+    ],
+    "nonoperating": "Hold FY2024 net interest and other income fixed; not management guidance",
+    "shares": "Hold FY2024 weighted diluted shares fixed for EPS modelling; not valuation-date actual outstanding shares or a share-repurchase forecast",
+    "revenue": "Use exactly 1% as a point within management wording around 1%; not precise guidance",
+    "normalization_status": "NO_VERIFIED_SUSTAINABLE_BASELINE"
+  },
+  "input_sources": {
+    "historical": "S01 Form10-K p42 FY2024 statement",
+    "revenue_growth": "S02 Guidance March4",
+    "tax_rates": "S02 23-24% endpoints; midpoint is calculated analytical choice",
+    "eps_hurdles": "S02 guidance endpoints; S03 named analyst forecast 9.15"
+  },
+  "events": [
+    {
+      "id": "E01",
+      "event_date": "2025-03-04",
+      "source_id": "S02",
+      "status": "OBSERVED_GUIDANCE",
+      "affected": [
+        "revenue",
+        "tax",
+        "operating_margin"
+      ],
+      "action": "Reference only; company expectations not independently verified outcome"
+    },
+    {
+      "id": "E02",
+      "event_date": "2025-03-04",
+      "source_id": "S10",
+      "status": "OBSERVED_MANAGEMENT_STATEMENT",
+      "affected": [
+        "margin",
+        "buybacks",
+        "cash"
+      ],
+      "action": "Exclude already-realized shrink recovery and achieved savings from incremental base; no guaranteed buyback boost",
+      "availability_note": "Event March4; transcript footer March6 artifact timestamp; exact original web posting time not preserved"
+    },
+    {
+      "id": "E03",
+      "event_date": "2025-04-09",
+      "effective_on": "2025-04-10",
+      "source_id": "S11",
+      "status": "OBSERVED_POLICY_CHANGE",
+      "affected": [
+        "import_cost",
+        "pricing",
+        "demand",
+        "working_capital"
+      ],
+      "action": "Require re-underwriting March forecast; no automatic tariff-to-COGS coefficient, not proof issuer withdrew guidance"
+    }
+  ],
+  "excluded_future_material": "May2025 and later actual earnings, later tariff changes, current quote meta; not used as forecast inputs"
+}

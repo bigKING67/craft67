@@ -1,0 +1,34 @@
+{
+  "command": "pi --print --no-session --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-5.5 --thinking high --skill '$VARIANT_SKILL_1'",
+  "contract_sha256": "9982847aa02610d7840eea6647b935c359dcdac7337bbe5ff3ebd29ee938d86b",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 98.608,
+  "host": "pi",
+  "host_version": "0.80.6",
+  "installed_skill_paths": {
+    "skills/design-craft": "$VARIANT_WORKSPACE/.pi/skills/01-design-craft"
+  },
+  "model": "codex/gpt-5.5",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.design-craft.md",
+  "output_sha256": "22b194875d656e5a044411733afc6d737218cacd4b8e10cc2f06c56dd563858a",
+  "prompt_sha256": "32a158dae9908cefce2747965d6451cf024eb3a877438295898a75412e11e0c8",
+  "returncode": 0,
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v3",
+  "skill_install_mode": "isolated_project_copy",
+  "skill_trees": {
+    "skills/design-craft": "a1d70f431e9d59a4537e5082f1d363029a604086f5bf2a80cf6fa508722a5ca1"
+  },
+  "started_at": "2026-07-23T11:12:10Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "high",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 600,
+  "variant": "design-craft",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "b8d704dfb81aac692f4449b0dd29d7859bbc6c2ecb5b800ee6c6caf8b77e6745",
+  "worktree_before_sha256": "b8d704dfb81aac692f4449b0dd29d7859bbc6c2ecb5b800ee6c6caf8b77e6745",
+  "worktree_unchanged": true
+}

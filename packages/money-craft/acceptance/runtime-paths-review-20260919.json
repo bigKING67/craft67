@@ -1,0 +1,59 @@
+{
+  "schema": "money-craft.runtime-paths-review.v1",
+  "date": "2026-09-19",
+  "scope": "Whole runtime_paths.py and existing constant-filename/CLI callers, current POSIX environment",
+  "source_hashes": {
+    "skills/money-craft/scripts/runtime_paths.py": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+    "tests/test_runtime_paths.py": "0749b1f2718df9c0aab408e3aa46824014c7893791f9d90b23ce43536cf7006b",
+    "skills/money-craft/references/financial-data-and-evidence.md": "693d622f9b94fe941d980b3310c58e05bb224a1cd83fd6eb5337314d9b5d993c"
+  },
+  "findings": [
+    {
+      "status": "FIXED",
+      "description": "Resolving the env path before lstat bypassed final symlink rejection; inspect lexical path and opened descriptor identity/permissions, bound read size."
+    },
+    {
+      "status": "FIXED",
+      "description": "Late parse errors left partially loaded environment; stage values before ordinary mapping update."
+    },
+    {
+      "status": "FIXED",
+      "description": "Explicit empty process variables were overwritten; preserve existing keys regardless of emptiness."
+    }
+  ],
+  "validation": {
+    "runtime_path_tests": 10,
+    "full_tests": 354,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 3,
+    "real_cli": "Explicit symlink env file refused before self-test dispatch.",
+    "fault_injection": "Regular/symlink replacement between inspection and open rejected with environment unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "whole_file_read": true,
+    "runtime_path_tests": 10,
+    "skipped_tests": 0,
+    "additional_cases": 10,
+    "source_hashes": {
+      "skills/money-craft/scripts/runtime_paths.py": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+      "tests/test_runtime_paths.py": "0749b1f2718df9c0aab408e3aa46824014c7893791f9d90b23ce43536cf7006b"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T011711067584Z"
+  },
+  "limits": [
+    "Windows and NFS unverified.",
+    "Parent-directory trust and same-inode concurrent content writes not guaranteed.",
+    "Custom MutableMapping update failure rollback not provided.",
+    "config_file currently receives trusted constant filenames; not a public arbitrary filename validation API.",
+    "No provider business review, app, commit, push or release."
+  ]
+}

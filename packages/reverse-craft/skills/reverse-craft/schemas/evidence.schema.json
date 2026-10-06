@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/reverse-craft/schemas/evidence.schema.json",
+  "title": "Reverse Craft evidence snapshot v1",
+  "type": "object",
+  "required": ["schema", "items"],
+  "properties": {
+    "schema": {"const": "reverse-craft.evidence.v1"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "source", "acquisition", "observed_at", "size", "sha256", "stored_path", "external_path", "note"],
+        "properties": {
+          "id": {"pattern": "^E-[0-9]{4,}$"},
+          "kind": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "minLength": 1},
+          "acquisition": {"enum": ["verified-copy", "external-reference"]},
+          "observed_at": {"type": "string", "format": "date-time"},
+          "size": {"type": "integer", "minimum": 0},
+          "sha256": {"pattern": "^[0-9a-f]{64}$"},
+          "stored_path": {"type": ["string", "null"]},
+          "external_path": {"type": ["string", "null"]},
+          "note": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

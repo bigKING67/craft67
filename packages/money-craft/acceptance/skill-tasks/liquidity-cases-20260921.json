@@ -1,0 +1,77 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "liquidity-entity-scope",
+      "category": "合并与母公司口径",
+      "status": "READY_SYNTHETIC_NOT_EXECUTED",
+      "data_kind": "SYNTHETIC",
+      "prompt": "算集团差额，再判断能否作为母公司分红空间。 只使用给定合成材料，不联网、不生成完整报告；请保留计算回执并说明证据边界。",
+      "facts": "虚构上市公司 Synthetic Liquidity Company，TEST:LIQUIDITY，普通股，交易及报告币种CNY；研究日2026-09-21，无真实账户或行情。S01：虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。集团现金900、选定融资负债600；母公司现金120，其他应付款450，未给对手方与到期安排。 S02：同一虚构发行人的附注口径说明，非独立双源。",
+      "criteria": [
+        "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+        "集团列不能代替母公司列；其他应付款清偿安排未知。",
+        "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "liquidity-current-convertible",
+      "category": "其他流动负债融资工具",
+      "status": "READY_SYNTHETIC_NOT_EXECUTED",
+      "data_kind": "SYNTHETIC",
+      "prompt": "计算融资负债，并说明零票息与报表重分类是否影响纳入。 只使用给定合成材料，不联网、不生成完整报告；请保留计算回执并说明证据边界。",
+      "facts": "虚构上市公司 Synthetic Liquidity Company，TEST:LIQUIDITY，普通股，交易及报告币种CNY；研究日2026-09-21，无真实账户或行情。S01：虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。短期借款80、非流动借款20；其他流动负债另含零票息可转债30；附注债券表再次列同一可转债30。 S02：同一虚构发行人的附注口径说明，非独立双源。",
+      "criteria": [
+        "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+        "漏掉30的流动可转债；附注重复出现不能再加第二次。",
+        "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "liquidity-restricted-cash",
+      "category": "重复扣除限制项",
+      "status": "READY_SYNTHETIC_NOT_EXECUTED",
+      "data_kind": "SYNTHETIC",
+      "prompt": "有人从现金等价物再扣受限资金，请检查计算与经济含义。 只使用给定合成材料，不联网、不生成完整报告；请保留计算回执并说明证据边界。",
+      "facts": "虚构上市公司 Synthetic Liquidity Company，TEST:LIQUIDITY，普通股，交易及报告币种CNY；研究日2026-09-21，无真实账户或行情。S01：虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。货币资金100，其中受限20；现金等价物80已明确排除该20，没有其他已披露调整。 S02：同一虚构发行人的附注口径说明，非独立双源。",
+      "criteria": [
+        "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+        "现金等价物已经排除受限20，不能重复扣减并称保守值。",
+        "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "liquidity-maturity-release",
+      "category": "到期与解押",
+      "status": "READY_SYNTHETIC_NOT_EXECUTED",
+      "data_kind": "SYNTHETIC",
+      "prompt": "算一年内桶在质押配置假设下的余额，判断能否立即用于偿债。 只使用给定合成材料，不联网、不生成完整报告；请保留计算回执并说明证据边界。",
+      "facts": "虚构上市公司 Synthetic Liquidity Company，TEST:LIQUIDITY，普通股，交易及报告币种CNY；研究日2026-09-21，无真实账户或行情。S01：虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。原始期限超过一年的产品共227，其中剩余一年内到期158、非流动69；质押19未分配到两桶，未提供解押日或提前退出条款。 S02：同一虚构发行人的附注口径说明，非独立双源。",
+      "criteria": [
+        "实际加载money-craft及research-semantic-review，按宿主要求成功路由；不向执行者暴露criteria或正反例。",
+        "到期桶不是即刻到账；质押配置和其他可用条件未证实。",
+        "区分精确计算与语义支持；对缺失条件停止确定性结论，不只追加免责声明。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

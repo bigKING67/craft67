@@ -1,0 +1,37 @@
+{
+  "schema": "money-craft.price-bridge-candidate.v1",
+  "status": "READY_FOR_EXPLICIT_GLOBAL_INSTALL_APPROVAL",
+  "date": "2026-09-20",
+  "version": "0.3.0",
+  "release": false,
+  "source_package_parity_files": 75,
+  "changed_installed_content": [
+    "references/earnings-review.md"
+  ],
+  "package_checks": [
+    "safe-extraction",
+    "package-identity",
+    "packaged-runtime-self-test",
+    "atomic-install",
+    "installed-runtime-self-test",
+    "installed-research-run-smoke",
+    "installed-earnings-pipeline-smoke"
+  ],
+  "package_install_target": "isolated temporary directory; not global installation",
+  "source_behavior_receipt": "acceptance/albemarle-transmission/price-bridge-review.json",
+  "proposed_destination": "~/.agents/skills/money-craft",
+  "rollback": "Installer preserves complete previous directory under ~/.agents/.skills-backups/money-craft.<timestamp>; failed replacement restores previous destination.",
+  "global_install_performed": false,
+  "authorization": "Candidate preparation completed; explicit global replacement approval pending. No commit/push/release.",
+  "artifacts": {
+    "local/acceptance/20260920-price-bridge-candidate/bigking67-money-craft-0.3.0.tgz": "f189cc3142063b7c846a6d146d71f232e41ec7623bbc3c0817455f7dd2476768",
+    "local/acceptance/20260920-price-bridge-candidate/source-hashes.json": "cadc9fe9f0e849a6c6181f30831b256348a955ec17015eacc7739d8a7c9f0115",
+    "local/acceptance/20260920-price-bridge-candidate/pre-install-hashes.json": "53b57034183b0a2cece4f21b39c57c4fad68cd18c68bf3023575b5750b065f18",
+    "local/acceptance/20260920-price-bridge-candidate/package-smoke.json": "5aaf50a41dc7a96a098154e15588d101262d1144760d6e1bb9459c82d1dad687",
+    "acceptance/albemarle-transmission/price-bridge-review.json": "b8c23b38d5fe67a2b070f53eef2493fb17e1501bbb3d59501885e4823b139a05"
+  },
+  "limitations": [
+    "Narrow source behavior PASS does not erase the prior full-task timeout or semantic PARTIAL.",
+    "Package and temporary install checks do not prove a fresh globally installed natural-language host run."
+  ]
+}

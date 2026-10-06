@@ -1,0 +1,56 @@
+{
+  "schema": "money-craft.yfinance-pandas-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Actual pandas objects and adapter export serialization",
+  "source_hashes": {
+    "skills/money-craft/scripts/yfinance_adapter.py": "b8e877734c543c2bff81d71da19fbd13991d51337879db9f47a448829871707d",
+    "tests/test_yfinance_adapter.py": "2b3907bc4cdea641b3356a5a24752e77eeaf1f47205dcbf9c1f705d7b411d9d9",
+    "tests/test_yfinance_pandas.py": "22b9c22105b10a2d53f94c74050eff235b2e3e2759ef33fadaa9e38408dd0e03"
+  },
+  "environment": {
+    "python": "3.14.7",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "yfinance": "1.7.0",
+    "location": "isolated temporary venv; original broken data venv unchanged"
+  },
+  "finding": "Actual pd.NA was stringified and pd.NaT mishandled; identify loaded pandas singleton objects before generic scalar conversion, normalize to None.",
+  "validation": {
+    "yfinance_tests": 27,
+    "pandas_integration_tests": 4,
+    "full_tests": 408,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 2,
+    "initial_red_errors": 1
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No remaining blockers in declared pandas/serialization scope",
+    "tests": 27,
+    "source_hashes": {
+      "skills/money-craft/scripts/yfinance_adapter.py": "b8e877734c543c2bff81d71da19fbd13991d51337879db9f47a448829871707d",
+      "tests/test_yfinance_adapter.py": "2b3907bc4cdea641b3356a5a24752e77eeaf1f47205dcbf9c1f705d7b411d9d9",
+      "tests/test_yfinance_pandas.py": "22b9c22105b10a2d53f94c74050eff235b2e3e2759ef33fadaa9e38408dd0e03"
+    },
+    "extra_checks": [
+      "Actual nullable Int64/Float64/boolean/string missing values.",
+      "Object DataFrame Decimal precision, NumPy integers and JSON null.",
+      "Ordinary strings matching missing sentinel names remain strings."
+    ]
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T090658274159Z"
+  },
+  "limits": [
+    "Local real pandas objects and fake Provider only; no Yahoo/Provider data requests.",
+    "Other dependency versions, all dtypes and full yfinance module closure not claimed.",
+    "Original data environment remains unusable until separately repaired.",
+    "No app, commit, push or release."
+  ]
+}

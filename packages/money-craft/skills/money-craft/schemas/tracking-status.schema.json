@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-status.schema.json",
+  "title": "Money Craft Tracking Status",
+  "type": "object",
+  "required": ["schema", "valid", "tracking_root", "current", "revision_count", "revisions", "working_count", "workspaces", "automatic_trading", "network_used"],
+  "properties": {
+    "schema": {"const": "money-craft.tracking-status.v1"},
+    "valid": {"const": true},
+    "tracking_root": {"type": "string", "minLength": 1},
+    "current": {"type": ["object", "null"]},
+    "revision_count": {"type": "integer", "minimum": 0},
+    "revisions": {"type": "array", "items": {"type": "string", "pattern": "^t[0-9]{4}$"}},
+    "working_count": {"type": "integer", "minimum": 0},
+    "workspaces": {"type": "array", "items": {"type": "string"}},
+    "automatic_trading": {"const": false},
+    "network_used": {"const": false}
+  }
+}

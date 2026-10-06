@@ -1,0 +1,11 @@
+{
+  "schema_version": "creative-craft.evaluation.v1",
+  "evaluation_id": "legacy-evaluation",
+  "target_id": "legacy-target",
+  "stage": "route",
+  "brief_id": "legacy-brief",
+  "gates": {"rights_clear": false, "brief_locked": false, "deliverable_specified": false, "actual_output_observed": null},
+  "dimensions": [{"id": "strategic_fit", "weight": 100, "score": 0, "evidence_state": "UNVERIFIED", "evidence": "", "confidence": "low"}],
+  "recommendation": "Migrate to Evaluation v2.",
+  "remaining_unknowns": ["Legacy fixture only."]
+}

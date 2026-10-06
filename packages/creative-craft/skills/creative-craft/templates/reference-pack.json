@@ -1,0 +1,45 @@
+{
+  "schema_version": "creative-craft.reference-pack.v1",
+  "reference_pack_id": "reference-pack-tbd",
+  "name": "TBD Reference Pack",
+  "version": "0.1.0",
+  "status": "draft",
+  "classification": "internal",
+  "owner": "TBD",
+  "purpose": "TBD",
+  "reviewed_at": null,
+  "review_after": null,
+  "supersedes": null,
+  "entities": [
+    {
+      "reference_id": "reference-tbd",
+      "entity_type": "other",
+      "name": "TBD",
+      "relationship": "reference",
+      "summary": "",
+      "source_refs": [],
+      "observations": [
+        {
+          "observation_id": "observation-tbd",
+          "dimension": "TBD",
+          "evidence_state": "UNVERIFIED",
+          "statement": "TBD",
+          "evidence_refs": []
+        }
+      ],
+      "transferable_principles": [],
+      "non_transferable_elements": [],
+      "applicable_to": [],
+      "reference_roles": [],
+      "rights_policy": "unverified",
+      "prohibited_use": [],
+      "asset_refs": [],
+      "may_override_primary_brand": false
+    }
+  ],
+  "asset_ledger": {
+    "path": "asset-ledger.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "source_references": []
+}

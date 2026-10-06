@@ -1,0 +1,60 @@
+{
+  "schema": "design-craft.cross-agent-score.v2",
+  "task_id": "same-prompt-motion-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "pi 0.80.3",
+  "model": "deepseek/deepseek-v4-pro",
+  "reasoning_profile": "high",
+  "runner_os": "macOS arm64",
+  "date": "2026-07-11",
+  "prompt_sha256": "0b1a5b271c01e7570cd15d02d15893b208e5178f493da12b51e904cda4aa519e",
+  "scorecard_sha256": "017291b4dd1a7ee08de44ffb910828d98f7fc4203696b808b9cff4f291150783",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "487e45d780f51c00d954e9f29ded8dd4a138498d",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "skill_tree_sha256": "2f460d2c23e797f38aa08f7cf193b13cd539462571d621bcdb1f69cb42c7e761",
+  "skill_path": "~/Documents/sixseven/codeproject/design-craft/skills/design-craft",
+  "command_summary": "pi 0.80.3 --no-session --no-extensions --no-context-files with read-only tools, deepseek/deepseek-v4-pro, high thinking, explicit canonical design-craft 0.5.0, and the exact benchmark prompt; final Markdown normalized only for trailing whitespace",
+  "output_path": "pi-output.md",
+  "output_sha256": "f55d14cfd8ba91b6d020d0e61533791bc74df1f5272f159c890b56c8fd41963c",
+  "score": 91,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Understands the calm repeated-use utility context and that sheet motion exists for causality and direct manipulation rather than entertainment."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Uses motion-quality, interaction-physics, product, accessibility, and validation guidance relevant to the gesture-sheet benchmark."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 14,
+      "note": "Rejects transition-all, ease-in settlement, input locking, and decorative motion, but still recommends scaling the whole sheet rather than isolating handle feedback."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the evidence static-source-only and names the missing trace, computed-style, Reduced Motion, responsive, and real-device checks."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 13,
+      "note": "Most runtime-dependent claims are marked unverified, but 480ms is called conclusively invalid despite the cited range, and the final block claim overstates runtime certainty."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 11,
+      "note": "Covers the requested physics vocabulary, but the sample keeps top-based tracking and settlement, conflicts with whole-sheet transforms, and mixes px/ms velocity with a projection formula expecting px/s."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "Remains motion-focused and read-only, with moderate excess implementation detail and several overly specific code prescriptions."
+    }
+  }
+}

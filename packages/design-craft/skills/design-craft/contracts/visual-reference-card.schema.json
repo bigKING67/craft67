@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/skills/design-craft/contracts/visual-reference-card.schema.json",
+  "title": "design-craft visual reference card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "status",
+    "source",
+    "origin",
+    "classification",
+    "evidence",
+    "observations",
+    "transferable_mechanisms",
+    "do_not_copy",
+    "not_suitable_when",
+    "project_validation_refs",
+    "rights",
+    "lifecycle"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.visual-reference-card.v1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "status": {
+      "enum": [
+        "candidate",
+        "reviewed",
+        "exemplar_only",
+        "rejected",
+        "stale",
+        "unavailable",
+        "project_validated"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "issue_date",
+        "post_url",
+        "observed_at",
+        "source_sha256"
+      ],
+      "properties": {
+        "provider": {"type": "string", "minLength": 1},
+        "issue_date": {"type": "string", "format": "date"},
+        "post_url": {"type": "string", "format": "uri"},
+        "observed_at": {"type": "string", "format": "date"},
+        "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "domain", "title"],
+      "properties": {
+        "url": {"type": "string", "format": "uri"},
+        "domain": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "source_description": {"type": "string", "maxLength": 1000}
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_surface",
+        "product_archetype",
+        "reference_roles",
+        "recommended_surface_modes",
+        "blocked_surface_modes"
+      ],
+      "properties": {
+        "source_surface": {"type": "string", "minLength": 1},
+        "product_archetype": {"type": "string", "minLength": 1},
+        "reference_roles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["structure", "responsive", "tone", "interaction", "counter_reference"]}
+        },
+        "recommended_surface_modes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["Persuade", "Operate", "Read", "Experience"]}
+        },
+        "blocked_surface_modes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["Persuade", "Operate", "Read", "Experience"]}
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["desktop", "mobile", "origin_live", "interaction", "accessibility", "performance"],
+      "properties": {
+        "desktop": {"$ref": "#/$defs/evidenceFacet"},
+        "mobile": {"$ref": "#/$defs/evidenceFacet"},
+        "origin_live": {"$ref": "#/$defs/evidenceFacet"},
+        "interaction": {"$ref": "#/$defs/evidenceFacet"},
+        "accessibility": {"$ref": "#/$defs/evidenceFacet"},
+        "performance": {"$ref": "#/$defs/evidenceFacet"}
+      }
+    },
+    "observations": {"$ref": "#/$defs/nonEmptyStrings"},
+    "transferable_mechanisms": {"$ref": "#/$defs/nonEmptyStrings"},
+    "do_not_copy": {"$ref": "#/$defs/nonEmptyStrings"},
+    "not_suitable_when": {"$ref": "#/$defs/nonEmptyStrings"},
+    "project_validation_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "ai_training", "assets_redistributed", "policy_url", "policy_observed_at"],
+      "properties": {
+        "mode": {"const": "reference-only"},
+        "ai_training": {"const": false},
+        "assets_redistributed": {"const": false},
+        "policy_url": {"type": "string", "format": "uri"},
+        "policy_observed_at": {"type": "string", "format": "date"}
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewed_at", "review_after"],
+      "properties": {
+        "reviewed_at": {"type": ["string", "null"], "format": "date"},
+        "review_after": {"type": ["string", "null"], "format": "date"}
+      }
+    }
+  },
+  "$defs": {
+    "evidenceFacet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence_refs", "notes"],
+      "properties": {
+        "status": {"enum": ["observed", "partial", "unverified", "unavailable"]},
+        "evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "notes": {"type": "string"}
+      }
+    },
+    "nonEmptyStrings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

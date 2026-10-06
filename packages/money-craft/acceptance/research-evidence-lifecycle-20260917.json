@@ -1,0 +1,64 @@
+{
+  "schema": "money-craft.research-evidence-lifecycle.v1",
+  "date": "2026-09-17",
+  "scope": "Sealed workspace mutation guards, provider capture integrity and legacy finalize preservation",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "4376948ac7c1ecbf0897c6102c1d205fe53b17d663bca5478980613a7ffb8ace",
+    "tests/test_research_run.py": "9f79b08f2007ef55653d4b4004f092fe787fd2756a98873c74834e9529f3cb0f",
+    "skills/money-craft/references/company-research.md": "5f633042cf2f3f7512aece47837c97a18cc6b2e6f1d15b0e0bc4e8f65cd12750"
+  },
+  "findings": [
+    {
+      "status": "FIXED",
+      "finding": "Sealed collect/import could mutate receipt-bound artifacts",
+      "validation": "Both actual CLI operations exit 4 finalized_workspace; all workspace files unchanged."
+    },
+    {
+      "status": "FIXED",
+      "finding": "First seal accepted raw response changed after capture",
+      "validation": "Raw drift, capture identity mismatch and missing metadata rejected before mutation; new manifests bind capture metadata."
+    },
+    {
+      "status": "FIXED",
+      "finding": "New manifest format could overwrite legacy sealed manifest before receipt comparison",
+      "validation": "Sealed finalize reads original manifest and skips audit writes; legacy repeat preserves every workspace file byte."
+    },
+    {
+      "status": "OPEN",
+      "finding": "atomic_bytes(replace=False) check then replace can overwrite a concurrent writer",
+      "evidence": "Independent reviewer reproduced two successful writers with barrier; one retained file. Not full multi-process CLI evidence."
+    },
+    {
+      "status": "OPEN",
+      "finding": "Workspace-wide concurrency isolation and multi-file interruption recovery incomplete"
+    }
+  ],
+  "validation": {
+    "research_tests": 30,
+    "full_tests": 293,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "synthetic_offline": true
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "tests": 30,
+    "source_sha256": "4376948ac7c1ecbf0897c6102c1d205fe53b17d663bca5478980613a7ffb8ace",
+    "production_capture_compatibility": "Offline capture_result fixtures: Fuyao string request ID and yfinance null request ID accepted",
+    "evidence_boundary": "Reviewer-reported temporary fixtures; no live provider proof"
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T040709154554Z"
+  },
+  "limits": [
+    "Lifecycle module remains PARTIAL.",
+    "No live provider authenticity, semantic claim support or freshness proof.",
+    "Legacy manifests remain unchanged and do not retroactively bind capture metadata. Missing historical capture metadata fails closed.",
+    "No process-kill, power-loss, Windows or network-filesystem durability proof in this increment.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

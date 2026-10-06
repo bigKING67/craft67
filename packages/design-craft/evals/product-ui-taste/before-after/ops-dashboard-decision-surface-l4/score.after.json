@@ -1,0 +1,59 @@
+{
+  "case_id": "ops-dashboard-decision-surface-l4-after",
+  "evidence_level": "L4",
+  "expected_score": 92,
+  "acceptable_range": [
+    90,
+    92
+  ],
+  "maturity_band": "polished and professional decision-surface fixture",
+  "screenshot_sha256": "d5f248952f11d871650997fd9e3d21774d9a9b81152b93e8c080e008e7b3fef8",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "d5f248952f11d871650997fd9e3d21774d9a9b81152b93e8c080e008e7b3fef8",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "compact500",
+      "css_size": [
+        500,
+        844
+      ],
+      "dimensions": [
+        500,
+        844
+      ],
+      "artifact_sha256": "9db549501f05cb5770c6430c97f9870e1efcb34bbc2b47572cea664596129e71",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "responsive_fit": "verified at desktop and compact500 through screenshot artifacts plus dump-dom layout metrics",
+    "primary_action_visibility": "verified in the desktop screenshot; the assign-blockers action is paired with the lead risk card and dispatch queue",
+    "loading_empty_error": "not applicable to this static calibration fixture",
+    "focus_keyboard_hover": "not claimed; CSS focus-visible exists, but no pointer or keyboard traversal artifact was captured"
+  },
+  "required_findings": [
+    "The after variant promotes the operational blocker into a dark lead risk object, making the top decision visible before the supporting metrics.",
+    "The first metric is now a semantic risk card while the remaining metrics behave as supporting context, producing a clear scan order.",
+    "The priority dispatch queue and next-action rail place owner, age, status, and recovery action in one decision path."
+  ],
+  "false_positive_guards": [
+    "Do not score above 92 because this is still a generic local fixture without production data variation or complete interaction-state coverage.",
+    "Do not claim production readiness beyond static local fixture behavior; no authenticated app route, network request, or backend state was exercised.",
+    "Do not claim exact 390px phone coverage; compact responsive evidence is explicitly limited to 500x844 in this run."
+  ]
+}

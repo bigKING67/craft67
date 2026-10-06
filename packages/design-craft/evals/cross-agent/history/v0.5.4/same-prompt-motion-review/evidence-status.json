@@ -1,0 +1,22 @@
+{
+  "schema": "design-craft.cross-agent-status.v1",
+  "task_id": "same-prompt-motion-review",
+  "hosts": {
+    "codex": {
+      "status": "observed",
+      "reason": "Current-source v4 score and run manifest recorded from final clean v0.5.4 source commit 0239d83 and skill tree 0aacdc6."
+    },
+    "pi": {
+      "status": "observed",
+      "reason": "Current-source v4 score and run manifest recorded from final clean v0.5.4 source commit 0239d83 and skill tree 0aacdc6."
+    },
+    "cursor": {
+      "status": "pending",
+      "reason": "This active definition has not yet admitted a current-source v4 run."
+    },
+    "claude": {
+      "status": "pending",
+      "reason": "This active definition has not yet admitted a current-source v4 run."
+    }
+  }
+}

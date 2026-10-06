@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v3",
+  "task_id": "same-prompt-motion-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "0.80.3",
+  "model": "codex/gpt-5.5",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "high",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-12",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_sha256": "ba56e288dc04a5c411768339f7969ee1b2e6403ca82b4ef551fab675f969978b",
+  "contract_sha256": "4037c3cf05d7cbb1fa968da25c0ae1f8a322dac49129b98070435f2ce6340c3d",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "ad650158dc8b40a1883a989cbb4305f693658138508c24c6a79d80303ef5f85f",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "f04e1050f63f2ed0a3d9970935d04129b771efca",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "c165a78d91eed7392b33659633efb756acbe03c1a0a06b16c8889604854f72f8",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-5.5 --thinking high",
+  "output_path": "pi-output.md",
+  "output_sha256": "7f362daaa463c5c0191fda88e604639e044f6a50d5f9a1fa5ecd76e431475490",
+  "score": 100,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Reads the sheet as a calm high-frequency operations control and preserves causal direct manipulation."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Selects motion, interaction-physics, accessibility, property-cost, and runtime-validation guidance only."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Rejects decorative scale and delayed travel while preserving feedback that clarifies drag and snap state."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Explicitly labels the review static-source only and avoids smoothness, frame-rate, browser, touch-feel, or device claims."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates visible code facts from unverified pointer traces, computed presentation values, browser behavior, and Reduced Motion runtime."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Specifies capture, coordinate mapping, transform ownership, interruption, velocity in CSS px/s, bounded projection, snap behavior, and reduced motion."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "Stays read-only, focused, and within the requested budget at 139 lines."
+    }
+  }
+}

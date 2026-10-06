@@ -1,0 +1,234 @@
+{
+  "schema": "design-craft.l4-screenshots.v1",
+  "case_id": "ops-dashboard-decision-surface-l4",
+  "route": "before_url and after_url",
+  "capture_context": {
+    "artifact_root": "~/.tmwd-browser-mcp/runtime/runs/ops-dashboard-decision-surface-l4/20260701T015356Z-chrome-headless-fallback/artifacts",
+    "capture_tool": "Google Chrome headless CLI fallback",
+    "preferred_tool": "tmwd_browser.browser_evidence_bundle_ops",
+    "fallback_reason": "Use when MCP screenshot capture is unavailable or a deterministic local fixture is enough.",
+    "before_url": "http://127.0.0.1:4175/ops-dashboard-decision-surface/?variant=before",
+    "after_url": "http://127.0.0.1:4175/ops-dashboard-decision-surface/?variant=after",
+    "notes": [
+      "PNG artifacts are repo-external; commit only metadata.",
+      "If TMWD becomes available later, run bundle verification against these paths before citing the case.",
+      "This fallback records viewport screenshots and PNG metadata; interaction states require separate evidence."
+    ]
+  },
+  "artifacts": {
+    "before": {
+      "desktop": {
+        "tool": "google-chrome-headless-cli",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/ops-dashboard-decision-surface-l4/20260701T015356Z-chrome-headless-fallback/artifacts/screenshot-viewport-ops-dashboard-decision-surface-l4-before-desktop-chrome-headless.png",
+        "sha256": "ebbfac6ad45fa9cc93252326d8d12892a75367812cc82f7e94875805af54c34e",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1.0,
+          "is_mobile": false
+        },
+        "capture": {
+          "requested_viewport": [
+            1440,
+            900
+          ],
+          "requested_dpr": 1.0,
+          "chrome_exit_code": 0,
+          "nonfatal_stderr": true
+        },
+        "layout_metrics": {
+          "inner_width": 1440,
+          "scroll_width": 1440,
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 120,
+              "width": 1200,
+              "right": 1320
+            },
+            "first_panel": {
+              "found": true,
+              "x": 120,
+              "width": 1200,
+              "right": 1320
+            }
+          }
+        }
+      },
+      "compact500": {
+        "tool": "google-chrome-headless-cli",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/ops-dashboard-decision-surface-l4/20260701T015356Z-chrome-headless-fallback/artifacts/screenshot-viewport-ops-dashboard-decision-surface-l4-before-compact500-chrome-headless.png",
+        "sha256": "cbbbf386e5867058cc322b8d8cf635a4cdd74beb6da58693aeedcd0b72f65d1c",
+        "dimensions": [
+          500,
+          844
+        ],
+        "viewport": {
+          "width": 500,
+          "height": 844,
+          "dpr": 1.0,
+          "is_mobile": true
+        },
+        "capture": {
+          "requested_viewport": [
+            500,
+            844
+          ],
+          "requested_dpr": 1.0,
+          "chrome_exit_code": 0,
+          "nonfatal_stderr": true
+        },
+        "layout_metrics": {
+          "inner_width": 500,
+          "scroll_width": 500,
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 14,
+              "width": 472,
+              "right": 486
+            },
+            "first_panel": {
+              "found": true,
+              "x": 14,
+              "width": 472,
+              "right": 486
+            }
+          }
+        }
+      }
+    },
+    "after": {
+      "desktop": {
+        "tool": "google-chrome-headless-cli",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/ops-dashboard-decision-surface-l4/20260701T015356Z-chrome-headless-fallback/artifacts/screenshot-viewport-ops-dashboard-decision-surface-l4-after-desktop-chrome-headless.png",
+        "sha256": "d5f248952f11d871650997fd9e3d21774d9a9b81152b93e8c080e008e7b3fef8",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1.0,
+          "is_mobile": false
+        },
+        "capture": {
+          "requested_viewport": [
+            1440,
+            900
+          ],
+          "requested_dpr": 1.0,
+          "chrome_exit_code": 0,
+          "nonfatal_stderr": true
+        },
+        "layout_metrics": {
+          "inner_width": 1440,
+          "scroll_width": 1440,
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 120,
+              "width": 1200,
+              "right": 1320
+            },
+            "first_panel": {
+              "found": true,
+              "x": 120,
+              "width": 799,
+              "right": 919
+            }
+          }
+        }
+      },
+      "compact500": {
+        "tool": "google-chrome-headless-cli",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/ops-dashboard-decision-surface-l4/20260701T015356Z-chrome-headless-fallback/artifacts/screenshot-viewport-ops-dashboard-decision-surface-l4-after-compact500-chrome-headless.png",
+        "sha256": "9db549501f05cb5770c6430c97f9870e1efcb34bbc2b47572cea664596129e71",
+        "dimensions": [
+          500,
+          844
+        ],
+        "viewport": {
+          "width": 500,
+          "height": 844,
+          "dpr": 1.0,
+          "is_mobile": true
+        },
+        "capture": {
+          "requested_viewport": [
+            500,
+            844
+          ],
+          "requested_dpr": 1.0,
+          "chrome_exit_code": 0,
+          "nonfatal_stderr": true
+        },
+        "layout_metrics": {
+          "inner_width": 500,
+          "scroll_width": 500,
+          "horizontal_overflow": false,
+          "selectors": {
+            "main": {
+              "found": true,
+              "x": 14,
+              "width": 472,
+              "right": 486
+            },
+            "first_panel": {
+              "found": true,
+              "x": 14,
+              "width": 472,
+              "right": 486
+            }
+          }
+        }
+      }
+    }
+  },
+  "layout_delta": {
+    "compact500": {
+      "before_dimensions": [
+        500,
+        844
+      ],
+      "after_dimensions": [
+        500,
+        844
+      ],
+      "requested_viewport": [
+        500,
+        844
+      ],
+      "horizontal_overflow": false,
+      "design_delta": "Both variants fit the compact viewport; the after variant preserves the decision order by stacking lead risk, metrics, priority rows, then next actions."
+    },
+    "desktop": {
+      "before_dimensions": [
+        1440,
+        900
+      ],
+      "after_dimensions": [
+        1440,
+        900
+      ],
+      "requested_viewport": [
+        1440,
+        900
+      ],
+      "horizontal_overflow": false,
+      "design_delta": "The before variant stretches the first panel full-width after equal overview cards; the after variant splits the first fold into a lead risk object and a narrower priority queue."
+    }
+  }
+}

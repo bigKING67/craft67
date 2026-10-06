@@ -1,0 +1,60 @@
+{
+  "schema": "design-craft.cross-agent-score.v2",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.144.1",
+  "model": "gpt-5.6-sol",
+  "reasoning_profile": "max",
+  "runner_os": "macOS arm64",
+  "date": "2026-07-11",
+  "prompt_sha256": "56a6cf59d4a5e5e98280481ec5d04b5207714eb69f0fdafcba06c7bedbbdfc4c",
+  "scorecard_sha256": "cfd347d26e3cb72636be39f8e94c17948bc7c4eecbe21a8e68303760dd9396ee",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "487e45d780f51c00d954e9f29ded8dd4a138498d",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "skill_tree_sha256": "2f460d2c23e797f38aa08f7cf193b13cd539462571d621bcdb1f69cb42c7e761",
+  "skill_path": "~/Documents/sixseven/codeproject/design-craft/skills/design-craft",
+  "command_summary": "codex exec 0.144.1 --ephemeral --sandbox read-only --ignore-rules in the canonical repository with gpt-5.6-sol, max reasoning, canonical design-craft 0.5.0, and the exact benchmark prompt; final Markdown normalized only for trailing whitespace",
+  "output_path": "codex-output.md",
+  "output_sha256": "e8c288f8f4e944559c8237aff4d9e49f74fdeb7ce6f5ac23bf72135e8a6c1833",
+  "score": 97,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates adaptive PRODUCT context and accessibility outcomes from shared DESIGN semantic roles while permitting intentional platform-native divergence."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Uses product context, product principles, iOS, Android, adaptive, interaction, motion, design-system, surface, and validation guidance appropriately."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Repairs platform trust, interruption resilience, controls, navigation, accessibility, and window adaptation without decorative cross-platform sameness."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the review L0 static and explicitly states that no source tree, build, accessibility tree, simulator, emulator, or hardware runtime was observed."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Distinguishes prompt-attested violations from unverified source integration, navigation behavior, accessibility traversal, layout, recovery, and performance."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Provides strong platform-specific navigation, type, target, token, control, motion, adaptivity, recovery, and parity moves, with some broader lifecycle architecture detail."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "Stays within adaptive product UI and native validation, but remains longer and more operationally detailed than the minimal benchmark response."
+    }
+  }
+}

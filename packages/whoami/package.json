@@ -1,0 +1,29 @@
+{
+  "name": "whoami-mingli",
+  "version": "0.2.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "可复算的八字与紫微核心，以及宿主模型驱动的个人命理解读 Skill",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "rm -rf tmp/test && mkdir -p tmp/test && TMPDIR=\"$PWD/tmp/test\" tsx --test tests/*.test.ts && rm -rf tmp/test",
+    "cli": "tsx src/cli.ts",
+    "blind-review:adjudicate": "tsx scripts/adjudicate-bazi-timing-blind-review.ts",
+    "audit:codex-runtime": "tsx scripts/audit-codex-runtime-evidence.ts",
+    "check": "npm run typecheck && npm test && npm run build",
+    "pack:skill": "node scripts/pack-skill.mjs"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "0.5.1",
+    "iztro": "2.6.1",
+    "lunar-typescript": "1.8.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.0"
+  }
+}

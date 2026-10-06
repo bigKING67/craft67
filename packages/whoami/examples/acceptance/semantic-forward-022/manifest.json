@@ -1,0 +1,120 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-022",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "19d3f0574125180e00960efc10292c5a871f13246d09a3b5d31a7e4ad1030f50",
+    "bytes": 10679
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "5f0a2d470754287a0fd38471a596b7f8c034209d3b78d548dad85a2f41ed8fc2",
+    "bytes": 3326
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "fffda47fb82be12a4fd3b2a8e81a6d83d6bb00353108fb324bf48e48331f1daf",
+    "bytes": 2902
+  },
+  "cases": [
+    {
+      "id": "open-ended-intervals-must-stop",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-open-ended.md",
+        "sha256": "eddf71b9af31b76b40aa169755193c8f561a20e097362feb8e1c3e6e65988970",
+        "bytes": 875
+      }
+    },
+    {
+      "id": "declared-duration-mismatch-must-stop",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-duration-mismatch.md",
+        "sha256": "723b347d48ae7a4bc4db08eca42c986fcdf6a86dd6c0f3610695e38e5ad3eacd",
+        "bytes": 828
+      }
+    },
+    {
+      "id": "consistent-elapsed-durations-still-need-evidence",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-duration-valid.md",
+        "sha256": "4613e607d3010776e843b15276d23a30b431cf40f6e50b6933cfb681d4662c2f",
+        "bytes": 917
+      }
+    },
+    {
+      "id": "explicit-2027-year-keeps-career-unresolved",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-annual.md",
+        "sha256": "12623310752fb8f476a81dcf00ce0ec91ce8a2a84380f992da811ab2afaddfc6",
+        "bytes": 1150
+      },
+      "report": {
+        "path": "report.json",
+        "sha256": "77b5694169e83f6f76ed7bd63904d7a07c9ff09c1c4ad3d2ff39a49d06575458",
+        "bytes": 15310
+      },
+      "responseClaims": {
+        "path": "response-claims.json",
+        "sha256": "b8d13a3d117165d3c43d3a9aba23a0247a3727d2039356af1f92d087bc88dddc",
+        "bytes": 2585
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

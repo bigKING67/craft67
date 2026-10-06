@@ -1,0 +1,43 @@
+{
+  "schema_version": "creative-craft.graphic-template.v2",
+  "id": "lower-third",
+  "version": 2,
+  "description": "Name/role strap on a dark plate with accent bar, title and optional subtitle. Placements: bottom (default, lower-left) and upper (14-34% height, clear of burned-in captions and bottom disclaimers).",
+  "placements": {
+    "bottom": {
+      "left": 0.06,
+      "top": 0.7,
+      "width": 0.78,
+      "height": 0.2
+    },
+    "upper": {
+      "left": 0.06,
+      "top": 0.14,
+      "width": 0.78,
+      "height": 0.2
+    }
+  },
+  "default_placement": "bottom",
+  "vars": {
+    "title": {
+      "type": "string",
+      "max_length": 16,
+      "font_em": 3.6,
+      "weight": 700
+    },
+    "subtitle": {
+      "type": "string",
+      "max_length": 24,
+      "font_em": 3,
+      "weight": 400,
+      "optional": true
+    },
+    "accent": {
+      "type": "color",
+      "optional": true,
+      "default": "#e3b341"
+    }
+  },
+  "html": "<span class=\"gfx-lower-third-plate\"><span class=\"gfx-lower-third-bar\"></span><span class=\"gfx-lower-third-text\"><span class=\"gfx-lower-third-title\">{{title}}</span><span class=\"gfx-lower-third-subtitle\">{{subtitle}}</span></span></span>",
+  "css": ".gfx-lower-third{display:flex;align-items:flex-end;justify-content:flex-start}.gfx-lower-third-plate{display:flex;align-items:stretch;max-width:100%;background:rgba(12,16,22,.82);border-radius:.4em;overflow:hidden}.gfx-lower-third-bar{flex:0 0 .7em;background:var(--accent)}.gfx-lower-third-text{display:flex;flex-direction:column;padding:1em 1.6em 1em 1.2em;min-width:0}.gfx-lower-third-title{font-size:var(--fs-title);font-weight:700;line-height:1.2;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gfx-lower-third-subtitle{font-size:var(--fs-subtitle);font-weight:400;line-height:1.25;color:#d7dde4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gfx-lower-third-subtitle:empty{display:none}"
+}

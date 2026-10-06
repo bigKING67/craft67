@@ -1,0 +1,121 @@
+{
+  "status": "CLAIM_SPLIT_VERIFIED_FINALIZATION_BLOCKED",
+  "original_files_unchanged": {
+    "report.md": "d7b04dccba23fc6819423ef3ed85fe4c7d13eb3b864f95e03653fbb859692cbf",
+    "thesis.md": "589becb6754df05b920c19f985567098ab5f544d2c21f5981ac89ebb78bba80b",
+    "financial-reconciliation.json": "e8bdf12bb04429cb9fd1442c3fc36a822be06fa393dfea00dba4eeadf8ca36be",
+    "case.json": "dd87fb6134deb5ffcaa044dac47a0e1c7d715fedb83dfce23bbc674e1bb8dc3f",
+    "plan.json": "d1eaf96d7fb6b92eff1223661e3c10160841bff04420443800701d38f5db5987"
+  },
+  "source_readback": [
+    {
+      "id": "S11",
+      "sha256": "576dd80e353e53296a800b03e9889a9cbb2e8b91fa2ab3c1dace7c10159179b8",
+      "verified": true
+    },
+    {
+      "id": "S12",
+      "sha256": "16f95f70527db59dcf2736f276a9479cf7ee917e5f71e4f6cbbe83acbad9f4b6",
+      "verified": true
+    },
+    {
+      "id": "S13",
+      "sha256": "c196204924fcb4cb80eb8c771ff405872cb34b357f04b79e87debe32033b44ce",
+      "verified": true
+    },
+    {
+      "id": "S21",
+      "sha256": "22f4915d91ada74a37eab8d074aef4c15420f3b1a8b5f5bd5777c00f97d58b86",
+      "verified": true
+    },
+    {
+      "id": "S18",
+      "sha256": "f8e6bdf462a23dd948e44d616e25b308b4b9054da3bda42567f52e6f69ed0c60",
+      "verified": true
+    },
+    {
+      "id": "S19",
+      "sha256": "9857edda695c7b3d5b68c0cad6d98c2c3d46bb7bcb7f60fb292ec0b77546e99e",
+      "verified": true
+    },
+    {
+      "id": "S20",
+      "sha256": "24900692f953f24bff8464e27e3383e91b2a272984e38bff21ca628b3d7cc50b",
+      "verified": true
+    },
+    {
+      "id": "S23",
+      "sha256": "a1a977c0ab10e36d744d45edc8ce3253666dff58f6ebb86efba40299eed02ef7",
+      "verified": true
+    },
+    {
+      "id": "S24",
+      "sha256": "a5f259ed049c53457f01d36e756df62e8e12b51adf5c891643972366fa40fae0",
+      "verified": true
+    },
+    {
+      "id": "S31",
+      "sha256": "2ae890ea091900d35362806e9a13e286e5ca8b33f095397b598524597a9ae425",
+      "verified": true
+    },
+    {
+      "id": "S32",
+      "sha256": "bd7efbb908bc9bcf10618ed871e4d81ca6195eb4a76747344581178749854bff",
+      "verified": true
+    }
+  ],
+  "claim_states": {
+    "P01": "INFERRED",
+    "P02": "OBSERVED",
+    "P03": "INFERRED",
+    "P04": "OBSERVED",
+    "P05": "UNVERIFIED",
+    "P06": "UNVERIFIED"
+  },
+  "remaining_errors": [
+    "presentation_to_economics.items[4].evidence_state must be resolved before finalization",
+    "presentation_to_economics.items[5].evidence_state must be resolved before finalization"
+  ],
+  "financial_checks": 50,
+  "finalization_valid": false,
+  "complete": false,
+  "parent_material_replay": true,
+  "new_host_acceptance": false,
+  "core_gate_changed": false,
+  "source_refresh": false,
+  "numeric_followup_artifacts": [
+    "local/acceptance/20260920-fx-bridge/financial-audit.json",
+    "local/acceptance/20260920-fx-followup/financial-audit.json"
+  ],
+  "schema": "money-craft.midea-claim-split-review.v1",
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-midea-claims/replay.py",
+      "sha256": "57d7ed4f16784bfd4746a36840e2399539393a5095506b6168d4815cd1d87e97"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-claims/receipt.json",
+      "sha256": "2dfa93982f984d25c8ff104d941ee6673b60b4d3f94ab9a5d9317e9e15303b99"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-claims/finalize.json",
+      "sha256": "3afb950f8cef0a65e367053ceba684b1a9d4d884f290211ec592db1afd062e41"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-claims/status.json",
+      "sha256": "b355e651365b65a396eaa855754082c9d11b96b122afa56f753545e9ee62df2c"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-claims/research/report.md",
+      "sha256": "a66ae1c96def4c02c762c2b8cee98db2fb46c0f59bc1a3e7c5e57693c04e78a7"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-claims/research/thesis.md",
+      "sha256": "d61e8ddad0df6dddf8e88d4c55e8532ef7104585c80234e41e90d58af3e42102"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-claims/research/financial-reconciliation.json",
+      "sha256": "72627c3f563e96ef54dda5bf7f92c2271133bf3dfac5df3e48aed351244cd10b"
+    }
+  ]
+}

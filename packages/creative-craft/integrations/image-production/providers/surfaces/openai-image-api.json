@@ -1,0 +1,21 @@
+{
+  "schema_version": "creative-craft.surface.v1",
+  "surface_id": "openai.image_api",
+  "provider": "OpenAI",
+  "label": "Image API through configured Codex gateway",
+  "available": true,
+  "verified_at": "2026-10-04",
+  "provider_profiles": [
+    "openai.gpt-image-2.5-sunburst.2026-09-08",
+    "openai.gpt-image-2.5-flare.2026-09-08"
+  ],
+  "modes": [
+    "single_turn",
+    "generate",
+    "edit"
+  ],
+  "notes": [
+    "Source-checkout Adapter; availability still requires an actual authorized request.",
+    "Global wire_api may be responses; the gateway exposes the separate Image API route."
+  ]
+}

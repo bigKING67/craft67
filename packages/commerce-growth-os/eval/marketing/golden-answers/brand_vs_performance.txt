@@ -1,0 +1,7 @@
+结论：不要把品牌和效果当成二选一；先保留完成战略所需的基础品牌投入，再用可变预算在 demand creation 与 demand capture 之间动态配置。已确认事实只有“预算冲突”，品牌基线、利润、自然搜索、效果增量和年度目标未知，所以比例必须作为实验假设。
+
+先由 CMO 明确 business objective 和 brand objective：品牌预算负责目标人群中的认知、联想、信任和未来需求，效果预算负责已有需求承接和可测增长。初始可以设置品牌/内容基础仓、效果测试仓、效果放量仓和 10%-15% 机动 test budget；品牌基础仓只有在战略或现金约束变化时调整，放量仓必须通过 Commercial Strategy 的 CAC、利润和退款护栏。
+
+Brand Lead 为品牌投入定义 brand lift、目标联想、品牌/品类搜索、earned 内容和自然需求指标；Growth Lead 为效果投入定义 marginal CAC、增量转化、贡献和素材疲劳；Analytics Owner 统一 attribution、holdout 和复盘口径。品牌 Campaign 应预先定义搜索、内容和 commerce 承接，效果实验应回传人群、信息和创意学习，而不是各自优化。
+
+月度 Review 规则：若效果预算低于商业阈值且没有 incrementality，减少放量仓；若品牌投入连续两个完整传播窗未形成品牌提升、搜索或有效资产，调整人群、信息或机制，而不是机械加钱；若品牌需求增长但承接不足，把机动预算转到搜索、货架和 CRM。最终由 CMO 决定增加、减少、继续或停止，Commercial、Brand、Growth 和 Analytics 分别对经济、品牌、实验和证据负责。

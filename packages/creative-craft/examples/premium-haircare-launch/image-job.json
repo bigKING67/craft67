@@ -1,0 +1,91 @@
+{
+  "schema_version": "creative-craft.image-job.v2",
+  "job_id": "northstar-motion-proof-hero-image-v1",
+  "brief_id": "northstar-airlift-launch-v1",
+  "direction_id": "northstar-motion-proof-direction-v1",
+  "selected_route_id": "motion-is-proof",
+  "copy_sheet_id": "northstar-motion-proof-copy-v1",
+  "copy_unit_refs": [
+    "hero-headline"
+  ],
+  "declared_status": "ready",
+  "provider_profile": "openai.gpt-image-2.2026-04-21",
+  "execution_surface": "openai.image_api",
+  "task_type": "generate",
+  "execution_mode": "single_turn",
+  "intended_use": "Premium launch hero image for a vertical social feed and landing-page crop.",
+  "asset_refs": ["product-pack-001", "light-ref-001"],
+  "canvas": {
+    "size": "1024x1536",
+    "quality": "medium",
+    "format": "png",
+    "compression": null,
+    "background": "opaque",
+    "variants": 2
+  },
+  "prompt": {
+    "scene": "A warm-white minimal studio with no visible horizon line. A restrained ribbon of air is implied by a few fine, translucent strands curving upward behind the product.",
+    "subject": "The fictional Northstar AirLift shampoo bottle from @product-pack-001 stands upright in the lower center. Beside it, the back and side profile of an adult model's naturally lifted hair enters from the upper right; the face is outside frame.",
+    "action": "The hair is caught at the apex of one fluid turn, forming a soft open arc without rigid spray-set strands.",
+    "composition": "Vertical 2:3 composition. Bottle occupies about 42% of image height and remains the sharp focal anchor. Hair creates a diagonal motion path from upper right toward the bottle. Preserve 18% clean negative space above and 12% on the left for copy.",
+    "lighting": "Soft warm directional light from upper left, controlled silver highlights on the cap, translucent glow through the liquid, realistic contact shadow, restrained contrast.",
+    "materials_style": "Photorealistic premium beauty still life with real-camera texture, natural hair detail, transparent plastic and liquid fidelity, subtle fine grain, contemporary editorial restraint rather than glossy CGI perfection.",
+    "exact_text": [
+      {
+        "text": "VOLUME THAT MOVES",
+        "placement": "upper left inside the reserved negative space, two lines",
+        "typography": "clean modern uppercase sans serif, restrained weight, generous tracking"
+      }
+    ],
+    "references": [
+      {
+        "asset_id": "product-pack-001",
+        "role": "Use only for exact bottle geometry, cap, label layout, wordmark, and liquid color.",
+        "preserve": [
+          "bottle proportions",
+          "label spelling",
+          "cap construction",
+          "liquid hue"
+        ]
+      },
+      {
+        "asset_id": "light-ref-001",
+        "role": "Use only for warm directional light and shadow softness.",
+        "preserve": []
+      }
+    ],
+    "change": [],
+    "preserve": [
+      "fictional bottle geometry and label",
+      "clear product silhouette",
+      "warm restrained brand world",
+      "clean copy-safe negative space"
+    ],
+    "constraints": [
+      "The product must look physically plausible and upright.",
+      "Hair must look touchable, mobile, and naturally lifted.",
+      "Use only the listed exact text.",
+      "Keep all subjects adult and non-identifiable."
+    ],
+    "exclude": [
+      "no therapeutic or hair-growth claims",
+      "no extra logos or packaging text",
+      "no duplicated bottle parts",
+      "no wet-look hair",
+      "no rigid pageant hairstyle",
+      "no visible face",
+      "no watermark"
+    ]
+  },
+  "inspection": [
+    "Verify exact bottle geometry, cap, label, wordmark, and liquid color against the source reference.",
+    "Verify the exact headline text and that no other text appears.",
+    "Verify hair anatomy, strand continuity, and believable motion.",
+    "Verify negative space survives both social and landing-page crops.",
+    "Verify no medical or hair-growth implication was introduced."
+  ],
+  "rights": {
+    "status": "CLEARED",
+    "notes": "Fictional product and non-identifiable adult model."
+  }
+}

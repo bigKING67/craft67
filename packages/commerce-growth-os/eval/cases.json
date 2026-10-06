@@ -1,0 +1,271 @@
+{
+  "version": 1,
+  "scoring": {
+    "method": "keyword-rubric",
+    "note": "Deterministic smoke scoring for saved answers. It is not a substitute for human review, but catches missing contract elements."
+  },
+  "cases": [
+    {
+      "id": "full_brand_diagnosis_scalp_care",
+      "output_mode": "full_operating_plan",
+      "primary_domain": "growth",
+      "contract_domains": ["commercial", "growth", "operations", "analytics"],
+      "prompt": "We are a premium scalp-care brand selling on Douyin and Tmall. AOV is 189, gross margin is about 62%, Douyin ROI is 1.4, refund is rising, and Tmall reviews are weak. Give us a 90-day growth plan.",
+      "required_groups": [
+        ["stage", "阶段"],
+        ["bottleneck", "瓶颈"],
+        ["AOV", "客单"],
+        ["gross margin", "毛利"],
+        ["assortment", "货盘", "SKU"],
+        ["price ladder", "价盘", "价格线"],
+        ["Xiaohongshu", "小红书"],
+        ["Douyin", "抖音"],
+        ["Tmall", "天猫"],
+        ["refund", "退款"],
+        ["review cadence", "复盘"]
+      ],
+      "forbidden_terms": ["直接翻倍预算", "无脑加预算"]
+    },
+    {
+      "id": "qianchuan_budget_scale",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "Our hero SKU GMV was 300000 last month. Qianchuan spend was 150000, ROI 2.0, gross margin 55%, gifts and fulfillment are about 12% of GMV, refund loss is 6%. Should we double the budget?",
+      "required_groups": [
+        ["break-even ROI", "break_even_roi", "盈亏平衡ROI"],
+        ["gross-profit ROI", "毛利ROI"],
+        ["ROI 2.0", "ROI=2.0", "ROI = 2.0"],
+        ["2.70", "2.702703"],
+        ["do not double", "不要翻倍", "不建议直接翻倍"],
+        ["marginal", "边际"],
+        ["stop rule", "止损"],
+        ["scale rule", "放量"]
+      ],
+      "forbidden_terms": ["可以直接翻倍", "应直接翻倍", "直接翻倍预算"]
+    },
+    {
+      "id": "talent_livestream_booking",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "A mid-tier creator asks for 50000 pit fee plus 25% commission. Expected GMV is 400000. Product cost is 32%, platform fee is 5%, gift/sample cost is 8%, fulfillment is 4%, refund loss is 7%. Should we book?",
+      "required_groups": [
+        ["channel net profit", "渠道净利润"],
+        ["26000", "2.6万"],
+        ["max creator commission", "佣金上限"],
+        ["31.5%", "0.315"],
+        ["pit fee", "坑位"],
+        ["inventory", "库存"],
+        ["refund", "退款"],
+        ["payback", "回本"]
+      ],
+      "forbidden_terms": ["只看GMV", "稳赚"]
+    },
+    {
+      "id": "xiaohongshu_premium_pet_seeding",
+      "output_mode": "full_operating_plan",
+      "primary_domain": "content",
+      "prompt": "We want to do Xiaohongshu for a premium pet supplement brand. What should the seeding plan look like?",
+      "required_groups": [
+        ["premium pet", "高端宠物"],
+        ["trust", "信任"],
+        ["search", "搜索"],
+        ["keyword", "关键词"],
+        ["creator brief", "达人brief", "创作者brief"],
+        ["claim", "宣称"],
+        ["Tmall", "天猫"],
+        ["Douyin", "抖音"],
+        ["repurchase", "复购"]
+      ],
+      "forbidden_terms": ["最低价", "价格战"]
+    },
+    {
+      "id": "tmall_conversion_diagnosis",
+      "output_mode": "quick_diagnosis",
+      "primary_domain": "operations",
+      "prompt": "Douyin and Xiaohongshu are driving brand searches, but our Tmall flagship store conversion is poor. What should we inspect first?",
+      "required_groups": [
+        ["title", "标题"],
+        ["main image", "主图"],
+        ["price consistency", "价格一致"],
+        ["review", "评价"],
+        ["Q&A", "问大家"],
+        ["buyer show", "买家秀"],
+        ["detail page", "详情页"],
+        ["store score", "店铺评分"],
+        ["fulfillment", "履约"]
+      ],
+      "forbidden_terms": ["只投万相台", "加大万相台"]
+    },
+    {
+      "id": "incomplete_food_gift_profitability",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "We sell a premium food gift box at 299 and want to push livestream. I only know gross margin is around 50%. Is this worth doing?",
+      "required_groups": [
+        ["confirmed facts", "已确认"],
+        ["assumptions", "假设"],
+        ["conditional", "条件"],
+        ["platform fee", "平台费"],
+        ["fulfillment", "履约"],
+        ["refund", "退款"],
+        ["commission", "佣金"],
+        ["pit fee", "坑位"],
+        ["shelf life", "保质期"],
+        ["gift", "礼盒"]
+      ],
+      "forbidden_terms": ["一定值得", "确定值得"]
+    },
+    {
+      "id": "platform_current_juguang_search",
+      "output_mode": "decision_memo",
+      "primary_domain": "growth",
+      "prompt": "Can we still use Juguang Search to intercept competitor terms for Xiaohongshu, and should we shift half of our seeding budget there this month?",
+      "required_groups": [
+        ["stable principle", "稳定原则"],
+        ["needs current verification", "需要当前核验"],
+        ["official", "官方"],
+        ["backend", "后台"],
+        ["competitor", "竞品"],
+        ["test", "测试"],
+        ["stop rule", "止损"],
+        ["scale rule", "放量"],
+        ["compliance", "合规"]
+      ],
+      "forbidden_terms": ["现在一定可以", "无需核验"]
+    },
+    {
+      "id": "weekly_data_review_douyin_tmall",
+      "output_mode": "data_review",
+      "primary_domain": "analytics",
+      "prompt": "This week Douyin GMV rose 35%, Qianchuan ROI fell from 2.4 to 1.7, refund loss rose from 5% to 9%, Tmall brand-word searches rose 28%, but Tmall payment CVR fell. What should we do next week?",
+      "required_groups": [
+        ["traffic", "流量"],
+        ["conversion", "转化"],
+        ["profit", "利润"],
+        ["asset", "资产"],
+        ["GMV", "成交"],
+        ["ROI"],
+        ["refund", "退款"],
+        ["brand-word", "品牌词"],
+        ["payment CVR", "支付转化"],
+        ["next week", "下周"]
+      ],
+      "forbidden_terms": ["GMV很好", "继续加预算"]
+    },
+    {
+      "id": "jd_channel_entry",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "We are a premium smart home device brand with good Xiaohongshu seeding and Tmall reviews. Should we open JD next quarter?",
+      "required_groups": [
+        ["JD", "京东"],
+        ["search", "搜索"],
+        ["trust", "信任"],
+        ["logistics", "物流", "配送"],
+        ["after-sale", "售后"],
+        ["price", "价格"],
+        ["review", "评价"],
+        ["unit economics", "经济模型", "算账"],
+        ["channel role", "渠道角色"]
+      ],
+      "forbidden_terms": ["直接照搬天猫", "只要开店"]
+    },
+    {
+      "id": "pinduoduo_premium_price_conflict",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "A premium beauty brand has old inventory and wants to sell the same hero SKU cheaper on Pinduoduo. Should we do it?",
+      "required_groups": [
+        ["Pinduoduo", "拼多多"],
+        ["price conflict", "价格冲突"],
+        ["same hero SKU", "同款"],
+        ["channel-exclusive", "渠道专供"],
+        ["clearance", "清库存"],
+        ["minimum profit price", "最低利润价"],
+        ["forbidden floor price", "禁售价"],
+        ["review", "评价"],
+        ["unauthorized", "未授权"]
+      ],
+      "forbidden_terms": ["同款低价没问题", "直接低价卖"]
+    },
+    {
+      "id": "premium_apparel_return_risk",
+      "output_mode": "full_operating_plan",
+      "primary_domain": "operations",
+      "contract_domains": ["commercial", "content", "operations"],
+      "prompt": "We are launching a premium outdoor apparel line on Xiaohongshu, Douyin, Tmall, and JD. How should we plan assortment, content, and return-risk control?",
+      "required_groups": [
+        ["apparel", "服饰"],
+        ["outdoor", "户外"],
+        ["style", "风格"],
+        ["fit", "版型", "尺码"],
+        ["return", "退货"],
+        ["size chart", "尺码表"],
+        ["buyer show", "买家秀"],
+        ["inventory", "库存"],
+        ["price ladder", "价盘"],
+        ["seasonal", "季节"]
+      ],
+      "forbidden_terms": ["只打低价", "忽略退货"]
+    },
+    {
+      "id": "consumer_electronics_jd_launch",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "We are a smart hardware brand with one hero model, good Xiaohongshu seeding, and Tmall reviews. Should JD, Douyin, and Tmall each do different jobs next quarter?",
+      "required_groups": [
+        ["smart hardware", "智能硬件", "3C"],
+        ["JD", "京东"],
+        ["trust", "信任"],
+        ["search", "搜索"],
+        ["service", "服务"],
+        ["warranty", "质保", "保修"],
+        ["parameter", "参数", "规格"],
+        ["Q&A", "问答", "问大家"],
+        ["review", "评价"],
+        ["price ladder", "价盘", "价格线"],
+        ["unit economics", "经济模型", "算账"]
+      ],
+      "forbidden_terms": ["三个渠道一样做", "只要开京东"]
+    },
+    {
+      "id": "home_paper_pinduoduo_conflict",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "We sell tissue and home cleaning consumables. Pinduoduo wants a low-price family pack for volume. Is it worth doing?",
+      "required_groups": [
+        ["tissue", "纸品", "纸巾"],
+        ["home cleaning", "家清", "清洁"],
+        ["Pinduoduo", "拼多多"],
+        ["freight", "物流", "运费"],
+        ["channel-exclusive", "渠道专供"],
+        ["minimum profit price", "最低利润价"],
+        ["forbidden floor price", "禁售价"],
+        ["price conflict", "价格冲突"],
+        ["repurchase", "复购"],
+        ["refund", "退款"],
+        ["channel net profit", "渠道净利润"]
+      ],
+      "forbidden_terms": ["同款低价没问题", "只看走量"]
+    },
+    {
+      "id": "channel_portfolio_budget_allocation",
+      "output_mode": "decision_memo",
+      "primary_domain": "commercial",
+      "prompt": "We have Douyin, Tmall, Xiaohongshu, JD, and private domain running at the same time. How should we split channel jobs and next-month budget?",
+      "required_groups": [
+        ["channel job", "渠道角色", "渠道分工"],
+        ["asset", "资产"],
+        ["test budget", "测试预算"],
+        ["scale budget", "放量预算"],
+        ["search", "搜索"],
+        ["retention", "留存", "复购"],
+        ["stop rule", "止损"],
+        ["scale rule", "放量"],
+        ["price conflict", "价格冲突"],
+        ["channel net profit", "渠道净利润"]
+      ],
+      "forbidden_terms": ["平均分预算", "哪个平台火就投哪个"]
+    }
+  ]
+}

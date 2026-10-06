@@ -1,0 +1,69 @@
+{
+  "schema": "money-craft.target-drivers-review.v1",
+  "status": "PASS_BOUNDED_DRIVER_HURDLES",
+  "reviewer": "parent_agent",
+  "independent_semantic_review": false,
+  "as_of": "2025-04-30",
+  "executed_on": "2026-09-20",
+  "sources": 5,
+  "calculation_checks": 124,
+  "inverse_forward_checks": 9,
+  "negative_checks": [
+    {
+      "case": "future_event",
+      "status": "PASS_REJECTED",
+      "error": "future event cannot inform historical model: E01"
+    },
+    {
+      "case": "source_tamper",
+      "status": "PASS_REJECTED",
+      "error": "source hash mismatch: S02"
+    },
+    {
+      "case": "wrong_historical_profit",
+      "status": "PASS_REJECTED",
+      "error": "historical earnings fail reconciliation"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "status": "PASS",
+      "claim": "Achieved savings and prior shrink recovery are already in historical base; no double-counted uplift"
+    },
+    {
+      "status": "PASS",
+      "claim": "Diluted shares retained for EPS model, no unannounced buyback or market-cap share substitution"
+    },
+    {
+      "status": "PASS",
+      "claim": "April policy event triggers review, not automatic company guidance withdrawal or total-COGS tariff charge"
+    },
+    {
+      "status": "PASS",
+      "claim": "EPS hurdles are inverse conditional equations; not normalized sustainable earnings or forecast probabilities"
+    },
+    {
+      "status": "PASS",
+      "claim": "No post-cutoff earnings used; source capture later and transcript original upload time unknown disclosed"
+    }
+  ],
+  "scenario_disposition": {
+    "bear_stress": "RETAIN_AS_STRESS_ONLY",
+    "base_external": "NEEDS_REUNDERWRITING",
+    "bull_guidance": "NEEDS_REUNDERWRITING"
+  },
+  "limits": [
+    "Bounded event coverage, not exhaustive",
+    "Source independence and original publication/capture timing not fully verified",
+    "Tariff cost exposure and operating countermeasures not quantified",
+    "Reasonable multiples and sustainable earnings not certified"
+  ],
+  "artifacts": {
+    "acceptance/target-drivers/input.json": "d3bd4fdb144c879f934f9b1bb654a43193fb72212be70addeac6622053397609",
+    "acceptance/target-drivers/evidence-manifest.json": "5b2663c870353da52ac9d56ef0596ac18aac94d211727236f718b5d5057e809c",
+    "acceptance/target-drivers/reconstruction/report.md": "6721193b90d6089c061b7dc6565bcce770ae38ae24f15c0efc4eaf81e53131e1",
+    "acceptance/target-drivers/reconstruction/result.json": "ff9e807de8a399c823d5c34cb03eff084f0b733e4446da4e2568134a1a1fcc59",
+    "acceptance/target-drivers/reconstruction/financial-audit.json": "dc24c0b4102bb9d0141e606fc0d013b97d1023bbb21703a2b35d1bc021500fd0",
+    "scripts/check_target_driver_case.py": "fddc004a9cc3174136e6469df1fa5196356d348687ff23167d9fd8e81dbb0a54"
+  }
+}

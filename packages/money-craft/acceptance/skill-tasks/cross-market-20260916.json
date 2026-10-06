@@ -1,0 +1,163 @@
+{
+  "schema": "money-craft.cross-market-acceptance.v1",
+  "date": "2026-09-16",
+  "overall": "PASS_BOUNDED_AFTER_CORRECTION",
+  "case_file": {
+    "path": "acceptance/skill-tasks/cross-market-cases.json",
+    "sha256": "c1358e3da951e3c28cf4bf8abbbae13f1bd788ae9451c8ac09fbafb541b5503f"
+  },
+  "source_capture": {
+    "path": "local/skill-evals/20260916/msft-source/capture.json",
+    "sha256": "ed82f87f81dfeb51739d8a61005ae28e1d58d0935cc3250167b07c4f240fca93"
+  },
+  "runs": [
+    {
+      "run": "msft-gaap",
+      "verdict": "PARTIAL_CALCULATION_COVERAGE",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 12,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "实际读取原始HTML并核对哈希，明确FY2026Q2截至2025-12-31的三个月，不误写2026自然年第二季度或半年累计。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分GAAP净利润24108到38458、调整后25047到30875（百万美元），两边同口径同比；不能用调整后本期对GAAP上期。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "识别2025同期OpenAI投资损失939与2026本期投资收益7583的调整方向，不把GAAP增长60%当主营同比或现金增幅。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "收入69632到81273，营业利润31653到38275；至少比较营业利润率或明确口径净利率与百分点，避免混淆美元报告增速和固定汇率增速。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "非GAAP为补充且不等于现金流，未提供现金流不得推断现金改善；管理层自称超预期不当作独立一致预期证据。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "保留单一发行人、历史截止/post-hoc与局部材料限制，无当前估值或买卖结论。",
+            "verdict": "PASS"
+          }
+        ],
+        "calculation_coverage": "PARTIAL",
+        "note": "已有12项回执正确，但正文利润率百分点变化无最终差值回执。"
+      },
+      "freeze": {
+        "path": "local/skill-evals/20260916/cross-market/freeze.json",
+        "sha256": "1f48a223b56586437a345604870f9de9ab6c6ee38963b622e7f7969270a1bc3e"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap/host.json",
+          "sha256": "8fb46582c3339d4dcf9228e57c486ae0770ed4d6b3a521bdc6c77c6e4f320d31"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap/answer.md",
+          "sha256": "d1be7b8537dff35786ba0e4e8083c4bf8bd4ce33855d8df3c31df04c5a956982"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap/events.jsonl",
+          "sha256": "38af34ce36a2c126a813a1a7ccbe692a196699cd03fdcd08bd960560ecaa7e51"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap/machine-audit.json",
+          "sha256": "a0dd7911cface795e8593ae5e0a4d403d76bffb676e2e4cac7e2499fcfa09422"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap/case-snapshot.json",
+          "sha256": "37fb465114a8afbfc4820bf32d6a6b8bcc49f5d03f0aed8f401d75454bdb862c"
+        }
+      }
+    },
+    {
+      "run": "msft-gaap-r2",
+      "verdict": "PASS_BOUNDED",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 13,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "实际读取原始HTML并核对哈希，明确FY2026Q2截至2025-12-31的三个月，不误写2026自然年第二季度或半年累计。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分GAAP净利润24108到38458、调整后25047到30875（百万美元），两边同口径同比；不能用调整后本期对GAAP上期。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "识别2025同期OpenAI投资损失939与2026本期投资收益7583的调整方向，不把GAAP增长60%当主营同比或现金增幅。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "收入69632到81273，营业利润31653到38275；至少比较营业利润率或明确口径净利率与百分点，避免混淆美元报告增速和固定汇率增速。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "非GAAP为补充且不等于现金流，未提供现金流不得推断现金改善；管理层自称超预期不当作独立一致预期证据。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "保留单一发行人、历史截止/post-hoc与局部材料限制，无当前估值或买卖结论。",
+            "verdict": "PASS"
+          }
+        ],
+        "calculation_coverage": "PASS",
+        "note": "13项回执覆盖利润增量分解、调整后增速、两期营业利润率及最终百分点差；未混用GAAP/非GAAP/固定汇率，历史及单源限制明确。"
+      },
+      "freeze": {
+        "path": "local/skill-evals/20260916/cross-market/freeze-r2.json",
+        "sha256": "69f330251a861aa36d4b6e51dca4f6b2fae4e4e1f6252a02c3263ea259b8a211"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap-r2/host.json",
+          "sha256": "569bb538cc62aed343a52549843f69d80761baad00459535225a029ce2c2b959"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap-r2/answer.md",
+          "sha256": "5668ee8e5eb674bae71b871f7d274827cd9f0ddf4ba59e08b6fb296d8d383a4c"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap-r2/events.jsonl",
+          "sha256": "5e25fb991c77cc8d35d72da61c19ea788413b137fad6ae232f2e5ea52dc48fb7"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap-r2/machine-audit.json",
+          "sha256": "0c57b09ef64d9ce04a650336218bd3f4150f531e5ac016003d478ca69ce93ad8"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/cross-market/msft-gaap-r2/case-snapshot.json",
+          "sha256": "37fb465114a8afbfc4820bf32d6a6b8bcc49f5d03f0aed8f401d75454bdb862c"
+        }
+      }
+    }
+  ],
+  "change": {
+    "path": "skills/money-craft/references/financial-data-and-evidence.md",
+    "reason": "关键计算回执须覆盖正文最终变化值，不能只覆盖中间比率；显式区分比例差与百分点。"
+  },
+  "installation": {
+    "receipt": {
+      "path": "local/skill-evals/20260916/cross-market/install.json",
+      "sha256": "8befcb12ecd346f649125b34ba047bfd349d40fff76ab771355f5e4a1dbb2ec9"
+    },
+    "source_install_parity": "PASS",
+    "natural_trigger_after_this_install": "NOT_RUN"
+  },
+  "limitations": [
+    "First attempt preserved; machine-pass does not certify coverage or semantics.",
+    "One new issuer document and one prompt, rerun once after correction; not statistical stability.",
+    "Primary agent authored rubric and judged answer; no independent blinded evaluator.",
+    "Single issuer source, captured post-hoc; not current investment research or independent-source verification.",
+    "Prior six-case suite was not rerun on this new prose revision.",
+    "No runtime code changes or code-suite rerun; no commit, push or release."
+  ]
+}

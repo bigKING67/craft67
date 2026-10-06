@@ -1,0 +1,67 @@
+{
+  "schema_version": "creative-craft.render-qa.v1",
+  "qa_id": "qa-r1",
+  "project_id": "talk-broll",
+  "revision": 1,
+  "revision_sha256": "637507489112ba5ea9c6b4ce40e8885ba19e11bf9741f98c402900a27fd81ea6",
+  "render": {
+    "kind": "preview",
+    "file": "renders/r1.mp4",
+    "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "duration_seconds": 20.0,
+    "has_audio": true
+  },
+  "tool": {
+    "name": "synthetic-fixture",
+    "version": "0"
+  },
+  "created_at": "2026-10-02T00:00:00Z",
+  "checks": [
+    {
+      "id": "duration",
+      "category": "structure",
+      "status": "warn",
+      "observation": "Synthetic check; no real render was measured."
+    }
+  ],
+  "samples": [
+    {
+      "id": "s-talk2",
+      "time_seconds": 14.0,
+      "reason": "item_mid",
+      "item_id": "talk2",
+      "file": "qa/s-talk2.png",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "boundary_clips": [],
+  "contact_sheet": null,
+  "verdict": "pass_with_warnings",
+  "review": {
+    "status": "done",
+    "reviewer": "synthetic-agent",
+    "reviewer_kind": "agent",
+    "decision": "revise",
+    "findings": [
+      {
+        "id": "f1",
+        "severity": "major",
+        "observation": "Second talking segment drags after the point lands.",
+        "refs": [
+          {
+            "time_seconds": 14.0,
+            "item_id": "talk2",
+            "sample_id": "s-talk2"
+          }
+        ],
+        "fix": "Trim talk2 to five seconds."
+      }
+    ]
+  },
+  "unverified": [
+    "Synthetic fixture: no real render, frames or audio were inspected."
+  ]
+}

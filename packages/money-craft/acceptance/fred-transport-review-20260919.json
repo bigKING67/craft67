@@ -1,0 +1,54 @@
+{
+  "schema": "money-craft.fred-transport-review.v1",
+  "date": "2026-09-19",
+  "scope": "HTTPS redirect/base URL and full-known-token error redaction",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "69d31c0d56e2da9af6964a45e353e4e9a6a0cbc55cec8def7f6239ee43843935",
+    "tests/test_fred_adapter.py": "8421725bded7418bbbf5bdee07d6d328163525b1a797082f88f9647d6c6c2bae",
+    "skills/money-craft/references/providers/fred.md": "2132ed074c322c6a508a987265d6d8c2c43c4c43af77a122dd99b3cba2cb72f8"
+  },
+  "findings": [
+    {
+      "status": "FIXED",
+      "description": "Same-host redirect previously permitted HTTPS downgrade; default handler now requires HTTPS and same authority without userinfo."
+    },
+    {
+      "status": "FIXED",
+      "description": "Error truncation preceded redaction and exposed a key prefix; redact complete known tokens before truncating."
+    }
+  ],
+  "validation": {
+    "fred_tests": 16,
+    "full_tests": 361,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 8,
+    "real_cli": "Injected long provider error returns provider_error, no key prefix or capture directory.",
+    "redirect_evidence": "Offline handler invocation; no real network redirect."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "fred_tests": 16,
+    "skipped_tests": 0,
+    "additional_boundary_cases": 19,
+    "source_hashes": {
+      "skills/money-craft/scripts/fred_adapter.py": "69d31c0d56e2da9af6964a45e353e4e9a6a0cbc55cec8def7f6239ee43843935",
+      "tests/test_fred_adapter.py": "8421725bded7418bbbf5bdee07d6d328163525b1a797082f88f9647d6c6c2bae"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T012844487273Z"
+  },
+  "limits": [
+    "FRED remains PARTIAL; credential-file race, endpoint identity and realtime semantics await review.",
+    "Injected opener remains caller-trusted.",
+    "No guarantee for arbitrary encoded or previously truncated secrets.",
+    "No live Provider request, app, commit, push or release.",
+    "Existing HTTPError fixture ResourceWarnings remain."
+  ]
+}

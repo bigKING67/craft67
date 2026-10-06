@@ -1,0 +1,48 @@
+{
+  "rationale": "B 最完整地把静态证据转化为产品专属的决策流和实现级验收标准：异常队列领先，风险指标与支持指标分层，历史图表后置，表格文本、数值、状态、动作、长内容和失败状态均有可观察门槛。它还明确把描述中“未说明状态”与真实页面可能已有实现区分开，并用最小浏览器、窄屏、键盘、对比度和真实数据检查来验证，因此在证据诚实性与闭环完整度上略胜 C，也明显补足了 A 未将状态阻断项转化为改造动作的缺口。",
+  "results": [
+    {
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 14
+      },
+      "label": "A",
+      "summary": "准确把下一小时异常队列重排为首要工作面，并具体处理等权 KPI、卡片堆叠、表格扫描与视觉噪声；主要缺口是把未定义状态列为阻断项后，没有在八项改造中给出对应的状态设计闭环，且示例提示使用了虚构数值，略削弱证据克制。",
+      "total": 96
+    },
+    {
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 20,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 15
+      },
+      "label": "B",
+      "summary": "完整覆盖决策顺序、反模板化判断、排版与表面细节、既有产品权威、八项可验收改造和最小验证计划；尤其将首屏异常、主辅指标、显式行操作、长内容及完整状态族串成了可实施且可观察的闭环。",
+      "total": 100
+    },
+    {
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 20,
+        "evidence_honesty": 9,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 15
+      },
+      "label": "C",
+      "summary": "层级重排和视觉工艺建议非常具体，首屏行数、语义色阈值、表格字段层级、间距节奏与生产状态都有明确验收条件；仅因使用虚构业务数值作示例，并以“不可访问”概括未经无障碍树验证的编码，证据措辞略有越界。",
+      "total": 99
+    }
+  ],
+  "winner": "B"
+}

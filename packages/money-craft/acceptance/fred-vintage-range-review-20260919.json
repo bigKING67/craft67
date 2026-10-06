@@ -1,0 +1,35 @@
+{
+  "schema": "money-craft.fred-vintage-range-review.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED",
+  "scope": "Explicit realtime bounds on vintages responses",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "bb03664e512ece9e6672dbf8ce9767fbabb42d91e4e2d750f5a4a30a0c984b82",
+    "tests/test_fred_adapter.py": "d2c1a73454e64a5f41cd64b577e3ec520c8ef53d7146bb927efd129d414f7fe8",
+    "skills/money-craft/references/providers/fred.md": "567da95e434c13775f387068ff9c516caf3e5070456439297a16d75db709430f"
+  },
+  "validation": {
+    "fred_tests": 38,
+    "full_tests": 383,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 9,
+    "real_cli": "Injected out-of-range vintage yields EXIT_SCHEMA/malformed_response without capture or synthetic key disclosure.",
+    "positive_cases": "Start-only/end-only/both bounds, inclusive endpoints, empty results and descending dates."
+  },
+  "independent_review": "NOT_RUN",
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T082411377830Z"
+  },
+  "official_contract_sources": [
+    "https://fred.stlouisfed.org/docs/api/fred/series_vintagedates.html"
+  ],
+  "limits": [
+    "FRED module remains PARTIAL pending independent lifecycle review and default HTTPS evidence.",
+    "No live Provider, source authenticity, completeness of vintage history or arbitrary observations real-time range claims.",
+    "No app, commit, push or release."
+  ]
+}

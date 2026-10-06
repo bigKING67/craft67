@@ -1,0 +1,81 @@
+{
+  "schema_version": "creative-craft.creative-direction.v1",
+  "direction_id": "northstar-motion-proof-direction-v1",
+  "brief_id": "northstar-airlift-launch-v1",
+  "selected_route_id": "motion-is-proof",
+  "status": "locked",
+  "message_hierarchy": [
+    "Primary: VOLUME THAT MOVES",
+    "Proof: lifted hair remains fluid under one controlled turn",
+    "Brand: Northstar AirLift"
+  ],
+  "visual_world": [
+    "Warm-white minimal studio with real material texture",
+    "Stillness-to-motion contrast",
+    "Restrained contemporary premium beauty language"
+  ],
+  "copy_direction": [
+    "Use one short declarative proof line",
+    "Do not introduce therapeutic or hair-growth claims"
+  ],
+  "image_art_direction": [
+    "Freeze the hair at the apex of a plausible fluid arc",
+    "Keep the fictional bottle as a sharp stable anchor with protected copy space"
+  ],
+  "video_treatment": [
+    "Begin almost still, apply one elegant movement test, then resolve into product and line",
+    "Camera movement supports the turn but never becomes the spectacle"
+  ],
+  "script": [
+    {"range": "0-3s", "purpose": "establish stillness and material detail"},
+    {"range": "3-9s", "purpose": "perform the movement proof"},
+    {"range": "9-15s", "purpose": "resolve product, hair, and exact line"}
+  ],
+  "storyboard": [
+    {"shot_id": "S01", "frame": "hair strands and silver cap macro"},
+    {"shot_id": "S02", "frame": "controlled turn with product visible"},
+    {"shot_id": "S03", "frame": "locked vertical product-and-hair hero"}
+  ],
+  "shot_plan": [
+    {"shot_id": "S01", "camera": "slow macro push"},
+    {"shot_id": "S02", "camera": "track then 30-degree arc"},
+    {"shot_id": "S03", "camera": "gentle pullback and one-second hold"}
+  ],
+  "motion_direction": [
+    "Hair follows inertia, gravity, and air resistance",
+    "Movement opens once and settles without collapse or reversal"
+  ],
+  "sound_direction": [
+    "Quiet room tone and soft air rise",
+    "Restrained pulse during proof and one glass-like resolve"
+  ],
+  "performance_direction": [
+    "One composed natural turn, never a pageant-style hair flip",
+    "Adult non-identifiable model; face remains outside the hero image"
+  ],
+  "reference_roles": [
+    {"asset_id": "product-pack-001", "roles": ["identity", "geometry", "label", "material"], "preserve": ["bottle proportions", "cap", "wordmark", "liquid hue"]},
+    {"asset_id": "light-ref-001", "roles": ["lighting"], "preserve": ["warm direction", "shadow softness"]},
+    {"asset_id": "motion-ref-001", "roles": ["motion", "camera"], "preserve": ["movement rhythm only; never talent identity or setting"]}
+  ],
+  "invariants": [
+    "fictional bottle geometry, cap, label, wordmark, and liquid color",
+    "hair remains lifted, touchable, and physically plausible",
+    "exact copy is VOLUME THAT MOVES and no additional claims appear",
+    "warm restrained studio world and clean safe area"
+  ],
+  "deliverables": [
+    {"id": "hero-image", "type": "image", "aspect_ratio": "2:3"},
+    {"id": "hero-video", "type": "video", "aspect_ratio": "9:16", "duration_seconds": 15}
+  ],
+  "approval": {
+    "status": "pending",
+    "approved_by": null,
+    "approved_at": null,
+    "basis": "Fictional example direction is locked for prompt preparation, not production approval."
+  },
+  "remaining_unknowns": [
+    "Audience insight remains hypothesized.",
+    "Actual provider outputs have not been generated or inspected."
+  ]
+}

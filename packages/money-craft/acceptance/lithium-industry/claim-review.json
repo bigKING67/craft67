@@ -1,0 +1,33 @@
+{
+  "reviewer": "parent_agent",
+  "claims": [
+    {
+      "claim": "2024电动车销售增长",
+      "status": "SUPPORTED_WITHIN_SCOPE",
+      "source": "S01 executive summary",
+      "lineage": "IEA synthesis; underlying country/market series not independently re-audited",
+      "limit": "Vehicle count is not lithium mass; 2025 outlook is not an actual result"
+    },
+    {
+      "claim": "2024锂生产和消费增长",
+      "status": "SUPPORTED_WITHIN_SCOPE",
+      "source": "S02 pp110-111",
+      "lineage": "USGS estimates; revised 2023 consumption base",
+      "limit": "Production excludes US; units are tonnes lithium content"
+    },
+    {
+      "claim": "20000吨为已经核实的市场过剩",
+      "status": "UNVERIFIED",
+      "source": "S02",
+      "lineage": "Single dataset arithmetic does not align scope",
+      "limit": "US output withheld; inventory/processing bridge absent"
+    },
+    {
+      "claim": "销量增长足以推出锂价上涨",
+      "status": "CONTRADICTED_AS_SUFFICIENT_CONDITION",
+      "source": "S01 and S02",
+      "lineage": "Different institutional scopes; not independent duplicate measurements",
+      "limit": "Observed growth and specified spot-price decline coexist; not a future-price forecast"
+    }
+  ]
+}

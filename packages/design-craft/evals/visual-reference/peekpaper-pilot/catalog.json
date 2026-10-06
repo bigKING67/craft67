@@ -1,0 +1,2156 @@
+{
+  "cards": [
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/nothin"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:02:58.141Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/nothin"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:02:58.141Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-nothin",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "noth.in",
+        "source_description": "Nothin' is a Paris studio at the intersection of fashion, luxury and tech. Branding, editorial, art direction and AI systems — built so a single idea can become anything.",
+        "title": "NOTHIN'",
+        "url": "https://noth.in/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/nothin",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/jesperlandberg-com"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:02:02.694Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/jesperlandberg-com"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:02:02.694Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-jesperlandberg-com",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "jesperlandberg.com",
+        "source_description": "Swedish design engineer building visually rich, motion-driven websites. Two-time Awwwards Independent of the Year (2022 & 2024).",
+        "title": "Jesper Landberg",
+        "url": "https://jesperlandberg.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/jesperlandberg-com",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate"
+        ],
+        "product_archetype": "luxury expedition service",
+        "recommended_surface_modes": [
+          "Persuade",
+          "Experience"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "immersive luxury travel landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse the expedition imagery, brand marks, copy, or exact oversized typography treatment.",
+        "Do not infer film playback, enquiry conversion, accessibility, or performance from static captures."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/white-desert"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:01:40.071Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/white-desert"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:01:40.071Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-white-desert",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The primary task is dense operation, comparison, or regulated proof rather than emotional discovery."
+      ],
+      "observations": [
+        "Desktop uses full-bleed Antarctic media, a slim split navigation, a small editorial promise, a film action, and an oversized location word.",
+        "Mobile reduces navigation to logo, Menu, and Enquire, changes the lead image, and preserves the editorial promise and oversized location cue."
+      ],
+      "origin": {
+        "domain": "white-desert.com",
+        "source_description": "White Desert is the world’s leading luxury Antarctic expedition company, offering once-in-a-lifetime journeys to the South Pole and Emperor Penguins",
+        "title": "White Desert",
+        "url": "https://white-desert.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/white-desert",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Use immersive media as the primary proof while keeping the proposition short and legible.",
+        "Pair an atmospheric exploration action with a dedicated high-intent enquiry action.",
+        "On narrow screens, remove secondary navigation before reducing the core story hierarchy."
+      ]
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/they-call-me-giulio"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:02:40.940Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/they-call-me-giulio"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:02:40.940Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-they-call-me-giulio",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "theycallmegiulio.com",
+        "source_description": "The portfolio of Giulio, a Creative Technologist building high-performance digital experiences through interactive design and advanced front-end engineering",
+        "title": "They Call Me Giulio",
+        "url": "https://theycallmegiulio.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/they-call-me-giulio",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/heyo-is"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:44:22.943Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/heyo-is"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:44:22.943Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-heyo-is",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "heyo.is",
+        "source_description": "We're creators of people first digital experiences. Working with companies like Adobe, Figma, Merck, Discord, Solana, Lamar, Stellar, Facebook/Meta and more.",
+        "title": "Heyo",
+        "url": "https://heyo.is/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/heyo-is",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/galekto-com"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:03:25.005Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/galekto-com"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:03:25.005Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-galekto-com",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "galekto.com",
+        "source_description": "Evren (Galekto) — Brand identity, visual design and digital art. Explore projects, artworks and more.",
+        "title": "Galekto",
+        "url": "https://galekto.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/galekto-com",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/run-rob-run"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-10T16:04:52.157Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/run-rob-run"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-10T16:04:52.157Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-run-rob-run",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "runrobrun.com",
+        "source_description": "Portfolio of Robert Aperios, a creative developer shaping thoughtful digital experiences through motion, typography, and front-end craft.",
+        "title": "Run Rob Run",
+        "url": "https://runrobrun.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/run-rob-run",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/nodeck"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-06T17:47:52.024Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/nodeck"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-06T17:47:52.024Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-nodeck",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "nodeck.online",
+        "source_description": "Nodeck is an anti-PowerPoint interactive web experience turning corporate presentation culture into a playful world of motion, sound and chaos.",
+        "title": "Nodeck",
+        "url": "https://nodeck.online/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/nodeck",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/lxlcreative-co-uk"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:44:55.598Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/lxlcreative-co-uk"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:44:55.598Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-lxlcreative-co-uk",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "lxlcreative.co.uk",
+        "source_description": "360° creative agency for TV & entertainment. Key art, social campaigns, EPKs & unit photography. One team, from day one.",
+        "title": "LxL Creative",
+        "url": "https://lxlcreative.co.uk/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/lxlcreative-co-uk",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/sasasa-com"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:00:49.581Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/sasasa-com"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T15:00:49.581Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-sasasa-com",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "sasasa.com",
+        "source_description": "Sasasa is a community-centered brand redefining the modern sauna lifestyle. We create the entire process of sauna culture, from sauna space production and brand events to sauna communities.",
+        "title": "sasasa.com",
+        "url": "https://sasasa.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/sasasa-com",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/deck-gallery"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:44:02.881Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/deck-gallery"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:44:02.881Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-deck-gallery",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "deck.gallery",
+        "source_description": "Explore curated, beautifully designed presentation decks, slides, keynotes, and guidelines, all chosen for their exceptional design quality.",
+        "title": "deck.gallery",
+        "url": "https://deck.gallery/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/deck-gallery",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate",
+          "Read"
+        ],
+        "product_archetype": "AI operations platform",
+        "recommended_surface_modes": [
+          "Persuade"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "B2B AI platform landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse the video, brand, claim, copy, or exact condensed type composition.",
+        "Do not treat the marketing treatment as evidence for product workflow quality."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/ploy-ai"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:45:17.916Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/10/ploy-ai"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-12T14:45:17.916Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-10-ploy-ai",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The surface must support dense operation, long-form reading, or evidence-heavy comparison at entry."
+      ],
+      "observations": [
+        "Desktop places a large condensed claim over contextual media, followed by supporting copy, two calls to action, and an announcement card.",
+        "Mobile removes the outer frame and most navigation while retaining the claim, explanation, dual calls to action, and media control."
+      ],
+      "origin": {
+        "domain": "ploy.ai",
+        "source_description": "Your website should be working harder than you are. Build, ship, and optimize your marketing site with AI agents that never log off.",
+        "title": "Ploy",
+        "url": "https://ploy.ai/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-10",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/10/ploy-ai",
+        "provider": "peekpaper",
+        "source_sha256": "8efbb970dd8a4865ad4ddf2b615144a84b7759015f1a5e8539577ce89d1eae3a"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Lead with one provocative claim, then immediately explain the product and provide two intent paths.",
+        "Let contextual product media carry atmosphere without obscuring the main decision.",
+        "Remove decorative framing and low-priority navigation on narrow screens."
+      ]
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate"
+        ],
+        "product_archetype": "design community and event series",
+        "recommended_surface_modes": [
+          "Persuade",
+          "Experience"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "creative community event landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse the event artwork, identity, copy, or exact typographic scale and spacing.",
+        "Do not infer event-card interaction, ticketing behavior, or accessibility from static captures."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:designmeetup"
+          ],
+          "notes": "Bounded DOM audit found header, main, footer, two nav landmarks, one visible H1, focus movement to the first control, and no images missing an alt attribute. Assistive-technology behavior remains unverified.",
+          "status": "partial"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/design-meetup",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-designmeetup-desktop-live-20260817T032131000Z-5b1dd653.png"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:54:32.785Z. Live origin viewport observed at 1512x823 CSS px; the dominant proposition and event evidence matched the source pattern.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:designmeetup"
+          ],
+          "notes": "A bounded focus interaction reached the first visible control. Navigation, conversion, and authenticated workflows were not exercised.",
+          "status": "partial"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/design-meetup",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-designmeetup-mobile-390x844-20260817T032108713Z-f6b41882.png"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:54:32.785Z. Live origin viewport observed at 390x844 CSS px with no horizontal overflow; hierarchy and event evidence remained visible.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:designmeetup"
+          ],
+          "notes": "Origin loaded in a browser67-managed tab on 2026-08-17; desktop and mobile viewport artifacts were hash-recorded in the external run.",
+          "status": "observed"
+        },
+        "performance": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:designmeetup"
+          ],
+          "notes": "Uncontrolled navigation timing observed DOMContentLoaded near 6.1s and load near 8.8s with 250 resource entries; this is not a laboratory performance result.",
+          "status": "partial"
+        }
+      },
+      "id": "peekpaper-2026-08-11-design-meetup",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The user must immediately operate controls, compare records, or complete a transactional workflow."
+      ],
+      "observations": [
+        "Desktop gives a single community promise most of the viewport and lets event cards peek into view as supporting evidence.",
+        "Mobile groups navigation vertically, preserves the dominant promise, and makes the event strip and external event action visible below it."
+      ],
+      "origin": {
+        "domain": "designmeetup.info",
+        "source_description": "A space for the world’s most ambitious creatives.",
+        "title": "Design Meetup",
+        "url": "https://designmeetup.info/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/design-meetup",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Use one high-signal community promise as the entry point instead of stacking multiple marketing sections above the fold.",
+        "Let real event or portfolio evidence enter the viewport early without competing with the primary message.",
+        "Preserve hierarchy across breakpoints even when navigation changes orientation."
+      ]
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate"
+        ],
+        "product_archetype": "money movement API platform",
+        "recommended_surface_modes": [
+          "Persuade"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "fintech infrastructure landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse product screenshots, transaction data, brand assets, copy, or the exact glowing composition.",
+        "Do not infer API capability, security, or production reliability from marketing imagery."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:lightspark"
+          ],
+          "notes": "Bounded DOM audit found a main landmark, three nav landmarks, one visible H1, focus movement to the first control, and no images missing an alt attribute; no semantic header or footer element was found. Assistive-technology behavior remains unverified.",
+          "status": "partial"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/lightspark",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-lightspark-desktop-live-20260817T032230828Z-4d2880cf.png"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:11:05.830Z. Live origin viewport observed at 1512x823 CSS px; product-interface proof surrounded the proposition.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:lightspark"
+          ],
+          "notes": "A bounded focus interaction reached the first visible control. Navigation, conversion, and authenticated workflows were not exercised.",
+          "status": "partial"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/lightspark",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-lightspark-mobile-390x844-20260817T032231719Z-2beeb7a3.png"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:11:05.830Z. Live origin viewport observed at 390x844 CSS px with no horizontal overflow; it showed a long blank media region before the proposition and a cookie banner.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:lightspark"
+          ],
+          "notes": "Origin loaded in a browser67-managed tab on 2026-08-17; desktop and mobile viewport artifacts were hash-recorded in the external run.",
+          "status": "observed"
+        },
+        "performance": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:lightspark"
+          ],
+          "notes": "Uncontrolled navigation timing observed DOMContentLoaded near 4.6s and load near 15.0s with 232 resource entries; this is not a laboratory performance result.",
+          "status": "partial"
+        }
+      },
+      "id": "peekpaper-2026-08-11-lightspark",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The task is an authenticated operational dashboard where real data density and controls must dominate."
+      ],
+      "observations": [
+        "Desktop arranges glowing product-interface fragments around a centered proposition, explanation, and two calls to action.",
+        "Mobile turns the surrounding fragments into a selected vertical sequence and gives the main wallet example more visual priority.",
+        "The 2026-08-17 live mobile viewport showed a long blank media region before the proposition and a cookie banner, unlike the richer product-fragment composition in the Peekpaper capture."
+      ],
+      "origin": {
+        "domain": "lightspark.com",
+        "source_description": "Lightspark is the open infrastructure for moving money worldwide. One integration to send, receive, hold, spend, and convert money in any currency, fiat or stablecoin, across 65+ countries.",
+        "title": "Lightspark",
+        "url": "https://lightspark.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/lightspark",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Surround an abstract infrastructure proposition with concrete product proof rather than decorative imagery alone.",
+        "Use two calls to action for evaluation and commercial intent after a concise explanation.",
+        "On mobile, linearize and reduce proof fragments instead of shrinking the desktop constellation."
+      ]
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/laxer"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:54:07.083Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/laxer"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:54:07.083Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-laxer",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "davidlaxer.com",
+        "source_description": "Laxer specializes in building smart brand strategies and creative storytelling for brands that want to stand for something",
+        "title": "Laxer",
+        "url": "https://davidlaxer.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/laxer",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/rothfinder"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:59:17.884Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/rothfinder"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:59:17.884Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-rothfinder",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "rothfinder.com",
+        "source_description": "RothFinder is the strategy and closing system built for advisors who want to uncover opportunities faster, explain them clearly, and convert more clients.",
+        "title": "RothFinder",
+        "url": "https://rothfinder.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/rothfinder",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/five-pathways-financial"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:55:55.823Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/five-pathways-financial"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:55:55.823Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-five-pathways-financial",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "fivepathways.com",
+        "source_description": "With effective retirement planning, we’re here to help make sure you reach your destination with confidence.",
+        "title": "Five Pathways Financial",
+        "url": "https://fivepathways.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/five-pathways-financial",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate"
+        ],
+        "product_archetype": "writing and knowledge product",
+        "recommended_surface_modes": [
+          "Persuade",
+          "Experience",
+          "Read"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "editorial software landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse the collage assets, diagrams, identity, copy, or connector-line composition.",
+        "Do not assume the collage remains understandable with different source material without target testing."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/sigil"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:11:20.388Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/sigil"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:11:20.388Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-sigil",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The entry must foreground operational clarity, rapid task completion, or regulated disclosures."
+      ],
+      "observations": [
+        "Desktop distributes a three-word proposition across a collage of photography, archival diagrams, and connector lines.",
+        "Mobile reflows the collage vertically, retains the word sequence and connectors, and brings the explanatory paragraph into readable view."
+      ],
+      "origin": {
+        "domain": "sigil.so",
+        "source_description": "A new way to write for work. Words have power.",
+        "title": "Sigil",
+        "url": "https://sigil.so/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/sigil",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Distribute a short proposition across heterogeneous evidence while using a repeated connector motif to preserve unity.",
+        "Follow a high-expression visual entry with readable explanatory content rather than extending the collage indefinitely.",
+        "Recompose, rather than uniformly scale, an art-directed layout for narrow screens."
+      ]
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate"
+        ],
+        "product_archetype": "preventive health membership service",
+        "recommended_surface_modes": [
+          "Persuade"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "health membership landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse the portrait, biomarker values, medical language, brand assets, or exact sparse composition.",
+        "Do not infer clinical validity, service quality, compliance, or privacy controls from visual treatment."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:nue"
+          ],
+          "notes": "Bounded DOM audit found main, footer, and nav landmarks, focus movement to the first control, and no images missing an alt attribute; no visible H1 or semantic header was found. Assistive-technology behavior remains unverified.",
+          "status": "partial"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/nue",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-nue-desktop-1440x900-20260817T032349398Z-3dcf1fc7.png"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:58:52.717Z. Live origin viewport observed at 1512x823 CSS px; the human portrait, health proposition, and desktop QR path were visible.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:nue"
+          ],
+          "notes": "A bounded focus interaction reached the first visible control. Navigation, conversion, and authenticated workflows were not exercised.",
+          "status": "partial"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/nue",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-nue-mobile-390x844-20260817T032351208Z-08140b4d.png"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:58:52.717Z. Live origin viewport observed at 390x844 CSS px with no horizontal overflow; the portrait and proposition remained but source-capture biomarker annotations were absent.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:nue"
+          ],
+          "notes": "Origin loaded in a browser67-managed tab on 2026-08-17; desktop and mobile viewport artifacts were hash-recorded in the external run.",
+          "status": "observed"
+        },
+        "performance": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:nue"
+          ],
+          "notes": "Uncontrolled navigation timing observed DOMContentLoaded near 2.4s with 38 resource entries while load remained incomplete; this is not a laboratory performance result.",
+          "status": "partial"
+        }
+      },
+      "id": "peekpaper-2026-08-11-nue",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The surface presents clinical decisions or operational health records that require dense, explicit evidence and controls."
+      ],
+      "observations": [
+        "Desktop centers a human portrait in a sparse field, places the health proposition below it, and uses a QR code as the conversion path.",
+        "Mobile adds biomarker annotations around the portrait, moves the proposition into the content flow, and replaces the QR path with a direct Join today action.",
+        "The 2026-08-17 live mobile viewport did not show the biomarker annotations visible in the Peekpaper capture, so that treatment is source-capture evidence rather than a stable origin behavior."
+      ],
+      "origin": {
+        "domain": "nuehealth.in",
+        "source_description": "Nue turns blood tests into a continuous health profile. 78 biomarkers, at-home collection, longitudinal tracking, and personalised action plans from doctors — so you can predict and prevent, not just diagnose.",
+        "title": "Nue",
+        "url": "https://nuehealth.in/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/nue",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Lead with a human outcome and use restrained clinical annotations to connect emotion with measurable evidence.",
+        "Translate a desktop QR conversion path into a direct mobile call to action.",
+        "Use whitespace to separate the trust proposition from navigation and secondary detail."
+      ]
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/hellomuller"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:56:37.900Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/hellomuller"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:56:37.900Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-hellomuller",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "hellomuller.com",
+        "source_description": "helloMuller is an ward-winning brand identity studio behind visual identities for Marvel, DC, Sony Pictures, Google and more.",
+        "title": "helloMuller",
+        "url": "https://hellomuller.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/hellomuller",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/claude-type"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:12:03.807Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/claude-type"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:12:03.807Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-claude-type",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "claudetype.com",
+        "source_description": "Claude Type is an independent bespoke type foundry and creative atelier founded by Margot Lévêque, specializing in custom typefaces, signature logotypes, and refined typographic systems for luxury fashion houses, cultural institutions, and global brands. Claude Type is a typographic maison where craft, culture, and emotion quietly meet: an intimate atelier for brands seeking distinction, elegance, and a deeply personal typographic voice.",
+        "title": "Claude Type",
+        "url": "https://claudetype.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/claude-type",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [],
+        "product_archetype": "unclassified",
+        "recommended_surface_modes": [],
+        "reference_roles": [],
+        "source_surface": "unclassified"
+      },
+      "do_not_copy": [],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/town"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:11:39.048Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/town"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:11:39.048Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-town",
+      "lifecycle": {
+        "review_after": null,
+        "reviewed_at": null
+      },
+      "not_suitable_when": [],
+      "observations": [],
+      "origin": {
+        "domain": "town.com",
+        "source_description": "Meet Town, the personal AI assistant that manages your inbox, schedules your meetings, and handles the busywork — working quietly in the background for you.",
+        "title": "Town",
+        "url": "https://town.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/town",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "candidate",
+      "transferable_mechanisms": []
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate",
+          "Read"
+        ],
+        "product_archetype": "single-category food brand",
+        "recommended_surface_modes": [
+          "Persuade"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "direct-to-consumer commerce landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse packaging, ingredient photography, brand voice, copy, or exact black-and-cream composition.",
+        "Do not infer cart, variant, or checkout behavior from static captures."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove accessibility.",
+          "status": "unverified"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/bucks-sauce"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:12:17.465Z.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove interaction behavior.",
+          "status": "unverified"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/bucks-sauce"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T08:12:17.465Z.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [],
+          "notes": "Origin runtime has not been audited.",
+          "status": "unverified"
+        },
+        "performance": {
+          "evidence_refs": [],
+          "notes": "Static source evidence cannot prove performance.",
+          "status": "unverified"
+        }
+      },
+      "id": "peekpaper-2026-08-11-bucks-sauce",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The catalog is broad, comparison-heavy, or requires operational product management rather than focused persuasion."
+      ],
+      "observations": [
+        "Desktop combines a playful differentiated claim with the product and ingredients, then exposes carousel controls for variant discovery.",
+        "Mobile preserves the claim, product identity, and selector while collapsing commerce intent into a prominent Shop Now action."
+      ],
+      "origin": {
+        "domain": "buckssauce.com",
+        "source_description": "Shop small-batch BBQ sauce made with real ingredients. No high fructose corn syrup, no seed oils, no additives. Sweet heat with a balanced finish. Premium BBQ sauce built to perform.",
+        "title": "Bucks Sauce",
+        "url": "https://buckssauce.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/bucks-sauce",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Put the differentiated product claim and the product itself in the same entry composition.",
+        "Expose product selection early for a focused catalog instead of hiding it behind generic lifestyle content.",
+        "Collapse multi-part desktop commerce controls into one clear mobile purchase path."
+      ]
+    },
+    {
+      "classification": {
+        "blocked_surface_modes": [
+          "Operate"
+        ],
+        "product_archetype": "social photo-sharing app",
+        "recommended_surface_modes": [
+          "Persuade"
+        ],
+        "reference_roles": [
+          "structure",
+          "responsive",
+          "tone"
+        ],
+        "source_surface": "consumer mobile app landing page"
+      },
+      "do_not_copy": [
+        "Do not reuse user photos, stickers, interface screens, identity, copy, or exact device composition.",
+        "Do not infer retention, sharing behavior, privacy, or app performance from the landing page."
+      ],
+      "evidence": {
+        "accessibility": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:locket"
+          ],
+          "notes": "Bounded DOM audit found header, main, footer, and nav landmarks, a semantic H1, focus movement to the first control, and no images missing an alt attribute. The H1 layout metric was visually hidden; assistive-technology behavior remains unverified.",
+          "status": "partial"
+        },
+        "desktop": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/locket",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-locket-desktop-live-20260817T032423475Z-959c9388.png"
+          ],
+          "notes": "Peekpaper desktop capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:58:06.306Z. Live origin viewport observed at 1512x823 CSS px; the device proof, social fragments, proposition, and download path were visible.",
+          "status": "observed"
+        },
+        "interaction": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:locket"
+          ],
+          "notes": "A bounded focus interaction reached the first visible control. Navigation, conversion, and authenticated workflows were not exercised.",
+          "status": "partial"
+        },
+        "mobile": {
+          "evidence_refs": [
+            "https://peekpaper.com/2026/08/11/locket",
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586/artifacts/screenshot-viewport-locket-mobile-390x844-20260817T032425288Z-98129600.png"
+          ],
+          "notes": "Peekpaper mobile capture is present; dimensions=2880x1800; captured_at=2026-08-14T07:58:06.306Z. Live origin viewport observed at 390x844 CSS px with no horizontal overflow; the device proof was simplified and a direct acquisition action was visible.",
+          "status": "observed"
+        },
+        "origin_live": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:locket"
+          ],
+          "notes": "Origin loaded in a browser67-managed tab on 2026-08-17; desktop and mobile viewport artifacts were hash-recorded in the external run.",
+          "status": "observed"
+        },
+        "performance": {
+          "evidence_refs": [
+            "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:locket"
+          ],
+          "notes": "Uncontrolled navigation timing observed DOMContentLoaded near 3.6s and load near 5.1s with 58 resource entries; this is not a laboratory performance result.",
+          "status": "partial"
+        }
+      },
+      "id": "peekpaper-2026-08-11-locket",
+      "lifecycle": {
+        "review_after": "2026-11-15",
+        "reviewed_at": "2026-08-17"
+      },
+      "not_suitable_when": [
+        "The target is a desktop operational product or the device mockup would obscure the primary workflow."
+      ],
+      "observations": [
+        "Desktop demonstrates the product inside a tilted phone and surrounds it with social images and stickers before the short proposition.",
+        "Mobile reduces surrounding fragments, retains the central device proof, and adds a direct Get Locket action beneath the proposition."
+      ],
+      "origin": {
+        "domain": "locket.com",
+        "source_description": "Add your friends to your Home Screen, share weekly recaps, and keep your people close. Locket is for best friends first.",
+        "title": "Locket",
+        "url": "https://locket.com/"
+      },
+      "project_validation_refs": [],
+      "rights": {
+        "ai_training": false,
+        "assets_redistributed": false,
+        "mode": "reference-only",
+        "policy_observed_at": "2026-08-17",
+        "policy_url": "https://peekpaper.com/robots.txt"
+      },
+      "schema": "design-craft.visual-reference-card.v1",
+      "source": {
+        "issue_date": "2026-08-11",
+        "observed_at": "2026-08-17",
+        "post_url": "https://peekpaper.com/2026/08/11/locket",
+        "provider": "peekpaper",
+        "source_sha256": "c555871f91d0fa7423be68fc44516ee1ff910de09cc33ff0f7d1b462270ad2bf"
+      },
+      "status": "reviewed",
+      "transferable_mechanisms": [
+        "Demonstrate a mobile product inside its native device context before relying on explanatory copy.",
+        "Use a small number of social fragments to establish emotional context around concrete product proof.",
+        "Reduce decorative fragments and strengthen the direct acquisition action on mobile."
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "comparative_eval_refs": [],
+      "disconfirming_evidence": [
+        "The approach may delay essential detail for regulated, comparison-heavy, or operational surfaces.",
+        "A large claim without nearby concrete proof can become decorative rather than persuasive."
+      ],
+      "id": "typographic-single-focus-entry",
+      "mechanism": "A single dominant proposition can create a decisive entry when real proof begins in the same or immediately following viewport.",
+      "origin_audit_refs": [
+        "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:designmeetup"
+      ],
+      "status": "proposed",
+      "supporting_card_ids": [
+        "peekpaper-2026-08-10-ploy-ai",
+        "peekpaper-2026-08-11-design-meetup",
+        "peekpaper-2026-08-11-bucks-sauce"
+      ],
+      "target_validation_refs": [
+        "evals/visual-reference/target-validation/reference-assisted-product-landing/result.md#controlled-comparison"
+      ],
+      "unique_origin_urls": [
+        "https://buckssauce.com/",
+        "https://designmeetup.info/",
+        "https://ploy.ai/"
+      ]
+    },
+    {
+      "comparative_eval_refs": [],
+      "disconfirming_evidence": [
+        "Marketing imagery can resemble proof while omitting capability, compliance, privacy, or reliability evidence.",
+        "Unfamiliar product visuals may increase ambiguity when labels and explanatory context are too delayed."
+      ],
+      "id": "proof-led-trust-sequencing",
+      "mechanism": "Concrete product or human-outcome proof placed before detailed explanation can make an abstract proposition easier to trust and understand.",
+      "origin_audit_refs": [
+        "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:lightspark",
+        "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:nue",
+        "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:locket"
+      ],
+      "status": "project_validated",
+      "supporting_card_ids": [
+        "peekpaper-2026-08-11-lightspark",
+        "peekpaper-2026-08-11-nue",
+        "peekpaper-2026-08-11-locket"
+      ],
+      "target_validation_refs": [
+        "evals/visual-reference/comparative-validation/reference-assisted-evidence-dossier/result.md#controlled-comparison"
+      ],
+      "unique_origin_urls": [
+        "https://lightspark.com/",
+        "https://locket.com/",
+        "https://nuehealth.in/"
+      ]
+    },
+    {
+      "comparative_eval_refs": [
+        "evals/visual-reference/comparative-validation/reference-assisted-evidence-dossier/result.md#controlled-comparison"
+      ],
+      "disconfirming_evidence": [
+        "Priority changes can remove context that some audiences still need before acting.",
+        "Static breakpoint captures do not prove intermediate widths, orientation changes, or dynamic layout stability."
+      ],
+      "id": "desktop-mobile-priority-reordering",
+      "mechanism": "Strong responsive systems reorder proof and conversion priorities instead of uniformly shrinking the desktop composition.",
+      "origin_audit_refs": [
+        "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:nue",
+        "browser67://runs/design-craft/20260817T032024616Z-ddb8f586#origin_audit:locket"
+      ],
+      "status": "comparative_validated",
+      "supporting_card_ids": [
+        "peekpaper-2026-08-11-nue",
+        "peekpaper-2026-08-11-bucks-sauce",
+        "peekpaper-2026-08-11-locket"
+      ],
+      "target_validation_refs": [
+        "evals/visual-reference/target-validation/reference-assisted-product-landing/result.md#controlled-comparison"
+      ],
+      "unique_origin_urls": [
+        "https://buckssauce.com/",
+        "https://locket.com/",
+        "https://nuehealth.in/"
+      ]
+    }
+  ],
+  "id": "peekpaper-2026-08-10--2026-08-11",
+  "observed_at": "2026-08-17",
+  "schema": "design-craft.visual-reference-catalog.v1",
+  "source_policy": {
+    "ai_training": false,
+    "assets_redistributed": false,
+    "mode": "reference-only",
+    "policy_observed_at": "2026-08-17",
+    "policy_url": "https://peekpaper.com/robots.txt"
+  },
+  "title": "Peekpaper visual reference pilot: 2026-08-10, 2026-08-11"
+}

@@ -1,0 +1,400 @@
+{
+  "schema": "whoami.compare.v1",
+  "years": [
+    2026
+  ],
+  "before": {
+    "chartId": "dc1bcbad83d8a91d3312d77f524de322810b62fd71de27a9f03258982081f0d4",
+    "status": "ready",
+    "input": {
+      "calendar": "solar",
+      "date": "2021-11-07",
+      "leapMonth": false,
+      "time": "01:30",
+      "uncertaintyMinutes": 0,
+      "place": "合成地点（纽约）",
+      "longitude": -74.006,
+      "timeZone": "America/New_York",
+      "gender": "female",
+      "timeBasis": "civil",
+      "dayBoundary": "zi",
+      "dstDisambiguation": "earlier"
+    },
+    "warnings": [],
+    "candidates": [
+      {
+        "id": "C1-22fe841f",
+        "pillars": [
+          "辛丑",
+          "己亥",
+          "己未",
+          "乙丑"
+        ],
+        "soulPalace": "戌",
+        "bodyPalace": "子",
+        "representativeTime": {
+          "instant": "2021-11-07T05:30:00Z",
+          "civil": "2021-11-07T01:30:00-04:00[America/New_York]",
+          "trueSolar": "2021-11-07T00:50:10.193",
+          "chartClock": "2021-11-07T01:30:00",
+          "offsetMinutes": -240,
+          "longitudeCorrectionMinutes": -56.024,
+          "equationOfTimeMinutes": 16.193889996143604,
+          "totalCorrectionMinutes": -39.8301100038564,
+          "model": "NOAA fractional-year equation of time",
+          "solarShiftMinutes": 0,
+          "screeningMarginMinutes": 0
+        }
+      }
+    ]
+  },
+  "after": {
+    "chartId": "af4e6e869952ce481e1478a4d90bd9d7a0842ee28ce62587a373563a5ae078dc",
+    "status": "ready",
+    "input": {
+      "calendar": "solar",
+      "date": "2021-11-07",
+      "leapMonth": false,
+      "time": "01:30",
+      "uncertaintyMinutes": 0,
+      "place": "合成地点（纽约）",
+      "longitude": -74.006,
+      "timeZone": "America/New_York",
+      "gender": "female",
+      "timeBasis": "civil",
+      "dayBoundary": "zi",
+      "dstDisambiguation": "later"
+    },
+    "warnings": [],
+    "candidates": [
+      {
+        "id": "C1-22fe841f",
+        "pillars": [
+          "辛丑",
+          "己亥",
+          "己未",
+          "乙丑"
+        ],
+        "soulPalace": "戌",
+        "bodyPalace": "子",
+        "representativeTime": {
+          "instant": "2021-11-07T06:30:00Z",
+          "civil": "2021-11-07T01:30:00-05:00[America/New_York]",
+          "trueSolar": "2021-11-07T01:50:10.014",
+          "chartClock": "2021-11-07T01:30:00",
+          "offsetMinutes": -300,
+          "longitudeCorrectionMinutes": 3.975999999999999,
+          "equationOfTimeMinutes": 16.19090324062921,
+          "totalCorrectionMinutes": 20.16690324062921,
+          "model": "NOAA fractional-year equation of time",
+          "solarShiftMinutes": 0,
+          "screeningMarginMinutes": 0
+        }
+      }
+    ]
+  },
+  "status": "compared",
+  "selected": {
+    "before": "C1-22fe841f",
+    "after": "C1-22fe841f"
+  },
+  "changedInputFields": [
+    "dstDisambiguation"
+  ],
+  "evidenceBinding": {
+    "before": "0b67bb468d36cf52565b9b6c8571fdc4b0da641203dc6b820db3ef71a2dd5702",
+    "after": "eae3ad0adf24e15576c73d7d75bf0f74730d04963c2352a95ae82ea3ad3dddda",
+    "bindingMatch": false,
+    "meaning": "两端证据绑定不同；绑定旧证据的报告不能直接作为新输入的已校验报告，须核对受影响内容后重新校验。"
+  },
+  "changedFacts": [
+    {
+      "key": "input.time",
+      "system": "input",
+      "label": "代表性时间及校正",
+      "change": "changed",
+      "before": {
+        "factId": "C1-22fe841f.input.time",
+        "value": {
+          "instant": "2021-11-07T05:30:00Z",
+          "civil": "2021-11-07T01:30:00-04:00[America/New_York]",
+          "trueSolar": "2021-11-07T00:50:10.193",
+          "chartClock": "2021-11-07T01:30:00",
+          "offsetMinutes": -240,
+          "longitudeCorrectionMinutes": -56.024,
+          "equationOfTimeMinutes": 16.193889996143604,
+          "totalCorrectionMinutes": -39.8301100038564,
+          "model": "NOAA fractional-year equation of time",
+          "solarShiftMinutes": 0,
+          "screeningMarginMinutes": 0
+        }
+      },
+      "after": {
+        "factId": "C1-22fe841f.input.time",
+        "value": {
+          "instant": "2021-11-07T06:30:00Z",
+          "civil": "2021-11-07T01:30:00-05:00[America/New_York]",
+          "trueSolar": "2021-11-07T01:50:10.014",
+          "chartClock": "2021-11-07T01:30:00",
+          "offsetMinutes": -300,
+          "longitudeCorrectionMinutes": 3.975999999999999,
+          "equationOfTimeMinutes": 16.19090324062921,
+          "totalCorrectionMinutes": 20.16690324062921,
+          "model": "NOAA fractional-year equation of time",
+          "solarShiftMinutes": 0,
+          "screeningMarginMinutes": 0
+        }
+      }
+    },
+    {
+      "key": "bazi.cycles",
+      "system": "bazi",
+      "label": "起运与大运流年",
+      "change": "changed",
+      "before": {
+        "factId": "C1-22fe841f.bazi.cycles",
+        "value": {
+          "direction": "forward",
+          "method": "lunar-typescript Yun sect=2; absolute birth vs Jie; original civil basis",
+          "startAge": {
+            "years": 9,
+            "months": 10,
+            "days": 22,
+            "hours": 6
+          },
+          "startInstant": "2031-09-29T11:30:00Z",
+          "startCivil": "2031-09-29T07:30:00-04:00[America/New_York]",
+          "decades": [
+            {
+              "index": 1,
+              "pillar": "庚子",
+              "startCivil": "2031-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2041-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 2,
+              "pillar": "辛丑",
+              "startCivil": "2041-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2051-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 3,
+              "pillar": "壬寅",
+              "startCivil": "2051-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2061-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 4,
+              "pillar": "癸卯",
+              "startCivil": "2061-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2071-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 5,
+              "pillar": "甲辰",
+              "startCivil": "2071-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2081-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 6,
+              "pillar": "乙巳",
+              "startCivil": "2081-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2091-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 7,
+              "pillar": "丙午",
+              "startCivil": "2091-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2101-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 8,
+              "pillar": "丁未",
+              "startCivil": "2101-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2111-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 9,
+              "pillar": "戊申",
+              "startCivil": "2111-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2121-09-29T07:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 10,
+              "pillar": "己酉",
+              "startCivil": "2121-09-29T07:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2131-09-29T07:30:00-04:00[America/New_York]"
+            }
+          ],
+          "yearly": [
+            {
+              "year": 2026,
+              "pillar": "丙午",
+              "boundary": "lichun"
+            }
+          ],
+          "uncertainty": {
+            "status": "exact",
+            "sampleCount": 1,
+            "distinctStartCount": 1,
+            "birthOffsetMinutes": {
+              "min": 0,
+              "max": 0
+            },
+            "solarShiftMinutes": {
+              "min": 0,
+              "max": 0
+            },
+            "startInstant": {
+              "earliest": "2031-09-29T11:30:00Z",
+              "latest": "2031-09-29T11:30:00Z"
+            },
+            "startCivil": {
+              "earliest": "2031-09-29T07:30:00-04:00[America/New_York]",
+              "latest": "2031-09-29T07:30:00-04:00[America/New_York]"
+            }
+          }
+        }
+      },
+      "after": {
+        "factId": "C1-22fe841f.bazi.cycles",
+        "value": {
+          "direction": "forward",
+          "method": "lunar-typescript Yun sect=2; absolute birth vs Jie; original civil basis",
+          "startAge": {
+            "years": 9,
+            "months": 10,
+            "days": 17,
+            "hours": 6
+          },
+          "startInstant": "2031-09-24T12:30:00Z",
+          "startCivil": "2031-09-24T08:30:00-04:00[America/New_York]",
+          "decades": [
+            {
+              "index": 1,
+              "pillar": "庚子",
+              "startCivil": "2031-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2041-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 2,
+              "pillar": "辛丑",
+              "startCivil": "2041-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2051-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 3,
+              "pillar": "壬寅",
+              "startCivil": "2051-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2061-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 4,
+              "pillar": "癸卯",
+              "startCivil": "2061-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2071-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 5,
+              "pillar": "甲辰",
+              "startCivil": "2071-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2081-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 6,
+              "pillar": "乙巳",
+              "startCivil": "2081-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2091-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 7,
+              "pillar": "丙午",
+              "startCivil": "2091-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2101-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 8,
+              "pillar": "丁未",
+              "startCivil": "2101-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2111-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 9,
+              "pillar": "戊申",
+              "startCivil": "2111-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2121-09-24T08:30:00-04:00[America/New_York]"
+            },
+            {
+              "index": 10,
+              "pillar": "己酉",
+              "startCivil": "2121-09-24T08:30:00-04:00[America/New_York]",
+              "endExclusiveCivil": "2131-09-24T08:30:00-04:00[America/New_York]"
+            }
+          ],
+          "yearly": [
+            {
+              "year": 2026,
+              "pillar": "丙午",
+              "boundary": "lichun"
+            }
+          ],
+          "uncertainty": {
+            "status": "exact",
+            "sampleCount": 1,
+            "distinctStartCount": 1,
+            "birthOffsetMinutes": {
+              "min": 0,
+              "max": 0
+            },
+            "solarShiftMinutes": {
+              "min": 0,
+              "max": 0
+            },
+            "startInstant": {
+              "earliest": "2031-09-24T12:30:00Z",
+              "latest": "2031-09-24T12:30:00Z"
+            },
+            "startCivil": {
+              "earliest": "2031-09-24T08:30:00-04:00[America/New_York]",
+              "latest": "2031-09-24T08:30:00-04:00[America/New_York]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "unchangedFactKeys": [
+    "input.provenance",
+    "bazi.year",
+    "bazi.month",
+    "bazi.day",
+    "bazi.hour",
+    "bazi.dayMaster",
+    "bazi.monthExposure",
+    "bazi.wealthReview",
+    "bazi.roots",
+    "bazi.visibleElements",
+    "bazi.relations",
+    "bazi.rootDetails",
+    "ziwei.base",
+    "ziwei.palace-0",
+    "ziwei.palace-1",
+    "ziwei.palace-2",
+    "ziwei.palace-3",
+    "ziwei.palace-4",
+    "ziwei.palace-5",
+    "ziwei.palace-6",
+    "ziwei.palace-7",
+    "ziwei.palace-8",
+    "ziwei.palace-9",
+    "ziwei.palace-10",
+    "ziwei.palace-11",
+    "ziwei.cycles",
+    "ziwei.transformations"
+  ],
+  "limits": [
+    "按同名事实项比较值，不把事实相同当作自然语言解释已获验证；不自动改写报告或替换证据ID。",
+    "候选ID只属于各自命盘；多候选必须明确选择比较组合，不因排列次序或ID相似自动配对。",
+    "比较沿用既有采样与真太阳时近似；单候选也可能来自不确定时间区间，保留两侧状态和警告。"
+  ]
+}

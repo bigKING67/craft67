@@ -1,0 +1,472 @@
+{
+  "scope": "Synthetic functional comparison, not predictive validation",
+  "comparisons": [
+    {
+      "input": {
+        "calendar": "solar",
+        "date": "2003-08-11",
+        "time": "02:00",
+        "gender": "female",
+        "place": "合成东经120度",
+        "longitude": 120,
+        "timeZone": "Asia/Shanghai",
+        "timeBasis": "civil"
+      },
+      "chartId": "4efb131e36009535f9c0fb44b8456cb57eb3fb96f9792fa02f1dcfb481cf4691",
+      "evidenceId": "eabbceec91079110175714454fa75a6fc6273a98ef5d21ebc66b5d7710efcca0",
+      "pillars": [
+        "癸未",
+        "庚申",
+        "丙辰",
+        "己丑"
+      ],
+      "fact": {
+        "id": "C1-a6e42e2d.bazi.wealthReview",
+        "candidate": "C1-a6e42e2d",
+        "system": "bazi",
+        "label": "月令财星透出的条件核对（非成败裁定）",
+        "value": {
+          "scope": "月支财星同干透于年/月/时；仅核对显干前提",
+          "status": "candidate-only",
+          "monthBranch": "申",
+          "candidates": [
+            {
+              "stem": "庚",
+              "tenGod": "偏财",
+              "exposedAt": [
+                "month"
+              ]
+            }
+          ],
+          "sealPlacement": {
+            "status": "not-applicable",
+            "pairs": [],
+            "conclusion": "财格候选入口或显干财印配对未满足；本项不作位置判断。",
+            "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+            "source": "https://donglishuzhai.net/chapter/3746.html"
+          },
+          "officerBranch": {
+            "status": "blocked",
+            "officers": [
+              {
+                "position": "year",
+                "stem": "癸",
+                "tenGod": "正官"
+              }
+            ],
+            "checks": [
+              {
+                "id": "no-visible-hurting",
+                "condition": "不透伤官",
+                "positions": [
+                  {
+                    "position": "hour",
+                    "stem": "己",
+                    "tenGod": "伤官"
+                  }
+                ],
+                "result": "counterexample"
+              },
+              {
+                "id": "no-visible-killer",
+                "condition": "未见七杀同透（不混七杀的局部检查）",
+                "positions": [],
+                "result": "not-observed"
+              }
+            ],
+            "blockers": [
+              "no-visible-hurting"
+            ],
+            "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+            "conclusion": "存在伤官或七杀同透的反例，不能直接援引不透伤官、不混七杀的分支；若主张有救应，必须另行论证。",
+            "source": "https://donglishuzhai.net/chapter/3746.html"
+          },
+          "checks": [
+            {
+              "id": "food",
+              "label": "财与食神同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "食神"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "身强、带比及食神生财的作用关系尚未裁定"
+            },
+            {
+              "id": "officer",
+              "label": "财与正官同透",
+              "prerequisite": "observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "正官"
+                  ],
+                  "positions": [
+                    {
+                      "position": "year",
+                      "stem": "癸",
+                      "tenGod": "正官"
+                    }
+                  ]
+                }
+              ],
+              "pending": "官是否旺、财官作用及有无伤合尚未裁定"
+            },
+            {
+              "id": "seal",
+              "label": "财与印同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "正印",
+                    "偏印"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "财印位置是否相宜、是否相克及印类差异尚未裁定"
+            },
+            {
+              "id": "peer",
+              "label": "财与比劫同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "比肩",
+                    "劫财"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "财轻比重尚未裁定；比劫同透不自动破格"
+            },
+            {
+              "id": "killer",
+              "label": "财与七杀同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "七杀"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "七杀作用及有无制化救应尚未裁定"
+            },
+            {
+              "id": "robber-food",
+              "label": "劫财与食神并见的救应候选",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "劫财"
+                  ],
+                  "positions": []
+                },
+                {
+                  "tenGods": [
+                    "食神"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "食神能否化劫生财尚未裁定，出现不等于救应完成"
+            },
+            {
+              "id": "robber-officer",
+              "label": "劫财与正官并见的救应候选",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "劫财"
+                  ],
+                  "positions": []
+                },
+                {
+                  "tenGods": [
+                    "正官"
+                  ],
+                  "positions": [
+                    {
+                      "position": "year",
+                      "stem": "癸",
+                      "tenGod": "正官"
+                    }
+                  ]
+                }
+              ],
+              "pending": "正官能否制劫护财尚未裁定，出现不等于救应完成"
+            },
+            {
+              "id": "killer-food",
+              "label": "七杀与食神并见的救应候选",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "七杀"
+                  ],
+                  "positions": []
+                },
+                {
+                  "tenGods": [
+                    "食神"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "食神能否制杀生财尚未裁定，出现不等于救应完成"
+            }
+          ],
+          "judgment": "unresolved",
+          "source": "https://donglishuzhai.net/chapter/3722.html",
+          "limits": [
+            "not-observed 仅指本轮显干条件未见，不表示藏干无作用、没有救应或现实无该事件。",
+            "outside-scope 仅表示不满足本模块入口，不表示无财格；未覆盖未透取用、会支变化及其他格局。",
+            "所有线索并列保留，不相互抵消、计分或多数表决；旺衰、位置、合化、制化有效性仍需单独论证。"
+          ]
+        },
+        "source": "whoami 显干前提检测；传统条件见《子平真诠·论用神成败救应》原文转录"
+      }
+    },
+    {
+      "input": {
+        "calendar": "solar",
+        "date": "2003-08-11",
+        "time": "04:00",
+        "gender": "female",
+        "place": "合成东经120度",
+        "longitude": 120,
+        "timeZone": "Asia/Shanghai",
+        "timeBasis": "civil"
+      },
+      "chartId": "5eb73032b617393121bf1ab763ebdcb40566a5cc3ece3853f7f41553740f1f5e",
+      "evidenceId": "f47a0687bdaeeb4560d82341e1e24285b85e19b9b570f2d7e894ce4b6ab49d5f",
+      "pillars": [
+        "癸未",
+        "庚申",
+        "丙辰",
+        "庚寅"
+      ],
+      "fact": {
+        "id": "C1-84740a29.bazi.wealthReview",
+        "candidate": "C1-84740a29",
+        "system": "bazi",
+        "label": "月令财星透出的条件核对（非成败裁定）",
+        "value": {
+          "scope": "月支财星同干透于年/月/时；仅核对显干前提",
+          "status": "candidate-only",
+          "monthBranch": "申",
+          "candidates": [
+            {
+              "stem": "庚",
+              "tenGod": "偏财",
+              "exposedAt": [
+                "month",
+                "hour"
+              ]
+            }
+          ],
+          "sealPlacement": {
+            "status": "not-applicable",
+            "pairs": [],
+            "conclusion": "财格候选入口或显干财印配对未满足；本项不作位置判断。",
+            "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+            "source": "https://donglishuzhai.net/chapter/3746.html"
+          },
+          "officerBranch": {
+            "status": "pending",
+            "officers": [
+              {
+                "position": "year",
+                "stem": "癸",
+                "tenGod": "正官"
+              }
+            ],
+            "checks": [
+              {
+                "id": "no-visible-hurting",
+                "condition": "不透伤官",
+                "positions": [],
+                "result": "not-observed"
+              },
+              {
+                "id": "no-visible-killer",
+                "condition": "未见七杀同透（不混七杀的局部检查）",
+                "positions": [],
+                "result": "not-observed"
+              }
+            ],
+            "blockers": [],
+            "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+            "conclusion": "本轮显干反例未见；财旺、身强、官的作用及藏干和合化影响未核验，不能据此确认财旺生官成立。",
+            "source": "https://donglishuzhai.net/chapter/3746.html"
+          },
+          "checks": [
+            {
+              "id": "food",
+              "label": "财与食神同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "食神"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "身强、带比及食神生财的作用关系尚未裁定"
+            },
+            {
+              "id": "officer",
+              "label": "财与正官同透",
+              "prerequisite": "observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "正官"
+                  ],
+                  "positions": [
+                    {
+                      "position": "year",
+                      "stem": "癸",
+                      "tenGod": "正官"
+                    }
+                  ]
+                }
+              ],
+              "pending": "官是否旺、财官作用及有无伤合尚未裁定"
+            },
+            {
+              "id": "seal",
+              "label": "财与印同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "正印",
+                    "偏印"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "财印位置是否相宜、是否相克及印类差异尚未裁定"
+            },
+            {
+              "id": "peer",
+              "label": "财与比劫同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "比肩",
+                    "劫财"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "财轻比重尚未裁定；比劫同透不自动破格"
+            },
+            {
+              "id": "killer",
+              "label": "财与七杀同透",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "七杀"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "七杀作用及有无制化救应尚未裁定"
+            },
+            {
+              "id": "robber-food",
+              "label": "劫财与食神并见的救应候选",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "劫财"
+                  ],
+                  "positions": []
+                },
+                {
+                  "tenGods": [
+                    "食神"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "食神能否化劫生财尚未裁定，出现不等于救应完成"
+            },
+            {
+              "id": "robber-officer",
+              "label": "劫财与正官并见的救应候选",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "劫财"
+                  ],
+                  "positions": []
+                },
+                {
+                  "tenGods": [
+                    "正官"
+                  ],
+                  "positions": [
+                    {
+                      "position": "year",
+                      "stem": "癸",
+                      "tenGod": "正官"
+                    }
+                  ]
+                }
+              ],
+              "pending": "正官能否制劫护财尚未裁定，出现不等于救应完成"
+            },
+            {
+              "id": "killer-food",
+              "label": "七杀与食神并见的救应候选",
+              "prerequisite": "not-observed",
+              "groups": [
+                {
+                  "tenGods": [
+                    "七杀"
+                  ],
+                  "positions": []
+                },
+                {
+                  "tenGods": [
+                    "食神"
+                  ],
+                  "positions": []
+                }
+              ],
+              "pending": "食神能否制杀生财尚未裁定，出现不等于救应完成"
+            }
+          ],
+          "judgment": "unresolved",
+          "source": "https://donglishuzhai.net/chapter/3722.html",
+          "limits": [
+            "not-observed 仅指本轮显干条件未见，不表示藏干无作用、没有救应或现实无该事件。",
+            "outside-scope 仅表示不满足本模块入口，不表示无财格；未覆盖未透取用、会支变化及其他格局。",
+            "所有线索并列保留，不相互抵消、计分或多数表决；旺衰、位置、合化、制化有效性仍需单独论证。"
+          ]
+        },
+        "source": "whoami 显干前提检测；传统条件见《子平真诠·论用神成败救应》原文转录"
+      }
+    }
+  ]
+}

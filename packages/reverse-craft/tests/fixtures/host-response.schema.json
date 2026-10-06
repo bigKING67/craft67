@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["route_id", "module_reference", "runtime_truth", "mutates", "evidence_chain"],
+  "properties": {
+    "route_id": {"type": "string"},
+    "module_reference": {"type": "string"},
+    "runtime_truth": {"type": "string"},
+    "mutates": {"type": "boolean"},
+    "evidence_chain": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "additionalProperties": false
+}

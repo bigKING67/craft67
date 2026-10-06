@@ -1,0 +1,12 @@
+[submodule "upstreams/anthropic-skills"]
+	path = upstreams/anthropic-skills
+	url = https://github.com/anthropics/skills.git
+[submodule "upstreams/elements-of-style"]
+	path = upstreams/elements-of-style
+	url = https://github.com/obra/the-elements-of-style.git
+[submodule "upstreams/awesome-claude-skills"]
+	path = upstreams/awesome-claude-skills
+	url = https://github.com/ComposioHQ/awesome-claude-skills.git
+[submodule "upstreams/agent-skills"]
+	path = upstreams/agent-skills
+	url = https://github.com/arjunprabhulal/agent-skills.git

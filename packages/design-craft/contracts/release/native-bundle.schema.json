@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/release/native-bundle.schema.json",
+  "title": "design-craft Certified native release bundle manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "version",
+    "tag",
+    "source_commit",
+    "github_runs",
+    "bundle",
+    "checksum",
+    "evidence"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.native-release-bundle.v2"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "tag": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "source_commit": {"$ref": "#/definitions/commit"},
+    "github_runs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["native", "physical_device"],
+      "properties": {
+        "native": {"$ref": "#/definitions/nativeRun"},
+        "physical_device": {"$ref": "#/definitions/physicalRun"}
+      }
+    },
+    "bundle": {"$ref": "#/definitions/bundle"},
+    "checksum": {"$ref": "#/definitions/checksum"},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ios", "android", "real_device"],
+      "properties": {
+        "ios": {"$ref": "#/definitions/evidenceSummary"},
+        "android": {"$ref": "#/definitions/evidenceSummary"},
+        "real_device": {"$ref": "#/definitions/evidenceSummary"}
+      }
+    }
+  },
+  "definitions": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "runBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "attempt",
+        "workflow",
+        "workflow_name",
+        "event",
+        "head_branch",
+        "head_sha",
+        "status",
+        "conclusion",
+        "url",
+        "repository"
+      ],
+      "properties": {
+        "id": {"type": "integer", "minimum": 1},
+        "attempt": {"type": "integer", "minimum": 1},
+        "workflow": {"type": "string"},
+        "workflow_name": {"type": "string"},
+        "event": {"type": "string"},
+        "head_branch": {"type": "string"},
+        "head_sha": {"$ref": "#/definitions/commit"},
+        "status": {"const": "completed"},
+        "conclusion": {"const": "success"},
+        "url": {"type": "string", "pattern": "^https://github\\.com/[^/]+/[^/]+/actions/runs/[1-9][0-9]*$"},
+        "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"}
+      }
+    },
+    "nativeRun": {
+      "allOf": [
+        {"$ref": "#/definitions/runBase"},
+        {
+          "properties": {
+            "workflow": {"const": ".github/workflows/native-runtime.yml"},
+            "workflow_name": {"const": "Native runtime evidence"},
+            "event": {"const": "push"},
+            "head_branch": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"}
+          }
+        }
+      ]
+    },
+    "physicalRun": {
+      "allOf": [
+        {"$ref": "#/definitions/runBase"},
+        {
+          "properties": {
+            "workflow": {"const": ".github/workflows/physical-device.yml"},
+            "workflow_name": {"const": "Physical device evidence"},
+            "event": {"const": "workflow_dispatch"},
+            "head_branch": {"const": "main"}
+          }
+        }
+      ]
+    },
+    "bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/definitions/sha256"}
+      }
+    },
+    "checksum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "sha256": {"$ref": "#/definitions/sha256"}
+      }
+    },
+    "evidenceSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "schema",
+        "platform",
+        "runtime_kind",
+        "source_commit",
+        "contract_sha256",
+        "artifact_count"
+      ],
+      "properties": {
+        "path": {"type": "string"},
+        "sha256": {"$ref": "#/definitions/sha256"},
+        "schema": {"const": "design-craft.native-runtime-evidence.v3"},
+        "platform": {"enum": ["ios", "android"]},
+        "runtime_kind": {
+          "enum": ["ios_simulator", "android_emulator", "ios_device", "android_device"]
+        },
+        "source_commit": {"$ref": "#/definitions/commit"},
+        "contract_sha256": {"$ref": "#/definitions/sha256"},
+        "artifact_count": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

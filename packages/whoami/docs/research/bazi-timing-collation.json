@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-26",
+  "granularity": "paragraph-complete material-variant collation",
+  "scope": "《子平真诠》论行运、论行运成格变格、论支中喜忌逢运透清，以及《滴天髓》岁运论",
+  "method": [
+    "公开转录只用于建立段落底稿和检索入口",
+    "扫描页是版本文字、缺文和层次标签的最终证据",
+    "OCR 只用于定位，不进入 reading 或 variant 结论",
+    "只记录影响段落完整性、文本层次或解释方向的实质差异"
+  ],
+  "notClaimed": [
+    "逐字外交转录",
+    "完整版本谱系",
+    "唯一正字或权威底本",
+    "作者归属定论",
+    "传统理论或现实预测有效性"
+  ],
+  "witnesses": [
+    {
+      "id": "zp-world",
+      "label": "世界图书馆本《子平真诠》",
+      "type": "scan",
+      "sha256": "71402a780b0351b54edf121a51bc4a4a4ce5896496c35b954563ee06f1a6f620"
+    },
+    {
+      "id": "zp-1926",
+      "label": "1926 文明书局秦慎安校勘本《子平真诠》第2卷",
+      "type": "scan",
+      "sha256": "b1ac0a7dd4dc260647b65bd9338ad815fc0855d78e0ea01ed428237b28eb61c8"
+    },
+    {
+      "id": "zp-dongli",
+      "label": "东里书斋《子平真诠》转录",
+      "type": "digital-transcription",
+      "layerWarning": "正文、校记和东里按语必须分开"
+    },
+    {
+      "id": "dts-ming",
+      "label": "明末长庚馆刊《滴天髓》",
+      "type": "scan",
+      "sha256": "af8cc3ae1e2d6de6e11c6d677c43c9c0519193f18dfba2e16690bfa131a7715d"
+    },
+    {
+      "id": "dts-1936",
+      "label": "1936 乾乾书社《滴天髓辑要》",
+      "type": "scan",
+      "sha256": "6b1a6030178fc7379b6b635315d8431b401dd189b6a030fd2509b27207b9716f",
+      "layerWarning": "正文之外含括注和辑订层"
+    },
+    {
+      "id": "dts-1947",
+      "label": "1947 上海大东书局《滴天髓阐微》",
+      "type": "scan",
+      "sha256": "d6a7d1daf6513ce9fb9940ff8331b96804c10cdafbeac00d4d3d0a37229e1803",
+      "layerWarning": "原注与任氏曰有显式标签"
+    },
+    {
+      "id": "dts-wikisource",
+      "label": "维基文库《滴天髓/09》",
+      "type": "digital-transcription",
+      "layerWarning": "括注与正文连续呈现，不能单独承担层次归属"
+    }
+  ],
+  "sections": [
+    {
+      "id": "ZP-25",
+      "title": "《子平真诠》论行运",
+      "coverage": {
+        "zp-world": "PDF 56-58; printed 47-49; complete",
+        "zp-1926": "PDF 43-45; printed 30-32; complete",
+        "zp-dongli": "chapter 3738; complete transcription with later editorial layers"
+      },
+      "segments": [
+        {
+          "id": "ZP-25-01",
+          "topic": "看命与取运的回配原则",
+          "locators": {
+            "zp-world": "56/47",
+            "zp-1926": "43/30"
+          },
+          "variant": "zp-world 作 配命中八字之喜忌；zp-1926 与 zp-dongli 作 配八字之喜忌，但 zp-1926 同页后文仍作 配命中八字而统观之",
+          "classification": "version-variant",
+          "runtimeImpact": "none"
+        },
+        {
+          "id": "ZP-25-02",
+          "topic": "何为喜及美运例",
+          "locators": {
+            "zp-world": "56/47",
+            "zp-1926": "43-44/30-31"
+          },
+          "variant": "两扫描本保留 食带煞以成格而运逢印，煞重身轻而运来助食 的连续次序；zp-dongli 明示把 身轻 移到 运逢印 之前，属于现代校记层",
+          "classification": "editorial-reordering",
+          "runtimeImpact": "no automatic strength conclusion"
+        },
+        {
+          "id": "ZP-25-03",
+          "topic": "何为忌及败运例",
+          "locators": {
+            "zp-world": "56-57/47-48",
+            "zp-1926": "44/31"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "none"
+        },
+        {
+          "id": "ZP-25-04",
+          "topic": "似喜实忌与似忌实喜",
+          "locators": {
+            "zp-world": "57/48",
+            "zp-1926": "44/31"
+          },
+          "variant": "扫描正文均保留成对反例；zp-dongli 的长按语不属于扫描正文",
+          "classification": "layer-separation",
+          "runtimeImpact": "preserve counterexamples"
+        },
+        {
+          "id": "ZP-25-05",
+          "topic": "行干而不行支",
+          "locators": {
+            "zp-world": "57/48",
+            "zp-1926": "44/31"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "keep stem and branch separate"
+        },
+        {
+          "id": "ZP-25-06",
+          "topic": "行支而不行干",
+          "locators": {
+            "zp-world": "57/48",
+            "zp-1926": "44/31"
+          },
+          "variant": "zp-dongli 的附加按语属于现代编辑层",
+          "classification": "layer-separation",
+          "runtimeImpact": "keep stem and branch separate"
+        },
+        {
+          "id": "ZP-25-07",
+          "topic": "干同一类而不两行",
+          "locators": {
+            "zp-world": "57/48",
+            "zp-1926": "44/31"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "no same-element scoring"
+        },
+        {
+          "id": "ZP-25-08",
+          "topic": "支同一类而不两行",
+          "locators": {
+            "zp-world": "57/48",
+            "zp-1926": "44/31"
+          },
+          "variant": "zp-dongli 对 巳/丑、申/生 的校改有显式校记，不可静默并入两个扫描本",
+          "classification": "editorial-correction",
+          "runtimeImpact": "unresolved reading cannot become rule"
+        },
+        {
+          "id": "ZP-25-09",
+          "topic": "相冲的缓急",
+          "locators": {
+            "zp-world": "57/48",
+            "zp-1926": "44/31"
+          },
+          "variant": "zp-world 与 zp-dongli 作 冲时日则缓；zp-1926 作 冲日时则缓",
+          "classification": "word-order-variant",
+          "runtimeImpact": "semantic direction unchanged"
+        },
+        {
+          "id": "ZP-25-10",
+          "topic": "相冲的轻重",
+          "locators": {
+            "zp-world": "57-58/48-49",
+            "zp-1926": "44/31"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "no fixed collision weight"
+        },
+        {
+          "id": "ZP-25-11",
+          "topic": "逢冲而不冲",
+          "locators": {
+            "zp-world": "58/49",
+            "zp-1926": "44-45/31-32"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "preserve failure conditions"
+        },
+        {
+          "id": "ZP-25-12",
+          "topic": "一冲而得两冲",
+          "locators": {
+            "zp-world": "58/49",
+            "zp-1926": "45/32"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "no count-only scoring"
+        },
+        {
+          "id": "ZP-25-13",
+          "topic": "章节结语与各格取运章",
+          "locators": {
+            "zp-world": "58/49",
+            "zp-1926": "45/32"
+          },
+          "variant": "zp-world 作 于外格取运章；zp-1926 作 于各格取运章；zp-dongli 采用 各 并显式说明原作 外",
+          "classification": "version-and-editorial-variant",
+          "runtimeImpact": "reference wording only"
+        }
+      ]
+    },
+    {
+      "id": "ZP-26",
+      "title": "《子平真诠》论行运成格变格",
+      "coverage": {
+        "zp-world": "PDF 58-59; printed 49-50; complete",
+        "zp-1926": "PDF 45; printed 32; partial and explicitly lacunose after 壬生戌下阙",
+        "zp-dongli": "chapter 3739; complete transcription"
+      },
+      "segments": [
+        {
+          "id": "ZP-26-01",
+          "topic": "成格变格总论",
+          "locators": {
+            "zp-world": "58/49",
+            "zp-1926": "45/32"
+          },
+          "variant": "两扫描本均存在",
+          "classification": "aligned",
+          "runtimeImpact": "preserve formation and transformation as conditional"
+        },
+        {
+          "id": "ZP-26-02",
+          "topic": "何为成格",
+          "locators": {
+            "zp-world": "58-59/49-50",
+            "zp-1926": "45/32"
+          },
+          "variant": "两扫描本均存在",
+          "classification": "aligned",
+          "runtimeImpact": "no automatic auspiciousness"
+        },
+        {
+          "id": "ZP-26-03",
+          "topic": "何为变格",
+          "locators": {
+            "zp-world": "59/50",
+            "zp-1926": "45/32"
+          },
+          "variant": "zp-1926 只保留开头，到 壬生戌 后明印 下阙；zp-world 与 zp-dongli 继续保存后文",
+          "classification": "explicit-lacuna",
+          "runtimeImpact": "never silently fill one witness from another"
+        },
+        {
+          "id": "ZP-26-04",
+          "topic": "成格而不喜",
+          "locators": {
+            "zp-world": "59/50",
+            "zp-1926": "absent after explicit lacuna"
+          },
+          "variant": "zp-1926 缺文",
+          "classification": "absent-in-witness",
+          "runtimeImpact": "counterexample retained from complete witness only"
+        },
+        {
+          "id": "ZP-26-05",
+          "topic": "变格而不忌",
+          "locators": {
+            "zp-world": "59/50",
+            "zp-1926": "absent after explicit lacuna"
+          },
+          "variant": "zp-1926 缺文",
+          "classification": "absent-in-witness",
+          "runtimeImpact": "counterexample retained from complete witness only"
+        },
+        {
+          "id": "ZP-26-06",
+          "topic": "章节结语",
+          "locators": {
+            "zp-world": "59/50",
+            "zp-1926": "absent after explicit lacuna"
+          },
+          "variant": "zp-1926 缺文",
+          "classification": "absent-in-witness",
+          "runtimeImpact": "none"
+        }
+      ]
+    },
+    {
+      "id": "ZP-28",
+      "title": "《子平真诠》论支中喜忌逢运透清",
+      "coverage": {
+        "zp-world": "PDF 60-62; printed 51-53; complete",
+        "zp-1926": "PDF 45-46; printed 32-33; complete",
+        "zp-dongli": "chapter 3741; complete transcription with later editorial layer"
+      },
+      "segments": [
+        {
+          "id": "ZP-28-01",
+          "topic": "支中喜忌逢运透清总论",
+          "locators": {
+            "zp-world": "60-61/51-52",
+            "zp-1926": "45/32"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "none"
+        },
+        {
+          "id": "ZP-28-02",
+          "topic": "何谓透清",
+          "locators": {
+            "zp-world": "61/52",
+            "zp-1926": "45-46/32-33"
+          },
+          "variant": "命运二支会局句，zp-world 作 亦作清论；zp-1926 清楚印作 亦作清出。后者句法可疑，但不得静默改成后本读法",
+          "classification": "visible-suspect-version-reading",
+          "runtimeImpact": "suspect reading cannot become an automatic event mapping"
+        },
+        {
+          "id": "ZP-28-03",
+          "topic": "命运二支会局、年日时缓急与月令透清",
+          "locators": {
+            "zp-world": "61/52",
+            "zp-1926": "46/33"
+          },
+          "variant": "zp-world 与 zp-dongli 作 命中原有；zp-1926 两处作 柱中原有",
+          "classification": "wording-variant",
+          "runtimeImpact": "semantic direction unchanged"
+        },
+        {
+          "id": "ZP-28-04",
+          "topic": "逐干逐支与干支发用",
+          "locators": {
+            "zp-world": "61-62/52-53",
+            "zp-1926": "46/33"
+          },
+          "variant": "zp-world 与 zp-dongli 作 支以为干之生地；zp-1926 作 支为干之生地",
+          "classification": "minor-omission-variant",
+          "runtimeImpact": "keep bidirectional stem-branch review"
+        },
+        {
+          "id": "ZP-28-05",
+          "topic": "亥中壬甲与取运结语",
+          "locators": {
+            "zp-world": "62/53",
+            "zp-1926": "46/33"
+          },
+          "variant": "未见影响当前合同的实质分歧",
+          "classification": "aligned",
+          "runtimeImpact": "no count-only scoring"
+        }
+      ]
+    },
+    {
+      "id": "DTS-09",
+      "title": "《滴天髓》岁运论",
+      "coverage": {
+        "dts-ming": "PDF 66 right leaf through PDF 68 left leaf first column; verse, general explanation and complete 战冲和好 examples; no explicit 原注 or 任氏曰 labels; the next column starts 貞元",
+        "dts-1936": "PDF 25-27; printed 20-22; verse, general explanation, examples and parenthetical glosses; no Ren commentary",
+        "dts-1947": "PDF 502-511; printed 114-123; verse, 原注 and 任氏曰 explicitly separated",
+        "dts-wikisource": "lines 114-141; text and parenthetical glosses presented continuously"
+      },
+      "segments": [
+        {
+          "id": "DTS-09-01",
+          "topic": "岁运论核心句",
+          "layer": "verse",
+          "locators": {
+            "dts-ming": "66 right leaf",
+            "dts-1936": "25/20",
+            "dts-1947": "502/114",
+            "dts-wikisource": "line 114"
+          },
+          "variant": "dts-ming 与 dts-1947 作 战冲；dts-1936 与 dts-wikisource 作 冲战",
+          "classification": "version-branch",
+          "runtimeImpact": "semantic direction unchanged"
+        },
+        {
+          "id": "DTS-09-02",
+          "topic": "日主、局中之神、大运、太岁与胜负适从",
+          "layer": "early-explanation-or-original-note",
+          "locators": {
+            "dts-ming": "66 right-left leaves",
+            "dts-1936": "25/20",
+            "dts-1947": "502/114 原注",
+            "dts-wikisource": "line 115"
+          },
+          "variant": "三扫描本均保存这一解释层；1947 明标 原注，明末本不标层名",
+          "classification": "layer-evidence",
+          "runtimeImpact": "keep natal, luck and year layers separate"
+        },
+        {
+          "id": "DTS-09-03",
+          "topic": "任氏总评、盖头截脚与命例",
+          "layer": "Ren-commentary",
+          "locators": {
+            "dts-ming": "absent",
+            "dts-1936": "absent",
+            "dts-1947": "502-506/114-118 任氏曰",
+            "dts-wikisource": "absent"
+          },
+          "variant": "只在 1947 见到显式任氏层",
+          "classification": "later-commentary",
+          "runtimeImpact": "cannot back-attribute to early text"
+        },
+        {
+          "id": "DTS-09-04",
+          "topic": "何谓战及早期例解",
+          "layer": "early-example-or-original-note",
+          "locators": {
+            "dts-ming": "67",
+            "dts-1936": "26/21",
+            "dts-1947": "507/119 原注",
+            "dts-wikisource": "lines 117-126"
+          },
+          "variant": "核心例解在三扫描本均存在；dts-ming 另见 岁运不肯降、则运自降吉 等可见但句法可疑的早期读法；dts-1936 的括号释义在明末本和 1947 原注层中不见",
+          "classification": "version-branch-plus-editorial-gloss",
+          "runtimeImpact": "suspect readings and glosses are not deterministic rules"
+        },
+        {
+          "id": "DTS-09-05",
+          "topic": "任氏释战及命例",
+          "layer": "Ren-commentary",
+          "locators": {
+            "dts-ming": "absent",
+            "dts-1936": "absent",
+            "dts-1947": "507-509/119-121 任氏曰",
+            "dts-wikisource": "absent"
+          },
+          "variant": "只在 1947 任氏层出现",
+          "classification": "later-commentary",
+          "runtimeImpact": "no automatic event mapping"
+        },
+        {
+          "id": "DTS-09-06",
+          "topic": "何谓冲及早期例解",
+          "layer": "early-example-or-original-note",
+          "locators": {
+            "dts-ming": "67",
+            "dts-1936": "26/21",
+            "dts-1947": "509/121 原注",
+            "dts-wikisource": "lines 128-131"
+          },
+          "variant": "核心例解在三扫描本均存在；dts-1936 与 dts-wikisource 包含连续括注",
+          "classification": "base-text-plus-editorial-gloss",
+          "runtimeImpact": "collision label alone is insufficient"
+        },
+        {
+          "id": "DTS-09-07",
+          "topic": "任氏释冲",
+          "layer": "Ren-commentary",
+          "locators": {
+            "dts-ming": "absent",
+            "dts-1936": "absent",
+            "dts-1947": "509-510/121-122 任氏曰",
+            "dts-wikisource": "absent"
+          },
+          "variant": "只在 1947 任氏层出现",
+          "classification": "later-commentary",
+          "runtimeImpact": "no fixed collision weight"
+        },
+        {
+          "id": "DTS-09-08",
+          "topic": "何谓和及早期例解",
+          "layer": "early-example-or-original-note",
+          "locators": {
+            "dts-ming": "68 right leaf",
+            "dts-1936": "27/22",
+            "dts-1947": "510/122 原注",
+            "dts-wikisource": "lines 133-136"
+          },
+          "variant": "dts-ming 清楚印作 喜水则甚利；dts-1936 与 dts-1947 原注作 喜水则不吉。dts-1936 与 dts-wikisource 另加入 乙庚化金、子丑合而化土 的括注；明末本和 1947 原注层没有这些括注",
+          "classification": "material-version-branch-plus-editorial-gloss",
+          "runtimeImpact": "the witnesses point in opposite directions; no automatic combination rule is permitted"
+        },
+        {
+          "id": "DTS-09-09",
+          "topic": "任氏释和",
+          "layer": "Ren-commentary",
+          "locators": {
+            "dts-ming": "absent",
+            "dts-1936": "absent",
+            "dts-1947": "510/122 任氏曰",
+            "dts-wikisource": "absent"
+          },
+          "variant": "只在 1947 任氏层出现",
+          "classification": "later-commentary",
+          "runtimeImpact": "no fixed transformation result"
+        },
+        {
+          "id": "DTS-09-10",
+          "topic": "何谓好及早期例解",
+          "layer": "early-example-or-original-note",
+          "locators": {
+            "dts-ming": "68 right leaf through 68 left leaf first column",
+            "dts-1936": "27/22",
+            "dts-1947": "510-511/122-123 原注",
+            "dts-wikisource": "lines 138-141"
+          },
+          "variant": "三扫描本均完整保存同类相好基础例解；dts-ming 右叶 喜阴则 连续到左叶 辛与酉为好。此皆宜例推以见。，再下一栏进入 贞元",
+          "classification": "complete-early-example-with-cross-leaf-continuation",
+          "runtimeImpact": "same-class relation is not a score; cross-leaf reading order must be preserved"
+        },
+        {
+          "id": "DTS-09-11",
+          "topic": "任氏释好与岁运论结尾",
+          "layer": "Ren-commentary",
+          "locators": {
+            "dts-ming": "absent; 68 left leaf starts 貞元 after the completed early example",
+            "dts-1936": "absent; 27/22 begins 体用论",
+            "dts-1947": "511/123 任氏曰; then 贞元",
+            "dts-wikisource": "absent"
+          },
+          "variant": "1947 任氏层在进入 贞元 前结束；dts-ming 的早期例解完整结束后进入 贞元；三版下章边界不同",
+          "classification": "later-commentary-and-chapter-boundary",
+          "runtimeImpact": "none"
+        }
+      ]
+    }
+  ],
+  "decision": {
+    "runtimeChange": false,
+    "reason": "异文和层次证据没有提供统一、可复算的强度、吉凶、年份排序或现实事件算法",
+    "requiredUse": "引用古籍时必须携带 witness、locator、layer 和 completeness；缺文不得由另一版本静默补齐",
+    "diplomaticTranscription": "bazi-timing-diplomatic-transcription.json"
+  },
+  "columnLocator": "bazi-timing-column-locators.json",
+  "stemmaMatrix": "bazi-timing-stemma-matrix.json"
+}

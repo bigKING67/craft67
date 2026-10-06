@@ -1,0 +1,162 @@
+{
+  "schema": "design-craft.visual-reference-browser-checks.v1",
+  "case_id": "reference-assisted-evidence-dossier",
+  "status": "passed",
+  "observed_at": "2026-08-17T06:23:50.146Z",
+  "browser_run": {
+    "uri": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2",
+    "status": "completed",
+    "transport_health": "healthy",
+    "managed_tabs_closed": 3,
+    "managed_tabs_close_verified": 3,
+    "remaining_unkept": 0
+  },
+  "viewports": {
+    "baseline": {
+      "desktop": {
+        "dimensions": [1440, 900],
+        "horizontal_overflow": false,
+        "headline": {"y": 266.18, "height": 311.03},
+        "proof": {"y": 273.55, "height": 444.88},
+        "support": {"y": 620.41, "height": 135.36},
+        "primary_action_y": 707.77
+      },
+      "mobile": {
+        "dimensions": [390, 844],
+        "horizontal_overflow": false,
+        "headline": {"y": 127.55, "height": 266.76},
+        "proof": {"y": 647.10, "height": 347.42},
+        "support": {"y": 418.30, "height": 204.80},
+        "primary_action_y": 513.51
+      }
+    },
+    "reference-assisted": {
+      "desktop": {
+        "dimensions": [1440, 900],
+        "horizontal_overflow": false,
+        "headline": {"y": 159.95, "height": 266.09},
+        "proof": {"y": 469.23, "height": 444.88},
+        "support": {"y": 469.23, "height": 444.88},
+        "primary_action_y": 608.48
+      },
+      "intermediate": {
+        "dimensions": [768, 900],
+        "horizontal_overflow": false,
+        "headline": {"y": 159.95, "height": 168.94},
+        "proof": {"y": 352.89, "height": 378.64},
+        "support_y": 755.53,
+        "primary_action_y": 854.92
+      },
+      "mobile": {
+        "dimensions": [390, 844],
+        "horizontal_overflow": false,
+        "headline": {"y": 127.55, "height": 266.76},
+        "proof": {"y": 413.50, "height": 347.42},
+        "support": {"y": 780.12, "height": 225.80},
+        "primary_action_y": 896.32
+      }
+    }
+  },
+  "states": {
+    "variants": ["baseline", "reference-assisted"],
+    "checked_at": [390, 844],
+    "names": ["default", "loading", "empty", "error", "success", "long"],
+    "assertions": {
+      "horizontal_overflow": false,
+      "h1_count": 1,
+      "main_count": 1,
+      "duplicate_id_count": 0,
+      "unnamed_control_count": 0,
+      "loading_aria_busy": true,
+      "error_recovery_visible": true,
+      "long_label_preserved": true
+    },
+    "scroll_heights": {
+      "baseline": [4527, 4533, 4527, 4669, 4527, 4822],
+      "reference-assisted": [4538, 4544, 4538, 4680, 4538, 4834]
+    }
+  },
+  "interactions": {
+    "dialog": {
+      "open": true,
+      "entry_focus": "Close sample dossier",
+      "closed": true,
+      "restored_focus": "Open sample dossier",
+      "focus_restored": true
+    },
+    "error_retry": {
+      "immediate_state": "loading",
+      "immediate_aria_busy": true,
+      "settled_state": "default",
+      "settled_aria_busy": false,
+      "observed_background_settle_ms": 1300,
+      "note": "The source timer is 180ms; the managed background tab was throttled, so browser evidence records only the observed settle boundary."
+    }
+  },
+  "accessibility": {
+    "landmarks": {"header": 1, "nav": 1, "main": 1, "footer": 1},
+    "h1_count": 1,
+    "live_region_count": 2,
+    "duplicate_id_count": 0,
+    "unnamed_control_count": 0,
+    "keyboard_order": [
+      "Skip to evidence",
+      "Cairn home",
+      "Evidence",
+      "Method",
+      "Questions",
+      "Request a pilot",
+      "Open sample dossier",
+      "Review the method",
+      "What makes a source current?"
+    ],
+    "minimum_visible_target_px": 44,
+    "reduced_motion": {
+      "media_matches": true,
+      "content_opacity": 1,
+      "content_transform": "none",
+      "scroll_behavior": "auto",
+      "animation_count": 0
+    },
+    "contrast_ratios": {
+      "body": 12.87,
+      "muted": 4.67,
+      "primary": 5.34,
+      "primary_hover": 9.34,
+      "verified": 12.52,
+      "focus_on_paper": 4.99,
+      "open_on_raised": 8.56
+    },
+    "contrast_scope": "Key token pairs, not a full automated contrast audit.",
+    "screen_reader": "not_run"
+  },
+  "performance": {
+    "scope": "Local warm-cache background navigation; not production performance evidence.",
+    "decoded_source_bytes": 44454,
+    "transferred_bytes": null,
+    "resource_count": 2,
+    "node_count": 167,
+    "cls": 0,
+    "long_task_count": 0,
+    "paint_timing": "unavailable_in_repeated_background_navigation",
+    "baseline": {
+      "dom_content_loaded_ms": [185.6, 191.9, 194.4],
+      "load_ms": [229.9, 250.6, 241.8]
+    },
+    "reference_assisted": {
+      "dom_content_loaded_ms": [191.5, 194.9, 192.9],
+      "load_ms": [241.8, 247.6, 242.1]
+    }
+  },
+  "visual_review": {
+    "status": "passed",
+    "p0": [],
+    "p1": [],
+    "p2": [
+      "The assisted mobile composition defers explanation and the primary action below the first viewport; use it only when evidence priority outweighs immediate conversion or required context.",
+      "The editorial display scale is appropriate to Cairn's persuasive surface, not a general rule for operational products.",
+      "Screenshot PNGs remain under external Browser67 retention; the repository stores the verified manifest rather than redistributed binaries."
+    ],
+    "reviewed_sections": ["entry", "evidence", "method", "questions", "pilot"]
+  }
+}

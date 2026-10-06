@@ -1,0 +1,37 @@
+{
+  "schema": "money-craft.native-report-migration.v1",
+  "status": "PASS_BOUNDED_NATIVE_DELIVERY",
+  "date": "2026-09-20",
+  "evidence_root": "local/acceptance/20260920-native-report",
+  "uninstall": {
+    "plugin_removed": true,
+    "marketplace_removed": true,
+    "plugin_cache_removed": true,
+    "old_runtime_removed": true
+  },
+  "checks": {
+    "ledger": true,
+    "all": true,
+    "snapshot": true
+  },
+  "coverage": {
+    "units": 164,
+    "missing": 0
+  },
+  "pages": 6,
+  "renderer": "money-craft",
+  "design_skill": "design-craft",
+  "fresh_research": false,
+  "independent_host": false,
+  "legacy_archive_names_retained": true,
+  "artifacts": {
+    "report.html": {
+      "path": "local/acceptance/20260920-native-report/reading/report.html",
+      "sha256": "99ec03a29a13fd77afe6630e0b9f30aee180c682b552c2ecf1b39c3ff6139d30"
+    },
+    "report.pdf": {
+      "path": "local/acceptance/20260920-native-report/reading/report.pdf",
+      "sha256": "9bc30f87a18645cfcb9be30ec1083ee83e313ada58e53a1538fdfecc3f570e6f"
+    }
+  }
+}

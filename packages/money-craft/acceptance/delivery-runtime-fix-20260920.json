@@ -1,0 +1,97 @@
+{
+  "schema": "money-craft.compat-delivery-fix.v1",
+  "checked_at": "2026-09-20T12:28:40.947192+00:00",
+  "status": "PASS_BOUNDED_RUNTIME_AND_FALLBACK_FIX",
+  "changes": [
+    {
+      "tool": "investment_archive_report.py",
+      "before_sha256": "9ec179cf67cabbdfeeb81025907473f8facbb13456602e830270bc721618b5a2",
+      "after_sha256": "031036ed9584bc47948fbc9ae70923a4fb614e1d8b3d8d76fd6838d99c5bcde5"
+    },
+    {
+      "tool": "investment_kami_render.py",
+      "before_sha256": "912433a5072f53b67dce4f1b0b09248afc8972e83b5f834ce8be2137ab6f7470",
+      "after_sha256": "585704d4e9da389fda96ea26074b10997f3e1b99245c2df4833bc089ec411e2a"
+    },
+    {
+      "tool": "tests/test_investment_archive_report.sh",
+      "before_sha256": "ef17074ffed64dcdec729623f864fe9ea123319ce0cb9dbcf2be447fdf380514",
+      "after_sha256": "67a15d228e535a6aec562124bc9612ce6b8fa38694253a91585df44dbdd29a79"
+    },
+    {
+      "tool": "tests/test_investment_kami_render.sh",
+      "before_sha256": "3cb038862fefc8eeab754d264dcd6860411ca7a4a7ba90051165a6cbaa64cf6b",
+      "after_sha256": "685934f24b574e240ec95a9dd2d93dd195b9173b2bebba7793485d2503b811d3"
+    }
+  ],
+  "tests": [
+    "existing and new archive shell regressions passed",
+    "renderer regressions passed with explicit test Python",
+    "real isolated Apple archive render passed; canonical Markdown unchanged"
+  ],
+  "new_cli": "--kami-python",
+  "preflight": "executable and markdown/weasyprint import before any archive write; venv symlink invocation preserved",
+  "global_python_link_changed": false,
+  "global_skill_changed": false,
+  "full_e2e_pass": false,
+  "limitations": [
+    "No new autonomous host run",
+    "No production archive or sealed revision",
+    "No full visual or browser verification",
+    "General YAML/section parsing and other renderer issues not fixed by fallback replacement"
+  ],
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-delivery-fix/archive-smoke.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/investment_archive_report.py.before",
+      "sha256": "9ec179cf67cabbdfeeb81025907473f8facbb13456602e830270bc721618b5a2"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/archive-tests.log",
+      "sha256": "6a0a6e866f5ca22ce0c8fd859616d9a7bbf87c77cc655469ed7cae18d2e11ded"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/test_investment_kami_render.sh.before",
+      "sha256": "3cb038862fefc8eeab754d264dcd6860411ca7a4a7ba90051165a6cbaa64cf6b"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/archive-smoke.json",
+      "sha256": "19de148696583b4bf1df36726e5d2b41274964689e5f788f7a3306dcf776862c"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/test_investment_kami_render.sh.diff",
+      "sha256": "b4b3c6fb48b2729a31593291d25cb2f122b48347357cba63f234bfa2ededad4e"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/investment_kami_render.py.before",
+      "sha256": "912433a5072f53b67dce4f1b0b09248afc8972e83b5f834ce8be2137ab6f7470"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/investment_archive_report.py.diff",
+      "sha256": "7903bdbd8343cfe4d4d97457453824832da528d676ffb6dc9dfb50eb25b02b46"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/test_investment_archive_report.sh.before",
+      "sha256": "ef17074ffed64dcdec729623f864fe9ea123319ce0cb9dbcf2be447fdf380514"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/test_investment_archive_report.sh.diff",
+      "sha256": "17c8871d718126b158024ed0a9f1d7c65b81a82faa3f5fe2008e3451a0034b00"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/render-tests.log",
+      "sha256": "29df94fd5fe2f2edeb542f9d6490cde7bd0d099a032e8c1aeaa811bcb8aeddfe"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/archive-existing-tests.log",
+      "sha256": "6a0a6e866f5ca22ce0c8fd859616d9a7bbf87c77cc655469ed7cae18d2e11ded"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-fix/investment_kami_render.py.diff",
+      "sha256": "5385e3bc36af68f59d42239ea120ccc83eb099290fb0c1df361c9532673323e2"
+    }
+  ]
+}

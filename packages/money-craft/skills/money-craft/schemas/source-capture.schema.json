@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/source-capture.v1.json",
+  "title": "Money Craft source capture",
+  "type": "object",
+  "required": [
+    "schema",
+    "source_id",
+    "provider",
+    "operation",
+    "fetched_at",
+    "request_id",
+    "response_sha256",
+    "response_bytes",
+    "files"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.source-capture.v1"},
+    "source_id": {"type": "string", "pattern": "^S[0-9]{2,4}$"},
+    "provider": {"enum": ["fuyao", "yfinance"]},
+    "operation": {"type": "string"},
+    "fetched_at": {"type": "string", "format": "date-time"},
+    "request_id": {"type": ["string", "null"]},
+    "response_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "response_bytes": {"type": "integer", "minimum": 1},
+    "files": {
+      "type": "array",
+      "const": ["request.json", "response.json", "capture.json"]
+    }
+  },
+  "additionalProperties": false
+}

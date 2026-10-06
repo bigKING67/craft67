@@ -1,0 +1,7 @@
+结论：建立“人群—内容家族—创意 Brief—资产测试—承接—复盘”的系统，不靠单条爆款。已确认事实只有需要抖音短视频体系；目标 audience、品牌信息、商品、历史素材、claim 和 landing 基线未知，Content Lead 必须先补齐。
+
+按人群和决策障碍建立 content family：问题识别、场景演示、参数/功效 proof、专家解释、生活方式、比较与异议、Creator Story、搜索/直播/商品卡承接。每个 family 使用统一 Brief 字段：目标人群、内容任务、hook、核心信息、必须出现的证据、禁止宣称、script、storyboard、CTA、landing、素材规格、Owner 和有效期。达人或第三方素材必须记录肖像、音乐、字体、脚本、原始素材、编辑、衍生、paid amplification 和渠道 rights。
+
+第一轮按多个内容家族和创作者角色建立测试矩阵，每次只改变一个决定性 variant，例如 hook、proof、人物、节奏或 CTA。Brand/Compliance 在发布前审核功效、比较、证据和广告合规；Asset Owner 保留授权、源文件和到期记录。Growth Lead 只有在自然内容证明人群和信息相关后才放大，Operations 确保搜索、直播或商品页承接与内容信息一致。
+
+Measurement 同时看前段留存、完成、有效互动、搜索、qualified landing、转化、退款、素材疲劳和资产复用，不能只看播放量。Stop rule：出现权利/合规问题、退款或负面反馈恶化、连续测试没有有效承接时停止该资产；Scale rule：同一内容机制在多个创作者或素材版本中稳定产生搜索和高质量承接，再扩量。周度 Review 由 Content、Brand、Growth、Operations 和 Analytics 决定保留、改写、淘汰或扩展。

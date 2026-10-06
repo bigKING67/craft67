@@ -1,0 +1,191 @@
+{
+  "schema_version": "creative-craft.edit-document.v2",
+  "project_id": "fixture-edit",
+  "revision": 2,
+  "parent_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "title": "Fixture: graphic templates pinned to the revision",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "assets": [
+    {
+      "id": "talk",
+      "file": "assets/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.media",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "duration": 20,
+      "video": true,
+      "audio": true,
+      "width": 1920,
+      "height": 1080,
+      "origin": {
+        "kind": "import"
+      }
+    },
+    {
+      "id": "broll",
+      "file": "assets/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.media",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "duration": 8,
+      "video": true,
+      "audio": false,
+      "width": 1920,
+      "height": 1080,
+      "origin": {
+        "kind": "generated",
+        "label": "generated gap shot",
+        "provenance_ref": "jobs/broll-job.json"
+      }
+    },
+    {
+      "id": "music",
+      "file": "assets/cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.media",
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "duration": 60,
+      "video": false,
+      "audio": true,
+      "width": 0,
+      "height": 0,
+      "origin": {
+        "kind": "import"
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "id": "v_main",
+      "kind": "video",
+      "locked": false,
+      "name": "Main"
+    },
+    {
+      "id": "v_broll",
+      "kind": "video",
+      "locked": false,
+      "name": "B-roll"
+    },
+    {
+      "id": "v_gfx",
+      "kind": "video",
+      "locked": false,
+      "name": "Graphics"
+    },
+    {
+      "id": "a_music",
+      "kind": "audio",
+      "locked": false,
+      "duck": {
+        "under_track_id": "v_main",
+        "depth_db": -12,
+        "attack_frames": 6,
+        "release_frames": 12
+      }
+    },
+    {
+      "id": "c_sub",
+      "kind": "caption",
+      "locked": false
+    }
+  ],
+  "items": [
+    {
+      "id": "talk1",
+      "track_id": "v_main",
+      "kind": "media",
+      "asset_id": "talk",
+      "start_frame": 0,
+      "frames": 150,
+      "source_in_seconds": 2.0,
+      "volume": 1,
+      "fit": "cover",
+      "fade_in_frames": 10
+    },
+    {
+      "id": "talk2",
+      "track_id": "v_main",
+      "kind": "media",
+      "asset_id": "talk",
+      "start_frame": 140,
+      "frames": 120,
+      "source_in_seconds": 10.0,
+      "volume": 1,
+      "fit": "cover",
+      "speed": 1.5,
+      "transition_in": {
+        "kind": "crossfade",
+        "frames": 10
+      },
+      "fade_out_frames": 12
+    },
+    {
+      "id": "broll1",
+      "track_id": "v_broll",
+      "kind": "media",
+      "asset_id": "broll",
+      "start_frame": 60,
+      "frames": 60,
+      "source_in_seconds": 0,
+      "volume": 0,
+      "fit": "cover",
+      "opacity": 1
+    },
+    {
+      "id": "bed",
+      "track_id": "a_music",
+      "kind": "media",
+      "asset_id": "music",
+      "start_frame": 0,
+      "frames": 270,
+      "source_in_seconds": 0,
+      "volume": 0.2,
+      "fade_out_frames": 30
+    },
+    {
+      "id": "cap1",
+      "track_id": "c_sub",
+      "kind": "caption",
+      "text": "第一句",
+      "link": {
+        "item_id": "talk1",
+        "source_from": 2.0,
+        "source_to": 4.5
+      }
+    },
+    {
+      "id": "title",
+      "track_id": "c_sub",
+      "kind": "caption",
+      "text": "标题",
+      "start_frame": 200,
+      "frames": 40
+    },
+    {
+      "id": "lower",
+      "track_id": "v_gfx",
+      "kind": "graphic",
+      "template": "lower-third",
+      "vars": {
+        "title": "主讲人",
+        "subtitle": "品牌顾问"
+      },
+      "start_frame": 0,
+      "frames": 90,
+      "fade_in_frames": 6,
+      "fade_out_frames": 6
+    }
+  ],
+  "change": {
+    "author": "agent",
+    "summary": "Fixture: talking head with generated B-roll, music bed and captions",
+    "operations_sha256": null
+  },
+  "graphic_templates": [
+    {
+      "id": "lower-third",
+      "version": 2,
+      "sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "file": "templates/9999999999999999999999999999999999999999999999999999999999999999.json"
+    }
+  ]
+}

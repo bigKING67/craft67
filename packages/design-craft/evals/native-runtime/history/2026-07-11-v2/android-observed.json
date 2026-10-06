@@ -1,0 +1,38 @@
+{
+  "schema": "design-craft.native-runtime-evidence.v2",
+  "platform": "android",
+  "verified": true,
+  "runtime_kind": "android_emulator",
+  "evidence_level": "runtime_observed",
+  "observed_at": "2026-07-11T09:02:37Z",
+  "runtime_id_kind": "sha256",
+  "runtime_id": "sha256:04ab3fc382bfb33ea4fbc120f5172ecfc4aed71652e00977064492ca0f65a017",
+  "tool": "Gradle/adb/UIAutomator",
+  "source_commit": "20dda131ddcf53285081d6f517dd68eb7f09995c",
+  "source_dirty": false,
+  "skill_source_dirty": false,
+  "repo_dirty": false,
+  "skill_version": "0.5.0",
+  "skill_tree_sha256": "2f460d2c23e797f38aa08f7cf193b13cd539462571d621bcdb1f69cb42c7e761",
+  "fixture_tree_sha256": "107999720c7bf2b5735c050753b2a4c1475acb4cf29fbfce16b5fc8f51ad5d25",
+  "capture_context": "https://github.com/bigKING67/design-craft/actions/runs/29147028779",
+  "commands": [
+    "gradle :app:assembleDebug",
+    "adb install and am start -W",
+    "UIAutomator dump, input tap, and screencap"
+  ],
+  "assertions": {
+    "build_succeeded": true,
+    "install_and_launch_succeeded": true,
+    "accessibility_tree_observed": true,
+    "interaction_observed": true,
+    "screenshot_captured": true
+  },
+  "artifacts": [
+    {
+      "path": "android-emulator.png",
+      "sha256": "6fc863b9ab2d14eea83799ef3bca746286ce4145510686f711acc39bf37737e4",
+      "bytes": 43005
+    }
+  ]
+}

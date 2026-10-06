@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "case": "case-01",
+      "X": { "scores": [2, 2, 2, 2, 2] },
+      "Y": { "scores": [2, 2, 2, 2, 2] },
+      "winner": "tie",
+      "materialIssues": []
+    },
+    {
+      "case": "case-02",
+      "X": { "scores": [1, 2, 2, 2, 2] },
+      "Y": { "scores": [2, 2, 2, 2, 2] },
+      "winner": "Y",
+      "materialIssues": [
+        {
+          "answer": "X",
+          "issue": "\u201c\u518d\u52a0\u5e74\u5bc5\u5bb3\u201d\u672a\u51c6\u786e\u8868\u8fbe context \u4e2d\u5e74\u652f\u5df3\u4e0e\u65e5\u652f\u5bc5\u4e4b\u5bb3\u3002"
+        }
+      ]
+    },
+    {
+      "case": "case-03",
+      "X": { "scores": [2, 2, 2, 2, 2] },
+      "Y": { "scores": [2, 2, 2, 2, 2] },
+      "winner": "tie",
+      "materialIssues": []
+    }
+  ]
+}

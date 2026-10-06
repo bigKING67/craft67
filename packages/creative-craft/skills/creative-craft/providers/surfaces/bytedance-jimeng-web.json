@@ -1,0 +1,11 @@
+{
+  "schema_version": "creative-craft.surface.v1",
+  "surface_id": "bytedance.jimeng_web",
+  "provider": "ByteDance",
+  "label": "Jimeng Web",
+  "available": true,
+  "verified_at": "2026-08-04",
+  "provider_profiles": ["bytedance.seedance-2.5.2026-07-31"],
+  "modes": ["single_pass", "extension", "edit"],
+  "notes": ["UI fields and upload behavior must be checked against the live surface before paid generation."]
+}

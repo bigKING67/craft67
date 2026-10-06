@@ -1,0 +1,131 @@
+{
+  "schema_version": "creative-craft.production-plan.v1",
+  "plan_id": "talk-broll-plan",
+  "title": "Talking head + B-roll cut (synthetic)",
+  "brief_ref": null,
+  "intended_use": "Internal method example; synthetic data only.",
+  "output": {
+    "duration_seconds_target": 15,
+    "ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "delivery_promises": [
+    {
+      "id": "length",
+      "statement": "Cut runs within the planned range.",
+      "check": {
+        "kind": "duration_range",
+        "min": 12,
+        "max": 18
+      }
+    },
+    {
+      "id": "captions",
+      "statement": "Spoken lines are captioned.",
+      "check": {
+        "kind": "captions_present"
+      }
+    },
+    {
+      "id": "generated",
+      "statement": "Generated shots stay a minority.",
+      "check": {
+        "kind": "max_generated_share",
+        "max": 0.5
+      }
+    },
+    {
+      "id": "tone",
+      "statement": "Tone feels conversational.",
+      "check": {
+        "kind": "manual"
+      }
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "role": "hook",
+      "purpose": "hook beat",
+      "duration_seconds": 10,
+      "source_kind": "footage",
+      "requirement": "hook requirement",
+      "hard_constraints": [],
+      "selection": {
+        "asset_ref": "talk",
+        "source_start_seconds": 2.0,
+        "source_end_seconds": 12.0,
+        "evidence": [
+          {
+            "modality": "asr",
+            "start_seconds": 2.0,
+            "end_seconds": 5.0,
+            "excerpt": "先说结论",
+            "raw_score": null,
+            "method": "synthetic transcript"
+          }
+        ],
+        "reason": "Strongest opening line.",
+        "status": "confirmed"
+      },
+      "generation_ref": null,
+      "locked": false
+    },
+    {
+      "id": "broll",
+      "role": "illustrate",
+      "purpose": "illustrate beat",
+      "duration_seconds": 3,
+      "source_kind": "footage",
+      "requirement": "illustrate requirement",
+      "hard_constraints": [],
+      "selection": {
+        "asset_ref": "broll",
+        "source_start_seconds": 1.0,
+        "source_end_seconds": 4.0,
+        "evidence": [
+          {
+            "modality": "frame",
+            "start_seconds": 1.0,
+            "end_seconds": 4.0,
+            "excerpt": "hands on product",
+            "raw_score": null,
+            "method": "synthetic transcript"
+          }
+        ],
+        "reason": "Shows the detail.",
+        "status": "candidate"
+      },
+      "generation_ref": null,
+      "locked": false
+    },
+    {
+      "id": "point",
+      "role": "point",
+      "purpose": "point beat",
+      "duration_seconds": 5,
+      "source_kind": "footage",
+      "requirement": "point requirement",
+      "hard_constraints": [],
+      "selection": {
+        "asset_ref": "talk",
+        "source_start_seconds": 30.0,
+        "source_end_seconds": 35.0,
+        "evidence": [
+          {
+            "modality": "asr",
+            "start_seconds": 30.0,
+            "end_seconds": 33.0,
+            "excerpt": "再看细节",
+            "raw_score": null,
+            "method": "synthetic transcript"
+          }
+        ],
+        "reason": "Delivers the detail.",
+        "status": "confirmed"
+      },
+      "generation_ref": null,
+      "locked": false
+    }
+  ]
+}

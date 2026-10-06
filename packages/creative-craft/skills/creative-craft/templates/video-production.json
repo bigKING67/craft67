@@ -1,0 +1,26 @@
+{
+  "schema_version": "creative-craft.video-production.v1",
+  "production_id": "production-tbd",
+  "plan": null,
+  "edit_project": null,
+  "policy": {
+    "approval_required": ["plan"],
+    "max_revision_rounds": 3,
+    "budget": {"currency": "USD", "cap": null, "mode": "observe"}
+  },
+  "stages": [
+    {"id": "brief", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "reference", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "plan", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "select", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "generate", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "assemble", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "inspect", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "revise", "status": "pending", "artifacts": [], "approval": null, "note": ""},
+    {"id": "export", "status": "pending", "artifacts": [], "approval": null, "note": ""}
+  ],
+  "revision_rounds": 0,
+  "current_revision": null,
+  "ledger": [],
+  "events": []
+}

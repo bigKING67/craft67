@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.fuyao-identity-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Fuyao snapshot and valuations CLI batch identity before capture",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "8b05dab3bbd2fe33c2c418f2f3fcdfc3fb9dbd30a331f954cd6899e4dd2b7b66",
+    "tests/test_fuyao_identity.py": "a0462283af0a6433a5ee1dc61941c58db82ef7e64da0fd9f9d4cb17533e6eb17"
+  },
+  "upstream": {
+    "url": "https://fuyao.aicubes.cn/llms-full.txt",
+    "local_sections": "495-551 and7710-7798 of previously retrieved text",
+    "sha256": "68d95ab747bc4d7a43655d6281fae757f95bffff9535f5873a2ab0825e144740"
+  },
+  "validation": {
+    "regression_tests": 2,
+    "real_cli_cases": 20,
+    "invalid_cases": 14,
+    "valid_complete_partial_empty_cases": 6,
+    "full_tests": 447,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 18
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "KEEP; no blockers; identity and provider18 tests pass",
+    "extra_checks": "Lowercase request normalization, leading zero ticker, reordered response, negative/null preserved, exact missing warnings, other operations unaffected",
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "8b05dab3bbd2fe33c2c418f2f3fcdfc3fb9dbd30a331f954cd6899e4dd2b7b66",
+      "tests/test_fuyao_identity.py": "a0462283af0a6433a5ee1dc61941c58db82ef7e64da0fd9f9d4cb17533e6eb17"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Only CLI and collection through CLI; direct FuyaoClient not covered.",
+    "Empty/partial results remain successful with warning; downstream evidence completeness requires separate handling.",
+    "No numeric, timestamp, total, order or external identity truth guarantee.",
+    "No real provider requests; CLI remains PARTIAL."
+  ]
+}

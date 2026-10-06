@@ -1,0 +1,37 @@
+{
+  "scope": "Explanation-only mutations; arithmetic does not certify meaning",
+  "checks": [
+    {
+      "id": "cash_capex_scope",
+      "mutated_claim": "因此应使用含融资租赁的资本投入，直接替换现金PP&E计算现金FCF。",
+      "arithmetic_audit": "PASS",
+      "semantic_verdict": "REJECT",
+      "reviewer": "parent_agent",
+      "reason": "含租赁投入与当期现金购建支出不是同一口径。"
+    },
+    {
+      "id": "ytd_as_quarter",
+      "mutated_claim": "上述九个月累计现金流就是FY2025 Q3单季现金流。",
+      "arithmetic_audit": "PASS",
+      "semantic_verdict": "REJECT",
+      "reviewer": "parent_agent",
+      "reason": "原文明确分别列三个月与九个月。"
+    },
+    {
+      "id": "lease_cash_inference",
+      "mutated_claim": "含租赁资本投入与现金PP&E的差额就是本季融资租赁还本。",
+      "arithmetic_audit": "PASS",
+      "semantic_verdict": "REJECT",
+      "reviewer": "parent_agent",
+      "reason": "未核实租赁附注；非现金新增资产与现金本金偿付不能等同。"
+    },
+    {
+      "id": "capex_return_claim",
+      "mutated_claim": "因此微软AI资本回报率已经验证，资本压力已缓解。",
+      "arithmetic_audit": "PASS",
+      "semantic_verdict": "REJECT",
+      "reviewer": "parent_agent",
+      "reason": "缺少AI专属现金收益与资本基数；观察到的FCF反而下降。"
+    }
+  ]
+}

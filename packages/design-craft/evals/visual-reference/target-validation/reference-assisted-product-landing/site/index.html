@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" data-variant="baseline">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A controlled Reviewlane landing-page fixture for visual-reference evaluation."
+    />
+    <title>Reviewlane - Visual release review</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" aria-label="Primary">
+      <a class="wordmark" href="#main-content" aria-label="Reviewlane home">
+        Reviewlane<span aria-hidden="true">/</span>
+      </a>
+      <nav class="primary-nav" aria-label="Page sections">
+        <a href="#workflow">Workflow</a>
+        <a href="#evidence">Evidence</a>
+      </nav>
+      <a class="button button--compact button--primary" href="#start">
+        Start a review
+      </a>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__stage">
+          <div class="hero__copy">
+            <p class="eyebrow">Visual release review</p>
+            <h1 id="hero-title">Turn visual review into a release decision.</h1>
+          </div>
+
+          <div class="hero__support">
+            <p class="hero__summary">
+              See every route, state, and viewport that still needs a decision
+              before release.
+            </p>
+            <div class="hero__actions" aria-label="Review actions">
+              <a class="button button--primary" href="#start">Start a review</a>
+              <button class="text-action" type="button" data-open-report>
+                See sample report
+                <span aria-hidden="true">&#8599;</span>
+              </button>
+            </div>
+          </div>
+
+          <section
+            class="evidence-plane"
+            id="evidence"
+            aria-labelledby="evidence-title"
+          >
+            <div class="evidence-plane__bar">
+              <div>
+                <p class="meta-label">Release candidate</p>
+                <h2 id="evidence-title">RC-18 / Web</h2>
+              </div>
+              <span class="status status--attention">3 decisions left</span>
+            </div>
+
+            <ol class="evidence-list" aria-label="Release review findings">
+              <li>
+                <a href="#decision-navigation">
+                  <span class="evidence-list__index">01</span>
+                  <span class="evidence-list__name">Navigation refresh</span>
+                  <span class="evidence-list__scope">6 routes</span>
+                  <span class="status status--positive">Ready</span>
+                </a>
+              </li>
+              <li>
+                <a href="#decision-checkout">
+                  <span class="evidence-list__index">02</span>
+                  <span class="evidence-list__name">Checkout states</span>
+                  <span class="evidence-list__scope">4 states</span>
+                  <span class="status status--attention">Decide</span>
+                </a>
+              </li>
+              <li>
+                <a href="#decision-billing">
+                  <span class="evidence-list__index">03</span>
+                  <span class="evidence-list__name">Billing empty state</span>
+                  <span class="evidence-list__scope">2 views</span>
+                  <span class="status">Review</span>
+                </a>
+              </li>
+            </ol>
+
+            <dl class="proof-strip" aria-label="Review summary">
+              <div>
+                <dt>Routes</dt>
+                <dd><strong>12</strong> routes reviewed</dd>
+              </div>
+              <div>
+                <dt>States</dt>
+                <dd><strong>3</strong> unresolved states</dd>
+              </div>
+              <div>
+                <dt>Coverage</dt>
+                <dd><strong>2</strong> viewports verified</dd>
+              </div>
+            </dl>
+          </section>
+        </div>
+      </section>
+
+      <section class="workflow reveal" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <p class="eyebrow">One review lane</p>
+          <h2 id="workflow-title">Capture, compare, decide.</h2>
+        </div>
+        <ol class="workflow-list">
+          <li>
+            <span class="workflow-list__number">01</span>
+            <h3>Capture</h3>
+            <p>Collect the routes, states, and viewports that define the release.</p>
+          </li>
+          <li>
+            <span class="workflow-list__number">02</span>
+            <h3>Compare</h3>
+            <p>Keep before, after, and design authority in the same review frame.</p>
+          </li>
+          <li>
+            <span class="workflow-list__number">03</span>
+            <h3>Decide</h3>
+            <p>Record what ships, what blocks, and what remains explicitly unverified.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="decision reveal" aria-labelledby="decision-title">
+        <div class="decision__intro">
+          <p class="eyebrow">Evidence before confidence</p>
+          <h2 id="decision-title">A release report that names the remaining call.</h2>
+          <button class="text-action" type="button" data-open-report>
+            See sample report
+            <span aria-hidden="true">&#8599;</span>
+          </button>
+        </div>
+        <div class="decision__ledger" aria-label="Release decision ledger">
+          <article id="decision-navigation">
+            <p>Navigation refresh</p>
+            <strong>Approved</strong>
+            <span>Desktop and mobile hierarchy verified.</span>
+          </article>
+          <article id="decision-checkout">
+            <p>Checkout states</p>
+            <strong>Needs decision</strong>
+            <span>Error recovery copy still differs from authority.</span>
+          </article>
+          <article id="decision-billing">
+            <p>Billing empty state</p>
+            <strong>Review queued</strong>
+            <span>Keyboard and reduced-motion checks remain visible.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="start reveal" id="start" aria-labelledby="start-title">
+        <p class="eyebrow">A bounded first step</p>
+        <h2 id="start-title">Start with one release candidate.</h2>
+        <div class="start__action">
+          <button class="button button--primary" type="button" data-start-review>
+            Begin with RC-18
+          </button>
+          <p class="start__status" role="status" aria-live="polite" data-start-status>
+            Sample data. No account or upload required.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Reviewlane</span>
+      <span>Controlled browser fixture / sample data</span>
+    </footer>
+
+    <dialog class="report-dialog" aria-labelledby="report-title">
+      <form method="dialog">
+        <div class="report-dialog__bar">
+          <div>
+            <p class="meta-label">Sample release report</p>
+            <h2 id="report-title">RC-18 is not ready to ship.</h2>
+          </div>
+          <button class="icon-button" value="close" aria-label="Close sample report">
+            <span aria-hidden="true">&#215;</span>
+          </button>
+        </div>
+        <div class="report-dialog__body">
+          <p>
+            Navigation is approved. Checkout needs one copy decision. Billing
+            remains queued for keyboard and reduced-motion verification.
+          </p>
+          <dl>
+            <div><dt>Ready</dt><dd>9 checks</dd></div>
+            <div><dt>Decide</dt><dd>3 checks</dd></div>
+            <div><dt>Unverified</dt><dd>2 checks</dd></div>
+          </dl>
+        </div>
+        <div class="report-dialog__actions">
+          <button class="button button--primary" value="close">Return to review</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

@@ -1,0 +1,1124 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "subtract",
+      "actual": "-305",
+      "expected": "-305",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "add",
+      "actual": "5261",
+      "expected": "5261",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "subtract",
+      "actual": "4091",
+      "expected": "4091",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "divide",
+      "actual": "0.05223054257455473603213032299232401",
+      "expected": "0.05223054257455473603213032299232401",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "multiply",
+      "actual": "5.223054257455473603213032299232401",
+      "expected": "5.223054257455473603213032299232401",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "add",
+      "actual": "1.01",
+      "expected": "1.01",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "multiply",
+      "actual": "107631.66",
+      "expected": "107631.66",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "subtract",
+      "actual": "0.77",
+      "expected": "0.77",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C09",
+      "operation": "multiply",
+      "actual": "4063.840",
+      "expected": "4063.840",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C10",
+      "operation": "divide",
+      "actual": "5277.714285714285714285714285714286",
+      "expected": "5277.714285714285714285714285714286",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C11",
+      "operation": "subtract",
+      "actual": "5582.714285714285714285714285714286",
+      "expected": "5582.714285714285714285714285714286",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C12",
+      "operation": "divide",
+      "actual": "0.05186870002482806373408822539496544",
+      "expected": "0.05186870002482806373408822539496544",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C13",
+      "operation": "multiply",
+      "actual": "5.186870002482806373408822539496544",
+      "expected": "5.186870002482806373408822539496544",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C14",
+      "operation": "subtract",
+      "actual": "-0.00036184254972667229804209759735857",
+      "expected": "-0.00036184254972667229804209759735857",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C15",
+      "operation": "multiply",
+      "actual": "-3.618425497266722980420975973585700",
+      "expected": "-3.618425497266722980420975973585700",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C16",
+      "operation": "multiply",
+      "actual": "5582.714285714285714285714285714286",
+      "expected": "5582.714285714285714285714285714286",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C17",
+      "operation": "add",
+      "actual": "5277.714285714285714285714285714286",
+      "expected": "5277.714285714285714285714285714286",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C18",
+      "operation": "multiply",
+      "actual": "4063.840000000000000000000000000000",
+      "expected": "4063.840000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C19",
+      "operation": "divide",
+      "actual": "8.80000000000000000000000000000",
+      "expected": "8.80000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C20",
+      "operation": "subtract",
+      "actual": "0.765",
+      "expected": "0.765",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C21",
+      "operation": "multiply",
+      "actual": "4063.840",
+      "expected": "4063.840",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C22",
+      "operation": "divide",
+      "actual": "5312.209150326797385620915032679739",
+      "expected": "5312.209150326797385620915032679739",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C23",
+      "operation": "subtract",
+      "actual": "5617.209150326797385620915032679739",
+      "expected": "5617.209150326797385620915032679739",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C24",
+      "operation": "divide",
+      "actual": "0.05218918996814503637332096367072420",
+      "expected": "0.05218918996814503637332096367072420",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C25",
+      "operation": "multiply",
+      "actual": "5.218918996814503637332096367072420",
+      "expected": "5.218918996814503637332096367072420",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C26",
+      "operation": "subtract",
+      "actual": "-0.00004135260640969965880935932159981",
+      "expected": "-0.00004135260640969965880935932159981",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C27",
+      "operation": "multiply",
+      "actual": "-0.4135260640969965880935932159981000",
+      "expected": "-0.4135260640969965880935932159981000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C28",
+      "operation": "multiply",
+      "actual": "5617.209150326797385620915032679739",
+      "expected": "5617.209150326797385620915032679739",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C29",
+      "operation": "add",
+      "actual": "5312.209150326797385620915032679739",
+      "expected": "5312.209150326797385620915032679739",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C30",
+      "operation": "multiply",
+      "actual": "4063.840000000000000000000000000000",
+      "expected": "4063.840000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C31",
+      "operation": "divide",
+      "actual": "8.80000000000000000000000000000",
+      "expected": "8.80000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C32",
+      "operation": "subtract",
+      "actual": "0.76",
+      "expected": "0.76",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C33",
+      "operation": "multiply",
+      "actual": "4063.840",
+      "expected": "4063.840",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C34",
+      "operation": "divide",
+      "actual": "5347.157894736842105263157894736842",
+      "expected": "5347.157894736842105263157894736842",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C35",
+      "operation": "subtract",
+      "actual": "5652.157894736842105263157894736842",
+      "expected": "5652.157894736842105263157894736842",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C36",
+      "operation": "divide",
+      "actual": "0.05251389688440039023149097481853241",
+      "expected": "0.05251389688440039023149097481853241",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C37",
+      "operation": "multiply",
+      "actual": "5.251389688440039023149097481853241",
+      "expected": "5.251389688440039023149097481853241",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C38",
+      "operation": "subtract",
+      "actual": "0.00028335430984565419936065182620840",
+      "expected": "0.00028335430984565419936065182620840",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C39",
+      "operation": "multiply",
+      "actual": "2.833543098456541993606518262084000",
+      "expected": "2.833543098456541993606518262084000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C40",
+      "operation": "multiply",
+      "actual": "5652.157894736842105263157894736842",
+      "expected": "5652.157894736842105263157894736842",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C41",
+      "operation": "add",
+      "actual": "5347.157894736842105263157894736842",
+      "expected": "5347.157894736842105263157894736842",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C42",
+      "operation": "multiply",
+      "actual": "4063.840000000000000000000000000000",
+      "expected": "4063.840000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C43",
+      "operation": "divide",
+      "actual": "8.80000000000000000000000000000",
+      "expected": "8.80000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C44",
+      "operation": "subtract",
+      "actual": "0.77",
+      "expected": "0.77",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C45",
+      "operation": "multiply",
+      "actual": "4225.470",
+      "expected": "4225.470",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C46",
+      "operation": "divide",
+      "actual": "5487.623376623376623376623376623377",
+      "expected": "5487.623376623376623376623376623377",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C47",
+      "operation": "subtract",
+      "actual": "5792.623376623376623376623376623377",
+      "expected": "5792.623376623376623376623376623377",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C48",
+      "operation": "divide",
+      "actual": "0.05381895416853532337396471797074743",
+      "expected": "0.05381895416853532337396471797074743",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C49",
+      "operation": "multiply",
+      "actual": "5.381895416853532337396471797074743",
+      "expected": "5.381895416853532337396471797074743",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C50",
+      "operation": "subtract",
+      "actual": "0.00158841159398058734183439497842342",
+      "expected": "0.00158841159398058734183439497842342",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C51",
+      "operation": "multiply",
+      "actual": "15.88411593980587341834394978423420",
+      "expected": "15.88411593980587341834394978423420",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C52",
+      "operation": "multiply",
+      "actual": "5792.623376623376623376623376623377",
+      "expected": "5792.623376623376623376623376623377",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C53",
+      "operation": "add",
+      "actual": "5487.623376623376623376623376623377",
+      "expected": "5487.623376623376623376623376623377",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C54",
+      "operation": "multiply",
+      "actual": "4225.470000000000000000000000000000",
+      "expected": "4225.470000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C55",
+      "operation": "divide",
+      "actual": "9.15000000000000000000000000000",
+      "expected": "9.15000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C56",
+      "operation": "subtract",
+      "actual": "0.765",
+      "expected": "0.765",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C57",
+      "operation": "multiply",
+      "actual": "4225.470",
+      "expected": "4225.470",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C58",
+      "operation": "divide",
+      "actual": "5523.490196078431372549019607843137",
+      "expected": "5523.490196078431372549019607843137",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C59",
+      "operation": "subtract",
+      "actual": "5828.490196078431372549019607843137",
+      "expected": "5828.490196078431372549019607843137",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C60",
+      "operation": "divide",
+      "actual": "0.05415219087096149378862148560974658",
+      "expected": "0.05415219087096149378862148560974658",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C61",
+      "operation": "multiply",
+      "actual": "5.415219087096149378862148560974658",
+      "expected": "5.415219087096149378862148560974658",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C62",
+      "operation": "subtract",
+      "actual": "0.00192164829640675775649116261742257",
+      "expected": "0.00192164829640675775649116261742257",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C63",
+      "operation": "multiply",
+      "actual": "19.21648296406757756491162617422570",
+      "expected": "19.21648296406757756491162617422570",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C64",
+      "operation": "multiply",
+      "actual": "5828.490196078431372549019607843137",
+      "expected": "5828.490196078431372549019607843137",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C65",
+      "operation": "add",
+      "actual": "5523.490196078431372549019607843137",
+      "expected": "5523.490196078431372549019607843137",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C66",
+      "operation": "multiply",
+      "actual": "4225.470000000000000000000000000000",
+      "expected": "4225.470000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C67",
+      "operation": "divide",
+      "actual": "9.15000000000000000000000000000",
+      "expected": "9.15000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C68",
+      "operation": "subtract",
+      "actual": "0.76",
+      "expected": "0.76",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C69",
+      "operation": "multiply",
+      "actual": "4225.470",
+      "expected": "4225.470",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C70",
+      "operation": "divide",
+      "actual": "5559.828947368421052631578947368421",
+      "expected": "5559.828947368421052631578947368421",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C71",
+      "operation": "subtract",
+      "actual": "5864.828947368421052631578947368421",
+      "expected": "5864.828947368421052631578947368421",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C72",
+      "operation": "divide",
+      "actual": "0.05448981226684064012978689492820626",
+      "expected": "0.05448981226684064012978689492820626",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C73",
+      "operation": "multiply",
+      "actual": "5.448981226684064012978689492820626",
+      "expected": "5.448981226684064012978689492820626",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C74",
+      "operation": "subtract",
+      "actual": "0.00225926969228590409765657193588225",
+      "expected": "0.00225926969228590409765657193588225",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C75",
+      "operation": "multiply",
+      "actual": "22.59269692285904097656571935882250",
+      "expected": "22.59269692285904097656571935882250",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C76",
+      "operation": "multiply",
+      "actual": "5864.828947368421052631578947368421",
+      "expected": "5864.828947368421052631578947368421",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C77",
+      "operation": "add",
+      "actual": "5559.828947368421052631578947368421",
+      "expected": "5559.828947368421052631578947368421",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C78",
+      "operation": "multiply",
+      "actual": "4225.470000000000000000000000000000",
+      "expected": "4225.470000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C79",
+      "operation": "divide",
+      "actual": "9.15000000000000000000000000000",
+      "expected": "9.15000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C80",
+      "operation": "subtract",
+      "actual": "0.77",
+      "expected": "0.77",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C81",
+      "operation": "multiply",
+      "actual": "4525.640",
+      "expected": "4525.640",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C82",
+      "operation": "divide",
+      "actual": "5877.454545454545454545454545454545",
+      "expected": "5877.454545454545454545454545454545",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C83",
+      "operation": "subtract",
+      "actual": "6182.454545454545454545454545454545",
+      "expected": "6182.454545454545454545454545454545",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C84",
+      "operation": "divide",
+      "actual": "0.05744085472113451984802106132577111",
+      "expected": "0.05744085472113451984802106132577111",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C85",
+      "operation": "multiply",
+      "actual": "5.744085472113451984802106132577111",
+      "expected": "5.744085472113451984802106132577111",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C86",
+      "operation": "subtract",
+      "actual": "0.00521031214657978381589073833344710",
+      "expected": "0.00521031214657978381589073833344710",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C87",
+      "operation": "multiply",
+      "actual": "52.10312146579783815890738333447100",
+      "expected": "52.10312146579783815890738333447100",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C88",
+      "operation": "multiply",
+      "actual": "6182.454545454545454545454545454545",
+      "expected": "6182.454545454545454545454545454545",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C89",
+      "operation": "add",
+      "actual": "5877.454545454545454545454545454545",
+      "expected": "5877.454545454545454545454545454545",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C90",
+      "operation": "multiply",
+      "actual": "4525.640000000000000000000000000000",
+      "expected": "4525.640000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C91",
+      "operation": "divide",
+      "actual": "9.80000000000000000000000000000",
+      "expected": "9.80000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C92",
+      "operation": "subtract",
+      "actual": "0.765",
+      "expected": "0.765",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C93",
+      "operation": "multiply",
+      "actual": "4525.640",
+      "expected": "4525.640",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C94",
+      "operation": "divide",
+      "actual": "5915.869281045751633986928104575163",
+      "expected": "5915.869281045751633986928104575163",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C95",
+      "operation": "subtract",
+      "actual": "6220.869281045751633986928104575163",
+      "expected": "6220.869281045751633986928104575163",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C96",
+      "operation": "divide",
+      "actual": "0.05779776397619205755989388349650245",
+      "expected": "0.05779776397619205755989388349650245",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C97",
+      "operation": "multiply",
+      "actual": "5.779776397619205755989388349650245",
+      "expected": "5.779776397619205755989388349650245",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C98",
+      "operation": "subtract",
+      "actual": "0.00556722140163732152776356050417844",
+      "expected": "0.00556722140163732152776356050417844",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C99",
+      "operation": "multiply",
+      "actual": "55.67221401637321527763560504178440",
+      "expected": "55.67221401637321527763560504178440",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C100",
+      "operation": "multiply",
+      "actual": "6220.869281045751633986928104575163",
+      "expected": "6220.869281045751633986928104575163",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C101",
+      "operation": "add",
+      "actual": "5915.869281045751633986928104575163",
+      "expected": "5915.869281045751633986928104575163",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C102",
+      "operation": "multiply",
+      "actual": "4525.640000000000000000000000000000",
+      "expected": "4525.640000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C103",
+      "operation": "divide",
+      "actual": "9.80000000000000000000000000000",
+      "expected": "9.80000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C104",
+      "operation": "subtract",
+      "actual": "0.76",
+      "expected": "0.76",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C105",
+      "operation": "multiply",
+      "actual": "4525.640",
+      "expected": "4525.640",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C106",
+      "operation": "divide",
+      "actual": "5954.789473684210526315789473684211",
+      "expected": "5954.789473684210526315789473684211",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C107",
+      "operation": "subtract",
+      "actual": "6259.789473684210526315789473684211",
+      "expected": "6259.789473684210526315789473684211",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C108",
+      "operation": "divide",
+      "actual": "0.05815936940565824708376503227474343",
+      "expected": "0.05815936940565824708376503227474343",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C109",
+      "operation": "multiply",
+      "actual": "5.815936940565824708376503227474343",
+      "expected": "5.815936940565824708376503227474343",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C110",
+      "operation": "subtract",
+      "actual": "0.00592882683110351105163470928241942",
+      "expected": "0.00592882683110351105163470928241942",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C111",
+      "operation": "multiply",
+      "actual": "59.28826831103511051634709282419420",
+      "expected": "59.28826831103511051634709282419420",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C112",
+      "operation": "multiply",
+      "actual": "6259.789473684210526315789473684211",
+      "expected": "6259.789473684210526315789473684211",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C113",
+      "operation": "add",
+      "actual": "5954.789473684210526315789473684211",
+      "expected": "5954.789473684210526315789473684211",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C114",
+      "operation": "multiply",
+      "actual": "4525.640000000000000000000000000000",
+      "expected": "4525.640000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C115",
+      "operation": "divide",
+      "actual": "9.80000000000000000000000000000",
+      "expected": "9.80000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C116",
+      "operation": "subtract",
+      "actual": "0.765",
+      "expected": "0.765",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C117",
+      "operation": "multiply",
+      "actual": "1076.3166",
+      "expected": "1076.3166",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C118",
+      "operation": "multiply",
+      "actual": "823.3821990",
+      "expected": "823.3821990",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C119",
+      "operation": "divide",
+      "actual": "1.782984406669553919445647466435686",
+      "expected": "1.782984406669553919445647466435686",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C120",
+      "operation": "divide",
+      "actual": "0.2223911803839574225432427295191028",
+      "expected": "0.2223911803839574225432427295191028",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C121",
+      "operation": "multiply",
+      "actual": "5621.660000000000000000000000000000",
+      "expected": "5621.660000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C122",
+      "operation": "add",
+      "actual": "5316.660000000000000000000000000000",
+      "expected": "5316.660000000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C123",
+      "operation": "multiply",
+      "actual": "4067.244900000000000000000000000000",
+      "expected": "4067.244900000000000000000000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C124",
+      "operation": "divide",
+      "actual": "8.807373105240363793850151580770896",
+      "expected": "8.807373105240363793850151580770896",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

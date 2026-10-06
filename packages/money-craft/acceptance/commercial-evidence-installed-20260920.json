@@ -1,0 +1,80 @@
+{
+  "schema": "money-craft.commercial-evidence-installed.v1",
+  "status": "PASS_BOUNDED_INSTALLED_CASE",
+  "date": "2026-09-20",
+  "reviewer": "main agent manual semantic review, not independent",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "elapsed_seconds": 146.671,
+  "run_dir": "local/skill-evals/20260920-commercial-evidence/installed",
+  "machine_checks_pass": true,
+  "financial_checks": 10,
+  "semantic_checks": [
+    {
+      "criterion": "自动加载适用Skill并路由成功，关键计算回执通过",
+      "status": "PASS",
+      "reason": "Trace loads global installed Skill and relevant references; route and 10 final receipts pass."
+    },
+    {
+      "criterion": "框架不计订单、定点生命周期配套不当年度保证采购，不与生效订单重复加总",
+      "status": "PASS",
+      "reason": "Framework and lifetime nomination volume separated from actual purchase order; no annual guarantee inferred."
+    },
+    {
+      "criterion": "生效订单合同金额100万美元有信息价值但非保证兑现；未发出60万、寄售10万、已确认30万区分，不把全部收入未确认部分都武断定义为在手订单",
+      "status": "PASS",
+      "reason": "Cancellable order retains evidential value; original order, unshipped remainder, consignment and recognized revenue distinguished."
+    },
+    {
+      "criterion": "已实现毛利6万美元、毛利率20%，不外推订单净利；寄售不认收入",
+      "status": "PASS",
+      "reason": "Batch gross profit and margin calculated, no net-profit or future-margin extrapolation."
+    },
+    {
+      "criterion": "现金收取15万美元与收入30万美元分开，预收不认收入；不把应收和订单再加到收入",
+      "status": "PASS",
+      "reason": "Advance separated from recognized-revenue collections; no gross-receipt inference to operating cash flow."
+    },
+    {
+      "criterion": "未决取消及交付、费用与净利、同源限制明确，不声称没有订单",
+      "status": "PASS",
+      "reason": "Cancellation, future delivery, cost/expense and issuer-only limitations retained without denying actual progress."
+    }
+  ],
+  "installation": {
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260920T085638324850Z",
+    "parity_files": 75,
+    "runtime_self_test": {
+      "schema": "money-craft.self-test.v1",
+      "scope": "runtime",
+      "version": "0.3.0",
+      "runtime_valid": true,
+      "network_used": false,
+      "checks": [
+        "thscode-validation",
+        "shanghai-date-conversion",
+        "report-audit",
+        "financial-audit",
+        "company-research-plan",
+        "research-run-case",
+        "global-security-research-plan",
+        "tracking-health-contract",
+        "report-renderer-assets"
+      ],
+      "errors": []
+    },
+    "package_smoke_passed": 7,
+    "package_sha256": "1d7fe6e91573e949d0b1876295c052dd4b85b5f87e11b0265732b5488164487f"
+  },
+  "artifact_hashes": {
+    "prompt.txt": "f2baf9541bdf7f5ad1807b2ab251a86c429f9a884537cee5e69ccaba5276ab4c",
+    "answer.md": "d8c0c4f3910ec55c7b93154f524614ff4acac5180bfa3670d4f48cf8d2e28806",
+    "events.jsonl": "cbc729257d38f9f9e282f56a0f4c7f974385a9c81cd14f6243715fb4c0dc73b0",
+    "host.json": "d392f0fa30ef0b7f6529b3d539abd613f02ec1d1b3564c550a63021600533854",
+    "machine-audit.json": "71fcbc4e806bf6d3f74e36d16c5bceebc91707b08d280916e74d922e3f7df141"
+  },
+  "limits": [
+    "One frozen synthetic case; not real contract verification, accounting certification or broad generalization.",
+    "No commit, push, publication or application work."
+  ]
+}

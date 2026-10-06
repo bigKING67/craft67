@@ -1,0 +1,47 @@
+{
+  "schema": "design-craft.compatibility.v1",
+  "codex_route_pack": {
+    "schema": "design-craft.codex-route-pack.v2",
+    "manifest_schema": "codex.frontend-route-pack.manifest.v1",
+    "snapshot_schema": "codex.global_agents.snapshot.v2",
+    "routing_version": 2
+  },
+  "evidence_contracts": {
+    "cross_agent": "design-craft.cross-agent-score.v5",
+    "native_runtime": "design-craft.native-runtime-evidence.v3",
+    "release_verification": "design-craft.release-evidence.v1",
+    "github_checks": "design-craft.github-checks.v2",
+    "github_governance": "design-craft.github-governance.v2",
+    "github_artifact_observation": "design-craft.github-artifact-observation.v1",
+    "visual_reference_card": "design-craft.visual-reference-card.v1",
+    "visual_reference_catalog": "design-craft.visual-reference-catalog.v1",
+    "visual_reference_pack": "design-craft.visual-reference-pack.v1",
+    "comp_fidelity_spec": "design-craft.comp-fidelity-spec.v1",
+    "comp_fidelity_report": "design-craft.comp-fidelity-report.v1",
+    "runtime_evidence": "design-craft.runtime-evidence.v1",
+    "sealed_rendition_gate_spec": "design-craft.sealed-rendition-gate-spec.v1",
+    "sealed_rendition_capture_plan": "design-craft.sealed-rendition-capture-plan.v1",
+    "sealed_rendition_gate_report": "design-craft.sealed-rendition-gate-report.v1"
+  },
+  "maintenance_contracts": {
+    "install": "design-craft.install.v2",
+    "sync_status": "design-craft.sync-status.v2",
+    "release_assets": "design-craft.release-assets.v2",
+    "release_certification": "design-craft.release-certification.v1",
+    "benchmark_result": "design-craft.benchmark-result.v2",
+    "maturity": "design-craft.maturity.v2",
+    "release_policy": "design-craft.release-policy.v1",
+    "native_release_bundle": "design-craft.native-release-bundle.v2",
+    "upstream_absorption_state": "design-craft.upstream-absorption-state.v2",
+    "taste_absorption": "design-craft.taste-absorption.v1",
+    "impeccable_absorption": "design-craft.impeccable-absorption.v1",
+    "emil_absorption": "design-craft.emil-absorption.v1",
+    "evidence_graph": "design-craft.evidence-graph.v2",
+    "cross_agent_run": "design-craft.cross-agent-run.v3",
+    "comparative_variants": "design-craft.comparative-variants.v2",
+    "comparative_run": "design-craft.comparative-run.v4",
+    "comparative_blind_map": "design-craft.comparative-blind-map.v3",
+    "comparative_judge_run": "design-craft.comparative-judge-run.v1",
+    "comparative_result": "design-craft.comparative-result.v4"
+  }
+}

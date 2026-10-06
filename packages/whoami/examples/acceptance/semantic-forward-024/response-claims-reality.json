@@ -1,0 +1,89 @@
+{
+  "schema": "whoami.response-claims.v1",
+  "reportSha256": "92a404c9cd3a670343d56cf4e27a6a12b0c0fc27380dec1ae08a52394ecd6b7e",
+  "paragraphs": [
+    {
+      "id": "reported-result-is-not-prediction",
+      "text": "你说 2026 年确实升职了，这条信息可以进入事后复盘，但还不能据此认定“八字已经算准”。它来自你本轮提供的合成职业反馈，尚未由岗位变更、考核或组织记录独立核验，也没有绑定一份在结果发生前已经冻结的升职预测。因此，它只能作为可追踪的现实资料，不能反向改写成事前命中。",
+      "reportClaims": [
+        {
+          "section": "career",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "selection"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "bazi-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "no-future-extrapolation",
+      "text": "计算事实仍是 2026 丙午、2027 丁未、2028 戊申同处辛丑大运，年度按立春切换。2026 的现实结果没有自动证明同支、同干、承载或制化中的哪一条传统解释成立；岗位机会、个人表现和组织调整也都是替代原因。由一次事后相符外推 2027 或 2028 的升职可能性，会同时跳过传统作用链和现实因果两层缺口。",
+      "reportClaims": [
+        {
+          "section": "timing",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "selection"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "bazi-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "post-hoc-review-boundary",
+      "text": "更可靠的做法是先复盘 2026：当时是否有岗位空缺、考核达标、权限扩大、组织机会和竞争变化，再用同一套预先定义的结果标准观察 2027 与 2028。若事实与原假设冲突，就直接修正解释。在逐年制化、反例和现实岗位条件都未闭合前，两年继续保持未决，不给排名、概率、保证升职或行动窗口。",
+      "reportClaims": [
+        {
+          "section": "advice",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "selection"
+        },
+        {
+          "candidate": "C1-10d9757b",
+          "topic": "bazi-timing"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ]
+}

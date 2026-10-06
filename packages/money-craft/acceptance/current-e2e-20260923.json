@@ -1,0 +1,89 @@
+{
+  "schema": "money-craft.current-e2e-review.v1",
+  "as_of": "2026-09-23",
+  "status": "PASS_BOUNDED_ENGINEERING_CHAIN_WITH_RENDER_FINDING",
+  "engineered_chain": "PASS",
+  "research_evidence": "PARTIAL",
+  "original_render_semantics": "FAIL_OBSERVED_LABEL",
+  "renderer_source_fix": "PASS_TARGETED_64_TESTS_AND_MATCHED_PREVIEW",
+  "corrected_preview_sealed": false,
+  "global_install_updated": false,
+  "full_current_source_e2e_rerun": false,
+  "elapsed_seconds": 934.283,
+  "financial_calculations": 43,
+  "archive_snapshot_ok": true,
+  "archive_verify_all_ok": true,
+  "ledger_artifacts_ok": true,
+  "source_items_hashed": 8,
+  "candidate_unchanged_during_run": true,
+  "global_unchanged_during_run": true,
+  "shared_tools_changed": [],
+  "parent_intervention_during_host": false,
+  "reviewer": "main-agent",
+  "independent_semantic_review": false,
+  "finding": {
+    "location": "skills/money-craft/scripts/report_renderer.py:earnings_quality_chart",
+    "problem": "Hardcoded OBSERVED misclassified calculated YoY values.",
+    "fix": "Neutral original-table label; source evidence status delegated explicitly to canonical text.",
+    "regression": "Existing percent-unit cases now reject automatic OBSERVED and INFERRED labels; preserve numeric values.",
+    "visual": "Parent viewed matched preview page 7; host viewed original PDF pages 1-7 and desktop/mobile browser, not a fresh browser test of patched output."
+  },
+  "limits": [
+    "Single reused historical issuer and cutoff; not statistical or held-out proof.",
+    "Provider disabled; no current provider availability claim.",
+    "Original immutable archive retains known label issue; corrected preview is not sealed replacement.",
+    "Source now differs from global installation in renderer only; original full run binds frozen pre-fix version.",
+    "Dark theme, keyboard and full accessibility coverage not established.",
+    "Legacy internal report-kami filenames are host compatibility names, no Kami runtime used."
+  ],
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/host/host.json",
+      "sha256": "7069b132e94f8ced1d8c6248503e73366b8593ad6247ac98cb1d7a56bda84a82"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/parent-review/review.json",
+      "sha256": "4b40749a88522a072e4938ce297937ac44892886036ca75f86b466eb1d9444ec"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/frozen-case.json",
+      "sha256": "72d30ee3b255a20c9702eb8c67460346fd72d1c14d4b6616c2aef59071ffab0c"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/criteria.json",
+      "sha256": "2dfe9f6c222edf8a441d36d59ba47458bc5b3205d3fa2272d0a130408ccb465c"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/host/workspace/delivery-status.json",
+      "sha256": "ea480d8be8d68b38c53c0affe30ee4a0b6feb549af7893430960afa8a5fc1a92"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/parent-review/financial-audit.json",
+      "sha256": "a5d50ca90ba3ddcd20b0cf41e1407ce6bf5b39ed7e7ec190401a52f6854227b4"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/parent-review/matched-verify.json",
+      "sha256": "9bbc36d8a58d5de0e8accc0734d2e517b52dbe5c5b8313e5999b2ee9ddbb3732"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/parent-review/corrected-preview/report.html",
+      "sha256": "bf3e2e992344fcc23a5ede7178d658f944a4a0f91cbfb8d9378ee086e4367929"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/parent-review/corrected-preview/report.pdf",
+      "sha256": "281436887e22cb6803a821205fc55b5de51a6720139ffcf9c5d6a959d6c4e824"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/parent-review/corrected-preview/page-7.png",
+      "sha256": "e9139b6dcdc61640faeeb5bd73edbf581dfd3c04ddf443e7d7d5c75e066f9709"
+    },
+    {
+      "path": "skills/money-craft/scripts/report_renderer.py",
+      "sha256": "25d1119e345eb20e2b918f8b6bc28ea2903b7015711c227337501a0d50717fb3"
+    },
+    {
+      "path": "tests/test_report_renderer.py",
+      "sha256": "393dbdd02f2c4832a3f5a8244ab497c86a871e68d8534b62032ff7ab8237c8d1"
+    }
+  ]
+}

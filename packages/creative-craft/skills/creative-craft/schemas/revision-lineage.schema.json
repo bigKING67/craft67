@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/revision-lineage.schema.json",
+  "title": "Creative Craft Revision Lineage v1",
+  "type": "object",
+  "required": ["schema_version", "revision_id", "parent_output_ref", "parent_inspection_ref", "primary_variable", "reason", "change", "preserve", "integration_changes", "new_job_ref", "new_receipt_ref", "new_output_ref", "observed_result", "comparison", "decision", "next_action"],
+  "properties": {
+    "schema_version": {"const": "creative-craft.revision-lineage.v1"},
+    "revision_id": {"type": "string", "minLength": 1},
+    "parent_output_ref": {"type": "string", "pattern": "^cc://"},
+    "parent_inspection_ref": {"type": "string", "pattern": "^cc://"},
+    "primary_variable": {"type": "string", "minLength": 1},
+    "reason": {"type": "string", "minLength": 1},
+    "change": {"type": "array", "items": {"type": "string"}},
+    "preserve": {"type": "array", "items": {"type": "string"}},
+    "integration_changes": {"type": "array", "items": {"type": "string"}},
+    "new_job_ref": {"type": ["string", "null"], "pattern": "^cc://"},
+    "new_receipt_ref": {"type": ["string", "null"], "pattern": "^cc://"},
+    "new_output_ref": {"type": ["string", "null"], "pattern": "^cc://"},
+    "observed_result": {"type": ["string", "null"]},
+    "comparison": {"type": ["string", "null"]},
+    "decision": {"enum": ["draft", "improved", "not_improved", "inconclusive", "superseded"]},
+    "next_action": {"type": "string"}
+  },
+  "additionalProperties": false
+}

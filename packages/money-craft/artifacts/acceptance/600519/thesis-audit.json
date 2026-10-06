@@ -1,0 +1,18 @@
+{
+  "schema": "money-craft.report-audit.v1",
+  "valid": true,
+  "metadata": {
+    "schema": "money-craft.thesis.v1",
+    "workflow": "thesis",
+    "security": "贵州茅台",
+    "thscode": "600519.SH",
+    "as_of": "2026-08-23",
+    "data_cutoff": "2026-08-23T19:40:16+08:00",
+    "base_currency": "CNY",
+    "provider_status": "configured_with_latest_indicator_gap"
+  },
+  "source_count": 9,
+  "citation_count": 9,
+  "warnings": [],
+  "errors": []
+}

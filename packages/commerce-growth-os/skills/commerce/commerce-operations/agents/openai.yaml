@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commerce Operations｜全渠道电商运营"
+  short_description: "店铺、直播、货架、活动、履约、客服和退款的运营执行。"
+  default_prompt: "Use $commerce-operations to turn the strategy into an owner-based platform operating plan with SOPs, checks, exception handling, and review cadence."

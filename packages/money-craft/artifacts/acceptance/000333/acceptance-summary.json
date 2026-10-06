@@ -1,0 +1,78 @@
+{
+  "schema": "money-craft.fuyao-acceptance.v1",
+  "security": "美的集团",
+  "thscode": "000333.SZ",
+  "as_of": "2026-08-23",
+  "data_cutoff": "2026-08-23T12:42:37.772301Z",
+  "installed_skill": {
+    "version": "0.1.0",
+    "credential_source": "secure-file",
+    "secret_recorded": false
+  },
+  "distribution": {
+    "mode": "metadata-only",
+    "manifest": "evidence-manifest.json",
+    "provider_payloads_distributed": false,
+    "downloaded_documents_distributed": false,
+    "synthetic_fixtures": "tests/fixtures/fuyao"
+  },
+  "summary": {
+    "primary_passed": 10,
+    "primary_total": 10,
+    "latest_statement_passed": 3,
+    "latest_statement_total": 3,
+    "latest_indicator_passed": 1,
+    "latest_indicator_total": 1,
+    "client_contract_defects": 0,
+    "provider_availability_limitations": 0
+  },
+  "cases": [
+    {"id": "S01", "operation": "search", "status": "passed", "manifest_ref": "evidence-manifest.json#S01"},
+    {"id": "S02", "operation": "snapshot", "status": "passed", "manifest_ref": "evidence-manifest.json#S02"},
+    {"id": "S03", "operation": "valuations", "status": "passed", "manifest_ref": "evidence-manifest.json#S03"},
+    {"id": "S04", "operation": "history", "status": "passed", "manifest_ref": "evidence-manifest.json#S04"},
+    {"id": "S05", "operation": "income-statements annual", "status": "passed", "manifest_ref": "evidence-manifest.json#S05"},
+    {"id": "S06", "operation": "balance-sheets annual", "status": "passed", "manifest_ref": "evidence-manifest.json#S06"},
+    {"id": "S07", "operation": "cash-flow-statements annual", "status": "passed", "manifest_ref": "evidence-manifest.json#S07"},
+    {"id": "S08", "operation": "indicators 2025-4", "status": "passed", "manifest_ref": "evidence-manifest.json#S08"},
+    {"id": "S09", "operation": "corporate-actions", "status": "passed", "manifest_ref": "evidence-manifest.json#S09"},
+    {
+      "id": "S10",
+      "operation": "trading-calendar",
+      "status": "passed_with_warning",
+      "manifest_ref": "evidence-manifest.json#S10",
+      "note": "The requested range was filtered locally as documented by the client."
+    },
+    {"id": "S14", "operation": "income-statements quarterly", "status": "passed", "manifest_ref": "evidence-manifest.json#S14"},
+    {"id": "S15", "operation": "balance-sheets quarterly", "status": "passed", "manifest_ref": "evidence-manifest.json#S15"},
+    {"id": "S16", "operation": "cash-flow-statements quarterly", "status": "passed", "manifest_ref": "evidence-manifest.json#S16"},
+    {"id": "S17", "operation": "indicators 2026-1", "status": "passed", "manifest_ref": "evidence-manifest.json#S17"}
+  ],
+  "quote_boundary": {
+    "requested_as_of": "2026-08-23",
+    "last_trading_date": "2026-08-21",
+    "rule": "Use the last history bar date as the quote date; snapshot timestamps are request-time metadata when the market is closed."
+  },
+  "official_reconciliation": [
+    {"field": "2025 operating income", "official_cny": "456451731000", "fuyao_cny": "456451731000", "difference_cny": "0"},
+    {"field": "2025 parent-holder net profit", "official_cny": "43945411000", "fuyao_cny": "43945411000", "difference_cny": "0"},
+    {"field": "2025 total assets", "official_cny": "608791766000", "fuyao_cny": "608791766000", "difference_cny": "0"},
+    {"field": "2025 cash", "official_cny": "85247150000", "fuyao_cny": "85247150000", "difference_cny": "0"},
+    {"field": "2025 accounts receivable", "official_cny": "40450097000", "fuyao_cny": "40450097000", "difference_cny": "0"},
+    {"field": "2025 operating cash flow", "official_cny": "53345930000", "fuyao_cny": "53345930000", "difference_cny": "0"},
+    {"field": "2026 Q1 operating income", "official_cny": "131098601000", "fuyao_cny": "131098601000", "difference_cny": "0"},
+    {"field": "2026 Q1 parent-holder net profit", "official_cny": "12674556000", "fuyao_cny": "12674556000", "difference_cny": "0"},
+    {"field": "2026 Q1 total assets", "official_cny": "613881571000", "fuyao_cny": "613881571000", "difference_cny": "0"},
+    {"field": "2026 Q1 operating cash flow", "official_cny": "14529165000", "fuyao_cny": "14529165000", "difference_cny": "0"}
+  ],
+  "cross_case_finding": {
+    "observed": "000333.SZ indicators 2026-1 passed while 600519.SH indicators 2026-2 returned provider code 5003 on the same acceptance date.",
+    "inference": "The prior gap is issuer/report-period specific rather than evidence that the indicator endpoint or Money Craft client is generally broken."
+  },
+  "integrity": {
+    "public_manifest": "passed_17_of_17",
+    "private_evidence_hashes": "passed_31_of_31",
+    "secret_scan": "passed",
+    "source_validation": "passed"
+  }
+}

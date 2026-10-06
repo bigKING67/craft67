@@ -1,0 +1,57 @@
+{
+  "case_id": "generic-l4-valid-after",
+  "evidence_level": "L4",
+  "expected_score": 90,
+  "acceptable_range": [
+    88,
+    91
+  ],
+  "maturity_band": "production-ready calibration",
+  "screenshot_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile",
+      "css_size": [
+        390,
+        844
+      ],
+      "dimensions": [
+        780,
+        1688
+      ],
+      "artifact_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "focus": "verified in fixture metadata",
+    "empty": "not applicable to fixture"
+  },
+  "required_findings": [
+    "The after surface moves the review area higher in the viewport.",
+    "The hierarchy creates a clearer primary work area.",
+    "The case keeps explicit unverified-state boundaries."
+  ],
+  "false_positive_guards": [
+    "Do not treat this fixture as a live product improvement.",
+    "Do not claim interaction behavior beyond fixture state checks.",
+    "Do not claim screenshot files exist unless --require-existing-files is used."
+  ]
+}

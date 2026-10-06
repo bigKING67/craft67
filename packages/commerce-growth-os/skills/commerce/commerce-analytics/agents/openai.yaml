@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commerce Analytics｜电商经营分析"
+  short_description: "指标口径、利润漏斗、归因、实验、异常诊断和经营复盘。"
+  default_prompt: "Use $commerce-analytics to validate the data contract, diagnose the change, separate facts from hypotheses, and produce decision implications with confidence and next evidence."

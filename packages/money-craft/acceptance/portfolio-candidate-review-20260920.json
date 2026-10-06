@@ -1,0 +1,111 @@
+{
+  "schema": "money-craft.portfolio-candidate-review.v1",
+  "date": "2026-09-20",
+  "route": "Review Craft bounded fast path",
+  "scope": "Portfolio core and direct CLI/schema/audit integration; no full-repository review or score",
+  "independent_reviewer": "/root/portfolio_candidate_review",
+  "effective_model": "UNVERIFIED",
+  "read_full": [
+    {
+      "path": "skills/money-craft/scripts/portfolio_audit.py",
+      "sha256": "d44f84134947759976aca0d110a11e2414d46bb5f8a6b1bec4f0211648144dc6"
+    },
+    {
+      "path": "skills/money-craft/schemas/portfolio-input.schema.json",
+      "sha256": "a999d3bbc8efc4cfd3f3d35d07b91f59e0cf517f756cc37d0df88dd0249ef0bc"
+    },
+    {
+      "path": "skills/money-craft/references/portfolio-audit.md",
+      "sha256": "3f1be1c4f655585a0a021ca4ef2c9acc12e0ae94ec8ce4897a6744c69ccf31ab"
+    },
+    {
+      "path": "skills/money-craft/references/global-investing.md",
+      "sha256": "b5d49c3a2dfecd9790252c202dcf9b86552ac844a07b07e57368dd359afa3ca2"
+    },
+    {
+      "path": "scripts/audit_skill_task.py",
+      "sha256": "74cf87aaf8602214cc1b84a8b75add640aae9035a29d8a8d30521247ff3d57c3"
+    },
+    {
+      "path": "tests/test_portfolio_audit.py",
+      "sha256": "4754214000160eeee3e55baad49734ef61b5b41375561b93fe4654673e843d46"
+    },
+    {
+      "path": "tests/test_skill_task_audit.py",
+      "sha256": "e5bafe8381eb4de7218d4f38e776aca08ae934965705f80b43e5f435d589d88f"
+    }
+  ],
+  "read_partial": [
+    {
+      "scope": "portfolio import/parser/dispatch and direct control flow",
+      "path": "skills/money-craft/scripts/money_craft.py",
+      "sha256": "ab4bf5312d4f7ddbde9af0f933b27ef7922d0dbc1c8297ae33e1de3fa7347402"
+    }
+  ],
+  "fix_consumers_and_tests": [
+    {
+      "path": "skills/money-craft/scripts/financial_rigor.py",
+      "sha256": "a1dc0c512d620fa06f40b1e50b2370041180e9f26d7f5ae4e60ef3d8b215190a"
+    },
+    {
+      "path": "skills/money-craft/scripts/financial_reconciliation.py",
+      "sha256": "577768445452fba0948d10cac79ef7ed4e5b8750dbe78aa1866cdca3b9853ca5"
+    },
+    {
+      "path": "skills/money-craft/schemas/financial-reconciliation.schema.json",
+      "sha256": "c3ae5255bdce1a8b42e8003fee03a805f281e507abe29bd022246e6b708a9b9d"
+    },
+    {
+      "path": "tests/test_audits.py",
+      "sha256": "9ac5f05594d60f30b1b672842989003ff2587b773dcfaa18e8c86ff23606d4ae"
+    }
+  ],
+  "findings": [
+    {
+      "id": "P2-PORTFOLIO-RECEIPT-ID",
+      "severity": "P2",
+      "disposition": "accepted",
+      "status": "VERIFIED",
+      "reproduction": "Valid 730199-byte input with10000 positions generates10022 calculations, but original financial auditor rejects23 IDs beginning C10000.",
+      "fix": "Extend shared audit/reconciliation/schema calculation ID contract from2..4 to2..7 digits; retain all supported input sizes and receipts.",
+      "regression": "10000 holdings -> portfolio result -> successful-output binding -> all receipts audited; C01/C10000/C9999999 accepted, C1/C10000000 rejected.",
+      "independent_validation": {
+        "portfolio_tests": 8,
+        "financial_audit_tests": 35,
+        "new_findings": 0
+      }
+    }
+  ],
+  "keep": [
+    "Partial coverage and overlap lower bounds",
+    "Decimal ranges, input identities/date/hash boundaries",
+    "Multiplicative FX semantics and valid vs risk breach",
+    "Structured result output binding plus arithmetic, manual semantics remain separate"
+  ],
+  "limits": [
+    "Scoped independent review only; no full-repository security or numerical score.",
+    "Seven-digit maximum sufficiency assessed from declared source limits; no million-position performance claim.",
+    "Candidate/install/host verification recorded separately."
+  ],
+  "additional_independent_auditor_review": {
+    "status": "KEEP",
+    "agent": "/root/portfolio_candidate_review",
+    "files": [
+      {
+        "path": "scripts/audit_skill_task.py",
+        "sha256": "d50c43542fdddaf01092d73e14b06c0641f5958049f622589596d4669b239ec8"
+      },
+      {
+        "path": "tests/test_skill_task_audit.py",
+        "sha256": "d6dcbc1cc3f45e70e7922813bcd7c864811af045f1030d3c6eaac87296ee0b9f"
+      }
+    ],
+    "tests_passed": 24,
+    "saved_installed_host_reaudit": {
+      "machine_checks_pass": true,
+      "calculations": 80,
+      "research_complete": false
+    },
+    "contract": "Canonical input digest in answer/result/recomputed input binds stdout receipts; finite input, successful command, unambiguous output and arithmetic checks required; first failure preserved."
+  }
+}

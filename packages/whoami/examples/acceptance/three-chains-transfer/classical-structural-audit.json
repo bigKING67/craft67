@@ -1,0 +1,342 @@
+{
+  "scope": "structural-only; no chartId, birthday, strength label or historical outcome validation",
+  "hiddenStemOrder": "descriptive library order, not strength weights",
+  "cases": [
+    {
+      "id": "wealth-light-peer-strong",
+      "dayMaster": "辛",
+      "pillars": [
+        {
+          "position": "year",
+          "value": "甲子",
+          "tenGod": "正财",
+          "hiddenStems": [
+            {
+              "stem": "癸",
+              "element": "水",
+              "tenGod": "食神"
+            }
+          ]
+        },
+        {
+          "position": "month",
+          "value": "辛未",
+          "tenGod": "比肩",
+          "hiddenStems": [
+            {
+              "stem": "己",
+              "element": "土",
+              "tenGod": "偏印"
+            },
+            {
+              "stem": "丁",
+              "element": "火",
+              "tenGod": "七杀"
+            },
+            {
+              "stem": "乙",
+              "element": "木",
+              "tenGod": "偏财"
+            }
+          ]
+        },
+        {
+          "position": "day",
+          "value": "辛酉",
+          "tenGod": "日主",
+          "hiddenStems": [
+            {
+              "stem": "辛",
+              "element": "金",
+              "tenGod": "比肩"
+            }
+          ]
+        },
+        {
+          "position": "hour",
+          "value": "壬辰",
+          "tenGod": "伤官",
+          "hiddenStems": [
+            {
+              "stem": "戊",
+              "element": "土",
+              "tenGod": "正印"
+            },
+            {
+              "stem": "乙",
+              "element": "木",
+              "tenGod": "偏财"
+            },
+            {
+              "stem": "癸",
+              "element": "水",
+              "tenGod": "食神"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wealth-heavy-body-weak",
+      "dayMaster": "甲",
+      "pillars": [
+        {
+          "position": "year",
+          "value": "丁未",
+          "tenGod": "伤官",
+          "hiddenStems": [
+            {
+              "stem": "己",
+              "element": "土",
+              "tenGod": "正财"
+            },
+            {
+              "stem": "丁",
+              "element": "火",
+              "tenGod": "伤官"
+            },
+            {
+              "stem": "乙",
+              "element": "木",
+              "tenGod": "劫财"
+            }
+          ]
+        },
+        {
+          "position": "month",
+          "value": "癸丑",
+          "tenGod": "正印",
+          "hiddenStems": [
+            {
+              "stem": "己",
+              "element": "土",
+              "tenGod": "正财"
+            },
+            {
+              "stem": "癸",
+              "element": "水",
+              "tenGod": "正印"
+            },
+            {
+              "stem": "辛",
+              "element": "金",
+              "tenGod": "正官"
+            }
+          ]
+        },
+        {
+          "position": "day",
+          "value": "甲辰",
+          "tenGod": "日主",
+          "hiddenStems": [
+            {
+              "stem": "戊",
+              "element": "土",
+              "tenGod": "偏财"
+            },
+            {
+              "stem": "乙",
+              "element": "木",
+              "tenGod": "劫财"
+            },
+            {
+              "stem": "癸",
+              "element": "水",
+              "tenGod": "正印"
+            }
+          ]
+        },
+        {
+          "position": "hour",
+          "value": "甲戌",
+          "tenGod": "比肩",
+          "hiddenStems": [
+            {
+              "stem": "戊",
+              "element": "土",
+              "tenGod": "偏财"
+            },
+            {
+              "stem": "辛",
+              "element": "金",
+              "tenGod": "正官"
+            },
+            {
+              "stem": "丁",
+              "element": "火",
+              "tenGod": "伤官"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "body-killer-balanced",
+      "dayMaster": "庚",
+      "pillars": [
+        {
+          "position": "year",
+          "value": "壬申",
+          "tenGod": "食神",
+          "hiddenStems": [
+            {
+              "stem": "庚",
+              "element": "金",
+              "tenGod": "比肩"
+            },
+            {
+              "stem": "壬",
+              "element": "水",
+              "tenGod": "食神"
+            },
+            {
+              "stem": "戊",
+              "element": "土",
+              "tenGod": "偏印"
+            }
+          ]
+        },
+        {
+          "position": "month",
+          "value": "丙午",
+          "tenGod": "七杀",
+          "hiddenStems": [
+            {
+              "stem": "丁",
+              "element": "火",
+              "tenGod": "正官"
+            },
+            {
+              "stem": "己",
+              "element": "土",
+              "tenGod": "正印"
+            }
+          ]
+        },
+        {
+          "position": "day",
+          "value": "庚午",
+          "tenGod": "日主",
+          "hiddenStems": [
+            {
+              "stem": "丁",
+              "element": "火",
+              "tenGod": "正官"
+            },
+            {
+              "stem": "己",
+              "element": "土",
+              "tenGod": "正印"
+            }
+          ]
+        },
+        {
+          "position": "hour",
+          "value": "庚辰",
+          "tenGod": "比肩",
+          "hiddenStems": [
+            {
+              "stem": "戊",
+              "element": "土",
+              "tenGod": "偏印"
+            },
+            {
+              "stem": "乙",
+              "element": "木",
+              "tenGod": "正财"
+            },
+            {
+              "stem": "癸",
+              "element": "水",
+              "tenGod": "伤官"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "balanced-countercase",
+      "dayMaster": "庚",
+      "pillars": [
+        {
+          "position": "year",
+          "value": "壬午",
+          "tenGod": "食神",
+          "hiddenStems": [
+            {
+              "stem": "丁",
+              "element": "火",
+              "tenGod": "正官"
+            },
+            {
+              "stem": "己",
+              "element": "土",
+              "tenGod": "正印"
+            }
+          ]
+        },
+        {
+          "position": "month",
+          "value": "丙午",
+          "tenGod": "七杀",
+          "hiddenStems": [
+            {
+              "stem": "丁",
+              "element": "火",
+              "tenGod": "正官"
+            },
+            {
+              "stem": "己",
+              "element": "土",
+              "tenGod": "正印"
+            }
+          ]
+        },
+        {
+          "position": "day",
+          "value": "庚申",
+          "tenGod": "日主",
+          "hiddenStems": [
+            {
+              "stem": "庚",
+              "element": "金",
+              "tenGod": "比肩"
+            },
+            {
+              "stem": "壬",
+              "element": "水",
+              "tenGod": "食神"
+            },
+            {
+              "stem": "戊",
+              "element": "土",
+              "tenGod": "偏印"
+            }
+          ]
+        },
+        {
+          "position": "hour",
+          "value": "戊寅",
+          "tenGod": "偏印",
+          "hiddenStems": [
+            {
+              "stem": "甲",
+              "element": "木",
+              "tenGod": "偏财"
+            },
+            {
+              "stem": "丙",
+              "element": "火",
+              "tenGod": "七杀"
+            },
+            {
+              "stem": "戊",
+              "element": "土",
+              "tenGod": "偏印"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

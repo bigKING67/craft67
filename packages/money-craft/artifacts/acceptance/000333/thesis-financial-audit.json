@@ -1,0 +1,98 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "add",
+      "actual": "56619967000",
+      "expected": "56619967000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "subtract",
+      "actual": "44197734000",
+      "expected": "44197734000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "divide",
+      "actual": "5.812985470839767282392916615800546",
+      "expected": "5.812985470839767282392916615800546",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "divide",
+      "actual": "14.50201457114973360398974300356665",
+      "expected": "14.50201457114973360398974300356665",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "multiply",
+      "actual": "440000000000",
+      "expected": "440000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "divide",
+      "actual": "57.86979050033419369990514244355242",
+      "expected": "57.86979050033419369990514244355242",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "multiply",
+      "actual": "690000000000",
+      "expected": "690000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "divide",
+      "actual": "90.75035328461498557485124610466176",
+      "expected": "90.75035328461498557485124610466176",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C09",
+      "operation": "multiply",
+      "actual": "936000000000",
+      "expected": "936000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C10",
+      "operation": "divide",
+      "actual": "123.1048270643472847797982121071933",
+      "expected": "123.1048270643472847797982121071933",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

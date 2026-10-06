@@ -1,0 +1,47 @@
+{
+  "schema": "money-craft.fred-closeout-review.v1",
+  "date": "2026-09-19",
+  "status": "PARTIAL",
+  "route": "Review Craft bounded fast path; parent inline; no canonical score",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "64045a43baf527bc16635d192eb27f4a8fc9647dcf05853425c2d6519d06af02",
+    "tests/test_fred_adapter.py": "40807d1c16bcb6201e753a8dd6330b008dab3b2ff7a60cbe1c9acbba6a2b10f6",
+    "skills/money-craft/references/providers/fred.md": "c34734dec8bee0ad5a88f5708b20095e390b521aa331c64937a5aa69a3fbec08",
+    "docs/fred-review-boundaries.md": "cbab0eee9bda959599fd2b74ab1fdd8c8e653bd72dcbc13c53877f2a9288be90"
+  },
+  "coverage": "Full fred_adapter.py read; direct CLI mapping/capture boundary and relevant tests inspected. No exhaustive branch coverage claim.",
+  "decisions": [
+    {
+      "action": "FIX",
+      "finding": "Valid JSON shorter than declared Content-Length was accepted.",
+      "validation": "Two red length-mismatch cases reproduced; repaired. Standard-library HTTPResponse truncated-body regression returns network_error after three attempts and all responses close."
+    },
+    {
+      "action": "KEEP",
+      "finding": "Deep JSON candidate already rejected structurally in current Python; no duplicate implementation added."
+    },
+    {
+      "action": "DOCUMENT",
+      "path": "docs/fred-review-boundaries.md"
+    }
+  ],
+  "validation": {
+    "fred_tests": 36,
+    "full_tests": 381,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS"
+  },
+  "independent_review": "NOT_RUN",
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T082031375939Z"
+  },
+  "remaining": [
+    "Vintages start/end response binding.",
+    "Independent diff review of lifecycle changes and controlled default HTTPS opener evidence.",
+    "Live Provider evidence remains separate from offline tests; no arbitrary realtime range, automatic pagination or cross-platform guarantees."
+  ],
+  "authorization": "No app, commit, push or release."
+}

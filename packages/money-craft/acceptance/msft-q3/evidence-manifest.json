@@ -1,0 +1,28 @@
+{
+  "schema": "money-craft.evidence-manifest.v1",
+  "as_of": "2025-04-30",
+  "execution_date": "2026-09-20",
+  "post_hoc": true,
+  "sources": [
+    {
+      "source_id": "S01",
+      "path": "local/evidence/20260920-msft-q3/release.html",
+      "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2025-Q3/press-release-webcast",
+      "sha256": "25380d544c0b9978e28f50bcc461dc0afeb611a3dab9b74a8c9efd1da64357f7",
+      "published_on": "2025-04-30",
+      "captured_at": "2026-09-20T04:36:37.398308+00:00",
+      "bytes": 529226,
+      "capture_method": "curl --fail; raw HTML; historical page captured post hoc"
+    },
+    {
+      "source_id": "S02",
+      "path": "local/evidence/20260920-msft-q3/call.html",
+      "url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q3",
+      "sha256": "cb9ac4745132c78fd5104657e37f0fb2cc65f216bbfd3c01f68987ca212298ea",
+      "published_on": "2025-04-30",
+      "captured_at": "2026-09-20T04:36:37.410560+00:00",
+      "bytes": 347211,
+      "capture_method": "curl --fail; raw HTML; historical page captured post hoc"
+    }
+  ]
+}

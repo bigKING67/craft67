@@ -1,0 +1,20 @@
+{
+  "years": [
+    2026,
+    2027,
+    2028
+  ],
+  "chartId": "3f46b10f2f63940f5b589531a6cd9a4866c904062a8580dc1ae843cd59c7786a",
+  "evidenceId": "eaf468fb8c1a63f9440e51743c82d658fc71a2021293243a2082393f734c0bce",
+  "mode": "bazi",
+  "authorship": "root-authored and root-reviewed development example; not independent acceptance",
+  "report_check": "valid",
+  "render": "passed",
+  "semantic_review": "premise-review.md; manual, not programmatic semantic proof",
+  "artifacts": {
+    "birth.json": "3a11d3e3cbec2ecfe3ca9a2bdde96d390cf57ac737959f1e56794b14feaa4874",
+    "report.json": "5b320a7e03281043710255eaee02ed12bdb9538bbf6665f969131aa0aee7f035",
+    "report.md": "3ac79b01031c41d2518d043ef34e47361f55cd9b00d0e6d62fb3bae88d2f59fb",
+    "premise-review.md": "4bff81c4896dbed61b475bb7db67389d19b477014c0667393e390c08625b4dc0"
+  }
+}

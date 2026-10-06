@@ -1,0 +1,100 @@
+{
+  "schema": "money-craft.offline-routing-closeout.v1",
+  "date": "2026-09-20",
+  "status": "PASS_CORRECTED_FACT_SCOPE_CASE",
+  "root_cause_assessment": "Historical prompt restricts reads to materials and Skill references while gate requires external host governance. Host explicitly cited read scope. Clarifying Skill alone did not resolve unchanged implicit task; replacing only that sentence with factual-input scope allowed autonomous routing. Single-case evidence, not proof of general stability.",
+  "changes": [
+    "skills/money-craft/SKILL.md",
+    "skills/money-craft/references/routing.md",
+    "acceptance/skill-tasks/disclosure-tie-fact-scope-case-20260920.json"
+  ],
+  "fact_scope_change": {
+    "before": "只读取提供的材料及必要Skill引用，不读取主代理报告或其他会话。",
+    "after": "投资事实输入仅限提供的材料；不读取主代理报告或其他会话。",
+    "research_question_unchanged": true,
+    "numerical_material_unchanged": true,
+    "route_command_hint_added": false,
+    "gate_weakened": false
+  },
+  "runs": {
+    "source-route-fix": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 250.027,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "machine_checks_pass": true,
+      "financial_checks": 21,
+      "errors": [],
+      "hashes": {
+        "prompt.txt": "91cd608ea1e4951fccc780ce530f960bd6e3dc0561b8eb50569d20b3d6cc1d12",
+        "answer.md": "3a400bc994982d0c2e4c07c952bac2b700efe889e2a8ba44b0676d1485cdbd62",
+        "events.jsonl": "52fdcded1b2253d6e49c83e1a0d7aebc2059a88249b80fb5a749dbe5bd4241f1",
+        "host.json": "d0bbbb9e0ca75c3d047ad76126f60e470aa9ebaec072de50ac6b441e97b8358b",
+        "machine-audit.json": "6bd53c0b9de8625c9f33071f771acb12c2ee4cbcb0eaad0a77e358c95fab778c"
+      }
+    },
+    "installed-route-fix": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 133.375,
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "machine_checks_pass": false,
+      "financial_checks": 11,
+      "errors": [
+        "ROUTE_REQUIRED_NOT_VERIFIED"
+      ],
+      "hashes": {
+        "prompt.txt": "7e25800dc69549d24623df1e228551cd026a32a6f48726b7fea599cdfb1fac4d",
+        "answer.md": "06fb2197240890033b8df5dfe64782a5a295b8478a09316f032afaa56aaa52ee",
+        "events.jsonl": "c5486f1a2c3a7a84ff95da62b0184e6f983c907721b24f02bcbcfd3f6c47f37a",
+        "host.json": "65128fb9e2ab6aa11b3f8853ea39545481107d9293b2975e5597458e59c8218a",
+        "machine-audit.json": "4653f2d93e8cf385223f838603fb21b662cd6c1c3aaa6eb581a0b437e0e8a800"
+      }
+    },
+    "installed-fact-scope": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 196.468,
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "machine_checks_pass": true,
+      "financial_checks": 22,
+      "errors": [],
+      "hashes": {
+        "prompt.txt": "afc02d2dc590b8558705d45affa80510f0b1bcacd9c545e392b7fb70c6869cf2",
+        "answer.md": "1c894678eb929db56d45ff33ba57359a869529d264ce604317df3db25a02a13c",
+        "events.jsonl": "1c7f6ef24258a2f93f568a965f7c97ad9473b6198fa4de50c8d11d82ee7af2d1",
+        "host.json": "92b32726b4c61aeadcba95450246da5bafd2bdfaf645267536e58f2412c23361",
+        "machine-audit.json": "129512f5fa85d365f49f1eeeb750b92568e506c941632787b3fc176e86d36c95"
+      }
+    }
+  },
+  "semantic_review": {
+    "reviewer": "main agent manual, not independent",
+    "passed": 6,
+    "observations": [
+      "Installed Skill and references loaded; local earnings route READY",
+      "Unprompted weighted reconstruction and aggregate discrepancy detection",
+      "Disclosed and calculated values retained; no unsupported rounding claim",
+      "Conditional project model not equated with orders/net profit/valuation",
+      "Relative project years not mapped to certain calendar dates",
+      "Final arithmetic passes with historical single-source limits"
+    ]
+  },
+  "validation": {
+    "source_checks_passed": 20,
+    "package_checks_passed": 7,
+    "installed_self_test_passed": 9,
+    "source_installed_file_parity": 75
+  },
+  "installation": {
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260920T082726899714Z",
+    "package": "local/candidates/offline-route-20260920/bigking67-money-craft-0.3.0.tgz",
+    "sha256": "605455ebe068edc30be0629fc35176dab48cb338e4bdb216d7c89e1e701ec6fe"
+  },
+  "limits": [
+    "Original unchanged read-restricted prompt still fails routing and its records remain unchanged.",
+    "Corrected prompt passes once; not stable repeated-run or cross-case guarantee.",
+    "No commit, push, release or application work."
+  ]
+}

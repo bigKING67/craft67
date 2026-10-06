@@ -1,0 +1,35 @@
+{
+  "case_id": "emil-motion-planning-ablation",
+  "focused_variant": "emil",
+  "judgment_schema_sha256": "b90b0fc1ec877d783cbffba9848944df30f73b9a7270c094a1cab2d7c37d9e71",
+  "outputs": {
+    "A": {
+      "path": "output.emil.md",
+      "run_path": "run.emil.json",
+      "run_sha256": "cf35379336437c4d349bfc0dd2330d88fc578de58eb6a076173e665df87388c1",
+      "sha256": "3c50cbca8f3c7a3e7dee59dbd689690f6827f184083ad724c3c38c5016be8adf",
+      "variant": "emil"
+    },
+    "B": {
+      "path": "output.baseline.md",
+      "run_path": "run.baseline.json",
+      "run_sha256": "e76b1bcbd2b1c8ca8c916c63b2c46b1aee6789740a13d4db04c73ef46d80461a",
+      "sha256": "e21a7916bcacec3a02cc1c9a7857b7f363cd5bef83a9ccf4610d5e033cbd5c9e",
+      "variant": "baseline"
+    },
+    "C": {
+      "path": "output.design-craft.md",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "7c5cce2aea22088e8282cceacf2bb10021be56d77dfa97c08d70df4722dc9713",
+      "sha256": "e8550530ab5b61bebd8c8fa82ac426f41a72468910ca922d84408d36f1afd071",
+      "variant": "design-craft"
+    }
+  },
+  "packet_path": "blind-packet.md",
+  "packet_sha256": "7a953a2de6a564f85ea54138bcd5e1843d6933616b44ace7240c955772b2f74c",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "schema": "design-craft.comparative-blind-map.v3",
+  "scorecard_json_sha256": "a06d975f9da69fa9bea87362ee0e4f90bdc790e552561e6b6ac96f650bb53a88",
+  "scorecard_sha256": "ea04fd4fce3cbad1a31129f3b8ea45be2bca0ec334b07598a3d5223e41260d48",
+  "seed_sha256": "45d86fde7bfbfb34eb09a244bcfbf16ce1140d5e956f33c73e779435924c6215"
+}

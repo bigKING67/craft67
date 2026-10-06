@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v4",
+  "task_id": "same-prompt-motion-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.145.0",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-23",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_json_sha256": "5b0b6a0d6df83ce49b9e2c598a9cdd79149efca50a9e12069667bc008462d183",
+  "contract_sha256": "392e1903ad3e7088fc07c6794dfc98d025f310781a01a51f880fd0041ab25c8e",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "c24a384ad88521edb29d76ef4f4a592db8bda6461e6da730604cb9de239283f9",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "49a279138f4b2162c6a6b506233006aa6b67f4b9",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "a1d70f431e9d59a4537e5082f1d363029a604086f5bf2a80cf6fa508722a5ca1",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "02805670fae1c1d0ec7941ee8ca6589ef5587b356cd32e3c1a198682c1bac9ba",
+  "score": 100,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Reads the surface as a calm high-frequency operations tool and prioritizes causal direct manipulation, continuity, and task context over spectacle."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Applies motion quality, interaction physics, transform ownership, reduced-motion, performance, responsive, and device-validation guidance."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Keeps causal motion while rejecting pointer-chasing transitions, layout animation, whole-sheet scale, fixed ease-in settling, bounce, and decorative overshoot."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the review as static-source evidence and does not claim measured smoothness, frame rate, layout cost, browser behavior, or physical touch quality."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates source facts from unverified geometry, browser arbitration, reduced-motion runtime, responsiveness, frame pacing, and device behavior."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Provides eight moves covering pointer capture, grab offset, interruption, measured release velocity, projection, hysteresis, soft bounds, and reduced motion."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "Remains read-only and motion-specific with five blocking findings and eight moves in 115 logical lines, below the 150-line cap."
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "money-craft.segment-returns-supplement.v1",
+  "status": "PASS_BOUNDED_SEGMENT_BRIDGE",
+  "research_status": "PARTIAL",
+  "as_of": "2025-07-01T23:59:59+08:00",
+  "security_id": "HK:09988",
+  "calculations": 28,
+  "financial_audit_valid": true,
+  "cloud_roic_established": false,
+  "normalized_eps_established": false,
+  "independent_financial_measurement": false,
+  "archive_files_verified": 27,
+  "reviewer": "parent",
+  "code_modified": false,
+  "historical_case_supplement_scope_complete": true,
+  "sources": [
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/sources/earnings2025.txt",
+      "sha256": "21156faf8167993e72fc2d248faecfd3ca3903011219c0e5acbbf30ed3fd4340"
+    },
+    {
+      "path": "local/skill-evals/20260921-alibaba-full-host/host/workspace/sources/annual2025.txt",
+      "sha256": "2a6e401ede1635f15c4fd3ecc1fbd3cbfebe83491ae1efef6efb889b39cbbc4d"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/alibaba-segment-returns-20260921.md",
+      "sha256": "de3b75ca932250cc63ea38aa5d3efc291cc5c73e365686f9371e861733fe5ce4"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-segment-returns/annual2025.txt.excerpts",
+      "sha256": "bb6a5c98adab430a70db60b23d045ef36cd5fc53b7a8c443b6acc464f6786e5e"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-segment-returns/build.py",
+      "sha256": "aef7091ed79a12e98a2b886f6320d11e8131bff3df26d0a1699089b55f6b45c9"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-segment-returns/calculations.json",
+      "sha256": "f267f3200c26f7add155fd0f59f5cba8b5743ed788a897baab224b954f643f8c"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-segment-returns/earnings2025.txt.excerpts",
+      "sha256": "47859ee245d96115849e36e6201d08a4b134f1b2bd5ffcb0ddf21323027a7c64"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-segment-returns/financial-audit.json",
+      "sha256": "8205b1bbb8d5dca1e2515e99b06eb5a445901d8a70738b35e818ad7d6b4a8b8a"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-segment-returns/reuters-reading-note.json",
+      "sha256": "6bde7f094a205151df497babfa5f1d10ceab957a50560d8ac4f372b291e62a4d"
+    },
+    {
+      "path": "local/evidence/20260921-alibaba-segment-returns/route.json",
+      "sha256": "5a4fd8a656210d4b5e9503afb36630dc044a6fc15461f970306fd28612d3bb41"
+    }
+  ]
+}

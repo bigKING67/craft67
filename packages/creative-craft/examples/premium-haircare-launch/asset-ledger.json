@@ -1,0 +1,70 @@
+{
+  "schema_version": "creative-craft.asset-ledger.v1",
+  "project_id": "northstar-airlift-launch",
+  "assets": [
+    {
+      "asset_id": "product-pack-001",
+      "path_or_uri": "fictional://northstar/product-pack-front.png",
+      "mime_type": "image/png",
+      "sha256": null,
+      "creator": "Fictional Brand Team",
+      "owner": "Fictional Brand Team",
+      "rights_status": "CLEARED",
+      "consent_status": "NOT_APPLICABLE",
+      "allowed_use": [
+        "fictional example",
+        "image reference",
+        "video reference"
+      ],
+      "expires_at": null,
+      "reference_roles": [
+        "product geometry",
+        "label",
+        "cap",
+        "liquid color"
+      ],
+      "parent_assets": [],
+      "notes": "No real file is distributed; this is a contract example."
+    },
+    {
+      "asset_id": "light-ref-001",
+      "path_or_uri": "fictional://northstar/warm-light-reference.jpg",
+      "mime_type": "image/jpeg",
+      "sha256": null,
+      "creator": "Fictional Photographer",
+      "owner": "Fictional Brand Team",
+      "rights_status": "CLEARED",
+      "consent_status": "NOT_APPLICABLE",
+      "allowed_use": [
+        "lighting reference only"
+      ],
+      "expires_at": null,
+      "reference_roles": [
+        "lighting direction",
+        "shadow softness"
+      ],
+      "parent_assets": [],
+      "notes": "Do not copy set design."
+    },
+    {
+      "asset_id": "motion-ref-001",
+      "path_or_uri": "fictional://northstar/hair-motion-reference.mp4",
+      "mime_type": "video/mp4",
+      "sha256": null,
+      "creator": "Fictional Production Team",
+      "owner": "Fictional Brand Team",
+      "rights_status": "CLEARED",
+      "consent_status": "CLEARED",
+      "allowed_use": [
+        "motion and camera reference only"
+      ],
+      "expires_at": null,
+      "reference_roles": [
+        "hair movement",
+        "camera acceleration"
+      ],
+      "parent_assets": [],
+      "notes": "Fictional talent and consent."
+    }
+  ]
+}

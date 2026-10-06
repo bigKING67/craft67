@@ -1,0 +1,255 @@
+{
+  "schema": "design-craft.upstreams-lock.v3",
+  "upstreams": {
+    "taste-skill": {
+      "repo": "https://github.com/Leonxlnx/taste-skill.git",
+      "path": "upstreams/taste-skill",
+      "license": "MIT",
+      "commit": "b17742737e796305d829b3ad39eda3add0d79060",
+      "reviewed_commit": "e79ca9ec7e071eb3a3b623c4fb752e853fc3ed58",
+      "absorbed_commit": "06d6028b5c623016c59ce8536f578e5a1127b499",
+      "cumulative_status": "selective_absorbed",
+      "reviewed_through_commit": "e79ca9ec7e071eb3a3b623c4fb752e853fc3ed58",
+      "behavior_absorbed_through_commit": "06d6028b5c623016c59ce8536f578e5a1127b499",
+      "latest_range_base_commit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+      "latest_range_head_commit": "e79ca9ec7e071eb3a3b623c4fb752e853fc3ed58",
+      "latest_range_status": "provenance_only",
+      "reviewed_at": "2026-09-19",
+      "decision": "partial",
+      "notes": "The ccbc156..e79ca9e range was reviewed on 2026-09-19: three commits change only README sponsor presentation and assets/sponsors/fluxion-ai.png. No Skill entrypoint or reusable behavior changed. Keep the compatibility pin and previously absorbed behavior unchanged.",
+      "coverage_contract": "design-craft.taste-absorption.v1",
+      "coverage_matrix": "docs/taste-skill-absorption.md",
+      "skill_inventory": {
+        "skills": [
+          "brandkit",
+          "brutalist-skill",
+          "gpt-tasteskill",
+          "image-to-code-skill",
+          "imagegen-frontend-mobile",
+          "imagegen-frontend-web",
+          "minimalist-skill",
+          "output-skill",
+          "redesign-skill",
+          "soft-skill",
+          "stitch-skill",
+          "taste-skill",
+          "taste-skill-v1"
+        ],
+        "auxiliary_files": [
+          "skills/llms.txt",
+          "skills/stitch-skill/DESIGN.md"
+        ],
+        "entrypoint_decisions": {
+          "brandkit": "intentionally_rejected",
+          "brutalist-skill": "intentionally_rejected",
+          "gpt-tasteskill": "partial",
+          "image-to-code-skill": "partial",
+          "imagegen-frontend-mobile": "intentionally_rejected",
+          "imagegen-frontend-web": "partial",
+          "minimalist-skill": "partial",
+          "output-skill": "intentionally_rejected",
+          "redesign-skill": "absorbed",
+          "soft-skill": "partial",
+          "stitch-skill": "partial",
+          "taste-skill": "absorbed",
+          "taste-skill-v1": "provenance_only"
+        },
+        "auxiliary_decisions": {
+          "skills/llms.txt": "provenance_only",
+          "skills/stitch-skill/DESIGN.md": "partial"
+        }
+      }
+    },
+    "impeccable": {
+      "repo": "https://github.com/pbakaus/impeccable.git",
+      "path": "upstreams/impeccable",
+      "license": "Apache-2.0",
+      "commit": "80e4dd0d581fcdb42be62252b7bc07dcd2238330",
+      "reviewed_commit": "f2c7051853848826aac2f4646581d62a732155ad",
+      "absorbed_commit": "524fb8c9500e16a00fa2d55b5ee2d8ca787e2b36",
+      "cumulative_status": "selective_absorbed",
+      "reviewed_through_commit": "f2c7051853848826aac2f4646581d62a732155ad",
+      "behavior_absorbed_through_commit": "524fb8c9500e16a00fa2d55b5ee2d8ca787e2b36",
+      "latest_range_base_commit": "695df68a5860da4d25cd629fc3727ec8f3c0991b",
+      "latest_range_head_commit": "f2c7051853848826aac2f4646581d62a732155ad",
+      "latest_range_status": "deferred",
+      "reviewed_at": "2026-09-19",
+      "decision": "partial",
+      "notes": "Bounded adoption review of 695df68..f2c7051 on 2026-09-19. Complete local Git inventory recovered the truncated GitHub comparison: 110 commits and 4472 changed paths. Canonical workflow/reference deltas were screened against the local product boundary; the Rust engine, launcher, generated providers, extension and live-generate runtime remain outside the selected package. Gesture interruption, placeholder contrast and transparent-asset details are recorded as deferred follow-up candidates, not imported or declared fully validated. Keep compatibility pin 80e4dd0 and the previously absorbed behavior boundary unchanged. This is an adoption decision, not a line-by-line audit or runtime validation of the upstream rewrite. See docs/impeccable-release-review-2026-09-19.md.",
+      "coverage_contract": "design-craft.impeccable-absorption.v1",
+      "coverage_matrix": "docs/impeccable-absorption.md",
+      "skill_inventory": {
+        "main_skill": "skill/SKILL.src.md",
+        "command_metadata": "skill/scripts/command-metadata.json",
+        "commands": [
+          "adapt",
+          "animate",
+          "audit",
+          "bolder",
+          "clarify",
+          "colorize",
+          "craft",
+          "critique",
+          "delight",
+          "distill",
+          "document",
+          "extract",
+          "harden",
+          "impeccable",
+          "init",
+          "layout",
+          "live",
+          "onboard",
+          "optimize",
+          "overdrive",
+          "polish",
+          "quieter",
+          "shape",
+          "typeset"
+        ],
+        "command_decisions": {
+          "adapt": "absorbed",
+          "animate": "partial",
+          "audit": "absorbed",
+          "bolder": "partial",
+          "clarify": "partial",
+          "colorize": "partial",
+          "craft": "absorbed",
+          "critique": "absorbed",
+          "delight": "partial",
+          "distill": "partial",
+          "document": "absorbed",
+          "extract": "absorbed",
+          "harden": "absorbed",
+          "impeccable": "partial",
+          "init": "partial",
+          "layout": "partial",
+          "live": "absorbed",
+          "onboard": "partial",
+          "optimize": "absorbed",
+          "overdrive": "partial",
+          "polish": "absorbed",
+          "quieter": "partial",
+          "shape": "absorbed",
+          "typeset": "partial"
+        },
+        "detector": "skill/scripts/detect.mjs",
+        "platform_references": [
+          "skill/reference/ios.md",
+          "skill/reference/android.md",
+          "skill/reference/audit.native.md",
+          "skill/reference/adapt.native.md"
+        ],
+        "intentionally_rejected_paths": [
+          "skill/scripts/live-server.mjs",
+          "skill/scripts/live-browser.js",
+          "skill/scripts/live-browser-session.js",
+          "skill/agents/impeccable-manual-edit-applier.md",
+          "skill/agents/impeccable-asset-producer.md",
+          "extension/manifest.json",
+          "package.json",
+          "scripts/github/sheriff.mjs"
+        ]
+      }
+    },
+    "emilkowalski-skills": {
+      "repo": "https://github.com/emilkowalski/skills.git",
+      "path": "upstreams/emilkowalski-skills",
+      "license": "MIT",
+      "commit": "7bb7061b5cf7de15ea1aeaf00fbd9e6592a20fce",
+      "reviewed_commit": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
+      "absorbed_commit": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
+      "cumulative_status": "selective_absorbed",
+      "reviewed_through_commit": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
+      "behavior_absorbed_through_commit": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
+      "latest_range_base_commit": "d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7",
+      "latest_range_head_commit": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
+      "latest_range_status": "selective_absorbed",
+      "reviewed_at": "2026-09-19",
+      "decision": "partial",
+      "notes": "Pinned compatibility source remains 7bb7061. The d23d7f8..85e8e23 range contains two commits and 16 changed files, reviewed in full on 2026-09-19. Original Mobile Web guidance in surface-playbooks selectively covers viewport and keyboard policy, safe-area ownership, input semantics, gesture permissions, and device-evidence limits. The mobile-native source is Mobile Web, not a native platform signal. Global CSS resets, unsupported cross-browser guarantees, and initial-response instructions are rejected. The performance cheatsheet is overlapping/contextual; README and empty .pl are provenance-only. No runtime, submodule checkout, global route pack or install changed. Hardware and independent model effectiveness remain unverified.",
+      "coverage_contract": "design-craft.emil-absorption.v1",
+      "coverage_matrix": "docs/emilkowalski-absorption.md",
+      "skill_inventory": {
+        "skills": [
+          "animation-vocabulary",
+          "apple-design",
+          "emil-design-eng",
+          "improve-animations",
+          "review-animations"
+        ],
+        "auxiliary_markdown": [
+          "skills/improve-animations/AUDIT.md",
+          "skills/improve-animations/PLAN-TEMPLATE.md",
+          "skills/review-animations/STANDARDS.md"
+        ],
+        "non_markdown_files": [],
+        "latest_range_entrypoint_decisions": {
+          "find-animation-opportunities": "absorbed",
+          "pick-ui-library": "intentionally_rejected",
+          "prototype": "absorbed",
+          "animate-expo": "partial",
+          "write-swift": "intentionally_rejected",
+          "mobile-native": "partial"
+        }
+      }
+    },
+    "jakubkrehel-skills": {
+      "repo": "https://github.com/jakubkrehel/skills.git",
+      "path": "upstreams/jakubkrehel-skills",
+      "license": "MIT",
+      "commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+      "reviewed_commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+      "absorbed_commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+      "reviewed_through_commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+      "behavior_absorbed_through_commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+      "latest_range_base_commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+      "latest_range_head_commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+      "cumulative_status": "selective_absorbed",
+      "latest_range_status": "selective_absorbed",
+      "reviewed_at": "2026-09-05",
+      "decision": "partial",
+      "notes": "Initial fixed-snapshot review, so latest range base equals head. All 11 entrypoints were screened; only better-writing and break received detailed source review and selected local adaptations. Other supporting references remain unreviewed. Registration enables freshness tracking without expanding behavioral adoption or importing plugin, host, or browser runtime.",
+      "coverage_contract": "design-craft.jakub-absorption.v1",
+      "coverage_matrix": "docs/jakubkrehel-candidate-review.md",
+      "skill_inventory": {
+        "skills": [
+          "better-accessibility",
+          "better-colors",
+          "better-interface",
+          "better-layout",
+          "better-typography",
+          "better-ui",
+          "better-writing",
+          "break",
+          "explain-interface",
+          "interface-review",
+          "variant"
+        ],
+        "entrypoint_decisions": {
+          "better-accessibility": "deferred",
+          "better-colors": "deferred",
+          "better-interface": "deferred",
+          "better-layout": "deferred",
+          "better-typography": "deferred",
+          "better-ui": "deferred",
+          "better-writing": "partial",
+          "break": "partial",
+          "explain-interface": "deferred",
+          "interface-review": "deferred",
+          "variant": "deferred"
+        },
+        "local_coverage": {
+          "better-writing": "skills/design-craft/references/design-system-contract.md",
+          "break": "skills/design-craft/references/impeccable-workflow.md"
+        },
+        "reviewed_source_sha256": {
+          "skills/better-writing/SKILL.md": "d53163382a058f06e00ac0b36312189108b006aa0b05869c71a70f5c213c44ae",
+          "skills/break/SKILL.md": "4b8a1d6b60c2d522432765ab90e9b794fa36dc54f08d1a734c5cb2a1baa69ff1",
+          "skills/break/scenarios.md": "5aacf085d5eca87b7b5e4f1b0a7412bfd532c8eaa574f455a5b1ffb00cdf86e9",
+          "LICENSE": "ed1dfe988fc40511b4845ccd9050a143a2002fee3bedc8064c47fa342b5d8d4f"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "review-craft.release-policy.v1",
+  "versionFiles": [
+    "VERSION",
+    "skills/review-craft/VERSION",
+    "package.json",
+    "pyproject.toml",
+    ".codex-plugin/plugin.json",
+    "skills/review-craft/lib/review_craft/__init__.py",
+    "skills/review-craft/lib/review_craft/constants.py"
+  ],
+  "requiredGates": [
+    "unit-tests",
+    "contract-tests",
+    "adversarial-tests",
+    "schema-validation",
+    "skill-validation",
+    "plugin-validation",
+    "complexity-budget",
+    "skill-portability",
+    "package-boundary",
+    "installed-canonical-e2e",
+    "installed-remediation-e2e",
+    "deterministic-report"
+  ],
+  "automaticPublish": false
+}

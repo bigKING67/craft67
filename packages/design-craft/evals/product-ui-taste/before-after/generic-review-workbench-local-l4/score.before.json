@@ -1,0 +1,59 @@
+{
+  "case_id": "generic-review-workbench-local-l4-before",
+  "evidence_level": "L4",
+  "expected_score": 80,
+  "acceptable_range": [
+    78,
+    82
+  ],
+  "maturity_band": "usable but hierarchy-heavy calibration fixture",
+  "screenshot_sha256": "db939b6b342a9833b1ec9d133c5aa1d8a6c4f87d02cdae7b9ffd723182de4da3",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "db939b6b342a9833b1ec9d133c5aa1d8a6c4f87d02cdae7b9ffd723182de4da3",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "compact500",
+      "css_size": [
+        500,
+        844
+      ],
+      "dimensions": [
+        500,
+        844
+      ],
+      "artifact_sha256": "7d5b355b47622fa44fd0df1016fed43347c0ac09b29f322279ae7c467b303017",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "responsive_fit": "verified at desktop and compact500 through screenshot artifacts plus dump-dom layout metrics",
+    "primary_action_visibility": "button is visible in the desktop first fold, but the before hierarchy does not make it feel like the next decisive action",
+    "loading_empty_error": "not applicable to this static calibration fixture",
+    "focus_keyboard_hover": "not claimed; no pointer or keyboard interaction artifact was captured"
+  },
+  "required_findings": [
+    "The before variant makes the full-width summary, metric strip, review rows, and next-action panel compete for attention instead of naming one decision object.",
+    "The summary repeats the lead count as a second full-width card, so the first actionable review row arrives lower and feels optional.",
+    "The desktop screenshot shows competent spacing and typography, but the information order is still overview-first rather than decision-first."
+  ],
+  "false_positive_guards": [
+    "Do not score this above the low 80s because the first fold is still dominated by equal overview surfaces rather than a prioritized work object.",
+    "Do not treat the local fixture as proof of production data, authenticated routing, backend integration, or real user workflow behavior.",
+    "Do not claim exact 390px phone coverage; compact responsive evidence is explicitly limited to 500x844 in this run."
+  ]
+}

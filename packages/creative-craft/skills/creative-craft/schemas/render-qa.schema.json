@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/render-qa.schema.json",
+  "title": "Creative Craft Render QA v1",
+  "description": "Technical checks and composited-frame evidence for one rendered output of one edit-document revision, plus a separate agent/human review. Automated checks never stand in for the review; tool success is not visual evidence.",
+  "type": "object",
+  "required": ["schema_version", "qa_id", "project_id", "revision", "revision_sha256", "render", "tool", "created_at", "checks", "samples", "boundary_clips", "contact_sheet", "verdict", "review", "unverified"],
+  "properties": {
+    "schema_version": {"const": "creative-craft.render-qa.v1"},
+    "qa_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$"},
+    "revision": {"type": "integer", "minimum": 1},
+    "revision_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "render": {
+      "type": "object",
+      "required": ["kind", "file", "sha256", "width", "height", "fps", "duration_seconds", "has_audio"],
+      "properties": {
+        "kind": {"enum": ["preview", "export"]},
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1},
+        "fps": {"type": "number", "exclusiveMinimum": 0},
+        "duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+        "has_audio": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "tool": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "ffmpeg": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "created_at": {"type": "string", "minLength": 1},
+    "checks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/check"}},
+    "samples": {"type": "array", "items": {"$ref": "#/$defs/sample"}},
+    "boundary_clips": {"type": "array", "items": {"$ref": "#/$defs/boundary"}},
+    "contact_sheet": {
+      "type": ["object", "null"],
+      "required": ["file", "sha256"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "verdict": {"enum": ["pass", "pass_with_warnings", "fail"]},
+    "review": {
+      "type": "object",
+      "required": ["status", "reviewer", "decision", "findings"],
+      "properties": {
+        "status": {"enum": ["pending", "done"]},
+        "reviewer": {"type": ["string", "null"]},
+        "reviewer_kind": {"enum": ["agent", "human"]},
+        "decision": {"enum": ["pending", "accept", "revise", "reject"]},
+        "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+      },
+      "additionalProperties": false
+    },
+    "unverified": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "properties": {
+        "time_seconds": {"type": "number", "minimum": 0},
+        "item_id": {"type": "string", "minLength": 1},
+        "sample_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "check": {
+      "type": "object",
+      "required": ["id", "category", "status", "observation"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "category": {"enum": ["structure", "video", "audio", "captions", "lint", "delivery"]},
+        "status": {"enum": ["pass", "warn", "fail", "unknown", "not_applicable"]},
+        "observation": {"type": "string", "minLength": 1},
+        "measured": {"type": "object"},
+        "refs": {"type": "array", "items": {"$ref": "#/$defs/ref"}}
+      },
+      "additionalProperties": false
+    },
+    "sample": {
+      "type": "object",
+      "required": ["id", "time_seconds", "reason", "file", "sha256"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "time_seconds": {"type": "number", "minimum": 0},
+        "reason": {"enum": ["item_mid", "cut_before", "cut_after", "caption", "shot", "manual"]},
+        "item_id": {"type": "string", "minLength": 1},
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "boundary": {
+      "type": "object",
+      "required": ["cut_seconds", "file", "sha256"],
+      "properties": {
+        "cut_seconds": {"type": "number", "minimum": 0},
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "required": ["id", "severity", "observation", "refs"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "severity": {"enum": ["critical", "major", "minor"]},
+        "observation": {"type": "string", "minLength": 1},
+        "refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/ref"}},
+        "fix": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

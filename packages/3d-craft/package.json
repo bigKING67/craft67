@@ -1,0 +1,30 @@
+{
+  "name": "3d-craft-source",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Development, evaluation, and packaging workspace for the portable 3d-craft Agent Skill.",
+  "type": "module",
+  "workspaces": [
+    "skills/3d-craft/assets/r3f-viewer"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "validate": "python3 scripts/validate_source.py",
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py' && node --test tests/*.test.mjs",
+    "host:discovery": "python3 scripts/host_discovery.py --json",
+    "viewer:dev": "npm run dev --workspace @3d-craft/r3f-viewer",
+    "viewer:build": "npm run build --workspace @3d-craft/r3f-viewer",
+    "viewer:typecheck": "npm run typecheck --workspace @3d-craft/r3f-viewer"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  },
+  "pi": {
+    "skills": [
+      "skills/3d-craft"
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "cases": [
+    {
+      "id": "full_commerce_plan",
+      "skill": "commerce-growth-os",
+      "domain": "commerce_orchestration",
+      "prompt": "给一个中高端头皮护理品牌制定未来 90 天经营方案。已知天猫和抖音为主渠道，客单价 189 元，毛利率约 62%，抖音 ROI 1.4，退款率上升，天猫评价偏弱。请明确事实、假设、优先级、负责人、止损条件和复盘机制。"
+    },
+    {
+      "id": "commercial_budget_decision",
+      "skill": "commerce-commercial-strategy",
+      "domain": "commercial",
+      "prompt": "主推 SKU 上月 GMV 30 万元，千川消耗 15 万元，ROI 2.0，毛利率 55%，赠品和履约占 GMV 12%，退款损失占 6%。判断是否应直接把预算翻倍，并给出计算、边际测试、预算上限、止损与放量条件。"
+    },
+    {
+      "id": "live_operations_sop",
+      "skill": "commerce-operations",
+      "domain": "operations",
+      "prompt": "为抖音自播间制定可执行的 14 天运营 SOP，覆盖排品、库存、场控、客服、履约、退款异常、负责人、升级机制和每日复盘。缺少的数据必须明确列出，不要虚构平台当前规则。"
+    },
+    {
+      "id": "weekly_commerce_analysis",
+      "skill": "commerce-analytics",
+      "domain": "analytics",
+      "prompt": "本周抖音 GMV 上升 35%，千川 ROI 从 2.4 降到 1.7，退款损失从 5% 升到 9%；天猫品牌词搜索上升 28%，但支付转化率下降。请区分已知事实、可能解释和待验证证据，给出下周分析与决策计划。"
+    },
+    {
+      "id": "annual_marketing_plan",
+      "skill": "consumer-marketing-os",
+      "domain": "marketing_orchestration",
+      "prompt": "为一个中高端消费品牌制定年度整合营销框架，平衡品牌传播、内容社交、效果广告和 CRM。请给出目标、受众、预算逻辑、跨团队依赖、负责人、衡量体系和季度复盘决策。"
+    },
+    {
+      "id": "spokesperson_governance",
+      "skill": "brand-strategy-communications",
+      "domain": "brand",
+      "prompt": "品牌准备选择代言人。请设计候选人评估、授权和排他边界、舆情尽调、激活计划、效果衡量、危机升级和退出机制，不得承诺销量结果。"
+    },
+    {
+      "id": "xiaohongshu_content_system",
+      "skill": "content-creative-social-marketing",
+      "domain": "content",
+      "prompt": "为高端宠物营养品牌建立小红书内容与达人体系，覆盖人群场景、搜索关键词、内容支柱、KOL/KOC 分工、达人 Brief、证据与宣称边界、授权、承接和素材复盘。"
+    },
+    {
+      "id": "paid_media_scale_control",
+      "skill": "growth-performance-lifecycle-marketing",
+      "domain": "growth",
+      "prompt": "效果广告近期整体 ROI 尚可，但边际 ROI 开始下降，退款率同时上升。请设计一个有预算上限的放量实验，明确归因限制、增量验证、分层预算、止损、放量、库存和复盘条件；商业盈亏平衡数据未知时必须说明协作边界。"
+    },
+    {
+      "id": "platform_currentness_decision",
+      "skill": "growth-performance-lifecycle-marketing",
+      "domain": "growth",
+      "prompt": "请判断当前小红书聚光搜索是否仍支持竞品词拦截、后台入口和归因字段，并决定本月是否把一半种草预算转过去。没有在本轮核验的能力、规则或字段不得写成已确认；请明确稳定原则、证据标签、待核验入口、条件化方案、实验投入上限、止损和复盘。"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@bigking67/reverse-craft",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Evidence-first reverse engineering and CTI/OSINT Agent Skill",
+  "license": "MIT",
+  "files": [
+    "skills/reverse-craft",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "VERSION",
+    "README.md"
+  ],
+  "scripts": {
+    "validate": "python3 scripts/validate.py",
+    "test": "python3 -m unittest discover -s tests -p test_*.py",
+    "test:routing": "python3 scripts/run_route_bank.py",
+    "test:scenarios": "python3 scripts/run_scenario_bank.py",
+    "test:hosts": "python3 scripts/run_host_eval.py",
+    "test:hosts:cti": "python3 scripts/run_host_eval.py --profile r44",
+    "test:hosts:r0": "python3 scripts/run_host_eval.py --profile r0-replan",
+    "check:browser67": "python3 scripts/check_browser67_mcp.py",
+    "check:all": "npm run validate && npm test && npm run test:routing && npm run test:scenarios"
+  },
+  "pi": {
+    "skills": [
+      "skills/reverse-craft"
+    ]
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

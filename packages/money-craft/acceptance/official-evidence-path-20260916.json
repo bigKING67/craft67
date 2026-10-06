@@ -1,0 +1,48 @@
+{
+  "schema": "money-craft.official-evidence-path-review.v1",
+  "date": "2026-09-16",
+  "scope": "Official evidence path ownership in inspect_official, generated import filenames and associated regression; bounded primary-agent review, not full repository or security review.",
+  "finding": {
+    "severity": "P2",
+    "status": "FIXED_LOCAL",
+    "before": {
+      "official_status": "imported",
+      "ready_for_report": true
+    },
+    "after": {
+      "error_kind": "invalid_case"
+    },
+    "description": "来源元数据中的绝对路径被拼接操作接受，工作区外文件可被误报为已导入证据。"
+  },
+  "change": "读取前仅允许该来源ID对应的导入文件名；文件格式与扩展名必须一致。",
+  "validation": {
+    "targeted_tests": 24,
+    "full_tests": 264,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "regression_cases": [
+      "absolute path",
+      "parent traversal",
+      "other source ID",
+      "nested path",
+      "format suffix mismatch",
+      "valid imports unchanged"
+    ],
+    "last_test_change": "Format mismatch branch added after full run and verified by rerunning all 24 research tests."
+  },
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "ca51a71919211f2a41319597f352e118a49d441b126530e716c83d8b97d57dcc",
+    "tests/test_research_run.py": "9ce5370e1147267f3035672250d4fadfbd8403b4c6ae362bb8df251656cfad47"
+  },
+  "limits": [
+    "Format and path checks do not verify document issuer, reporting period or claim support.",
+    "No concurrency or cryptographic authenticity claim.",
+    "Existing HTTPError fixture cleanup warnings remain; tests passed.",
+    "No host behavior suite rerun."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260916T101103254814Z"
+  }
+}

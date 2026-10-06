@@ -1,0 +1,10 @@
+{
+  "calendar": "solar",
+  "date": "2003-08-11",
+  "time": "02:00",
+  "gender": "female",
+  "place": "合成东经120度",
+  "longitude": 120,
+  "timeZone": "Asia/Shanghai",
+  "timeBasis": "civil"
+}

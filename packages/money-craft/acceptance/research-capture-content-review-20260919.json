@@ -1,0 +1,41 @@
+{
+  "schema": "money-craft.research-capture-content-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Fuyao raw capture to normalized data and source timestamp projection",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "5b596433bab659b7239329eadcbae18ff90df0c31cb87a3e6176242f123f732f",
+    "tests/test_research_capture_content.py": "338b4a8a098485b79c2c750b915f21b531bbf375d2e6c790ad7a6d0b8a23eb41",
+    "tests/test_research_run.py": "22e0cd3eac2ae7dcaafcbd3c8ac9182af1ba5890d4fc6ef50bfd7b0b846b0858"
+  },
+  "validation": {
+    "new_tests": 3,
+    "reviewed_research_tests": 50,
+    "full_tests": 452,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 4,
+    "runtime_evidence": "Real CLI subprocess with synthetic opener produces calendar capture; validator accepts Decimal projection and filtered rows. Temporary workspace normalized mutations rejected on status/resume."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "KEEP; no blockers; 50 tests passed",
+    "extra_checks": "Actual CLI projection parity for nested Decimal, negative zero, scientific notation, bool/null and unbounded/one-sided/two-sided calendar ranges; timestamp type mutation rejected",
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "5b596433bab659b7239329eadcbae18ff90df0c31cb87a3e6176242f123f732f",
+      "tests/test_research_capture_content.py": "338b4a8a098485b79c2c750b915f21b531bbf375d2e6c790ad7a6d0b8a23eb41",
+      "tests/test_research_run.py": "22e0cd3eac2ae7dcaafcbd3c8ac9182af1ba5890d4fc6ef50bfd7b0b846b0858"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Local representations match, not external source truth or resistance to synchronized rewriting of all local evidence.",
+    "Only Fuyao projection; other providers and request parameter binding remain separate.",
+    "Research lifecycle and core-wide acceptance remain PARTIAL."
+  ]
+}

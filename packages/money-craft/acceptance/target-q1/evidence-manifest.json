@@ -1,0 +1,33 @@
+{
+  "as_of": "2025-05-21",
+  "captured_on": "2026-09-20",
+  "post_hoc": true,
+  "sources": [
+    {
+      "source_id": "S02",
+      "url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings",
+      "final_url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings",
+      "http_status": 200,
+      "path": "local/evidence/20260920-target-valuation/guidance.html",
+      "bytes": 250635,
+      "sha256": "cc5eab890121b9a46d4eda35a22bf46d86e2d83ccee959b1811b1a3a20b1771b",
+      "captured_at": "2026-09-20T03:22:57.478870+00:00"
+    },
+    {
+      "source_id": "S01",
+      "path": "local/research/20260920-retail-peer/sources/target-2024.pdf",
+      "url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf",
+      "sha256": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271"
+    },
+    {
+      "source_id": "S12",
+      "url": "https://corporate.target.com/getmedia/06df3254-1476-4b4d-a968-d4ad5a19939e/Target-Corporation-Reports-First-Quarter-Earnings.pdf",
+      "published_on": "2025-05-21",
+      "path": "local/evidence/20260920-target-q1/earnings.pdf",
+      "sha256": "48f720395cbb6755ec9c3323bdd582b3703ea0bf231c7a848499b1d4b3607de9",
+      "bytes": 176971,
+      "http_status": 200,
+      "captured_at": "2026-09-20T04:23:49.348118+00:00"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "calendar": "solar",
+  "date": "2000-01-15",
+  "time": null,
+  "place": "合成地点（东经120度）",
+  "longitude": 120,
+  "timeZone": "Asia/Shanghai",
+  "gender": "female",
+  "timeBasis": "civil",
+  "dayBoundary": "zi"
+}

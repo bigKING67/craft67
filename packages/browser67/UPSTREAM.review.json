@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "upstream": {
+    "name": "lsdefine/GenericAgent",
+    "remote": "https://github.com/lsdefine/GenericAgent.git",
+    "reviewed_ref": "main",
+    "reviewed_commit": "f6e5657fbe9c4fc57fae65dcf3789f71937dc97e",
+    "reviewed_at": "2026-09-03",
+    "release_context": "71cf559..f6e5657 review: one upstream commit changes only memory/ganet_pc_setup_sop.md for GAnet macOS setup; all six assets/tmwd_cdp_bridge Git blob hashes remain identical, so this refresh records review coverage without extension sync"
+  },
+  "decision": {
+    "extension_merge_mode": "manual_merge_preserve_local_bridge_features",
+    "direct_sync_allowed": false,
+    "local_extension_action": "keep_local_bridge_and_selectively_cherry_pick_future_useful_hunks",
+    "lock_action": "keep_UPSTREAM.lock.json_at_extension_sync_baseline_until_intentional_extension_sync",
+    "reason": "Latest upstream f6e5657fbe9c4fc57fae65dcf3789f71937dc97e was checked with upstream:audit:latest and an exact 71cf559..f6e5657 Git comparison on 2026-09-03. The single upstream commit changes only memory/ganet_pc_setup_sop.md for GAnet macOS setup; all six assets/tmwd_cdp_bridge Git blob hashes are unchanged. Current local-vs-upstream drift remains background.js,browser67/debugger-runtime.js,browser67/managed-content.js,browser67/runtime.js,browser67/window-anchor.html,browser67/window-focus-runtime.js,content.js,disable_dialogs.js,manifest.json; upstream background.js still lacks the recorded local enhanced bridge features (batch_uses_handle_tabs,cdp_tabid_validation,cookies_tabid_validation,handle_tabs_dispatch,include_unscriptable,numeric_tab_id_validation,tabs_close,tabs_get,unsupported_tabs_method,ws_exec_tabid_validation), so direct sync remains disabled, UPSTREAM.lock.json stays at the historical extension sync baseline, and the local bridge stays authoritative."
+  },
+  "extension_review": {
+    "changed_files": [
+      "background.js",
+      "browser67/debugger-runtime.js",
+      "browser67/managed-content.js",
+      "browser67/runtime.js",
+      "browser67/window-anchor.html",
+      "browser67/window-focus-runtime.js",
+      "content.js",
+      "disable_dialogs.js",
+      "manifest.json"
+    ],
+    "background_preserve_features": [
+      "batch_uses_handle_tabs",
+      "cdp_tabid_validation",
+      "cookies_tabid_validation",
+      "handle_tabs_dispatch",
+      "include_unscriptable",
+      "numeric_tab_id_validation",
+      "tabs_close",
+      "tabs_get",
+      "unsupported_tabs_method",
+      "ws_exec_tabid_validation"
+    ],
+    "per_file_decision": [
+      {
+        "file": "background.js",
+        "action": "keep_local_bridge_features",
+        "risk": "high_if_blind_synced"
+      },
+      {
+        "file": "content.js",
+        "action": "selective_cherry_pick_after_review",
+        "risk": "medium"
+      },
+      {
+        "file": "disable_dialogs.js",
+        "action": "keep_local_no_behavior_change",
+        "risk": "none_final_newline_only"
+      },
+      {
+        "file": "manifest.json",
+        "action": "selective_cherry_pick_after_review",
+        "risk": "medium"
+      },
+      {
+        "file": "browser67/debugger-runtime.js",
+        "action": "do_not_remove_without_manual_review",
+        "risk": "high"
+      },
+      {
+        "file": "browser67/managed-content.js",
+        "action": "do_not_remove_without_manual_review",
+        "risk": "high"
+      },
+      {
+        "file": "browser67/runtime.js",
+        "action": "do_not_remove_without_manual_review",
+        "risk": "high"
+      },
+      {
+        "file": "browser67/window-anchor.html",
+        "action": "do_not_remove_without_manual_review",
+        "risk": "high"
+      },
+      {
+        "file": "browser67/window-focus-runtime.js",
+        "action": "do_not_remove_without_manual_review",
+        "risk": "high"
+      }
+    ],
+    "reviewed_source_files": [
+      {
+        "path": "background.js",
+        "sha256": "f11efbe131d344da5399f9ebac71f93ca5f0c0d45d1dbda5b46ff9765fb62822"
+      },
+      {
+        "path": "content.js",
+        "sha256": "49a7b567416b6d152c1cf961965b52fe4837fb6307265b7530c78a4a9f56c486"
+      },
+      {
+        "path": "disable_dialogs.js",
+        "sha256": "585b84fc84a2283499413da68c52d32f95ca161e66c07b9b422bbed07bc07d43"
+      },
+      {
+        "path": "manifest.json",
+        "sha256": "1bf72fd37bcfbafe0e2e577aca48770f16147e41366d47edca08b148fe5f69e9"
+      },
+      {
+        "path": "popup.html",
+        "sha256": "5d85260b3e8a820b5add8c6d067904bcbbade8a0090444ee604f9dd72bce9513"
+      },
+      {
+        "path": "popup.js",
+        "sha256": "289ef3b64713226e5c815df0bbbb05a66ebf1704b36c5e85df4e769493af3146"
+      }
+    ]
+  },
+  "absorbed_reference": {
+    "paths": [
+      "docs/upstream/genericagent/macljqCtrl.py",
+      "docs/upstream/genericagent/ljqCtrl-notes.md",
+      "docs/upstream/genericagent/README.md"
+    ],
+    "notes": "GenericAgent macljqCtrl/AX and ljqCtrl DPI/click-check ideas are retained as audited reference and diagnostics, not default execution providers."
+  }
+}

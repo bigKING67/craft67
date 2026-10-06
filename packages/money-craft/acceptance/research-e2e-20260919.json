@@ -1,0 +1,236 @@
+{
+  "schema": "money-craft.research-e2e-acceptance.v1",
+  "date": "2026-09-19",
+  "status": "PASS_BOUNDED_RESEARCH_PIPELINE",
+  "source_head": "2d33799b939fab61fa842f0dfab420ed19239f19",
+  "dirty_worktree": true,
+  "case": {
+    "security_id": "CN-SH:600519",
+    "latest_period": "2026-2",
+    "as_of": "2026-09-19",
+    "workspace": "local/evidence/20260919-research-e2e/verified-identity",
+    "run_id": "9bfe258152864591ad5e45dc6e69392b"
+  },
+  "results": {
+    "provider_operations_passed": 14,
+    "official_imports": 5,
+    "official_pdf_crosschecks": 11,
+    "financial_reconciliation_checks": 3,
+    "financial_calculations_per_document": 11,
+    "documents": 2,
+    "negative_cases_blocked": 6,
+    "full_tests": 479,
+    "full_tests_skipped": 0,
+    "installed_files_equal": 71,
+    "completion_receipt_current": true,
+    "source_validation_checks": 19,
+    "package_validation_checks": 8
+  },
+  "negative_cases": [
+    {
+      "case": "missing-cash-bridge",
+      "blocked": true,
+      "errors": [
+        "FR02: cash-balance-tie does not reconcile"
+      ]
+    },
+    {
+      "case": "wrong-cash-component",
+      "blocked": true,
+      "errors": [
+        "FR02: cash-balance-tie does not reconcile"
+      ]
+    },
+    {
+      "case": "unknown-source",
+      "blocked": true,
+      "errors": [
+        "checks[1].cash_adjustments[1].source_ids contains source IDs outside available research evidence: S99"
+      ]
+    },
+    {
+      "case": "report-tamper",
+      "blocked": true,
+      "exit_code": 0,
+      "complete": false,
+      "error": null,
+      "assessment": {
+        "artifact_integrity": "STALE",
+        "receipt_integrity": "STALE",
+        "evidence_coverage": "COMPLETE",
+        "citation_binding": "VERIFIED",
+        "claim_support": "UNVERIFIED",
+        "source_freshness": "UNVERIFIED"
+      }
+    },
+    {
+      "case": "official-evidence-tamper",
+      "blocked": true,
+      "exit_code": 4,
+      "complete": null,
+      "error": {
+        "kind": "evidence_drift",
+        "message": "official evidence changed after import: S11"
+      },
+      "assessment": null
+    },
+    {
+      "case": "reconciliation-tamper",
+      "blocked": true,
+      "exit_code": 0,
+      "complete": false,
+      "error": null,
+      "assessment": {
+        "artifact_integrity": "STALE",
+        "receipt_integrity": "STALE",
+        "evidence_coverage": "COMPLETE",
+        "citation_binding": "VERIFIED",
+        "claim_support": "UNVERIFIED",
+        "source_freshness": "UNVERIFIED"
+      }
+    }
+  ],
+  "retained_failures": [
+    "init legal-name versus provider stock-short-name mismatch",
+    "finalize missing required official sources",
+    "initial report/thesis facts did not use source-bound bullets"
+  ],
+  "assessment": {
+    "artifact_integrity": "VERIFIED",
+    "receipt_integrity": "VERIFIED",
+    "evidence_coverage": "COMPLETE",
+    "citation_binding": "VERIFIED",
+    "claim_support": "UNVERIFIED",
+    "source_freshness": "UNVERIFIED"
+  },
+  "limits": [
+    "Bounded workflow acceptance, not unrestricted investment research completion or a buy recommendation.",
+    "Five-year capital-return and normalized liquor cash flow, channel demand and full disclosure universe remain unverified.",
+    "Q2 revenue is derived from YTD; reported_quarter legacy field does not imply independent Q2 disclosure.",
+    "Supplementary Q1 PDF is bound by outer acceptance only, not core research manifest.",
+    "No new natural-language host replay, report rendering, formal money archive, application, commit, push, release or trading.",
+    "Core cash-bridge delta reviewed locally; not a new independent full-file review."
+  ],
+  "evidence": [
+    {
+      "path": "skills/money-craft/scripts/financial_reconciliation.py",
+      "sha256": "7bfd04d8da339fbda508f979eb18dc31d4e05fd67dbc586243c47ef392ce0635",
+      "bytes": 24816
+    },
+    {
+      "path": "skills/money-craft/schemas/financial-reconciliation.schema.json",
+      "sha256": "f1927d629fbd62a521770289f27ba4af4c8c457a40040e0987984bfee528191b",
+      "bytes": 6472
+    },
+    {
+      "path": "skills/money-craft/references/company-research.md",
+      "sha256": "36a1d9d50af6aeefdd5c6c72ea4eca9a84f565ffb681426c5f2c9de3154f2cad",
+      "bytes": 16158
+    },
+    {
+      "path": "tests/test_audits.py",
+      "sha256": "516fa85795114a74034909721725ad199dcc9ae76df79de014d968d8d80458bf",
+      "bytes": 23429
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/report.md",
+      "sha256": "c829bf1384addf890693df1a51f47b8f908ab5d2b21efc4792ff076dbadc1f3c",
+      "bytes": 7665
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/thesis.md",
+      "sha256": "74f8c8a9d9235ae8087aedaf26b8cc7a64cb9bcaea7ec494cd4c308af070486d",
+      "bytes": 5492
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/financial-reconciliation.json",
+      "sha256": "fc5874483f4990d4c6061819b5f1d9f3d9192b36e6742c266b749b5f301e8778",
+      "bytes": 4973
+    },
+    {
+      "path": "local/evidence/20260919-research-e2e/verified-identity/completion-receipt.json",
+      "sha256": "19a9f7a0d7ef988bfaf30cc4415a98490a80f6ba2f262b810f001375a2183ece",
+      "bytes": 1622
+    },
+    {
+      "path": "local/acceptance/20260919-research-e2e/tests.log",
+      "sha256": "30773f13986d315d9fe17b78b09f83af48d297dc11f8c97056dd2ec69af6d406",
+      "bytes": 580
+    },
+    {
+      "path": "local/acceptance/20260919-research-e2e/official-crosscheck.json",
+      "sha256": "95865df43693ec82e630c6dc030c65d861966f528c3a708779b3a5d9499f670e",
+      "bytes": 2990
+    },
+    {
+      "path": "local/acceptance/20260919-research-e2e/negative-summary.json",
+      "sha256": "3885e970d5a8021eab359251cbe2b906ab7b2c7624f182774356836bae092fd4",
+      "bytes": 1476
+    },
+    {
+      "path": "local/acceptance/20260919-research-e2e/installed-status-final.json",
+      "sha256": "adfd59c643359c11abc9926130a0ffb6474a271acbe4589c07d69fe529a273e4",
+      "bytes": 5199
+    },
+    {
+      "path": "local/acceptance/20260919-research-e2e/source-validation-final.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684",
+      "bytes": 622
+    },
+    {
+      "path": "local/acceptance/20260919-research-e2e/package-validation-final.json",
+      "sha256": "360b6f84bc6eb68e7f8739d2ab459c91630ba93acd211e164742ad6d72c2f13c",
+      "bytes": 348
+    },
+    {
+      "path": "local/acceptance/20260919-research-e2e/schema-check.json",
+      "sha256": "8d203ba0cd54836eb39379c909eca2d98af78ef64d613fc238f5ba25688375ca",
+      "bytes": 73
+    }
+  ],
+  "local_command_receipts": "local/acceptance/20260919-research-e2e",
+  "official_downloads": [
+    {
+      "id": "S11",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-08/17/277c9b776bff4ae89dde75e987437760.pdf",
+      "sha256": "0e10aa26be46b1cf3cd03f06e834c7fb98d5dd0d661b96f8fddd4af7e846a4f6",
+      "bytes": 832321,
+      "fetched_at": "2026-09-19T13:09:36.627198+00:00"
+    },
+    {
+      "id": "S12",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-04/17/1b9fae59825c41bf9a776892a00565f7.pdf",
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288",
+      "bytes": 1082847,
+      "fetched_at": "2026-09-19T13:09:36.700287+00:00"
+    },
+    {
+      "id": "S13",
+      "url": "https://www.moutaichina.com/mtgf/tzzgx/gsgg/index.html",
+      "sha256": "2b53d9f63cf5ee946cb19a67ce59a2f0e211f01034274899eb6447f09a9dd088",
+      "bytes": 28551,
+      "fetched_at": "2026-09-19T13:09:36.788016+00:00"
+    },
+    {
+      "id": "Q1",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-04/27/caf6cef38da94e9e9e71949ad0064f77.pdf",
+      "sha256": "ca10d0e4fb3a1e4e9f258c04fc4c62000968f337a9b0bf6f714d4f153536d363",
+      "bytes": 158374,
+      "fetched_at": "2026-09-19T13:09:36.710238+00:00"
+    },
+    {
+      "id": "S20",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-08/05/e327cac973cc46caa90ef2b21f834b05.pdf",
+      "sha256": "24e51c43dfc6da7d3a19c67b88081715a3a3b4a26c2d83ec51a557e3e5692873",
+      "bytes": 67261,
+      "fetched_at": "2026-09-19T13:09:36.762844+00:00"
+    },
+    {
+      "id": "S18",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-08/17/6c8f54c1fd67408a9e78cfb269605b06.pdf",
+      "sha256": "1a12378ed0e4a803eae00e73c74bc20eb2d73821fc960d746d52476dbf80df1d",
+      "bytes": 96562,
+      "fetched_at": "2026-09-19T13:10:32.140631+00:00"
+    }
+  ]
+}

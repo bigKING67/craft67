@@ -1,0 +1,116 @@
+{
+  "blind_map_sha256": "576c75121d4edac9a51e9360b03a5594bbbb90859222d45831e6417f2b078f20",
+  "blind_packet_sha256": "f9460204016f719ca7a196d34abbec1489ade26dd040351b0ccc9907002653e1",
+  "case_id": "taste-visual-critique-ablation",
+  "focused_variant": "taste",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "e4becaa9d9b81cbcd6b9a0d7560fd70cd3afb053eb3ae2c41d5581caf44fac61",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "1f15fd7162883e6980d3d466168379f8f4fbce714209be8810556b728981955e",
+    "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.144.1"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "f80a55f5da5692ecd98e1a34f3ab5e0884af7840e14870655dfb99dc5306cf58",
+  "judgment_sha256": "a0c2a7a8484f11e2b3923bf5a13f9bd76bf4296ddd4e213beaab8372a5c86d1c",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "rationale": "A 以最完整的产品决策流和改造覆盖胜出：它不仅将异常队列提升到首屏，还明确区分主风险、支持指标和历史背景，并为全局 chrome、表格列序、状态与操作、视觉表面及关键边界状态提供可观察的验收条件。B 的排版与表面参数更精确，但具体改造覆盖稍窄；C 判断可靠，却因 KPI 动作重复及状态、焦点和图表方案不足而落后。",
+  "recorded_at": "2026-07-12T13:08:32Z",
+  "results": {
+    "baseline": {
+      "blind_label": "C",
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 16,
+        "evidence_honesty": 9,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 13
+      },
+      "score": 93,
+      "summary": "异常优先级、卡片堆叠、虚泛洞察和表格扫描问题判断准确，也保持了产品视觉与工作流边界；但两项 KPI 改造存在重复，缺少明确的全局顶栏、图表职责和状态设计动作，验证计划也漏掉了键盘焦点。"
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 20,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 14
+      },
+      "score": 99,
+      "summary": "最完整地围绕未来一小时的异常处置重建层级，覆盖全局顶栏、命令区、KPI、图表、表格、显式状态与操作，以及加载、错误、溢出和键盘焦点等关键状态；视觉参数的数值化程度略逊于 B。"
+    },
+    "taste": {
+      "blind_label": "B",
+      "criteria": {
+        "anti_generic": 15,
+        "concrete_moves": 18,
+        "evidence_honesty": 10,
+        "product_fit": 15,
+        "product_hierarchy": 15,
+        "scope_discipline": 10,
+        "visual_craft": 15
+      },
+      "score": 98,
+      "summary": "视觉工艺最具体，明确提出约 14px 正文、4/8px 间距、表格数字、灰度可读状态和内外圆角关系；但八项改造没有直接处理全局顶栏的 Create 与导航竞争，也未把关键非正常状态纳入改造清单。"
+    }
+  },
+  "schema": "design-craft.comparative-result.v3",
+  "scorecard_json_sha256": "fce00a94275af2560f20e1e69edb040a5c470a03a5caa51b71bb49ab07489c75",
+  "scorecard_sha256": "fc9cbdf72467e0bb47419cd16ed3e88ba99fec44c9aa12ad2cc2de1ee4a9ce8b",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "ed0cb736fcf9a05c9de05736d7b8dce4f313cefb65f2b2adc3c66950997dde8d",
+      "run_path": "run.baseline.json",
+      "run_sha256": "64a65ef330f38fb5e5d655b83939c47961324598c577bceb4172b6c7711649be",
+      "skill_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "881367140e37d552afc8ed61f53d7afbdb3c8edee8abb65d959ac3bfbd966ee1",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "5e8ab16c2bcc0fc3a085baa0d36d06b82a56b73d34d7a1e6e14c30da19e87dd2",
+      "skill_trees": {
+        "skills/design-craft": "c165a78d91eed7392b33659633efb756acbe03c1a0a06b16c8889604854f72f8"
+      },
+      "thinking": "high"
+    },
+    "taste": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.taste.md",
+      "output_sha256": "984314be7d43ea5e6cceb71383eb5ca9dea47ac71b469edb9de45cd6769219f8",
+      "run_path": "run.taste.json",
+      "run_sha256": "ffcd16ff948b0916b0cb654bcc6c5b487c54f150bf259b652fa27701ed7669f0",
+      "skill_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

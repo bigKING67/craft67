@@ -1,0 +1,40 @@
+{
+  "schema": "money-craft.cli-provider-conflicts-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Reject Fuyao identifiers on yfinance requests before provider access",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "9561ea7db91d7a25ff7b77ed0b3b48abff607635bf86206e3f253276ba4b125a",
+    "tests/test_cli_preflight.py": "53e5a2d4e2ac3c4271619b904bb22eb2171251523dca48a685da85b19d1897a6"
+  },
+  "validation": {
+    "target_tests": 3,
+    "conflict_cases": 10,
+    "valid_yfinance_cases": 5,
+    "full_tests": 414,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 10
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No blockers in declared conflict scope",
+    "target_tests": 3,
+    "extra_checks": "Five Fuyao identifier routes and normal search preparation for all three Providers pass.",
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "9561ea7db91d7a25ff7b77ed0b3b48abff607635bf86206e3f253276ba4b125a",
+      "tests/test_cli_preflight.py": "53e5a2d4e2ac3c4271619b904bb22eb2171251523dca48a685da85b19d1897a6"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T091805433836Z"
+  },
+  "limits": [
+    "Other CLI parameter and runtime routing branches not closed.",
+    "No Provider data requests, app, commit, push or release."
+  ]
+}

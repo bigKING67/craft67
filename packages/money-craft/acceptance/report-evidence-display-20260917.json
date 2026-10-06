@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.report-evidence-display.v1",
+  "date": "2026-09-17",
+  "scope": "Manifest count display without completeness/quality claims",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "0bac4a3791b490f2260489780be92e1feef4a8176ba9ef898a97bf3377f2da76",
+    "tests/test_report_renderer.py": "da8bc78b3731f79550d22a31179cc79b636c3bd705980edaa773118dc4664294",
+    "skills/money-craft/references/report-rendering.md": "c95769d4bfb6cffca5ff7aafc5ee7d096a37fb83b7cab4b1dbd464619f7172f7"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Zero failures implied completeness even for 2/15 captured, explicit zero could be lost, and empty registered groups appeared captured.",
+    "after": "Display declared strict counts only; unknown failures explicit; registered groups and item counts do not imply capture, audit or quality."
+  },
+  "validation": {
+    "renderer_tests": 56,
+    "full_tests": 346,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 3,
+    "contract_update": "Audit-seal assertion now expects manifest counts rather than unsupported completeness claim.",
+    "real_cli": "Partial 2/15 manifest shown without completeness claim; source and manifest bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 56,
+    "skipped_tests": 0,
+    "additional_boundary_assertions": 22,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "0bac4a3791b490f2260489780be92e1feef4a8176ba9ef898a97bf3377f2da76",
+      "tests/test_report_renderer.py": "da8bc78b3731f79550d22a31179cc79b636c3bd705980edaa773118dc4664294"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T115657290649Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "Input manifest authenticity, audit/verifier authenticity and evidence quality are not established here.",
+    "Full SVG and PDF/visual acceptance remain unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

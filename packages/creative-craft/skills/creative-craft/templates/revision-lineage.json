@@ -1,0 +1,18 @@
+{
+  "schema_version": "creative-craft.revision-lineage.v1",
+  "revision_id": "revision-tbd",
+  "parent_output_ref": "cc://output-inspection/inspection-tbd#/output_asset_id",
+  "parent_inspection_ref": "cc://output-inspection/inspection-tbd#",
+  "primary_variable": "TBD",
+  "reason": "TBD",
+  "change": [],
+  "preserve": [],
+  "integration_changes": [],
+  "new_job_ref": null,
+  "new_receipt_ref": null,
+  "new_output_ref": null,
+  "observed_result": null,
+  "comparison": null,
+  "decision": "draft",
+  "next_action": "TBD"
+}

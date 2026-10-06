@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/report-render-verify.schema.json",
+  "title": "Money Craft rendered report verification",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "source",
+    "source_sha256",
+    "html",
+    "pdf",
+    "pages",
+    "portable_html",
+    "network_required",
+    "errors"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.report-render-verify.v1"},
+    "valid": {"type": "boolean"},
+    "source": {"type": "string"},
+    "source_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "html": {"type": "string"},
+    "pdf": {"type": ["string", "null"]},
+    "pages": {"type": ["integer", "null"], "minimum": 1},
+    "portable_html": {"type": "boolean"},
+    "network_required": {"const": false},
+    "errors": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

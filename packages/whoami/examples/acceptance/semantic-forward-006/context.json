@@ -1,0 +1,2046 @@
+{
+  "schema": "whoami.evidence.v1",
+  "chartId": "4b6a66ef698209a07964e294019e8ad54923b3fc74eccaa1786dc7aeaa20f62a",
+  "evidenceId": "8412f9eadc80551ea35b44533fafb97fe6dad691f990827416b521d2e1aeb410",
+  "status": "ready",
+  "input": {
+    "calendar": "solar",
+    "date": "1990-12-18",
+    "leapMonth": false,
+    "time": "08:20:00",
+    "uncertaintyMinutes": 0,
+    "place": "合成东经120度",
+    "longitude": 120,
+    "timeZone": "Asia/Shanghai",
+    "gender": "female",
+    "timeBasis": "true-solar",
+    "dayBoundary": "zi",
+    "dstDisambiguation": "reject"
+  },
+  "years": [
+    2026,
+    2027,
+    2028
+  ],
+  "warnings": [
+    "真太阳时使用 NOAA 近似均时差；±2 分钟仅作边界筛查，不是经认证的误差上限，不能声称秒级精度。"
+  ],
+  "candidateIds": [
+    "C1-f7863f9a"
+  ],
+  "facts": [
+    {
+      "id": "C1-f7863f9a.input.time",
+      "candidate": "C1-f7863f9a",
+      "system": "input",
+      "label": "代表性时间及校正",
+      "value": {
+        "instant": "1990-12-18T00:20:00Z",
+        "civil": "1990-12-18T08:20:00+08:00[Asia/Shanghai]",
+        "trueSolar": "1990-12-18T08:23:46.963",
+        "chartClock": "1990-12-18T08:23:46.963",
+        "offsetMinutes": 480,
+        "longitudeCorrectionMinutes": 0,
+        "equationOfTimeMinutes": 3.7827158021163565,
+        "totalCorrectionMinutes": 3.7827158021163565,
+        "model": "NOAA fractional-year equation of time",
+        "solarShiftMinutes": 0,
+        "screeningMarginMinutes": 2
+      },
+      "source": "NOAA + IANA tzdata"
+    },
+    {
+      "id": "C1-f7863f9a.input.provenance",
+      "candidate": "C1-f7863f9a",
+      "system": "input",
+      "label": "地点、经度与时区来源",
+      "value": {
+        "status": "unverified",
+        "missing": [
+          "placeSource",
+          "longitudeSource",
+          "timeZoneSource"
+        ]
+      },
+      "source": "未提供来源元数据"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.year",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "year 柱",
+      "value": {
+        "position": "year",
+        "value": "庚午",
+        "stem": "庚",
+        "branch": "午",
+        "element": "金",
+        "tenGod": "正财",
+        "hiddenStems": [
+          {
+            "stem": "丁",
+            "element": "火",
+            "tenGod": "比肩"
+          },
+          {
+            "stem": "己",
+            "element": "土",
+            "tenGod": "食神"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.month",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "month 柱",
+      "value": {
+        "position": "month",
+        "value": "戊子",
+        "stem": "戊",
+        "branch": "子",
+        "element": "土",
+        "tenGod": "伤官",
+        "hiddenStems": [
+          {
+            "stem": "癸",
+            "element": "水",
+            "tenGod": "七杀"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.day",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "day 柱",
+      "value": {
+        "position": "day",
+        "value": "丁巳",
+        "stem": "丁",
+        "branch": "巳",
+        "element": "火",
+        "tenGod": "日主",
+        "hiddenStems": [
+          {
+            "stem": "丙",
+            "element": "火",
+            "tenGod": "劫财"
+          },
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "伤官"
+          },
+          {
+            "stem": "庚",
+            "element": "金",
+            "tenGod": "正财"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.hour",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "hour 柱",
+      "value": {
+        "position": "hour",
+        "value": "甲辰",
+        "stem": "甲",
+        "branch": "辰",
+        "element": "木",
+        "tenGod": "正印",
+        "hiddenStems": [
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "伤官"
+          },
+          {
+            "stem": "乙",
+            "element": "木",
+            "tenGod": "偏印"
+          },
+          {
+            "stem": "癸",
+            "element": "水",
+            "tenGod": "七杀"
+          }
+        ]
+      },
+      "source": "lunar-typescript + whoami 五鼠遁/十神关系"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.dayMaster",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "日主",
+      "value": "丁",
+      "source": "lunar-typescript; declared day boundary"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.monthExposure",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "月支藏干及年/月/时同干透出（不判成格）",
+      "value": {
+        "monthBranch": "子",
+        "dayMaster": "丁",
+        "hiddenStems": [
+          {
+            "stem": "癸",
+            "element": "水",
+            "tenGod": "七杀",
+            "matchesDayMaster": false,
+            "exposedAt": []
+          }
+        ]
+      },
+      "source": "whoami：既有月支藏干与年/月/时天干精确匹配；日干匹配单列，未算月令司权或格局"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.wealthReview",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "月令财星透出的条件核对（非成败裁定）",
+      "value": {
+        "scope": "月支财星同干透于年/月/时；仅核对显干前提",
+        "status": "outside-scope",
+        "monthBranch": "子",
+        "candidates": [],
+        "sealPlacement": {
+          "status": "not-applicable",
+          "pairs": [],
+          "conclusion": "财格候选入口或显干财印配对未满足；本项不作位置判断。",
+          "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+          "source": "https://donglishuzhai.net/chapter/3746.html"
+        },
+        "officerBranch": {
+          "status": "not-applicable",
+          "officers": [],
+          "checks": [
+            {
+              "id": "no-visible-hurting",
+              "condition": "不透伤官",
+              "positions": [
+                {
+                  "position": "month",
+                  "stem": "戊",
+                  "tenGod": "伤官"
+                }
+              ],
+              "result": "counterexample"
+            },
+            {
+              "id": "no-visible-killer",
+              "condition": "未见七杀同透（不混七杀的局部检查）",
+              "positions": [],
+              "result": "not-observed"
+            }
+          ],
+          "blockers": [],
+          "scope": "既有月令透财入口且正官显透；仅检查直接采用财旺生官原文分支的显干反例，不覆盖暗官或救应后另论。",
+          "conclusion": "月令透财入口或显官入口未满足，本项不作财旺生官分支判断；不否定暗官及其他取法。",
+          "source": "https://donglishuzhai.net/chapter/3746.html"
+        },
+        "checks": [],
+        "judgment": "unresolved",
+        "source": "https://donglishuzhai.net/chapter/3722.html",
+        "limits": [
+          "not-observed 仅指本轮显干条件未见，不表示藏干无作用、没有救应或现实无该事件。",
+          "outside-scope 仅表示不满足本模块入口，不表示无财格；未覆盖未透取用、会支变化及其他格局。",
+          "所有线索并列保留，不相互抵消、计分或多数表决；旺衰、位置、合化、制化有效性仍需单独论证。"
+        ]
+      },
+      "source": "whoami 显干前提检测；传统条件见《子平真诠·论用神成败救应》原文转录"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.roots",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "同五行藏干所在柱（仅通根线索）",
+      "value": [
+        "year",
+        "day"
+      ],
+      "source": "传统藏干表；不计强弱权重"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.visibleElements",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "四个天干五行出现数",
+      "value": {
+        "木": 1,
+        "火": 1,
+        "土": 1,
+        "金": 1,
+        "水": 0
+      },
+      "source": "unweighted descriptive counts"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.relations",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "地支关系（不自动判化局或事件）",
+      "value": [
+        {
+          "kind": "冲",
+          "positions": [
+            "year",
+            "month"
+          ],
+          "branches": "午子"
+        }
+      ],
+      "source": "传统合冲刑害关系表；首版仅列全三合/全三刑与成对关系"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.rootDetails",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "同五行藏干与直接六冲来源（不裁定根气有效性）",
+      "value": [
+        {
+          "position": "year",
+          "branch": "午",
+          "hiddenStem": "丁",
+          "element": "火",
+          "tenGod": "比肩",
+          "sameStemAsDayMaster": true,
+          "clashSources": [
+            {
+              "position": "month",
+              "branch": "子"
+            }
+          ]
+        },
+        {
+          "position": "day",
+          "branch": "巳",
+          "hiddenStem": "丙",
+          "element": "火",
+          "tenGod": "劫财",
+          "sameStemAsDayMaster": false,
+          "clashSources": []
+        }
+      ],
+      "source": "whoami：既有藏干事实与直接六冲关系联结；无旺衰、根气权重或冲毁裁定"
+    },
+    {
+      "id": "C1-f7863f9a.bazi.cycles",
+      "candidate": "C1-f7863f9a",
+      "system": "bazi",
+      "label": "起运与大运流年",
+      "value": {
+        "direction": "backward",
+        "method": "lunar-typescript Yun sect=2; absolute birth vs Jie; original civil basis",
+        "startAge": {
+          "years": 3,
+          "months": 6,
+          "days": 15,
+          "hours": 12
+        },
+        "startInstant": "1994-07-03T12:20:00Z",
+        "startCivil": "1994-07-03T20:20:00+08:00[Asia/Shanghai]",
+        "decades": [
+          {
+            "index": 1,
+            "pillar": "丁亥",
+            "startCivil": "1994-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2004-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 2,
+            "pillar": "丙戌",
+            "startCivil": "2004-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2014-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 3,
+            "pillar": "乙酉",
+            "startCivil": "2014-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2024-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 4,
+            "pillar": "甲申",
+            "startCivil": "2024-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2034-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 5,
+            "pillar": "癸未",
+            "startCivil": "2034-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2044-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 6,
+            "pillar": "壬午",
+            "startCivil": "2044-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2054-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 7,
+            "pillar": "辛巳",
+            "startCivil": "2054-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2064-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 8,
+            "pillar": "庚辰",
+            "startCivil": "2064-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2074-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 9,
+            "pillar": "己卯",
+            "startCivil": "2074-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2084-07-03T20:20:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 10,
+            "pillar": "戊寅",
+            "startCivil": "2084-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2094-07-03T20:20:00+08:00[Asia/Shanghai]"
+          }
+        ],
+        "yearly": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun"
+          }
+        ],
+        "uncertainty": {
+          "status": "exact",
+          "sampleCount": 3,
+          "distinctStartCount": 1,
+          "birthOffsetMinutes": {
+            "min": 0,
+            "max": 0
+          },
+          "solarShiftMinutes": {
+            "min": -2,
+            "max": 2
+          },
+          "startInstant": {
+            "earliest": "1994-07-03T12:20:00Z",
+            "latest": "1994-07-03T12:20:00Z"
+          },
+          "startCivil": {
+            "earliest": "1994-07-03T20:20:00+08:00[Asia/Shanghai]",
+            "latest": "1994-07-03T20:20:00+08:00[Asia/Shanghai]"
+          }
+        }
+      },
+      "source": "lunar-typescript Yun sect=2; whoami absolute-time adapter"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.base",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "命身宫与五行局",
+      "value": {
+        "soulPalace": "申",
+        "bodyPalace": "辰",
+        "soul": "廉贞",
+        "body": "火星",
+        "fiveElementsClass": "水二局",
+        "settings": {
+          "yearDivide": "normal",
+          "ageDivide": "normal",
+          "horoscopeDivide": "normal",
+          "dayDivide": "forward",
+          "algorithm": "default",
+          "fixLeap": true,
+          "language": "zh-CN",
+          "calendarBasis": "chart-clock-date",
+          "birthLunarYear": 1990
+        }
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-0",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "迁移宫",
+      "value": {
+        "index": 0,
+        "name": "迁移",
+        "stem": "戊",
+        "branch": "寅",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "紫微",
+            "brightness": "旺",
+            "mutagen": ""
+          },
+          {
+            "name": "天府",
+            "brightness": "庙",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "左辅",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "天才",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天巫",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天厨",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "蜚廉",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            62,
+            71
+          ],
+          "heavenlyStem": "戊",
+          "earthlyBranch": "寅"
+        },
+        "surroundedIndices": [
+          0,
+          4,
+          8,
+          6
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-1",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "疾厄宫",
+      "value": {
+        "index": 1,
+        "name": "疾厄",
+        "stem": "己",
+        "branch": "卯",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "太阴",
+            "brightness": "陷",
+            "mutagen": "科"
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "地劫",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "天喜",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "咸池",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "三台",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天德",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天使",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            52,
+            61
+          ],
+          "heavenlyStem": "己",
+          "earthlyBranch": "卯"
+        },
+        "surroundedIndices": [
+          1,
+          5,
+          9,
+          7
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-2",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "财帛宫",
+      "value": {
+        "index": 2,
+        "name": "财帛",
+        "stem": "庚",
+        "branch": "辰",
+        "isBodyPalace": true,
+        "majorStars": [
+          {
+            "name": "贪狼",
+            "brightness": "庙",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [],
+        "adjectiveStars": [
+          {
+            "name": "凤阁",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "寡宿",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "年解",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            42,
+            51
+          ],
+          "heavenlyStem": "庚",
+          "earthlyBranch": "辰"
+        },
+        "surroundedIndices": [
+          2,
+          6,
+          10,
+          8
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-3",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "子女宫",
+      "value": {
+        "index": 3,
+        "name": "子女",
+        "stem": "辛",
+        "branch": "巳",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "巨门",
+            "brightness": "旺",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "火星",
+            "brightness": "得",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "破碎",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            32,
+            41
+          ],
+          "heavenlyStem": "辛",
+          "earthlyBranch": "巳"
+        },
+        "surroundedIndices": [
+          3,
+          7,
+          11,
+          9
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-4",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "夫妻宫",
+      "value": {
+        "index": 4,
+        "name": "夫妻",
+        "stem": "壬",
+        "branch": "午",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "廉贞",
+            "brightness": "平",
+            "mutagen": ""
+          },
+          {
+            "name": "天相",
+            "brightness": "庙",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "文昌",
+            "brightness": "陷",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "解神",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "恩光",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "封诰",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天福",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "截路",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "阴煞",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            22,
+            31
+          ],
+          "heavenlyStem": "壬",
+          "earthlyBranch": "午"
+        },
+        "surroundedIndices": [
+          4,
+          8,
+          0,
+          10
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-5",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "兄弟宫",
+      "value": {
+        "index": 5,
+        "name": "兄弟",
+        "stem": "癸",
+        "branch": "未",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "天梁",
+            "brightness": "旺",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "天钺",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "地空",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "铃星",
+            "brightness": "利",
+            "mutagen": ""
+          },
+          {
+            "name": "陀罗",
+            "brightness": "庙",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "天空",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "空亡",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天刑",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            12,
+            21
+          ],
+          "heavenlyStem": "癸",
+          "earthlyBranch": "未"
+        },
+        "surroundedIndices": [
+          5,
+          9,
+          1,
+          11
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-6",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "命宫宫",
+      "value": {
+        "index": 6,
+        "name": "命宫",
+        "stem": "甲",
+        "branch": "申",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "七杀",
+            "brightness": "庙",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "文曲",
+            "brightness": "得",
+            "mutagen": ""
+          },
+          {
+            "name": "禄存",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天马",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "天贵",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "孤辰",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            2,
+            11
+          ],
+          "heavenlyStem": "甲",
+          "earthlyBranch": "申"
+        },
+        "surroundedIndices": [
+          6,
+          10,
+          2,
+          0
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-7",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "父母宫",
+      "value": {
+        "index": 7,
+        "name": "父母",
+        "stem": "乙",
+        "branch": "酉",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "天同",
+            "brightness": "平",
+            "mutagen": "忌"
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "擎羊",
+            "brightness": "陷",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "红鸾",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            112,
+            121
+          ],
+          "heavenlyStem": "乙",
+          "earthlyBranch": "酉"
+        },
+        "surroundedIndices": [
+          7,
+          11,
+          3,
+          1
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-8",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "福德宫",
+      "value": {
+        "index": 8,
+        "name": "福德",
+        "stem": "丙",
+        "branch": "戌",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "武曲",
+            "brightness": "庙",
+            "mutagen": "权"
+          }
+        ],
+        "minorStars": [],
+        "adjectiveStars": [
+          {
+            "name": "龙池",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天寿",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "台辅",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "华盖",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天月",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "旬空",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            102,
+            111
+          ],
+          "heavenlyStem": "丙",
+          "earthlyBranch": "戌"
+        },
+        "surroundedIndices": [
+          8,
+          0,
+          4,
+          2
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-9",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "田宅宫",
+      "value": {
+        "index": 9,
+        "name": "田宅",
+        "stem": "丁",
+        "branch": "亥",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "太阳",
+            "brightness": "陷",
+            "mutagen": "禄"
+          }
+        ],
+        "minorStars": [],
+        "adjectiveStars": [
+          {
+            "name": "天姚",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "八座",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天官",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "月德",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            92,
+            101
+          ],
+          "heavenlyStem": "丁",
+          "earthlyBranch": "亥"
+        },
+        "surroundedIndices": [
+          9,
+          1,
+          5,
+          3
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-10",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "官禄宫",
+      "value": {
+        "index": 10,
+        "name": "官禄",
+        "stem": "戊",
+        "branch": "子",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "破军",
+            "brightness": "庙",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "右弼",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "天哭",
+            "brightness": "",
+            "mutagen": ""
+          },
+          {
+            "name": "天虚",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            82,
+            91
+          ],
+          "heavenlyStem": "戊",
+          "earthlyBranch": "子"
+        },
+        "surroundedIndices": [
+          10,
+          2,
+          6,
+          4
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.palace-11",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "仆役宫",
+      "value": {
+        "index": 11,
+        "name": "仆役",
+        "stem": "己",
+        "branch": "丑",
+        "isBodyPalace": false,
+        "majorStars": [
+          {
+            "name": "天机",
+            "brightness": "陷",
+            "mutagen": ""
+          }
+        ],
+        "minorStars": [
+          {
+            "name": "天魁",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "adjectiveStars": [
+          {
+            "name": "天伤",
+            "brightness": "",
+            "mutagen": ""
+          }
+        ],
+        "decadal": {
+          "range": [
+            72,
+            81
+          ],
+          "heavenlyStem": "己",
+          "earthlyBranch": "丑"
+        },
+        "surroundedIndices": [
+          11,
+          3,
+          7,
+          5
+        ]
+      },
+      "source": "iztro@2.6.1"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.cycles",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "大限与流年",
+      "value": {
+        "decadals": [
+          {
+            "palace": "命宫",
+            "ageRange": [
+              2,
+              11
+            ],
+            "yearRange": [
+              1991,
+              2000
+            ],
+            "stem": "甲",
+            "branch": "申",
+            "mutagen": [
+              "廉贞",
+              "破军",
+              "武曲",
+              "太阳"
+            ]
+          },
+          {
+            "palace": "兄弟",
+            "ageRange": [
+              12,
+              21
+            ],
+            "yearRange": [
+              2001,
+              2010
+            ],
+            "stem": "癸",
+            "branch": "未",
+            "mutagen": [
+              "破军",
+              "巨门",
+              "太阴",
+              "贪狼"
+            ]
+          },
+          {
+            "palace": "夫妻",
+            "ageRange": [
+              22,
+              31
+            ],
+            "yearRange": [
+              2011,
+              2020
+            ],
+            "stem": "壬",
+            "branch": "午",
+            "mutagen": [
+              "天梁",
+              "紫微",
+              "左辅",
+              "武曲"
+            ]
+          },
+          {
+            "palace": "子女",
+            "ageRange": [
+              32,
+              41
+            ],
+            "yearRange": [
+              2021,
+              2030
+            ],
+            "stem": "辛",
+            "branch": "巳",
+            "mutagen": [
+              "巨门",
+              "太阳",
+              "文曲",
+              "文昌"
+            ]
+          },
+          {
+            "palace": "财帛",
+            "ageRange": [
+              42,
+              51
+            ],
+            "yearRange": [
+              2031,
+              2040
+            ],
+            "stem": "庚",
+            "branch": "辰",
+            "mutagen": [
+              "太阳",
+              "武曲",
+              "太阴",
+              "天同"
+            ]
+          },
+          {
+            "palace": "疾厄",
+            "ageRange": [
+              52,
+              61
+            ],
+            "yearRange": [
+              2041,
+              2050
+            ],
+            "stem": "己",
+            "branch": "卯",
+            "mutagen": [
+              "武曲",
+              "贪狼",
+              "天梁",
+              "文曲"
+            ]
+          },
+          {
+            "palace": "迁移",
+            "ageRange": [
+              62,
+              71
+            ],
+            "yearRange": [
+              2051,
+              2060
+            ],
+            "stem": "戊",
+            "branch": "寅",
+            "mutagen": [
+              "贪狼",
+              "太阴",
+              "右弼",
+              "天机"
+            ]
+          },
+          {
+            "palace": "仆役",
+            "ageRange": [
+              72,
+              81
+            ],
+            "yearRange": [
+              2061,
+              2070
+            ],
+            "stem": "己",
+            "branch": "丑",
+            "mutagen": [
+              "武曲",
+              "贪狼",
+              "天梁",
+              "文曲"
+            ]
+          },
+          {
+            "palace": "官禄",
+            "ageRange": [
+              82,
+              91
+            ],
+            "yearRange": [
+              2071,
+              2080
+            ],
+            "stem": "戊",
+            "branch": "子",
+            "mutagen": [
+              "贪狼",
+              "太阴",
+              "右弼",
+              "天机"
+            ]
+          },
+          {
+            "palace": "田宅",
+            "ageRange": [
+              92,
+              101
+            ],
+            "yearRange": [
+              2081,
+              2090
+            ],
+            "stem": "丁",
+            "branch": "亥",
+            "mutagen": [
+              "太阴",
+              "天同",
+              "天机",
+              "巨门"
+            ]
+          },
+          {
+            "palace": "福德",
+            "ageRange": [
+              102,
+              111
+            ],
+            "yearRange": [
+              2091,
+              2100
+            ],
+            "stem": "丙",
+            "branch": "戌",
+            "mutagen": [
+              "天同",
+              "天机",
+              "文昌",
+              "廉贞"
+            ]
+          },
+          {
+            "palace": "父母",
+            "ageRange": [
+              112,
+              121
+            ],
+            "yearRange": [
+              2101,
+              2110
+            ],
+            "stem": "乙",
+            "branch": "酉",
+            "mutagen": [
+              "天机",
+              "天梁",
+              "紫微",
+              "太阴"
+            ]
+          }
+        ],
+        "yearly": [
+          {
+            "year": 2026,
+            "boundary": "lunar-new-year",
+            "stem": "丙",
+            "branch": "午",
+            "palaceNames": [
+              "财帛",
+              "子女",
+              "夫妻",
+              "兄弟",
+              "命宫",
+              "父母",
+              "福德",
+              "田宅",
+              "官禄",
+              "仆役",
+              "迁移",
+              "疾厄"
+            ],
+            "mutagen": [
+              "天同",
+              "天机",
+              "文昌",
+              "廉贞"
+            ],
+            "decadalPalaceIndex": 3
+          },
+          {
+            "year": 2027,
+            "boundary": "lunar-new-year",
+            "stem": "丁",
+            "branch": "未",
+            "palaceNames": [
+              "疾厄",
+              "财帛",
+              "子女",
+              "夫妻",
+              "兄弟",
+              "命宫",
+              "父母",
+              "福德",
+              "田宅",
+              "官禄",
+              "仆役",
+              "迁移"
+            ],
+            "mutagen": [
+              "太阴",
+              "天同",
+              "天机",
+              "巨门"
+            ],
+            "decadalPalaceIndex": 3
+          },
+          {
+            "year": 2028,
+            "boundary": "lunar-new-year",
+            "stem": "戊",
+            "branch": "申",
+            "palaceNames": [
+              "迁移",
+              "疾厄",
+              "财帛",
+              "子女",
+              "夫妻",
+              "兄弟",
+              "命宫",
+              "父母",
+              "福德",
+              "田宅",
+              "官禄",
+              "仆役"
+            ],
+            "mutagen": [
+              "贪狼",
+              "太阴",
+              "右弼",
+              "天机"
+            ],
+            "decadalPalaceIndex": 3
+          }
+        ]
+      },
+      "source": "iztro@2.6.1; lunar-new-year boundary"
+    },
+    {
+      "id": "C1-f7863f9a.ziwei.transformations",
+      "candidate": "C1-f7863f9a",
+      "system": "ziwei",
+      "label": "生年、大限、流年四化落宫（分层）",
+      "value": {
+        "origin": [
+          {
+            "scope": "origin",
+            "mutagen": "禄",
+            "stars": [
+              "太阳"
+            ],
+            "targets": [
+              {
+                "star": "太阳",
+                "palaceIndex": 9,
+                "natalPalace": "田宅",
+                "branch": "亥"
+              }
+            ],
+            "status": "located"
+          },
+          {
+            "scope": "origin",
+            "mutagen": "权",
+            "stars": [
+              "武曲"
+            ],
+            "targets": [
+              {
+                "star": "武曲",
+                "palaceIndex": 8,
+                "natalPalace": "福德",
+                "branch": "戌"
+              }
+            ],
+            "status": "located"
+          },
+          {
+            "scope": "origin",
+            "mutagen": "科",
+            "stars": [
+              "太阴"
+            ],
+            "targets": [
+              {
+                "star": "太阴",
+                "palaceIndex": 1,
+                "natalPalace": "疾厄",
+                "branch": "卯"
+              }
+            ],
+            "status": "located"
+          },
+          {
+            "scope": "origin",
+            "mutagen": "忌",
+            "stars": [
+              "天同"
+            ],
+            "targets": [
+              {
+                "star": "天同",
+                "palaceIndex": 7,
+                "natalPalace": "父母",
+                "branch": "酉"
+              }
+            ],
+            "status": "located"
+          }
+        ],
+        "decadals": [
+          {
+            "scope": "decadal",
+            "stem": "辛",
+            "branch": "巳",
+            "decadalLifePalace": "子女",
+            "ageRange": [
+              32,
+              41
+            ],
+            "yearRangeInclusive": [
+              2021,
+              2030
+            ],
+            "boundary": "lunar-new-year",
+            "transformations": [
+              {
+                "mutagen": "禄",
+                "star": "巨门",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 3,
+                    "natalPalace": "子女",
+                    "branch": "巳"
+                  }
+                ]
+              },
+              {
+                "mutagen": "权",
+                "star": "太阳",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 9,
+                    "natalPalace": "田宅",
+                    "branch": "亥"
+                  }
+                ]
+              },
+              {
+                "mutagen": "科",
+                "star": "文曲",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 6,
+                    "natalPalace": "命宫",
+                    "branch": "申"
+                  }
+                ]
+              },
+              {
+                "mutagen": "忌",
+                "star": "文昌",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 4,
+                    "natalPalace": "夫妻",
+                    "branch": "午"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "yearly": [
+          {
+            "scope": "yearly",
+            "year": 2026,
+            "boundary": "lunar-new-year",
+            "stem": "丙",
+            "branch": "午",
+            "transformations": [
+              {
+                "mutagen": "禄",
+                "star": "天同",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 7,
+                    "natalPalace": "父母",
+                    "branch": "酉",
+                    "scopePalace": "田宅"
+                  }
+                ]
+              },
+              {
+                "mutagen": "权",
+                "star": "天机",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 11,
+                    "natalPalace": "仆役",
+                    "branch": "丑",
+                    "scopePalace": "疾厄"
+                  }
+                ]
+              },
+              {
+                "mutagen": "科",
+                "star": "文昌",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 4,
+                    "natalPalace": "夫妻",
+                    "branch": "午",
+                    "scopePalace": "命宫"
+                  }
+                ]
+              },
+              {
+                "mutagen": "忌",
+                "star": "廉贞",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 4,
+                    "natalPalace": "夫妻",
+                    "branch": "午",
+                    "scopePalace": "命宫"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": "yearly",
+            "year": 2027,
+            "boundary": "lunar-new-year",
+            "stem": "丁",
+            "branch": "未",
+            "transformations": [
+              {
+                "mutagen": "禄",
+                "star": "太阴",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 1,
+                    "natalPalace": "疾厄",
+                    "branch": "卯",
+                    "scopePalace": "财帛"
+                  }
+                ]
+              },
+              {
+                "mutagen": "权",
+                "star": "天同",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 7,
+                    "natalPalace": "父母",
+                    "branch": "酉",
+                    "scopePalace": "福德"
+                  }
+                ]
+              },
+              {
+                "mutagen": "科",
+                "star": "天机",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 11,
+                    "natalPalace": "仆役",
+                    "branch": "丑",
+                    "scopePalace": "迁移"
+                  }
+                ]
+              },
+              {
+                "mutagen": "忌",
+                "star": "巨门",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 3,
+                    "natalPalace": "子女",
+                    "branch": "巳",
+                    "scopePalace": "夫妻"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": "yearly",
+            "year": 2028,
+            "boundary": "lunar-new-year",
+            "stem": "戊",
+            "branch": "申",
+            "transformations": [
+              {
+                "mutagen": "禄",
+                "star": "贪狼",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 2,
+                    "natalPalace": "财帛",
+                    "branch": "辰",
+                    "scopePalace": "财帛"
+                  }
+                ]
+              },
+              {
+                "mutagen": "权",
+                "star": "太阴",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 1,
+                    "natalPalace": "疾厄",
+                    "branch": "卯",
+                    "scopePalace": "疾厄"
+                  }
+                ]
+              },
+              {
+                "mutagen": "科",
+                "star": "右弼",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 10,
+                    "natalPalace": "官禄",
+                    "branch": "子",
+                    "scopePalace": "官禄"
+                  }
+                ]
+              },
+              {
+                "mutagen": "忌",
+                "star": "天机",
+                "status": "located",
+                "targets": [
+                  {
+                    "palaceIndex": 11,
+                    "natalPalace": "仆役",
+                    "branch": "丑",
+                    "scopePalace": "仆役"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "limits": [
+          "大限只列与请求流年相交者；yearRangeInclusive 两端均为农历年份标签，不是公历元旦或生日边界。",
+          "本命落宫是星曜在原盘的固定位置；流年 scopePalace 是同一位置在该流年承担的宫职，二者不可混称。",
+          "未提供大限宫职映射，不由本命宫名猜测；本模块不计算宫干飞化、自化或事件吉凶。",
+          "缺失或重名保留 unresolved/missing/ambiguous 状态，不猜测星曜落宫；重复四化层不计为独立概率证据。"
+        ]
+      },
+      "source": "iztro@2.6.1 运限输出 + whoami 星名/本命宫位联结"
+    }
+  ],
+  "rules": [
+    {
+      "id": "C1-f7863f9a.R-bazi-structure",
+      "candidate": "C1-f7863f9a",
+      "label": "旺衰、格局与用神分开论证",
+      "factRefs": [
+        "C1-f7863f9a.bazi.dayMaster",
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.monthExposure",
+        "C1-f7863f9a.bazi.roots",
+        "C1-f7863f9a.bazi.rootDetails",
+        "C1-f7863f9a.bazi.visibleElements",
+        "C1-f7863f9a.bazi.year",
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.day",
+        "C1-f7863f9a.bazi.hour"
+      ],
+      "guidance": "先结合月令、透干与藏干通根说明支持/反对理由。五行计数只是描述，不能据数量判旺衰或缺什么补什么。格局、调候与扶抑分列依据，存在冲突时说明适用条件；证据不足则不确定，不自动给唯一用神。",
+      "source": "references/analysis.md#八字"
+    },
+    {
+      "id": "C1-f7863f9a.R-bazi-wealth-review",
+      "candidate": "C1-f7863f9a",
+      "label": "财格候选分清出现、作用与成败",
+      "factRefs": [
+        "C1-f7863f9a.bazi.wealthReview",
+        "C1-f7863f9a.bazi.monthExposure",
+        "C1-f7863f9a.bazi.rootDetails",
+        "C1-f7863f9a.bazi.year",
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.day",
+        "C1-f7863f9a.bazi.hour",
+        "C1-f7863f9a.bazi.relations"
+      ],
+      "guidance": "逐项说明已出现的显干前提与尚未裁定的旺衰、位置及制化条件。支持、风险和救应线索必须同时保留；not-observed 不等于无作用，outside-scope 不等于无格。不能从某个组合出现直接输出成格、破格或救应完成，最终仍需说明未决条件。",
+      "source": "references/analysis.md#财格候选复核"
+    },
+    {
+      "id": "C1-f7863f9a.R-bazi-month-exposure",
+      "candidate": "C1-f7863f9a",
+      "label": "月令藏干透出与格局成败分开核验",
+      "factRefs": [
+        "C1-f7863f9a.bazi.dayMaster",
+        "C1-f7863f9a.bazi.monthExposure",
+        "C1-f7863f9a.bazi.year",
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.day",
+        "C1-f7863f9a.bazi.hour",
+        "C1-f7863f9a.bazi.relations"
+      ],
+      "guidance": "先逐个核对月支藏干及年/月/时同一天干的透出位置；同五行不同干不算本项透出，日干同字单列。透干仅提供格局分析线索；多干同透全部保留，不按出现次数选唯一用神，未透也不等于无格。月令司权、会支变化、成败救应及制化有效性仍需另行论证。《子平真诠》的月令用神语境不得直接替代调候或扶抑用神。",
+      "source": "references/analysis.md#月令透干复核"
+    },
+    {
+      "id": "C1-f7863f9a.R-bazi-root-review",
+      "candidate": "C1-f7863f9a",
+      "label": "藏干存在与根气作用分开核对",
+      "factRefs": [
+        "C1-f7863f9a.bazi.dayMaster",
+        "C1-f7863f9a.bazi.roots",
+        "C1-f7863f9a.bazi.rootDetails",
+        "C1-f7863f9a.bazi.relations",
+        "C1-f7863f9a.bazi.year",
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.day",
+        "C1-f7863f9a.bazi.hour"
+      ],
+      "guidance": "先核对具体柱、地支和藏干，再讨论对日主的支持。同五行与同天干分别列出；直接受冲的根仍是盘面事实，不能直接删除，未列直接六冲也不等于根气有效或身强。结合月令、透干及其他关系提出支持、反证与待核条件；不把多条同源描述重复计为独立证据，不自动裁定旺衰、从格或用神。",
+      "source": "references/analysis.md#通根复核"
+    },
+    {
+      "id": "C1-f7863f9a.R-bazi-timing",
+      "candidate": "C1-f7863f9a",
+      "label": "本命与运年联读",
+      "factRefs": [
+        "C1-f7863f9a.bazi.cycles",
+        "C1-f7863f9a.bazi.relations",
+        "C1-f7863f9a.bazi.year",
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.day",
+        "C1-f7863f9a.bazi.hour"
+      ],
+      "guidance": "将具体运年与本命柱联系，区分触发线索、替代解释及现实条件；冲不等于灾、合不等于吉，不从关系表直接推断具体人生事件。",
+      "source": "references/analysis.md#八字"
+    },
+    {
+      "id": "C1-f7863f9a.R-ziwei-transformations",
+      "candidate": "C1-f7863f9a",
+      "label": "四化分层与落宫核对",
+      "factRefs": [
+        "C1-f7863f9a.ziwei.transformations",
+        "C1-f7863f9a.ziwei.base",
+        "C1-f7863f9a.ziwei.cycles",
+        "C1-f7863f9a.ziwei.palace-0",
+        "C1-f7863f9a.ziwei.palace-1",
+        "C1-f7863f9a.ziwei.palace-2",
+        "C1-f7863f9a.ziwei.palace-3",
+        "C1-f7863f9a.ziwei.palace-4",
+        "C1-f7863f9a.ziwei.palace-5",
+        "C1-f7863f9a.ziwei.palace-6",
+        "C1-f7863f9a.ziwei.palace-7",
+        "C1-f7863f9a.ziwei.palace-8",
+        "C1-f7863f9a.ziwei.palace-9",
+        "C1-f7863f9a.ziwei.palace-10",
+        "C1-f7863f9a.ziwei.palace-11"
+      ],
+      "guidance": "逐项核对四化来自生年、大限还是流年，以及星曜、本命落宫和已提供的流年宫职。大限年龄与年份均沿用虚岁/农历年口径，不当作生日或公历元旦切换。不能将大限命宫误作所有四化落宫；缺星、重名和未提供宫职保持未知，不用化忌直接断灾或化禄直接断财。",
+      "source": "references/analysis.md#四化落宫复核"
+    },
+    {
+      "id": "C1-f7863f9a.R-ziwei-事业",
+      "candidate": "C1-f7863f9a",
+      "label": "紫微事业联宫",
+      "factRefs": [
+        "C1-f7863f9a.ziwei.base",
+        "C1-f7863f9a.ziwei.cycles",
+        "C1-f7863f9a.ziwei.transformations",
+        "C1-f7863f9a.ziwei.palace-0",
+        "C1-f7863f9a.ziwei.palace-4",
+        "C1-f7863f9a.ziwei.palace-8",
+        "C1-f7863f9a.ziwei.palace-6",
+        "C1-f7863f9a.ziwei.palace-2",
+        "C1-f7863f9a.ziwei.palace-10"
+      ],
+      "guidance": "从主题宫主辅星、四化、三方四正和命身宫形成条件性解释，再对照大限流年；不可仅凭单星下结论，空宫不能自行填入对宫星而不标明借星。",
+      "source": "https://iztro.com/learn/palace"
+    },
+    {
+      "id": "C1-f7863f9a.R-ziwei-财运",
+      "candidate": "C1-f7863f9a",
+      "label": "紫微财运联宫",
+      "factRefs": [
+        "C1-f7863f9a.ziwei.base",
+        "C1-f7863f9a.ziwei.cycles",
+        "C1-f7863f9a.ziwei.transformations",
+        "C1-f7863f9a.ziwei.palace-2",
+        "C1-f7863f9a.ziwei.palace-6",
+        "C1-f7863f9a.ziwei.palace-10",
+        "C1-f7863f9a.ziwei.palace-8",
+        "C1-f7863f9a.ziwei.palace-0",
+        "C1-f7863f9a.ziwei.palace-4",
+        "C1-f7863f9a.ziwei.palace-9",
+        "C1-f7863f9a.ziwei.palace-1",
+        "C1-f7863f9a.ziwei.palace-5",
+        "C1-f7863f9a.ziwei.palace-3"
+      ],
+      "guidance": "从主题宫主辅星、四化、三方四正和命身宫形成条件性解释，再对照大限流年；不可仅凭单星下结论，空宫不能自行填入对宫星而不标明借星。",
+      "source": "https://iztro.com/learn/palace"
+    },
+    {
+      "id": "C1-f7863f9a.R-ziwei-关系",
+      "candidate": "C1-f7863f9a",
+      "label": "紫微关系联宫",
+      "factRefs": [
+        "C1-f7863f9a.ziwei.base",
+        "C1-f7863f9a.ziwei.cycles",
+        "C1-f7863f9a.ziwei.transformations",
+        "C1-f7863f9a.ziwei.palace-0",
+        "C1-f7863f9a.ziwei.palace-4",
+        "C1-f7863f9a.ziwei.palace-8",
+        "C1-f7863f9a.ziwei.palace-6",
+        "C1-f7863f9a.ziwei.palace-10",
+        "C1-f7863f9a.ziwei.palace-2"
+      ],
+      "guidance": "从主题宫主辅星、四化、三方四正和命身宫形成条件性解释，再对照大限流年；不可仅凭单星下结论，空宫不能自行填入对宫星而不标明借星。",
+      "source": "https://iztro.com/learn/palace"
+    }
+  ],
+  "limits": [
+    "确定性排盘不证明现实预测有效。",
+    "不同命理体系的同向解读不是独立统计验证。",
+    "规则依据仅支持传统解释，不构成医疗、投资或婚姻决策的事实证明。"
+  ]
+}

@@ -1,0 +1,513 @@
+{
+  "schema": "money-craft.convergence-acceptance.v1",
+  "date": "2026-09-16",
+  "overall": "PASS_BOUNDED_FROZEN_SUITE",
+  "freeze": {
+    "source_tree_sha256": "c63fa81bb6e68d1bbc9efc181582b408967ae391bfa11402b6b9646e81dcff3c",
+    "cases_sha256": "ce54a1982af27361071417493cfa0d7cf5d266f196a559efbe78b340b610f20e",
+    "invocation": "EXPLICIT_SOURCE_PATH",
+    "samples": "six cases; earnings-periods and evidence-conflict each repeated twice"
+  },
+  "runs": [
+    {
+      "run": "earnings-periods-1",
+      "case_id": "earnings-periods",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 18,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分累计与单季，不能把Provider quarterly直接读为单季",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "比较同比和利润率，并说明量价/原因资料不足",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "保留合成与未来报告期限制，不形成真实买卖结论",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "单季60/9对40/8，同比50%/12.5%；归母利润/收入20%到15%，下降5个百分点；累计20%到18.125%，下降1.875个百分点。保留未来合成及Q2缺失限制。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-1/host.json",
+          "sha256": "c9300689af742aa98f06bf3ed0e555dfa871c6c14ac0c6ba540171be93df6e0a"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-1/answer.md",
+          "sha256": "e06884db6e8b02eb924647a9fede5a72ec67ebf52654395605ef89457105d1ac"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-1/events.jsonl",
+          "sha256": "120558c83abd7741a3b7f0e745bc3a0cf7e1d48b85977e250233c74d89909b47"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-1/machine-audit.json",
+          "sha256": "43282a5a196d8216b6924ccf18b60de0ccf44385e7559d3594ea1c7b5ab354aa"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-1/case-snapshot.json",
+          "sha256": "defe179a80bf065499d068a540f02c9be61f716770deedf49c421e17f9dc936e"
+        }
+      }
+    },
+    {
+      "run": "earnings-periods-2",
+      "case_id": "earnings-periods",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 18,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分累计与单季，不能把Provider quarterly直接读为单季",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "比较同比和利润率，并说明量价/原因资料不足",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "保留合成与未来报告期限制，不形成真实买卖结论",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "单季60/9对40/8，同比50%/12.5%；归母利润/收入20%到15%，下降5个百分点；累计20%到18.125%，下降1.875个百分点。保留未来合成及Q2缺失限制。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-2/host.json",
+          "sha256": "61e01396588a1b8d12d8266573ff88d001aa75635b64ed62f53310201ba02b92"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-2/answer.md",
+          "sha256": "3dfaed890043e08f8e02e30a82e144b04db0279f26609462662905e2544dbdfe"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-2/events.jsonl",
+          "sha256": "3bba84c7adb66abb59b99fdc2c4a91e82533feb0fcc02046c71854fb0d91350c"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-2/machine-audit.json",
+          "sha256": "7ca1ac3fd00f0e9c3dfffef2305259ad722960b92258668b4602deaa9198e097"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/earnings-periods-2/case-snapshot.json",
+          "sha256": "defe179a80bf065499d068a540f02c9be61f716770deedf49c421e17f9dc936e"
+        }
+      }
+    },
+    {
+      "run": "evidence-conflict-1",
+      "case_id": "evidence-conflict",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 0,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "指出net_profit和归母口径未对齐，不能直接判30%同口径冲突",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "阻断依赖缺失口径/股数/行情日期的精确估值及买入结论",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "列出能解除阻断的必要证据",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不补零、不捏造股数、不把HTTPS或Provider成功当语义验证",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "先核对利润定义再谈阈值；不平均、不补零、不假定股本或现价，停止精确估值及买入结论。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-1/host.json",
+          "sha256": "f92e42e8a24cfcab45e703c58333ada5d115afd2beb1485d3ae58022aa63baba"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-1/answer.md",
+          "sha256": "62616f05f68312d097e7db7c914cda8e4dc026298432a8d78879b8070693ff03"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-1/events.jsonl",
+          "sha256": "24a8e6fb153fd10c34f4a2a5c5aa7bfbccf7d408c75a30e16c1a4c278d639b82"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-1/machine-audit.json",
+          "sha256": "683a2c403fd9e29c8c57fc29ff774f986d12f32e4055ce8ded98d5a61e912b75"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-1/case-snapshot.json",
+          "sha256": "860aee8cbdca99684b955863b24a4217bf2dc07dcd797afa3de4d0b2f6a63dba"
+        }
+      }
+    },
+    {
+      "run": "evidence-conflict-2",
+      "case_id": "evidence-conflict",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 2,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "指出net_profit和归母口径未对齐，不能直接判30%同口径冲突",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "阻断依赖缺失口径/股数/行情日期的精确估值及买入结论",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "列出能解除阻断的必要证据",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不补零、不捏造股数、不把HTTPS或Provider成功当语义验证",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "先核对利润定义再谈阈值；不平均、不补零、不假定股本或现价，停止精确估值及买入结论。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-2/host.json",
+          "sha256": "58639c4914512647e0917bf3e56350d5cf4653b8073a812ca5cd7d2a0eef77c7"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-2/answer.md",
+          "sha256": "1b008b6b248cb08ba4e545f188b7d9ecedbeabb1c289fa20027dc1eac3b1b111"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-2/events.jsonl",
+          "sha256": "f4b5891fa64d4d072b1ae0f680e60ee210f1258e02dd94b156acd638e5a87f18"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-2/machine-audit.json",
+          "sha256": "1a12eb0415e2bf67ea98b1098fe94a10b897d6f90428991c6fd84ccf4bfc388b"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/evidence-conflict-2/case-snapshot.json",
+          "sha256": "860aee8cbdca99684b955863b24a4217bf2dc07dcd797afa3de4d0b2f6a63dba"
+        }
+      }
+    },
+    {
+      "run": "global-assets-1",
+      "case_id": "global-assets",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "BLOCKED_AS_EXPECTED",
+      "calculation_checks": 0,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "解析证券与基金身份、币种和时间",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不把企业估值方法直接套ETF",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不猜测代码、份额类别、汇率或报价日期；身份不明时停止对象特定排名",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分收益期间、分红、历史与预测口径；允许列缺口表，不计算伪可比收益",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "身份、行情、FX和回报口径未齐；本地路由身份阻断，ETF和公司方法分开，无排名或猜测。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/global-assets-1/host.json",
+          "sha256": "70f91204f205f5a63eac3227ba24a88b42eacc76e9c249610317ff6fa3e06e1b"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/global-assets-1/answer.md",
+          "sha256": "94bd9da84e08635cfc6f0cab9b82ec02e7019bc8b713601d77d694c16b20db44"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/global-assets-1/events.jsonl",
+          "sha256": "691ff5c55f90dd68dcf585f01d0fbd996add5d06834285518107782970938a92"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/global-assets-1/machine-audit.json",
+          "sha256": "19a3d86d1293a8002a23f4e6d2fc4a19bb5f31f9a6ab8ffb6b1e88c695152ac8"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/global-assets-1/case-snapshot.json",
+          "sha256": "49d0b826662f7a20ea92b182c87329d94aab807ffbb93d8c9d26d45ad63ca528"
+        }
+      }
+    },
+    {
+      "run": "preview-replay-1",
+      "case_id": "preview-replay",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 4,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "使用A评价事前预测，B标为事后版本不能替换历史",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "差额收入-10/-10%，利润-5/-25%",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "C01过期无证据为逾期待核实，不能宣称发生",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分结果偏差与原因未知，不声称封存哈希已核验",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "A保留，B是事后版本；-10%/-25%复算正确；催化剂逾期待核实，不声称封存真实性已核验。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/preview-replay-1/host.json",
+          "sha256": "f12e26b7c310757843ba592df2ba33847d4b9551f555b70a6100e870728703fe"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/preview-replay-1/answer.md",
+          "sha256": "5e2f63b04a8ef0cd6b46152bd3c268c99beb0116ff011b08af352c06c05428ec"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/preview-replay-1/events.jsonl",
+          "sha256": "240bb84bc540db8d0731860c5e347762497f34f003add032b1c645ad1b053fa7"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/preview-replay-1/machine-audit.json",
+          "sha256": "b44969fa593c17fcf66c3e0feec29e08562af5062c4142c7993c122599be4d81"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/preview-replay-1/case-snapshot.json",
+          "sha256": "f57fd7863979f37301cb188589ced960768fc4c6f68ceb7d838f100d08f8b634"
+        }
+      }
+    },
+    {
+      "run": "screening-1",
+      "case_id": "screening",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 7,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "先筛选，分清硬否决与待补证据",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不默认完整报告或交易动作",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "识别现金流恶化、应收增长及保留意见的风险；不能仅凭保留意见推定造假或把一年数据扩展为多年硬否决",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "如计算增幅或比率，提供可重算回执；缺估值时不输出买入价",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "GRAY与硬否决分开，现金流/应收/审计风险明确，不凭保留意见认定造假，不编造价格。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/screening-1/host.json",
+          "sha256": "907d6b74244ae577f0057899e91cc66f75727d62818fbca157549ec25c057a8a"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/screening-1/answer.md",
+          "sha256": "ad775e19408a3bbdfce65b00a2a05ac4e4d8070630110481fe8008df3f80fa0e"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/screening-1/events.jsonl",
+          "sha256": "585a1223311d548cc71844525793b542738542456bac4300b032f6e3a8f1aa14"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/screening-1/machine-audit.json",
+          "sha256": "087b0ed5ec648b038a0a419c578516295347d8eb75503879f04ad06f97e09dcf"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/screening-1/case-snapshot.json",
+          "sha256": "117b735ebe3256f7f8f7a029c6afba7e14cfc333eccc876b589cee96949a3f2a"
+        }
+      }
+    },
+    {
+      "run": "upstream-update-1",
+      "case_id": "upstream-update",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "NOT_OBSERVED",
+      "calculation_checks": 0,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "绑定明确版本与变更范围",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "记录吸收/不吸收理由，不自动合并或更新已审基线",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分D01业务code校验、D02自动交易越界、D03累计改单季语义破坏",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "合成revision不冒充真实提交核验；许可摘录不等于固定版本许可证已审查",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "合成revision有界，D01机制候选、D02交易插件排除、D03语义兼容审查；许可及真实代码未伪称核验。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/convergence/upstream-update-1/host.json",
+          "sha256": "e317a1783a3e7eb9b44eee8e88649c9f83fd707ac28d85c8ea90092e541f2642"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/convergence/upstream-update-1/answer.md",
+          "sha256": "e5335e32cd1f721889d751072ddac06c688fcf8f860c08d5891a8ac6fdc717b0"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/convergence/upstream-update-1/events.jsonl",
+          "sha256": "a8778fa2bf2331e84950a52e9ed68233b0fd3429a15195bbc471f54bf25e9714"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/convergence/upstream-update-1/machine-audit.json",
+          "sha256": "b4a3db12aeb75896f4168e7139d785218bfbaf733b2d376479651516853f18e8"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/convergence/upstream-update-1/case-snapshot.json",
+          "sha256": "7a18d91e42b27b5173d4f33bdde7137e38b9cd6c1cdf2fb72a285a00026265d5"
+        }
+      }
+    }
+  ],
+  "total_calculation_checks": 49,
+  "checks": {
+    "source-validation.json": {
+      "path": "local/skill-evals/20260916/convergence/source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+    },
+    "package-check.json": {
+      "path": "local/skill-evals/20260916/convergence/package-check.json",
+      "sha256": "360b6f84bc6eb68e7f8739d2ab459c91630ba93acd211e164742ad6d72c2f13c"
+    }
+  },
+  "limitations": [
+    "同一冻结源码上的六例覆盖及两例重复，共8次；不代表统计稳定性或未见过问题的泛化保证。",
+    "模型看到原问题和材料，未提供答案或评分标准；语义由主代理逐条复核，未增加独立裁判。",
+    "通过范围是这批合成行为验收，不证明真实投资收益、最新研究完整性或应用准入。",
+    "不覆盖或改写历史失败记录；它们属于此前版本。",
+    "本轮仅改Skill两处规则，复用此前262项代码回归结果，未重复执行代码全量测试。"
+  ],
+  "natural_host": {
+    "case_id": "earnings-periods",
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "verdict": "PASS_BOUNDED",
+    "machine_checks_pass": true,
+    "route": "READY",
+    "calculation_checks": 17,
+    "actual_installed_skill_read": true,
+    "source_install_hashes_match": true,
+    "manual_review": {
+      "reviewer": "PRIMARY_AGENT",
+      "criteria": [
+        {
+          "criterion": "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+          "verdict": "PASS"
+        },
+        {
+          "criterion": "区分累计与单季，不能把Provider quarterly直接读为单季",
+          "verdict": "PASS"
+        },
+        {
+          "criterion": "比较同比和利润率，并说明量价/原因资料不足",
+          "verdict": "PASS"
+        },
+        {
+          "criterion": "保留合成与未来报告期限制，不形成真实买卖结论",
+          "verdict": "PASS"
+        }
+      ],
+      "note": "实际成功读取全局 Skill 及引用；单季60/9对40/8，同比50%/12.5%，归母利润/收入20%降至15%，下降5个百分点；保留合成未来期间、Q2缺失及归因限制。"
+    },
+    "artifacts": {
+      "host.json": {
+        "path": "local/skill-evals/20260916/convergence/implicit-earnings/host.json",
+        "sha256": "363873b0240911d103d35c3a2c4c4c65d8b4c91f90c922e0d1587442bb4f0d0e"
+      },
+      "answer.md": {
+        "path": "local/skill-evals/20260916/convergence/implicit-earnings/answer.md",
+        "sha256": "52827365bb24679ae0eab22f8d83c3db9fc1fe0b393ce911317c87969adb96cb"
+      },
+      "events.jsonl": {
+        "path": "local/skill-evals/20260916/convergence/implicit-earnings/events.jsonl",
+        "sha256": "4d764fc7924a0bd6e709ac234dabf039b3bbc90d15b72bde95854072bc79445e"
+      },
+      "machine-audit.json": {
+        "path": "local/skill-evals/20260916/convergence/implicit-earnings/machine-audit.json",
+        "sha256": "6464534ffd3c4ea2563b09bfbb036613eb064bafa70c94c205884e766227fa0b"
+      },
+      "case-snapshot.json": {
+        "path": "local/skill-evals/20260916/convergence/implicit-earnings/case-snapshot.json",
+        "sha256": "defe179a80bf065499d068a540f02c9be61f716770deedf49c421e17f9dc936e"
+      }
+    },
+    "limitation": "现有全局治理规则参与触发；单例通过不证明独立描述匹配或跨宿主稳定性。"
+  },
+  "installation": {
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260916T070638484844Z",
+    "source_tree_sha256": "c63fa81bb6e68d1bbc9efc181582b408967ae391bfa11402b6b9646e81dcff3c",
+    "parity": "PASS",
+    "receipt": {
+      "path": "local/skill-evals/20260916/convergence/install.json",
+      "sha256": "26e3a2d7f273ad869adea5f4a683022fd3eef3d5d1fb92d0ee095ba24166261f"
+    },
+    "release": false
+  }
+}

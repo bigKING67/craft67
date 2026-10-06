@@ -1,0 +1,39 @@
+{
+  "schema_version": "creative-craft.copy-sheet.v1",
+  "copy_sheet_id": "copy-sheet-tbd",
+  "brief_id": "brief-tbd",
+  "direction_id": "direction-tbd",
+  "selected_route_id": "route-1",
+  "status": "draft",
+  "use_scope": "exploration",
+  "strategy": {
+    "objective": "TBD",
+    "audience": "TBD",
+    "tension": "TBD",
+    "proposition": "TBD",
+    "desired_response": "TBD",
+    "evidence_state": "UNVERIFIED",
+    "evidence_refs": []
+  },
+  "voice": {
+    "principles": ["TBD"],
+    "prohibited_tones": []
+  },
+  "proof_hierarchy": [],
+  "mandatory_copy": [],
+  "prohibited_copy": [],
+  "legal_copy": [],
+  "copy_routes": [],
+  "selected_copy_route_id": null,
+  "copy_units": [],
+  "render_method": "post_overlay",
+  "approval": {
+    "status": "pending",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "approved_by": null,
+    "approved_at": null,
+    "basis": ""
+  },
+  "unknowns": ["Copy evidence and owner approval remain unresolved."]
+}

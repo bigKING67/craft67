@@ -1,0 +1,15 @@
+Decision: conditional; with only AOV 299 and gross margin 50%, I cannot say it is worth livestream.
+
+Confirmed facts: premium food gift box, price 299, gross margin around 50%, livestream intent.
+
+Assumptions needed: platform fee, fulfillment, gift/sample, refund loss, commission, pit fee, packaging, shelf life, breakage, service fee, target profit, and expected repurchase.
+
+Economics: if gross margin is 149.5 per order, then every order must still pay platform fee, logistics, gift, refund, creator commission, and possibly pit fee. A 20%-25% commission plus heavy gift-box logistics can consume most contribution profit.
+
+Recommendation: test only with a small controlled pack if shelf life, gift packaging, review base, and creator fit are ready. Do not commit pit fee until channel net profit and payback are modeled.
+
+Risk: shelf life, breakage, gifting expectation, delayed delivery, weak reviews, and refund can destroy margin.
+
+Stop rule: stop if channel net profit is negative or reviews mention packaging/freshness issues. Scale rule: scale only when gross-profit ROI, refund, gift review quality, and repeat/gift repurchase are stable.
+
+Mechanism: complete the cost model, run one bounded livestream test, and decide from delivered-order profit rather than GMV. Owner: commercial lead with fulfillment and food-quality owners. Success signal: positive channel net profit after refund and breakage reserves. Next review: after the first fulfilled and after-sale-complete cohort.

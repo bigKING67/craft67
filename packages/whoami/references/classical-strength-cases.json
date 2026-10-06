@@ -1,0 +1,57 @@
+{
+  "scope": "Public four-pillar structural fixtures, not reconstructed birthdays or verified biographies. Source conclusions are not engine results.",
+  "cases": [
+    {
+      "id": "wealth-light-peer-strong",
+      "pillars": [
+        "甲子",
+        "辛未",
+        "辛酉",
+        "壬辰"
+      ],
+      "source": "https://donglishuzhai.net/chapter/3746.html",
+      "locator": "财用伤官段，甲子辛未辛酉壬辰",
+      "sourceJudgment": "财不甚旺而比强；以伤官化劫生财",
+      "scopeNote": "财格用伤官的原文例，不能无条件改称所有普通身旺财轻盘；原文甲透未库不是本核心的同干透出。"
+    },
+    {
+      "id": "wealth-heavy-body-weak",
+      "pillars": [
+        "丁未",
+        "癸丑",
+        "甲辰",
+        "甲戌"
+      ],
+      "source": "https://zh.wikisource.org/zh-hans/滴天髓闡微",
+      "locator": "通神论十二八格末，丁未癸丑甲辰甲戌命例",
+      "sourceJudgment": "财多身弱；根受冲及印受旺土影响",
+      "scopeNote": "保留原文特定命例对冲的作用裁定，不把所有冲自动当冲毁；不采信寿夭与财富应验叙述。"
+    },
+    {
+      "id": "body-killer-balanced",
+      "pillars": [
+        "壬申",
+        "丙午",
+        "庚午",
+        "庚辰"
+      ],
+      "source": "https://zh.wikisource.org/zh-hans/滴天髓闡微",
+      "locator": "通神论九干支总论，左右同志段后壬申丙午庚午庚辰命例",
+      "sourceJudgment": "身杀两停；壬制杀、辰生身，一制一化",
+      "scopeNote": "支持与官杀负荷接近，不是身财两停，也不代表五行均分或没有作用。"
+    },
+    {
+      "id": "balanced-countercase",
+      "pillars": [
+        "壬午",
+        "丙午",
+        "庚申",
+        "戊寅"
+      ],
+      "source": "https://zh.wikisource.org/zh-hans/滴天髓闡微",
+      "locator": "紧接前例，壬午丙午庚申戊寅对照例",
+      "sourceJudgment": "壬坐午且戊影响壬食神，不能照搬前例制化",
+      "scopeNote": "复合差异的古籍对照，不是严格单变量试验；本盘日申仍藏壬，不能改说水全无根。"
+    }
+  ]
+}

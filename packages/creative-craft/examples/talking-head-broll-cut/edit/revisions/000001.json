@@ -1,0 +1,118 @@
+{
+  "schema_version": "creative-craft.edit-document.v2",
+  "project_id": "talk-broll",
+  "revision": 1,
+  "parent_sha256": null,
+  "title": "Talking head with B-roll (synthetic)",
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "assets": [
+    {
+      "id": "talk",
+      "file": "assets/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.media",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "duration": 60,
+      "video": true,
+      "audio": true,
+      "width": 1080,
+      "height": 1920,
+      "origin": {
+        "kind": "import"
+      }
+    },
+    {
+      "id": "broll",
+      "file": "assets/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.media",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "duration": 12,
+      "video": true,
+      "audio": false,
+      "width": 1080,
+      "height": 1920,
+      "origin": {
+        "kind": "import"
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "id": "v_main",
+      "kind": "video",
+      "locked": false,
+      "name": "Talk"
+    },
+    {
+      "id": "v_broll",
+      "kind": "video",
+      "locked": false,
+      "name": "B-roll"
+    },
+    {
+      "id": "c_sub",
+      "kind": "caption",
+      "locked": false
+    }
+  ],
+  "items": [
+    {
+      "id": "talk1",
+      "track_id": "v_main",
+      "kind": "media",
+      "asset_id": "talk",
+      "start_frame": 0,
+      "frames": 300,
+      "source_in_seconds": 2.0,
+      "volume": 1
+    },
+    {
+      "id": "talk2",
+      "track_id": "v_main",
+      "kind": "media",
+      "asset_id": "talk",
+      "start_frame": 300,
+      "frames": 300,
+      "source_in_seconds": 30.0,
+      "volume": 1
+    },
+    {
+      "id": "broll1",
+      "track_id": "v_broll",
+      "kind": "media",
+      "asset_id": "broll",
+      "start_frame": 120,
+      "frames": 90,
+      "source_in_seconds": 1.0,
+      "volume": 0
+    },
+    {
+      "id": "cap1",
+      "track_id": "c_sub",
+      "kind": "caption",
+      "text": "先说结论",
+      "link": {
+        "item_id": "talk1",
+        "source_from": 2.0,
+        "source_to": 5.0
+      }
+    },
+    {
+      "id": "cap2",
+      "track_id": "c_sub",
+      "kind": "caption",
+      "text": "再看细节",
+      "link": {
+        "item_id": "talk2",
+        "source_from": 30.0,
+        "source_to": 33.0
+      }
+    }
+  ],
+  "change": {
+    "author": "agent",
+    "summary": "Synthetic revision 1",
+    "operations_sha256": null
+  }
+}

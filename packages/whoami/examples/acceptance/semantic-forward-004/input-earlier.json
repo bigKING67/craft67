@@ -1,0 +1,12 @@
+{
+  "calendar": "solar",
+  "date": "2021-11-07",
+  "time": "01:30",
+  "place": "合成地点（纽约）",
+  "longitude": -74.006,
+  "timeZone": "America/New_York",
+  "gender": "female",
+  "timeBasis": "civil",
+  "dayBoundary": "zi",
+  "dstDisambiguation": "earlier"
+}

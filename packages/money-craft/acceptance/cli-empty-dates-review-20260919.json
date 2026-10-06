@@ -1,0 +1,39 @@
+{
+  "schema": "money-craft.cli-empty-dates-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Explicit empty optional date arguments must not be treated as omitted",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "3b601992125fdce227562c7acfbcb3c2612e855737dcd700e9bab35b56bb7157",
+    "tests/test_cli_preflight.py": "94f957331fe36cfba7b49afc3d5440461ae16398e4addd9c2b454d2c8f96e9c8"
+  },
+  "validation": {
+    "target_tests": 4,
+    "full_tests": 415,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 1,
+    "initial_red_errors": 1
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No blockers in declared optional date scope",
+    "target_tests": 4,
+    "additional_date_matrix_cases": 37,
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "3b601992125fdce227562c7acfbcb3c2612e855737dcd700e9bab35b56bb7157",
+      "tests/test_cli_preflight.py": "94f957331fe36cfba7b49afc3d5440461ae16398e4addd9c2b454d2c8f96e9c8"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T092058703655Z"
+  },
+  "limits": [
+    "Runtime/configuration and remaining CLI branches not closed.",
+    "No Provider data requests, app, commit, push or release."
+  ]
+}

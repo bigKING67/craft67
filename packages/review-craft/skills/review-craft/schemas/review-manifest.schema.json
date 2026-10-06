@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/review-manifest.schema.json",
+  "title": "Review Craft manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "toolVersion", "status", "runId", "createdAt", "sealedAt", "target", "configuration", "configFingerprint", "artifacts"],
+  "properties": {
+    "documentType": {"const": "review-craft.manifest"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "toolVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"enum": ["draft", "final"]},
+    "runId": {"type": "string", "pattern": "^rc-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{12}(?:-[0-9]+)?$"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "sealedAt": {"type": ["string", "null"], "format": "date-time"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repositoryName", "identity", "revision", "branch", "remote", "dirty", "unborn", "sourceFingerprint", "dirtyFingerprint"],
+      "properties": {
+        "repositoryName": {"type": "string", "minLength": 1},
+        "identity": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "revision": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "remote": {"type": ["string", "null"]},
+        "dirty": {"type": "boolean"},
+        "unborn": {"type": "boolean"},
+        "sourceFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "dirtyFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "configuration": {"type": "object"},
+    "configFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifacts": {"type": "object", "minProperties": 12, "additionalProperties": {"type": "string", "minLength": 1}}
+  }
+}

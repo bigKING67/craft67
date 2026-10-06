@@ -1,0 +1,91 @@
+{
+  "schema": "money-craft.fx-bridge-review.v1",
+  "checked_at": "2026-09-20T10:45:19.974305+00:00",
+  "status": "PARTIAL_RESEARCH_EVIDENCE",
+  "bounded_review_completed": true,
+  "full_company_e2e_pass": false,
+  "core_gate_changed": false,
+  "original_reconciliation_changed": false,
+  "global_install_updated": false,
+  "route": "primary-source-earnings-review",
+  "execution": "main_serial",
+  "skills_used": [
+    "money-craft",
+    "pdf"
+  ],
+  "checks": {
+    "source_hashes": 2,
+    "fresh_extractions_match_saved": 2,
+    "pdf_pages_visually_read": [
+      55,
+      56,
+      174
+    ],
+    "calculation_receipts_passed": 13
+  },
+  "findings": [
+    "Issuer classification statement and group cash-flow arithmetic are supported within the saved disclosure scope.",
+    "Derivative investment table, same-page prose and financial note show different amounts; scope and timing are not reconciled.",
+    "Tax/minority attribution, instrument matching and settlement bridge remain unverified."
+  ],
+  "limitations": [
+    "Source material is from same issuer; not independent corroboration.",
+    "New web open timed out; no refreshed source observation.",
+    "Parent review only; no host rerun, formal archive, PDF creation or normalized earnings estimate.",
+    "Compatibility extractor executed; not an independent source verdict."
+  ],
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-fx-bridge/S11.txt",
+      "sha256": "8a78deef043c943e527b08ccca98e9d872039b9c0e963c658df450223af04ca8"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/S19.txt",
+      "sha256": "16dcfacab905cb80431e1836b64534177d46a9e8792317b69982489ae267b6cb"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/bridge-review.md",
+      "sha256": "0e28455d9e667d23cfea4aa975a33134f5f908c3974d68c8f1e5c4f6d46dbb50"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/build_review.py",
+      "sha256": "5d3c06a835996715ae5c5928822e305540e7c4945c96e7171b5058bd6eb1a6c5"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/capture-S11-import.json",
+      "sha256": "012231547ff6dbeb577a17c98cfa7b2f9a958bd30b4303238f54c682eb2ab903"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/capture-S11.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/capture-S19-import.json",
+      "sha256": "7681a0a6aa7db8ae6561906e759d9148d433513906d0905dfe310932af057ba1"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/compat-extract.txt",
+      "sha256": "34fabc6fe956924d0d1df70c2d4ac72afb03bec8ea722cedd42a29a113d107ab"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/financial-audit.json",
+      "sha256": "aa2aac66992f1ca43ea77bf3f149b6853d4331ffb2b4db83843d30f711b0f92d"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/ledger-verify.json",
+      "sha256": "9e64bc30e0b3a572a576c83062b554436d09dc5c7e6dbbafca1a69250adc3181"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/route.json",
+      "sha256": "d33b88d3f796dbb9c9f43462f68dc9987e07eb9b0d1e70eb91c79871f3134fcb"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/semantic-review.json",
+      "sha256": "418aafbcd736ebd91284837d07f4bfadc1e9a6f7382e9147e7d9fb36ed768f16"
+    },
+    {
+      "path": "local/acceptance/20260920-fx-bridge/source-check.json",
+      "sha256": "0d246175710bc1b16de454dc7e177e340f4f0f3e471e51041ed86a1364bef241"
+    }
+  ]
+}

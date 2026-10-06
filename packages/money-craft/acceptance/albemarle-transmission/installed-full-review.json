@@ -1,0 +1,76 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "status": "PASS_BOUNDED_INSTALLED_FULL_TASK",
+  "date": "2026-09-20",
+  "reviewer": "parent agent; manual semantic review, not independent",
+  "run_dir": "local/skill-evals/20260920-albemarle-price/installed-full",
+  "elapsed_seconds": 192.6,
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "machine_checks_pass": true,
+  "financial_checks": 10,
+  "public_links": 2,
+  "semantic_checks": [
+    {
+      "criterion": "实际隐式加载安装版Money Craft和相关引用；路由有效，身份及历史回放限制清晰",
+      "status": "PASS",
+      "reason": "Installed Skill and relevant references observed in command trace, route READY; identity, dates and extraction limitations explicit."
+    },
+    {
+      "criterion": "不把市场现货价格机械等同公司合同实现价或收入弹性；无价格桥时明确缺口",
+      "status": "PASS",
+      "reason": "Final answer explicitly separates price contribution from spot decline and identifies contract repricing lag, product/region/customer mix gaps; no industry-price profit elasticity invented."
+    },
+    {
+      "criterion": "区分分部与集团以及调整后EBITDA与GAAP利润；收入比率不当价格beta或单位经济性",
+      "status": "PASS",
+      "reason": "Separate segment revenue, group adjusted EBITDA, GAAP operating profit and common-share loss after preferred dividends."
+    },
+    {
+      "criterion": "识别Q4负利润基数及LCM减记，避免负基数百分比增长误导",
+      "status": "PASS",
+      "reason": "Prior-year LCM charge identified, no negative-base growth percentage. Tax benefit belongs to net-income explanation; wording can be more precise about which profit improves."
+    },
+    {
+      "criterion": "从现金流原表计算OCF减资本支出，识别客户预付款和削减资本支出的影响；不当可持续或可分配现金",
+      "status": "PASS",
+      "reason": "OCF minus capex and prepayment diagnostic computed; no distributable-cash or sustainable-cash claim. Input precision caveat remains useful for the rounded prepayment disclosure."
+    },
+    {
+      "criterion": "不按分部收入占比分配集团现金流；同发行人多份披露不当独立双源",
+      "status": "PASS",
+      "reason": "No segment allocation of group cash; same issuer not independent corroboration; dividend prose/table conflict disclosed."
+    },
+    {
+      "criterion": "下一复查有报告期或披露事件窗口及判断变动条件；不编造发布日期，不形成买卖结论",
+      "status": "PASS",
+      "reason": "Q2/half-year reporting window and strengthening/weakening conditions explicit; no invented release date or trading conclusion."
+    }
+  ],
+  "comparison": {
+    "previous_run": "local/skill-evals/20260920-albemarle-blind/compact",
+    "identical_prompt_bytes": true,
+    "identical_case_contract_bytes": true,
+    "previous_semantic": "6 PASS, 1 PARTIAL",
+    "current_semantic": "7 PASS",
+    "scope": "Single observed before/after pair; not proof of causality or stable generalization."
+  },
+  "installed_reference_sha256": "7629d7e3225c1e2cc94268ff1a3bfad5a62894350760d490c189082725cec157",
+  "artifact_hashes": {
+    "host.json": "fb36e6ec69a056d0ffd0fc3f00cf2dc918d6cb85a793d83ae66c4d58e232cd8a",
+    "prompt.txt": "d2020122c01429ac0fe57911c61c1689ecd34b5e0ece0504bff2876575a28e92",
+    "answer.md": "6a020744c10cc796cd92fb7b083db4153fd93c435c0a5351ebdad1f73aa4c5c3",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "events.jsonl": "733342d8c1f2f50efaa555b91e877fbc0c146ea17c031dfc78baa6033918fcc0",
+    "case-snapshot.json": "e495d3ffa9dd4927c9edc5b2d14f407d130ac4eab5f2f6b331096acf9fcc6edc",
+    "machine-audit.json": "1e87ac55e01e080bf0a606b656d89da67740e69b3b1f0a38f4c6e6c1550968e8"
+  },
+  "limits": [
+    "Historical timeout and PARTIAL receipts remain unchanged.",
+    "No new source capture, independent financial corroboration, valuation or application acceptance.",
+    "PASS applies to saved seven criteria for this bounded task; not all investment research quality."
+  ],
+  "editorial_notes": [
+    "Prepayment-adjusted residual uses a rounded input and is approximate.",
+    "Discrete tax benefit supports net-income attribution, not operating margin or EBITDA attribution."
+  ]
+}

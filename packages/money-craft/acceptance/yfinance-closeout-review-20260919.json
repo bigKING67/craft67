@@ -1,0 +1,53 @@
+{
+  "schema": "money-craft.yfinance-closeout-review.v1",
+  "date": "2026-09-19",
+  "module_status": "REVIEWED_BOUNDED",
+  "scope": "Whole adapter and direct CLI mapping, offline real dependency verification",
+  "source_hashes": {
+    "skills/money-craft/scripts/yfinance_adapter.py": "5fce407420628b6348fc1003b0b1165e353fdcd8d713a404aeecb9d20756516c",
+    "tests/test_yfinance_adapter.py": "571319b4451be150ffc61af378cc1563c7cb7203e4f99ecf3771344fffde2625",
+    "tests/test_yfinance_pandas.py": "6fa4e4391eda96a92673ac70aa95cc1b632109d7895eb8f3cdf9a05710ba1956"
+  },
+  "findings": [
+    {
+      "status": "FIXED",
+      "finding": "ConnectTimeout and builtin TimeoutError were not classified transient.",
+      "evidence": "Actual dependency exception tests verify three attempts; SSLError/ValueError remain single-attempt."
+    },
+    {
+      "status": "FIXED",
+      "finding": "Invalid Unicode export escaped structured provider errors.",
+      "evidence": "Red UnicodeEncodeError reproduced; final CLI returns parsed JSON malformed_response and no capture."
+    }
+  ],
+  "validation": {
+    "yfinance_tests": 29,
+    "full_tests": 410,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS"
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No remaining blockers in whole-file bounded scope",
+    "tests": 29,
+    "source_hashes": {
+      "skills/money-craft/scripts/yfinance_adapter.py": "5fce407420628b6348fc1003b0b1165e353fdcd8d713a404aeecb9d20756516c",
+      "tests/test_yfinance_adapter.py": "571319b4451be150ffc61af378cc1563c7cb7203e4f99ecf3771344fffde2625",
+      "tests/test_yfinance_pandas.py": "6fa4e4391eda96a92673ac70aa95cc1b632109d7895eb8f3cdf9a05710ba1956"
+    },
+    "real_cli": "Surrogate search result returns exit 4 / malformed_response / ok false and no capture."
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T090959401315Z"
+  },
+  "limits": [
+    "Real pandas/NumPy and fixed yfinance library installed, but all Provider returns and failures controlled offline.",
+    "No real Yahoo, independent security identity/financial truth, all dtypes/versions or cross-platform claims.",
+    "Original broken data environment unchanged.",
+    "No app, commit, push or release."
+  ]
+}

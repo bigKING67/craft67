@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/reverse-craft/schemas/path.schema.json",
+  "title": "Reverse Craft path snapshot v1",
+  "type": "object",
+  "required": ["schema", "items"],
+  "properties": {
+    "schema": {"const": "reverse-craft.paths.v1"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "finding_ids", "preconditions", "impact", "validation", "created_at"],
+        "properties": {
+          "id": {"pattern": "^P-[0-9]{4,}$"},
+          "title": {"type": "string", "minLength": 1},
+          "status": {"enum": ["hypothesis", "supported", "confirmed", "refuted"]},
+          "finding_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"pattern": "^F-[0-9]{4,}$"}},
+          "preconditions": {"type": ["string", "null"]},
+          "impact": {"type": ["string", "null"]},
+          "validation": {"type": ["string", "null"]},
+          "created_at": {"type": "string", "format": "date-time"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

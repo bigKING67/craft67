@@ -1,0 +1,69 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "liquidity-real-xiaomi",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL",
+      "prompt": "请核对2025和2024借款总额以及可转债负债组成的变动。有观点说：“2025流动可转债变成零且票息为零，说明这笔融资债务消失；期末负债下降全是重分类造成的。附注再次出现的可转债金额还应另加到借款总额。”请逐项判断并复算。 只使用给定历史正式材料，不联网、不做完整公司研究。",
+      "facts": "Xiaomi Corporation，HK:01810，香港市场B类普通股；交易币种HKD，报告币种CNY，金额依原表人民币千元。验收日2026-09-21，余额日2025-12-31及比较日2024-12-31；报告2025年报，非验收日最新余额。机械提取片段附后，完整原件可读：local/skill-evals/20260921-liquidity-transfer-b/evidence/xiaomi-annual.pdf。只有单一发行人来源。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260921-liquidity-transfer-b/evidence/xiaomi-excerpt.txt",
+          "sha256": "fd5da99e0ed0aaab33552b6584b81c2ac3f55d48fa358a80de1c3b44eb6e07c9",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0428/2026042800526.pdf",
+          "raw_path": "local/skill-evals/20260921-liquidity-transfer-b/evidence/xiaomi-annual.pdf",
+          "raw_sha256": "b787f0290513e48a95078ed2a68dc1e240da68d204e5dd9aedc59b66a7c75ec2",
+          "captured_at": "2026-09-20T17:31:09.465059+00:00",
+          "post_hoc": true,
+          "locator": "Note 33 Borrowings, printed pp390-392"
+        }
+      ],
+      "criteria": [
+        "读取全局Skill、语义条款及证据并完成宿主路由。",
+        "两年流动与非流动借款合计完整；可转债计入一次，零票息不等于无融资负债。",
+        "用5360358+244004-367594-115913=5120855解释余额桥，不将变化全归于重分类。",
+        "说明2025赎回日已过及披露条件对分类的影响，区分账面负债与美元本金，不推定全部债务清偿或全部融资范围。",
+        "历史时点、单源限制、公开引用、计算回执完整。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "liquidity-real-byde",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL",
+      "prompt": "核对集团和母公司的期末现金，能否相加后作为母公司立即可分红金额？请计算母公司应收减应付附属公司款项的差额，并评价“都是内部往来，所以应付款不用考虑；集团解除了受限存款，就等于母公司分红能力同步增加”的说法。 只使用给定历史正式材料，不联网、不做完整公司研究。",
+      "facts": "BYD Electronic (International) Company Limited，HK:00285，香港市场普通股；交易币种HKD，报告币种CNY，金额依原表人民币千元。验收日2026-09-21，余额日2025-12-31及比较日2024-12-31；报告2025年报，非验收日最新余额。机械提取片段附后，完整原件可读：local/skill-evals/20260921-liquidity-transfer-b/evidence/byde.pdf。只有单一发行人来源。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260921-liquidity-transfer-b/evidence/byde-excerpt.txt",
+          "sha256": "6efae1364b37ed23d46cbd1e14415508b80271029813a837154d7b1c796a6d94",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0422/2026042200748.pdf",
+          "raw_path": "local/skill-evals/20260921-liquidity-transfer-b/evidence/byde.pdf",
+          "raw_sha256": "0b8c1bbaf0916f80de9be09c91b9ab4caf655dfc5ddc151ec441b428a3f34634",
+          "captured_at": "2026-09-20T17:31:00.420326+00:00",
+          "post_hoc": true,
+          "locator": "Note 23 and Note 43, Company statement printed p210"
+        }
+      ],
+      "criteria": [
+        "读取全局Skill、语义条款及证据并完成宿主路由。",
+        "识别集团13552178与母公司3938192人民币千元，不能相加或把集团余额替代母公司现金。",
+        "复算10874460-14043474=-3169014，净额不能替代法律抵销与实际结算条件；内部应付不视为无需偿还。",
+        "识别集团期后释放2809736受限存款不等于母公司年末现金增加或可分红增加，不重复扣减已排除受限项的现金等价物。",
+        "历史时点、单源限制、公开引用、计算回执完整；缺口不能设零。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

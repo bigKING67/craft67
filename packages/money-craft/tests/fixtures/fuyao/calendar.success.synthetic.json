@@ -1,0 +1,13 @@
+{
+  "code": 0,
+  "message": "synthetic success",
+  "request_id": "synthetic-calendar-1",
+  "data": {
+    "timestamp": 1,
+    "item": [
+      {"date": "20260101", "date_ms": 1},
+      {"date": "20260102", "date_ms": 2},
+      {"date": "20260103", "date_ms": 3}
+    ]
+  }
+}

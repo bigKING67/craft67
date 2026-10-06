@@ -1,0 +1,4 @@
+interface:
+  display_name: "Consumer Marketing OS｜全域整合营销中枢"
+  short_description: "品牌传播、内容社交、效果增长和生命周期的整合营销编排。"
+  default_prompt: "Use $consumer-marketing-os to build an integrated consumer marketing strategy and orchestrate brand, content, performance, lifecycle, commerce, and measurement workstreams."

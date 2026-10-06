@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "msft-q3-capital-intensity",
+      "status": "READY_HISTORICAL",
+      "prompt": "请看微软Microsoft Corporation（US-NASDAQ:MSFT，普通股，交易及报告币种USD）FY2025 Q3业绩。利润增长、自由现金流和AI投入放在一起看，经营质量是否改善，资本投入压力是否缓解？请用单季和累计数据判断，区分事实、管理层解释和待验证假设，给出下一观察窗口。历史研究截止2025-04-30，实际于2026年回放。正文约600汉字，计算另附；不做目标价、归档或交易。",
+      "facts": "仅指定原始文件为来源，可用同目录同名txt辅助定位；必须核对原HTML表格表头。两份材料同属发行人，不是独立双源。禁止读取案例验收标准、主代理报告及其他会话答案。可使用正常Skill引用与工具；这是事后回放，不计预测成绩。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/evidence/20260920-msft-q3/release.html",
+          "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2025-Q3/press-release-webcast",
+          "sha256": "25380d544c0b9978e28f50bcc461dc0afeb611a3dab9b74a8c9efd1da64357f7",
+          "published_on": "2025-04-30",
+          "captured_at": "2026-09-20T04:36:37.398308+00:00",
+          "bytes": 529226,
+          "capture_method": "curl --fail; raw HTML; historical page captured post hoc"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-msft-q3/call.html",
+          "url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q3",
+          "sha256": "cb9ac4745132c78fd5104657e37f0fb2cc65f216bbfd3c01f68987ca212298ea",
+          "published_on": "2025-04-30",
+          "captured_at": "2026-09-20T04:36:37.410560+00:00",
+          "bytes": 347211,
+          "capture_method": "curl --fail; raw HTML; historical page captured post hoc"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "安装Skill自然发现、路由成功、身份与历史截止正确",
+        "分清单季和九个月累计现金流，现金FCF对比及利润率计算完整",
+        "含租赁资本投入不能直接替代现金PP&E；差额不能冒充租赁现金还款",
+        "单季与累计信号不同，不能仅凭强劲利润或单季现金流宣告资本负担缓解",
+        "区分报告汇率和固定汇率；管理层解释及Q4展望不是已兑现事实",
+        "反方、下一观察窗口和资料限制明确，未声称AI独立回报率或可分配现金"
+      ]
+    }
+  ]
+}

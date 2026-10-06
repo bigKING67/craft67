@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/research-case.schema.json",
+  "title": "Money Craft derived research case",
+  "type": "object",
+  "required": [
+    "schema",
+    "plan_sha256",
+    "identity",
+    "as_of",
+    "provider_documentation",
+    "operations",
+    "official_sources"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.research-case.v1"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "identity": {
+      "type": "object"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "provider_documentation": {
+      "type": "string",
+      "format": "uri"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "official_sources": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object"
+      }
+    },
+    "public_sources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "design-craft.comparative-variants.v2",
+  "host": "pi",
+  "focused_variant": "impeccable",
+  "variants": [
+    {
+      "id": "baseline",
+      "label": "No skill",
+      "skill_paths": []
+    },
+    {
+      "id": "impeccable",
+      "label": "Focused production-quality upstream",
+      "skill_paths": [
+        "upstreams/impeccable/.agents/skills/impeccable"
+      ]
+    },
+    {
+      "id": "design-craft",
+      "label": "design-craft",
+      "skill_paths": [
+        "skills/design-craft"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "money-craft.report-chart-scalars.v1",
+  "date": "2026-09-17",
+  "scope": "Whole-cell scalar parsing and six chart/price call sites",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "3f19032e11265ac62419c95ee57404dcf7c797db3490c1900963c9e023193c1b",
+    "tests/test_report_renderer.py": "7803c6d12dc6332889872f7cef78565eb48cc36bd68e32a3cf51d866eb759c9b",
+    "skills/money-craft/references/report-rendering.md": "5d03c37d3e1e257251b608d7d8cd8a52ce25ae11e943e6c4b86688983f855811"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Substring numeric extraction converted ranges, source identifiers and parenthesized negatives into misleading point values.",
+    "after": "Whole finite scalar required; caller-specific suffixes; reject nonzero float underflow; ambiguous cells remain in source tables but cannot supply chart data."
+  },
+  "validation": {
+    "renderer_tests": 34,
+    "full_tests": 324,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 19,
+    "real_cli": "Ambiguous financial cells retained in HTML; no financial trend drawn; ordinary valuation chart remains and source bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 34,
+    "additional_boundary_assertions": 13,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "3f19032e11265ac62419c95ee57404dcf7c797db3490c1900963c9e023193c1b",
+      "tests/test_report_renderer.py": "7803c6d12dc6332889872f7cef78565eb48cc36bd68e32a3cf51d866eb759c9b"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T083717872722Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL; not whole-file review closure.",
+    "Large finite values may overflow subsequent arithmetic; full SVG geometry and unit inference await review.",
+    "Unsupported notation is omitted from charts; table contents remain available.",
+    "Real PDF engine and visual acceptance are unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

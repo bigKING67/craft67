@@ -1,0 +1,511 @@
+import { spawnSync } from "node:child_process";
+
+const GROUPS = [
+  {
+    id: "auth_profile_lifecycle",
+    title: "Refactor auth profile lifecycle",
+    description: "Auth profile storage, login detection/submission, handlers, and auth live contracts.",
+    commit_message: "Refactor TMWD auth profile lifecycle",
+    verification: [
+      "npm run check:mcp",
+      "npm run check:auth-live",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Exact-origin profile matching and secret redaction must remain intact.",
+      "Manual-required CAPTCHA/MFA/SSO/OAuth states must not submit forms repeatedly.",
+    ],
+    patterns: [
+      /^src\/auth\/(handlers|profile-store|login-detect|login-submit|profile-metadata|index)\b/,
+      /^contracts\/browser-auth-live-smoke(?:\.mjs|\/)/,
+    ],
+  },
+  {
+    id: "captcha_assist",
+    title: "Add CAPTCHA assist planning and live contracts",
+    description: "CAPTCHA planning, bounded vision correction, physical assist gates, and SOP docs.",
+    commit_message: "Add guarded CAPTCHA assist planning",
+    verification: [
+      "npm run check:auth-live",
+      "npm run check:captcha-router",
+      "npm run check:captcha-provider-jfbym",
+      "npm run check:captcha-provider-jfbym-setup",
+      "npm run check:captcha-provider-jfbym-coordinate",
+      "npm run check:captcha-assist-live",
+      "npm run check:ljqctrl",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Default path must stay planning-only and must not move the mouse.",
+      "Cross-origin CAPTCHA iframes must degrade to manual handoff.",
+      "No JS/CDP CAPTCHA widget clicking or token/cookie extraction.",
+    ],
+    patterns: [
+      /^src\/auth\/(?:captcha|captcha-assist|manual-challenge)\b/,
+      /^src\/physical-input\//,
+      /^contracts\/browser-captcha-(?:assist(?:-live-smoke|-physical-live-gate)?|router-contract|provider-jfbym(?:-setup|-coordinate)?-contract)(?:\.mjs|\/)/,
+      /^contracts\/ljqctrl-doctor\.mjs$/,
+      /^docs\/ljqCtrl-SOP\.md$/,
+    ],
+  },
+  {
+    id: "managed_tab_lifecycle",
+    title: "Harden managed tab lifecycle",
+    description: "Managed tab workspace registry, finalizer hygiene, and lifecycle live smoke contracts.",
+    commit_message: "Harden TMWD managed tab lifecycle",
+    verification: [
+      "npm run check:mcp",
+      "npm run check:managed-tab-live",
+      "npm run verify",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "User unmanaged tabs must remain ignored by cleanup and reuse flows.",
+      "Stale records should be pruned without closing user tabs.",
+    ],
+    patterns: [
+      /^src\/tab-workspace(?:\.mjs|\/)/,
+      /^contracts\/browser-managed-tab-live-smoke(?:\.mjs|\/)/,
+      /^scripts\/check-managed-tab-cleanup\.mjs$/,
+    ],
+  },
+  {
+    id: "codex_host_finalizer_removal",
+    title: "Remove obsolete Codex host finalizer adapter",
+    description: "Exact tombstones for the unused repo-side host finalizer and its contract.",
+    commit_message: "Remove obsolete Codex host finalizer adapter",
+    verification: [
+      "npm run check:change-set-contract",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Codex lifecycle cleanup still requires an explicit scoped finalize_task call; PostToolUse capture is observational only.",
+      "Do not restore a repo-side adapter without a real Codex host dispatch integration.",
+    ],
+    patterns: [
+      /^src\/codex-host-finalizer\.mjs$/,
+      /^src\/codex-host-finalizer\/payloads\.mjs$/,
+      /^contracts\/codex-host-finalizer-contract\.mjs$/,
+    ],
+  },
+  {
+    id: "screenshot_runtime",
+    title: "Harden screenshot runtime closure",
+    description: "Screenshot transport, responsive capture, live regression, and repeated stability evidence.",
+    commit_message: "Harden screenshot closure gates",
+    verification: [
+      "npm run check:mcp",
+      "npm run check:screenshot-stability-contract",
+      "npm run check:screenshot-live",
+      "npm run check:screenshot-stability",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "The real default path is a dedicated background managed tab with document.visibilityState=hidden.",
+      "Every stability iteration must preserve timeout cleanup, viewport restoration, and scoped finalization evidence.",
+    ],
+    patterns: [
+      /^src\/browser-screenshot\//,
+      /^src\/server\/browser-core\/screenshot\.mjs$/,
+      /^src\/tool-schemas\/screenshot-ops\.mjs$/,
+      /^contracts\/browser-screenshot-live-smoke\.mjs$/,
+      /^contracts\/screenshot-stability-contract\.mjs$/,
+      /^scripts\/screenshot-stability\.mjs$/,
+    ],
+  },
+  {
+    id: "browser_mcp_surface",
+    title: "Split structured browser MCP surface",
+    description: "Structured browser MCP server, wrappers, schemas, and deterministic tool contracts.",
+    commit_message: "Split structured browser MCP surface",
+    verification: [
+      "npm run check:mcp",
+      "npm run check",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Tool schemas must remain OpenAI-compatible and avoid top-level anyOf/oneOf.",
+      "MCP tool results must keep standard text JSON payloads.",
+    ],
+    patterns: [
+      /^src\/server(?:\.mjs|\/)/,
+      /^src\/browser\/(?:content|execution|network)\//,
+      /^src\/browser-screenshot\//,
+      /^src\/browser-wrappers(?:\.mjs|\/)/,
+      /^src\/browser-auth\.mjs$/,
+      /^src\/bridge-commands\.mjs$/,
+      /^src\/capabilities\.mjs$/,
+      /^src\/content-extraction\.mjs$/,
+      /^src\/image\//,
+      /^src\/tool-schemas(?:\.mjs|\/)/,
+      /^src\/(?:evidence-schema|mcp-result|run-lifecycle)\.mjs$/,
+      /^src\/mcp\/shared\/result\.mjs$/,
+      /^src\/runtime\/(?:evidence\/schema|runs\/lifecycle)\.mjs$/,
+      /^src\/runtime\/tool-journal\.mjs$/,
+      /^src\/runtime\/tool-errors\.mjs$/,
+      /^src\/common\.mjs$/,
+      /^src\/errors\.mjs$/,
+      /^contracts\/browser-screenshot-live-smoke\.mjs$/,
+      /^contracts\/browser-file-ops-live-smoke\.mjs$/,
+      /^contracts\/browser-console-live-smoke\.mjs$/,
+      /^contracts\/browser67-browser-mcp-contract(?:\.mjs|\/)/,
+      /^contracts\/browser-job-persistence-contract\.mjs$/,
+      /^contracts\/run-store-contract\.mjs$/,
+      /^contracts\/browser-runtime-contract\.mjs$/,
+      /^contracts\/tool-journal-contract\.mjs$/,
+      /^contracts\/browser-content-core-contract\.mjs$/,
+    ],
+  },
+  {
+    id: "hub_runtime_lifecycle",
+    title: "Split hub and TMWD runtime lifecycle",
+    description: "TMWD runtime/hub, hub control, live doctor/gates, and runtime dispose contracts.",
+    commit_message: "Split TMWD hub runtime lifecycle",
+    verification: [
+      "npm run check:hub-control",
+      "npm run check:hub-relay",
+      "npm run check:live:doctor",
+      "npm run check:tmwd-performance-live",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "One-shot runtime imports must dispose websocket handles.",
+      "Hub control contracts must not leave managed hub processes running.",
+    ],
+    patterns: [
+      /^src\/tmwd-runtime(?:\.mjs|\/)/,
+      /^src\/tmwd-hub(?:\.mjs|\/)/,
+      /^src\/tmwd-hub-control(?:\.mjs|\/)/,
+      /^contracts\/browser67-(?:hub-control-contract|hub-relay-contract|live-contract|live-doctor|live-gate)(?:\.mjs|\/)/,
+      /^contracts\/browser-tmwd-performance-live-smoke\.mjs$/,
+      /^contracts\/tmwd-(?:runtime-dispose|transport-health)-contract\.mjs$/,
+    ],
+  },
+  {
+    id: "js_reverse_mcp",
+    title: "Split JS reverse MCP server and contracts",
+    description: "browser67-backed JS reverse MCP server, contracts, common RPC helpers, and live gate.",
+    commit_message: "Split JS reverse MCP server",
+    verification: [
+      "npm run check:js-reverse-mcp",
+      "npm run check:js-reverse-live",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "JS reverse pages created by new_page must remain browser67-managed.",
+      "Hook-first behavior must not pretend debugger callframes are supported.",
+    ],
+    patterns: [
+      /^src\/js-reverse-server(?:\.mjs|\/)/,
+      /^contracts\/js-reverse-mcp(?:-common|-contract|-live-gate)?(?:\.mjs|\/)/,
+      /^contracts\/js-reverse-upstream-reference-contract\.mjs$/,
+      /^contracts\/js-reverse-upstream-audit-contract\.mjs$/,
+      /^contracts\/js-reverse-absorption-matrix-contract\.mjs$/,
+      /^docs\/schemas\/js-reverse-upstream-reference\.schema\.json$/,
+      /^docs\/upstream\/js-reverse(?:\/|$)/,
+      /^scripts\/js-reverse-upstream-audit\.mjs$/,
+    ],
+  },
+  {
+    id: "native_input",
+    title: "Split native input providers and fallback policy",
+    description: "Native input capabilities, fallback policy, platform providers, and native setup.",
+    commit_message: "Split native input providers",
+    verification: [
+      "npm run check:mcp",
+      "node src/native-deps-setup.mjs --json",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Pointer execution must remain opt-in where required by the calling surface.",
+      "macOS, Linux, and Windows providers should keep compatible action payloads.",
+    ],
+    patterns: [
+      /^src\/native-(?:capabilities|core|deps-setup|fallback|input|linux|macos|windows)(?:\.mjs|\/)/,
+      /^src\/native\//,
+    ],
+  },
+  {
+    id: "remote_cdp",
+    title: "Split explicit remote CDP contract",
+    description: "Explicit remote-CDP contract and debug-browser fixture gates.",
+    commit_message: "Split remote CDP contract",
+    verification: [
+      "npm run check:remote-cdp",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Remote CDP must remain explicit and must not silently replace TMWD for login-state tasks.",
+    ],
+    patterns: [
+      /^src\/cdp-runtime\.mjs$/,
+      /^src\/cdp-runtime\//,
+      /^contracts\/browser67-remote-cdp-contract(?:\.mjs|\/)/,
+    ],
+  },
+  {
+    id: "doctor_schema",
+    title: "Split browser doctor schema contract",
+    description: "Browser doctor JSON schema fixture and validation contract.",
+    commit_message: "Split browser doctor schema contract",
+    verification: [
+      "npm run check:doctor-schema",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Doctor JSON shape is consumed by agents; keep schema enum and required fields stable.",
+    ],
+    patterns: [
+      /^contracts\/browser-doctor-json-schema-contract(?:\.mjs|\/)/,
+    ],
+  },
+  {
+    id: "browser67_identity_package",
+    title: "Codify browser67 identity, package, and runtime home",
+    description: "browser67 naming, package manifest, runtime-home resolver, CLI wrappers, migration docs, and compatibility shims.",
+    commit_message: "Codify browser67 package identity",
+    verification: [
+      "npm run check:browser67-naming",
+      "npm run check:runtime-home",
+      "npm run check:pi-package",
+      "npm run check:doctor-schema",
+      "npm run skills:check",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Legacy tmwd-browser-mcp bin/runtime paths must remain compatibility shims.",
+      "Runtime state must stay repo-external and src/runtime must remain tracked source.",
+      "Pi package skills should be loaded from the package checkout, not copied into pi-67.",
+    ],
+    patterns: [
+      /^AGENTS\.md$/,
+      /^\.review-craft\.json$/,
+      /^\.gitignore$/,
+      /^CHANGELOG\.md$/,
+      /^agents\/openai\.yaml$/,
+      /^package-lock\.json$/,
+      /^package\.json$/,
+      /^\.github\/workflows\/ci\.yml$/,
+      /^bin\/(?:browser67|tmwd-browser|tmwd-browser-mcp)\.mjs$/,
+      /^contracts\/(?:browser67-naming-contract|runtime-home-contract|setup-extension-contract|extension-install-doctor-contract|pi-package-contract)\.mjs$/,
+      /^docs\/(?:maintenance-quality-model|migration-browser67|migration-v0\.3|naming-and-compatibility|project-structure|release-governance)\.md$/,
+      /^docs\/schemas\/browser-doctor\.schema\.json$/,
+      /^extension\/config\.example\.js$/,
+      /^scripts\/(?:install-launchd|setup-extension|extension-install-doctor|uninstall-launchd|migrate-home|release-readiness)\.mjs$/,
+      /^scripts\/update-release(?:\.mjs|\/)/,
+      /^contracts\/update-release-contract\.mjs$/,
+      /^skills\/browser67\//,
+      /^src\/mcp\//,
+      /^src\/identity\//,
+      /^src\/runtime\//,
+      /^src\/session-registry\.mjs$/,
+    ],
+  },
+  {
+    id: "docs_skills_setup",
+    title: "Sync browser67 docs and skill guidance",
+    description: "README, architecture docs, Codex integration docs, skills, and agent setup.",
+    commit_message: "Sync browser67 docs and skill guidance",
+    verification: [
+      "npm run skills:check",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Docs must preserve managed-tab ownership and CAPTCHA physical-input boundaries.",
+    ],
+    patterns: [
+      /^README\.md$/,
+      /^docs\/TMWebDriver-SOP\.md$/,
+      /^docs\/(?:active-skill-runtime-model|agent-setup|architecture|codex-integration|global-prompt-snippet|optional-live-proofs|native-live-linux|native-live-windows|runtime-operations)\.md$/,
+      /^docs\/js-reverse(?:-SOP\.md|\/)/,
+      /^skills\/js-reverse\//,
+      /^skills\/tmwd-browser-mcp\//,
+    ],
+  },
+  {
+    id: "extension_managed_overlay",
+    title: "Add managed extension overlay",
+    description: "Generated extension overlay, ordinary-tab isolation, tab-scoped policy bridge, and network observation contracts.",
+    commit_message: "Add browser67 managed extension overlay",
+    verification: [
+      "npm run extension:check",
+      "npm run check:extension-build",
+      "npm run check:setup-extension",
+      "npm run check:extension-reload-live",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Ordinary tabs must not receive CSP, dialog, badge, marker, or content-bridge side effects.",
+      "Managed policy release must restore page behavior and remove tab-scoped DNR rules.",
+    ],
+    patterns: [
+      /^extension\/browser67\//,
+      /^extension\/background\.js$/,
+      /^contracts\/extension-build-contract\//,
+      /^src\/extension\//,
+      /^scripts\/(?:build-extension|check-extension-bridge|extension-install-doctor|reload-extension-live|sync-genericagent-extension)\.mjs$/,
+      /^contracts\/extension-(?:build|debugger-runtime|managed-runtime|reload-live|upstream-sync)-contract\.mjs$/,
+    ],
+  },
+  {
+    id: "upstream_genericagent_governance",
+    title: "Govern GenericAgent upstream absorption",
+    description: "GenericAgent upstream audit tooling, provenance references, and selective absorption docs.",
+    commit_message: "Add GenericAgent upstream absorption governance",
+    verification: [
+      "npm run upstream:audit",
+      "npm run check:upstream-audit",
+      "npm run check:ljqctrl",
+      "npm run check:readiness",
+      "npm run check:change-set",
+    ],
+    risk_notes: [
+      "Upstream extension files must not overwrite local enhanced bridge features without manual review.",
+      "Reference code must stay isolated from production execution paths unless explicitly promoted behind gates.",
+    ],
+    patterns: [
+      /^UPSTREAM\.(?:lock|review)\.json$/,
+      /^THIRD_PARTY_NOTICES\.md$/,
+      /^scripts\/(?:upstream-audit|upstream-lock|upstream-review-refresh-plan)\.mjs$/,
+      /^contracts\/(?:upstream-audit-contract|upstream-lock-contract|upstream-review-refresh-plan-contract)\.mjs$/,
+      /^contracts\/upstream-review-schema-contract\.mjs$/,
+      /^docs\/schemas\/upstream-review\.schema\.json$/,
+      /^docs\/upstream\/genericagent(?:\/|$)/,
+    ],
+  },
+  {
+    id: "package_verify_scripts",
+    title: "Add verification and change-set governance scripts",
+    description: "Package scripts and repository verification orchestration.",
+    commit_message: "Add change-set governance gate",
+    verification: [
+      "npm run check:syntax",
+      "npm run check:change-set",
+      "npm run verify",
+    ],
+    risk_notes: [
+      "Verification scripts should stay read-only unless explicitly named setup/install commands.",
+    ],
+    patterns: [
+      /^biome\.json$/,
+      /^package\.json$/,
+      /^tsconfig\.checkjs\.json$/,
+      /^scripts\/verification\//,
+      /^scripts\/(?:verify|run-verification|verification-manifest|dependency-boundary-audit|check-change-set|change-set-lib|plan-scoped-commits|readiness-audit|project-structure-audit|cleanup-runtime-artifacts|audit-runtime-permissions|terminalize-stale-runs|prune-empty-run-groups|migrate-runtime-store|setup-captcha-provider-jfbym|native-live-proof-gate|optional-live-proof-audit|optional-live-proof-plan|optional-live-proof-status|optional-live-proof-template|optional-live-proof-record|optional-live-proof-source-identity|performance-smoke|regression-matrix|task-template|active-skill-sync|skills-roots-audit|agent-integration-doctor)\.mjs$/,
+      /^contracts\/(?:agent-integration-doctor|change-set)-contract\.mjs$/,
+      /^contracts\/verification-runner-contract\.mjs$/,
+      /^contracts\/readme-contract\.mjs$/,
+      /^contracts\/active-skill-sync-contract\.mjs$/,
+      /^contracts\/skills-roots-audit-contract\.mjs$/,
+      /^contracts\/runtime-artifact-cleanup-contract\.mjs$/,
+      /^contracts\/runtime-maintenance-contract\.mjs$/,
+      /^test\/runtime-core\.test\.mjs$/,
+      /^templates\/tasks\//,
+    ],
+  },
+];
+
+const COMMIT_GUIDANCE = [
+  "Review and commit by group; do not use `git add -A` for this refactor.",
+  "Use scoped `git add <paths...>` and `git diff --cached --check` before each commit.",
+  "Keep behavior changes, live contract updates, docs, and verification scripts in reviewable slices.",
+];
+
+function readGitStatus() {
+  const result = spawnSync("git", ["-c", "status.relativePaths=true", "status", "--short", "--untracked-files=all", "--", "."], {
+    cwd: process.cwd(),
+    encoding: "utf8",
+  });
+  if (result.status !== 0) {
+    throw new Error(`git status failed: ${String(result.stderr || result.stdout || "unknown error").trim()}`);
+  }
+  return result.stdout
+    .split(/\r?\n/g)
+    .map((line) => line.trimEnd())
+    .filter(Boolean)
+    .map((line) => {
+      const status = line.slice(0, 2);
+      const rawPath = line.slice(3);
+      const path = rawPath.includes(" -> ") ? rawPath.split(" -> ").at(-1) : rawPath;
+      return {
+        status,
+        path,
+      };
+    });
+}
+
+function classifyPath(path) {
+  for (const group of GROUPS) {
+    if (group.patterns.some((pattern) => pattern.test(path))) {
+      return group.id;
+    }
+  }
+  return "ungrouped";
+}
+
+function createEmptyGroupBucket(group) {
+  return {
+    id: group.id,
+    title: group.title,
+    description: group.description,
+    commit_message: group.commit_message,
+    verification: [...group.verification],
+    risk_notes: [...group.risk_notes],
+    count: 0,
+    paths: [],
+  };
+}
+
+function buildChangeSetReport(changes = readGitStatus(), options = {}) {
+  const includeEmptyGroups = Boolean(options.include_empty_groups);
+  const groups = Object.fromEntries(GROUPS.map((group) => [
+    group.id,
+    createEmptyGroupBucket(group),
+  ]));
+  const ungrouped = {
+    id: "ungrouped",
+    title: "Ungrouped changes",
+    description: "Changed paths that do not match the current review/commit grouping contract.",
+    count: 0,
+    paths: [],
+  };
+
+  for (const change of changes) {
+    const id = classifyPath(change.path);
+    const bucket = groups[id] ?? ungrouped;
+    bucket.count += 1;
+    bucket.paths.push({
+      status: change.status,
+      path: change.path,
+    });
+  }
+
+  return {
+    ok: ungrouped.count === 0,
+    check: "change-set",
+    changed_paths_count: changes.length,
+    grouped_paths_count: changes.length - ungrouped.count,
+    ungrouped_paths_count: ungrouped.count,
+    groups: Object.values(groups).filter((group) => includeEmptyGroups || group.count > 0),
+    ungrouped,
+    commit_guidance: [...COMMIT_GUIDANCE],
+  };
+}
+
+function truncateGroup(group, maxItems) {
+  return {
+    ...group,
+    paths: group.paths.slice(0, maxItems),
+    returned_count: Math.min(group.paths.length, maxItems),
+    truncated: group.paths.length > maxItems,
+  };
+}
+
+export {
+  COMMIT_GUIDANCE,
+  GROUPS,
+  buildChangeSetReport,
+  classifyPath,
+  readGitStatus,
+  truncateGroup,
+};

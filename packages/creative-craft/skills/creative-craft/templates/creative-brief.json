@@ -1,0 +1,50 @@
+{
+  "schema_version": "creative-craft.brief.v1",
+  "brief_id": "brief-tbd",
+  "status": "draft",
+  "project": {
+    "name": "TBD",
+    "owner": "TBD"
+  },
+  "objective": {
+    "business": "TBD",
+    "communication": "TBD"
+  },
+  "audience": {
+    "primary": "TBD",
+    "context": "TBD",
+    "current_belief": "TBD"
+  },
+  "tension": {
+    "statement": "TBD",
+    "evidence_state": "UNVERIFIED"
+  },
+  "insight": {
+    "statement": "TBD",
+    "evidence_state": "UNVERIFIED"
+  },
+  "support": [],
+  "proposition": "TBD",
+  "desired_response": {
+    "feel": "TBD",
+    "think": "TBD",
+    "do": "TBD"
+  },
+  "channels": [],
+  "deliverables": [],
+  "mandatories": {
+    "include": [],
+    "exact_copy": []
+  },
+  "constraints": {
+    "must": [],
+    "must_not": []
+  },
+  "references": [],
+  "success": {
+    "evidence": [],
+    "metrics": []
+  },
+  "assumptions": [],
+  "approvals": []
+}

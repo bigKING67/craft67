@@ -1,0 +1,81 @@
+{
+  "schema": "money-craft.core-receipt-review.v1",
+  "date": "2026-09-16",
+  "scope": "receipt_status, research_status completion gate, finalize_workspace refusal, receipt schema and associated tests; not full repository coverage",
+  "review": "Review Craft bounded, primary-agent source inspection and reproducible synthetic runtime evidence; no score or independent review claim",
+  "finding": {
+    "severity": "P2",
+    "status": "FIXED_LOCAL",
+    "problem": "收据身份与完成元数据未校验，异常收据仍被认定complete/VERIFIED。",
+    "comparison": [
+      {
+        "field": "valid",
+        "before": {
+          "complete": true,
+          "receipt_integrity": "VERIFIED"
+        },
+        "after": {
+          "complete": false,
+          "receipt_integrity": "INVALID"
+        }
+      },
+      {
+        "field": "run_id",
+        "before": {
+          "complete": true,
+          "receipt_integrity": "VERIFIED"
+        },
+        "after": {
+          "complete": false,
+          "receipt_integrity": "INVALID"
+        }
+      },
+      {
+        "field": "automatic_trading",
+        "before": {
+          "complete": true,
+          "receipt_integrity": "VERIFIED"
+        },
+        "after": {
+          "complete": false,
+          "receipt_integrity": "INVALID"
+        }
+      },
+      {
+        "field": "provider_gaps",
+        "before": {
+          "complete": true,
+          "receipt_integrity": "VERIFIED"
+        },
+        "after": {
+          "complete": false,
+          "receipt_integrity": "INVALID"
+        }
+      }
+    ]
+  },
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "1b129ff4cfa6ee29a98d716151125b65d0a9561d2b030d0fe7172816942bca38",
+    "tests/test_research_run.py": "ed602f663f8b08b3f2cdcab7ffc15a8f09a7d2c9be5162882c2f18b65b3a8237"
+  },
+  "validation": {
+    "targeted_tests": 23,
+    "full_tests": 263,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "legacy_receipt_without_assessment": "PASS",
+    "invalid_receipt_finalization_preserves_files": "PASS"
+  },
+  "limits": [
+    "No cryptographic authentication of receipt authorship; validation detects inconsistent metadata and bound content.",
+    "Claim support and source freshness remain UNVERIFIED.",
+    "Existing HTTP error fixture ResourceWarnings remain; tests passed.",
+    "No host behavioral suite rerun for this core-only fix."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260916T100736548603Z"
+  }
+}

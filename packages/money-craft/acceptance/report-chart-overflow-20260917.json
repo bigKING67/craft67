@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.report-chart-overflow.v1",
+  "date": "2026-09-17",
+  "scope": "Finite chart axes, FCF derivations and trend deltas at extreme inputs",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "7a6a69da540141d2a33d92391863724d33ffdf0ba6d40acfa8185cd228e6a4c5",
+    "tests/test_report_renderer.py": "a7282e0be597f48f42629c031b4f180af57138e86be876de9e361e5b055afe5a",
+    "skills/money-craft/references/report-rendering.md": "f1004b396efb3857e41b70663bc82935a0b3e3a07cb927879acb50ef678f0546"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Finite scalars could overflow spans, FCF subtraction, percentage changes or intermediate coordinate products.",
+    "after": "Omit charts with unrepresentable spans or FCF; label nonfinite change explicitly; compute ratios before mapping onto canvas."
+  },
+  "validation": {
+    "renderer_tests": 38,
+    "full_tests": 328,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 3,
+    "real_cli": "Four extreme chart types omitted; source table preserved, source bytes unchanged and HTML result valid."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 38,
+    "skipped_tests": 0,
+    "additional_extreme_calls": 196,
+    "additional_checks_scope": "No exception or independent nan/inf token; not full geometry proof.",
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "7a6a69da540141d2a33d92391863724d33ffdf0ba6d40acfa8185cd228e6a4c5",
+      "tests/test_report_renderer.py": "a7282e0be597f48f42629c031b4f180af57138e86be876de9e361e5b055afe5a"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T093853189074Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "Unit inference, label precision, zero-value minimum bar widths and full SVG geometry await review.",
+    "Real PDF engine and visual acceptance unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

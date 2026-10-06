@@ -1,0 +1,91 @@
+{
+  "schema": "money-craft.valuation-semantic-review.v1",
+  "reviewer": "parent_agent_self_review",
+  "independent_semantic_reviewer": false,
+  "status": "PASS_BOUNDED_RECONSTRUCTION",
+  "research_status": "CONDITIONAL_VALUATION_NOT_FAIR_VALUE",
+  "source_files": 8,
+  "financial_checks": 39,
+  "checks": [
+    {
+      "id": "V01",
+      "status": "PASS",
+      "claim": "96.70 reference price uses quote.close; adjusted quote retained separately; provider ancestry not assumed independent"
+    },
+    {
+      "id": "V02",
+      "status": "PASS",
+      "claim": "March5 outstanding shares, February1 balance sheet and April30 quote separated; no exact date-rollforward claim"
+    },
+    {
+      "id": "V03",
+      "status": "PASS",
+      "claim": "15940 includes 2161 finance lease; issuer net debt 12047 differs from debt minus cash 11178; cash includes 3893 short investments"
+    },
+    {
+      "id": "V04",
+      "status": "PASS",
+      "claim": "operating lease EV shown separately without claiming comparable EBIT/EBITDA ranking"
+    },
+    {
+      "id": "V05",
+      "status": "PASS",
+      "claim": "reported and adjusted 2024 EPS coincide but neither five-year mean nor guidance certified sustainable"
+    },
+    {
+      "id": "V06",
+      "status": "PASS",
+      "claim": "external analyst EPS and multiples retain attribution; no endorsed fair value, safety margin or double debt subtraction"
+    },
+    {
+      "id": "V07",
+      "status": "PASS",
+      "claim": "Walmart single-provider PE and fiscal differences disclosed; no future Q1 results used"
+    },
+    {
+      "id": "V08",
+      "status": "PASS",
+      "claim": "counterfactual capex changes flagged, operating cash flow held fixed explicitly; not distributable cash"
+    }
+  ],
+  "negative_cases": [
+    {
+      "variant": "double_finance_lease",
+      "value": "57393.24406880",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: finance lease already in debt"
+    },
+    {
+      "variant": "double_short_investment",
+      "value": "51339.24406880",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: cash already includes short investments"
+    },
+    {
+      "variant": "weighted_shares_market_cap",
+      "value": "44656.060",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: period average is not outstanding shares"
+    },
+    {
+      "variant": "debt_subtracted_from_pe",
+      "value": "24.53594705454318641008636477761503",
+      "arithmetic_pass": true,
+      "manual_verdict": "REJECT: subtracting this from EPS x PE double-counts capital structure"
+    }
+  ],
+  "unresolved": [
+    "Independent source lineage for key financial and quote inputs",
+    "Exact valuation-date shares and capital structure rollforward",
+    "Operationally justified sustainable earnings and comparable multiple set",
+    "Complete as-of event coverage; subsequent outcomes not evaluated"
+  ],
+  "artifacts": {
+    "acceptance/target-valuation/input.json": "11d7571163f70129629b4a022fa32168de390272d8c526ce57f44d93d3e6a4a3",
+    "acceptance/target-valuation/evidence-manifest.json": "189b968d593bb51d866d9aa815dd928ebba44b2112876d798db4086fa1cfa89d",
+    "acceptance/target-valuation/reconstruction/report.md": "061e050fc6eae67d8f1c64e650e1fb36d405d4beb61942b8f780b4f295fd80b0",
+    "acceptance/target-valuation/reconstruction/result.json": "8abec5a9130f389566c091158435a4e0861c2fdff2883ca8448ca7818512fbac",
+    "scripts/check_valuation_case.py": "3a80c7644f1b59fef38198d34d89cc6f6008629b4107cfa94b5cb4fd2050461c"
+  },
+  "locator_correction": "Final raw-text review corrected operating leases to note17 and short investments to note6; amounts/formulas unchanged; original draft inputs retained privately."
+}

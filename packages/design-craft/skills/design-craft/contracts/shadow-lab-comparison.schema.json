@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/skills/design-craft/contracts/shadow-lab-comparison.schema.json",
+  "title": "design-craft Shadow Lab comparison",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "comparison_id",
+    "created_at",
+    "state",
+    "source",
+    "target",
+    "variants",
+    "decision",
+    "boundary"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.shadow-lab-comparison.v1"},
+    "comparison_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "state": {"const": "validated"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo_path", "commit"],
+      "properties": {
+        "repo_path": {"type": "string", "minLength": 1},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface",
+        "user_job",
+        "acceptance_rules",
+        "required_evidence_roles",
+        "required_runtime_checks"
+      ],
+      "properties": {
+        "surface": {"type": "string", "minLength": 3},
+        "user_job": {"type": "string", "minLength": 8},
+        "acceptance_rules": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 3}
+        },
+        "required_evidence_roles": {"$ref": "#/$defs/nonEmptySlugs"},
+        "required_runtime_checks": {"$ref": "#/$defs/nonEmptySlugs"}
+      }
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "items": {"$ref": "#/$defs/variant"}
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "preferred_variant",
+        "approval_source",
+        "absorb",
+        "adapt",
+        "reject",
+        "unverified",
+        "production_promotion_authorized"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "ready_for_selection",
+            "recommended",
+            "selected",
+            "rejected"
+          ]
+        },
+        "preferred_variant": {
+          "type": ["string", "null"],
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "approval_source": {
+          "enum": ["none", "user_delegated", "user_selected"]
+        },
+        "absorb": {"$ref": "#/$defs/stringList"},
+        "adapt": {"$ref": "#/$defs/nonEmptyStrings"},
+        "reject": {"$ref": "#/$defs/nonEmptyStrings"},
+        "unverified": {"$ref": "#/$defs/stringList"},
+        "production_promotion_authorized": {"const": false}
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_writes_allowed",
+        "network_allowed",
+        "artifacts_repo_external",
+        "production_promotion_authorized"
+      ],
+      "properties": {
+        "source_writes_allowed": {"const": false},
+        "network_allowed": {"const": false},
+        "artifacts_repo_external": {"const": true},
+        "production_promotion_authorized": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "stringList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 3}
+    },
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 3}
+    },
+    "nonEmptySlugs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/slug"}
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "path", "bytes", "sha256"],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "role": {"$ref": "#/$defs/slug"},
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0, "maximum": 134217728},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "runtimeCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "evidence_refs", "note"],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "status": {"enum": ["passed", "failed", "unverified"]},
+        "evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/slug"}
+        },
+        "note": {"type": "string", "minLength": 8}
+      }
+    },
+    "lab": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lab_id",
+        "manifest_path",
+        "manifest_sha256",
+        "source_unchanged",
+        "verified_at",
+        "worktree_sha256",
+        "file_count",
+        "total_bytes",
+        "symlink_count"
+      ],
+      "properties": {
+        "lab_id": {"type": "string", "minLength": 1},
+        "manifest_path": {"type": "string", "minLength": 1},
+        "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_unchanged": {"const": true},
+        "verified_at": {"type": "string", "format": "date-time"},
+        "worktree_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "file_count": {"type": "integer", "minimum": 0},
+        "total_bytes": {"type": "integer", "minimum": 0},
+        "symlink_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "axis",
+        "hypothesis",
+        "invariants",
+        "risks",
+        "lab",
+        "artifacts",
+        "runtime_checks"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "axis": {"type": "string", "minLength": 8},
+        "hypothesis": {"type": "string", "minLength": 12},
+        "invariants": {"$ref": "#/$defs/nonEmptyStrings"},
+        "risks": {"$ref": "#/$defs/nonEmptyStrings"},
+        "lab": {"$ref": "#/$defs/lab"},
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifact"}
+        },
+        "runtime_checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/runtimeCheck"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,733 @@
+{
+  "schema": "whoami.report.v6",
+  "chartId": "3f46b10f2f63940f5b589531a6cd9a4866c904062a8580dc1ae843cd59c7786a",
+  "evidenceId": "eaf468fb8c1a63f9440e51743c82d658fc71a2021293243a2082393f734c0bce",
+  "mode": "bazi",
+  "timeReference": {
+    "asOfDate": "2026-09-25",
+    "timeZone": "Asia/Shanghai"
+  },
+  "title": "2026—2028 事业运年边界报告（合成验收）",
+  "uncertainty": "当前仅有本命与年度层事实，没有岗位、考核、权限、组织机会、竞争条件或预先定义的升职结果标准；三年事业比较保持未决。",
+  "sections": [
+    {
+      "id": "summary",
+      "claims": [
+        {
+          "text": "四柱为辛未、戊戌、乙卯、壬午，日主乙木。这份报告最有依据的观察是：日主在卯、未有同干根，时干壬印也提供支持线索；另一侧，月干戊财及年干辛杀已透，不能忽略财与杀的负荷。支持与负荷都具体存在，当前尚不能完成其实际效力的排序，所以不把此盘定为身强、身弱或唯一喜某五行。\n\n丁食神藏于未、戌、午，土财也有确切位置，因而可以追踪火生土的候选路径。但路径存在不等于生财作用成立，更不等于已选食伤作扶抑。后文的事业、财运与建议均保留这一界限。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-10d9757b.bazi.year",
+            "C1-10d9757b.bazi.month",
+            "C1-10d9757b.bazi.day",
+            "C1-10d9757b.bazi.hour",
+            "C1-10d9757b.bazi.rootDetails"
+          ],
+          "ruleRefs": [
+            "C1-10d9757b.R-bazi-structure",
+            "C1-10d9757b.R-bazi-root-review"
+          ],
+          "conditions": "根印与财杀的实际作用尚未裁定；普通格讨论不替代特殊格、调候或格局取舍。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "climate"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "selection"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "claims": [
+        {
+          "text": "在传统十神语言中，财、杀、印和食神可分别作为资源责任、约束、支持与表达的观察角度。本盘戊财、辛杀、壬印在显干，丁食神在支中，能够支持的是这些结构主题并存，不能据此直接断言当事人必定务实、焦虑、内向或善于表达。\n\n若拿它帮助自我观察，可以分别回想：承担任务时是否获得足够支持，面对规则时如何表达需要，以及投入与恢复是否平衡。这些是需要用生活事实回答的问题；回答与命理描述相似，也不能反过来证明十神决定了性格。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-10d9757b.bazi.year",
+            "C1-10d9757b.bazi.month",
+            "C1-10d9757b.bazi.hour"
+          ],
+          "ruleRefs": [
+            "C1-10d9757b.R-bazi-structure"
+          ],
+          "conditions": "十神作为传统描述角度；没有独立的人格或行为证据，不形成固定人格判断。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "pattern"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "career",
+      "claims": [
+        {
+          "text": "对于 2026、2027、2028 的升职排序，当前可复算事实只有：三年都在辛丑大运，年度柱依次为丙午、丁未、戊申。2026 的午与本命时支午同支，2027 的未与本命年支未同支，2028 的戊与本命月干戊同干；这些只是联读入口，不是升职得分。\n\n事业判断还取决于乙木根与壬印能否承担戊财、辛杀，以及各年作用是否支持同一事业主题。现实层还缺岗位空缺、考核、权限、组织机会、竞争条件和统一结果标准。因此不能把三年排成第一、第二、第三，也不能从年柱直接推出升职概率。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-10d9757b.bazi.year",
+            "C1-10d9757b.bazi.month",
+            "C1-10d9757b.bazi.hour",
+            "C1-10d9757b.bazi.rootDetails",
+            "C1-10d9757b.bazi.relations",
+            "C1-10d9757b.bazi.cycles"
+          ],
+          "ruleRefs": [
+            "C1-10d9757b.R-bazi-structure",
+            "C1-10d9757b.R-bazi-root-review",
+            "C1-10d9757b.R-bazi-timing"
+          ],
+          "conditions": "三年排序须同时完成本命承载、逐年制化、反例与现实岗位条件的同口径比较；当前链条未闭合。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "bazi-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "wealth",
+      "claims": [
+        {
+          "text": "此盘不是“财没透”：月干戊正财已经透出，月支戌也藏戊，年未与时午另藏己偏财。财轻不能仅靠未透、数量少或是否进入某个模块判断；本盘需要比较土财的支持，与乙木根、壬印及比劫的实际作用。目前没有完成这一步，因此不确认财轻。\n\n丁食神在未、戌、午，火到土的生财路径可以讨论，但丁是否能发挥作用、壬印是否碍食、土财是否能承接、辛杀是否改变取法都尚未解决。若要采用本轮的食伤泄比分支，必须同时成立日主偏旺、比劫偏重且财轻，再核验食神与财的作用；“能任负荷”不能代替这三个前提。\n\n核心财格复核仅确认月令戊财同干透出的候选入口，以及财印、财杀同透等观察。食神未显透，使“财与食神同透”这一窄检查未满足，并不抹去藏丁；显干财印不相邻，也不证明两不相克或财格成立。这里没有从生财术语推导收益、发财年份或投资结论。收入增加可以另作现实原因分析，不能倒推生财机制已被验证。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-10d9757b.bazi.year",
+            "C1-10d9757b.bazi.month",
+            "C1-10d9757b.bazi.hour",
+            "C1-10d9757b.bazi.wealthReview",
+            "C1-10d9757b.bazi.rootDetails"
+          ],
+          "ruleRefs": [
+            "C1-10d9757b.R-bazi-structure",
+            "C1-10d9757b.R-bazi-wealth-review"
+          ],
+          "conditions": "财轻、偏旺、比劫偏重和生财作用均未完整成立；财格候选不是成格，现实收益不是作用成立证明。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "pattern"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "claims": [
+        {
+          "text": "盘面有未午、戌卯两组六合，其中日支卯与月支戌相关。这是可核对的关系线索，不等于合化已经发生，也不能直接读成关系和谐、必须结婚或必有冲突。年干辛为七杀，同样不能从一个十神推出伴侣性格或关系结局。\n\n若要讨论现实关系，可以具体看双方如何分配责任、是否能表达需要、支持是否相互，以及分歧如何处理。这些问题有独立的现实价值，不依赖本盘究竟身强身弱。没有关系背景资料时，本报告不把结构词翻译成对某个对象的判断。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-10d9757b.bazi.relations",
+            "C1-10d9757b.bazi.day",
+            "C1-10d9757b.bazi.year",
+            "C1-10d9757b.bazi.month"
+          ],
+          "ruleRefs": [
+            "C1-10d9757b.R-bazi-root-review",
+            "C1-10d9757b.R-bazi-structure"
+          ],
+          "conditions": "合不自动化、不自动吉；没有现实关系资料，不由六合或七杀断具体人物和事件。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "strength"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "claims": [
+        {
+          "text": "2026 丙午、2027 丁未、2028 戊申均处于辛丑大运，八字年度按立春切换。逐年复核只确认三个直接入口：2026 的午与本命时支午同支，2027 的未与本命年支未同支，2028 的戊与本命月干戊同干。\n\n同支或同干不自动等于吉凶、升职机会或现实概率。当前没有完成三年的制化、承载、反例和事业主题作用比较，也没有现实岗位资料，不能由年序生成排名、行动窗口或先后安排。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-10d9757b.bazi.cycles",
+            "C1-10d9757b.bazi.year",
+            "C1-10d9757b.bazi.month",
+            "C1-10d9757b.bazi.hour",
+            "C1-10d9757b.bazi.relations"
+          ],
+          "ruleRefs": [
+            "C1-10d9757b.R-bazi-timing"
+          ],
+          "conditions": "年度柱、辛丑大运和立春边界是计算事实；三年事业作用与现实结果尚未裁定。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "bazi-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "claims": [
+        {
+          "text": "如果要比较三年，先用同一套现实标准记录岗位是否存在、考核门槛、权限变化、组织机会、竞争条件和实际结果，再分别复核本命—大运—流年的传统作用与反例。没有这些资料时，最诚实的结论是无法排序。\n\n职业行动应依据职责、资源、反馈和可逆成本安排，不把年度干支当作升职日程。新资料可以缩小问题，也可能推翻原先解释；它不会自动把未决作用链变成已经成立的预测。",
+          "kind": "advice",
+          "factRefs": [
+            "C1-10d9757b.bazi.rootDetails",
+            "C1-10d9757b.bazi.year",
+            "C1-10d9757b.bazi.month",
+            "C1-10d9757b.bazi.hour",
+            "C1-10d9757b.bazi.cycles"
+          ],
+          "ruleRefs": [
+            "C1-10d9757b.R-bazi-structure",
+            "C1-10d9757b.R-bazi-root-review",
+            "C1-10d9757b.R-bazi-timing"
+          ],
+          "conditions": "建议用于现实资料核对；不构成按命盘选择年份、岗位或行动窗口的指令。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-10d9757b",
+              "topic": "bazi-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    }
+  ],
+  "baziReasoning": [
+    {
+      "candidate": "C1-10d9757b",
+      "topic": "strength",
+      "status": "unresolved",
+      "conclusion": "乙木有卯、未同干根及壬印支持，戊财、辛杀亦有透藏依据。普通格下不能仅据根或月令定强弱，当前承载比较未完成。",
+      "supportRefs": [
+        "C1-10d9757b.bazi.rootDetails",
+        "C1-10d9757b.bazi.day",
+        "C1-10d9757b.bazi.hour"
+      ],
+      "counterRefs": [
+        "C1-10d9757b.bazi.month",
+        "C1-10d9757b.bazi.year",
+        "C1-10d9757b.bazi.relations"
+      ],
+      "counterReview": "核对了戊戌财、辛杀与未午戌卯合；无直接六冲不证明根稳定，六合不证明化局。",
+      "conditions": "关键是根印支持相对财杀负荷的作用，不以缺少统一分数或核心标签作为唯一阻断。",
+      "alternatives": "若根印足以承担且全局比劫确偏重，可再审偏旺路径；若财或杀形成主负荷，则分别审偏弱路径。",
+      "ruleRefs": [
+        "C1-10d9757b.R-bazi-structure",
+        "C1-10d9757b.R-bazi-root-review"
+      ]
+    },
+    {
+      "candidate": "C1-10d9757b",
+      "topic": "pattern",
+      "status": "unresolved",
+      "conclusion": "月令戊财同干透月，属于财格模块候选入口；财印、财杀同透，尚未完成成格或救应。",
+      "supportRefs": [
+        "C1-10d9757b.bazi.monthExposure",
+        "C1-10d9757b.bazi.wealthReview"
+      ],
+      "counterRefs": [
+        "C1-10d9757b.bazi.year",
+        "C1-10d9757b.bazi.hour"
+      ],
+      "counterReview": "财与食神同透未见不否定藏丁；财印不相邻仅是窄位置事实，七杀同透不能被省略。",
+      "conditions": "须明确采用财格哪一分支并核验强弱、制化和位置作用；不把显干观察当成立。",
+      "alternatives": "可分别检查佩印、财杀及藏食作用；不能拼接不同章节条件凑成格。",
+      "ruleRefs": [
+        "C1-10d9757b.R-bazi-wealth-review",
+        "C1-10d9757b.R-bazi-month-exposure"
+      ]
+    },
+    {
+      "candidate": "C1-10d9757b",
+      "topic": "climate",
+      "status": "unresolved",
+      "conclusion": "戌月是季节背景，本轮没有完成针对本盘的调候取法核验，不能从土月、火藏或水透直接定调候用神。",
+      "supportRefs": [
+        "C1-10d9757b.bazi.month",
+        "C1-10d9757b.bazi.hour"
+      ],
+      "counterRefs": [
+        "C1-10d9757b.bazi.year",
+        "C1-10d9757b.bazi.day"
+      ],
+      "counterReview": "保留戌月、午未藏丁及壬印观察，不把季节标签或缺某元素当调候结论。",
+      "conditions": "需要另有出处的调候适用条件及其与全局作用的比较。",
+      "alternatives": "即使以后取得调候方向，也应与普通扶抑和月令格局分别说明。",
+      "ruleRefs": [
+        "C1-10d9757b.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-10d9757b",
+      "topic": "balance",
+      "status": "conditional",
+      "conclusion": "仅保留条件分支：若偏弱且财为主负荷，讨论比劫帮身；若偏弱且杀为主负荷，讨论印化生。食伤泄比须另满足偏旺、比劫偏重且财轻，并核验食神可用、财能承接，当前未证。",
+      "supportRefs": [
+        "C1-10d9757b.bazi.year",
+        "C1-10d9757b.bazi.month",
+        "C1-10d9757b.bazi.hour",
+        "C1-10d9757b.bazi.rootDetails"
+      ],
+      "counterRefs": [
+        "C1-10d9757b.bazi.relations",
+        "C1-10d9757b.bazi.wealthReview"
+      ],
+      "counterReview": "没有把同源根重复计权；壬印是否受财制、丁食神是否被印影响及辛杀作用均待论证。",
+      "conditions": "每个方向依赖各自完整前提，不能用可任负荷替换偏旺比重财轻；生财路径存在不是选定扶抑。",
+      "alternatives": "若财不轻或日主不偏旺，就不沿该食伤分支；重新比较事实，不自动改选另一唯一五行。",
+      "ruleRefs": [
+        "C1-10d9757b.R-bazi-structure",
+        "C1-10d9757b.R-bazi-wealth-review"
+      ]
+    },
+    {
+      "candidate": "C1-10d9757b",
+      "topic": "selection",
+      "status": "unresolved",
+      "conclusion": "当前未选唯一喜用。扶抑只保留分支，格局及调候另有未决条件，三者不能混成确定职业、颜色或运年选择。",
+      "supportRefs": [
+        "C1-10d9757b.bazi.month",
+        "C1-10d9757b.bazi.hour",
+        "C1-10d9757b.bazi.wealthReview"
+      ],
+      "counterRefs": [
+        "C1-10d9757b.bazi.year",
+        "C1-10d9757b.bazi.rootDetails"
+      ],
+      "counterReview": "正文中涉及事业、财运、运年和建议均应保留本项未决，不借现实收入反证成格或生财已有效。",
+      "conditions": "只有明确取法及关键作用比较有进展，才更新其范围内的条件判断。",
+      "alternatives": "新输入须重算；单纯追问或收入反馈不自动改变取用；发现推理错误则直接更正。",
+      "ruleRefs": [
+        "C1-10d9757b.R-bazi-structure",
+        "C1-10d9757b.R-bazi-wealth-review"
+      ]
+    },
+    {
+      "candidate": "C1-10d9757b",
+      "topic": "bazi-timing",
+      "status": "unresolved",
+      "years": [
+        2026,
+        2027,
+        2028
+      ],
+      "conclusion": "2026—2028 均在辛丑大运，年度柱依次为丙午、丁未、戊申；当前只建立事业问题的逐年复核入口，不提供升职排名。",
+      "supportRefs": [
+        "C1-10d9757b.bazi.cycles",
+        "C1-10d9757b.bazi.relations",
+        "C1-10d9757b.bazi.year",
+        "C1-10d9757b.bazi.month",
+        "C1-10d9757b.bazi.hour"
+      ],
+      "counterRefs": [],
+      "counterReview": "已核对三年柱、立春边界及与本命同干同支的直接入口；承载、制化、反例、现实岗位条件与统一评价标准未闭合，不能比较升职优先级。",
+      "conditions": "仅覆盖 2026—2028 年度事业主题；不含流月、流日、事件概率或现实岗位判断。",
+      "alternatives": "三年可以作为后续逐项复核入口；在传统作用与现实条件未闭合前，按岗位事实而非年序安排职业选择。",
+      "ruleRefs": [
+        "C1-10d9757b.R-bazi-timing"
+      ],
+      "timingChain": {
+        "target": "career",
+        "cycleRefs": [
+          "C1-10d9757b.bazi.cycles"
+        ],
+        "annualReviews": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-10d9757b.bazi.hour",
+              "C1-10d9757b.bazi.relations"
+            ],
+            "review": "2026 年丙午：流年支午与本命时支午同支，只作为事业主题联读入口；承载、制化与反例未闭合，不据此判断升职。"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-10d9757b.bazi.year",
+              "C1-10d9757b.bazi.relations"
+            ],
+            "review": "2027 年丁未：流年支未与本命年支未同支，只作为事业主题联读入口；承载、制化与反例未闭合，不据此判断升职。"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-10d9757b.bazi.month",
+              "C1-10d9757b.bazi.relations"
+            ],
+            "review": "2028 年戊申：流年干戊与本命月干戊同干，只作为事业主题联读入口；承载、制化与反例未闭合，不据此判断升职。"
+          }
+        ],
+        "crossLayerReview": "本命支持与负荷、辛丑大运及三个立春流年已经分层；同干同支没有被当成吉凶分数，三年事业作用仍缺统一比较链。",
+        "missingLinks": [
+          "缺少三年逐项制化、承载与反例复核",
+          "缺少岗位空缺、考核、权限、组织机会和竞争条件",
+          "缺少预先定义且三年一致的升职结果与评价标准"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "用户尚未提供可核验的岗位、考核、权限、组织机会、竞争条件或升职结果资料。",
+          "source": null
+        },
+        "withdrawalConditions": "出生资料、起运边界、事业问题、传统作用复核或现实岗位资料变化时，撤回本链并重新比较。"
+      }
+    }
+  ],
+  "ziweiReasoning": [],
+  "crossSystem": [],
+  "assertions": [
+    {
+      "factRef": "C1-10d9757b.bazi.year",
+      "value": {
+        "position": "year",
+        "value": "辛未",
+        "stem": "辛",
+        "branch": "未",
+        "element": "金",
+        "tenGod": "七杀",
+        "hiddenStems": [
+          {
+            "stem": "己",
+            "element": "土",
+            "tenGod": "偏财"
+          },
+          {
+            "stem": "丁",
+            "element": "火",
+            "tenGod": "食神"
+          },
+          {
+            "stem": "乙",
+            "element": "木",
+            "tenGod": "比肩"
+          }
+        ]
+      }
+    },
+    {
+      "factRef": "C1-10d9757b.bazi.month",
+      "value": {
+        "position": "month",
+        "value": "戊戌",
+        "stem": "戊",
+        "branch": "戌",
+        "element": "土",
+        "tenGod": "正财",
+        "hiddenStems": [
+          {
+            "stem": "戊",
+            "element": "土",
+            "tenGod": "正财"
+          },
+          {
+            "stem": "辛",
+            "element": "金",
+            "tenGod": "七杀"
+          },
+          {
+            "stem": "丁",
+            "element": "火",
+            "tenGod": "食神"
+          }
+        ]
+      }
+    },
+    {
+      "factRef": "C1-10d9757b.bazi.day",
+      "value": {
+        "position": "day",
+        "value": "乙卯",
+        "stem": "乙",
+        "branch": "卯",
+        "element": "木",
+        "tenGod": "日主",
+        "hiddenStems": [
+          {
+            "stem": "乙",
+            "element": "木",
+            "tenGod": "比肩"
+          }
+        ]
+      }
+    },
+    {
+      "factRef": "C1-10d9757b.bazi.hour",
+      "value": {
+        "position": "hour",
+        "value": "壬午",
+        "stem": "壬",
+        "branch": "午",
+        "element": "水",
+        "tenGod": "正印",
+        "hiddenStems": [
+          {
+            "stem": "丁",
+            "element": "火",
+            "tenGod": "食神"
+          },
+          {
+            "stem": "己",
+            "element": "土",
+            "tenGod": "偏财"
+          }
+        ]
+      }
+    },
+    {
+      "factRef": "C1-10d9757b.bazi.rootDetails",
+      "value": [
+        {
+          "position": "year",
+          "branch": "未",
+          "hiddenStem": "乙",
+          "element": "木",
+          "tenGod": "比肩",
+          "sameStemAsDayMaster": true,
+          "clashSources": []
+        },
+        {
+          "position": "day",
+          "branch": "卯",
+          "hiddenStem": "乙",
+          "element": "木",
+          "tenGod": "比肩",
+          "sameStemAsDayMaster": true,
+          "clashSources": []
+        }
+      ]
+    },
+    {
+      "factRef": "C1-10d9757b.bazi.relations",
+      "value": [
+        {
+          "kind": "六合",
+          "positions": [
+            "year",
+            "hour"
+          ],
+          "branches": "未午"
+        },
+        {
+          "kind": "六合",
+          "positions": [
+            "month",
+            "day"
+          ],
+          "branches": "戌卯"
+        }
+      ]
+    },
+    {
+      "factRef": "C1-10d9757b.bazi.cycles",
+      "value": {
+        "direction": "forward",
+        "method": "lunar-typescript Yun sect=2; absolute birth vs Jie; original civil basis",
+        "startAge": {
+          "years": 8,
+          "months": 11,
+          "days": 2,
+          "hours": 6
+        },
+        "startInstant": "2000-09-14T09:40:00Z",
+        "startCivil": "2000-09-14T17:40:00+08:00[Asia/Shanghai]",
+        "decades": [
+          {
+            "index": 1,
+            "pillar": "己亥",
+            "startCivil": "2000-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2010-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 2,
+            "pillar": "庚子",
+            "startCivil": "2010-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2020-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 3,
+            "pillar": "辛丑",
+            "startCivil": "2020-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2030-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 4,
+            "pillar": "壬寅",
+            "startCivil": "2030-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2040-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 5,
+            "pillar": "癸卯",
+            "startCivil": "2040-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2050-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 6,
+            "pillar": "甲辰",
+            "startCivil": "2050-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2060-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 7,
+            "pillar": "乙巳",
+            "startCivil": "2060-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2070-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 8,
+            "pillar": "丙午",
+            "startCivil": "2070-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2080-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 9,
+            "pillar": "丁未",
+            "startCivil": "2080-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2090-09-14T17:40:00+08:00[Asia/Shanghai]"
+          },
+          {
+            "index": 10,
+            "pillar": "戊申",
+            "startCivil": "2090-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "endExclusiveCivil": "2100-09-14T17:40:00+08:00[Asia/Shanghai]"
+          }
+        ],
+        "yearly": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun"
+          }
+        ],
+        "uncertainty": {
+          "status": "exact",
+          "sampleCount": 3,
+          "distinctStartCount": 1,
+          "birthOffsetMinutes": {
+            "min": 0,
+            "max": 0
+          },
+          "solarShiftMinutes": {
+            "min": -2,
+            "max": 2
+          },
+          "startInstant": {
+            "earliest": "2000-09-14T09:40:00Z",
+            "latest": "2000-09-14T09:40:00Z"
+          },
+          "startCivil": {
+            "earliest": "2000-09-14T17:40:00+08:00[Asia/Shanghai]",
+            "latest": "2000-09-14T17:40:00+08:00[Asia/Shanghai]"
+          }
+        }
+      }
+    }
+  ]
+}

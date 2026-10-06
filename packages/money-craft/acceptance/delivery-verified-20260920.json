@@ -1,0 +1,101 @@
+{
+  "schema": "money-craft.delivery-verified.v1",
+  "status": "PASS_BOUNDED_PARENT_DELIVERY_REPLAY",
+  "as_of": "2026-09-20",
+  "historical_data_cutoff": "2025-11-01",
+  "source_ids": 7,
+  "source_urls": 7,
+  "failed_sources": 0,
+  "network_refresh": false,
+  "pdf_pages": 11,
+  "original_report_unchanged": true,
+  "actual_subagents": 0,
+  "parent_replay": true,
+  "new_autonomous_host_e2e": false,
+  "browser_responsive_verified": false,
+  "money_project_design_verified": false,
+  "global_skill_install_changed": false,
+  "user_money_archive_written": false,
+  "host_tool_changes": [
+    {
+      "file": "investment_kami_render.py",
+      "before_sha256": "585704d4e9da389fda96ea26074b10997f3e1b99245c2df4833bc089ec411e2a",
+      "after_sha256": "b651daa7ef44415b59f2d8656e20b5f1d0abc5bb39cf40a6940418f3bc6c572a"
+    },
+    {
+      "file": "test_investment_kami_render.sh",
+      "before_sha256": "685934f24b574e240ec95a9dd2d93dd195b9173b2bebba7793485d2503b811d3",
+      "after_sha256": "00e6f7322cfce37e41a5ece3771294703b280a38d746acbeeeac6398919b774d"
+    },
+    {
+      "file": "investment_archive_sources.py",
+      "before_sha256": "116dfdaa41189471adf44662f53790e8aa49118dbb4ff15b179f9d010c5f21bf",
+      "after_sha256": "1a84b49a95d90592534ea569727adc8f66bea0540aad72f98b97d921791676ab"
+    },
+    {
+      "file": "test_investment_archive_sources.sh",
+      "before_sha256": "c10fda6b125d6f6cb8fb844e8fc84e75246d3ba03a8c003b763c079429b960de",
+      "after_sha256": "8952189ab2ffc73eecfba2b877ea024e6da72297694346ce733fc51cbae51799"
+    }
+  ],
+  "checks": {
+    "offline-verify.json": true,
+    "verify-current.json": true,
+    "verify-all.json": true,
+    "ledger-verify.json": true
+  },
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-delivery-verified/route.json",
+      "sha256": "ca746b98967b8b93e9cc18482d9f25a1755da5da5bdd3d0de64d333dedd79b21"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/visual-review.json",
+      "sha256": "639b48baa1b09b11807626a0ac817f96ce041dcbfb85b24ac340ab795a7bdeec"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/evidence-import.json",
+      "sha256": "ebabedac540c77b986513d4b2ef5f00f5747f68c1dc4e568060dc4197bfe6bdd"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/offline-verify.json",
+      "sha256": "b7335f7c635b716184b9c831ea8643d8f1b6bb6f50d5a55a503400fcbab1c80e"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/seal.json",
+      "sha256": "a25f7af8f3cb17945f4d615e2fd62a67ca72dda52f69b4dff68a8c2a9d5f2b00"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/verify-current.json",
+      "sha256": "caacccb49bf3b047162dedd1daf39df759f4b35d08154c9cce2a76c45fba3f17"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/verify-all.json",
+      "sha256": "bcbcdd026c46c9fcb225f78751bc091f7ab6f9d8dbd17b1326a5d328e81a3b92"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/ledger-verify.json",
+      "sha256": "1275eeed7514e38cba4720e351749e1e29c73cf9a769ea8eab9d04630655316a"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/replay.py",
+      "sha256": "d3f9c4e1292a0b738f0c22837362dd44edd4d74136036135f0a0e094bd86c3fd"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/closeout.py",
+      "sha256": "acb2e6d3be16dd44924ddff48282f454c6c14195678cf26e482f8f4c33f13c6b"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/seal.py",
+      "sha256": "974603e148583eb839acfa44c669c495cdc8fa1cc069226f8018d3661ae99533"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/archive-manifest-snapshot.json",
+      "sha256": "edb0c954a5c5055ab03eeeb2264dcce8f8438f6a8347e0540bb98410b7d911db"
+    },
+    {
+      "path": "local/acceptance/20260920-delivery-verified/evidence-manifest-snapshot.json",
+      "sha256": "21d7fe6fa539925b8e28a97fa5dc992622705fde6c6393c1b2076573572c5586"
+    }
+  ]
+}

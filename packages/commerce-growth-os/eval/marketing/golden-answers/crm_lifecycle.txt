@@ -1,0 +1,7 @@
+结论：先定义可计算的生命周期状态和同意边界，再设计会员、复购和召回，不给所有人发同一套权益。已确认事实只有需要 CRM；品类补货周期、用户标识、历史购买、毛利、同意状态和触达基线未知，CRM Lead 必须先完成数据审计。
+
+建议状态：新客、已激活、预计补货、重复购买、忠诚/高价值、风险、沉睡和流失。每个 segment 写清进入/退出阈值，例如首购后是否完成关键使用、距预计 replenishment 的天数、最近购买、频次、毛利/LTV、退款、互动和服务事件。无法识别或没有有效同意的用户不得进入自动营销。
+
+机制按状态设计：新客提供使用和服务教育；预计补货用户发送有价值的补货提醒；member 用户获得服务、内容、优先权或合适权益；风险用户先解决体验和服务；沉睡用户用一次有明确原因的 recall 测试。每条 Journey 定义 Owner、message、channel、frequency、offer、下一状态、opt-out、fatigue、投诉和隐私护栏。Commercial Strategy 给出可承受优惠与毛利，Operations 负责服务和库存，Analytics 负责 ID、cohort、attribution window 和 LTV。
+
+每个自动化保留 holdout 或可比 cohort，衡量增量复购、毛利、LTV、留存、退订、投诉和触达成本。Stop rule：增量不成立、毛利恶化、退订/投诉/疲劳超过阈值，暂停该 Journey；Scale rule：连续两个完整补货或复购窗口证明增量和贡献稳定，再扩大人群或频率。月度 Review 由 CRM、Commercial、Service 和 Analytics 做继续、修改、停止或扩量决策。

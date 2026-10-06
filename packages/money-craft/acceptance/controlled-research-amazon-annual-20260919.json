@@ -1,0 +1,76 @@
+{
+  "schema": "money-craft.controlled-research.v1",
+  "executed_at_utc": "2026-09-19T14:08:32.755423+00:00",
+  "status": "COMPLETED_BOUNDED_OBSERVATION_AFTER_CORRECTION",
+  "security_id": "US-NASDAQ:AMZN",
+  "as_of": "2026-02-06",
+  "scope": "2024 10-K liquidity, FCF, lease/debt/commitment notes and 2025 annual comparative cash review",
+  "report": {
+    "path": "local/research/20260919-amazon-annual/reviewed-note.md",
+    "sha256": "f9df022a20abc3485470144aaf7b8ae6d469fe2dfaa542322486b6d30ec8905c",
+    "bytes": 7292
+  },
+  "original_draft_preserved": {
+    "path": "local/research/20260919-amazon-annual/note.md",
+    "sha256": "5470a5b3f65b1f979341adfb1dc864853141208dd432cf339fd5ad9619f4508e",
+    "bytes": 7033
+  },
+  "artifacts": [
+    {
+      "path": "local/research/20260919-amazon-annual/report-audit.json",
+      "sha256": "cb43c5d0d038328ea070951067d992decff3e9cecac85ada14f71b4b56e20807",
+      "bytes": 743
+    },
+    {
+      "path": "local/research/20260919-amazon-annual/financial-audit.json",
+      "sha256": "ffced8f7314410ed7da441d2a50ef4ab4d21ead39e4cb7d2a398638e343f9010",
+      "bytes": 3148
+    },
+    {
+      "path": "local/research/20260919-amazon-annual/semantic-review.json",
+      "sha256": "deaf497486926fd868247311ebd6ec7b898f0d44654bce195f5af4f8d5687b6a",
+      "bytes": 1100
+    },
+    {
+      "path": "local/research/20260919-amazon-annual/index-observation.json",
+      "sha256": "bb04698eb6c0e61bdc589800d8dd167f4539ef3dd2976e66a91b28998e9f08dc",
+      "bytes": 472
+    },
+    {
+      "path": "local/research/20260919-amazon-annual/run-verify.json",
+      "sha256": "904908c3a4220c3cbb50a49da9589629a9e632d2fdf70841d8b8fab6eb0b4f27",
+      "bytes": 357
+    }
+  ],
+  "validation": {
+    "report_valid": true,
+    "report_warnings": [
+      "line 17: financial statement may need a source or calculation receipt",
+      "line 30: financial statement may need a source or calculation receipt",
+      "line 31: financial statement may need a source or calculation receipt",
+      "line 32: financial statement may need a source or calculation receipt"
+    ],
+    "financial_calculations_passed": 13,
+    "ledger_completed": true,
+    "receipts": 6,
+    "artifacts_verified": true,
+    "raw_captures": 2,
+    "index_raw_capture": "HTTP_403; web extracted observation only"
+  },
+  "semantic_review": {
+    "reviewer": "main-agent",
+    "independent": false,
+    "correction": "Filing Date differs from Accepted timestamp; removed assertion that later filing date establishes later availability. Removed unsupported raw index capture claim."
+  },
+  "outcome": {
+    "annual_cash_observation": "completed",
+    "quantified_distributable_cash": "UNVERIFIED",
+    "full_investment_thesis": "not_performed"
+  },
+  "limitations": [
+    "Post-hoc historical observation, not forecasting performance",
+    "Selected sections only, not full annual report audit",
+    "Same issuer across periods, not independent corroboration",
+    "No formal tracking revision, current recommendation, app or trading"
+  ]
+}

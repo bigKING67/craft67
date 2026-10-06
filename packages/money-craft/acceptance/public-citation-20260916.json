@@ -1,0 +1,51 @@
+{
+  "schema": "money-craft.public-citation-review.v1",
+  "date": "2026-09-16",
+  "scope": "available_evidence_sources, citation_binding_audit and research status/finalize callers; bounded primary-agent review, not full repository review",
+  "finding": {
+    "severity": "P2",
+    "status": "FIXED_LOCAL",
+    "description": "有效来源编号搭配无关公开URL仍能封存，引用绑定被误报VERIFIED。",
+    "before": {
+      "complete": true,
+      "citation_binding": "VERIFIED"
+    },
+    "after": {
+      "complete": false,
+      "citation_binding": "INVALID"
+    },
+    "sealed_files_preserved": true
+  },
+  "validation": {
+    "targeted_tests": 25,
+    "full_tests": 265,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "valid_url_forms": [
+      "exact bare URL",
+      "single Markdown link"
+    ],
+    "negative_cases": [
+      "unrelated URL",
+      "another source URL",
+      "ambiguous URL plus text"
+    ]
+  },
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "df1c26b46dc948125a9270afed1a634ae889a9665090f0ffa02f6880e381a60c",
+    "skills/money-craft/references/company-research.md": "8ade082c54df10cdbb0aafde2dfe1566557a8ac750adce4488fb8c512ba8447d",
+    "tests/test_research_run.py": "8c7b3d6d2b1cc6af04ce27a851e3ae9e623257e0e201c1e424c708d853085e16"
+  },
+  "compatibility": "Previously sealed reports with mismatched URLs now fail completion; preserve old artifacts and correct in a new workspace. Exact registered URLs and local paths remain supported.",
+  "limits": [
+    "URL equality verifies registration consistency, not issuer authenticity, URL response contents or claim support.",
+    "No real network or natural-language suite rerun; synthetic core and package evidence only.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260916T101608568413Z"
+  }
+}

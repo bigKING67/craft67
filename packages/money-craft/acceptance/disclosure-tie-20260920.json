@@ -1,0 +1,79 @@
+{
+  "schema": "money-craft.disclosure-tie-acceptance.v1",
+  "date": "2026-09-20",
+  "scope": "source instructions and existing shared arithmetic audit; no installed-host end-to-end claim",
+  "changes": [
+    "skills/money-craft/references/financial-data-and-evidence.md",
+    "skills/money-craft/references/research-semantic-review.md",
+    "tests/test_disclosure_tie.py"
+  ],
+  "sha256": {
+    "skills/money-craft/references/financial-data-and-evidence.md": "6f93220921b31d381f5edb96b51485650322531487bd0d3f3a9ef860aa92b0f1",
+    "skills/money-craft/references/research-semantic-review.md": "f35dc1002d91871bca4fe81d1ef7fe4597cbeea2d130a537d19718b524e49b7a",
+    "tests/test_disclosure_tie.py": "9ad5d9a08cbb5206f4ffd6720cced48594ba79067f32335a2d0d0abe715b81f4"
+  },
+  "source": "https://stockmc.xueqiu.com/202511/603667_20251118_KEV9.pdf",
+  "source_location": "7-1-21 and 7-1-22",
+  "diagnostics": {
+    "false_equality": {
+      "schema": "money-craft.financial-audit.v1",
+      "valid": false,
+      "checks": [
+        {
+          "id": "C01",
+          "operation": "subtract",
+          "actual": "0.17511907185019336454304905353145",
+          "expected": "0",
+          "relative_error": "Infinity",
+          "tolerance": "0",
+          "passed": false
+        }
+      ],
+      "warnings": [],
+      "errors": [
+        "C01: calculation differs from expected value"
+      ]
+    },
+    "truthful_residual": {
+      "schema": "money-craft.financial-audit.v1",
+      "valid": true,
+      "checks": [
+        {
+          "id": "C01",
+          "operation": "subtract",
+          "actual": "0.17511907185019336454304905353145",
+          "expected": "0.17511907185019336454304905353145",
+          "relative_error": "0",
+          "tolerance": "0",
+          "passed": true
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  },
+  "tests": {
+    "disclosure_tie": {
+      "passed": 4
+    },
+    "existing_audits": {
+      "passed": 35
+    },
+    "scoped_diff_check": "passed"
+  },
+  "semantic_review": {
+    "reviewer": "main agent self-review, not independent or host E2E",
+    "unsupported_rounding_claim": "CONTRADICTED_AS_ESTABLISHED: disclosed precision and rounding bound have not established this explanation; arithmetic audit does not judge prose",
+    "truthful_unresolved_difference": "SUPPORTED_WITHIN_SCOPE: two values and residual retained, deterministic valuation depending on reconciliation blocked"
+  },
+  "whole_source_validation": {
+    "valid": false,
+    "errors": [
+      "Existing acceptance/price-bridge-install-20260920.json contains a user-specific absolute destination path",
+      "System Python lacks PyYAML for external skill-creator quick_validate.py"
+    ]
+  },
+  "runtime_code_changed": false,
+  "global_install_changed": false,
+  "commit_or_publish": false
+}

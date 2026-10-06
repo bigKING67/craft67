@@ -1,0 +1,136 @@
+{
+  "schema": "money-craft.acceptance-case.v1",
+  "case_id": "000333",
+  "security": "美的集团",
+  "expected_thscode": "000333.SZ",
+  "as_of": "2026-08-23",
+  "evidence_root": "local/evidence/000333",
+  "public_root": "artifacts/acceptance/000333",
+  "provider_documentation": "https://fuyao.aicubes.cn/docs/api-reference/overview/",
+  "operations": [
+    {
+      "id": "S01",
+      "title": "Fuyao A-share ticker search",
+      "operation": "search",
+      "arguments": {"query": "000333", "limit": 3},
+      "output": "S01-search.normalized.json"
+    },
+    {
+      "id": "S02",
+      "title": "Fuyao A-share price snapshot",
+      "operation": "snapshot",
+      "arguments": {"thscodes": "000333.SZ"},
+      "output": "S02-snapshot.normalized.json"
+    },
+    {
+      "id": "S03",
+      "title": "Fuyao A-share valuation snapshot",
+      "operation": "valuations",
+      "arguments": {"thscodes": "000333.SZ"},
+      "output": "S03-valuations.normalized.json"
+    },
+    {
+      "id": "S04",
+      "title": "Fuyao forward-adjusted daily price history",
+      "operation": "history",
+      "arguments": {"thscode": "000333.SZ", "start": "2021-08-23", "end": "2026-08-23", "interval": "1d", "adjust": "forward"},
+      "output": "S04-history.normalized.json"
+    },
+    {
+      "id": "S05",
+      "title": "Fuyao annual income statements",
+      "operation": "financials",
+      "arguments": {"thscode": "000333.SZ", "statement": "income", "period": "annual", "limit": 5},
+      "output": "S05-income.normalized.json"
+    },
+    {
+      "id": "S06",
+      "title": "Fuyao annual balance sheets",
+      "operation": "financials",
+      "arguments": {"thscode": "000333.SZ", "statement": "balance", "period": "annual", "limit": 5},
+      "output": "S06-balance.normalized.json"
+    },
+    {
+      "id": "S07",
+      "title": "Fuyao annual cash-flow statements",
+      "operation": "financials",
+      "arguments": {"thscode": "000333.SZ", "statement": "cash-flow", "period": "annual", "limit": 5},
+      "output": "S07-cash-flow.normalized.json"
+    },
+    {
+      "id": "S08",
+      "title": "Fuyao 2025 annual financial indicators",
+      "operation": "indicators",
+      "arguments": {"thscode": "000333.SZ", "report": "2025-4"},
+      "output": "S08-indicators.normalized.json"
+    },
+    {
+      "id": "S09",
+      "title": "Fuyao corporate-action adjustment factors",
+      "operation": "corporate-actions",
+      "arguments": {"thscode": "000333.SZ", "start": "2021-08-23", "end": "2026-08-23"},
+      "output": "S09-actions.normalized.json"
+    },
+    {
+      "id": "S10",
+      "title": "Fuyao trading calendar",
+      "operation": "calendar",
+      "arguments": {"start": "2026-08-01", "end": "2026-08-23"},
+      "output": "S10-calendar.normalized.json"
+    },
+    {
+      "id": "S14",
+      "title": "Fuyao quarterly income statements",
+      "operation": "financials",
+      "arguments": {"thscode": "000333.SZ", "statement": "income", "period": "quarterly", "limit": 8},
+      "output": "S14-quarterly-income.normalized.json"
+    },
+    {
+      "id": "S15",
+      "title": "Fuyao quarterly balance sheets",
+      "operation": "financials",
+      "arguments": {"thscode": "000333.SZ", "statement": "balance", "period": "quarterly", "limit": 8},
+      "output": "S15-quarterly-balance.normalized.json"
+    },
+    {
+      "id": "S16",
+      "title": "Fuyao quarterly cash-flow statements",
+      "operation": "financials",
+      "arguments": {"thscode": "000333.SZ", "statement": "cash-flow", "period": "quarterly", "limit": 8},
+      "output": "S16-quarterly-cash-flow.normalized.json"
+    },
+    {
+      "id": "S17",
+      "title": "Fuyao 2026 Q1 financial indicators",
+      "operation": "indicators",
+      "arguments": {"thscode": "000333.SZ", "report": "2026-1"},
+      "output": "S17-q1-indicators.normalized.json"
+    }
+  ],
+  "official_sources": [
+    {
+      "id": "S11",
+      "kind": "official-document",
+      "title": "美的集团 2026 年第一季度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225259066.PDF",
+      "retrieved_on": "2026-08-23",
+      "local_path": "S11-2026-q1-report.pdf"
+    },
+    {
+      "id": "S12",
+      "kind": "official-document",
+      "title": "美的集团 2025 年年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-03-31/1225058110.PDF",
+      "retrieved_on": "2026-08-23",
+      "local_path": "S12-2025-annual-report.pdf"
+    },
+    {
+      "id": "S13",
+      "kind": "official-index",
+      "title": "美的集团投资者关系索引",
+      "url": "https://www.midea.com.cn/zh/Investors",
+      "retrieved_on": "2026-08-23",
+      "local_path": "S13-company-investor-index.html"
+    }
+  ]
+}

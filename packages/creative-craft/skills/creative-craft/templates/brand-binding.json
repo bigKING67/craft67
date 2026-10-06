@@ -1,0 +1,26 @@
+{
+  "schema_version": "creative-craft.brand-binding.v1",
+  "binding_id": "binding-tbd",
+  "project_id": "project-tbd",
+  "brand_id": "brand-tbd",
+  "pack_id": "brand-tbd-pack-v1",
+  "pack_version": "0.1.0",
+  "source": {
+    "repository_or_uri": null,
+    "ref": null,
+    "commit": null,
+    "pack_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "snapshot": {
+    "path": ".creative-craft/brand-snapshot",
+    "tree_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "project_brand": {
+    "path": "BRAND.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "imported_at": "1970-01-01T00:00:00Z",
+  "imported_by": "TBD",
+  "previous_binding_id": null,
+  "reason": "TBD"
+}

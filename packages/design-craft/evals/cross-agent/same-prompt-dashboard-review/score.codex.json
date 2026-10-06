@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.155.1",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "date": "2026-09-19",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "69f694db240266e509b7efd666c627880175a7cf132ddde3ad651c4820f37122",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "b42f097151b7dc63b85a97bc73f672f4a760ca9c50343cdcfecf3ade5439711c",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "ab0ca1121dd8d257e17fa704f4c4e13353ff92db",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "8da53f99d4ac651deeb72b63faf8c6522d009ea69e5aee5e9362e2a89fc1105b",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "behavior_domain": "skill-production-review",
+  "behavior_sha256": "b4f925c164f3216fb6c9953f6b14d1d7a44c167920584898328c46cacd71b129",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "c6889c56ba6a1b51b0d2a08d7098cf2a7e69541d3d08db6d36cc3e6f03805407",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "425fae29063716aff39a559e5b5d7d2ff5d88550bda4efce39f66ef2410b82de",
+  "score": 97,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Anchors recommendations to hourly ecommerce triage, restrained enterprise style and token-backed color."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 13,
+      "note": "Output applies dashboard hierarchy, task-first table and evidence vocabulary; exact reference reads are not established by the retained final-output/run manifest, so full credit is withheld."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Replaces equal KPI cards and decorative chart emphasis with lead/support hierarchy and an exception queue; avoids marketing decoration."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Explicitly labels prose-only/static evidence and qualifies its score band; no rendered UI score is claimed."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates prompt facts from unverified responsive, interaction, accessibility and data semantics."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Eight concrete moves cover lead metrics, support strip, task-first table, diagnostic chart, exceptions, states and contextual actions."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 9,
+      "note": "Within 150 lines and five findings/eight moves. Adds a fixed three-user validation sample without task-specific justification; minor scope deduction."
+    }
+  }
+}

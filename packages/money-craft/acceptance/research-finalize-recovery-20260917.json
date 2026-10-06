@@ -1,0 +1,51 @@
+{
+  "schema": "money-craft.research-finalize-recovery.v1",
+  "date": "2026-09-17",
+  "scope": "Receipt published but finalized event missing: detection and verified event-only recovery",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "24581577509ac0abc75ed621138f592d493c6834ece4d536fd4d982ca72f67d5",
+    "tests/test_research_run.py": "4ea110b7b37599de6a59d05a62b93defdc0881969c0181095402fed488935dab",
+    "skills/money-craft/references/company-research.md": "40c69ce287ce0b17e772c5daf594bd23b17c24abd3a55464cdb80a2345032a3b"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Receipt without finalized event reported complete and repeated finalize never repaired the missing event.",
+    "after": "Status complete=false with finalization_event pending; retry finalize revalidates receipt and all evidence/audits before appending missing event only."
+  },
+  "validation": {
+    "research_tests": 41,
+    "full_tests": 304,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regression": "Event failure fixtures previously reported complete=true.",
+    "real_cli": "Kill immediately after receipt hard-link publication, then CLI status incomplete; retry succeeds and only run-state.json changes.",
+    "additional_tests": [
+      "tampered report rejects recovery without writes",
+      "repeated finalize after recovery changes no files",
+      "event capacity checked before writes"
+    ]
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 41,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "24581577509ac0abc75ed621138f592d493c6834ece4d536fd4d982ca72f67d5",
+      "tests/test_research_run.py": "4ea110b7b37599de6a59d05a62b93defdc0881969c0181095402fed488935dab"
+    },
+    "additional_probes": "At event capacity, initial/recovery finalize rejects unchanged; already complete sealed finalize remains idempotent. Reviewer-reported temporary fixtures."
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T060535285720Z"
+  },
+  "limits": [
+    "Only finalized-event recovery implemented; other transactions remain PARTIAL.",
+    "Receipt staging hard link left by kill remains unchanged; no orphan cleanup.",
+    "Event presence does not prove payload authenticity or historical event details.",
+    "No Windows, network filesystem or power-loss durability acceptance.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No live provider, app, commit, push or release."
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "as_of": "2026-09-23",
+  "verdict": "PASS_BOUNDED_AFTER_CORRECTION",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "machine_checks_pass": true,
+  "calculation_receipts": 8,
+  "manual_reviewer": "main-agent",
+  "independent_review": false,
+  "source_install_parity": true,
+  "installed_snapshot_unchanged": true,
+  "tree_sha256": "f4b30159de03c4ca9cc8a42da17701f897dd4f247c2ebf063c745822874801ce",
+  "checks": [
+    {
+      "criterion": 1,
+      "status": "PASS",
+      "reason": "实际成功读取全局Skill及引用，路由和两份PDF哈希核验通过；未观察到答案或criteria读取。"
+    },
+    {
+      "criterion": 2,
+      "status": "PASS",
+      "reason": "现金桥与用途限制分开，未重复扣保证金、未将境外限制视为当地不可使用。"
+    },
+    {
+      "criterion": 3,
+      "status": "PASS",
+      "reason": "列出设备厂房承兑支付及购置款，现金proxy与存量义务分开。"
+    },
+    {
+      "criterion": 4,
+      "status": "PASS",
+      "reason": "覆盖短借、一年内到期借款租赁、非流动长借及租赁；不以静态差额认定危机。"
+    },
+    {
+      "criterion": 5,
+      "status": "PASS",
+      "reason": "专项报告文字表格冲突与半年报尚未到期并列，区分前轮6000万元归还。"
+    },
+    {
+      "criterion": 6,
+      "status": "PASS",
+      "reason": "不编造已归还或违规结论，明确同发行人不是独立双源。"
+    },
+    {
+      "criterion": 7,
+      "status": "PASS",
+      "reason": "流程完成与长期资金未核实分开，给出具体复查触发并结束本轮。"
+    }
+  ],
+  "history": [
+    {
+      "run": "implicit",
+      "status": "INVALID_SAMPLE",
+      "reason": "Wrong source path: gzip response instead of PDF; aborted."
+    },
+    {
+      "run": "implicit-valid",
+      "status": "FAIL_BOUNDED_COVERAGE",
+      "reason": "Payment mode and long-term borrowing omitted; interim misleading comparison not explicitly retracted."
+    },
+    {
+      "run": "implicit-corrected",
+      "status": "PASS_AFTER_AUDITOR_FIX",
+      "reason": "Original machine result rejected coexisting registered local and public links. Original answer/events retained; corrected auditor rechecked same bytes."
+    }
+  ],
+  "auditor_regression_tests": {
+    "command": "python3 -m unittest discover -s tests -p test_skill_task_audit.py",
+    "passed": 36
+  },
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260923-wuzhou-liquidity/implicit-corrected/answer.md",
+      "sha256": "6a5cd4803ecdc9c3641508d98192f29dcab599e310411951f3ada049b718cacd"
+    },
+    {
+      "path": "local/skill-evals/20260923-wuzhou-liquidity/implicit-corrected/events.jsonl",
+      "sha256": "ef2a9962d5a911596d135155c5be4d1340aa10a8194d41707c42cf8e4a7b8f03"
+    },
+    {
+      "path": "local/skill-evals/20260923-wuzhou-liquidity/implicit-corrected/host.json",
+      "sha256": "ae4ed9bcb2b67a988ab6e7fa50627837e931c731966ac32d94747baab219ae02"
+    },
+    {
+      "path": "local/skill-evals/20260923-wuzhou-liquidity/implicit-corrected/machine-audit.json",
+      "sha256": "abea539b06471756645c01c716e3cbae3b7872d35c74a3fa433720aaac5c8b7d"
+    },
+    {
+      "path": "local/skill-evals/20260923-wuzhou-liquidity/implicit-corrected/machine-audit-rechecked.json",
+      "sha256": "5d1f24cf23b756fc05e7a4ec28c516539e2ea1c3fe064e7c41bcf16c246f90ae"
+    },
+    {
+      "path": "local/skill-evals/20260923-wuzhou-liquidity/first-review.json",
+      "sha256": "9e6795cd1a9384884ce554a883e9b0b9e4ae5ca12887bd47d8d0c06a7cd0fe91"
+    },
+    {
+      "path": "local/skill-evals/20260923-wuzhou-liquidity/implicit/INVALID_SAMPLE.json",
+      "sha256": "890cbc6663023c2afda0c7c7a9e303d7b20603f98e0fdada6094e5a5d9c6bdd2"
+    },
+    {
+      "path": "acceptance/skill-tasks/wuzhou-liquidity-historical-20260923.json",
+      "sha256": "2d6f14e3ec04dd5558bf467e286ad13180b7fd91ad3c2e5d26e21ac775cb387d"
+    }
+  ],
+  "limits": [
+    "One authored real-document case; reused materials, not holdout or statistical stability.",
+    "Natural discovery under existing global governance.",
+    "Manual semantic review by author, not independent review.",
+    "No live-provider, current-market, formal-archive or other-host acceptance.",
+    "Process-misstatement correction rule was added, but corrected run did not reproduce an interim error; recovery behavior not separately established.",
+    "Raw PDFs and host artifacts are local dependencies; hashes detect changed/missing input, they are not vendored into Git."
+  ]
+}

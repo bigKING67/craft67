@@ -1,0 +1,50 @@
+{
+  "schema": "money-craft.report-scenario-units.v1",
+  "date": "2026-09-17",
+  "scope": "Yuan-per-share scenario chart unit admission",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "1d29cc876eab75b2cf30635a078d971f89146f24032682b757d64518df20e2bc",
+    "tests/test_report_renderer.py": "625dad89267be4ad032a3622387d779506c394a88b7841488f2338486745f361",
+    "skills/money-craft/references/report-rendering.md": "e3eb60637fcd1a40fd93c3a8cd544996bcf8f54e80b45571baa98c5f97715d1e"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Foreign currency or enterprise value headers matched substrings and were graphed as yuan/share.",
+    "after": "Require one accepted full header and explicit yuan units in header or each scenario cell; invalid recognized scenario row rejects chart instead of being silently dropped."
+  },
+  "validation": {
+    "renderer_tests": 44,
+    "full_tests": 334,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 9,
+    "fixture_contract_update": "Three arithmetic/geometry fixtures now explicitly declare yuan/share; their original assertions retained.",
+    "real_cli": "Dollar table remains, scenario chart omitted, ordinary financial chart retained; source bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "renderer_tests": 44,
+    "skipped_tests": 0,
+    "additional_unit_assertions_before_final_increment": 9,
+    "final_increment": "Extra foreign-currency scenario row rejects entire chart.",
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "1d29cc876eab75b2cf30635a078d971f89146f24032682b757d64518df20e2bc",
+      "tests/test_report_renderer.py": "625dad89267be4ad032a3622387d779506c394a88b7841488f2338486745f361"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T113726777660Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "The legacy illustrative-value header is interpreted under the existing per-share scenario table convention.",
+    "Financial and YoY unit inference, currency conversion, full SVG geometry and PDF/visual acceptance unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

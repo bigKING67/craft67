@@ -1,0 +1,56 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-002",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "b6db7af5525fc8d9b7d3244ecba405049387dcc0eeeca02830ff3411a946cb15",
+    "bytes": 5366
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "2f87cf9eca93996d215afa1141808ae8e661342c5a9334dea787ae0ae674514f",
+    "bytes": 910
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "1d695eccfda0d03f5b25d8bc7e482df7577ea174bb4cd634a4f9e35778164841",
+    "bytes": 944
+  },
+  "cases": [
+    {
+      "id": "two-candidate-boundary",
+      "input": {
+        "path": "input.json",
+        "sha256": "14542ce929f8c359a19f9dd1361ab2187f0b127294ae13d2678cc766ea116d2b",
+        "bytes": 262
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "9a4782d916640ff0521276dddfc81235846614ca8dd5fc1fa734495eddc00e94",
+        "bytes": 108901
+      },
+      "response": {
+        "path": "response.md",
+        "sha256": "8143a73d51434154af3038c421eb0827e92552b1a8d1bb6c1385977e106d2126",
+        "bytes": 2182
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PARTIAL",
+    "factErrors": 0,
+    "premiseOmissions": 1,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

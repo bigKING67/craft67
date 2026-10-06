@@ -1,0 +1,84 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "as_of": "2026-09-22",
+  "case_id": "research-boundaries-blind",
+  "verdict": "PASS_BOUNDED",
+  "invocation": "EXPLICIT_SOURCE_PATH",
+  "execution": "isolated ephemeral codex exec, read-only sandbox",
+  "semantic_reviewer": "main-agent manual review",
+  "independent_reviewer": false,
+  "criteria_exposed_in_prompt": false,
+  "source_frozen": true,
+  "checks": [
+    {
+      "criterion": "实际读取源码Skill和research-semantic-review且完成有效路由。",
+      "status": "PASS",
+      "reason": "事件证明源码Skill及语义引用读取，路由独立命令退出0并返回ready。"
+    },
+    {
+      "criterion": "不把九个月与半年亏损差额称同比或环比恶化，保留各期亏损事实。",
+      "status": "PASS",
+      "reason": "明确半年与九个月不能同比，保留亏损表面差额。"
+    },
+    {
+      "criterion": "不将期末300直接扣OCF90并称真实现金流，亦不指称造假。",
+      "status": "PASS",
+      "reason": "拒绝以期末票据余额扣期间OCF，也未认定现金失真。"
+    },
+    {
+      "criterion": "预算和账面差额不等于剩余现金需求；保留预算已知的局部结论。",
+      "status": "PASS",
+      "reason": "区分预算差额与剩余付款，保留厂房预算已披露。"
+    },
+    {
+      "criterion": "不将子公司300算成机器人收入或将样品升级量产。",
+      "status": "PASS",
+      "reason": "机器人仅样品收入，其余收入不能全归工业母机或机器人。"
+    },
+    {
+      "criterion": "EPS乘倍数仅敏感性，无合理价值或买入结论。",
+      "status": "PASS",
+      "reason": "40仅条件估值，未给真实价值或买卖建议。"
+    },
+    {
+      "criterion": "流程完成与经济结论分开；保留收入成本差额，针对未披露项设触发条件并收口。",
+      "status": "PASS",
+      "reason": "保留收入成本差额，投资假设未验证；明确等待新披露，不重复无新增检索。"
+    }
+  ],
+  "machine_checks_pass": true,
+  "final_calculation_receipts": 5,
+  "artifacts": [
+    {
+      "path": "acceptance/skill-tasks/research-boundaries-blind-20260922.json",
+      "sha256": "03334b17ba133326bf9b0fee023bc05058814fbd7af0ca3445a3feca07a00820"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/blind/prompt.txt",
+      "sha256": "e968b9c8b416e7d693cd9275a1cea08dead61ae9965179c574d37a92a438c9a1"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/blind/answer.md",
+      "sha256": "0846a61ec0df673da2c120c88e4b0c37da22a26faf4b42c19734f04492a0c4ac"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/blind/events.jsonl",
+      "sha256": "78b012b9c858c9afbaf0be1407b5000b122562e6cc770dc3ed35c76c1bdf2ebb"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/blind/host.json",
+      "sha256": "41b6234b02cdf89b149df43d02b3a5b9c2a6ad4f026f7b6f305a33c37e56cb2d"
+    },
+    {
+      "path": "local/skill-evals/20260922-research-boundaries/blind/machine-audit.json",
+      "sha256": "b07a356ee9d3139ff12867bd783ae0855e56b905d2868ad317505a79b30943d7"
+    }
+  ],
+  "limits": [
+    "One authored synthetic combined case, not held-out or repeated stability evidence",
+    "Explicit source loading only; global installation and implicit discovery not tested",
+    "Main agent authored criteria and assessed answer; not independent semantic review",
+    "No live provider, real issuer pipeline, full archive, trading or application test",
+    "Host preflight searched an absent guessed route .py path then used actual route core successfully; no dependent route failure"
+  ]
+}

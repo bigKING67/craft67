@@ -1,0 +1,130 @@
+{
+  "schema": "money-craft.cross-company-acceptance.v1",
+  "date": "2026-09-19",
+  "case_id": "costco-fiscal-cash-quality",
+  "verdict": "PASS_BOUNDED",
+  "scope": "Frozen installed Skill, supplied official Costco FY2024 annual/Q4 materials, natural-language historical earnings-quality interpretation.",
+  "research_as_of": "2024-12-11",
+  "execution_date": "2026-09-19",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "first_attempt": true,
+  "host": {
+    "exit_code": 0,
+    "timed_out": false,
+    "timeout_seconds": 600,
+    "elapsed_seconds": 368.278,
+    "completed_commands": 15,
+    "failed_commands": 0,
+    "machine_checks_pass": true,
+    "calculation_checks": 53,
+    "research_complete": false
+  },
+  "manual_review": {
+    "reviewer": "root-agent",
+    "independent_review": false,
+    "passed": 8,
+    "total": 8,
+    "criteria": [
+      {
+        "criterion": "实际自然触发安装Money Craft、earnings和语义指引，路由READY；不声称建立了不存在的旧论文或正式跟踪版本",
+        "status": "PASS",
+        "evidence": "Trace reads installed Money Craft, routing, earnings-review, financial-data-and-evidence and research-semantic-review. Route READY. Answer explicitly has no prior thesis, archive or tracking revision."
+      },
+      {
+        "criterion": "明确历史身份、截止与post-hoc边界，资料同属发行人血缘而非独立双源",
+        "status": "PASS",
+        "evidence": "2024-12-11 cutoff, 2026-09-19 post-hoc date, US-NASDAQ:COST common stock and USD explicit. Annual report and issuer release are not called independent sources."
+      },
+      {
+        "criterion": "识别全年52/53周与Q4的16/17周差异，区分报告增幅、可比周同店及排除汇率油价口径；不能机械年化为真实可比增长",
+        "status": "PASS",
+        "evidence": "Annual 52/53 and Q4 16/17 weeks explicit. Reported totals separated from comparable retail-week sales and FX/gas-adjusted sales; no mechanical weekly annualization."
+      },
+      {
+        "criterion": "会员费确认为递延摊销，会员费收入不等于独立利润；9月1日提价不冒充2024全年利润增长主因",
+        "status": "PASS",
+        "evidence": "Membership revenue is deferred over one year, not standalone zero-cost profit. September 1 fee increase and expected FY2025/later revenue are not labeled realized 2024 profit; lagged renewal metric not used to prove post-hike retention."
+      },
+      {
+        "criterion": "现金变化以现金流和资本配置解释，区分分红宣告与实际支付、特别分红与常规分红，不把现金下降自动归因经营恶化",
+        "status": "PASS",
+        "evidence": "Cash and equity bridges reconcile 9906 and 23622. Dividends paid 9041 vs declared 8589 reconciled with 452 opening payable; special dividend 6655 separated, payment-rounding limitations explicit."
+      },
+      {
+        "criterion": "OCF减capex仅为proxy，不当可分配现金；股东权益下降及ROE不能脱离分红基数效应解释",
+        "status": "PASS",
+        "evidence": "Simplified FCF 6629/6745 is not called shareholder distributable cash. Equity decline attributed using dividend/SBC/repurchase bridge. No ROE is calculated or claimed; this case does not demonstrate a standalone ROE-normalization capability."
+      },
+      {
+        "criterion": "税收等非经常影响和可持续性有边界，估值及提价效果缺输入时不虚构正常化、目标价或安全边际",
+        "status": "PASS",
+        "evidence": "94/63/45 tax benefits separated, Q4 63 not deducted twice. Charter shipping/LIFO/baseline effects considered. No full normalized EPS, fair price or margin of safety invented."
+      },
+      {
+        "criterion": "最强反方实际约束判断，下一次复核明确财政期、指标及资料不足时的停止点",
+        "status": "PASS",
+        "evidence": "Counterarguments change cash, member and payout judgments. FY2025 Q1 review window and H2/full-year membership review explicit. Missing YTD prevents Q4 cash derivation; no guessed filing schedule."
+      }
+    ]
+  },
+  "reviewer_calculation_checks": 16,
+  "installed_skill": {
+    "source_install_parity": true,
+    "frozen_file_count": 72,
+    "skill_modified": false,
+    "global_install_modified": false,
+    "frozen_manifest_sha256": "e5a8d3710762dbe9cf7b0fe71bc0573d7f8c3edbe605c7e44bbc4fd07f57009d"
+  },
+  "ledger": {
+    "status": "completed",
+    "receipt_count": 6,
+    "artifacts_verified": true
+  },
+  "sources": [
+    {
+      "source_id": "S01",
+      "path": "local/research/20260919-costco-transfer/sources/2024-annual.pdf",
+      "sha256": "bdeca9c1891ffbee65796ade60212f61f7a29790b962e15076b6159c6d288612",
+      "url": "https://s201.q4cdn.com/287523651/files/doc_financials/2024/ar/COST-2024-Annual-Report.pdf"
+    },
+    {
+      "source_id": "S02",
+      "path": "local/research/20260919-costco-transfer/sources/2024-release.html",
+      "sha256": "d9c671dffcf834664c9d62ff10233bf39b762005b2360f32fca8034c9d87e1ce",
+      "url": "https://investor.costco.com/news/news-details/2024/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Operating-Results/default.aspx"
+    }
+  ],
+  "source_fetch_limits": [
+    "SEC PDF direct download returned HTTP403; source capture uses official issuer CDN PDF obtained with HTTP200.",
+    "Both sources have issuer lineage. Current captures are post-hoc, not 2024 snapshots."
+  ],
+  "limits": [
+    "Single newly supplied issuer case, not independent or universal generalization certification.",
+    "No standalone ROE analysis produced; no automatic 52/53-week normalized core input accepted or tested.",
+    "Natural-language earnings interpretation only; no old thesis, earnings review CLI handoff, research completion receipt or tracking revision.",
+    "Host loaded PDF Skill in addition to Money Craft; main reviewer used Money Craft and original extracted source passages.",
+    "Historical replay; no current valuation, price, portfolio or trading."
+  ],
+  "runtime_changes": [],
+  "application_work": false,
+  "commit_push_release": false,
+  "artifact_hashes": {
+    "local/research/20260919-costco-transfer/cases.json": "911e605ac463b33406df8b419f63c7766f060991fe951d498449823dd586f96b",
+    "local/research/20260919-costco-transfer/frozen-skill.json": "e5a8d3710762dbe9cf7b0fe71bc0573d7f8c3edbe605c7e44bbc4fd07f57009d",
+    "local/research/20260919-costco-transfer/host/host.json": "35fcdb1128cc67bac40beb6d579747f74958d1b21cbbbd9e9cf58cfe7cbe1ebc",
+    "local/research/20260919-costco-transfer/host/events.jsonl": "01d84a1128b3ac88a451438aa6155d8ad427e097203b48ff81086e05ab442d8a",
+    "local/research/20260919-costco-transfer/host/answer.md": "711a869148088562d020c1c66d04ea62c47ac8113d9b64f61397c39f8a23a28e",
+    "local/research/20260919-costco-transfer/host/machine-audit.json": "302441116ef3ff90b518e88efbc8feb36e69d39e0de0511c6a1272908c02b56c",
+    "local/research/20260919-costco-transfer/post-review-machine-audit.json": "302441116ef3ff90b518e88efbc8feb36e69d39e0de0511c6a1272908c02b56c",
+    "local/research/20260919-costco-transfer/manual-review.json": "f78c4fe6f1227d8088c45682398fc4b40f22bdaafb4dccd25b491371175a92f1",
+    "local/research/20260919-costco-transfer/reference-checks.md": "984de4883821b288cdc9da3fdf600b4a083ef0de30f96becd994303eef1ebc3e",
+    "local/research/20260919-costco-transfer/reference-calculation-audit.json": "ad0dbb752f4d29921cb49b13b0b3b662aa8af58e9e19c2316fb09d04b06ad03e",
+    "local/research/20260919-costco-transfer/parity.json": "065c2f395e532f5312d64206b5b34089d10d74e5f53754bb5dbfe03adf2467b1",
+    "local/research/20260919-costco-transfer/ledger-verify.json": "0767ddd38ab444b804255b00362dcd71d1763dd577414d718f178b469fe20f4b",
+    "local/research/20260919-costco-transfer/source-validation.json": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+  },
+  "source_validation": {
+    "valid": true,
+    "checks": 19
+  }
+}

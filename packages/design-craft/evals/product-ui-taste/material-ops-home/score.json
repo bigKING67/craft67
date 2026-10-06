@@ -1,0 +1,32 @@
+{
+  "case_id": "material-ops-home",
+  "evidence_level": "L0",
+  "expected_score": 82,
+  "acceptable_range": [80, 84],
+  "maturity_band": "clean but generic",
+  "dimension_scores": {
+    "design_intent_and_taste_direction": 8,
+    "task_focus_and_attention_control": 7,
+    "information_order_and_structure": 7,
+    "proximity_and_grouping": 8,
+    "alignment_and_grid_discipline": 9,
+    "repetition_and_system_coherence": 8,
+    "contrast_and_hierarchy": 7,
+    "typography_color_and_surface_quality": 12,
+    "interaction_polish_and_microcopy": 7,
+    "responsive_robustness_and_design_craft": 4
+  },
+  "required_findings": [
+    "metric grid treats risk, backlog, completion, and capacity with nearly equal visual weight",
+    "authorization, script, and video-ID backlog should become a prioritized task queue",
+    "hero is spacious but underuses the most valuable first-screen area",
+    "internal terms such as asset_id, preview, and TOS should be softened or explained",
+    "static screenshot cannot verify hover, focus, loading, error, empty, mobile, or long-content states"
+  ],
+  "false_positive_guards": [
+    "do not call the page rough or unfinished",
+    "do not recommend landing-page visual drama for an operations dashboard",
+    "do not claim responsive or interaction-state validation from the screenshot alone",
+    "do not confuse this product UI taste score with the design-craft source score"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "case_id": "generic-l4-valid-before",
+  "evidence_level": "L4",
+  "expected_score": 78,
+  "acceptable_range": [
+    76,
+    80
+  ],
+  "maturity_band": "usable but hierarchy-heavy",
+  "screenshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "screenshot_dimensions": [
+    1440,
+    900
+  ],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [
+        1440,
+        900
+      ],
+      "dimensions": [
+        1440,
+        900
+      ],
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile",
+      "css_size": [
+        390,
+        844
+      ],
+      "dimensions": [
+        780,
+        1688
+      ],
+      "artifact_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "horizontal_overflow": false
+    }
+  ],
+  "state_checks": {
+    "focus": "verified in fixture metadata",
+    "empty": "not applicable to fixture"
+  },
+  "required_findings": [
+    "The before surface keeps the review area lower than ideal.",
+    "The header and command strip compete with the primary work area.",
+    "The evidence contract is present but not yet compact."
+  ],
+  "false_positive_guards": [
+    "Do not treat this fixture as a live product improvement.",
+    "Do not claim interaction behavior beyond fixture state checks.",
+    "Do not claim screenshot files exist unless --require-existing-files is used."
+  ]
+}

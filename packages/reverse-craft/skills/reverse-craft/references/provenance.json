@@ -1,0 +1,88 @@
+{
+  "schema": "reverse-craft.provenance.v1",
+  "generated_at": "2026-08-27T02:19:51Z",
+  "sources": [
+    {
+      "id": "browser67",
+      "url": "https://github.com/bigKING67/browser67",
+      "commit": "bb43570f139feafc2632f8da19f34b4863e6bccb",
+      "license": "MIT",
+      "role": "runtime_dependency",
+      "canonical_for": ["js-reverse skill", "browser session", "managed tabs", "hooks", "browser evidence runtime"],
+      "direct_import_allowed": false
+    },
+    {
+      "id": "reverse-skill",
+      "url": "https://github.com/zhaoxuya520/reverse-skill",
+      "commit": "37162cf9547c571c680c07005e9863d4610282dd",
+      "license": "MIT with separately licensed subprojects excluded",
+      "role": "selective_source"
+    },
+    {
+      "id": "codex-keysmith",
+      "url": "https://github.com/Jia-Ethan/codex-keysmith",
+      "commit": "2cb7f382ea8a08e9af5a6d9c16580b45f639891a",
+      "license": "MIT",
+      "role": "mechanism_reference"
+    }
+  ],
+  "paths": [
+    {
+      "path": "skills/reverse-craft/references/upstream/reverse-skill-routing.json",
+      "scope": "installed",
+      "source": "reverse-skill:skills/config/routing.json",
+      "classification": "adapted",
+      "adaptation": "R44 CTI/OSINT triggers absorbed; action-first IOC enrichment grammar added; explicit R44 intent is prioritized before R9 malware analysis; R3 bilingual request-signing and JS environment grammar added; generic R0 fallback-only semantics added",
+      "sha256": "f2f0b1a4d2e588f4d59ddccc6c56ff03df787743d5c8b6e9351a409e4ba954ed"
+    },
+    {
+      "path": "skills/reverse-craft/lib/reverse_craft/routing.py",
+      "scope": "installed",
+      "source": "reverse-skill deterministic route scoring concept",
+      "classification": "reimplemented"
+    },
+    {
+      "path": "skills/reverse-craft/references/modules/binary-foundations.md",
+      "scope": "installed",
+      "source": "reverse-skill R0 decision-framework entry hook and ADF-R43 deadlock/replan mechanism",
+      "classification": "adapted",
+      "adaptation": "R0 remains primary; the upstream overlay is reduced to bounded evidence-free deadlock thresholds, hypothesis/evidence-gap/decision-delta capture, and feasibility-gated replanning; no ADF files or stage framework copied"
+    },
+    {
+      "path": "skills/reverse-craft/lib/reverse_craft/setup_ops.py",
+      "scope": "installed",
+      "source": "codex-keysmith dry-run, ownership, transaction, and receipt mechanisms",
+      "classification": "reimplemented"
+    },
+    {
+      "path": "scripts/run_route_bank.py",
+      "scope": "source",
+      "source": "reverse-skill bilingual routing regression concept",
+      "classification": "adapted"
+    },
+    {
+      "path": "scripts/run_scenario_bank.py",
+      "scope": "source",
+      "source": "codex-keysmith isolated scenario bank mechanism",
+      "classification": "reimplemented"
+    },
+    {
+      "path": "skills/reverse-craft/references/browser67-js.md",
+      "scope": "installed",
+      "source": "browser67 skills/js-reverse and docs/codex-integration.md",
+      "classification": "adapted"
+    }
+  ],
+  "excluded": [
+    {
+      "source": "reverse-skill/CTF-Sandbox-Orchestrator",
+      "license": "GPL-3.0",
+      "reason": "reference only; no source copied"
+    },
+    {
+      "source": "reverse-skill/Pentest-Swarm",
+      "license": "AGPL-3.0",
+      "reason": "reference only; no source copied"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/research-init.schema.json",
+  "title": "Money Craft research initialization result",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "workspace",
+    "run_id",
+    "plan_sha256",
+    "provider_operation_count",
+    "official_source_count",
+    "reconciliation_required",
+    "network_used"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.research-init.v1"},
+    "valid": {"const": true},
+    "workspace": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "provider_operation_count": {"type": "integer", "minimum": 0},
+    "official_source_count": {"type": "integer", "minimum": 1},
+    "reconciliation_required": {"type": "boolean"},
+    "network_used": {"const": false}
+  },
+  "additionalProperties": false
+}

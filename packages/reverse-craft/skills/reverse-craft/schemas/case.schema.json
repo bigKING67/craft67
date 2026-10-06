@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/reverse-craft/schemas/case.schema.json",
+  "title": "Reverse Craft case v1",
+  "type": "object",
+  "required": ["schema", "id", "title", "scope", "route_id", "state", "created_at", "updated_at", "sealed_at"],
+  "properties": {
+    "schema": {"const": "reverse-craft.case.v1"},
+    "id": {"pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "title": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "route_id": {"type": ["string", "null"], "pattern": "^(?:R(?:[0-9]|[1-3][0-9]|4[01])|R44)$"},
+    "state": {"enum": ["open", "sealed"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "sealed_at": {"type": ["string", "null"], "format": "date-time"},
+    "event_count": {"type": "integer", "minimum": 0},
+    "last_event_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+  },
+  "dependentRequired": {
+    "event_count": ["last_event_hash"],
+    "last_event_hash": ["event_count"]
+  },
+  "additionalProperties": false
+}

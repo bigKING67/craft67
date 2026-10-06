@@ -1,0 +1,105 @@
+{
+  "schema": "whoami.response-claims.v1",
+  "reportSha256": "16739c58e6c95221e12278499f3046ef2d502c1aafcdd2ef151d9491765d8b9d",
+  "paragraphs": [
+    {
+      "id": "candidate-selection-boundary",
+      "text": "不能按“木已经确定”来改写结论。当前唯一候选是 C1-f7863f9a，四柱为庚午、戊子、丁巳、甲辰。盘面可确认丁火生于子月，戊伤官透月、庚财透年、甲印透时，同时有巳午火根与午子冲等线索；这些事实支持在普通格、日主暂偏弱的假设下，把木印列为扶身、制泄或化杀的候选方向，却不足以把木定成唯一用神。",
+      "reportClaims": [
+        {
+          "section": "summary",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "pattern"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "climate"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "selection"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "open-premises",
+      "text": "原因是几条会改变取舍的前提仍未闭合：格局与调候尚未定论，巳午根气及午子冲后的实际作用未裁定，子月癸杀与戊土泄身谁是主要负荷仍需比较，甲乙印能否发挥及庚财制印也未核实。若后续证据改变强弱、主要负荷或调候判断，木印方向就应撤回重审，而不是继续沿用。",
+      "reportClaims": [
+        {
+          "section": "summary",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "pattern"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "climate"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "selection"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "id": "report-scope",
+      "text": "随附报告因此保留“旺衰、扶抑、取舍为条件性，格局与调候未决”的分层状态，并让相关正文逐项绑定这些前提。它给的是可复核的传统解释边界，不是职业、投资、关系或现实结果的保证。",
+      "reportClaims": [
+        {
+          "section": "summary",
+          "claimIndex": 0
+        }
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "pattern"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "climate"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-f7863f9a",
+          "topic": "selection"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ]
+}

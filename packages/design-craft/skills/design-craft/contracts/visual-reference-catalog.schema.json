@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/skills/design-craft/contracts/visual-reference-catalog.schema.json",
+  "title": "design-craft visual reference catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "title", "observed_at", "source_policy", "cards", "hypotheses"],
+  "properties": {
+    "schema": {"const": "design-craft.visual-reference-catalog.v1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "observed_at": {"type": "string", "format": "date"},
+    "source_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_url", "policy_observed_at", "mode", "ai_training", "assets_redistributed"],
+      "properties": {
+        "policy_url": {"type": "string", "format": "uri"},
+        "policy_observed_at": {"type": "string", "format": "date"},
+        "mode": {"const": "reference-only"},
+        "ai_training": {"const": false},
+        "assets_redistributed": {"const": false}
+      }
+    },
+    "cards": {
+      "type": "array",
+      "items": {"$ref": "visual-reference-card.schema.json"}
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "mechanism",
+          "supporting_card_ids",
+          "unique_origin_urls",
+          "disconfirming_evidence",
+          "origin_audit_refs",
+          "target_validation_refs",
+          "comparative_eval_refs",
+          "status"
+        ],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+          "mechanism": {"type": "string", "minLength": 1},
+          "supporting_card_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "unique_origin_urls": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "format": "uri"}
+          },
+          "disconfirming_evidence": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "origin_audit_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "target_validation_refs": {
+            "type": "array",
+            "description": "Target or prototype evidence. An artifact listed here cannot also satisfy comparative_eval_refs for the same hypothesis.",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "comparative_eval_refs": {
+            "type": "array",
+            "description": "Later same-input comparative evidence, distinct from every target_validation_ref for the same hypothesis.",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "status": {
+            "enum": [
+              "proposed",
+              "insufficient_evidence",
+              "project_validated",
+              "comparative_validated",
+              "absorbed",
+              "rejected"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "schema_version": "creative-craft.evaluation.v2",
+  "evaluation_id": "northstar-motion-proof-direction-eval-v2",
+  "target_ref": "cc://creative-direction/northstar-motion-proof-direction-v1#",
+  "stage": "direction",
+  "brief_id": "northstar-airlift-launch-v1",
+  "dimensions": [
+    {
+      "id": "strategic_fit",
+      "weight": 15,
+      "score": 4.7,
+      "evidence_state": "SPECIFIED",
+      "evidence_refs": [
+        "cc://brief/northstar-airlift-launch-v1#/proposition",
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/message_hierarchy"
+      ],
+      "rationale": "The direction expresses the locked proposition through movement as proof."
+    },
+    {
+      "id": "audience_relevance",
+      "weight": 10,
+      "score": 4.2,
+      "evidence_state": "HYPOTHESIZED",
+      "evidence_refs": [
+        "cc://brief/northstar-airlift-launch-v1#/tension",
+        "cc://brief/northstar-airlift-launch-v1#/insight"
+      ],
+      "rationale": "It fits the working audience tension, but that tension still requires audience validation."
+    },
+    {
+      "id": "message_clarity",
+      "weight": 10,
+      "score": 4.5,
+      "evidence_state": "SPECIFIED",
+      "evidence_refs": [
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/message_hierarchy",
+        "cc://brief/northstar-airlift-launch-v1#/mandatories/exact_copy"
+      ],
+      "rationale": "One proposition and one exact line are carried through the direction."
+    },
+    {
+      "id": "concept_distinctiveness",
+      "weight": 15,
+      "score": 4.3,
+      "evidence_state": "INFERRED",
+      "evidence_refs": [
+        "cc://concept-routes/northstar-routes-v1#/routes/0/mechanism",
+        "cc://concept-routes/northstar-routes-v1#/routes/1/mechanism",
+        "cc://concept-routes/northstar-routes-v1#/routes/2/mechanism"
+      ],
+      "rationale": "The product test and attention device share one mechanism and differ from the other routes."
+    },
+    {
+      "id": "attention_architecture",
+      "weight": 10,
+      "score": 4.4,
+      "evidence_state": "INFERRED",
+      "evidence_refs": [
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/script",
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/shot_plan"
+      ],
+      "rationale": "Stillness-to-motion contrast creates a clear opening and proof sequence."
+    },
+    {
+      "id": "creative_coherence",
+      "weight": 10,
+      "score": 4.5,
+      "evidence_state": "INFERRED",
+      "evidence_refs": [
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/visual_world",
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/motion_direction",
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/sound_direction"
+      ],
+      "rationale": "Visual, motion, camera, sound, and copy all support controlled movement."
+    },
+    {
+      "id": "production_feasibility",
+      "weight": 10,
+      "score": 4.0,
+      "evidence_state": "INFERRED",
+      "evidence_refs": [
+        "cc://image/northstar-motion-proof-hero-image-v1#/canvas",
+        "cc://video/northstar-motion-proof-vertical-15s-v1#/timeline"
+      ],
+      "rationale": "Both jobs fit current provider profiles, while hair physics and fidelity still require actual inspection."
+    },
+    {
+      "id": "platform_fit",
+      "weight": 10,
+      "score": 4.4,
+      "evidence_state": "SPECIFIED",
+      "evidence_refs": [
+        "cc://creative-direction/northstar-motion-proof-direction-v1#/deliverables",
+        "cc://video/northstar-motion-proof-vertical-15s-v1#/format"
+      ],
+      "rationale": "The direction has a 15-second vertical structure and a static derivative."
+    },
+    {
+      "id": "rights_provenance",
+      "weight": 5,
+      "score": 5.0,
+      "evidence_state": "SPECIFIED",
+      "evidence_refs": [
+        "cc://asset-ledger/northstar-assets-v1#/assets"
+      ],
+      "rationale": "All example assets and talent are fictional and marked cleared."
+    },
+    {
+      "id": "testability",
+      "weight": 5,
+      "score": 4.5,
+      "evidence_state": "SPECIFIED",
+      "evidence_refs": [
+        "cc://concept-routes/northstar-routes-v1#/routes/0/falsification",
+        "cc://concept-routes/northstar-routes-v1#/routes/1/falsification"
+      ],
+      "rationale": "The primary route can be compared with the metaphor route while holding proposition and slot stable."
+    }
+  ],
+  "recommendation": "Proceed with prompt preparation, retain The Quiet Lift as a controlled route test, and withhold output-quality judgment until actual generations are inspected.",
+  "remaining_unknowns": [
+    "Audience tension and insight are still hypotheses.",
+    "Actual GPT Image 2 and Seedance outputs have not been observed.",
+    "Hair-motion and product-fidelity retry rate is unknown."
+  ]
+}

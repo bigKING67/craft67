@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/fix-attempt-manifest.schema.json",
+  "title": "Review Craft fix attempt manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "toolVersion", "fixId", "attemptId", "sequence", "capturedAt", "planSha256", "commandConfigSha256", "commands", "sourceBeforeCommands", "previousAttempt"],
+  "properties": {
+    "documentType": {"const": "review-craft.fix-attempt-manifest"},
+    "schemaVersion": {"const": "review-craft.fix-attempt.v1"},
+    "toolVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "fixId": {"type": "string", "minLength": 1},
+    "attemptId": {"type": "string", "pattern": "^attempt-[0-9]{4}-[a-f0-9]{12}$"},
+    "sequence": {"type": "integer", "minimum": 1, "maximum": 9999},
+    "capturedAt": {"type": "string", "format": "date-time"},
+    "planSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "commandConfigSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "commands": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "sourceBeforeCommands": {"$ref": "#/$defs/sourceState"},
+    "previousAttempt": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["attemptId", "verificationSha256"],
+      "properties": {
+        "attemptId": {"type": "string", "pattern": "^attempt-[0-9]{4}-[a-f0-9]{12}$"},
+        "verificationSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    }
+  },
+  "$defs": {
+    "sourceState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "branch", "remote", "sourceFingerprint", "worktreeFingerprint", "statusFingerprint"],
+      "properties": {
+        "revision": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "remote": {"type": ["string", "null"]},
+        "sourceFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "worktreeFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "statusFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    }
+  }
+}

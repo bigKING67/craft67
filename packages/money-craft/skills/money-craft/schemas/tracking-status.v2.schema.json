@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-status.v2.schema.json",
+  "title": "Money Craft Tracking Status",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "tracking_root",
+    "current",
+    "revision_count",
+    "revisions",
+    "working_count",
+    "workspaces",
+    "automatic_trading",
+    "network_used",
+    "assessment",
+    "current_semantics",
+    "errors"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.tracking-status.v2"
+    },
+    "valid": {
+      "type": "boolean"
+    },
+    "tracking_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "revision_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^t[0-9]{4}$"
+      }
+    },
+    "working_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "workspaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "automatic_trading": {
+      "const": false
+    },
+    "network_used": {
+      "const": false
+    },
+    "assessment": {
+      "type": "object",
+      "required": [
+        "integrity",
+        "freshness",
+        "status",
+        "score",
+        "assessed_on",
+        "reason",
+        "evidence_scope"
+      ],
+      "properties": {
+        "integrity": {
+          "enum": [
+            "VERIFIED",
+            "INVALID",
+            "UNVERIFIED"
+          ]
+        },
+        "freshness": {
+          "enum": [
+            "UNKNOWN",
+            "STALE",
+            "NOT_YET_VALID",
+            "WITHIN_REVIEW_WINDOW"
+          ]
+        },
+        "status": {
+          "enum": [
+            "SUPPORTED",
+            "WEAKENED",
+            "DAMAGED",
+            "BROKEN",
+            "UNVERIFIED",
+            "WATCH"
+          ]
+        },
+        "score": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 10
+        },
+        "assessed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "evidence_scope": {
+          "type": "string"
+        },
+        "review_due_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
+      }
+    },
+    "current_semantics": {
+      "type": "string"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

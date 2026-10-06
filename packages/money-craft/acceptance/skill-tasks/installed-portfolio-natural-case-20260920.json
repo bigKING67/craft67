@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "installed-portfolio-natural",
+      "status": "READY_HISTORICAL",
+      "prompt": "请根据提供的三份基金PDF，审计一个虚构组合：IVV45%、ITOT25%、AGG30%，美元交易，基础币种人民币，本金80万元；长期10年以上，另有6个月生活费，三年不提款。情景损失上限18%、单发行人权重上限5%，不加杠杆。提取费用、日期与IVV/ITOT前十大持仓；AGG本轮只算基金层费用和压力，债券身份不足则保留未知。情景A：两股票基金各跌35%、AGG跌8%，汇率不变；情景B相同资产冲击且每美元对应人民币金额下降10%。请使用已安装的可复用工具核验，解释费用、覆盖、重叠和风险是否满足，给简洁中文结论及可重算回执。全部为测试设定，不是我的真实持仓；研究日2026-09-20。",
+      "facts": "只能从列出的PDF获取研究事实，可直接pdftotext到stdout；不得读取旁边TXT、已有JSON、历史答案或验收标准。允许读取宿主治理、已安装工具及必要引用并执行只读路由。当前是只读会话，不能写文件；可在内存组织输入和计算，完整机器输入及结果可由工具stdout留存，无需在最终答案重复大段JSON。不联网，不修改项目、全局配置或账户。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/research/20260919-etf-portfolio/sources/IVV.pdf",
+          "sha256": "d3b9d8ac355f1dcfd7a436cd576876b70ba5fd1851661655d80c8805442373b0",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/ivv-ishares-core-s-p-500-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/research/20260919-etf-portfolio/sources/ITOT.pdf",
+          "sha256": "a20186a982cb4d0410d02f49a8c87eddc81ceb93d07e88eeb8ff06c120d08d49",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/itot-ishares-core-s-p-total-u-s-stock-market-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S03",
+          "path": "local/research/20260919-etf-portfolio/sources/AGG.pdf",
+          "sha256": "cfcff83b3eaef08f65f21a31e61d646d24e9f9e25e739e0b7ad1d33fa7c77f01",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/agg-ishares-core-u-s-aggregate-bond-etf-fund-fact-sheet-en-us.pdf"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "从自然语言请求加载全局安装Money Craft及组合引用，路由READY，实际运行安装目录组合核心；无源码路径提示",
+        "输出完整schema输入并实际执行共享组合核心；日期、费率、20项股票持仓转录与原文一致，数值为Decimal字符串",
+        "来源基金身份、SHA、页码定位准确；原文名称/类别到security及issuer映射有证据，Alphabet类别分开后聚合",
+        "按45/25/30与80万元计算费用、覆盖和重叠；AGG未知不等于零风险",
+        "集中度判定依据新权重与5%阈值；部分数据低于阈值不判合规",
+        "两情景正确组合资产与FX冲击；18%限制突破不等于输入失败，也不冒充预测或最大回撤",
+        "摘要完整性不认证原文真实性或独立性；历史快照、虚构约束及人工核验边界明确",
+        "已安装核心的实际结果与独立基准一致；安装前后冻结哈希可核验，未读取旧研究答案"
+      ]
+    }
+  ]
+}

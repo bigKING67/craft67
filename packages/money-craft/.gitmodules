@@ -1,0 +1,3 @@
+[submodule "upstreams/ai-berkshire"]
+	path = upstreams/ai-berkshire
+	url = https://github.com/xbtlin/ai-berkshire.git

@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v4",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.145.0",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-23",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "392e1903ad3e7088fc07c6794dfc98d025f310781a01a51f880fd0041ab25c8e",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "58af91e7d9b0b343db58f5a21ece229f25253078d3aae5a33317ee55f2155260",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "49a279138f4b2162c6a6b506233006aa6b67f4b9",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "a1d70f431e9d59a4537e5082f1d363029a604086f5bf2a80cf6fa508722a5ca1",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "34d8954c54f0fb227cbed77630ca18a73d51570d4afdcf3ceac51c5d010d6fa2",
+  "score": 100,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Preserves the restrained, dense-but-calm enterprise-console authority and the operator's next-hour triage decision."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Selects only the dashboard hierarchy, task anatomy, design-system, resilient-state, and validation guidance needed by the prompt."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Replaces equal cards and decorative analytics with decision hierarchy, ranked exceptions, diagnostic evidence, and contextual actions."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the assessment as static prompt evidence and does not present unrendered interface quality as runtime proof."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates supplied facts and design inferences from unverified visual, interaction, accessibility, responsive, data, and performance behavior."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Provides exactly eight implementable moves covering hierarchy, command context, exceptions, diagnostics, actions, density, and recovery states."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "Remains read-only and dashboard-specific with five blocking findings and eight moves in 141 logical lines, below the 150-line cap."
+    }
+  }
+}

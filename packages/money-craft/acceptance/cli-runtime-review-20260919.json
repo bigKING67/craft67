@@ -1,0 +1,41 @@
+{
+  "schema": "money-craft.cli-runtime-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Explicit interpreter failure and startup error handling",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "e73bc822a396bb9308b18a2e216e556f6bd522b252e2910a86229f94d4f56512",
+    "tests/test_cli_runtime.py": "8342db1d31259086e3216e607fc37df56033656045c219a2e454767cc82ef957"
+  },
+  "validation": {
+    "target_tests": 3,
+    "full_tests": 418,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 5,
+    "real_processes": "Five invalid interpreter cases yield structured CONFIG3; executable launcher reexecutes once with guard and --help succeeds."
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No blockers in declared runtime scope",
+    "target_tests": 3,
+    "extra_checks": "Cross-venv help, argv/source/guard environment and existing guard short circuit.",
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "e73bc822a396bb9308b18a2e216e556f6bd522b252e2910a86229f94d4f56512",
+      "tests/test_cli_runtime.py": "8342db1d31259086e3216e607fc37df56033656045c219a2e454767cc82ef957"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T092503439973Z"
+  },
+  "limits": [
+    "Not a proof arbitrary executables are Python; configured executable remains a trust boundary.",
+    "No global config or broken user data environment repair.",
+    "Other platforms and remaining CLI configuration/probe branches not closed.",
+    "No app, commit, push or release."
+  ]
+}

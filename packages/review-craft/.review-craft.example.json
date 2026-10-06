@@ -1,0 +1,25 @@
+{
+  "$schema": "./skills/review-craft/schemas/config.schema.json",
+  "mode": "review",
+  "profile": "auto",
+  "focusDimensions": [],
+  "diffBase": null,
+  "scope": ["."],
+  "exclude": [],
+  "generated": [],
+  "vendored": [],
+  "commands": {
+    "test": {
+      "argv": ["uv", "run", "--locked", "python", "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
+      "cwd": ".",
+      "timeoutSeconds": 600
+    }
+  },
+  "policy": {
+    "allowNetwork": false,
+    "allowInstall": false,
+    "allowRepositoryMutation": false,
+    "outputOutsideRepository": true
+  },
+  "reportLanguage": "zh-CN"
+}

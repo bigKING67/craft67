@@ -1,0 +1,516 @@
+{
+  "verifiedAt": "2026-09-26",
+  "sources": [
+    {
+      "repo": "shizhilya/yuan",
+      "commit": "c417ae71a8690e4c526b5dc4b9c5af1bcb476d3f",
+      "path": "README-CN.md",
+      "url": "https://raw.githubusercontent.com/shizhilya/yuan/c417ae71a8690e4c526b5dc4b9c5af1bcb476d3f/README-CN.md",
+      "sha256": "0d3f238bc75306f480664505e795979447605157b115b6b49e9c38d9d81c8398",
+      "bytes": 4462
+    },
+    {
+      "repo": "shizhilya/yuan",
+      "commit": "c417ae71a8690e4c526b5dc4b9c5af1bcb476d3f",
+      "path": "references/bazi/bazi_skill_engine.py",
+      "url": "https://raw.githubusercontent.com/shizhilya/yuan/c417ae71a8690e4c526b5dc4b9c5af1bcb476d3f/references/bazi/bazi_skill_engine.py",
+      "sha256": "61707b96dcc0b80cc0d33a71d0acb7e23f46c2eee5c317d00838aea8c2a2dd0e",
+      "bytes": 32293
+    },
+    {
+      "repo": "shizhilya/yuan",
+      "commit": "c417ae71a8690e4c526b5dc4b9c5af1bcb476d3f",
+      "path": "references/ziwei/references/DOMAIN_MODEL.md",
+      "url": "https://raw.githubusercontent.com/shizhilya/yuan/c417ae71a8690e4c526b5dc4b9c5af1bcb476d3f/references/ziwei/references/DOMAIN_MODEL.md",
+      "sha256": "f2f7c5ebab7462ee83d9e0c4babdbd689246a093e35a6a68be6cc8d8d893a7a6",
+      "bytes": 958
+    },
+    {
+      "repo": "DestinyLinker/MingLi-Bench",
+      "commit": "b7433280fd86d7a7c27debbc47d0303c218f0bfd",
+      "path": "README_zh.md",
+      "url": "https://raw.githubusercontent.com/DestinyLinker/MingLi-Bench/b7433280fd86d7a7c27debbc47d0303c218f0bfd/README_zh.md",
+      "sha256": "0347b6bca050c94a6a55af6566538559169319497564ca9ad5562995bb7291c0",
+      "bytes": 8237
+    },
+    {
+      "repo": "DestinyLinker/MingLi-Bench",
+      "commit": "b7433280fd86d7a7c27debbc47d0303c218f0bfd",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/DestinyLinker/MingLi-Bench/b7433280fd86d7a7c27debbc47d0303c218f0bfd/LICENSE",
+      "sha256": "2163a239e9b1e8b61ac70067aba7b625eb6835be7a898ebd938697c79780362c",
+      "bytes": 1081
+    },
+    {
+      "repo": "DestinyLinker/MingLi-Bench",
+      "commit": "b7433280fd86d7a7c27debbc47d0303c218f0bfd",
+      "path": "data/data.json",
+      "url": "https://raw.githubusercontent.com/DestinyLinker/MingLi-Bench/b7433280fd86d7a7c27debbc47d0303c218f0bfd/data/data.json",
+      "sha256": "528240929b23859656bf7ec0c126da92e2523c2cf091b11f83c0e8e377412054",
+      "bytes": 159402
+    },
+    {
+      "source": "~/.codex/skills/bazi-ziwei/SKILL.md",
+      "sha256": "6ba5906019c4882407c2e37599eecce889cdd9d73438093b26ba27f8bed35db8",
+      "bytes": 9927
+    },
+    {
+      "source": "~/.codex/skills/bazi-ziwei/NOTICE",
+      "sha256": "3c9c6ad9a7080e2348763e6a8add0433eb1809bb53a75cc59291f27aebcfa83e",
+      "bytes": 1804
+    },
+    {
+      "source": "~/.codex/skills/bazi-ziwei/calculator/run-chart.ts",
+      "sha256": "2f324745115abb75fc867c5b1606aebafa345d4996c093b4cec22f3f9ac34a94",
+      "bytes": 2754
+    },
+    {
+      "source": "~/.codex/skills/bazi-ziwei/prompts/bazi-prompt.md",
+      "sha256": "d06591ad360083bd0ba4486838156d3ffe2b722e5629455c401993fe35448864",
+      "bytes": 4074
+    },
+    {
+      "source": "~/.codex/skills/bazi-ziwei/TEST-GUIDE.md",
+      "sha256": "5533b1e5f998bda0b9a01b7dfa28b6a4244b5d43dfb5a86f2e7951661916a7cf",
+      "bytes": 6466
+    },
+    {
+      "repo": "6tail/lunar-typescript",
+      "commit": "f086189a0b159cd5d71d1b23090ccf034444fa04",
+      "path": "src/test/EightCharTest.ts",
+      "url": "https://raw.githubusercontent.com/6tail/lunar-typescript/f086189a0b159cd5d71d1b23090ccf034444fa04/src/test/EightCharTest.ts",
+      "sha256": "a317adc3118d7e493ca11fba80257cc121693ef4d5408f18d2b20e409656ceed",
+      "bytes": 11338
+    },
+    {
+      "repo": "6tail/lunar-typescript",
+      "commit": "f086189a0b159cd5d71d1b23090ccf034444fa04",
+      "path": "src/test/YunTest.ts",
+      "url": "https://raw.githubusercontent.com/6tail/lunar-typescript/f086189a0b159cd5d71d1b23090ccf034444fa04/src/test/YunTest.ts",
+      "sha256": "22f805aaed9b6a68b1daa9ad691fd9a814ed76308e1897040ebf090bffed65ea",
+      "bytes": 2728
+    },
+    {
+      "repo": "6tail/lunar-flutter",
+      "commit": "1892ffb22cf0ae8f45ebe7f6fd3faa05dfd1389b",
+      "path": "test/EightChar_test.dart",
+      "url": "https://raw.githubusercontent.com/6tail/lunar-flutter/1892ffb22cf0ae8f45ebe7f6fd3faa05dfd1389b/test/EightChar_test.dart",
+      "sha256": "daa96ac5ca185073d40b8c433a227cb7f0f0fc4e299171ef805a6aa9750b7676",
+      "bytes": 14097,
+      "scope": "Cross-language upstream lunar-input BaZi golden; adapter regression only"
+    },
+    {
+      "source": "iztro official quick-start",
+      "url": "https://docs.iztro.com/quick-start",
+      "verifiedAt": "2026-09-23",
+      "sha256": "71c53c58e8078e3d5e95f1b8cba2861ea725fb67abf270478165d704c5245c4c",
+      "bytes": 250859,
+      "scope": "Official 2000-08-16 female full natal palace example; adapter regression only"
+    },
+    {
+      "repo": "DestinyLinker/MingLi-Bench",
+      "commit": "b7433280fd86d7a7c27debbc47d0303c218f0bfd",
+      "path": "data/fortune_api_results.json",
+      "url": "https://raw.githubusercontent.com/DestinyLinker/MingLi-Bench/b7433280fd86d7a7c27debbc47d0303c218f0bfd/data/fortune_api_results.json",
+      "sha256": "e44ff5201486dc1917bbb24b6905a53e6a1359e76ada0eb8d5b2d9a5a88d29ed",
+      "bytes": 914720
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "packages/core/package.json",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/packages/core/package.json",
+      "sha256": "b6419f5366021455c26ef63a8dfb5e29e48f10b6fba0d3d342682400316a4b40",
+      "bytes": 12173
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "packages/core/LICENSE",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/packages/core/LICENSE",
+      "sha256": "d6662a5292a32e7bd3220901fc34aa2630eef474ae784caedc6d404cbd59e1ed",
+      "bytes": 35183
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "packages/core/src/bazi/baziAnalysisPipeline.ts",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/packages/core/src/bazi/baziAnalysisPipeline.ts",
+      "sha256": "1f73531f243ab07f4e8f6ae73750bfd733d96a31c44720548b26646ca8dd78aa",
+      "bytes": 8291
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "packages/core/src/bazi/baziRootAdjudication.ts",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/packages/core/src/bazi/baziRootAdjudication.ts",
+      "sha256": "ee307bda60414a04181ca9c0d013dbfa39787078169337eaf5dca88d3a916362",
+      "bytes": 3071
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "packages/core/src/synthesis/corroboration.ts",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/packages/core/src/synthesis/corroboration.ts",
+      "sha256": "db79b7c03a052f8f1da72b2137d9e6a0de16b9f03b52195bb3d2ce217a675d2b",
+      "bytes": 19448
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "packages/core/src/ziwei/iztro/build-evidence-pool.ts",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/packages/core/src/ziwei/iztro/build-evidence-pool.ts",
+      "sha256": "86750f5a74f9e4c3c5af9ad86bdb24b17bd295bb5693b5529f4fe06f66065098",
+      "bytes": 31209
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "skills/mingyu/references/reasoning-checks.md",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/skills/mingyu/references/reasoning-checks.md",
+      "sha256": "d24016606b8bf07a15e70075a862ebb882fdc8935bef62c06bb7ed718d2e8f1c",
+      "bytes": 6156
+    },
+    {
+      "repo": "Brhiza/mingyu",
+      "commit": "de2bac7814d1f0a133c5457cd356553e477cf018",
+      "path": "benchmarks/fortune-contest/README.md",
+      "url": "https://raw.githubusercontent.com/Brhiza/mingyu/de2bac7814d1f0a133c5457cd356553e477cf018/benchmarks/fortune-contest/README.md",
+      "sha256": "f26afbd4eec28f4dde71af6a272cc37d5c11bbe102ddea36ae36ae1b6dccd95f",
+      "bytes": 1573
+    },
+    {
+      "source": "子平真诠原文转录（东里书斋，含校勘及后人按语）",
+      "url": "https://donglishuzhai.net/chapter/3721.html",
+      "verifiedAt": "2026-09-23",
+      "sha256": "6f7caeae9ede613c9d0fedf07efc5d49a4a45c5cc4c0e0a464dcf888bef7e921",
+      "bytes": 23847,
+      "scope": "HTML retrieval fingerprint; semantic reading uses chapter body only"
+    },
+    {
+      "source": "子平真诠原文转录（东里书斋，含校勘及后人按语）",
+      "url": "https://donglishuzhai.net/chapter/3722.html",
+      "verifiedAt": "2026-09-23",
+      "sha256": "d5186407fb7d0f89bb40a810aa3549ce7431f1fead2bc7952bfafd64f7c94818",
+      "bytes": 23829,
+      "scope": "HTML retrieval fingerprint; semantic reading uses chapter body only",
+      "foodWealthReview": {
+        "verifiedAt": "2026-09-23",
+        "sha256": "d5186407fb7d0f89bb40a810aa3549ce7431f1fead2bc7952bfafd64f7c94818",
+        "bytes": 23829,
+        "sections": [
+          "财逢食生身强带比的成败组合"
+        ],
+        "scope": "Qualitative conditions and source-layer distinctions only; prior fingerprint retained; no prediction validation or numerical threshold inferred"
+      }
+    },
+    {
+      "source": "子平真诠原文转录（东里书斋，含校勘及后人按语）",
+      "url": "https://donglishuzhai.net/chapter/3723.html",
+      "verifiedAt": "2026-09-23",
+      "sha256": "d3dab49cca58b43e2b40386d494a6da41c2ded7b07fe8d9f515b105c81fb0119",
+      "bytes": 23638,
+      "scope": "HTML retrieval fingerprint; semantic reading uses chapter body only"
+    },
+    {
+      "package": "iztro@2.6.1",
+      "path": "lib/astro/FunctionalAstrolabe.js",
+      "sha256": "464f2d87a287ab8febe361c72d6da77b73131b056cc71fe420777a5a262062ee",
+      "bytes": 18033,
+      "verifiedAt": "2026-09-23",
+      "scope": "horoscope and decadalList construction"
+    },
+    {
+      "source": "子平真诠论财原文转录（东里书斋，含校勘及后人按语）",
+      "url": "https://donglishuzhai.net/chapter/3746.html",
+      "verifiedAt": "2026-09-23",
+      "sha256": "1eb193ade433d15959ca625b720d30793722183df725655314cfe6479c0748e8",
+      "bytes": 24700,
+      "scope": "HTML retrieval fingerprint; reading restricted to 财格佩印 paragraph, not historical prediction validation",
+      "semanticReview": {
+        "verifiedAt": "2026-09-23",
+        "sections": [
+          "财格佩印",
+          "财旺生官及其他救应分支"
+        ],
+        "method": "Read current chapter transcription; prior HTML fingerprint retained; no historical prediction validation"
+      },
+      "foodWealthReview": {
+        "verifiedAt": "2026-09-23",
+        "sha256": "1eb193ade433d15959ca625b720d30793722183df725655314cfe6479c0748e8",
+        "bytes": 24700,
+        "sections": [
+          "财根与透露",
+          "财用食生",
+          "食印并用",
+          "财用伤官"
+        ],
+        "scope": "Qualitative conditions and source-layer distinctions only; prior fingerprint retained; no prediction validation or numerical threshold inferred"
+      },
+      "classicalCaseReview": {
+        "verifiedAt": "2026-09-23",
+        "sha256": "1eb193ade433d15959ca625b720d30793722183df725655314cfe6479c0748e8",
+        "bytes": 24700,
+        "locators": [
+          "财用伤官：甲子辛未辛酉壬辰"
+        ],
+        "scope": "Source judgments and structural pillars kept distinct; no biography or prediction validation"
+      }
+    },
+    {
+      "source": "子平真诠六：得时不旺失时不弱原文转录",
+      "url": "https://donglishuzhai.net/chapter/3719.html",
+      "verifiedAt": "2026-09-23",
+      "sha256": "8fb4f61f4b861f1c1552cd2002f58bf05cc2d26e553a9ffe238aad84e105f2e9",
+      "bytes": 23587,
+      "scope": "chapter body; distinctions between season, roots and visible support; HTML retrieval fingerprint, not predictive validation",
+      "minimumConclusionReview": {
+        "verifiedAt": "2026-09-24",
+        "locators": [
+          "chapter body: month command is important but year/day/hour can add or reduce",
+          "chapter body: roots and visible peer support are different layers"
+        ],
+        "scope": "Supports a narrow support-foundation conclusion; no one-root threshold, final strength score or predictive validation inferred"
+      }
+    },
+    {
+      "source": "滴天髓阐微页面转录（维基文库，含原文/原注/任氏评注）",
+      "url": "https://zh.wikisource.org/zh-hans/滴天髓闡微",
+      "verifiedAt": "2026-09-23",
+      "sha256": "877c3ffcd1f6794516a21720302d7b54222c3ef1ab18c143f2b55527dc45fce4",
+      "bytes": 593317,
+      "scope": "体用 section: original commentary, Ren commentary and following strength/balance branches kept distinct; HTML retrieval fingerprint, not predictive validation",
+      "minimumConclusionReview": {
+        "verifiedAt": "2026-09-24",
+        "locators": [
+          "体用正文与任氏注：扶抑须得其宜并保留极端例外",
+          "体用分支：日主弱而财星旺则以比劫为用"
+        ],
+        "scope": "Supports prioritizing a concrete load comparison and retaining full branch prerequisites; no automatic strength or wealth judgment inferred"
+      },
+      "foodWealthReview": {
+        "verifiedAt": "2026-09-23",
+        "sha256": "27ffc4352a1736490e0d0d71031103bcd56d83a98411832c45edf3d719fbecff",
+        "bytes": 593316,
+        "sections": [
+          "体用任注后分支段",
+          "源流任氏注",
+          "何知章任氏注"
+        ],
+        "scope": "Qualitative conditions and source-layer distinctions only; prior fingerprint retained; no prediction validation or numerical threshold inferred"
+      },
+      "classicalCaseReview": {
+        "verifiedAt": "2026-09-23",
+        "sha256": "27ffc4352a1736490e0d0d71031103bcd56d83a98411832c45edf3d719fbecff",
+        "bytes": 593316,
+        "locators": [
+          "九干支总论：壬申丙午庚午庚辰及紧接对照",
+          "十二八格：丁未癸丑甲辰甲戌"
+        ],
+        "scope": "Source judgments and structural pillars kept distinct; no biography or prediction validation"
+      }
+    },
+    {
+      "source": "《滴天髓·穷通宝鉴》第2卷扫描本（中国国家图书馆藏，Wikimedia Commons）",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/NLC416-07jh011206-4922_%E6%BB%B4%E5%A4%A9%E9%AB%93%C2%B7%E7%AA%AE%E9%80%9A%E5%AF%B6%E9%91%91_%E7%AC%AC2%E5%8D%B7.pdf",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:NLC416-07jh011206-4922_%E6%BB%B4%E5%A4%A9%E9%AB%93%C2%B7%E7%AA%AE%E9%80%9A%E5%AF%B6%E9%91%91_%E7%AC%AC2%E5%8D%B7.pdf",
+      "verifiedAt": "2026-09-24",
+      "sha256": "a64fa0d6ec4bfea80fafbcaa230bc65f476bf1efabca232934992bac4eb3f7f2",
+      "bytes": 4121030,
+      "locators": [
+        "PDF pages 32-33; printed pages 31-32; 三秋丙火，七月丙火",
+        "七月丙火 entry and immediately following 壬多取戊制 conditions"
+      ],
+      "crossCheck": "https://zh.wikisource.org/zh/%E7%A9%B7%E9%80%9A%E5%AE%9D%E9%89%B4#%E4%B8%89%E7%A7%8B%E4%B8%99%E7%81%AB",
+      "scope": "Source-specific climate candidate and its immediate 壬/戊 conditions only; scan and transcription cross-checked; no complete edition collation, automated climate table or predictive validation"
+    },
+    {
+      "source": "子平真诠二十五论行运原文转录（东里书斋，含校勘及后人按语）",
+      "url": "https://donglishuzhai.net/chapter/3738.html",
+      "verifiedAt": "2026-09-26",
+      "sha256": "de269d85071a49fb29aa7c01ec7f728898eff3595283d9890e63728b82defd2c",
+      "bytes": 25473,
+      "locators": [
+        "chapter body: 运之干支配本命八字统观",
+        "chapter body: 似喜实忌、似忌实喜及干支同类不同作用",
+        "chapter body: 冲的缓急轻重、逢冲而不冲"
+      ],
+      "scope": "Reasoning order and counterexample classes only; chapter body kept distinct from editorial notes; no fixed auspiciousness, event mapping or predictive validation inferred",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json"
+    },
+    {
+      "source": "子平真诠二十六论行运成格变格原文转录（东里书斋，含校勘及后人按语）",
+      "url": "https://donglishuzhai.net/chapter/3739.html",
+      "verifiedAt": "2026-09-26",
+      "sha256": "f3a2883606531c757a9f147975886da0282828b5a3aa549448c977260cdda2a2",
+      "bytes": 22354,
+      "locators": [
+        "chapter body: 运可成格或变格",
+        "chapter body: 成格而不喜、变格而不忌"
+      ],
+      "scope": "Requires natal configuration and exceptions before any timing interpretation; no automatic formation, transformation or real-world outcome rule inferred",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json"
+    },
+    {
+      "source": "子平真诠二十八论支中喜忌逢运透清原文转录（东里书斋，含校勘及后人按语）",
+      "url": "https://donglishuzhai.net/chapter/3741.html",
+      "verifiedAt": "2026-09-26",
+      "sha256": "20f052ba8868bdced7bfb16339b9198ed8da60faefbef8bfff844ba7584b76a3",
+      "bytes": 22573,
+      "locators": [
+        "chapter body: 支中喜忌逢运透清",
+        "chapter body: 逐干逐支上下统看并将本命八字逐项配运"
+      ],
+      "scope": "Supports stem-branch separation and full-chart linkage; no counting score, automatic activation or event prediction inferred",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json"
+    },
+    {
+      "source": "滴天髓岁运论页面转录（维基文库，未标原文/原注/评注层次）",
+      "url": "https://zh.wikisource.org/zh-hant/%E6%BB%B4%E5%A4%A9%E9%AB%93/09",
+      "verifiedAt": "2026-09-26",
+      "sha256": "932dcee66c1f9ed0977493ba15de1ea802c1c7c67847f47b7ac7857c64b78528",
+      "bytes": 61121,
+      "locators": [
+        "opening: 页面作“衝戰視其孰降”，1947 扫描本作“戰沖視其孰降”",
+        "opening commentary: 页面未标扫描本已有的原注与任氏曰层次",
+        "parenthetical glosses in 战/冲/和 track the 1936 辑要 branch and are absent from the late-Ming witness and the 1947 原注 layer",
+        "和 section: 同一合化随日主所喜不同而异"
+      ],
+      "scope": "Search and cross-check aid only; 衝戰 branch, 1936-style parenthetical glosses and missing author-layer labels checked against the late-Ming, 1936 and 1947 scans; not a diplomatic transcription, universal luck-year weight or predictive validation",
+      "crossCheck": "https://commons.wikimedia.org/wiki/File:SSID-11335994_%E6%BB%B4%E5%A4%A9%E9%AB%93%E9%97%A1%E5%BE%AE.pdf",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json"
+    },
+    {
+      "source": "三命通会四库全书本卷十一原文转录（维基文库）",
+      "url": "https://zh.wikisource.org/zh-hant/%E4%B8%89%E5%91%BD%E9%80%9A%E6%9C%83_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%8D%B711",
+      "verifiedAt": "2026-09-26",
+      "sha256": "7ac040ec46e15c7b6623c566ad6854eb40c7ccb7963827a8dadec07ed0584de9",
+      "bytes": 253997,
+      "locators": [
+        "明通赋: 日干配八字干支",
+        "明通赋注: 月支、四时消长及运与八字助泄克生",
+        "明通赋注: 吉神受损与凶煞制化的条件变化"
+      ],
+      "scope": "Cross-source support for full-chart and seasonal conditions; no fixed good-bad labels, event mapping, edition collation or predictive validation inferred"
+    },
+    {
+      "source": "《子平真诠》扫描本（中国国家图书馆藏，Wikimedia Commons）",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf",
+      "verifiedAt": "2026-09-26",
+      "sha256": "71402a780b0351b54edf121a51bc4a4a4ce5896496c35b954563ee06f1a6f620",
+      "bytes": 7126096,
+      "pages": 287,
+      "locators": [
+        "PDF pages 56-58; printed pages 47-49; 论行运",
+        "PDF pages 58-59; printed pages 49-50; 论行运成格变格",
+        "PDF pages 60-62; printed pages 51-53; 论支中喜忌逢运透清",
+        "PDF page 56 opening reads 配命中八字之喜忌; 1926 文明书局本与 Dongli 首句作 配八字之喜忌",
+        "PDF page 57; printed page 48; reads 冲时日则缓, while the 1926 witness reads 冲日时则缓",
+        "PDF page 58; printed page 49; reads 于外格取运章, while the 1926 witness reads 于各格取运章"
+      ],
+      "crossCheck": [
+        "https://donglishuzhai.net/chapter/3738.html",
+        "https://donglishuzhai.net/chapter/3739.html",
+        "https://donglishuzhai.net/chapter/3741.html"
+      ],
+      "scope": "Page-bounded character-and-punctuation transcription plus material-variant collation for the three target chapters; separate navigation coordinates and manual evidence crops available; no exact glyph facsimile, full-book stemma, fixed auspiciousness, event mapping or predictive validation",
+      "coordinateLocator": "bazi-timing-column-locators.json",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json"
+    },
+    {
+      "source": "《滴天髓阐微》扫描本（上海大东书局 1947，Wikimedia Commons）",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/SSID-11335994_%E6%BB%B4%E5%A4%A9%E9%AB%93%E9%97%A1%E5%BE%AE.pdf",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:SSID-11335994_%E6%BB%B4%E5%A4%A9%E9%AB%93%E9%97%A1%E5%BE%AE.pdf",
+      "verifiedAt": "2026-09-26",
+      "sha256": "d6a7d1daf6513ce9fb9940ff8331b96804c10cdafbeac00d4d3d0a37229e1803",
+      "bytes": 14751242,
+      "pages": 516,
+      "locators": [
+        "PDF pages 501-511; printed pages 113-123; 岁运 section",
+        "PDF page 502; printed page 114; core verse, 原注 and 任氏曰 are separately labelled",
+        "PDF page 502 reads 戰沖視其孰降; Wikisource page reads 衝戰視其孰降",
+        "PDF page 511; printed page 123; 任氏释好 ends and 贞元 begins on the same page"
+      ],
+      "crossCheck": "https://zh.wikisource.org/zh-hant/%E6%BB%B4%E5%A4%A9%E9%AB%93/09",
+      "scope": "Page-bounded character-and-punctuation transcription for 岁运论, including separate 原注/任氏曰 blocks, charts and the 戰沖 branch; separate navigation coordinates and manual evidence crops available; no exact glyph facsimile, full stemma, complete attribution study, automatic strength rule or predictive validation",
+      "coordinateLocator": "bazi-timing-column-locators.json",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json",
+      "blindReviewPacket": "bazi-timing-blind-review/packet.json"
+    },
+    {
+      "source": "《渊海子平·子平真诠》第2卷扫描本（秦慎安校勘，文明书局 1926，中国国家图书馆藏）",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/NLC416-13jh002326-46443_%E6%B7%B5%E6%B5%B7%E5%AD%90%E5%B9%B3_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE_%E7%AC%AC2%E5%8D%B7.pdf",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:NLC416-13jh002326-46443_%E6%B7%B5%E6%B5%B7%E5%AD%90%E5%B9%B3_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE_%E7%AC%AC2%E5%8D%B7.pdf",
+      "verifiedAt": "2026-09-26",
+      "sha256": "b1ac0a7dd4dc260647b65bd9338ad815fc0855d78e0ea01ed428237b28eb61c8",
+      "bytes": 2088007,
+      "pages": 75,
+      "locators": [
+        "PDF pages 43-45; printed pages 30-32; 论行运",
+        "PDF page 45; printed page 32; 论行运成格变格 is partial and prints 壬生戌下阙 before jumping to 论支中喜忌逢运透清",
+        "PDF page 45; printed page 32; 论喜忌干支有别 is absent in this witness",
+        "PDF pages 45-46; printed pages 32-33; 论支中喜忌逢运透清",
+        "PDF page 43 opening reads 配八字之喜忌 and later reads 配命中八字而统观之",
+        "PDF page 44; printed page 31; reads 冲日时则缓, while the World Library witness reads 冲时日则缓",
+        "PDF page 45; printed page 32; reads 于各格取运章, while the World Library witness reads 于外格取运章",
+        "PDF page 45; printed page 32; reads 亦作清出, while the World Library witness reads 亦作清论"
+      ],
+      "crossCheck": [
+        "https://commons.wikimedia.org/wiki/File:NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf",
+        "https://donglishuzhai.net/chapter/3738.html"
+      ],
+      "scope": "Page-bounded character-and-punctuation transcription for the target chapters with explicit-lacuna evidence; chapter 26 is not a complete witness; separate navigation coordinates and manual evidence crops available; no exact glyph facsimile, full-book stemma, canonical-text ruling, automatic timing rule or predictive validation",
+      "coordinateLocator": "bazi-timing-column-locators.json",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json",
+      "blindReviewPacket": "bazi-timing-blind-review/packet.json"
+    },
+    {
+      "source": "《滴天髓辑要》扫描本（陈素庵辑订，乾乾书社 1936，中国国家图书馆藏）",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/NLC416-01jh000040-9444_%E6%BB%B4%E5%A4%A9%E9%AB%93%E8%BC%AF%E8%A6%81.pdf",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:NLC416-01jh000040-9444_%E6%BB%B4%E5%A4%A9%E9%AB%93%E8%BC%AF%E8%A6%81.pdf",
+      "verifiedAt": "2026-09-26",
+      "sha256": "6b1a6030178fc7379b6b635315d8431b401dd189b6a030fd2509b27207b9716f",
+      "bytes": 2699451,
+      "pages": 65,
+      "locators": [
+        "PDF pages 25-27; printed pages 20-22; 岁运论",
+        "PDF page 25; printed page 20; opening reads 衝戰視其孰降",
+        "PDF page 27; printed page 22; 何谓和/何谓好 end and 体用论 begins",
+        "parenthetical glosses include 乙庚化金 and 子丑合而化土; these are absent from the late-Ming witness and the 1947 原注 layer",
+        "PDF page 27; printed page 22; reads 喜水则不吉, while the late-Ming witness reads 喜水则甚利"
+      ],
+      "crossCheck": [
+        "https://commons.wikimedia.org/wiki/File:SSID-11335994_%E6%BB%B4%E5%A4%A9%E9%AB%93%E9%97%A1%E5%BE%AE.pdf",
+        "https://zh.wikisource.org/zh-hant/%E6%BB%B4%E5%A4%A9%E9%AB%93/09"
+      ],
+      "scope": "Page-bounded character-and-punctuation transcription for 岁运论, including the 衝戰 branch and editor-gloss layer; separate navigation coordinates and manual evidence crops available; no exact glyph facsimile, full stemma, unique-text ruling or predictive validation",
+      "coordinateLocator": "bazi-timing-column-locators.json",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json",
+      "blindReviewPacket": "bazi-timing-blind-review/packet.json"
+    },
+    {
+      "source": "《新锲诚意伯秘授玄彻通旨滴天髓》明末长庚馆刊本扫描（中华民国国家图书馆藏）",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/NCL-06619_%E6%96%B0%E9%8D%A5%E8%AA%A0%E6%84%8F%E4%BC%AF%E7%A7%98%E6%8E%88%E7%8E%84%E5%BE%B9%E9%80%9A%E6%97%A8%E6%BB%B4%E5%A4%A9%E9%AB%93.pdf",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:NCL-06619_%E6%96%B0%E9%8D%A5%E8%AA%A0%E6%84%8F%E4%BC%AF%E7%A7%98%E6%8E%88%E7%8E%84%E5%BE%B9%E9%80%9A%E6%97%A8%E6%BB%B4%E5%A4%A9%E9%AB%93.pdf",
+      "verifiedAt": "2026-09-26",
+      "sha256": "af8cc3ae1e2d6de6e11c6d677c43c9c0519193f18dfba2e16690bfa131a7715d",
+      "bytes": 13839324,
+      "pages": 69,
+      "locators": [
+        "PDF page 66 right leaf; 岁运论 opening reads 戰沖視其孰降",
+        "PDF page 67 both leaves and PDF page 68 right leaf; 何为战/冲/和/好 examples",
+        "PDF page 68 right leaf; reads 喜水则甚利 and ends at 喜阴则",
+        "PDF page 68 left leaf first column continues 辛与酉为好。此皆宜例推以见。; the following column begins 贞元"
+      ],
+      "crossCheck": [
+        "https://commons.wikimedia.org/wiki/File:SSID-11335994_%E6%BB%B4%E5%A4%A9%E9%AB%93%E9%97%A1%E5%BE%AE.pdf",
+        "https://commons.wikimedia.org/wiki/File:NLC416-01jh000040-9444_%E6%BB%B4%E5%A4%A9%E9%AB%93%E8%BC%AF%E8%A6%81.pdf"
+      ],
+      "scope": "Page-bounded character-and-punctuation transcription showing the 戰沖 branch, pre-Ren complete 战冲和好 examples and a verified cross-leaf continuation; catalog attribution is not treated as settled authorship; separate navigation coordinates and manual evidence crops available; no exact glyph facsimile, full stemma or predictive validation",
+      "coordinateLocator": "bazi-timing-column-locators.json",
+      "relationshipMatrix": "bazi-timing-stemma-matrix.json",
+      "blindReviewPacket": "bazi-timing-blind-review/packet.json"
+    }
+  ]
+}

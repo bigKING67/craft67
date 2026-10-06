@@ -1,0 +1,70 @@
+{
+  "schema_version": "creative-craft.provider.v1",
+  "profile_id": "bytedance.seedance-2.5.2026-07-31",
+  "provider": "ByteDance Seed",
+  "model": "Seedance 2.5",
+  "verified_at": "2026-08-04",
+  "authority": "official-public-plus-owner-supplied-guides",
+  "sources": [
+    "https://seed.bytedance.com/en/seedance2_5",
+    "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+    "https://bytedance.larkoffice.com/wiki/NjnWwvf4BiFYFLk2RzrcEgaunGf",
+    "https://bytedance.larkoffice.com/docx/OsiUdR1OxoDqvnxsK8LczYx7nPd"
+  ],
+  "availability": {
+    "jimeng_ui": true,
+    "doubao_pro_ui": true,
+    "public_api_status_as_of_launch": "announced-coming-soon-via-byteplus-modelark",
+    "network_adapter_included_in_creative_craft": false
+  },
+  "capabilities": {
+    "joint_audio_video_generation": true,
+    "single_pass_max_seconds": 30,
+    "multi_round_extension": true,
+    "reference_limits": {
+      "images": 30,
+      "videos": 10,
+      "audio": 10
+    },
+    "reference_types": [
+      "subject",
+      "scene",
+      "prop",
+      "composition",
+      "camera",
+      "motion",
+      "creative",
+      "audio",
+      "clay_render"
+    ],
+    "editing": {
+      "timestamp_control": true,
+      "character_action_plot": true,
+      "green_screen": true,
+      "camera_perspective": true,
+      "reference_based": true
+    }
+  },
+  "workflow_guidance": {
+    "prompt_order": [
+      "format and intended use",
+      "creative premise and end state",
+      "reference map by asset and role",
+      "continuity locks",
+      "timestamped beats",
+      "environment material light and physics",
+      "dialogue voice ambience effects and music",
+      "edit changes",
+      "preserve",
+      "failure conditions"
+    ],
+    "extension": "Restate the source end state, subject/environment/audio continuity, next action, and new ending.",
+    "edit": "Specify the exact time range and change only, then repeat preserved invariants."
+  },
+  "known_limitations": [
+    "Complex motion can still have physical plausibility defects.",
+    "Multi-subject interaction can still have scene or identity instability.",
+    "Detailed UI behavior and API syntax may vary by platform and must be rechecked against live official guides.",
+    "Public API availability and parameters were not final in the launch article."
+  ]
+}

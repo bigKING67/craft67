@@ -1,0 +1,56 @@
+{
+  "schema": "design-craft.gesture-fixture-validation.v1",
+  "captured_at": "2026-07-10T10:01:14.641Z",
+  "fixture_url": "http://127.0.0.1:4177/evals/fixtures/l4-pages/gesture-sheet-interaction/index.html",
+  "transport": {
+    "tool": "tmwd_browser.browser_transport_health",
+    "status": "healthy",
+    "preferred_transport": "ws"
+  },
+  "scenario": {
+    "schema": "design-craft.gesture-fixture-trace.v1",
+    "ready": true,
+    "final_state": "collapsed",
+    "final_y": 586,
+    "trace_length": 17,
+    "interruption_jump_px": 0,
+    "assertions": {
+      "pointer_down_feedback": true,
+      "one_to_one_drag": true,
+      "interruption_passed": true,
+      "projected_endpoint_observed": true,
+      "reduced_motion_immediate": true
+    }
+  },
+  "screenshot": {
+    "tool": "tmwd_browser.browser_screenshot_ops",
+    "target": "viewport",
+    "artifact_path": "~/.browser67/runtime/runs/design-craft/20260710T100114637Z-9b397058/artifacts/screenshot-viewport-design-craft_gesture_sheet_v0.4.0_evidence-20260710T100114640Z-f4f83dc8.png",
+    "repo_external": true,
+    "sha256": "867d37e4e672d7aa08a3750aa01678f600556830ca401a60f430876787bb7ca5",
+    "dimensions": [
+      3024,
+      1640
+    ],
+    "css_viewport": [
+      1512,
+      823
+    ],
+    "device_pixel_ratio": 2,
+    "run_id": "20260710T100114637Z-9b397058",
+    "viewport_override_note": "A requested 1440x900 override was rejected by browser67 because live page metrics did not match; the final artifact uses the verified live viewport."
+  },
+  "runtime_boundaries": {
+    "browser_fixture": "observed",
+    "ios_simulator": "unverified locally",
+    "android_emulator": "unverified locally",
+    "real_devices": "unverified locally"
+  },
+  "cleanup": {
+    "workspace_key": "design-craft",
+    "task_id": "gesture-sheet-v040",
+    "closed_count": 1,
+    "close_verified_count": 1,
+    "remaining_unkept_count": 0
+  }
+}

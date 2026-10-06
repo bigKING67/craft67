@@ -1,0 +1,361 @@
+{
+  "schema": "money-craft.public-evidence-manifest.v1",
+  "case_id": "000333",
+  "security": "美的集团",
+  "thscode": "000333.SZ",
+  "as_of": "2026-08-23",
+  "data_cutoff": "2026-08-23T12:42:37.772301Z",
+  "distribution": {
+    "mode": "metadata-only",
+    "provider_payloads_distributed": false,
+    "downloaded_documents_distributed": false,
+    "note": "Only source metadata and SHA-256 bindings are public. Evidence files remain local and ignored by Git."
+  },
+  "local_evidence": {
+    "default_root": "local/evidence/000333",
+    "required_for_public_validation": false
+  },
+  "provider_documentation": "https://fuyao.aicubes.cn/docs/api-reference/overview/",
+  "source_count": 17,
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "provider-response",
+      "title": "Fuyao A-share ticker search",
+      "provider": "fuyao",
+      "operation": "search",
+      "retrieved_at": "2026-08-23T12:42:35.081247Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S01-search.normalized.json",
+          "sha256": "86bf58a0df51d1c610bb53aa4147db834f41f5ff34791d3c71ef4e6ea711c877"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S01/response.json",
+          "sha256": "daa666aa7494d92530250f2c585e3213316d7d2e882b57cd697b954250392c7b"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "kind": "provider-response",
+      "title": "Fuyao A-share price snapshot",
+      "provider": "fuyao",
+      "operation": "snapshot",
+      "retrieved_at": "2026-08-23T12:42:35.213922Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S02-snapshot.normalized.json",
+          "sha256": "ea1b9ce4f65e63609976976e77f9f9d554718fd74e6a5502370eb951dcf9da34"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S02/response.json",
+          "sha256": "aacfe528dbfeb61ccd6aa2b467a08741387fb925a5835e52ef2f15ce8fd66384"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "kind": "provider-response",
+      "title": "Fuyao A-share valuation snapshot",
+      "provider": "fuyao",
+      "operation": "valuations",
+      "retrieved_at": "2026-08-23T12:42:35.349396Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S03-valuations.normalized.json",
+          "sha256": "cb1ce223a9c05721760e9f12ac8a0dfde00b83895cfe2ca53646fb885cb70bcc"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S03/response.json",
+          "sha256": "3eb92ddf565aab64048b95694b4ec0a6a7b22e9ce4a587310a801b21aa1b4ea9"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "kind": "provider-response",
+      "title": "Fuyao forward-adjusted daily price history",
+      "provider": "fuyao",
+      "operation": "history",
+      "retrieved_at": "2026-08-23T12:42:35.658391Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S04-history.normalized.json",
+          "sha256": "dc5af8a1064fe0f1b52f5ae927b5696641510c9d95375a72c45732ba3663e147"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S04/response.json",
+          "sha256": "f55f8494cb3fb63e3b1a47b84e33a9c8afd2e673800f222cbe0b59e3aca8d119"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "kind": "provider-response",
+      "title": "Fuyao annual income statements",
+      "provider": "fuyao",
+      "operation": "financials.income",
+      "retrieved_at": "2026-08-23T12:42:35.817784Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S05-income.normalized.json",
+          "sha256": "cf24c585f4fd181fe4387dd72976d696575441679409f93be58172bb24b8045a"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S05/response.json",
+          "sha256": "40d1c807aa43357e3d926f00daa8e5c05a0380df706581b34519e141f289735f"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "kind": "provider-response",
+      "title": "Fuyao annual balance sheets",
+      "provider": "fuyao",
+      "operation": "financials.balance",
+      "retrieved_at": "2026-08-23T12:42:35.946014Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S06-balance.normalized.json",
+          "sha256": "a65258104f7d8acc0c4512aa004f7233001d9a39ac58ce4479cada25d87a7862"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S06/response.json",
+          "sha256": "824097127d15cda1f25d50bd19fede674d00fe5547d681d742f200d1467db582"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "kind": "provider-response",
+      "title": "Fuyao annual cash-flow statements",
+      "provider": "fuyao",
+      "operation": "financials.cash-flow",
+      "retrieved_at": "2026-08-23T12:42:36.333929Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S07-cash-flow.normalized.json",
+          "sha256": "7c287fa8aba3cce76156f472abe238f749d245014d1db594eab80ec3306c1d19"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S07/response.json",
+          "sha256": "1c6efacc0024724c3cd07476e8a740cecf41a642725fd2f0551f689ac1752165"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "kind": "provider-response",
+      "title": "Fuyao 2025 annual financial indicators",
+      "provider": "fuyao",
+      "operation": "indicators",
+      "retrieved_at": "2026-08-23T12:42:36.485703Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S08-indicators.normalized.json",
+          "sha256": "6110e6ed8413baaa34e592326feb43fea5c2e0a7d0de9fb215b974aac05c4b34"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S08/response.json",
+          "sha256": "8f72165269d2044ea2bf4f0fd1f1cd77d639c86f907d758858a67470727b1d97"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "kind": "provider-response",
+      "title": "Fuyao corporate-action adjustment factors",
+      "provider": "fuyao",
+      "operation": "corporate-actions",
+      "retrieved_at": "2026-08-23T12:42:36.630179Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S09-actions.normalized.json",
+          "sha256": "ade192e501eb40b0686b38fa6de4b7c75ee1e48732a1536bed021ecb241f7377"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S09/response.json",
+          "sha256": "7b8a223108032825542ccd8564cdfa3c2259620c712cb43a46af88b6196e07ea"
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "kind": "provider-response",
+      "title": "Fuyao trading calendar",
+      "provider": "fuyao",
+      "operation": "calendar",
+      "retrieved_at": "2026-08-23T12:42:37.008916Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S10-calendar.normalized.json",
+          "sha256": "37e3a63420a55d852eb05c3081a462bbfd7868570877f671e83bab6dfc73f992"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S10/response.json",
+          "sha256": "d31edd0de59c80227952a1e8251497e57158b546ff72dfb4b26d2a736bfebf84"
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "kind": "official-document",
+      "title": "美的集团 2026 年第一季度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225259066.PDF",
+      "retrieved_on": "2026-08-23",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "downloaded-document",
+          "path": "S11-2026-q1-report.pdf",
+          "sha256": "a1a977c0ab10e36d744d45edc8ce3253666dff58f6ebb86efba40299eed02ef7"
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "kind": "official-document",
+      "title": "美的集团 2025 年年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-03-31/1225058110.PDF",
+      "retrieved_on": "2026-08-23",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "downloaded-document",
+          "path": "S12-2025-annual-report.pdf",
+          "sha256": "8f3347f452fa2be7c2424dbdd0fea6852536a96880bdd07b5cdae6a8c2a5e88b"
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "kind": "official-index",
+      "title": "美的集团投资者关系索引",
+      "url": "https://www.midea.com.cn/zh/Investors",
+      "retrieved_on": "2026-08-23",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "web-snapshot",
+          "path": "S13-company-investor-index.html",
+          "sha256": "1846236ac9875b85429ea26d0ecb4a96f7e00ef7a121aa7de937633b773b474d"
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "kind": "provider-response",
+      "title": "Fuyao quarterly income statements",
+      "provider": "fuyao",
+      "operation": "financials.income",
+      "retrieved_at": "2026-08-23T12:42:37.151531Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S14-quarterly-income.normalized.json",
+          "sha256": "65e7dd885bac3b28922baa13793a6bf1f2b2be3ac4aaa67225b2edc022ecf39f"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S14/response.json",
+          "sha256": "410f29c7d60982b2c50aacdec3e83a489aeeb37bdf1bdceaa26d2c021cf89bd5"
+        }
+      ]
+    },
+    {
+      "id": "S15",
+      "kind": "provider-response",
+      "title": "Fuyao quarterly balance sheets",
+      "provider": "fuyao",
+      "operation": "financials.balance",
+      "retrieved_at": "2026-08-23T12:42:37.518622Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S15-quarterly-balance.normalized.json",
+          "sha256": "bbcbb2ae5daaa431b05d02068ba1008850f0d6d3e64c41ec5f3a7898609005eb"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S15/response.json",
+          "sha256": "6fce4ac4a9e1578364253ff72e419fa893a5c153a8519d853d4b828782dcf7fe"
+        }
+      ]
+    },
+    {
+      "id": "S16",
+      "kind": "provider-response",
+      "title": "Fuyao quarterly cash-flow statements",
+      "provider": "fuyao",
+      "operation": "financials.cash-flow",
+      "retrieved_at": "2026-08-23T12:42:37.651992Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S16-quarterly-cash-flow.normalized.json",
+          "sha256": "3a5a1ffd5904a3d092e7eed9ed326b2e52b86f23521f3b8c0c094c69fcc96edf"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S16/response.json",
+          "sha256": "ca08632fe8a9f152f81b3015a59d34e56c9d3dc8e8e4ae38cd130bc50aadbe68"
+        }
+      ]
+    },
+    {
+      "id": "S17",
+      "kind": "provider-response",
+      "title": "Fuyao 2026 Q1 financial indicators",
+      "provider": "fuyao",
+      "operation": "indicators",
+      "retrieved_at": "2026-08-23T12:42:37.772301Z",
+      "distribution": "private-not-distributed",
+      "files": [
+        {
+          "role": "normalized-response",
+          "path": "S17-q1-indicators.normalized.json",
+          "sha256": "1a8d338563ff5c4ac6b4c5e708391ce4d886e9ad8bdd6f4987075a65c591784e"
+        },
+        {
+          "role": "raw-response",
+          "path": "captures/S17/response.json",
+          "sha256": "f7fa485c1833b7865299261ce74f0e45469ce4112ad8c6ac177384825ce0df34"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS_BOUNDED_FIXTURE_REPLAY",
+  "cases": 4,
+  "variants": 8,
+  "machine_accepted_contradicted_claims": 4,
+  "semantic_labels": "authored and parent-reviewed; not inferred by code",
+  "targeted_tests": 37,
+  "numeric_corruption_controls": 4,
+  "host_skill_evaluated": false,
+  "global_install_updated": false,
+  "independent_review": false,
+  "files": {
+    "skills/money-craft/references/research-semantic-review.md": "7b372dc03582d54ffd8006c838da05c9ae5d8fea5eaaef8197cc4f94b88abeb0",
+    "scripts/check_liquidity_semantics.py": "e6f73c2b53be0780e0a42c161430474b520b439d663129bf5cab89a82cb50cf8",
+    "tests/test_liquidity_semantics.py": "2f9fa23f49899446f3dcffc479cda9d05e847d51ea0a966cb8391528876299b1",
+    "acceptance/liquidity-semantics/cases.json": "6e51f4289d161d02f3bfeafd31468c2d1772492916581022f713bdc984650544",
+    "acceptance/skill-tasks/liquidity-cases-20260921.json": "6479672ff001a6f615207ddb219e2634f260d4296d2a6e90a31216ac5fb504c5"
+  }
+}

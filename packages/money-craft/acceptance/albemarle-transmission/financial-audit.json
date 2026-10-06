@@ -1,0 +1,143 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "divide",
+      "actual": "0.4871390101216454638313678150246077",
+      "expected": "0.4871390101216454638313678150246077",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "multiply",
+      "actual": "48.71390101216454638313678150246077",
+      "expected": "48.71390101216454638313678150246077",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "divide",
+      "actual": "0.3553183377811666031261913839115517",
+      "expected": "0.3553183377811666031261913839115517",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "multiply",
+      "actual": "35.53183377811666031261913839115517",
+      "expected": "35.53183377811666031261913839115517",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "divide",
+      "actual": "0.2472218753901860407042077662629542",
+      "expected": "0.2472218753901860407042077662629542",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "multiply",
+      "actual": "24.72218753901860407042077662629542",
+      "expected": "24.72218753901860407042077662629542",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "subtract",
+      "actual": "289.8",
+      "expected": "289.8",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "add",
+      "actual": "-63",
+      "expected": "-63",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C09",
+      "operation": "subtract",
+      "actual": "362759",
+      "expected": "362759",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C10",
+      "operation": "subtract",
+      "actual": "-481368",
+      "expected": "-481368",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C11",
+      "operation": "subtract",
+      "actual": "12759",
+      "expected": "12759",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C12",
+      "operation": "subtract",
+      "actual": "447429",
+      "expected": "447429",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C13",
+      "operation": "subtract",
+      "actual": "396698",
+      "expected": "396698",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C14",
+      "operation": "add",
+      "actual": "844127",
+      "expected": "844127",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C15",
+      "operation": "subtract",
+      "actual": "844127",
+      "expected": "844127",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

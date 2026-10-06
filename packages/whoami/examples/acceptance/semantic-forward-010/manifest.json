@@ -1,0 +1,94 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-010",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "e6cd9299948e06f89a0c3bf5f918efe56aa4169c211e83ee813489a9edb620aa",
+    "bytes": 7005
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "ab8453d2ba70eda5aa44e2a1eae8f7591a04f45dcc83af0d77be24c3d95c975d",
+    "bytes": 2404
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "3c15600cf27f84299d009b37180c77a3623d0830dd196572e008387bba84b26f",
+    "bytes": 2342
+  },
+  "cases": [
+    {
+      "id": "asia-shanghai-next-year-2028",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context-shanghai-2027-2028.json",
+        "sha256": "09659de75c062917cfe79930a15fab4e8fe2adbcce6dbd660e4c7c76da65be05",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-shanghai.md",
+        "sha256": "f863a759e5224adf180d39cce5fe25e19232ece1e95b97695bf2ec71e7b450de",
+        "bytes": 1194
+      },
+      "report": {
+        "path": "report-shanghai.json",
+        "sha256": "c32749a7554ea34ef3fe567d0dbfcdba17b3bad8b651b0fc8ad23fe640238135",
+        "bytes": 15344
+      },
+      "responseClaims": {
+        "path": "response-claims-shanghai.json",
+        "sha256": "d440439960cc5ef0be803e573d23926466fc1bbb3ac1c285ce040839ba19edde",
+        "bytes": 2634
+      }
+    },
+    {
+      "id": "america-los-angeles-next-year-2027",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context-los-angeles-2026-2027.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-los-angeles.md",
+        "sha256": "0744c08685f95989bf73ddc19cef27da4279e069e4f879707d9c91f1fe1f67c5",
+        "bytes": 1175
+      },
+      "report": {
+        "path": "report-los-angeles.json",
+        "sha256": "0ae3750dd73ee964c11cf33cdf281107d4e21e875e8b2968e3cac32563ae224c",
+        "bytes": 15371
+      },
+      "responseClaims": {
+        "path": "response-claims-los-angeles.json",
+        "sha256": "772a2ebffd7711e1e2e74d1d73d8cafa5604912c12e1acddadf112444803b24e",
+        "bytes": 2615
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "calendar": "solar",
+  "date": "1987-04-06",
+  "time": "18:10:00",
+  "place": "合成东经120度",
+  "longitude": 120,
+  "timeZone": "Asia/Shanghai",
+  "gender": "male",
+  "timeBasis": "true-solar",
+  "dayBoundary": "zi",
+  "uncertaintyMinutes": 0
+}

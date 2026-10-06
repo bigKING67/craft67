@@ -1,0 +1,144 @@
+[
+  {
+    "dir": "examples",
+    "chartId": "ff593223dd13e02a1bafaf63b46578bec0b5cd002c60451f31563112812b878b",
+    "previousEvidenceId": "7bde9f2b54147ffbd2f165b3eec3846760571d1ddb11af187412222111766c78",
+    "evidenceId": "debd1a654c2c4b41a048abc97f1bc0d77b890690828c951290845664648b915b",
+    "unchangedFactsAndRulesVerifiedByPreviousDigest": true,
+    "oldReportRejected": true,
+    "reportCheck": "PASS",
+    "placement": [
+      {
+        "candidate": "C1-300a9bf9",
+        "status": "adjacent-risk",
+        "pairs": [
+          {
+            "wealth": {
+              "position": "year",
+              "stem": "庚",
+              "tenGod": "偏财"
+            },
+            "seal": {
+              "position": "month",
+              "stem": "甲",
+              "tenGod": "偏印"
+            },
+            "adjacent": true,
+            "between": []
+          },
+          {
+            "wealth": {
+              "position": "hour",
+              "stem": "庚",
+              "tenGod": "偏财"
+            },
+            "seal": {
+              "position": "month",
+              "stem": "甲",
+              "tenGod": "偏印"
+            },
+            "adjacent": false,
+            "between": [
+              "day"
+            ]
+          }
+        ],
+        "conclusion": "显干财印存在相邻对；不能仅凭同透认定位置妥贴，须先解释此相邻风险。",
+        "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      }
+    ]
+  },
+  {
+    "dir": "examples/acceptance/ordinary",
+    "chartId": "885badc5926d4759506311ae4f5e5405d31ca2f476298d675863665c95c834a1",
+    "previousEvidenceId": "d076ac8c1af2a67841bb4b45528d40b026491939c75712e89424d5de5016f0d8",
+    "evidenceId": "a15a9ca170ed11e0a1c8d57322329cb4fa38d7d3afeb8227f366752a4e8b8bb2",
+    "unchangedFactsAndRulesVerifiedByPreviousDigest": true,
+    "oldReportRejected": true,
+    "reportCheck": "PASS",
+    "placement": [
+      {
+        "candidate": "C1-5ad54bcf",
+        "status": "not-applicable",
+        "pairs": [],
+        "conclusion": "财格候选入口或显干财印配对未满足；本项不作位置判断。",
+        "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      }
+    ]
+  },
+  {
+    "dir": "examples/acceptance/boundary",
+    "chartId": "0f13b38f0e930ec11c5cf12ce804b612481e0738b76256fd8e2698e15928ac15",
+    "previousEvidenceId": "a2c1cfcff68d0ddeec13bee1ac25e00cb9bf2852440f70488158f25c57b9f184",
+    "evidenceId": "7d7cf2cd6827396799241bb37f8cc4afd3ec31074c0ce01ea18b0a7941f72fca",
+    "unchangedFactsAndRulesVerifiedByPreviousDigest": true,
+    "oldReportRejected": true,
+    "reportCheck": "PASS",
+    "placement": [
+      {
+        "candidate": "C1-c6a1740f",
+        "status": "adjacent-risk",
+        "pairs": [
+          {
+            "wealth": {
+              "position": "month",
+              "stem": "甲",
+              "tenGod": "正财"
+            },
+            "seal": {
+              "position": "year",
+              "stem": "戊",
+              "tenGod": "正印"
+            },
+            "adjacent": true,
+            "between": []
+          },
+          {
+            "wealth": {
+              "position": "month",
+              "stem": "甲",
+              "tenGod": "正财"
+            },
+            "seal": {
+              "position": "hour",
+              "stem": "戊",
+              "tenGod": "正印"
+            },
+            "adjacent": false,
+            "between": [
+              "day"
+            ]
+          }
+        ],
+        "conclusion": "显干财印存在相邻对；不能仅凭同透认定位置妥贴，须先解释此相邻风险。",
+        "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      },
+      {
+        "candidate": "C2-2f8865eb",
+        "status": "adjacent-risk",
+        "pairs": [
+          {
+            "wealth": {
+              "position": "month",
+              "stem": "甲",
+              "tenGod": "偏财"
+            },
+            "seal": {
+              "position": "year",
+              "stem": "戊",
+              "tenGod": "偏印"
+            },
+            "adjacent": true,
+            "between": []
+          }
+        ],
+        "conclusion": "显干财印存在相邻对；不能仅凭同透认定位置妥贴，须先解释此相邻风险。",
+        "pending": "相邻风险是否被合化、通关等改变，以及身强弱、印能否帮身与整格成败，仍需另证；不相邻不等于无相克。",
+        "source": "https://donglishuzhai.net/chapter/3746.html"
+      }
+    ]
+  }
+]

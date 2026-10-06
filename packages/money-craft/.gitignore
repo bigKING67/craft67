@@ -1,0 +1,23 @@
+.codex/
+.DS_Store
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+build/
+dist/
+*.tgz
+.captures/
+captures/
+reports/
+local/
+
+# Licensed/provider payloads and downloaded source documents stay local-only.
+artifacts/**/captures/
+artifacts/**/host-smoke/
+artifacts/**/*.normalized.json
+artifacts/**/*.pdf
+artifacts/**/*.html

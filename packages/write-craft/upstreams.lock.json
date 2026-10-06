@@ -1,0 +1,68 @@
+{
+  "schema": "write-craft.upstreams-lock.v1",
+  "reviewed_at": "2026-09-24",
+  "upstreams": {
+    "anthropic-skills": {
+      "repo": "https://github.com/anthropics/skills.git",
+      "path": "upstreams/anthropic-skills",
+      "commit": "34040c9c568585f6929bedeaad110ad08f079624",
+      "default_branch": "main",
+      "license": "mixed/path-specific",
+      "decision": "partial",
+      "sources": {
+        "skills/doc-coauthoring/SKILL.md": "independent_reexpression",
+        "skills/internal-comms/SKILL.md": "reference_only"
+      },
+      "local_coverage": [
+        "skills/write-craft/SKILL.md",
+        "skills/write-craft/references/reader-testing.md"
+      ],
+      "notes": "Absorb context-aware drafting and fresh-reader testing without the mandatory long interview. The doc-coauthoring path has no declared license; internal-comms declares Apache-2.0 at its source path."
+    },
+    "elements-of-style": {
+      "repo": "https://github.com/obra/the-elements-of-style.git",
+      "path": "upstreams/elements-of-style",
+      "commit": "05fc4f0d2b97b7c042dd9949ad658568e4a1324e",
+      "default_branch": "main",
+      "license": "public-domain-source-text; wrapper-terms-not-declared",
+      "decision": "partial",
+      "sources": {
+        "skills/writing-clearly-and-concisely/SKILL.md": "independent_reexpression",
+        "skills/writing-clearly-and-concisely/elements-of-style.md": "principles_only"
+      },
+      "local_coverage": [
+        "skills/write-craft/references/clear-chinese.md"
+      ],
+      "notes": "Use language-neutral composition principles only. Do not import English grammar, punctuation, or blanket active-voice rules into Chinese writing."
+    },
+    "awesome-claude-skills": {
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "upstreams/awesome-claude-skills",
+      "commit": "be2a406907dbc61b73e6827ded415c96139d13a2",
+      "default_branch": "master",
+      "license": "not-declared-at-repository-root",
+      "decision": "reference_only",
+      "sources": {
+        "content-research-writer/SKILL.md": "reference_only"
+      },
+      "local_coverage": [],
+      "notes": "Public-article research, hooks, and section-by-section coaching are outside the V0.2 decision-document core. Example citations are not evidence and are not reused."
+    },
+    "agent-skills": {
+      "repo": "https://github.com/arjunprabhulal/agent-skills.git",
+      "path": "upstreams/agent-skills",
+      "commit": "42dd24080fce6d731d00e2a1134f398c3da4171b",
+      "default_branch": "main",
+      "license": "MIT",
+      "decision": "partial",
+      "sources": {
+        "skills/docs/plain-language/SKILL.md": "selective_absorbed"
+      },
+      "local_coverage": [
+        "skills/write-craft/references/clear-chinese.md",
+        "skills/write-craft/references/decision-documents.md"
+      ],
+      "notes": "Absorb truth-preserving simplification: keep decision-changing conditions, uncertainty, and precision while translating the reader's path."
+    }
+  }
+}

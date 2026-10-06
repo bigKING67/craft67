@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commerce Commercial Strategy｜商业与商品策略"
+  short_description: "利润、货盘、价盘、预算、达人和渠道进入的商业决策。"
+  default_prompt: "Use $commerce-commercial-strategy to calculate the economics, define commercial constraints, and make a conditional decision with stop and scale rules."

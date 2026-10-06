@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Strategy & Communications｜品牌战略与整合传播"
+  short_description: "品牌定位、宣传、公关、代言人、赞助、联名和危机传播。"
+  default_prompt: "Use $brand-strategy-communications to define the brand strategy or evaluate the communication partnership with explicit fit, rights, activation, measurement, and exit conditions."

@@ -1,0 +1,120 @@
+{
+  "blind_map_sha256": "48eeeba257b0ca91acb9e9e5725e551cc3ac37cf01516682e9b5fcb94ff31fc9",
+  "blind_packet_sha256": "5c1819c86e64853345ebb3ca7fb7819a8ac26c4255f747112345bb27885cb1b0",
+  "case_id": "emil-motion-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "3abcc13489ae78affc088d018fa686780cfe64353e24f63c914d7c979b8621e6",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "ee90d11364821c974df16830af7f41a9ef13d7c388d42632c89f450fa325f2ed",
+    "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.145.0"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "6fc7376df30d7cff1ac8faf21ce6bcd63c76f72365458cfe0812ec88b16cd701",
+  "judgment_sha256": "0605fb6b2d818dec5d8ea8a0fd7fdff6ed2bc285f8704f9b260e5f4b35902b2d",
+  "prompt_sha256": "32a158dae9908cefce2747965d6451cf024eb3a877438295898a75412e11e0c8",
+  "rationale": "C 是唯一逐项无缺口覆盖机器评分卡的输出。相比 A，它明确规定速度的空间和时间单位，并直接处理 translate 与 press-scale 的 transform 所有权；相比 B，它不仅用速度偏置选点，还给出投影端点、范围钳制、有效 snap 选择和释放速度延续。C 还明确声明静态代码不能证明流畅度或布局成本，并在 150 行预算内提供了最小、可执行的运行时验证方案。",
+  "recorded_at": "2026-07-25T05:41:37Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 7,
+        "direct_manipulation": 15,
+        "evidence_honesty": 13,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 8
+      },
+      "score": 88,
+      "summary": "准确覆盖抓取偏移、拖拽状态、指针捕获、输入锁定、布局属性、宽泛 transition、按压缩放和 Reduced Motion。明显缺口是没有给出速度单位、投影端点或向 settle 动画传递释放速度；同时篇幅显著超过 150 行，削弱了范围控制。"
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 10,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 15
+      },
+      "score": 100,
+      "summary": "完整满足全部评分点：严格区分静态证据与运行时未知，要求从当前呈现值无跳变地中断，明确 CSS px/s、投影端点和速度传递，并用分层 transform 解决所有权冲突；Reduced Motion 与验证计划也具体且克制。"
+    },
+    "emil": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 10,
+        "direct_manipulation": 15,
+        "evidence_honesty": 13,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 9,
+        "velocity_projection": 14
+      },
+      "score": 96,
+      "summary": "静态证据边界、直接操控、动画打断、降动效路径和最小验证计划都很完整。主要扣分是开头仍作出少量未实测的体感预测，速度缺少明确单位，并且没有像 C 那样直接说明位移与按压缩放的 transform 所有权冲突。"
+    }
+  },
+  "schema": "design-craft.comparative-result.v3",
+  "scorecard_json_sha256": "8138c39d53d54e9513c89c172ab2cc5b53135fb06c58c4f42f99179b3b2f1c7e",
+  "scorecard_sha256": "89663cb8f65c3bd9387414a1f79fcf0789dad360d4287d15130189ed7c11ee72",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "485dfcb152f2726e548985a99126ab3c6e414ba3aa9ef4711d5d46ab5017a1e7",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "6c4dc8427ccc4a8307a76a56cffc6492eae481283ee9f055725663b49e3ef64a",
+      "run_path": "run.baseline.json",
+      "run_sha256": "5f9af4e1e6296dbbb327faa59ca886b5987cdf360b85625bef020cfb46191f8c",
+      "skill_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "485dfcb152f2726e548985a99126ab3c6e414ba3aa9ef4711d5d46ab5017a1e7",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "83ee807d5707c3ab2c81065e5deaa0080eef061cc8b8558812a3eb871dd18075",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "7074c6f291eafce0a581ed39898a0098b6c9c47e0da0b47ab160f18358b41e7e",
+      "skill_trees": {
+        "skills/design-craft": "7a171bf963a74139d7088c288a527bf2304765a5359597016dcd07eaf404c92b"
+      },
+      "thinking": "high"
+    },
+    "emil": {
+      "contract_sha256": "485dfcb152f2726e548985a99126ab3c6e414ba3aa9ef4711d5d46ab5017a1e7",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.emil.md",
+      "output_sha256": "d95afd1f75249d6d356db83de12226acbe5f240df6a1d516125d4a7169116df0",
+      "run_path": "run.emil.json",
+      "run_sha256": "7319c4e6f996f3cee563889b6f604b692f327ac7cec9101db7732f24cb972ab1",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

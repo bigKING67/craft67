@@ -1,0 +1,170 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "cagr",
+      "actual": "0.122914144000357699224226881733279",
+      "expected": "0.122914144000357699224226881733279",
+      "relative_error": "0.00000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "cagr",
+      "actual": "0.119229268187113693591498957138550",
+      "expected": "0.119229268187113693591498957138550",
+      "relative_error": "0.00000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C14",
+      "operation": "divide",
+      "actual": "0.5731616527814865013548562071497745",
+      "expected": "0.5731616527814865013548562071497745",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C15",
+      "operation": "divide",
+      "actual": "0.4441228230239946151223534338118636",
+      "expected": "0.4441228230239946151223534338118636",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "multiply",
+      "actual": "1591141364200.83",
+      "expected": "1591141364200.83",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "subtract",
+      "actual": "81433985225.44",
+      "expected": "81433985225.44",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "divide",
+      "actual": "65.14293559740185312910624944075151",
+      "expected": "65.14293559740185312910624944075151",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C18",
+      "operation": "divide",
+      "actual": "19.53903348578545297721249280404509",
+      "expected": "19.53903348578545297721249280404509",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "subtract",
+      "actual": "81229498398.60",
+      "expected": "81229498398.60",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "divide",
+      "actual": "0.8955521282791586908487856539022215",
+      "expected": "0.8955521282791586908487856539022215",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C17",
+      "operation": "divide",
+      "actual": "0.4907969123545966701994901123288819",
+      "expected": "0.4907969123545966701994901123288819",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C16",
+      "operation": "subtract",
+      "actual": "58394610072.94",
+      "expected": "58394610072.94",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "multiply",
+      "actual": "1248000000000",
+      "expected": "1248000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C09",
+      "operation": "divide",
+      "actual": "998.3348279037665797946577409069474",
+      "expected": "998.3348279037665797946577409069474",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C10",
+      "operation": "multiply",
+      "actual": "1680000000000",
+      "expected": "1680000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C11",
+      "operation": "divide",
+      "actual": "1343.912268331993472800500805067045",
+      "expected": "1343.912268331993472800500805067045",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C12",
+      "operation": "multiply",
+      "actual": "2160000000000",
+      "expected": "2160000000000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C13",
+      "operation": "divide",
+      "actual": "1727.887202141134465029215320800486",
+      "expected": "1727.887202141134465029215320800486",
+      "relative_error": "0.000000",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

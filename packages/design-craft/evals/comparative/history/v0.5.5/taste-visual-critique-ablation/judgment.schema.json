@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["results", "winner", "rationale"],
+  "properties": {
+    "results": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["label", "criteria", "total", "summary"],
+        "properties": {
+          "label": {"enum": ["A", "B", "C"]},
+          "criteria": {
+            "type": "object",
+            "required": [
+              "product_hierarchy",
+              "anti_generic",
+              "visual_craft",
+              "product_fit",
+              "concrete_moves",
+              "evidence_honesty",
+              "scope_discipline"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "product_hierarchy": {"type": "integer", "minimum": 0, "maximum": 15},
+              "anti_generic": {"type": "integer", "minimum": 0, "maximum": 15},
+              "visual_craft": {"type": "integer", "minimum": 0, "maximum": 15},
+              "product_fit": {"type": "integer", "minimum": 0, "maximum": 15},
+              "concrete_moves": {"type": "integer", "minimum": 0, "maximum": 20},
+              "evidence_honesty": {"type": "integer", "minimum": 0, "maximum": 10},
+              "scope_discipline": {"type": "integer", "minimum": 0, "maximum": 10}
+            }
+          },
+          "total": {"type": "integer", "minimum": 0, "maximum": 100},
+          "summary": {"type": "string", "minLength": 20}
+        },
+        "additionalProperties": false
+      }
+    },
+    "winner": {"enum": ["A", "B", "C"]},
+    "rationale": {"type": "string", "minLength": 40}
+  },
+  "additionalProperties": false
+}

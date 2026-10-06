@@ -1,0 +1,12 @@
+{
+  "tested_method_sha256": "7d1ccacaa7ab6133fc4c622053d0788a058e6e1aed3c975e3a543d276c3605bb",
+  "after_method_sha256": "0b246f84b6cb0f369f5d9aafed2e8b0c156ddf4ccd55a94035f1607b46db2eae",
+  "reason": "method case-03 omitted 财轻 prerequisite when recommending 食伤泄比",
+  "independent_retest_of_after": "NOT RUN",
+  "unchanged": [
+    "src",
+    "tests",
+    "report schema",
+    "global Skill installation"
+  ]
+}

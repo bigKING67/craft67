@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.report-template-expansion.v1",
+  "date": "2026-09-17",
+  "scope": "Single-pass template substitution and rejection of content-introduced template tokens",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "daf2820e4cdf0f5d55db8a02db8ae11871bfe2a2c51f68ffab46d8d98c89305a",
+    "tests/test_report_renderer.py": "8f3c4bd4deb67279521ad42cd2a303311c6fa13266183b5a92ed212512532afc",
+    "skills/money-craft/references/report-rendering.md": "250841811318ecc746c74659d1a477ad67f5ec9d9f82d38bb7dc264c4e70882a"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Ordered str.replace recursively expanded tokens introduced by prior values; body FOOTER_META token could expand and CLI reported success.",
+    "after": "One substitution pass over template only; existing unresolved-placeholder validation rejects tokens introduced by values before writing."
+  },
+  "validation": {
+    "renderer_tests": 24,
+    "full_tests": 314,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regressions": "Ordered values expanded unexpectedly; real CLI accepted body FOOTER_META marker.",
+    "fixed_regressions": [
+      "both value insertion orders reject nested tokens",
+      "repeated plain fields still render",
+      "unknown tokens remain rejected",
+      "real CLI preserves source and prior output on token failure"
+    ]
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "renderer_tests": 24,
+    "skipped_tests": 0,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "daf2820e4cdf0f5d55db8a02db8ae11871bfe2a2c51f68ffab46d8d98c89305a",
+      "tests/test_report_renderer.py": "8f3c4bd4deb67279521ad42cd2a303311c6fa13266183b5a92ed212512532afc"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T072900710043Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL: raw HTML, XSS, offline resource validation, SVG, actual PDF, visual validation and failure publication not closed.",
+    "This is not an HTML sanitizer or general template sandbox.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

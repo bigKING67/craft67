@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v3",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.144.1",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-12",
+  "prompt_sha256": "61f2e14e7f03ad0f21bff2db3770e0b6c0ffba120aa7598dab1f73411256b2bd",
+  "scorecard_sha256": "63faaf6243b51c83504c91f777e1e44416d719cc66fcd7601708ad3b77c91aca",
+  "contract_sha256": "4037c3cf05d7cbb1fa968da25c0ae1f8a322dac49129b98070435f2ce6340c3d",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "bfaecc5c6890079b91199325171012e0859a1c88c47a4f7dd6b394599fd3cc67",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "f04e1050f63f2ed0a3d9970935d04129b771efca",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "c165a78d91eed7392b33659633efb756acbe03c1a0a06b16c8889604854f72f8",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "c14226dfb04463a72c0084317ebfde3e6fdb9476beeb40b12e0a15786f4c9073",
+  "score": 99,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates shared product semantics from platform-native navigation, controls, typography, materials, motion, and adaptive layout."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Applies product context, iOS, Android, adaptive, accessibility, interaction, design-system, and validation guidance."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Repairs native trust and task flow without proposing identical mockups, decorative styling, or Web-shaped controls."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the review static/prose-only and denies source, build, simulator, emulator, device, accessibility-tree, and performance proof."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates described violations from unknown source details, targets, runtime navigation, gestures, accessibility trees, persistence, and device results."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Provides platform navigation, size-class layouts, target sizes, scalable type, native controls, semantic theming, accessible motion, recovery, and parity guidance."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 9,
+      "note": "Stays read-only and platform-conformance focused, but 161 lines modestly exceed the requested 150-line budget."
+    }
+  }
+}

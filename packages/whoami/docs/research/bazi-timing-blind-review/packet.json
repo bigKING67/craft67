@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "packetId": "bazi-timing-blind-review-v1",
+  "language": "zh-Hant",
+  "readingOrder": "columns right-to-left; characters top-to-bottom",
+  "instructions": {
+    "scope": "Transcribe the whole designated focus column, then transcribe every visible glyph and printed punctuation inside the red focus box into focusSpanLiteral.",
+    "literalPolicy": "Preserve visible traditional or variant character forms and punctuation. Use □ for one visible but unreadable glyph.",
+    "normalizationPolicy": "Whitespace and clearly typographic punctuation may be normalized; do not simplify characters, reorder text, or repair wording from context.",
+    "croppedEdges": "Do not supply characters outside the crop.",
+    "prohibitedAids": [
+      "answer key",
+      "other reviewer responses",
+      "OCR",
+      "external lookup",
+      "source or edition guessing"
+    ]
+  },
+  "cases": [
+    {
+      "caseId": "case-01",
+      "image": "images/case-01.jpg",
+      "focusColumnFromRight": 2,
+      "focusBoxPx": {
+        "x": 32,
+        "y": 565,
+        "width": 105,
+        "height": 360
+      }
+    },
+    {
+      "caseId": "case-02",
+      "image": "images/case-02.jpg",
+      "focusColumnFromRight": 3,
+      "focusBoxPx": {
+        "x": 96,
+        "y": 425,
+        "width": 105,
+        "height": 365
+      }
+    },
+    {
+      "caseId": "case-03",
+      "image": "images/case-03.jpg",
+      "focusColumnFromRight": 3,
+      "focusBoxPx": {
+        "x": 178,
+        "y": 95,
+        "width": 125,
+        "height": 740
+      }
+    },
+    {
+      "caseId": "case-04",
+      "image": "images/case-04.jpg",
+      "focusColumnFromRight": 2,
+      "focusBoxPx": {
+        "x": 76,
+        "y": 40,
+        "width": 108,
+        "height": 450
+      }
+    },
+    {
+      "caseId": "case-05",
+      "image": "images/case-05.jpg",
+      "focusColumnFromRight": 1,
+      "focusBoxPx": {
+        "x": 155,
+        "y": 270,
+        "width": 125,
+        "height": 820
+      }
+    }
+  ]
+}

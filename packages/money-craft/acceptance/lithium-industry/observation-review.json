@@ -1,0 +1,83 @@
+{
+  "schema": "money-craft.industry-window-review.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_SOURCE_BEHAVIOR",
+  "change": "Industry reference explicitly applies existing semantic review to local industry judgments and distinguishes cadence from reporting/event window.",
+  "root_cause_evidence": "Prior installed host omitted review window and did not read semantic reference; connection now explicit. This is supported workflow diagnosis, not proof of exclusive causality.",
+  "host": {
+    "elapsed_seconds": 108.246,
+    "invocation": "EXPLICIT_SOURCE_PATH",
+    "route": {
+      "state": "READY",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "state": "READY",
+          "error_code": null
+        }
+      ],
+      "ready": true
+    },
+    "public_citations": [
+      {
+        "source_id": "S01",
+        "registered_public_link": true
+      },
+      {
+        "source_id": "S02",
+        "registered_public_link": true
+      }
+    ],
+    "machine_checks_pass": true,
+    "calculations_required": false,
+    "calculation_count": 0,
+    "semantic_reviewer": "parent_agent",
+    "independent_execution": true,
+    "independent_semantic_review": false,
+    "criteria": [
+      {
+        "criterion": "读取源码行业及语义复核引用，有效行业路由，保留历史/事后回放边界",
+        "status": "PASS",
+        "evidence": "Actual source Skill/high-growth and semantic references read; industry route READY; as_of/execution and post-hoc limits retained."
+      },
+      {
+        "criterion": "观察指标、比较口径、可识别报告期间或披露事件，以及触发后的研究判断变化相互对应；不能只有频率或泛泛持续关注",
+        "status": "PASS",
+        "evidence": "Explicit first review window is 2025 Q2/H1 disclosures, distinct from weekly/monthly cadence; observed inventory/demand/supply and price conditions connected to increase/decrease confidence or seek evidence."
+      },
+      {
+        "criterion": "未编造来源未提供的发布日、库存或精确供需缺口；明确证据缺失时保持未验证，不扩大为交易或全行业能力结论",
+        "status": "PASS",
+        "evidence": "Disclosure dates remain to be obtained; missing inventory and effective supply not fabricated. Two-month threshold expressly proposed, not a source fact or calibrated investment signal."
+      }
+    ]
+  },
+  "validation": {
+    "source_checks": 19,
+    "full_runtime_suite": "NOT_RERUN_REFERENCE_ONLY_CHANGE"
+  },
+  "installation": {
+    "updated": false,
+    "differing_file": "references/high-growth-alpha.md",
+    "source_sha256": "42e5c34a1bc1301e8d8778773e135e4f799dd367af96d5f0d6b1a5180bf70499",
+    "installed_sha256": "28d28ab94e4e66a9d1ec68f849050f857ad5d886cf3e3d60b2d463bea1e97f02",
+    "matching_files": 74,
+    "total_files": 75
+  },
+  "limits": [
+    "Narrow new planning prompt, not an identical-prompt controlled experiment or broad industry capability validation.",
+    "Suggested cadence and threshold are analyst hypotheses, not verified optimal signals.",
+    "Source behavior verified; changed reference not deployed to global installation."
+  ],
+  "artifacts": {
+    "skills/money-craft/references/high-growth-alpha.md": "42e5c34a1bc1301e8d8778773e135e4f799dd367af96d5f0d6b1a5180bf70499",
+    "acceptance/lithium-industry/observation-plan.md": "49b9a43677d3c223c0e56d1d1e75339d5444143adbbe4873498d6a78cbd5c12b",
+    "local/skill-evals/20260920-lithium-observation/source/answer.md": "9d08aff10f86b41d30155aacfadcd8e82adf9c45cb0e5fec6395e17239fd4d31",
+    "local/skill-evals/20260920-lithium-observation/source/host.json": "f9ec6b273052f8bc0c431500094b6f6feb33f3313e3d83af493e63d698bd1e12",
+    "local/skill-evals/20260920-lithium-observation/source/events.jsonl": "8fa1916c5ec37748ca3eb6ea0d22915f32d8010bf5087a078c78c4e2246aa383",
+    "local/skill-evals/20260920-lithium-observation/source/case-snapshot.json": "82c6bd84250aa6c7954901848a836d195e1c825ca5a170e3c49014a479c26784",
+    "local/skill-evals/20260920-lithium-observation/source/machine-audit.json": "f830809f86a8a811447a72ca5e09faaeba678b304c0f4c2b69ee7b2fdb16dbe1",
+    "acceptance/skill-tasks/lithium-observation-case-20260920.json": "489ea50d61452172bb28bad2319137b15a58f89e830c25e4c9b6e93dc4112891",
+    "local/acceptance/20260920-industry-window-validation.json": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+  }
+}

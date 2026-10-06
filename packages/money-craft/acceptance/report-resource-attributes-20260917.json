@@ -1,0 +1,53 @@
+{
+  "schema": "money-craft.report-resource-attributes.v1",
+  "date": "2026-09-17",
+  "scope": "Parsed resource/navigation attribute checks replacing quoted-URL regex",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "ddea8b879e8d0cbfec8459341f4c4ceffb05611e4f711aabc2152d6fc927695a",
+    "tests/test_report_renderer.py": "44933608551afcd40918afc753159b894c4c0d8cf26e0a941e61038d58453bfe",
+    "skills/money-craft/references/report-rendering.md": "580669cd34a6521b39f056d7fa3fd7cf6ca80551d8ab1dbedbc9e06fdea6f1e0"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Regex missed unquoted/entity-encoded addresses and several active resource attributes.",
+    "after": "HTMLParser decodes attributes and counts disallowed resource/navigation values; fragments and specified raster data URL forms allowed."
+  },
+  "validation": {
+    "renderer_tests": 26,
+    "full_tests": 316,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regressions": "Nine of ten dangerous attribute fixtures failed to reject under old regex.",
+    "risk_attribute_variants": 10,
+    "real_cli": "Unquoted external img refused before output writing; source and prior HTML unchanged.",
+    "safe_cases": [
+      "local fragment",
+      "data-source-url metadata",
+      "escaped code example",
+      "raster data URL form"
+    ]
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "renderer_tests": 26,
+    "skipped_tests": 0,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "ddea8b879e8d0cbfec8459341f4c4ceffb05611e4f711aabc2152d6fc927695a",
+      "tests/test_report_renderer.py": "44933608551afcd40918afc753159b894c4c0d8cf26e0a941e61038d58453bfe"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T073238654457Z"
+  },
+  "limits": [
+    "Static attribute subset only; no complete sanitizer or browser network behavior proof.",
+    "Raster data URL syntax checked, decoded image payload not validated.",
+    "CSS, meta refresh, srcdoc, JavaScript, SVG runtime, actual PDF and visual acceptance remain unverified.",
+    "Renderer remains PARTIAL.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/company-research-plan.schema.json",
+  "title": "Money Craft company research plan",
+  "type": "object",
+  "required": [
+    "schema",
+    "mode",
+    "identity",
+    "as_of",
+    "latest_report_period",
+    "latest_report_end",
+    "latest_annual_period",
+    "provider",
+    "execution_boundary",
+    "stages",
+    "official_evidence_requirements",
+    "material_disclosure_contract",
+    "reconciliation_contract",
+    "provider_operations",
+    "artifact_contract",
+    "completion_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "money-craft.company-research-plan.v1"
+    },
+    "mode": {
+      "const": "research"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "security",
+        "security_id",
+        "market",
+        "ticker",
+        "instrument_type",
+        "base_currency",
+        "provider_identifiers"
+      ],
+      "properties": {
+        "security": {
+          "type": "string",
+          "minLength": 1
+        },
+        "security_id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9-]{1,15}:[A-Z0-9][A-Z0-9._-]{0,31}$"
+        },
+        "market": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9-]{1,15}$"
+        },
+        "thscode": {
+          "type": "string",
+          "pattern": "^[0-9]{6}\\.(SH|SZ|BJ)$"
+        },
+        "ticker": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9._-]{0,31}$"
+        },
+        "exchange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "share_class": {
+          "enum": [
+            "A-share",
+            "ordinary-share",
+            "common-stock"
+          ]
+        },
+        "instrument_type": {
+          "const": "listed-equity"
+        },
+        "base_currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "provider_identifiers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "latest_report_period": {
+      "type": "string",
+      "pattern": "^(19|20)[0-9]{2}-[1-4]$"
+    },
+    "latest_report_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "latest_annual_period": {
+      "type": "string",
+      "pattern": "^(19|20)[0-9]{2}-4$"
+    },
+    "provider": {
+      "type": "object"
+    },
+    "execution_boundary": {
+      "type": "object"
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object"
+      }
+    },
+    "official_evidence_requirements": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object"
+      }
+    },
+    "material_disclosure_contract": {
+      "type": "object"
+    },
+    "reconciliation_contract": {
+      "type": "object"
+    },
+    "provider_operations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "artifact_contract": {
+      "type": "object"
+    },
+    "completion_gate": {
+      "type": "object"
+    },
+    "public_evidence_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/evaluation/evidence-status.schema.json",
+  "title": "design-craft current cross-agent evidence status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "task_id", "hosts"],
+  "properties": {
+    "schema": {"const": "design-craft.cross-agent-status.v1"},
+    "task_id": {"type": "string", "minLength": 1},
+    "hosts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["codex", "pi", "cursor", "claude"],
+      "properties": {
+        "codex": {"$ref": "#/$defs/hostStatus"},
+        "pi": {"$ref": "#/$defs/hostStatus"},
+        "cursor": {"$ref": "#/$defs/hostStatus"},
+        "claude": {"$ref": "#/$defs/hostStatus"}
+      }
+    }
+  },
+  "$defs": {
+    "hostStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": {"enum": ["observed", "pending", "unverified"]},
+        "reason": {"type": "string", "minLength": 12}
+      }
+    }
+  }
+}

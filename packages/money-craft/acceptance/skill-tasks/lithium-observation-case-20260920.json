@@ -1,0 +1,43 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "lithium-observation-plan",
+      "status": "READY_HISTORICAL",
+      "prompt": "请基于材料为全球锂行业制定一份精简研究跟踪计划：如何判断供需是否转紧、何时值得重新评估涨价判断？不要只看汽车销量。历史研究截止2025-05-31，实际在2026年回放；不选股、不作交易，不需要完整行业报告，正文不超过600汉字。",
+      "facts": "仅以下原始文件是事实材料，可用同目录同名txt定位，但核对PDF原文和脚注。实际于2026-09-20回放，网页/PDF为事后捕获，未证明历史日原始快照一致；不作预测成绩。两机构视角不同不自动代表每个指标有独立双源，保留统计来源血缘限制。不得读取验收标准、其他会话答案或主代理报告；允许正常Skill引用及计算工具。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/evidence/20260920-lithium/iea.html",
+          "url": "https://www.iea.org/reports/global-ev-outlook-2025/executive-summary",
+          "sha256": "5b229ea86c942ea8e520e65c39b966affa88e8dccdef14266ad12c5da3dd73a7",
+          "publication_label": "2025-05-14",
+          "captured_at": "2026-09-20T05:53:06.931552+00:00",
+          "bytes": 262448,
+          "post_hoc": true
+        },
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-lithium/usgs.pdf",
+          "url": "https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-lithium.pdf",
+          "sha256": "7ec5654133aa5ef64fcfd6d4d23ac64a58f06f51bf1231576ebd8f595ad9257b",
+          "publication_label": "2025-01",
+          "captured_at": "2026-09-20T05:53:06.931982+00:00",
+          "bytes": 746901,
+          "post_hoc": true
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": false
+      },
+      "criteria": [
+        "读取源码行业及语义复核引用，有效行业路由，保留历史/事后回放边界",
+        "观察指标、比较口径、可识别报告期间或披露事件，以及触发后的研究判断变化相互对应；不能只有频率或泛泛持续关注",
+        "未编造来源未提供的发布日、库存或精确供需缺口；明确证据缺失时保持未验证，不扩大为交易或全行业能力结论"
+      ]
+    }
+  ]
+}

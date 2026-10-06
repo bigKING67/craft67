@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://3d-craft.local/schemas/asset.v1.schema.json",
+  "title": "3D-Craft asset manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "authority", "source", "derived", "tool_versions", "licenses", "gltf_summary"],
+  "properties": {
+    "schema": {"const": "3d-craft.asset.v1"},
+    "authority": {"enum": ["procedural", "native", "hybrid"]},
+    "source": {"$ref": "#/$defs/file"},
+    "derived": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/file"}},
+    "tool_versions": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}},
+    "licenses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["subject", "license"],
+        "properties": {
+          "subject": {"type": "string", "minLength": 1},
+          "license": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "gltf_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodes", "meshes", "primitives", "materials", "textures", "animations", "triangles", "extensions"],
+      "properties": {
+        "nodes": {"type": "integer", "minimum": 0},
+        "meshes": {"type": "integer", "minimum": 0},
+        "primitives": {"type": "integer", "minimum": 0},
+        "materials": {"type": "integer", "minimum": 0},
+        "textures": {"type": "integer", "minimum": 0},
+        "animations": {"type": "integer", "minimum": 0},
+        "triangles": {"type": "integer", "minimum": 0},
+        "extensions": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    }
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

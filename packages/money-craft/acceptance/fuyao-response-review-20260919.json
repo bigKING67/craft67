@@ -1,0 +1,45 @@
+{
+  "schema": "money-craft.fuyao-response-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Duplicate JSON keys and successful null data admission",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "522ac283ce6788e701c55121613ca779024941fcd5fcae36ae4a3b018e4cbf45",
+    "tests/test_fuyao_response.py": "17b4842daae89593ee212ca6fcf22d7704787b7fa9b7be96b807c1936b3e04f5"
+  },
+  "upstream_document": {
+    "url": "https://fuyao.aicubes.cn/llms-full.txt",
+    "sha256": "68d95ab747bc4d7a43655d6281fae757f95bffff9535f5873a2ab0825e144740",
+    "bytes": 388777,
+    "sections": "Response envelope, lines399-442 in retrieved text",
+    "interpretation": "Official excerpt allows error null and shows successful empty item list; rejecting successful null is Money Craft admission policy, not an explicit per-endpoint upstream prohibition."
+  },
+  "validation": {
+    "regression_tests": 3,
+    "full_tests": 445,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 4,
+    "real_cli": "Synthetic opener responses in subprocess main: schema6, one request, no capture directory"
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "KEEP; no blockers; 19 response/provider tests passed",
+    "extra_checks": "Nested arrays and escaped duplicate key; no key/value in error; auth null behavior and empty object/list compatibility",
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "522ac283ce6788e701c55121613ca779024941fcd5fcae36ae4a3b018e4cbf45",
+      "tests/test_fuyao_response.py": "17b4842daae89593ee212ca6fcf22d7704787b7fa9b7be96b807c1936b3e04f5"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71
+  },
+  "limits": [
+    "Successful empty data objects remain accepted; no full endpoint schema or identity binding validation.",
+    "No actual Fuyao data requests or factual evidence acceptance.",
+    "CLI remains PARTIAL."
+  ]
+}

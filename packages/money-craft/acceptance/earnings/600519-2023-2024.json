@@ -1,0 +1,202 @@
+{
+  "schema": "money-craft.earnings-update-input.v1",
+  "security_id": "CN-SH:600519",
+  "currency": "CNY",
+  "as_of": "2025-06-01",
+  "sources": {
+    "S01": {
+      "security_id": "CN-SH:600519",
+      "title": "贵州茅台酒股份有限公司2023年年度报告",
+      "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2024/05/2024050716531754477.pdf",
+      "published_on": "2024-04-03",
+      "sha256": "2125ff97a452ea79b0d784e2432f7d224b6aecc330b644b593477d69e22f4ed1",
+      "local_path": "600519-2023-annual-report.pdf",
+      "retrieved_on": "2026-09-15",
+      "capture_timing": "post-hoc historical engineering replay; not a contemporaneous research capture"
+    },
+    "S02": {
+      "security_id": "CN-SH:600519",
+      "title": "贵州茅台酒股份有限公司2024年年度报告",
+      "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/04/2025040817542019660.pdf",
+      "published_on": "2025-04-03",
+      "sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30",
+      "local_path": "600519-2024-annual-report.pdf",
+      "retrieved_on": "2026-09-15",
+      "capture_timing": "post-hoc historical engineering replay; not a contemporaneous research capture"
+    }
+  },
+  "previous": {
+    "start": "2023-01-01",
+    "end": "2023-12-31",
+    "kind": "annual",
+    "accounting_basis": "PRC-GAAP consolidated; net_income attributable to parent; ending ordinary A shares",
+    "basis": "reported",
+    "metrics": {
+      "revenue": {
+        "value": "147693604994.14",
+        "unit": "CNY",
+        "source_refs": [
+          {
+            "source_id": "S01",
+            "locator": "2023 annual report, PDF/display page 5 of 143; also page 8."
+          }
+        ]
+      },
+      "net_income": {
+        "value": "74734071550.75",
+        "unit": "CNY",
+        "source_refs": [
+          {
+            "source_id": "S01",
+            "locator": "2023 annual report, PDF/display page 5 of 143."
+          }
+        ]
+      },
+      "operating_cash_flow": {
+        "value": "66593247721.09",
+        "unit": "CNY",
+        "source_refs": [
+          {
+            "source_id": "S01",
+            "locator": "2023 annual report, PDF/display page 5 of 143; repeated in the change-analysis table on page 8."
+          }
+        ]
+      },
+      "shares": {
+        "value": "1256197800",
+        "unit": "shares",
+        "source_refs": [
+          {
+            "source_id": "S01",
+            "locator": "2023 annual report, PDF/display page 2 of 143: as of 2023-12-31, 公司总股本为125,619.78万股 (= 1,256,197,800 shares); page 50 states that the share total and capital structure did not change during the reporting period."
+          }
+        ]
+      }
+    }
+  },
+  "current": {
+    "start": "2024-01-01",
+    "end": "2024-12-31",
+    "kind": "annual",
+    "accounting_basis": "PRC-GAAP consolidated; net_income attributable to parent; ending ordinary A shares",
+    "basis": "reported",
+    "metrics": {
+      "revenue": {
+        "value": "170899152276.34",
+        "unit": "CNY",
+        "source_refs": [
+          {
+            "source_id": "S02",
+            "locator": "2024 annual report, PDF/display page 5 of 143; also page 8."
+          }
+        ]
+      },
+      "net_income": {
+        "value": "86228146421.62",
+        "unit": "CNY",
+        "source_refs": [
+          {
+            "source_id": "S02",
+            "locator": "2024 annual report, PDF/display page 5 of 143."
+          }
+        ]
+      },
+      "operating_cash_flow": {
+        "value": "92463692168.43",
+        "unit": "CNY",
+        "source_refs": [
+          {
+            "source_id": "S02",
+            "locator": "2024 annual report, PDF/display page 5 of 143; repeated in the change-analysis table on page 8."
+          }
+        ]
+      },
+      "shares": {
+        "value": "1256197800",
+        "unit": "shares",
+        "source_refs": [
+          {
+            "source_id": "S02",
+            "locator": "2024 annual report, PDF/display page 74 of 143: as of 2024-12-31, 公司总股本为125,619.78万股 (= 1,256,197,800 shares); page 49 states that the share total and capital structure did not change during the reporting period."
+          }
+        ]
+      }
+    }
+  },
+  "comparison_basis": "unchanged",
+  "expectations": [],
+  "valuation": {
+    "method": "earnings_multiple",
+    "currency": "CNY",
+    "previous": {
+      "bear": {
+        "earnings_factor": "0.9",
+        "pe": "18",
+        "fx": "1",
+        "rationale": "HYPOTHESIZED engineering replay assumptions; not historical consensus, a recommendation or a market price target."
+      },
+      "base": {
+        "earnings_factor": "1",
+        "pe": "22",
+        "fx": "1",
+        "rationale": "HYPOTHESIZED engineering replay assumptions; not historical consensus, a recommendation or a market price target."
+      },
+      "bull": {
+        "earnings_factor": "1.1",
+        "pe": "26",
+        "fx": "1",
+        "rationale": "HYPOTHESIZED engineering replay assumptions; not historical consensus, a recommendation or a market price target."
+      }
+    },
+    "current": {
+      "bear": {
+        "earnings_factor": "0.9",
+        "pe": "17",
+        "fx": "1",
+        "rationale": "HYPOTHESIZED engineering replay assumptions; not historical consensus, a recommendation or a market price target."
+      },
+      "base": {
+        "earnings_factor": "1.02",
+        "pe": "21",
+        "fx": "1",
+        "rationale": "HYPOTHESIZED engineering replay assumptions; not historical consensus, a recommendation or a market price target."
+      },
+      "bull": {
+        "earnings_factor": "1.1",
+        "pe": "25",
+        "fx": "1",
+        "rationale": "HYPOTHESIZED engineering replay assumptions; not historical consensus, a recommendation or a market price target."
+      }
+    }
+  },
+  "thesis_updates": {
+    "hypotheses": {
+      "H01": {
+        "status": "UNVERIFIED",
+        "rationale": "Selected annual metrics improved, but two reports do not establish durability of long-term growth. Keep the broad thesis unverified.",
+        "source_refs": [
+          {
+            "source_id": "S01",
+            "locator": "PDF p5"
+          },
+          {
+            "source_id": "S02",
+            "locator": "PDF p5"
+          }
+        ]
+      }
+    },
+    "red_lines": {
+      "R01": {
+        "status": "UNVERIFIED",
+        "rationale": "Cash flow increased in the selected comparison; this narrow engineering replay does not replace a complete risk review.",
+        "source_refs": [
+          {
+            "source_id": "S02",
+            "locator": "PDF p5 and p8"
+          }
+        ]
+      }
+    }
+  }
+}

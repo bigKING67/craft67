@@ -1,0 +1,48 @@
+{
+  "schema": "design-craft.native-runtime-evidence.v2",
+  "platform": "ios",
+  "verified": true,
+  "runtime_kind": "ios_simulator",
+  "evidence_level": "runtime_observed",
+  "observed_at": "2026-07-11T09:04:06Z",
+  "runtime_id_kind": "sha256",
+  "runtime_id": "sha256:b06d3fdc1d87829ac6cd52fe2f2acbf7a96060df18f5576b302f5f4dcba4592d",
+  "tool": "xcodebuild/xcrun simctl",
+  "source_commit": "20dda131ddcf53285081d6f517dd68eb7f09995c",
+  "source_dirty": false,
+  "skill_source_dirty": false,
+  "repo_dirty": false,
+  "skill_version": "0.5.0",
+  "skill_tree_sha256": "2f460d2c23e797f38aa08f7cf193b13cd539462571d621bcdb1f69cb42c7e761",
+  "fixture_tree_sha256": "4796ed5372b041a887e3d7752ddfdfe22741d96697d8233b729cdcc644b2e24d",
+  "capture_context": "https://github.com/bigKING67/design-craft/actions/runs/29147028779",
+  "commands": [
+    "xcrun swiftc iOS fixture",
+    "xcrun simctl boot/install/launch",
+    "xcrun simctl relaunch with --confirm-runtime and marker assertion",
+    "xcrun simctl io before/after screenshots"
+  ],
+  "assertions": {
+    "build_succeeded": true,
+    "install_and_launch_succeeded": true,
+    "runtime_interaction_observed": true,
+    "before_and_after_screenshots_captured": true
+  },
+  "artifacts": [
+    {
+      "path": "ios-before-interaction.png",
+      "sha256": "05bc624adb66018943bf70904cbc9af85b4c13ef9df8304ca459ee9ab983ed95",
+      "bytes": 102657
+    },
+    {
+      "path": "ios-after-interaction.png",
+      "sha256": "260a836b266717edf9af207128f7e752c4c3d7d3283c51416727c66afb36d82e",
+      "bytes": 101409
+    },
+    {
+      "path": "runtime-interaction.txt",
+      "sha256": "c1493a423dd3f5662826b1ab8ec6b3201e4a376e106f67b50bbae0ac2f98ff3e",
+      "bytes": 30
+    }
+  ]
+}

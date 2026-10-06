@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/design-craft/contracts/benchmark/result.schema.json",
+  "title": "design-craft benchmark result v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "scale",
+    "runner",
+    "diagnostics",
+    "source_commit",
+    "source_dirty",
+    "policy",
+    "metrics"
+  ],
+  "properties": {
+    "schema": {"const": "design-craft.benchmark-result.v2"},
+    "scale": {"enum": ["smoke", "full"]},
+    "runner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["os", "arch", "image", "image_version", "python", "node"],
+      "properties": {
+        "os": {"type": "string", "minLength": 1},
+        "arch": {"type": "string", "minLength": 1},
+        "image": {"type": "string", "minLength": 1},
+        "image_version": {"type": "string", "minLength": 1},
+        "python": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "node": {"type": "string", "minLength": 1}
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform", "kernel"],
+      "properties": {
+        "platform": {"type": "string", "minLength": 1},
+        "kernel": {"type": "string", "minLength": 1}
+      }
+    },
+    "migration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_schema", "identity_limitations"],
+      "properties": {
+        "from_schema": {"const": "design-craft.benchmark-result.v1"},
+        "identity_limitations": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        }
+      }
+    },
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_dirty": {"type": "boolean"},
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "relative_regression_limit", "absolute_regression_limit_ms"],
+      "properties": {
+        "version": {"const": "v1"},
+        "relative_regression_limit": {"const": 0.15},
+        "absolute_regression_limit_ms": {"const": 50.0}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/metric"}
+    }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "required": ["unit", "iterations", "p50", "p95", "max", "samples"],
+      "properties": {
+        "unit": {"const": "ms"},
+        "iterations": {"type": "integer", "minimum": 1},
+        "p50": {"type": "number", "minimum": 0},
+        "p95": {"type": "number", "minimum": 0},
+        "max": {"type": "number", "minimum": 0},
+        "samples": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "number", "minimum": 0}
+        },
+        "fixture_scope": {"type": "string", "minLength": 1},
+        "execution_scope": {"type": "string", "minLength": 1},
+        "resource_scope": {"enum": ["wall_clock_only"]},
+        "validation_profile": {"type": "string", "minLength": 1},
+        "validation_schema": {"type": "string", "minLength": 1},
+        "gate_count": {"type": "integer", "minimum": 1},
+        "file_count": {"type": "integer", "minimum": 1},
+        "scan_operation": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

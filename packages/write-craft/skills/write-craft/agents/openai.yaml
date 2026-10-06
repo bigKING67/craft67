@@ -1,0 +1,7 @@
+interface:
+  display_name: "Write Craft"
+  short_description: "把复杂技术方案写成可理解、可判断、可行动的决策文档"
+  default_prompt: "使用 $write-craft，把这份复杂技术方案重组为非技术读者能够理解、判断并采取行动的决策文档。"
+
+policy:
+  allow_implicit_invocation: true

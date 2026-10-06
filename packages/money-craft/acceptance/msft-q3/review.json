@@ -1,0 +1,99 @@
+{
+  "schema": "money-craft.msft-q3-review.v1",
+  "status": "PASS_BOUNDED_PARENT_REVIEWED_DELIVERY",
+  "as_of": "2025-04-30",
+  "execution_date": "2026-09-20",
+  "shared_core_calculations": 39,
+  "source_count": 2,
+  "semantic_negatives": "4 arithmetic-valid explanation variants rejected by parent",
+  "host": {
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "elapsed_seconds": 241.348,
+    "exit_code": 0,
+    "route": {
+      "state": "READY",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "state": "READY",
+          "error_code": null
+        }
+      ],
+      "ready": true
+    },
+    "machine_checks_pass": true,
+    "calculation_count": 28,
+    "source_evidence": [
+      {
+        "source_id": "S01",
+        "hash_verified": true
+      },
+      {
+        "source_id": "S02",
+        "hash_verified": true
+      }
+    ],
+    "installed_skill": "~/.agents/skills/money-craft/SKILL.md",
+    "independent_execution": true,
+    "independent_semantic_review": false,
+    "criteria": [
+      {
+        "criterion": "安装Skill自然发现、路由成功、身份与历史截止正确",
+        "status": "PASS",
+        "evidence": "Trace reads installed Skill and required references; route READY; identity/cutoff and post-hoc execution disclosed."
+      },
+      {
+        "criterion": "分清单季和九个月累计现金流，现金FCF对比及利润率计算完整",
+        "status": "PASS",
+        "evidence": "Both directly disclosed quarterly and YTD columns correct; FCF/margins and changes have 28 passing receipts."
+      },
+      {
+        "criterion": "含租赁资本投入不能直接替代现金PP&E；差额不能冒充租赁现金还款",
+        "status": "PASS",
+        "evidence": "Does not put lease-inclusive capex into cash FCF or label it all AI spend; no invented lease repayment bridge."
+      },
+      {
+        "criterion": "单季与累计信号不同，不能仅凭强劲利润或单季现金流宣告资本负担缓解",
+        "status": "PASS",
+        "evidence": "Identifies OCF growth versus cash-capex growth and FCF decline for both windows."
+      },
+      {
+        "criterion": "区分报告汇率和固定汇率；管理层解释及Q4展望不是已兑现事实",
+        "status": "PASS",
+        "evidence": "Calculations use reported USD amounts; management explanations and forward-looking Q4/FY26 claims attributed explicitly."
+      },
+      {
+        "criterion": "反方、下一观察窗口和资料限制明确，未声称AI独立回报率或可分配现金",
+        "status": "PASS",
+        "evidence": "Contrary evidence is stronger operating margin and OCF; next period and missing AI-specific returns clearly stated; no distributable-cash claim."
+      }
+    ],
+    "initial_delivery_status": "FAIL_PUBLIC_SOURCE_LINKS",
+    "delivery_finding": "Original answer linked only local source snapshots, despite source URLs supplied; machine arithmetic/hash audit does not check public citation delivery.",
+    "repair": "Parent replaced source links with the exact captured official URLs in a separate copy; raw host answer unchanged.",
+    "corrected_delivery_status": "PASS_PARENT_REPAIRED",
+    "fresh_host_retest": "NOT_RUN"
+  },
+  "limitations": "仅指定原始文件为来源，可用同目录同名txt辅助定位；必须核对原HTML表格表头。两份材料同属发行人，不是独立双源。禁止读取案例验收标准、主代理报告及其他会话答案。可使用正常Skill引用与工具；这是事后回放，不计预测成绩。",
+  "source_validation": {
+    "valid": true,
+    "checks": 19
+  },
+  "artifacts": {
+    "acceptance/msft-q3/input.json": "15485dc94471d04512397de882674a480eb6d2e68419358f05b614cf10905ae4",
+    "acceptance/msft-q3/evidence-manifest.json": "03ebf0df82924dff72fe182bc83a91724f614f4ad7c21ebdaea0eef62d7afd68",
+    "acceptance/msft-q3/reproduce.py": "78d332b5763bf7c06cc394ae140d03d9d2b84a79aca20f092d45f574743ca18c",
+    "acceptance/msft-q3/report.template.md": "22e7b907d377bec1af7e68c6eba4aa7995c5ee7e5a227d41cf9560dc07dc7eb4",
+    "acceptance/msft-q3/reconstruction/report.md": "7d571159c34a483b99a4ed57943fc93cd09507819368d6978648e2a532f2207f",
+    "acceptance/msft-q3/reconstruction/result.json": "ec78903af6a27128408a6bc33731cd1596a5d4950482e8058ef7e3d9b79903cc",
+    "acceptance/msft-q3/reconstruction/financial-audit.json": "ca20431e4a5f8fe8ad54a48c8c9fab1581c7d19db3fed896f6efe02b462014a2",
+    "acceptance/msft-q3/semantic-negatives.json": "7e14cd60f89ffc5ddf70f67db836ef1c6bb904c98ac251875b75400251af0374",
+    "acceptance/msft-q3/host-answer-corrected.md": "87b7f7df18b813aebc7486413b78dee1bf8a6b05d15fb0023a229cda1f5a234e",
+    "acceptance/msft-q3/host-answer-corrected-audit.json": "a489c3796f29ee05474f3f689545c841c56ee5c06043086d75dbb1f14d34ba80",
+    "local/skill-evals/20260920-msft-q3/installed/answer.md": "d204982998181c499c01c0e1108ce9cce590a883d2ffe53735084e4fd83225f0",
+    "local/skill-evals/20260920-msft-q3/installed/events.jsonl": "1633b0857699175d61bcb76618667216461c301701da3254e1e77aacb5fa8682",
+    "local/skill-evals/20260920-msft-q3/installed/host.json": "df9f61621ab2972c0e685b5dc11130f342cd33d820cc4839cf4c148106ad4a08",
+    "local/skill-evals/20260920-msft-q3/installed/machine-audit.json": "a4aea759737ebbecc5dd22fbb32e65fad836aa4bd7619ce1df391815128bae44",
+    "acceptance/skill-tasks/msft-q3-case-20260920.json": "b79f97c81bb61bcb561b0d43744dacecfa99176bba61a8a28783009ea252341a"
+  }
+}

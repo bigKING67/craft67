@@ -1,0 +1,186 @@
+{
+  "date": "2026-08-11",
+  "count": 12,
+  "posts": [
+    {
+      "slug": "design-meetup",
+      "position": 0,
+      "domain": "designmeetup.info",
+      "url": "https://designmeetup.info/",
+      "title": "Design Meetup",
+      "description": "A space for the world’s most ambitious creatives.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T07:54:32.785Z"
+    },
+    {
+      "slug": "lightspark",
+      "position": 1,
+      "domain": "lightspark.com",
+      "url": "https://lightspark.com/",
+      "title": "Lightspark",
+      "description": "Lightspark is the open infrastructure for moving money worldwide. One integration to send, receive, hold, spend, and convert money in any currency, fiat or stablecoin, across 65+ countries.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T08:11:05.830Z"
+    },
+    {
+      "slug": "laxer",
+      "position": 2,
+      "domain": "davidlaxer.com",
+      "url": "https://davidlaxer.com/",
+      "title": "Laxer",
+      "description": "Laxer specializes in building smart brand strategies and creative storytelling for brands that want to stand for something",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T07:54:07.083Z"
+    },
+    {
+      "slug": "rothfinder",
+      "position": 3,
+      "domain": "rothfinder.com",
+      "url": "https://rothfinder.com/",
+      "title": "RothFinder",
+      "description": "RothFinder is the strategy and closing system built for advisors who want to uncover opportunities faster, explain them clearly, and convert more clients.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T07:59:17.884Z"
+    },
+    {
+      "slug": "five-pathways-financial",
+      "position": 4,
+      "domain": "fivepathways.com",
+      "url": "https://fivepathways.com/",
+      "title": "Five Pathways Financial",
+      "description": "With effective retirement planning, we’re here to help make sure you reach your destination with confidence.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T07:55:55.823Z"
+    },
+    {
+      "slug": "sigil",
+      "position": 5,
+      "domain": "sigil.so",
+      "url": "https://sigil.so/",
+      "title": "Sigil",
+      "description": "A new way to write for work. Words have power.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T08:11:20.388Z"
+    },
+    {
+      "slug": "nue",
+      "position": 6,
+      "domain": "nuehealth.in",
+      "url": "https://nuehealth.in/",
+      "title": "Nue",
+      "description": "Nue turns blood tests into a continuous health profile. 78 biomarkers, at-home collection, longitudinal tracking, and personalised action plans from doctors — so you can predict and prevent, not just diagnose.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T07:58:52.717Z"
+    },
+    {
+      "slug": "hellomuller",
+      "position": 7,
+      "domain": "hellomuller.com",
+      "url": "https://hellomuller.com/",
+      "title": "helloMuller",
+      "description": "helloMuller is an ward-winning brand identity studio behind visual identities for Marvel, DC, Sony Pictures, Google and more.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T07:56:37.900Z"
+    },
+    {
+      "slug": "claude-type",
+      "position": 8,
+      "domain": "claudetype.com",
+      "url": "https://claudetype.com/",
+      "title": "Claude Type",
+      "description": "Claude Type is an independent bespoke type foundry and creative atelier founded by Margot Lévêque, specializing in custom typefaces, signature logotypes, and refined typographic systems for luxury fashion houses, cultural institutions, and global brands. Claude Type is a typographic maison where craft, culture, and emotion quietly meet: an intimate atelier for brands seeking distinction, elegance, and a deeply personal typographic voice.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T08:12:03.807Z"
+    },
+    {
+      "slug": "town",
+      "position": 9,
+      "domain": "town.com",
+      "url": "https://town.com/",
+      "title": "Town",
+      "description": "Meet Town, the personal AI assistant that manages your inbox, schedules your meetings, and handles the busywork — working quietly in the background for you.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T08:11:39.048Z"
+    },
+    {
+      "slug": "bucks-sauce",
+      "position": 10,
+      "domain": "buckssauce.com",
+      "url": "https://buckssauce.com/",
+      "title": "Bucks Sauce",
+      "description": "Shop small-batch BBQ sauce made with real ingredients. No high fructose corn syrup, no seed oils, no additives. Sweet heat with a balanced finish. Premium BBQ sauce built to perform.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T08:12:17.465Z"
+    },
+    {
+      "slug": "locket",
+      "position": 11,
+      "domain": "locket.com",
+      "url": "https://locket.com/",
+      "title": "Locket",
+      "description": "Add your friends to your Home Screen, share weekly recaps, and keep your people close. Locket is for best friends first.",
+      "images": {
+        "desktop": true,
+        "mobile": true,
+        "w": 2880,
+        "h": 1800
+      },
+      "capturedAt": "2026-08-14T07:58:06.306Z"
+    }
+  ]
+}

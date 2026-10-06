@@ -1,0 +1,157 @@
+{
+  "schema": "money-craft.portfolio-acceptance.v1",
+  "date": "2026-09-19",
+  "verdict": "PASS_BOUNDED_AFTER_CASE_CLARIFICATION",
+  "case_id": "etf-portfolio-real-facts",
+  "scope": "Real IVV/ITOT/AGG official factsheets with explicitly hypothetical CNY portfolio and stress shocks; manual portfolio interpretation only.",
+  "source_as_of": "2026-06-30",
+  "execution_as_of": "2026-09-19",
+  "first_run": {
+    "elapsed_seconds": 256.668,
+    "exit_code": 0,
+    "calculations_passed": 25,
+    "machine_checks_pass": false,
+    "errors": [
+      "ROUTE_REQUIRED_NOT_VERIFIED"
+    ],
+    "preserved": true
+  },
+  "clarification": {
+    "changed_field": "facts read-scope exception for host governance, necessary Skill references and read-only route",
+    "financial_prompt_evidence_criteria_unchanged": true,
+    "skill_changed": false,
+    "input_diff_path": "local/research/20260919-etf-portfolio/case-clarification.json"
+  },
+  "final_run": {
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 212.793,
+    "timeout_seconds": 600,
+    "completed_commands": 12,
+    "failed_commands": 1,
+    "recovery": "python absent exit127; python3 retry succeeded",
+    "machine_checks_pass": true,
+    "calculation_checks": 20,
+    "research_complete": false
+  },
+  "manual_review": {
+    "reviewer": "root-agent",
+    "independent_review": false,
+    "passed": 8,
+    "total": 8,
+    "criteria": [
+      {
+        "criterion": "自然触发安装Money Craft及global-investing与证据指引；组合路由READY，声明METHOD_MANUAL，不冒充已运行优化器或公司研究CLI",
+        "status": "PASS",
+        "evidence": "Trace reads installed Money Craft/global-investing/evidence and runs mandatory portfolio route ready; METHOD_MANUAL explicit, no optimizer or company CLI claim."
+      },
+      {
+        "criterion": "区分真实基金与虚构组合，准确标识三基金/基准/币种、2026-06-30资料与2026-09-19研究日；同管理人不算独立多源",
+        "status": "PASS",
+        "evidence": "Test-only weights and risk profile separated from real funds; ticker/CUSIP, USD trading and CNY base explicit; June30 factsheets not current Sept19 holdings; single-manager lineage disclosed."
+      },
+      {
+        "criterion": "按权重计算组合费用，费率与本金费用单位正确，不把管理费叠加在总费用率上；交易税费未包含，NAV历史收益不重复扣费",
+        "status": "PASS",
+        "evidence": "Weighted expense ratio0.03%, static CNY300 per million, exclusions explicit; management fee not added twice and NAV fees not deducted again."
+      },
+      {
+        "criterion": "识别IVV/ITOT大盘重叠；以有限持仓量化已知贡献或重叠下界，不将前十大推为完整重叠；Alphabet两类股须按同一发行人理解",
+        "status": "PASS",
+        "evidence": "Ten common securities/nine issuers, Alphabet A/C recognized as same issuer; known equity contribution27.818% and overlap lower bound32.11% not called complete look-through."
+      },
+      {
+        "criterion": "区分交易/基础币种与底层风险，按(1+资产收益)*(1+汇率收益)-1计算人民币压力损失，不直接相加",
+        "status": "PASS",
+        "evidence": "Base/trading/underlying economic currency distinguished; CNY FX result uses terminal asset value times USD/CNY ratio."
+      },
+      {
+        "criterion": "80/20资产配置与情景A -29.6%、B -36.64%对应；不能称20%损失阈值有保证，不能把压力结果当实际最大回撤或概率",
+        "status": "PASS",
+        "evidence": "80/20 exposure and stress -29.60%/-36.64% explicit; both breach20%; endpoint scenario not max drawdown, probability or guarantee."
+      },
+      {
+        "criterion": "AGG不是现金或保本；久期利率敏感性有单位和近似边界，SEC收益率不冒充保证回报；基金/指数收益差不冒充tracking error或相关性",
+        "status": "PASS",
+        "evidence": "AGG duration5.80 years,100bp approximation-5.80% with limitations; SEC yield not guaranteed total return; NAV/benchmark endpoint difference not tracking error; correlations unknown."
+      },
+      {
+        "criterion": "再平衡建议联系风险约束与实际证据；缺价格序列/完整持仓/税务身份时不给伪精确最优权重、确定税务结论或交易动作",
+        "status": "PASS",
+        "evidence": "Risk conflict triggers review before restoring target weights; drift rules explicitly illustrative, no optimized weights, personal tax or execution claim."
+      }
+    ]
+  },
+  "reference_calculation_checks": 28,
+  "installed_skill": {
+    "source_install_parity": true,
+    "frozen_file_count": 72,
+    "frozen_manifest_sha256": "e5a8d3710762dbe9cf7b0fe71bc0573d7f8c3edbe605c7e44bbc4fd07f57009d",
+    "source_or_install_modified": false
+  },
+  "ledger": {
+    "status": "completed",
+    "route_stages": [
+      "portfolio-review"
+    ],
+    "receipt_count": 5,
+    "artifacts_verified": true,
+    "audit_scope": "Machine and main-agent reviews are separate hash-bound artifacts; portfolio route contains no audit stage. Attempts to add audit after completion were rejected without changing completed ledger."
+  },
+  "sources": [
+    {
+      "source_id": "S01",
+      "path": "local/research/20260919-etf-portfolio/sources/IVV.pdf",
+      "sha256": "d3b9d8ac355f1dcfd7a436cd576876b70ba5fd1851661655d80c8805442373b0",
+      "url": "https://www.ishares.com/us/literature/fact-sheet/ivv-ishares-core-s-p-500-etf-fund-fact-sheet-en-us.pdf"
+    },
+    {
+      "source_id": "S02",
+      "path": "local/research/20260919-etf-portfolio/sources/ITOT.pdf",
+      "sha256": "a20186a982cb4d0410d02f49a8c87eddc81ceb93d07e88eeb8ff06c120d08d49",
+      "url": "https://www.ishares.com/us/literature/fact-sheet/itot-ishares-core-s-p-total-u-s-stock-market-etf-fund-fact-sheet-en-us.pdf"
+    },
+    {
+      "source_id": "S03",
+      "path": "local/research/20260919-etf-portfolio/sources/AGG.pdf",
+      "sha256": "cfcff83b3eaef08f65f21a31e61d646d24e9f9e25e739e0b7ad1d33fa7c77f01",
+      "url": "https://www.ishares.com/us/literature/fact-sheet/agg-ishares-core-u-s-aggregate-bond-etf-fund-fact-sheet-en-us.pdf"
+    }
+  ],
+  "limits": [
+    "Real official funds with hypothetical weights and stress, not personal portfolio.",
+    "Three June30 factsheets captured Sept19; no current full holdings, price or FX series.",
+    "Manual interpretation and arithmetic, not a deterministic portfolio-specific core, optimizer or trading system.",
+    "Main-agent semantic review, not independent review or universal generalization proof.",
+    "No legal/tax eligibility, complete issuer look-through, correlation, VaR or maximum-drawdown certification."
+  ],
+  "next_bounded_capability": "Deterministic portfolio audit core: explicit source-bound weights/fee/holding identity and coverage, CNY/FX stress and constraint checks; not an optimizer.",
+  "application_work": false,
+  "commit_push_release": false,
+  "artifact_hashes": {
+    "local/research/20260919-etf-portfolio/cases.json": "9b886bf1001177130bf4790d3c205270a9ec9c21fe8cc8e8829e8a478ca5dc42",
+    "local/research/20260919-etf-portfolio/cases-clarified.json": "f7f4ebb33c7e0e03e6b922b295a6ed4064f29b643b06b2e6c313fed51fe09a6c",
+    "local/research/20260919-etf-portfolio/case-clarification.json": "4ee662b564a099e8c34cb0e8eed22481afa7e33358db72136c52d369b1e45726",
+    "local/research/20260919-etf-portfolio/frozen-skill.json": "e5a8d3710762dbe9cf7b0fe71bc0573d7f8c3edbe605c7e44bbc4fd07f57009d",
+    "local/research/20260919-etf-portfolio/host/host.json": "3e7ee9704f471baf32bbd7c208d4d8bc067d888d01189a1524304a9fc61aa97d",
+    "local/research/20260919-etf-portfolio/host/answer.md": "fb8d64468fbe83d055a8621d43b8ea72238a480b5bdd784af6d9a8e19768fe73",
+    "local/research/20260919-etf-portfolio/host/machine-audit.json": "848ebc707bfe7d891975a3c7f3cb90109d247dffd325978115d2cdc08138fa4f",
+    "local/research/20260919-etf-portfolio/first-review.json": "8757ca8fc9bb2140df199c40dd2dd54fe7deb0db0c8e7a698e9dc3cea2b01c50",
+    "local/research/20260919-etf-portfolio/host-clarified/host.json": "fcb6dd2c54364032efe4f3f7e77ef35f8f65f56c627b4e595cb9d4d860bdf1f3",
+    "local/research/20260919-etf-portfolio/host-clarified/events.jsonl": "2cc61335c8daf2f74542a3f22578874ee01277319219ee747e63571912cc5ae9",
+    "local/research/20260919-etf-portfolio/host-clarified/answer.md": "1e6f1ef1e975a73a3fefbba67e1e483efafd9e47410d5575dccebdf2ae1928a4",
+    "local/research/20260919-etf-portfolio/host-clarified/machine-audit.json": "fadd8c4abeb79962b14e07ade39009a14328e43bccaa946a7bfefc027ea4c675",
+    "local/research/20260919-etf-portfolio/manual-review.json": "d32250767a1ed8e5df1b9e089bd0881e6ea541c4ea85162c1baf395c430aee61",
+    "local/research/20260919-etf-portfolio/post-review-machine-audit.json": "fadd8c4abeb79962b14e07ade39009a14328e43bccaa946a7bfefc027ea4c675",
+    "local/research/20260919-etf-portfolio/reference-checks.md": "fd855aaeb923c9eb3e2a2d5427235bd88f4be415a29c8c4ec06c5f635d11b9ea",
+    "local/research/20260919-etf-portfolio/reference-audit.json": "92d8fd3184fc6336f21a3604ad556e778ca5641feac7c8b3572d58d55530d576",
+    "local/research/20260919-etf-portfolio/parity.json": "065c2f395e532f5312d64206b5b34089d10d74e5f53754bb5dbfe03adf2467b1",
+    "local/research/20260919-etf-portfolio/ledger-verify.json": "73bfad7e37bdf584e3e09b6af2e7483af0c948ef7864da3222465b391cde7638",
+    "local/research/20260919-etf-portfolio/source-validation.json": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+  },
+  "source_validation": {
+    "valid": true,
+    "checks": 19
+  }
+}

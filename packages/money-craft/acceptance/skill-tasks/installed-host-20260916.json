@@ -1,0 +1,163 @@
+{
+  "schema": "money-craft.installed-host-acceptance.v1",
+  "date": "2026-09-16",
+  "overall": "PASS_BOUNDED_TWO_CASES",
+  "installation": {
+    "target": "~/.agents/skills/money-craft",
+    "source_tree_sha256": "107340cbb165c69c76914547dc70d35765d71f1e8ea2a8ac3d24d9b44fd49a4c",
+    "installed_tree_sha256": "107340cbb165c69c76914547dc70d35765d71f1e8ea2a8ac3d24d9b44fd49a4c",
+    "parity": true,
+    "source_dirty": true,
+    "formal_release": false,
+    "backups": [
+      "~/.agents/.skills-backups/money-craft.20260916T031654560303Z",
+      "~/.agents/.skills-backups/money-craft.20260916T031844897041Z"
+    ]
+  },
+  "changes": [
+    "外部宿主路由要求适用时先读取参数合同，执行成功或明确失败；不将读取Skill当路由成功。",
+    "quick/chat同样要求最终回答保留关键计算回执，不扩展为完整报告或归档。"
+  ],
+  "attempts": [
+    {
+      "run": "implicit-screening-installed",
+      "case_id": "screening",
+      "overall": "PARTIAL",
+      "semantic": "PASS_MANUAL_REVIEW",
+      "calculation_contract": "FAIL_NO_RECEIPTS",
+      "calculation_checks": 0,
+      "route": "PASS_AFTER_RETRY",
+      "actual_skill": "GLOBAL_INSTALL",
+      "artifacts": {
+        "prompt.txt": {
+          "path": "local/skill-evals/20260916/implicit-screening-installed/prompt.txt",
+          "sha256": "2bfa3ade45011b3c939f1c5255b78ee062ba35d9e45be06576c57b4275a975e2"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/implicit-screening-installed/answer.md",
+          "sha256": "d5c33a1d9a5f0ff6667584b1188aaa4c03a52c9209096fc580ff4b82a720cf50"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/implicit-screening-installed/events.jsonl",
+          "sha256": "3fc4f59e4e18dca1acca67244bf768cd51379c15b9c14c023c67dbf6a0d6528f"
+        },
+        "host.json": {
+          "path": "local/skill-evals/20260916/implicit-screening-installed/host.json",
+          "sha256": "6b70a105eb0f18b0f61300fc8f685ceb387edad5a7deb838b84c3329036499e9"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/implicit-screening-installed/financial-audit.json",
+          "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+        }
+      }
+    },
+    {
+      "run": "implicit-replay-installed",
+      "case_id": "preview-replay",
+      "overall": "PARTIAL",
+      "semantic": "PASS_MANUAL_REVIEW",
+      "calculation_contract": "PASS",
+      "calculation_checks": 6,
+      "route": "NOT_EXECUTED",
+      "actual_skill": "GLOBAL_INSTALL",
+      "artifacts": {
+        "prompt.txt": {
+          "path": "local/skill-evals/20260916/implicit-replay-installed/prompt.txt",
+          "sha256": "89dd0f3d3ecafad9c62e452b9330a67a2ce326207868aff87ee51f6bccc84050"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/implicit-replay-installed/answer.md",
+          "sha256": "3a78402ebcd2cf31fa4ecaffeafa720681fe974795e53541a99595a082919f4c"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/implicit-replay-installed/events.jsonl",
+          "sha256": "edf00b2bc42fe00be81e2e590a308ce4a9965dab2ffbca5038423291a3b587fa"
+        },
+        "host.json": {
+          "path": "local/skill-evals/20260916/implicit-replay-installed/host.json",
+          "sha256": "52ee183780089a745c6f6b7a218e18e03acbeceddc1849bb841356ba47c07c30"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/implicit-replay-installed/financial-audit.json",
+          "sha256": "d39cff04cc8c023802867b389d10ee66f4e78aa5f945031ba2fcfcac9285be47"
+        }
+      }
+    },
+    {
+      "run": "implicit-screening-fixed",
+      "case_id": "screening",
+      "overall": "PASS",
+      "semantic": "PASS_MANUAL_REVIEW",
+      "calculation_contract": "PASS",
+      "calculation_checks": 7,
+      "route": "PASS",
+      "actual_skill": "GLOBAL_INSTALL",
+      "artifacts": {
+        "prompt.txt": {
+          "path": "local/skill-evals/20260916/implicit-screening-fixed/prompt.txt",
+          "sha256": "2bfa3ade45011b3c939f1c5255b78ee062ba35d9e45be06576c57b4275a975e2"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/implicit-screening-fixed/answer.md",
+          "sha256": "6a68febf4f08509ee1d08308a626460fa13a6594a900a00ac93f109889e09005"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/implicit-screening-fixed/events.jsonl",
+          "sha256": "a8c9d5ac7b0c6ed4d94b35ffb372cbc48952eef7c2c9b05c028c48e939c6eca8"
+        },
+        "host.json": {
+          "path": "local/skill-evals/20260916/implicit-screening-fixed/host.json",
+          "sha256": "eacfeed58bb53dc50d9a9d83043fb8aa5953cc85eca7c80a6173cfc06d35ede6"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/implicit-screening-fixed/financial-audit.json",
+          "sha256": "206d98dff3bdd88a55220181d573754a8941f67471878dc91de55c3f494eb5a4"
+        }
+      }
+    },
+    {
+      "run": "implicit-replay-fixed",
+      "case_id": "preview-replay",
+      "overall": "PASS",
+      "semantic": "PASS_MANUAL_REVIEW",
+      "calculation_contract": "PASS",
+      "calculation_checks": 4,
+      "route": "PASS",
+      "actual_skill": "GLOBAL_INSTALL",
+      "artifacts": {
+        "prompt.txt": {
+          "path": "local/skill-evals/20260916/implicit-replay-fixed/prompt.txt",
+          "sha256": "89dd0f3d3ecafad9c62e452b9330a67a2ce326207868aff87ee51f6bccc84050"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/implicit-replay-fixed/answer.md",
+          "sha256": "35d2d18e58ddaf76b622ca3484fdb181dfe88772ad2009457f4c27dddcd1f393"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/implicit-replay-fixed/events.jsonl",
+          "sha256": "4feb067342d012b4144749bb2d19f0f6571e162e3d2df71fe42c436090b609b4"
+        },
+        "host.json": {
+          "path": "local/skill-evals/20260916/implicit-replay-fixed/host.json",
+          "sha256": "a7dda5dc80cb270f069b7ac1ac458a6248d7f574fc05d30efe0e08bbd9d303ef"
+        },
+        "financial-audit.json": {
+          "path": "local/skill-evals/20260916/implicit-replay-fixed/financial-audit.json",
+          "sha256": "c66040a39af98e1a84fe2bc54e409c7b40872e64ea770f5959eb1ed0915cc734"
+        }
+      }
+    }
+  ],
+  "verification": {
+    "runtime_self_test": "PASS",
+    "installed_earnings_smoke": "PASS_9_CHECKS",
+    "package_check": "PASS_8_CHECKS",
+    "final_host_calculation_checks": 11
+  },
+  "limits": [
+    "仅当前Codex宿主、现有全局治理规则下的两个固定合成问题；不是仅Skill描述驱动的隔离发现实验。",
+    "最终通过是一次运行证据，不代表多次稳定性、其他宿主或全部自然语言意图。",
+    "未重新执行六类全套案例，未进行当前真实证券研究或正式money归档。",
+    "本次安装是当前工作树版本，不是commit、push或正式发布。"
+  ]
+}

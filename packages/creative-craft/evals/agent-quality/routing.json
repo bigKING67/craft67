@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "campaign-concept",
+      "prompt": "We need three launch campaign concepts for a new alcohol-free aperitif, including the central creative mechanism and hero film idea.",
+      "expect_creative_craft": true
+    },
+    {
+      "id": "creative-critique",
+      "prompt": "Critique this six-frame skincare storyboard and recommend the smallest creative revision without inventing performance evidence.",
+      "expect_creative_craft": true
+    },
+    {
+      "id": "kol-calendar",
+      "prompt": "Build a 30-day Xiaohongshu content calendar and tiered KOL/KOC seeding plan with posting cadence and creator roles.",
+      "expect_creative_craft": false
+    },
+    {
+      "id": "product-ui",
+      "prompt": "Review this SaaS dashboard UI and propose a new navigation, component system and responsive frontend implementation plan.",
+      "expect_creative_craft": false
+    }
+  ]
+}

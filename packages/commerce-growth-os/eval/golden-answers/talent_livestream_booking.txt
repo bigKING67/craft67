@@ -1,0 +1,13 @@
+Decision: 可以作为受控测试，但不要把它当高确定性盈利渠道；先锁库存、价格、脚本和回本口径。
+
+Confirmed facts: expected GMV 400000, product cost 32%, platform fee 5%, gift/sample cost 8%, fulfillment 4%, refund loss 7%, pit fee 50000, commission 25%.
+
+Economics: channel net profit = 400000 - 128000 - 20000 - 100000 - 50000 - 32000 - 16000 - 28000 = 26000. Max creator commission before zero profit is 31.5% when pit fee and other costs unchanged, so 25% has profit buffer but not high enough to ignore risk.
+
+Assumptions: no extra group leader fee, service fee, content authorization fee, or unexpected refund. If these exist, profit falls.
+
+Risk: pit fee is fixed, refund and inventory mismatch can erase the 26000 buffer; creator audience may not match; review damage can hurt later payback.
+
+Stop rule: do not book if final sample cost, refund reserve, or extra fee pushes channel net profit below 0. Scale rule: repeat only if net profit, new-customer quality, review quality, and payback are proven after the first session.
+
+Mechanism: lock all fees and refund reserves before approval, then treat the first session as a bounded test. Owner: commercial lead with live operations and inventory owners. Success signal: positive realized channel net profit after the complete refund window. Next review: after the first session settles and refunds mature.

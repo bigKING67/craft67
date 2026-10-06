@@ -1,0 +1,107 @@
+{
+  "schema": "money-craft.host-and-history-acceptance.v1",
+  "date": "2026-09-16",
+  "overall": "PARTIAL",
+  "implicit_host": {
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "prompt_names_skill": false,
+    "loading": "OBSERVED_GLOBAL_SKILL_READ",
+    "semantic_screening": "PASS",
+    "calculation_output_contract": "FAIL_NO_RECEIPTS",
+    "calculation_checks": 0,
+    "route_execution": "FAIL_UNRECOVERED_ARGUMENT_ERROR",
+    "process_exit": 0,
+    "limits": "全局治理规则参与选择；不是仅由Skill描述触发的隔离测试，也不证明其他宿主。",
+    "artifacts": {
+      "prompt.txt": {
+        "path": "local/skill-evals/20260916/implicit-screening/prompt.txt",
+        "sha256": "2bfa3ade45011b3c939f1c5255b78ee062ba35d9e45be06576c57b4275a975e2"
+      },
+      "answer.md": {
+        "path": "local/skill-evals/20260916/implicit-screening/answer.md",
+        "sha256": "9d199a6e420698436c937d5d0d5209a57b465b784812861ecec6149535b8e3ec"
+      },
+      "events.jsonl": {
+        "path": "local/skill-evals/20260916/implicit-screening/events.jsonl",
+        "sha256": "f6fa4ca24eff57931d52b3d710a3fe22b68997940108ca16c725a2390bdcb835"
+      },
+      "host.json": {
+        "path": "local/skill-evals/20260916/implicit-screening/host.json",
+        "sha256": "41a2960022f445c5d34b2d983620b6ec374fd0efe13e0c6aeb6963756ae9d68e"
+      },
+      "financial-audit.json": {
+        "path": "local/skill-evals/20260916/implicit-screening/financial-audit.json",
+        "sha256": "de254d53ff58717478e1c9696a189eb17a53bc0ecf803db667b9eb8ba57eebfb"
+      }
+    }
+  },
+  "installation": {
+    "parity": "DIFFERENT",
+    "source_tree_sha256": "d5799ca7c10576c87380d01dd4d0a7fa1c468a1b7aee61e060dbccf49cdd2057",
+    "installed_tree_sha256": "10d0576aaa8843e917026c6ee62e96664db75026e4825f9b5779b3f8a85eb453",
+    "changed": [
+      "references/company-research.md",
+      "references/earnings-review.md",
+      "references/financial-data-and-evidence.md",
+      "references/providers/fuyao.md",
+      "references/tracking-workflow.md",
+      "schemas/research-completion-receipt.schema.json",
+      "schemas/research-status.schema.json",
+      "scripts/financial_rigor.py",
+      "scripts/money_craft.py",
+      "scripts/research_run.py",
+      "scripts/tracking_workflow.py"
+    ],
+    "source_only": [
+      "schemas/earnings-update-input.schema.json",
+      "schemas/earnings-update.schema.json",
+      "schemas/tracking-current.v2.schema.json",
+      "schemas/tracking-revision.v2.schema.json",
+      "schemas/tracking-state.v2.schema.json",
+      "schemas/tracking-status.v2.schema.json",
+      "scripts/earnings_baseline.py",
+      "scripts/earnings_crosscheck.py",
+      "scripts/earnings_drivers.py",
+      "scripts/earnings_update.py"
+    ],
+    "mutated": false,
+    "proposed_target": "~/.agents/skills/money-craft",
+    "backup_policy": "existing atomic installer preserves old copy under ~/.agents/.skills-backups; no install executed"
+  },
+  "historical_replay": {
+    "status": "PASS_BOUNDED_HISTORICAL_REPLAY",
+    "source_acquisition": "ISSUER_PDF_REFETCH_HASH_MATCH",
+    "source_semantics": "本轮人工复核两份PDF第5页收入、归母利润、经营现金流及2023比较列；股数定位沿用已记录审读。",
+    "independent_cross_source": "NOT_TESTED_TWO_REPORTS_SAME_ISSUER",
+    "network_in_replay": false,
+    "archive_scope": "LOCAL_CORE_TRACKING_NOT_FORMAL_MONEY_ARCHIVE",
+    "current_judgment": "STALE_UNVERIFIED_SCORE_NULL",
+    "sources": [
+      {
+        "year": 2023,
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2024/05/2024050716531754477.pdf",
+        "path": "local/skill-evals/20260916/historical-source/600519-2023-annual-report.pdf",
+        "sha256": "2125ff97a452ea79b0d784e2432f7d224b6aecc330b644b593477d69e22f4ed1"
+      },
+      {
+        "year": 2024,
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/04/2025040817542019660.pdf",
+        "path": "local/skill-evals/20260916/historical-source/600519-2024-annual-report.pdf",
+        "sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30"
+      }
+    ],
+    "receipt": {
+      "path": "local/skill-evals/20260916/historical-replay/acceptance-receipt.json",
+      "sha256": "ca395c88e4cf876575efe25ad2f7ee8f25296cb295a0f5be532c5b034017e9c9"
+    },
+    "negative_check": {
+      "path": "local/skill-evals/20260916/historical-tamper-check.json",
+      "sha256": "c11a94588f20f51385ce9414b8397231781e0b28c80371a46a233dce5c9383ef"
+    }
+  },
+  "remaining": [
+    "自然触发的路由错误恢复与计算回执输出尚未通过。",
+    "全局安装尚未同步；需独立明确授权，且同步不保证解决所有宿主行为问题。",
+    "真实最新研究、独立来源交叉核验、正式money档案和多宿主稳定性均未由本批证明。"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "review-craft.evidence-policy.v1",
+  "evidenceLevels": {
+    "E0": "Description or documentation only; no formal score.",
+    "E1": "Current source and configuration reviewed.",
+    "E2": "Relevant tests, checks, or builds executed.",
+    "E3": "Critical runtime, isolated-install, benchmark, profile, or trace evidence captured.",
+    "E4": "Clean and deployment-representative reproduction."
+  },
+  "scoreGates": {
+    "minimumForNumericScore": "E1",
+    "minimumFor95": "E3",
+    "minimumFor98": "E4"
+  },
+  "semanticEvidence": {
+    "configurationAloneIsEvidence": false,
+    "structuredStdoutRequired": true,
+    "copiedArtifactsContentBound": true,
+    "failedSemanticReceiptSupportsE2": false,
+    "matchingClaimRequiredForE3E4WhenPresent": true
+  },
+  "registeredManualEvidence": {
+    "currentRunSchema": "review-craft.run.v5",
+    "canonicalReferencePrefix": "artifact:",
+    "copiedIntoRun": true,
+    "contentBoundBySha256AndSize": true,
+    "historicalRunV4IntegrityClaim": true,
+    "historicalRunV3IntegrityClaim": false
+  },
+  "targetSourceReadOnly": true,
+  "fixRuntimeMutatesTargetSource": false,
+  "fixSourceMutationAuthorization": "EXPLICIT_USER_REQUIRED",
+  "runArtifactsOutsideTargetByDefault": true
+}

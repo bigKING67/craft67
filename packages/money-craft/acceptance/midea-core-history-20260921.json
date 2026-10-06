@@ -1,0 +1,74 @@
+{
+  "status": "HISTORY_BOUND_CORE_FINALIZE_BLOCKED",
+  "source_count": 12,
+  "source_readback": [
+    {
+      "id": "S11",
+      "sha256": "576dd80e353e53296a800b03e9889a9cbb2e8b91fa2ab3c1dace7c10159179b8"
+    },
+    {
+      "id": "S12",
+      "sha256": "16f95f70527db59dcf2736f276a9479cf7ee917e5f71e4f6cbbe83acbad9f4b6"
+    },
+    {
+      "id": "S13",
+      "sha256": "c196204924fcb4cb80eb8c771ff405872cb34b357f04b79e87debe32033b44ce"
+    },
+    {
+      "id": "S21",
+      "sha256": "22f4915d91ada74a37eab8d074aef4c15420f3b1a8b5f5bd5777c00f97d58b86"
+    },
+    {
+      "id": "S18",
+      "sha256": "f8e6bdf462a23dd948e44d616e25b308b4b9054da3bda42567f52e6f69ed0c60"
+    },
+    {
+      "id": "S19",
+      "sha256": "9857edda695c7b3d5b68c0cad6d98c2c3d46bb7bcb7f60fb292ec0b77546e99e"
+    },
+    {
+      "id": "S20",
+      "sha256": "24900692f953f24bff8464e27e3383e91b2a272984e38bff21ca628b3d7cc50b"
+    },
+    {
+      "id": "S23",
+      "sha256": "a1a977c0ab10e36d744d45edc8ce3253666dff58f6ebb86efba40299eed02ef7"
+    },
+    {
+      "id": "S24",
+      "sha256": "a5f259ed049c53457f01d36e756df62e8e12b51adf5c891643972366fa40fae0"
+    },
+    {
+      "id": "S26",
+      "sha256": "f1210d6e006e00963492edbf4cc79884b0febdffa50a82ed2d291fa694369def"
+    },
+    {
+      "id": "S31",
+      "sha256": "2ae890ea091900d35362806e9a13e286e5ca8b33f095397b598524597a9ae425"
+    },
+    {
+      "id": "S32",
+      "sha256": "bd7efbb908bc9bcf10618ed871e4d81ca6195eb4a76747344581178749854bff"
+    }
+  ],
+  "original_files_unchanged": {
+    "report.md": "a66ae1c96def4c02c762c2b8cee98db2fb46c0f59bc1a3e7c5e57693c04e78a7",
+    "thesis.md": "d61e8ddad0df6dddf8e88d4c55e8532ef7104585c80234e41e90d58af3e42102",
+    "plan.json": "fb64ba190936ee8b2777e96aa5bb568ad5bc1c63bf84b27730cc936c0993324b",
+    "case.json": "4f72160bd6b96123beac982a39aaf54305a73fc8b55414a0c3a5fbd5de2bfe7b",
+    "financial-reconciliation.json": "72627c3f563e96ef54dda5bf7f92c2271133bf3dfac5df3e48aed351244cd10b"
+  },
+  "report_calculations": 52,
+  "thesis_calculations": 52,
+  "historical_fields_bound": 4,
+  "remaining_errors": [
+    "presentation_to_economics.items[4].evidence_state must be resolved before finalization",
+    "presentation_to_economics.items[5].evidence_state must be resolved before finalization"
+  ],
+  "complete": false,
+  "finalization_valid": false,
+  "gate_changed": false,
+  "independent_host_e2e": false,
+  "new_source_fetch": false,
+  "capture_provenance": "local/acceptance/20260921-midea-history/runs/history/evidence/earnings-review/S26-U01-C0001/capture.json"
+}

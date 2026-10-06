@@ -1,0 +1,884 @@
+{
+  "schema": "money-craft.holdout-acceptance.v1",
+  "recorded_at": "2026-09-19T12:57:32.540335+00:00",
+  "verdict": "PASS_BOUNDED_AFTER_CORRECTION",
+  "scope": "Two newly added issuer PDF cases; bounded historical financial question answering. No application or live provider work.",
+  "final_pass_count": 2,
+  "final_case_count": 2,
+  "final_calculation_count": 57,
+  "frozen_source": {
+    "skills/money-craft/requirements-yfinance.txt": "af2a310cb859b04b2fea0b43e835974ca2c0285f8b3ab7733d82ba13d21a0b49",
+    "skills/money-craft/VERSION": "d915cc95d6ca8f47ae297713ed46d4e5c5d99ddd29fc3c61e263bdf305f2b5b0",
+    "skills/money-craft/SKILL.md": "1b2ab1a156706c8c93a1e2afabcdaddd8991657ceeb3830bcaf9434b4d0a1e04",
+    "skills/money-craft/requirements-report.txt": "a8cb26c51e475c50ba9cbfbc1ed8fd8ae99cfaec3a45cf3e67e2861efb62bf38",
+    "skills/money-craft/reporting/report.css": "442e0c51856a62a8a6feab65abc38881514d30eeba499326911b85aa590a0315",
+    "skills/money-craft/reporting/report.js": "4522a90ff0aa020dd3ab2d1a14393bdb6d7adc98da24039be4b487412619c7a2",
+    "skills/money-craft/reporting/report.html": "fce898acd66bf9e3e54d52a7e2fb8620af3467c80b121ba0ab5a35d0644bf439",
+    "skills/money-craft/references/routing.md": "a3703530d3294161f60578b7eefcc361ea84c962570c2394a69332ef7c976f89",
+    "skills/money-craft/references/valuation-and-thesis.md": "7dd8f84ab2d176aba895897d7a44982304b92e7f8771cfd57492eb11a407d076",
+    "skills/money-craft/references/financial-data-and-evidence.md": "f8cef1bb07042fde66266228d56db77921eee6779a6853f02f840d02d681b03b",
+    "skills/money-craft/references/global-investing.md": "e9769c6a103d243b797a0c2632250cf34765441e4e67629225a53c7b6dc7534a",
+    "skills/money-craft/references/report-rendering.md": "ff7ec6ecc4f09df1fce37448f9b59e899969fa76155f77cc5ef3f378b2d3c5b8",
+    "skills/money-craft/references/high-growth-alpha.md": "28d28ab94e4e66a9d1ec68f849050f857ad5d886cf3e3d60b2d463bea1e97f02",
+    "skills/money-craft/references/earnings-review.md": "8098be49f0aac5a120d3a954c538e2cf7e9caabf9dd954f6a96eeabc117ef239",
+    "skills/money-craft/references/company-research.md": "d826b069ffb8828afece1dd8d95c13723a68c9b0da054a3878b6d1f539a6fb4e",
+    "skills/money-craft/references/screening.md": "bc1085720095632e1c48b67c004476f11f64ac5acb1ae789139e39522f61aae1",
+    "skills/money-craft/references/tracking-workflow.md": "861d986878f253eb619edbc1e698d9ea04ec0f292f2d6654dfa13ee7f0da05ca",
+    "skills/money-craft/agents/openai.yaml": "3f18964f6068352da4dc844116f051f5abfcbcea3ae3eb2dd80a43b5f97bec20",
+    "skills/money-craft/schemas/thesis-diff.schema.json": "4ca4aa028b77d2142d7ad1e38ea597701b58f90aa0343e5594b79edcdf52e468",
+    "skills/money-craft/schemas/research-init.schema.json": "edf7596a962d3b8b039d7f781f6566f531f9135fe5e1bdf9cd2382db82ee4140",
+    "skills/money-craft/schemas/financial-reconciliation-audit.schema.json": "09adb2c61e7b5528b788f33b22fc8da721a914354b19aaf77e14dfe8b13b12e0",
+    "skills/money-craft/schemas/company-research-plan.schema.json": "c0a9745a56d4af64751982aef59f9adc8c824d9f30c51710479bf27fcce30b34",
+    "skills/money-craft/schemas/report-render.schema.json": "89fd54cba9e65ccd0cd41a2e306668b4d1e461bac3b21e5c960074bd43acaaad",
+    "skills/money-craft/schemas/tracking-run-state.schema.json": "fdcfb9ab10b983502840c3f3c9f1e80fbdc6668ad51b4cdd2cd4ae001db8b799",
+    "skills/money-craft/schemas/data-response.schema.json": "61815ba50490cefa3141ba1360bdb0d43e4a91c408044ade474db2581f37cee2",
+    "skills/money-craft/schemas/tracking-state.schema.json": "57d5fc3cf2e2ca36369e014da81ad6ab85f805eb7de56593421feced590a287a",
+    "skills/money-craft/schemas/tracking-revision.schema.json": "a8958b0261a63db80caf68953858a0a2fbcf813854fe7c5636e329a9a7b588f9",
+    "skills/money-craft/schemas/earnings-update-input.schema.json": "13629d064381606108ea00df3eeab91b2e4bf4358fcb80a99c1ca802735d2f9d",
+    "skills/money-craft/schemas/research-collection.schema.json": "206e03f2867c08be3a7acbaf23a6258ee253287a07aadc39e13972aec90f5dc7",
+    "skills/money-craft/schemas/tracking-status.schema.json": "473285cd60336aecbe79dcf92b0166a5bedee6ba3e74123313d69508b3dc550d",
+    "skills/money-craft/schemas/research-finalize.schema.json": "3ab0028b26add5bd1bf7d6bbbdaff4268abecc01d1e2e3197a129f508a342ee9",
+    "skills/money-craft/schemas/tracking-revision.v2.schema.json": "709bf60b5fa9638a6f4e306e0e7a1e3952bb78f21d45081c796f08e477060bfb",
+    "skills/money-craft/schemas/financial-audit.schema.json": "dc43561b48ba18eb166fe57f0e7a0fd1b50eec96242ca16c074c65308f2d6df2",
+    "skills/money-craft/schemas/financial-reconciliation.schema.json": "dbe686e3ac04c92106b3a1d7b91bb6c56ec8b83ad7eaff833c04f46a909b4ac1",
+    "skills/money-craft/schemas/tracking-init.schema.json": "b6e8635bd894cd10167ae95307a5e32ddfa446001f3ede7c8288ee038fb8f20f",
+    "skills/money-craft/schemas/tracking-current.schema.json": "e7e1251c2e037c79db875e9a1bb4b9cc0734cc22bcf7f36e4353dc247af49d29",
+    "skills/money-craft/schemas/tracking-status.v2.schema.json": "16859c283bed2f2986e1d17dbcfcd6d89657f2b74da2852938d589e52828da83",
+    "skills/money-craft/schemas/research-completion-receipt.schema.json": "ba0ca309356a3f2fea8aec1017759aeffe52f1858a1d1cb3a4e8dcc768e42333",
+    "skills/money-craft/schemas/source-capture.schema.json": "9ef75a6e7cb72f724a04b0a64a8e92d0aefc4c1a746631819bccfce121435c6a",
+    "skills/money-craft/schemas/tracking-current.v2.schema.json": "4537ca0e39133886b942a8f7387e292ac81b32fb9146ed01c890aa7991a174a6",
+    "skills/money-craft/schemas/research-status.schema.json": "3f2b92c1b1132c88effd9d26ef79d5af103c94c8ffeceac14b153781b789b7c3",
+    "skills/money-craft/schemas/report-render-verify.schema.json": "5159851aad44458acbe49c5d3f6b32fde6cc1302dfc8d17d1056837449cbb7bb",
+    "skills/money-craft/schemas/earnings-update.schema.json": "8bf59e151bf58de7208e0e07d20e54424420a1104b56f5fed029519e3e1a33cb",
+    "skills/money-craft/schemas/tracking-verify.schema.json": "1c400b647ce6949029cf2577229117712c6a282ea91cea07d9ceab3276777bb3",
+    "skills/money-craft/schemas/thesis-update-plan.schema.json": "593702760116c5a077e50657aed0ddd183baaa61fb309c95b350440e05061598",
+    "skills/money-craft/schemas/report-audit.schema.json": "1920aa89095c3ea7acf2763e934a9670510f8853856974ea675ae1bb2cb25fa3",
+    "skills/money-craft/schemas/research-run-state.schema.json": "2f33a1bdf8b5e9637d6a856d5bde1ec7af2b28df4eedf862172a9f58b009ee35",
+    "skills/money-craft/schemas/official-import.schema.json": "3f90f2841d121733c25ae7a45584320fa1eab93b5e2a2e1eb944673eeb17f43d",
+    "skills/money-craft/schemas/research-case.schema.json": "f031931375699bb189185aa36cd3e752c5509a54b9c7fad5e7776e23582e6863",
+    "skills/money-craft/schemas/tracking-state.v2.schema.json": "16ffbe9dc8851de86983ed22db2cc45e50461b800b0b958cb8f2c321975fc9ab",
+    "skills/money-craft/scripts/earnings_drivers.py": "44977073ebed5fa369aab8927f94c6491a5d9a96839b0a339eb8443948bb14b3",
+    "skills/money-craft/scripts/fred_adapter.py": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+    "skills/money-craft/scripts/financial_rigor.py": "44bbdf45d5b8b08737296cb0018683971c0ba62872bce9e1968be1651176c44b",
+    "skills/money-craft/scripts/financial_reconciliation.py": "9bf8642e0cdc9a560e4d248efeaa11f749cd64716074d1806e1fdf3f985394d9",
+    "skills/money-craft/scripts/earnings_update.py": "6614a0af0db6fb4f807af438c0d3e5fc7cc50db7e481075931cdb23c9fa55b84",
+    "skills/money-craft/scripts/earnings_crosscheck.py": "2ea85c3722711e67247904e6feddb80449978f43ee0973d28fe041e86812c6c1",
+    "skills/money-craft/scripts/report_audit.py": "7b0f2546c0a1d01964b972f48e7691441b6d9653575ccbe8fedf2dafbbada7d9",
+    "skills/money-craft/scripts/yfinance_adapter.py": "5fce407420628b6348fc1003b0b1165e353fdcd8d713a404aeecb9d20756516c",
+    "skills/money-craft/scripts/runtime_paths.py": "6c00b116a84c358d867e422b469e969cfe086bbdfc01b018b36e443cc0408777",
+    "skills/money-craft/scripts/tracking_workflow.py": "5f2ee35d88c93d41e07dc24d69980282ed7dce88c62cb9b706dce582f5776cc8",
+    "skills/money-craft/scripts/report_renderer.py": "2ce462be8b9ab8b2d7f85c190816e701e06bc56da7f0938f8537e3cb608132f5",
+    "skills/money-craft/scripts/research_run.py": "079cab3659ba7c3f614cf6476409764f63b37ab202e2105140ca10dd2ff251c0",
+    "skills/money-craft/scripts/earnings_baseline.py": "d43b5137a5ea9611c5a52256a5fb02a4bd94da27c0fa0b0fafe10db7802c3a73",
+    "skills/money-craft/scripts/money_craft.py": "6523b3e76b658877a0fb0ebf3f361afa4882910138950a844b54bbc9ca9b5f75",
+    "skills/money-craft/scripts/research_workflow.py": "3375b2b6399a7348787c15478048ebb60813f0b5fe3faf030c1d09cdb87ffab7",
+    "skills/money-craft/templates/thesis.md": "2e9b8d9402f7c2d711483605bfcb5630108a3b3e07e73af3a326776884c93835",
+    "skills/money-craft/templates/report.md": "80221be333693c7c7bd3e5f9e422071e6152ec7771b380340b7650bd5193de29",
+    "skills/money-craft/templates/tracking-card.md": "722f9f9fe39ca53c25d5b66c6a12b761d4622044e822a98a20f3f1f4c7490f35",
+    "skills/money-craft/references/providers/fred.md": "432c69d9363420afc490c9a261f539a9a375f841a821d96a1945cd63184c326a",
+    "skills/money-craft/references/providers/yfinance.md": "f8dd12d562454d69fd8448ca16fffd1d3501983b9f42b6395dde295fcd56becf",
+    "skills/money-craft/references/providers/fuyao.md": "de35ea53fc6d02d1dc1d12c00d66696a3ee169671b5def8e058ea9e2f7121c4d"
+  },
+  "case_file": {
+    "path": "acceptance/skill-tasks/holdout-cases-20260919.json",
+    "sha256": "92e0ab36f2aa46ae6a3904799285ab270f9e15c7eeca73c5565cce528bbb2e49",
+    "bytes": 5273
+  },
+  "criteria_unchanged": true,
+  "sources": [
+    {
+      "path": "local/skill-evals/20260919-holdout/sources/aapl-fy24q4.pdf",
+      "url": "https://images.apple.com/newsroom/pdfs/fy2024-q4/FY24_Q4_Consolidated_Financial_Statements.pdf",
+      "final_url": "https://images.apple.com/newsroom/pdfs/fy2024-q4/FY24_Q4_Consolidated_Financial_Statements.pdf",
+      "sha256": "af9646018330484238d357f1168ae74194fd768f4ea9921e4b2828c88309320c",
+      "bytes": 4919216,
+      "fetched_at": "2026-09-19T12:32:10.707794+00:00",
+      "content_type": "application/pdf"
+    },
+    {
+      "path": "local/skill-evals/20260919-holdout/sources/tencent-fy2024.pdf",
+      "url": "https://static.www.tencent.com/uploads/2025/03/19/81cb1f36bec218d27d6e0b24eec012b6.pdf",
+      "final_url": "https://static.www.tencent.com/uploads/2025/03/19/81cb1f36bec218d27d6e0b24eec012b6.pdf",
+      "sha256": "257bc5cc7450f36bf6f48d406efda4186ea8d314bd1234ec458e60969436227f",
+      "bytes": 581468,
+      "fetched_at": "2026-09-19T12:32:11.681891+00:00",
+      "content_type": "application/pdf"
+    }
+  ],
+  "freeze_artifacts": [
+    {
+      "path": "local/skill-evals/20260919-holdout/frozen.json",
+      "sha256": "1815aeccdb2865f11d8a72d788ffe23a3ffc1088d85339ebbb3fedf28d076a8e",
+      "bytes": 9179
+    },
+    {
+      "path": "local/skill-evals/20260919-holdout/frozen-regression.json",
+      "sha256": "5e0bdbbe6113c0967a39c7f703fe3053583cd9a6c86bb3a7516f73265e94c5ab",
+      "bytes": 9171
+    },
+    {
+      "path": "local/skill-evals/20260919-holdout/frozen-final.json",
+      "sha256": "d3ae4fbdf05f333ce1d2e6b99578cdbd6a24b95476a43b3bc218969ec499c7f1",
+      "bytes": 9171
+    },
+    {
+      "path": "local/skill-evals/20260919-holdout/frozen-isolated.json",
+      "sha256": "de4ff963dcafe002eee566b7672887510948cd9e850ad89210dfeab5a2ef9080",
+      "bytes": 9287
+    }
+  ],
+  "runs": [
+    {
+      "phase": "initial_holdout",
+      "case_id": "holdout-aapl-tax-cash",
+      "verdict": "FAIL_EXECUTION_EVIDENCE",
+      "machine_checks_pass": true,
+      "calculation_count": 25,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "root",
+      "independent_review": null,
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF并核对哈希，引用正确页码；FY2024Q4为截至2024-09-28三个月，金额百万美元，EPS美元，不能误作自然年Q4或全年。",
+          "status": "FAIL",
+          "evidence": "PDF读取、期间与币种正确；但成功工具输出未保存实测SHA256。审计器独立核对通过，不替代宿主哈希核验留痕。"
+        },
+        {
+          "criterion": "使用季度收入94930/89498、营业利润29591/26969、GAAP净利润14736/22956，比较方向与同比正确。",
+          "status": "PASS",
+          "evidence": "收入、营业利润、GAAP净利润和同比与原表一致。"
+        },
+        {
+          "criterion": "以第4页税项10246和调整净利润24982解释GAAP下滑；不把非GAAP当法定净利润或现金，也不凭本期调整后对上期GAAP宣称已完整统一所有调整。",
+          "status": "PASS",
+          "evidence": "税项10246及非GAAP净利润24982正确；未宣称全调整口径已统一。"
+        },
+        {
+          "criterion": "至少明确一个营业利润率的同口径比较与百分点变化，支持经营与税后表现分离，不把税项变化直接当作主营恶化。",
+          "status": "PASS",
+          "evidence": "营业利润率31.171389%/30.133634%，变化1.037755个百分点；C09/C10/C26覆盖。"
+        },
+        {
+          "criterion": "识别现金流表为十二个月：OCF118254/110543；不得冒充Q4单季现金或把现金税款26102当季度10246费用；材料不足时明确缺少九个月现金流。",
+          "status": "PASS",
+          "evidence": "全年OCF118254/110543；缺少九个月现金流，未冒充Q4或将税项当现金。"
+        },
+        {
+          "criterion": "区分历史截止与本次获取/执行日期，保留同源/未审计简表与原因证据边界，不给当前估值买卖结论。",
+          "status": "PASS",
+          "evidence": "明确post-hoc、单发行人、未经审计及原因边界，无当前买卖建议。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash/host.json",
+          "sha256": "85a4560d70b10cd5a433f2aa4f8354727455450632d4faa654e2357b6a01b94d",
+          "bytes": 13074
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash/events.jsonl",
+          "sha256": "50b14f0b247dae4eb56fbaca6405445c25e17b7db8212c1f6946992dc7083bb7",
+          "bytes": 110666
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash/answer.md",
+          "sha256": "701aac0be634a3bdada5eaac1cacdc6e2bfe8271caa7817e0467be97dec7cb6a",
+          "bytes": 9891
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash/case-snapshot.json",
+          "sha256": "3f21a31fb27a0688c5f5b7ee5cbd92ee1731fb9939c874921a76c6e5c02c33e8",
+          "bytes": 2431
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash/machine-audit.json",
+          "sha256": "2a59d0b6ecf049bfbdf1bb3190bbe71d37de1099334574bd59c1a54998b2850d",
+          "bytes": 8710
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash/manual-review.json",
+          "sha256": "50ff5452a55a2718bd4f6c90d832663382374aad3d65333e0582921c42925784",
+          "bytes": 2223
+        }
+      ]
+    },
+    {
+      "phase": "initial_holdout",
+      "case_id": "holdout-tencent-profit-cash",
+      "verdict": "FAIL",
+      "machine_checks_pass": true,
+      "calculation_count": 12,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "core_independent_review",
+      "independent_review": null,
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF/核哈希/定位页码，全年截至2024-12-31与Q4三个月分开；报告RMB million不写成HKD，美元便利换算不是本次估值汇率。",
+          "status": "PASS",
+          "evidence": "实际读取11页PDF、SHA256与页码；CNY报告/HKD交易及全年季度分开。"
+        },
+        {
+          "criterion": "全年收入660257/609015、IFRS归属股东利润194073/115216、nonIFRS归属利润222703/157688对应同口径同比；不以全年本期对季度上期，不混利润总额。",
+          "status": "PASS",
+          "evidence": "全年收入和IFRS/nonIFRS归母利润准确，引用披露取整同比并明确精度。"
+        },
+        {
+          "criterion": "季度收入172446/155196与nonIFRS归属利润55312/42681单列同口径比较，不把全年68%自动套到第四季。",
+          "status": "PASS",
+          "evidence": "Q4收入和nonIFRS归母利润独立比较，没有套用全年增长。"
+        },
+        {
+          "criterion": "比较全年IFRS或nonIFRS营业利润率及百分点，说明盈利增速快于收入；区分披露四舍五入margin和自行计算的精确比率。",
+          "status": "FAIL",
+          "evidence": "FAIL: 仅引用营业利润率32%至36%；12项回执计算归母利润/收入，缺营业利润率百分点及精确明细与取整值区分。"
+        },
+        {
+          "criterion": "用披露的FCF1553亿元同比下降7%、capex768亿元同比增长221%反驳利润增长就证明现金转化改善；nonIFRS调整包含股份支付/投资损益等，不等于经营现金流，原因与管理层叙述区分。",
+          "status": "PASS",
+          "evidence": "FCF1553亿元下降7%，capex768亿元增长221%；调整利润不当现金，原因有边界。"
+        },
+        {
+          "criterion": "保留单发行人及历史回放限制：全年audited、Q4unaudited；不能把调整后利润当确定核心现金，不能据此输出当前估值买卖判断。",
+          "status": "PASS",
+          "evidence": "历史与获取日期、同源及年度审计/季度未经审计区分准确。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash/host.json",
+          "sha256": "76d64be0c23c1305e072aca0f99c1270171b4266f5ed72b6736c6a8ae4f8c8c1",
+          "bytes": 12092
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash/events.jsonl",
+          "sha256": "5ea652969135c2b3a8e1590081bf564d731f393b13a9c86269e8bd923598c846",
+          "bytes": 141252
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash/answer.md",
+          "sha256": "60583f44cb4de3b9927a9643d7c0cde06065c6968f03e73694cb59e483121774",
+          "bytes": 9672
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash/case-snapshot.json",
+          "sha256": "6de3e42584ccc1cd634d3edce34f5542067ab752923f5731a417438579d037e9",
+          "bytes": 2541
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash/machine-audit.json",
+          "sha256": "8e082d03f1ed089bb02fb458b84adc27e1b42f908610dc6ee9199d2506405ee8",
+          "bytes": 5714
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash/manual-review.json",
+          "sha256": "dc982e96c6d07c770774f37ea0afd0542eec22f552611dcf71a232b1840fb0c3",
+          "bytes": 2335
+        }
+      ]
+    },
+    {
+      "phase": "regression",
+      "case_id": "holdout-aapl-tax-cash",
+      "verdict": "FAIL_CRITERION_COVERAGE_AND_EXECUTION_EVIDENCE",
+      "machine_checks_pass": true,
+      "calculation_count": 26,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "root",
+      "independent_review": null,
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF并核对哈希，引用正确页码；FY2024Q4为截至2024-09-28三个月，金额百万美元，EPS美元，不能误作自然年Q4或全年。",
+          "status": "FAIL",
+          "evidence": "PDF读取、期间与币种正确；但成功工具输出未保存实测SHA256。审计器独立核对通过，不替代宿主哈希核验留痕。"
+        },
+        {
+          "criterion": "使用季度收入94930/89498、营业利润29591/26969、GAAP净利润14736/22956，比较方向与同比正确。",
+          "status": "PASS",
+          "evidence": "收入、营业利润、GAAP净利润和同比与原表一致。"
+        },
+        {
+          "criterion": "以第4页税项10246和调整净利润24982解释GAAP下滑；不把非GAAP当法定净利润或现金，也不凭本期调整后对上期GAAP宣称已完整统一所有调整。",
+          "status": "PASS",
+          "evidence": "税项10246及非GAAP净利润24982正确；未宣称全调整口径已统一。"
+        },
+        {
+          "criterion": "至少明确一个营业利润率的同口径比较与百分点变化，支持经营与税后表现分离，不把税项变化直接当作主营恶化。",
+          "status": "PASS",
+          "evidence": "营业利润率31.17%/30.13%，增加1.04个百分点，与原表和计算一致。"
+        },
+        {
+          "criterion": "识别现金流表为十二个月：OCF118254/110543；不得冒充Q4单季现金或把现金税款26102当季度10246费用；材料不足时明确缺少九个月现金流。",
+          "status": "FAIL",
+          "evidence": "明确全年现金流不能代替Q4并承认缺单季数据，但未按预定标准明确缺少前三季度/九个月累计现金流。非数值错误，保留为标准覆盖缺口。"
+        },
+        {
+          "criterion": "区分历史截止与本次获取/执行日期，保留同源/未审计简表与原因证据边界，不给当前估值买卖结论。",
+          "status": "PASS",
+          "evidence": "明确post-hoc、单发行人、未经审计及原因边界，无当前买卖建议。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-regression/host.json",
+          "sha256": "6a97396bcb165fc1b19ace4df51513ce794dba78c9f8a7d4ce3b9ff915d64ced",
+          "bytes": 12087
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-regression/events.jsonl",
+          "sha256": "1523e533a811a4ee7986cb8561f347483d3a302647a37b43797ab7d008feaf36",
+          "bytes": 104299
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-regression/answer.md",
+          "sha256": "f06999f3cac41c975086662ab8ea29187daea9064ae759081e6998b2af11022b",
+          "bytes": 10179
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-regression/case-snapshot.json",
+          "sha256": "3f21a31fb27a0688c5f5b7ee5cbd92ee1731fb9939c874921a76c6e5c02c33e8",
+          "bytes": 2431
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-regression/machine-audit.json",
+          "sha256": "93b7e482703acec4a4fbc63c14551a9fedc0459bd1ade7abc3dfc3608bd427e4",
+          "bytes": 8561
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-regression/manual-review.json",
+          "sha256": "3908bb27598a743c8b55d4c47e8663cc6329edeee31cbe0b1f85b78ab9062517",
+          "bytes": 2337
+        }
+      ]
+    },
+    {
+      "phase": "regression",
+      "case_id": "holdout-tencent-profit-cash",
+      "verdict": "FAIL_EXECUTION_EVIDENCE",
+      "machine_checks_pass": true,
+      "calculation_count": 25,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "core_independent_review",
+      "independent_review": null,
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF/核哈希/定位页码，全年截至2024-12-31与Q4三个月分开；报告RMB million不写成HKD，美元便利换算不是本次估值汇率。",
+          "status": "FAIL",
+          "evidence": "成功PDF读取但shasum工具输出缺失；答案自报及root独立核对不能代替宿主核验留痕。"
+        },
+        {
+          "criterion": "全年收入660257/609015、IFRS归属股东利润194073/115216、nonIFRS归属利润222703/157688对应同口径同比；不以全年本期对季度上期，不混利润总额。",
+          "status": "PASS",
+          "evidence": "全年收入和IFRS/nonIFRS归母利润准确，引用披露取整同比并明确精度。"
+        },
+        {
+          "criterion": "季度收入172446/155196与nonIFRS归属利润55312/42681单列同口径比较，不把全年68%自动套到第四季。",
+          "status": "PASS",
+          "evidence": "Q4收入和nonIFRS归母利润独立比较，没有套用全年增长。"
+        },
+        {
+          "criterion": "比较全年IFRS或nonIFRS营业利润率及百分点，说明盈利增速快于收入；区分披露四舍五入margin和自行计算的精确比率。",
+          "status": "PASS",
+          "evidence": "全年IFRS营业利润率26.2841%至31.5179%，增加5.2338个百分点；C10-C12覆盖且说明26%至32%为取整值。"
+        },
+        {
+          "criterion": "用披露的FCF1553亿元同比下降7%、capex768亿元同比增长221%反驳利润增长就证明现金转化改善；nonIFRS调整包含股份支付/投资损益等，不等于经营现金流，原因与管理层叙述区分。",
+          "status": "PASS",
+          "evidence": "FCF1553亿元下降7%，capex768亿元增长221%；调整利润不当现金，原因有边界。"
+        },
+        {
+          "criterion": "保留单发行人及历史回放限制：全年audited、Q4unaudited；不能把调整后利润当确定核心现金，不能据此输出当前估值买卖判断。",
+          "status": "PASS",
+          "evidence": "历史与获取日期、同源及年度审计/季度未经审计区分准确。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-regression/host.json",
+          "sha256": "0443cf353990857f7267dfeb86384abc70952b3840da748e035eeb11dd8e2388",
+          "bytes": 12425
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-regression/events.jsonl",
+          "sha256": "6757aecbc3d9a0046efaac67f34bea62715291f61096af39e2f6c2dcde4ef305",
+          "bytes": 136019
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-regression/answer.md",
+          "sha256": "3df1193e4c2a4dbeac6153ce996d683e90bc23d4950eceec728d7d40cb971d06",
+          "bytes": 12179
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-regression/case-snapshot.json",
+          "sha256": "6de3e42584ccc1cd634d3edce34f5542067ab752923f5731a417438579d037e9",
+          "bytes": 2541
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-regression/machine-audit.json",
+          "sha256": "7f4ceb267d27f685c7236fef17cd545568f9a9391cacb4d29f052bdb65529ec0",
+          "bytes": 9044
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-regression/manual-review.json",
+          "sha256": "5fd75640da6403db88eef9b19b5091f4987a63c023da0a6dd812430aefcea035",
+          "bytes": 2355
+        }
+      ]
+    },
+    {
+      "phase": "final",
+      "case_id": "holdout-aapl-tax-cash",
+      "verdict": "FAIL_EXECUTION_EVIDENCE",
+      "machine_checks_pass": true,
+      "calculation_count": 18,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "root",
+      "independent_review": null,
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF并核对哈希，引用正确页码；FY2024Q4为截至2024-09-28三个月，金额百万美元，EPS美元，不能误作自然年Q4或全年。",
+          "status": "FAIL",
+          "evidence": "PDF读取、期间与币种正确；但成功工具输出未保存实测SHA256。审计器独立核对通过，不替代宿主哈希核验留痕。"
+        },
+        {
+          "criterion": "使用季度收入94930/89498、营业利润29591/26969、GAAP净利润14736/22956，比较方向与同比正确。",
+          "status": "PASS",
+          "evidence": "收入、营业利润、GAAP净利润和同比与原表一致。"
+        },
+        {
+          "criterion": "以第4页税项10246和调整净利润24982解释GAAP下滑；不把非GAAP当法定净利润或现金，也不凭本期调整后对上期GAAP宣称已完整统一所有调整。",
+          "status": "PASS",
+          "evidence": "税项10246及非GAAP净利润24982正确；未宣称全调整口径已统一。"
+        },
+        {
+          "criterion": "至少明确一个营业利润率的同口径比较与百分点变化，支持经营与税后表现分离，不把税项变化直接当作主营恶化。",
+          "status": "PASS",
+          "evidence": "营业利润率31.17%/30.13%，增加1.04个百分点，回执覆盖。"
+        },
+        {
+          "criterion": "识别现金流表为十二个月：OCF118254/110543；不得冒充Q4单季现金或把现金税款26102当季度10246费用；材料不足时明确缺少九个月现金流。",
+          "status": "PASS",
+          "evidence": "明确两年全年累计减对应前三季度累计，当前缺两年九个月现金流且需同口径。"
+        },
+        {
+          "criterion": "区分历史截止与本次获取/执行日期，保留同源/未审计简表与原因证据边界，不给当前估值买卖结论。",
+          "status": "PASS",
+          "evidence": "明确post-hoc、单发行人、未经审计及原因边界，无当前买卖建议。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-final/host.json",
+          "sha256": "b28bd89e88ba164d2b015a81c4821a2fe460b106d47ae9fa46b0c4a326b5b949",
+          "bytes": 12182
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-final/events.jsonl",
+          "sha256": "a558491590d6d3f007737bf5e1ba9743fda20a08591f9f53f2ae31e0ba2f824f",
+          "bytes": 100758
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-final/answer.md",
+          "sha256": "8648d38f98c76d8cf0346710157207e2d60a47ed281091e59a79b3dc5eedc01f",
+          "bytes": 9579
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-final/case-snapshot.json",
+          "sha256": "3f21a31fb27a0688c5f5b7ee5cbd92ee1731fb9939c874921a76c6e5c02c33e8",
+          "bytes": 2431
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-final/machine-audit.json",
+          "sha256": "cccd3a667f9a56da4d45237806bd16c3ac0f7619617071c4da00b4803c34d493",
+          "bytes": 7080
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-final/manual-review.json",
+          "sha256": "43717d3560c24999abb0440a201a027b2ca91f29501235ea097af3a3149ddaae",
+          "bytes": 2224
+        }
+      ]
+    },
+    {
+      "phase": "final",
+      "case_id": "holdout-tencent-profit-cash",
+      "verdict": "FAIL_ROUTE_EVIDENCE_AND_CRITERION_COVERAGE",
+      "machine_checks_pass": false,
+      "calculation_count": 28,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "root and core_independent_review",
+      "independent_review": null,
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF/核哈希/定位页码，全年截至2024-12-31与Q4三个月分开；报告RMB million不写成HKD，美元便利换算不是本次估值汇率。",
+          "status": "PASS",
+          "evidence": "成功工具输出包含实测PDF哈希、11页；真实文本读取和身份期间币种正确。"
+        },
+        {
+          "criterion": "全年收入660257/609015、IFRS归属股东利润194073/115216、nonIFRS归属利润222703/157688对应同口径同比；不以全年本期对季度上期，不混利润总额。",
+          "status": "PASS",
+          "evidence": "全年收入和IFRS/nonIFRS归母利润准确，引用披露取整同比并明确精度。"
+        },
+        {
+          "criterion": "季度收入172446/155196与nonIFRS归属利润55312/42681单列同口径比较，不把全年68%自动套到第四季。",
+          "status": "PASS",
+          "evidence": "Q4收入和nonIFRS归母利润独立比较，没有套用全年增长。"
+        },
+        {
+          "criterion": "比较全年IFRS或nonIFRS营业利润率及百分点，说明盈利增速快于收入；区分披露四舍五入margin和自行计算的精确比率。",
+          "status": "PASS",
+          "evidence": "IFRS营业利润率提高5.23pp、nonIFRS提高4.51pp，均有计算回执并区分取整精度。"
+        },
+        {
+          "criterion": "用披露的FCF1553亿元同比下降7%、capex768亿元同比增长221%反驳利润增长就证明现金转化改善；nonIFRS调整包含股份支付/投资损益等，不等于经营现金流，原因与管理层叙述区分。",
+          "status": "PASS",
+          "evidence": "FCF1553亿元下降7%，capex768亿元增长221%；调整利润不当现金，原因有边界。"
+        },
+        {
+          "criterion": "保留单发行人及历史回放限制：全年audited、Q4unaudited；不能把调整后利润当确定核心现金，不能据此输出当前估值买卖判断。",
+          "status": "FAIL",
+          "evidence": "历史回放和单源边界正确，明确季度及nonIFRS未经审计；但遗漏全年IFRS经审计说明，未完整满足原第6条。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-final/host.json",
+          "sha256": "959076becbd8b16cb46ab04d5b4b768a6c44342283a1a8c68a83dd9ac0afb04c",
+          "bytes": 12338
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-final/events.jsonl",
+          "sha256": "a490d6a58d2883bb5c910587c485b3e2158fde13dc00db4af22e741e2e1ffc36",
+          "bytes": 152376
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-final/answer.md",
+          "sha256": "e3c3422b5ba17d5c5ba02e8497b5dbe9bc0141011aebfa64ba6ef4e4fbc5046b",
+          "bytes": 11934
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-final/case-snapshot.json",
+          "sha256": "6de3e42584ccc1cd634d3edce34f5542067ab752923f5731a417438579d037e9",
+          "bytes": 2541
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-final/machine-audit.json",
+          "sha256": "c4129e6e843b1ba787b05a8209700dd1167b43b7185ab9976012dd9f4ab94619",
+          "bytes": 10270
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-final/manual-review.json",
+          "sha256": "c18f69ba93d39cfe69210c7358e9fe259ea73ae96a964344b472f2d7fedaf680",
+          "bytes": 2565
+        }
+      ]
+    },
+    {
+      "phase": "isolated",
+      "case_id": "holdout-aapl-tax-cash",
+      "verdict": "PASS_BOUNDED_AFTER_CORRECTION",
+      "machine_checks_pass": true,
+      "calculation_count": 21,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "root",
+      "independent_review": null,
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF并核对哈希，引用正确页码；FY2024Q4为截至2024-09-28三个月，金额百万美元，EPS美元，不能误作自然年Q4或全年。",
+          "status": "PASS",
+          "evidence": "events行20独立shasum退出0并返回准确哈希；真实PDF全文读取，三个月利润与十二个月现金流分开。"
+        },
+        {
+          "criterion": "使用季度收入94930/89498、营业利润29591/26969、GAAP净利润14736/22956，比较方向与同比正确。",
+          "status": "PASS",
+          "evidence": "收入、营业利润、GAAP净利润和同比与原表一致。"
+        },
+        {
+          "criterion": "以第4页税项10246和调整净利润24982解释GAAP下滑；不把非GAAP当法定净利润或现金，也不凭本期调整后对上期GAAP宣称已完整统一所有调整。",
+          "status": "PASS",
+          "evidence": "税项10246及非GAAP净利润24982正确；未宣称全调整口径已统一。"
+        },
+        {
+          "criterion": "至少明确一个营业利润率的同口径比较与百分点变化，支持经营与税后表现分离，不把税项变化直接当作主营恶化。",
+          "status": "PASS",
+          "evidence": "营业利润率31.17%/30.13%，增加1.04个百分点，回执覆盖。"
+        },
+        {
+          "criterion": "识别现金流表为十二个月：OCF118254/110543；不得冒充Q4单季现金或把现金税款26102当季度10246费用；材料不足时明确缺少九个月现金流。",
+          "status": "PASS",
+          "evidence": "明确缺FY2024和FY2023前三季度累计表，逐年全年减前三季度推导Q4并核对口径；不混税费与支付。"
+        },
+        {
+          "criterion": "区分历史截止与本次获取/执行日期，保留同源/未审计简表与原因证据边界，不给当前估值买卖结论。",
+          "status": "PASS",
+          "evidence": "明确post-hoc、单发行人、未经审计及原因边界，无当前买卖建议。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-isolated/host.json",
+          "sha256": "fc1cad9b9cb9afa3f078df5963a1b05c19c0941457fce690c383f28a613e4a56",
+          "bytes": 12281
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-isolated/events.jsonl",
+          "sha256": "f424804ec725f98db71eff47e0393848ecabd35e5d3ed31bf3afc2aec64a6469",
+          "bytes": 116797
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-isolated/answer.md",
+          "sha256": "49cd356abb2869bff35fa64505bfecd029d694ac82b485c5c27cd5ee856a36aa",
+          "bytes": 9494
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-isolated/case-snapshot.json",
+          "sha256": "3f21a31fb27a0688c5f5b7ee5cbd92ee1731fb9939c874921a76c6e5c02c33e8",
+          "bytes": 2431
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-isolated/machine-audit.json",
+          "sha256": "9212cd19be3d01ac4442b5bf8327b0916ffa1d2e22c8f0f36cda98ee830fc758",
+          "bytes": 7453
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-isolated/manual-review.json",
+          "sha256": "6a77c111f18f4bb1c1e9aea6900fd2429ca504cc311ffe19272cac7966c5d1dc",
+          "bytes": 2229
+        }
+      ]
+    },
+    {
+      "phase": "isolated",
+      "case_id": "holdout-tencent-profit-cash",
+      "verdict": "PASS_BOUNDED_AFTER_CORRECTION",
+      "machine_checks_pass": true,
+      "calculation_count": 36,
+      "host_exit_code": 0,
+      "timed_out": false,
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "automatic_discovery": "NOT_TESTED",
+      "reviewer": "root and core_independent_review",
+      "independent_review": {
+        "verdict": "PASS_BOUNDED_AFTER_CORRECTION",
+        "criteria_passed": 6,
+        "calculation_checks_passed": 36,
+        "full_skill_reference_read_verified": true,
+        "independent_hash_event_line": 15,
+        "independent_route_event_line": 19,
+        "source_files_verified": 71
+      },
+      "manual_criteria": [
+        {
+          "criterion": "实际读取PDF/核哈希/定位页码，全年截至2024-12-31与Q4三个月分开；报告RMB million不写成HKD，美元便利换算不是本次估值汇率。",
+          "status": "PASS",
+          "evidence": "events行15独立shasum输出准确摘要；完整PDF读取及页码、身份币种、全年季度区分正确。"
+        },
+        {
+          "criterion": "全年收入660257/609015、IFRS归属股东利润194073/115216、nonIFRS归属利润222703/157688对应同口径同比；不以全年本期对季度上期，不混利润总额。",
+          "status": "PASS",
+          "evidence": "全年收入和IFRS/nonIFRS归母利润准确，引用披露取整同比并明确精度。"
+        },
+        {
+          "criterion": "季度收入172446/155196与nonIFRS归属利润55312/42681单列同口径比较，不把全年68%自动套到第四季。",
+          "status": "PASS",
+          "evidence": "Q4收入和nonIFRS归母利润独立比较，没有套用全年增长。"
+        },
+        {
+          "criterion": "比较全年IFRS或nonIFRS营业利润率及百分点，说明盈利增速快于收入；区分披露四舍五入margin和自行计算的精确比率。",
+          "status": "PASS",
+          "evidence": "IFRS营业利润率提高5.23pp、nonIFRS提高4.51pp，均有计算回执并区分取整精度。"
+        },
+        {
+          "criterion": "用披露的FCF1553亿元同比下降7%、capex768亿元同比增长221%反驳利润增长就证明现金转化改善；nonIFRS调整包含股份支付/投资损益等，不等于经营现金流，原因与管理层叙述区分。",
+          "status": "PASS",
+          "evidence": "FCF1553亿元下降7%，capex768亿元增长221%；调整利润不当现金，原因有边界。"
+        },
+        {
+          "criterion": "保留单发行人及历史回放限制：全年audited、Q4unaudited；不能把调整后利润当确定核心现金，不能据此输出当前估值买卖判断。",
+          "status": "PASS",
+          "evidence": "明确全年IFRS经审计、Q4未经审计、历史as_of与获取日分离；同源限制且无当前投资结论。"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-isolated/host.json",
+          "sha256": "600a4d024e611e9b3055a61fd077ccc5ab321cb7656e7d292ed46d3b1bfc9ee0",
+          "bytes": 12592
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-isolated/events.jsonl",
+          "sha256": "f5295d8aaf21d1eaabc42d09dbd2202e0d0231de0927273cb0fb927201d2a674",
+          "bytes": 140831
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-isolated/answer.md",
+          "sha256": "a43381a6b08dc61312bcffd574c61d76910ee57008de3bb084411e3461944982",
+          "bytes": 14183
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-isolated/case-snapshot.json",
+          "sha256": "6de3e42584ccc1cd634d3edce34f5542067ab752923f5731a417438579d037e9",
+          "bytes": 2541
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-isolated/machine-audit.json",
+          "sha256": "fdfbeb3db29f246404dd3ced076c092f6f987b3fe26774cde3a177fd452c00eb",
+          "bytes": 12614
+        },
+        {
+          "path": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-isolated/manual-review.json",
+          "sha256": "efc953cf843efa259b8a8ac6090be13d00598ad1e148cdbc623037e1c1254e96",
+          "bytes": 2690
+        }
+      ]
+    }
+  ],
+  "installed_parity": {
+    "files": 71,
+    "valid": true,
+    "root": "~/.agents/skills/money-craft",
+    "receipt": {
+      "path": "local/skill-evals/20260919-holdout/install-isolated.json",
+      "sha256": "fb0838fd024c8b83f8240884a037262693b757160a4d80fb1c2a195d1eb19d92",
+      "bytes": 226
+    }
+  },
+  "package_validation": {
+    "schema": "money-craft.package-smoke.v1",
+    "valid": true,
+    "package": "bigking67-money-craft-0.3.0.tgz",
+    "checks": [
+      "safe-extraction",
+      "package-identity",
+      "packaged-runtime-self-test",
+      "atomic-install",
+      "installed-runtime-self-test",
+      "installed-research-run-smoke",
+      "installed-earnings-pipeline-smoke"
+    ],
+    "errors": []
+  },
+  "package_validation_scope": "Executed against the final reference corrections; runtime code unchanged.",
+  "source_validation": {
+    "schema": "money-craft.source-validation.v1",
+    "valid": true,
+    "version": "0.3.0",
+    "checks": [
+      "version-parity",
+      "host-manifests",
+      "schema-json",
+      "skill-frontmatter",
+      "source-provenance",
+      "secret-scan",
+      "path-scan",
+      "no-symlinks",
+      "whitespace",
+      "public-data-boundary",
+      "acceptance-case-contracts",
+      "public-evidence-manifests",
+      "private-evidence-integrity",
+      "local-config-boundary",
+      "local-evidence-boundary",
+      "local-research-boundary",
+      "python-compile",
+      "runtime-self-test",
+      "skill-quick-validate"
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "final_loading_proof": [
+    {
+      "run": "local/skill-evals/20260919-holdout/holdout-aapl-tax-cash-isolated",
+      "full_skill_reference_outputs_match_current_files": {
+        "SKILL.md": true,
+        "references/routing.md": true,
+        "references/earnings-review.md": true,
+        "references/financial-data-and-evidence.md": true
+      },
+      "independent_hash_event_lines": [
+        20
+      ],
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "events_sha256": "f424804ec725f98db71eff47e0393848ecabd35e5d3ed31bf3afc2aec64a6469"
+    },
+    {
+      "run": "local/skill-evals/20260919-holdout/holdout-tencent-profit-cash-isolated",
+      "full_skill_reference_outputs_match_current_files": {
+        "SKILL.md": true,
+        "references/routing.md": true,
+        "references/earnings-review.md": true,
+        "references/financial-data-and-evidence.md": true
+      },
+      "independent_hash_event_lines": [
+        15
+      ],
+      "route": {
+        "state": "READY",
+        "attempts": [
+          {
+            "exit_code": 0,
+            "state": "READY",
+            "error_code": null
+          }
+        ],
+        "ready": true
+      },
+      "events_sha256": "f5295d8aaf21d1eaabc42d09dbd2202e0d0231de0927273cb0fb927201d2a674"
+    }
+  ],
+  "audit_tests": {
+    "passed": 20,
+    "artifact": {
+      "path": "local/skill-evals/20260919-holdout/audit-tests.log",
+      "sha256": "30e0b5770ff04a5c7e00d680f9712e03a3be66a404ea4f54cbb599d72211fc3f",
+      "bytes": 119
+    }
+  },
+  "full_unit_suite": "Not rerun this turn; previous 473-test evidence binds unchanged runtime.",
+  "corrections": [
+    "Require comparable operating margins and percentage-point changes when assessing operating profitability; distinguish rounded published margins from exact computed ratios.",
+    "Identify missing cumulative cash-flow windows when a quarterly cash-flow inference cannot be made.",
+    "Require independent external route and source hash tool calls, actual outputs and per-command exit codes; audit gates unchanged.",
+    "Normalize local absolute paths in two prior public closeout receipts; originals retained under local/skill-evals/20260919-holdout/receipt-originals."
+  ],
+  "limitations": [
+    "Post-hoc historical issuer material, one issuer source per case; not point-in-time capture or independent dual sources.",
+    "Explicit source Skill invocation only; installed parity is not new automatic-discovery evidence.",
+    "Original holdout results retained; reruns after corrections are regression evidence, not unseen holdout performance.",
+    "Machine arithmetic and root PDF hash verification do not establish host semantic coverage or observed host hash output.",
+    "Previous eight host cases were not rerun against this reference update; old receipt remains bound to old hashes.",
+    "No statistical reliability, investment returns, cross-host coverage, current market data or live provider readiness claim."
+  ],
+  "public_path_notation": "Repository-relative or ~/ paths; original raw host artifacts are private local evidence."
+}

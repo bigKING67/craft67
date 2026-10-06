@@ -1,0 +1,102 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-020",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "51bd0fe9c84b63ac6daf0606c9a7a5d4db9430e2663df8fc185d7c28611a9f47",
+    "bytes": 9968
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "7517b494118b1c67a93922bcd313c5f8b7c43a0a01a61273803f42888cbd4ee8",
+    "bytes": 2623
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "21f5b24a0ad43995bccac67a3f2bef445077202eaceedc895c6e7755bf280bfb",
+    "bytes": 2725
+  },
+  "cases": [
+    {
+      "id": "equivalent-instant-options-must-merge",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-equivalent.md",
+        "sha256": "07e37f21a2d0b72ad70b5c2f2a48319a7a1c8fa4b635e31e1bd81309c0e12856",
+        "bytes": 940
+      }
+    },
+    {
+      "id": "distinct-instants-still-need-granular-evidence",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-distinct.md",
+        "sha256": "60f1c50079da9f9f38c10d7d2be662d65bd93d506f91a7cb5f9ebadcbd4982a7",
+        "bytes": 922
+      }
+    },
+    {
+      "id": "explicit-2027-year-keeps-career-unresolved",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-annual.md",
+        "sha256": "1402bd478f88df67b0b714321707ed4815ceee17efce3806d6f3d6872e2d839b",
+        "bytes": 1132
+      },
+      "report": {
+        "path": "report.json",
+        "sha256": "77b5694169e83f6f76ed7bd63904d7a07c9ff09c1c4ad3d2ff39a49d06575458",
+        "bytes": 15310
+      },
+      "responseClaims": {
+        "path": "response-claims.json",
+        "sha256": "87fcee70d5f5fae2cb367163e7625ae46e52bc0252e705adbcc9e81c2e652025",
+        "bytes": 2567
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

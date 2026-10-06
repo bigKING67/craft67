@@ -1,0 +1,52 @@
+{
+  "schema": "money-craft.fred-response-review.v1",
+  "date": "2026-09-19",
+  "scope": "Default observations row and error-envelope admission, not whole FRED review",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "e810b509674c1e871de507fdaa5c78fec29e25220aac1c74ff36bf4871436854",
+    "tests/test_fred_adapter.py": "934427e7fc6ba3fcca49a02ea3d3ac168b1d0620e46a9f42339cfda81679ecb4",
+    "skills/money-craft/references/providers/fred.md": "cce78a7d5bc781c16ebf143c0608d1729e04f4fc4f193861bce8e140b473ad4e"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Presence of array accepted malformed rows and malformed error envelopes as successful data.",
+    "after": "Default output type, canonical dates, finite numeric strings or explicit missing marker required; error fields cannot masquerade as success."
+  },
+  "validation": {
+    "fred_tests": 12,
+    "full_tests": 357,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 12,
+    "real_cli": "Injected malformed observation returns EXIT_SCHEMA, no capture directory and no key in output."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT",
+    "fred_tests": 12,
+    "skipped_tests": 0,
+    "additional_boundary_assertions": 25,
+    "source_hashes": {
+      "skills/money-craft/scripts/fred_adapter.py": "e810b509674c1e871de507fdaa5c78fec29e25220aac1c74ff36bf4871436854",
+      "tests/test_fred_adapter.py": "934427e7fc6ba3fcca49a02ea3d3ac168b1d0620e46a9f42339cfda81679ecb4"
+    },
+    "blocking_findings": 0
+  },
+  "official_contracts": [
+    "https://fred.stlouisfed.org/docs/api/fred/series_observations.html",
+    "https://fred.stlouisfed.org/docs/api/fred/errors.html"
+  ],
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T012431684973Z"
+  },
+  "limits": [
+    "FRED remains PARTIAL; series/search/vintages identity, realtime/period semantics and transport/credential boundaries await review.",
+    "No live FRED data API called; no current economic conclusion.",
+    "Only default observation output_type=1 admitted.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

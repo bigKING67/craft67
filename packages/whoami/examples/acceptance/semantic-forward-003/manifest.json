@@ -1,0 +1,74 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-003",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "08be6c43a52feff08fd39926f3074c529b430326b848345730a539f4ee2c7abe",
+    "bytes": 5468
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "d5b526c140f323c56c30294c6914f6be983e5d79880ec6b11442b6ff6da69d75",
+    "bytes": 1157
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "8232baa540bc65d40d0fbb12264b146b9383c512b0519290e892094ab5144ae7",
+    "bytes": 1034
+  },
+  "cases": [
+    {
+      "id": "lunar-year-boundary",
+      "input": {
+        "path": "input-lunar-boundary.json",
+        "sha256": "496694936548af3bc1c391a68912b5d45db728c4e3aeea8715a6367f2d127524",
+        "bytes": 234
+      },
+      "context": {
+        "path": "context-lunar-boundary.json",
+        "sha256": "e441c24690d0293bc4ba77c2ce49565cc67fd4e27c639d388dad6e3843eedb0a",
+        "bytes": 55218
+      },
+      "response": {
+        "path": "response-lunar-boundary.md",
+        "sha256": "196777564e04f5ab9115793576dc4d0eb00c76ac7e198b142dace6c5d25e1f71",
+        "bytes": 849
+      }
+    },
+    {
+      "id": "unknown-time-needs-input",
+      "input": {
+        "path": "input-unknown-time.json",
+        "sha256": "3ac8b891d32840207de288e944e93befee4ebe0bbd4da0bdafa81e14566268ee",
+        "bytes": 231
+      },
+      "context": {
+        "path": "context-unknown-time.json",
+        "sha256": "c5758d9176ee2e25a9bbe8253353485e151b7681c9f1f1530cec7c78902d8cf8",
+        "bytes": 1079
+      },
+      "response": {
+        "path": "response-unknown-time.md",
+        "sha256": "b03e627d57ab4f7ae537cd6f92012e18a160506315d2769e7c1c2c96f8599093",
+        "bytes": 430
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PARTIAL",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

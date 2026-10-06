@@ -1,0 +1,120 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-023",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "d47ec2c7bc2751f0f36623fd624c0a7617a67d98d2aae684af328a01fe8273bb",
+    "bytes": 11070
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "84689410c042a9c93b4ce6fd6d28b4d852574a7a31b842ebc115bd4a71f69704",
+    "bytes": 3177
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "805e0ce155d86404062844569054f4b35c15d6c1d9d595deb8ab544aea5f3fc2",
+    "bytes": 2831
+  },
+  "cases": [
+    {
+      "id": "unbounded-recurrence-must-stop",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-unbounded.md",
+        "sha256": "4541c12602763c47c16fda73b5241e2765e3fb3080b8379be070ec362e8091da",
+        "bytes": 761
+      }
+    },
+    {
+      "id": "bounded-offset-recurrence-needs-iana",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-offset.md",
+        "sha256": "f6e3996b02c878c9ecffd15d6f6f18f29243ec939afb0a63aac8150b53978a3b",
+        "bytes": 700
+      }
+    },
+    {
+      "id": "bounded-iana-recurrence-still-needs-occurrence-evidence",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-iana.md",
+        "sha256": "4d3798993bddad14177a85babbf6fd2321ca300e2965b46be96001881d931b90",
+        "bytes": 825
+      }
+    },
+    {
+      "id": "explicit-2027-year-keeps-career-unresolved",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-annual.md",
+        "sha256": "997bef1d48292d8f88c2d3eae9221f8b17e7041ef84389198c48927aa5d78e6c",
+        "bytes": 1147
+      },
+      "report": {
+        "path": "report.json",
+        "sha256": "77b5694169e83f6f76ed7bd63904d7a07c9ff09c1c4ad3d2ff39a49d06575458",
+        "bytes": 15310
+      },
+      "responseClaims": {
+        "path": "response-claims.json",
+        "sha256": "28c79382c2f7ef391ff2c9348619f14c580713009acce9f757a903df500e0991",
+        "bytes": 2582
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

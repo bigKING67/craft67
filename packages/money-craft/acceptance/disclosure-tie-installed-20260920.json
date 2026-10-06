@@ -1,0 +1,66 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "status": "PASS_SCOPE_CLARIFIED_INSTALLED_TASK",
+  "date": "2026-09-20",
+  "reviewer": "main agent manual review, not independent",
+  "run_dir": "local/skill-evals/20260920-disclosure-tie/installed-offline-route",
+  "elapsed_seconds": 272.024,
+  "machine_checks_pass": true,
+  "financial_checks": 21,
+  "semantic_checks": [
+    {
+      "criterion": "实际自动读取全局安装版Skill与财务证据引用且本地路由成功",
+      "status": "PASS",
+      "reason": "Global installed Skill and revised references loaded; local earnings route READY."
+    },
+    {
+      "criterion": "无提示主动按销量单价和单位成本复算并发现与披露综合毛利率不一致",
+      "status": "PASS",
+      "reason": "Reconstructed totals and detected disclosed aggregate mismatch without discrepancy hint."
+    },
+    {
+      "criterion": "保留披露值与复算值且不将差异擅自解释为舍入",
+      "status": "PASS",
+      "reason": "Both paths retained; also weighted product margins independently; no unsupported rounding attribution."
+    },
+    {
+      "criterion": "区分项目假设、实际订单和集团净利润；不凭未决值给确定估值",
+      "status": "PASS",
+      "reason": "Project model, orders, gross profit, net profit and cash flow kept distinct; deterministic profitability claim withheld."
+    },
+    {
+      "criterion": "相对建设及达产年份不当作确定公历时间",
+      "status": "PASS",
+      "reason": "Relative project years explicitly not mapped to calendar dates."
+    },
+    {
+      "criterion": "最终关键计算回执通过，说明同源及历史回放边界",
+      "status": "PASS",
+      "reason": "21 exact calculation receipts pass; historical single-source excerpt limits and public link included."
+    }
+  ],
+  "first_attempt": "acceptance/disclosure-tie-installed-first-20260920.json",
+  "limits": [
+    "Initial unchanged natural task missed required local route; failure remains open as workflow reliability evidence.",
+    "Followup clarified offline routing scope; not an identical-prompt pass or proof of stable unprompted routing.",
+    "Neither prompt disclosed numerical discrepancy or expected answer.",
+    "Single case, main-agent semantic review, not broad generalization."
+  ],
+  "artifact_hashes": {
+    "answer.md": "2dd5b50e93850bc11ea046f885af2c92b24cbaa10530638953b8fcc679fdecab",
+    "events.jsonl": "b89b82eb1fa5228e867b56049d3fd6b89417452596e1f160ed589bf5fecf83bf",
+    "host.json": "309e30bce0905fd98f19629aa4282a2968c308a3352fa972f68779911da14008",
+    "machine-audit.json": "10ca65457e051fcdebaea37565fc88957ef5a1be0b0756218c2f8d617cb95e65",
+    "prompt.txt": "a6fce93b7da41f2456f04852eb84045a5ca45077f2c87446d852d4badc5929ab"
+  },
+  "installation": {
+    "authorized": true,
+    "destination": "~/.agents/skills/money-craft",
+    "backup": "~/.agents/.skills-backups/money-craft.20260920T080813447373Z",
+    "backup_exists": true,
+    "candidate_installed_parity": 75,
+    "runtime_self_test_passed": 9,
+    "candidate_receipt": "acceptance/disclosure-tie-candidate-20260920.json"
+  },
+  "commit_push_publish": false
+}

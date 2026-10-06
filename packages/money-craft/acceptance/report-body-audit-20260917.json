@@ -1,0 +1,54 @@
+{
+  "schema": "money-craft.report-body-audit.v1",
+  "date": "2026-09-17",
+  "scope": "Markdown-generated body tag/attribute allowlist before trusted template insertion",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "df3b54d665f495ad5b83bfe69450f1e31bea97f61fe1654dacae5aad60322860",
+    "tests/test_report_renderer.py": "6062835cc9507b1e1121f82859a549808c03db8b7ce10286286f73c61624914d",
+    "skills/money-craft/references/report-rendering.md": "9bc0b8c7892fb8d4877c9ab1518e7c802390a4e35a35c2f9d34be0928849df82"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Raw active HTML from Markdown, including scripts and event handlers, passed into output.",
+    "after": "Body allows only declared formatting elements and attributes; declarations, active elements and event attributes rejected; table text-align narrowly allowed."
+  },
+  "validation": {
+    "renderer_tests": 28,
+    "full_tests": 318,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regressions": "Initial 12 active fragments and real inline-script CLI fixture passed old renderer unexpectedly.",
+    "final_active_fragments": 13,
+    "safe_cases": [
+      "table alignment",
+      "escaped script text in fenced code",
+      "ordinary render regression"
+    ],
+    "real_cli": "Inline script and CDATA body inputs reject before writes; source and prior output preserved."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_AFTER_FIX",
+    "renderer_tests": 28,
+    "skipped_tests": 0,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "df3b54d665f495ad5b83bfe69450f1e31bea97f61fe1654dacae5aad60322860",
+      "tests/test_report_renderer.py": "6062835cc9507b1e1121f82859a549808c03db8b7ce10286286f73c61624914d"
+    },
+    "finding_closed": "Reviewer found unknown_decl/CDATA bypass in initial version; unknown_decl now explicitly rejects. Reviewer original CLI sample exit1 validfalse all bytes unchanged."
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T075158226825Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL; not a universal browser HTML sanitizer.",
+    "Trusted template/style/script and generated SVG inserted after body audit; trust/visual/PDF behavior not established here.",
+    "Standalone verify of arbitrary HTML is not upgraded to body-origin proof.",
+    "No browser execution proof or general malformed-HTML equivalence guarantee.",
+    "Failure publication and other renderer paths await review.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

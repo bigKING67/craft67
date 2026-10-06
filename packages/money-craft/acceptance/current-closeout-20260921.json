@@ -1,0 +1,120 @@
+{
+  "schema": "money-craft.current-closeout.v1",
+  "status": "PASS_BOUNDED_DAILY_USE_BASELINE",
+  "scope": "Current version binding, three runtime file diffs against verified historical tarball, targeted regression and implicit installed Skill smoke.",
+  "source_tree_sha256": "9502a9502ae319f96ebf6f383d59472ee361039372e6f88751c02d0bc1a75eec",
+  "source_installed_files_equal": 75,
+  "historical_host_differences": {
+    "apple": [
+      "references/valuation-and-thesis.md",
+      "references/financial-data-and-evidence.md",
+      "references/earnings-review.md",
+      "references/research-semantic-review.md"
+    ],
+    "alibaba": [
+      "references/valuation-and-thesis.md",
+      "references/earnings-review.md"
+    ]
+  },
+  "runtime_baseline_unchanged": 13,
+  "runtime_diff_reviewed": 3,
+  "reviewer": "parent",
+  "review_route": "bounded native diff review, not canonical whole repository Review Craft",
+  "independent_review": false,
+  "high_impact_findings_in_reviewed_diff": [],
+  "tests": {
+    "additional_evidence": {
+      "initial_passed": 6,
+      "initial_failed": 1,
+      "final_passed": 7,
+      "fix": "test Python JSON recursion assumption; retain shape rejection and explicit recursion-error handling"
+    },
+    "public_evidence": {
+      "passed": 11
+    }
+  },
+  "host": {
+    "implicit_prompt": true,
+    "installed_skill_read": true,
+    "installed_valuation_reference_read": true,
+    "exit_code": 0,
+    "elapsed_seconds": 141.101,
+    "financial_checks": 12,
+    "criteria": [
+      {
+        "criterion": "甲不将10/100=10%认定ROIC，指出分部投入资本及税后利润缺口",
+        "status": "PASS_BOUNDED"
+      },
+      {
+        "criterion": "甲仍能计算利润率10%至12%、增量利润/增量收入20%，不冒充投资回报",
+        "status": "PASS_BOUNDED"
+      },
+      {
+        "criterion": "乙计算税后经营利润30，ROIC20%，不因甲缺失而拒算乙",
+        "status": "PASS_BOUNDED"
+      },
+      {
+        "criterion": "不将乙20%等同安全边际、超过资本成本或未来稳定回报；保留合成限制",
+        "status": "PASS_BOUNDED"
+      }
+    ]
+  },
+  "full_current_e2e_rerun": false,
+  "provider_live_refresh": false,
+  "release": false,
+  "application_started": false,
+  "artifacts": [
+    {
+      "path": "local/validation/20260921-current-closeout/version-bindings.json",
+      "sha256": "f367d228a5d7fb323db62f7035a8500b2cafd179bb980a550382a21397599b68"
+    },
+    {
+      "path": "local/validation/20260921-current-closeout/additional-tests.log",
+      "sha256": "a69b22879380bd563fb69a8aa56a3c9eefbd84ac378b3ba6034b5f2a38fb893f"
+    },
+    {
+      "path": "local/validation/20260921-current-closeout/additional-tests-fixed.log",
+      "sha256": "11357ff450313c42123120208871a891bce0723e83800d286f5f6d6e08fd22ed"
+    },
+    {
+      "path": "local/validation/20260921-current-closeout/public-tests.log",
+      "sha256": "45db71b35f29c9dc1cb19a2c4ef4e606dee69c38b2aa6e854b682898ef0a0c95"
+    },
+    {
+      "path": "local/skill-evals/20260921-closeout-implicit/host.json",
+      "sha256": "e167a74fe0b2cef023314e872ac83a8153b7e1139e29b0f7b3456a22755da99b"
+    },
+    {
+      "path": "local/skill-evals/20260921-closeout-implicit/answer.md",
+      "sha256": "6abe75ba4b42cb61faca5ca8391d4b514f390593261083e922a569f47935f9b3"
+    },
+    {
+      "path": "local/skill-evals/20260921-closeout-implicit/machine-audit.json",
+      "sha256": "f55b02d9d20d0a64c9e1ba2026d64413121bcf4f51566dd335e08bc664397ad8"
+    },
+    {
+      "path": "tests/test_additional_evidence.py",
+      "sha256": "f25414d941723596c91bbabbf51247ea3f140f283f7b433dd24e3eb3e83af700"
+    },
+    {
+      "path": "local/validation/20260921-current-closeout/money_craft.py.diff",
+      "sha256": "96a80cfb62b9948ed69c5cf2897007e62466234386f85dd41a0969a3280e54e1"
+    },
+    {
+      "path": "local/validation/20260921-current-closeout/research_run.py.diff",
+      "sha256": "68efe9bc67e8cf3ea6ba337dea3ee97b33ff3ec666f0a44ffbf283c819eef14f"
+    },
+    {
+      "path": "local/validation/20260921-current-closeout/research_workflow.py.diff",
+      "sha256": "0d3d06e526c838e83a4a490b6b54bbb46a33653b27265aea9325d7140fd10b71"
+    },
+    {
+      "path": "docs/current-closeout-20260921.md",
+      "sha256": "4b7a3c663ab0be3117d51ad30b0d31935fc871e9d627f97ac3c1cf4fb30ac70e"
+    },
+    {
+      "path": "docs/current-acceptance-status.md",
+      "sha256": "d93f397474523450903e1a5c82f70f19404250026313f40815930e6d44bdd9cc"
+    }
+  ]
+}

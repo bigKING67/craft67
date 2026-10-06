@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "should_use_creative_craft", "reason"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "should_use_creative_craft": {"type": "boolean"},
+    "reason": {"type": "string"}
+  }
+}

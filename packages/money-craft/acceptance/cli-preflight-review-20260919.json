@@ -1,0 +1,41 @@
+{
+  "schema": "money-craft.cli-preflight-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Canonical date parsing and capture argument validation before Provider access",
+  "source_hashes": {
+    "skills/money-craft/scripts/money_craft.py": "21fb56d248e42b7ea309ac474361ae4aa66af69dfe34ffe549402b76049d1229",
+    "tests/test_cli_preflight.py": "4a99c97f2e866b80a7eee47ffcd45e4161ba8582bb4ef5cc5a246d427e510795"
+  },
+  "validation": {
+    "target_tests": 2,
+    "capture_subprocess_cases": 9,
+    "full_tests": 413,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 10,
+    "initial_red_errors": 1
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No blockers in declared preflight scope",
+    "target_tests": 2,
+    "additional_cli_date_cases": 3,
+    "source_hashes": {
+      "skills/money-craft/scripts/money_craft.py": "21fb56d248e42b7ea309ac474361ae4aa66af69dfe34ffe549402b76049d1229",
+      "tests/test_cli_preflight.py": "4a99c97f2e866b80a7eee47ffcd45e4161ba8582bb4ef5cc5a246d427e510795"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T091547073496Z"
+  },
+  "limits": [
+    "Preflight does not guarantee destination writability or replace publication filesystem checks.",
+    "CLI whole-file closure incomplete.",
+    "No Provider data requests, app, commit, push or release."
+  ]
+}

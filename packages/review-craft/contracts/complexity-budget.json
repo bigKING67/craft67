@@ -1,0 +1,24 @@
+{
+  "schema": "review-craft.complexity-budget.v2",
+  "runtimeRoots": ["skills/review-craft/lib/review_craft"],
+  "defaultMaximum": 15,
+  "ceilings": [
+    {"path":"skills/review-craft/lib/review_craft/contracts.py","function":"validate_run","maximum":8,"reason":"Run validation remains orchestration-only."},
+    {"path":"skills/review-craft/lib/review_craft/contracts.py","function":"_validate_run_documents","maximum":8,"reason":"Document and schema validation boundary."},
+    {"path":"skills/review-craft/lib/review_craft/contracts.py","function":"_validate_live_source","maximum":8,"reason":"Live source and diff-scope parity boundary."},
+    {"path":"skills/review-craft/lib/review_craft/run_evidence_validation.py","function":"_validate_command_receipts","maximum":8,"reason":"Command receipt orchestration boundary."},
+    {"path":"skills/review-craft/lib/review_craft/review_validation.py","function":"_validate_review_scope","maximum":4,"reason":"Review-scope validation remains orchestration-only."},
+    {"path":"skills/review-craft/lib/review_craft/review_validation.py","function":"_validate_repository_maps","maximum":4,"reason":"Repository-map validation remains orchestration-only."},
+    {"path":"skills/review-craft/lib/review_craft/review_validation.py","function":"_validate_findings","maximum":6,"reason":"Finding validation remains orchestration-only."},
+    {"path":"skills/review-craft/lib/review_craft/review_validation.py","function":"_validate_decisions","maximum":6,"reason":"Decision validation remains orchestration-only."},
+    {"path":"skills/review-craft/lib/review_craft/run_evidence_validation.py","function":"_evidence_references","maximum":4,"reason":"Evidence-reference collection remains orchestration-only."},
+    {"path":"skills/review-craft/lib/review_craft/run_evidence_validation.py","function":"_validate_evidence_registry","maximum":6,"reason":"Evidence-registry validation remains orchestration-only."},
+    {"path":"skills/review-craft/lib/review_craft/report.py","function":"render_report","maximum":14,"reason":"New report sections must remain delegated to helpers."},
+    {"path":"skills/review-craft/lib/review_craft/repository_analysis.py","function":"detect_profile","maximum":4,"reason":"Profile detection remains a small orchestration function."},
+    {"path":"skills/review-craft/lib/review_craft/process_lifecycle.py","function":"run_process","maximum":2,"reason":"Shared process lifecycle orchestration."},
+    {"path":"skills/review-craft/lib/review_craft/score_validation.py","function":"_validate_deduction","maximum":8,"reason":"Deduction and evidence-reference closure."},
+    {"path":"skills/review-craft/lib/review_craft/score_validation.py","function":"_validate_dimensions","maximum":8,"reason":"Per-dimension score arithmetic validation."},
+    {"path":"skills/review-craft/lib/review_craft/score_validation.py","function":"validate_scorecard","maximum":6,"reason":"Score validator orchestration boundary."}
+  ],
+  "debtExceptions": []
+}

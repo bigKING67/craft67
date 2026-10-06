@@ -1,0 +1,223 @@
+import assert from "node:assert/strict";
+
+import {
+  buildCliclickClickCommands,
+  buildCliclickDragCommands,
+  scrollPointer,
+} from "../../src/native-macos/pointer.mjs";
+import { chromiumWindowLookupOptions } from "../../src/native-macos/keyboard-window.mjs";
+
+import {
+  assertTextJsonContent,
+  firstJsonContent,
+} from "./rpc-content.mjs";
+
+async function assertNativeInputOpsContract({ rpc, timeoutMs }) {
+  assert.equal(chromiumWindowLookupOptions({
+    window_tab_id: 42,
+    window_url: "https://example.invalid/",
+  }, 1_000, true).activate, true);
+  assert.equal(chromiumWindowLookupOptions({
+    window_tab_id: 42,
+    window_url: "https://example.invalid/",
+  }, 1_000, false).activate, false);
+  await assert.rejects(
+    () => scrollPointer({ delta_y: 100 }, 1_000),
+    (error) => error?.errorCode === "ACTION_NOT_SUPPORTED" && /wait command/.test(error.message),
+  );
+  const macosDragPlan = buildCliclickDragCommands({
+    durationMs: 700,
+    fromX: 120,
+    fromY: 200,
+    steps: 12,
+    toX: 260,
+    toY: 200,
+  });
+  assert.deepEqual(
+    macosDragPlan.command_sequence.slice(0, 2),
+    ["m", "dd"],
+    "macOS cliclick drag should pre-move before mouse-down",
+  );
+  assert.equal(
+    macosDragPlan.command_sequence.at(-1),
+    "du",
+    "macOS cliclick drag should release at the destination",
+  );
+  assert.equal(
+    macosDragPlan.easing,
+    2,
+    "macOS cliclick drag should use the easing mode required for browser drag events",
+  );
+
+  const macosClickPlan = buildCliclickClickCommands({
+    action: "click",
+    button: "left",
+    x: 120,
+    y: 200,
+  });
+  assert.deepEqual(
+    macosClickPlan.command_sequence,
+    ["m", "c"],
+    "macOS cliclick click should pre-move before clicking",
+  );
+  assert.equal(
+    macosClickPlan.pre_move,
+    true,
+    "macOS cliclick click should expose pre_move diagnostics",
+  );
+
+  const nativeCapabilitiesCall = await rpc.call(
+    "tools/call",
+    {
+      name: "browser_native_input",
+      arguments: {
+        action: "capabilities",
+      },
+    },
+    timeoutMs,
+  );
+  assert.equal(nativeCapabilitiesCall?.result?.isError, undefined);
+  assertTextJsonContent(nativeCapabilitiesCall.result, "browser_native_input capabilities result");
+  const nativeCapabilitiesPayload = firstJsonContent(nativeCapabilitiesCall.result);
+  assert.equal(nativeCapabilitiesPayload?.status, "success");
+  assert.equal(nativeCapabilitiesPayload?.action, "capabilities");
+  assert.equal(typeof nativeCapabilitiesPayload?.platform, "string");
+  assert.equal(Array.isArray(nativeCapabilitiesPayload?.supported_actions), true);
+  assert.equal(Array.isArray(nativeCapabilitiesPayload?.unsupported_actions), true);
+  assert.equal(
+    nativeCapabilitiesPayload?.supported_actions?.includes("drag")
+      || nativeCapabilitiesPayload?.unsupported_actions?.includes("drag"),
+    true,
+  );
+
+  const nativeDryRunCall = await rpc.call(
+    "tools/call",
+    {
+      name: "browser_native_input",
+      arguments: {
+        action: "click",
+        x: 120,
+        y: 200,
+        button: "left",
+        dry_run: true,
+      },
+    },
+    timeoutMs,
+  );
+  assert.equal(nativeDryRunCall?.result?.isError, undefined);
+  const nativeDryRunPayload = firstJsonContent(nativeDryRunCall.result);
+  assert.equal(nativeDryRunPayload?.status, "success");
+  assert.equal(nativeDryRunPayload?.action, "click");
+  assert.equal(nativeDryRunPayload?.dry_run, true);
+  assert.equal(typeof nativeDryRunPayload?.next_step, "string");
+  assert.equal(typeof nativeDryRunPayload?.capabilities_summary?.supported, "boolean");
+  assert.equal(nativeDryRunPayload?.focus_lease_planned, false);
+
+  const nativeManagedDryRunCall = await rpc.call(
+    "tools/call",
+    {
+      name: "browser_native_input",
+      arguments: {
+        action: "click",
+        x: 120,
+        y: 200,
+        tab_id: "managed-contract-tab",
+        dry_run: true,
+      },
+    },
+    timeoutMs,
+  );
+  assert.equal(nativeManagedDryRunCall?.result?.isError, undefined);
+  assert.equal(firstJsonContent(nativeManagedDryRunCall.result)?.focus_lease_planned, true);
+
+  const nativeManagedActivateDryRunCall = await rpc.call(
+    "tools/call",
+    {
+      name: "browser_native_input",
+      arguments: {
+        action: "activate_window",
+        window_title: "Browser fixture",
+        tab_id: "managed-tab-id",
+        dry_run: true,
+      },
+    },
+    timeoutMs,
+  );
+  assert.equal(nativeManagedActivateDryRunCall?.result?.isError, undefined);
+  assert.equal(firstJsonContent(nativeManagedActivateDryRunCall.result)?.focus_lease_planned, true);
+
+  const nativeDragDryRunCall = await rpc.call(
+    "tools/call",
+    {
+      name: "browser_native_input",
+      arguments: {
+        action: "drag",
+        from_x: 120,
+        from_y: 200,
+        to_x: 260,
+        to_y: 200,
+        duration_ms: 700,
+        steps: 12,
+        dry_run: true,
+      },
+    },
+    timeoutMs,
+  );
+  assert.equal(nativeDragDryRunCall?.result?.isError, undefined);
+  const nativeDragDryRunPayload = firstJsonContent(nativeDragDryRunCall.result);
+  assert.equal(nativeDragDryRunPayload?.status, "success");
+  assert.equal(nativeDragDryRunPayload?.action, "drag");
+  assert.equal(nativeDragDryRunPayload?.dry_run, true);
+  assert.equal(nativeDragDryRunPayload?.validated_args?.from_x, 120);
+  assert.equal(nativeDragDryRunPayload?.validated_args?.to_x, 260);
+
+  const nativeWindowUrlDryRunCall = await rpc.call(
+    "tools/call",
+    {
+      name: "browser_native_input",
+      arguments: {
+        action: "activate_window",
+        window_tab_id: 123456,
+        window_url: "https://example.invalid/app/#/workbench/index",
+        window_application: "Google Chrome",
+        dry_run: true,
+      },
+    },
+    timeoutMs,
+  );
+  assert.equal(nativeWindowUrlDryRunCall?.result?.isError, undefined);
+  const nativeWindowUrlDryRunPayload = firstJsonContent(nativeWindowUrlDryRunCall.result);
+  assert.equal(nativeWindowUrlDryRunPayload?.status, "success");
+  assert.equal(nativeWindowUrlDryRunPayload?.validated_args?.window_tab_id, 123456);
+  assert.equal(nativeWindowUrlDryRunPayload?.validated_args?.window_url, "https://example.invalid/app/#/workbench/index");
+  assert.equal(nativeWindowUrlDryRunPayload?.validated_args?.window_application, "Google Chrome");
+
+  const nativeUnsupportedCall = await rpc.call(
+    "tools/call",
+    {
+      name: "browser_native_input",
+      arguments: {
+        action: "not_supported_action",
+      },
+    },
+    timeoutMs,
+  );
+  assert.equal(nativeUnsupportedCall?.result?.isError, true);
+  const nativeUnsupportedPayload = firstJsonContent(nativeUnsupportedCall.result);
+  assert.equal(nativeUnsupportedPayload?.tool, "browser_native_input");
+  assert.equal(nativeUnsupportedPayload?.error_code, "INVALID_ARGUMENTS");
+  assert.equal(
+    nativeUnsupportedPayload?.details?.validation_errors?.some((item) => item.keyword === "enum"),
+    true,
+  );
+
+  return {
+    nativeCapabilitiesPayload,
+    nativeDragDryRunPayload,
+    nativeDryRunPayload,
+    nativeWindowUrlDryRunPayload,
+    nativeUnsupportedPayload,
+  };
+}
+
+export { assertNativeInputOpsContract };

@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.tracking-history-review.v1",
+  "date": "2026-09-17",
+  "scope": "Bounded read-only history continuity verification; not full core acceptance",
+  "finding": {
+    "before": "Removing t0001 while retaining t0002 and current returned valid=true in an isolated fixture. Regression failed before fix.",
+    "after": "Reject noncontiguous revision numbering and predecessor hash that differs from preceding thesis bytes.",
+    "status": "FIXED_LOCAL"
+  },
+  "source_hashes": {
+    "skills/money-craft/scripts/tracking_workflow.py": "0f7b96f77427f5265e8d811957185f66a2a4a44b76084bbc4857eb1587a9589c",
+    "skills/money-craft/references/tracking-workflow.md": "2712d04d566095b30827c3cb5df953e37254681b3f592152d4e71be85350bba0",
+    "tests/test_tracking_workflow.py": "b97f9ae66acc12ed85819e5f1d7957ed1583d52378afe42ab6f6b533eeabdbc8"
+  },
+  "validation": {
+    "tracking_tests": 18,
+    "full_tests": 269,
+    "skips": 0,
+    "package_checks": 8,
+    "regressions": [
+      "Missing first revision rejected; status integrity INVALID.",
+      "Self-consistent revision with incorrect predecessor passes standalone revision validation but fails tracking validation; all bytes preserved.",
+      "Normal two-revision history passes."
+    ]
+  },
+  "independent_review": {
+    "agent": "tracking_base_review",
+    "verdict": "NO_BLOCKING_FINDINGS",
+    "source_sha256": "0f7b96f77427f5265e8d811957185f66a2a4a44b76084bbc4857eb1587a9589c",
+    "tests": 18,
+    "additional_observations": [
+      "Mixed v1/v2 history passed with legacy warning.",
+      "Array-valued diff.previous returned structured verification errors."
+    ],
+    "evidence_boundary": "Independent reviewer report; additional fixture transcripts not registered in this artifact."
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T030225611466Z"
+  },
+  "limits": [
+    "Internal continuity only; wholly rewritten self-consistent history is not externally authenticated.",
+    "First revision may reference an external seed thesis.",
+    "No automatic history repair or schema migration.",
+    "Concurrent read snapshots, crash recovery, Windows and network filesystems not verified.",
+    "Existing HTTPError fixture cleanup warnings remain.",
+    "No new full host-language acceptance; no app, commit, push or release."
+  ]
+}

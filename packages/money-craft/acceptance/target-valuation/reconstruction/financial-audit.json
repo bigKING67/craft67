@@ -1,0 +1,359 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "multiply",
+      "actual": "44054.24406880",
+      "expected": "44054.24406880",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "add",
+      "actual": "15940",
+      "expected": "15940",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "subtract",
+      "actual": "11178",
+      "expected": "11178",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "subtract",
+      "actual": "12047",
+      "expected": "12047",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "subtract",
+      "actual": "869",
+      "expected": "869",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "add",
+      "actual": "55232.24406880",
+      "expected": "55232.24406880",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "add",
+      "actual": "56101.24406880",
+      "expected": "56101.24406880",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "add",
+      "actual": "59167.24406880",
+      "expected": "59167.24406880",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C09",
+      "operation": "divide",
+      "actual": "10.91422121896162528216704288939052",
+      "expected": "10.91422121896162528216704288939052",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C10",
+      "operation": "divide",
+      "actual": "9.867346938775510204081632653061224",
+      "expected": "9.867346938775510204081632653061224",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C11",
+      "operation": "divide",
+      "actual": "10.98863636363636363636363636363636",
+      "expected": "10.98863636363636363636363636363636",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C12",
+      "operation": "divide",
+      "actual": "40.35269709543568464730290456431535",
+      "expected": "40.35269709543568464730290456431535",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C13",
+      "operation": "subtract",
+      "actual": "4476",
+      "expected": "4476",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C14",
+      "operation": "add",
+      "actual": "9000",
+      "expected": "9000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C15",
+      "operation": "divide",
+      "actual": "4500",
+      "expected": "4500",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C16",
+      "operation": "subtract",
+      "actual": "3367",
+      "expected": "3367",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C17",
+      "operation": "subtract",
+      "actual": "2867",
+      "expected": "2867",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C18",
+      "operation": "subtract",
+      "actual": "2367",
+      "expected": "2367",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C19",
+      "operation": "add",
+      "actual": "46.52",
+      "expected": "46.52",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C20",
+      "operation": "divide",
+      "actual": "9.304",
+      "expected": "9.304",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C21",
+      "operation": "divide",
+      "actual": "8.858813339107838891294932871372889",
+      "expected": "8.858813339107838891294932871372889",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C22",
+      "operation": "multiply",
+      "actual": "73.554",
+      "expected": "73.554",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C23",
+      "operation": "subtract",
+      "actual": "-23.146",
+      "expected": "-23.146",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C24",
+      "operation": "divide",
+      "actual": "-0.2393588417786970010341261633919338",
+      "expected": "-0.2393588417786970010341261633919338",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C25",
+      "operation": "multiply",
+      "actual": "137.25",
+      "expected": "137.25",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C26",
+      "operation": "subtract",
+      "actual": "40.55",
+      "expected": "40.55",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C27",
+      "operation": "divide",
+      "actual": "0.4193381592554291623578076525336091",
+      "expected": "0.4193381592554291623578076525336091",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C28",
+      "operation": "multiply",
+      "actual": "147.00",
+      "expected": "147.00",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C29",
+      "operation": "subtract",
+      "actual": "50.30",
+      "expected": "50.30",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C30",
+      "operation": "divide",
+      "actual": "0.5201654601861427094105480868665977",
+      "expected": "0.5201654601861427094105480868665977",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C31",
+      "operation": "multiply",
+      "actual": "65.26704288939051918735891647855531",
+      "expected": "65.26704288939051918735891647855531",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C32",
+      "operation": "multiply",
+      "actual": "73.554",
+      "expected": "73.554",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C33",
+      "operation": "multiply",
+      "actual": "89.70",
+      "expected": "89.70",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C34",
+      "operation": "multiply",
+      "actual": "96.70000000000000000000000000000001",
+      "expected": "96.70000000000000000000000000000001",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C35",
+      "operation": "multiply",
+      "actual": "108.978",
+      "expected": "108.978",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C36",
+      "operation": "multiply",
+      "actual": "132.90",
+      "expected": "132.90",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C37",
+      "operation": "multiply",
+      "actual": "106.9593679458239277652370203160271",
+      "expected": "106.9593679458239277652370203160271",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C38",
+      "operation": "multiply",
+      "actual": "120.540",
+      "expected": "120.540",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C39",
+      "operation": "multiply",
+      "actual": "147.00",
+      "expected": "147.00",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

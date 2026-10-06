@@ -1,0 +1,152 @@
+[
+  {
+    "id": "C01",
+    "operation": "divide",
+    "inputs": [
+      "524.6",
+      "1076.9"
+    ],
+    "expected": "0.4871390101216454638313678150246077",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C02",
+    "operation": "multiply",
+    "inputs": [
+      "0.4871390101216454638313678150246077",
+      "100"
+    ],
+    "expected": "48.71390101216454638313678150246077",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C03",
+    "operation": "divide",
+    "inputs": [
+      "186.4",
+      "524.6"
+    ],
+    "expected": "0.3553183377811666031261913839115517",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C04",
+    "operation": "multiply",
+    "inputs": [
+      "0.3553183377811666031261913839115517",
+      "100"
+    ],
+    "expected": "35.53183377811666031261913839115517",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C05",
+    "operation": "divide",
+    "inputs": [
+      "198.0",
+      "800.9"
+    ],
+    "expected": "0.2472218753901860407042077662629542",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C06",
+    "operation": "multiply",
+    "inputs": [
+      "0.2472218753901860407042077662629542",
+      "100"
+    ],
+    "expected": "24.72218753901860407042077662629542",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C07",
+    "operation": "subtract",
+    "inputs": [
+      "133.7",
+      "-156.1"
+    ],
+    "expected": "289.8",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C08",
+    "operation": "add",
+    "inputs": [
+      "-53",
+      "-10"
+    ],
+    "expected": "-63",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C09",
+    "operation": "subtract",
+    "inputs": [
+      "545383",
+      "182624"
+    ],
+    "expected": "362759",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C10",
+    "operation": "subtract",
+    "inputs": [
+      "97954",
+      "579322"
+    ],
+    "expected": "-481368",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C11",
+    "operation": "subtract",
+    "inputs": [
+      "362759",
+      "350000"
+    ],
+    "expected": "12759",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C12",
+    "operation": "subtract",
+    "inputs": [
+      "545383",
+      "97954"
+    ],
+    "expected": "447429",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C13",
+    "operation": "subtract",
+    "inputs": [
+      "579322",
+      "182624"
+    ],
+    "expected": "396698",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C14",
+    "operation": "add",
+    "inputs": [
+      "447429",
+      "396698"
+    ],
+    "expected": "844127",
+    "tolerance": "0.000001"
+  },
+  {
+    "id": "C15",
+    "operation": "subtract",
+    "inputs": [
+      "362759",
+      "-481368"
+    ],
+    "expected": "844127",
+    "tolerance": "0.000001"
+  }
+]

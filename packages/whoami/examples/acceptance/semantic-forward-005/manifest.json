@@ -1,0 +1,56 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-005",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "e6d96658ed18c9f8abb7e20f42f923f8fbe7fdd431eec92f49aa59ffa32a3521",
+    "bytes": 5701
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "ec2ff05ba312fa4b4ca3c25bb31ac1d4beead9364c03aa865a5ec38ee13881b4",
+    "bytes": 1011
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "38fde00efcd1ece5be8c6808f2b293e27497c4b3ef6e766b6acf906c0b27685b",
+    "bytes": 1089
+  },
+  "cases": [
+    {
+      "id": "dst-gap-later-must-stop",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec58e8b114d7a53e16eed8835d975eea74e900b2c67eebfbe11c511357aff3d4",
+        "bytes": 316
+      },
+      "context": {
+        "path": "context-error.json",
+        "sha256": "9a7d5f77f089aed284dde1968b0c8541533f62cba4f488786c65ff55220cced9",
+        "bytes": 195
+      },
+      "response": {
+        "path": "response.md",
+        "sha256": "6034df5d6d01517f91b795369491e2150c42c1fe6e409f122a27ea868c336d54",
+        "bytes": 641
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

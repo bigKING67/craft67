@@ -1,0 +1,49 @@
+{
+  "schema_version": "creative-craft.image-job.v2",
+  "job_id": "image-job-tbd",
+  "brief_id": "brief-tbd",
+  "direction_id": "direction-tbd",
+  "selected_route_id": "route-1",
+  "copy_sheet_id": "copy-sheet-tbd",
+  "copy_unit_refs": [],
+  "declared_status": "draft",
+  "provider_profile": "openai.gpt-image-2.2026-04-21",
+  "execution_surface": "openai.image_api",
+  "task_type": "generate",
+  "execution_mode": "single_turn",
+  "intended_use": "TBD",
+  "asset_refs": [],
+  "canvas": {
+    "size": "1024x1024",
+    "quality": "low",
+    "format": "png",
+    "compression": null,
+    "background": "opaque",
+    "variants": 1
+  },
+  "prompt": {
+    "scene": "TBD",
+    "subject": "TBD",
+    "action": "",
+    "composition": "TBD",
+    "lighting": "TBD",
+    "materials_style": "TBD",
+    "exact_text": [],
+    "references": [],
+    "change": [],
+    "preserve": [],
+    "constraints": [],
+    "exclude": []
+  },
+  "inspection": [
+    "brief adherence",
+    "subject and product fidelity",
+    "text accuracy",
+    "composition and safe area",
+    "artifacts and unintended content"
+  ],
+  "rights": {
+    "status": "UNVERIFIED",
+    "notes": ""
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "target-valuation-installed-boundaries",
+      "status": "READY_HISTORICAL",
+      "prompt": "我在复核 Target Corporation（US-NYSE:TGT普通股、交易和报告币种USD）截至2025-04-30的历史估值。根据所附年报和行情JSON，请简短回答三项：历史市值用哪一种价格和股数，能否称精确当日市值？给出债务到净债务的计算，现金和租赁如何处理？若仅作假设把EPS乘15倍，还要扣净债务吗，能否直接称合理价值？正文不超过600汉字，计算回执另附，不做其他公司比较、完整报告或正式归档。",
+      "facts": "仅以下指定原始PDF/HTML/JSON是事实来源；可读取同目录同名txt作定位辅助。公开材料是事后下载，并非历史时点捕获。来源中的截止日之后市场概况/价格不得用于当时决策。只评估给定披露，未提供完整事件检索或精确当日资本结构。不得读取本案例生成脚本、报告、验收标准、派生结果或其他会话答案；此限制不禁止读取/执行正常Skill和审计工具。",
+      "evidence": [
+        {
+          "source_id": "S07",
+          "path": "local/evidence/20260920-target-valuation/price-yahoo.json",
+          "sha256": "5a45ec4d9495c0c544bc8360cd140caadb9b2f68b9a66709a4e1041d93975e52",
+          "url": "https://query1.finance.yahoo.com/v8/finance/chart/TGT?period1=1745971200&period2=1746057600&interval=1d&events=div%2Csplits"
+        },
+        {
+          "source_id": "S01",
+          "path": "local/research/20260920-retail-peer/sources/target-2024.pdf",
+          "sha256": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271",
+          "url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "自然触发安装版Skill并执行有效路由",
+        "Close与Adjusted Close区分，实际股数与加权股数区分，日期错位限制准确",
+        "净债务正确，融资租赁和短期投资不重复计入；经营租赁单列",
+        "EPS×PE不再重复扣债；15倍仅假设，不认证合理价值；回执通过"
+      ]
+    }
+  ]
+}

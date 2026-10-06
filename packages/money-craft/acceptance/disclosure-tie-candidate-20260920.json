@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.disclosure-tie-candidate.v1",
+  "date": "2026-09-20",
+  "status": "PASS_INSTALLABLE_CANDIDATE",
+  "version": "0.3.0",
+  "release_status": "unreleased",
+  "package": "local/candidates/disclosure-tie-20260920/bigking67-money-craft-0.3.0.tgz",
+  "sha256": "21a14cd8112078e2f6548e7c140e94c8c6b49f500a5e2f03f21ead681c85b803",
+  "bytes": 233294,
+  "package_files": 92,
+  "skill_files": 75,
+  "source_parity": true,
+  "global_install_diff": [
+    "references/financial-data-and-evidence.md",
+    "references/research-semantic-review.md"
+  ],
+  "source_validation": {
+    "valid": true,
+    "checks": 20,
+    "environment": "local/validation/disclosure-candidate",
+    "python": "3.12.10",
+    "PyYAML": "6.0.3",
+    "errors": []
+  },
+  "package_smoke": {
+    "valid": true,
+    "checks": [
+      "safe-extraction",
+      "package-identity",
+      "packaged-runtime-self-test",
+      "atomic-install",
+      "installed-runtime-self-test",
+      "installed-research-run-smoke",
+      "installed-earnings-pipeline-smoke"
+    ],
+    "installation_scope": "temporary test directory, not global active installation"
+  },
+  "historical_receipt_redaction": {
+    "path": "acceptance/price-bridge-install-20260920.json",
+    "change": "Portable home alias only; original preserved in private evidence and SHA recorded"
+  },
+  "source_host_acceptance": "acceptance/disclosure-tie-host-20260920.json",
+  "global_install_updated": false,
+  "published": false,
+  "committed": false
+}

@@ -1,0 +1,115 @@
+{
+  "schema": "money-craft.live-company-e2e-review.v1",
+  "checked_at": "2026-09-20T09:43:37.756369+00:00",
+  "status": "FAIL_E2E_SOURCE_ADMISSION",
+  "case_id": "midea-a-live-e2e",
+  "frozen_case_sha256": "6c66ba42759c964809dd17c71c96d95fe4d1e43465baa1b562d172c3f9cc6f72",
+  "host": {
+    "elapsed_seconds": 894.226,
+    "exit_code": 0,
+    "timed_out": false,
+    "installed_unchanged": true,
+    "parent_research_intervention": false
+  },
+  "criteria": [
+    {
+      "id": "E01",
+      "status": "PASS",
+      "reason": "Actual installed Skill reads and successful deep/full archive route in host trace."
+    },
+    {
+      "id": "E02",
+      "status": "PASS_BOUNDED",
+      "reason": "10 captured responses retained; 8 filings/index/material sources imported. Issuer lineage and official quote gaps disclosed; not independent-source truth verification."
+    },
+    {
+      "id": "E03",
+      "status": "PASS_BOUNDED",
+      "reason": "Parent recomputed 87 calculation receipts, replayed hash readback and checked 13 key numeric inputs against captured half-year text. Host reconciliation has 3 passing checks; no claim of exhaustive financial validation."
+    },
+    {
+      "id": "E04",
+      "status": "PASS_BOUNDED",
+      "reason": "Manual prose review: operating segments, FX/hedging classification, margin pressure, working capital and counterevidence discussed with limitations. Supply-chain financing wording should be read as trade-credit inference, not proof of a specific financing arrangement."
+    },
+    {
+      "id": "E05",
+      "status": "PASS_BOUNDED",
+      "reason": "A-share equivalent equity value distinguished from actual A/H market cap; price/share-date conflicts and unsupported multiples expressly conditional; no validated target price."
+    },
+    {
+      "id": "E06",
+      "status": "FAIL",
+      "reason": "Core finalize rejected uncatalogued S31/S32 references; no completion receipt. status.valid=true only means status calculation succeeded, complete remains false."
+    },
+    {
+      "id": "E07",
+      "status": "BLOCKED",
+      "reason": "Rendering, formal isolated archive, guarded verification and seal not performed because prior audit failed."
+    },
+    {
+      "id": "E08",
+      "status": "PARTIAL",
+      "reason": "Ledger artifact verification passes with run status failed; local readback passes. No sealed revision exists to verify."
+    }
+  ],
+  "replay": {
+    "financial_valid": true,
+    "calculation_count": 87,
+    "source_bodies_checked": 10,
+    "local_integrity_ok": true,
+    "ledger_ok": true,
+    "ledger_status": "failed",
+    "core_status_valid": true,
+    "core_complete": false
+  },
+  "blocker": {
+    "id": "PUBLIC_SOURCE_ADMISSION_GAP",
+    "classification": "bounded capability gap, fail-closed citation gate works as designed",
+    "reproduction": "Captured S31/S32 quotation HTML is referenced in report; import-official S31 fails with invalid_official_source. Both report/thesis citation binding reject sources absent from immutable plan/case.",
+    "impact": "No research completion receipt; dependent render/archive stages blocked.",
+    "not_acceptable_fixes": [
+      "Delete legitimate supporting quotes only to pass",
+      "Relabel third-party quotes as issuer filings or authenticated Provider results",
+      "Allow arbitrary URLs to bypass manifest binding",
+      "Patch frozen plan/case or saved first-run verdict"
+    ],
+    "next_change_contract": [
+      "Separate public supplementary evidence from required official filings and Provider data; do not promote its trust level.",
+      "Bind supplementary source identity, role, URL, capture time, raw file hash and quotation as-of context in a new immutable run.",
+      "Preserve old-plan compatibility, unknown-source rejection, no-overwrite/seal protections and exact citation binding.",
+      "Regression must cover real saved quotation captures, mismatched URL/hash, old workspaces and no automatic independence claims.",
+      "After source/candidate verification, rerun full frozen case against the changed version and preserve this failed run."
+    ]
+  },
+  "reviewer": "parent agent manual review and deterministic replay; not independent investment peer review",
+  "limitations": [
+    "Only one live company case; no generalization guarantee.",
+    "Isolated archive acceptance does not authorize or validate writes to production money archive.",
+    "No render/visual/guarded archive verification, no release or application transition.",
+    "Source numeric spot checks are bounded, not full data re-extraction."
+  ],
+  "artifact_hashes": {
+    "local/skill-evals/20260920-midea-e2e/host/prompt.txt": "3c27aae94d18b73f7eb4c246f07c1f4ce1c3b5e88f4558835cd52afc8c65cf4d",
+    "local/skill-evals/20260920-midea-e2e/host/host.json": "080caccf99c28fbf2410ec1161f39f0ffe93360dc46c5ea929d7bf7c586cc734",
+    "local/skill-evals/20260920-midea-e2e/host/events.jsonl": "0183b0bcd831591e78780f7927ee4fe26edccf8be20ada71d9a7f7c3901e1d52",
+    "local/skill-evals/20260920-midea-e2e/host/answer.md": "69ae886a7ead6d1d3ca034b09fd508ac200039a79f8bb236123a62633fbe666d",
+    "local/skill-evals/20260920-midea-e2e/host/workspace/report.md": "f98044c3f849f41d0d947c6d6e100fe7cc80fc4288c4e7f76f8ef6095bfdc8bd",
+    "local/skill-evals/20260920-midea-e2e/host/workspace/diagnostics/finalize-closeout.json": "0a03868fd9dbcb441b86e53dd2d138712c5dd7932a8a6b64ce6f1c23d3a30c7c",
+    "local/skill-evals/20260920-midea-e2e/host/workspace/diagnostics/import-S31-first-failure.json": "cc0f66b96f170eeca9e4eae0c80015dba2f7bf259040141a3396eeb26e4e873a",
+    "local/skill-evals/20260920-midea-e2e/host/workspace/diagnostics/research-init.first-failure.json": "0510ff0a436d22852b7d8a5561276964f05f31a2ef546588351f46fc5ad31ef2",
+    "local/skill-evals/20260920-midea-e2e/host/workspace/financial-extract.json": "b75e7ea648e505827e71aae015bc0c635d67e4a9e7cf49fda06b46b3e693018e",
+    "local/skill-evals/20260920-midea-e2e/host/workspace/calculations.json": "f69b07db311b11eacf4662d2bf8e067881c51f35cfae8efee4a55efdc84cea66",
+    "local/skill-evals/20260920-midea-e2e/parent-review/core-status.json": "93637e2a93dad5f6b3b4e2a8c73174102a563b838bebc27c5f71b77450810768",
+    "local/skill-evals/20260920-midea-e2e/parent-review/financial-audit.json": "32113e5bc0435859ac0bcf45f75099b7bfa6434e21b0405cb531e51ff6fbef35",
+    "local/skill-evals/20260920-midea-e2e/parent-review/ledger-verify.json": "ec79c0dd871828e462e9932c216284400279a352c97636dba8535733d714395e",
+    "local/skill-evals/20260920-midea-e2e/parent-review/local-readback.json": "9491652ae9ce7a23594227ebb7fa2d0353b39dd58b3dc60fcf00bfa6700c1629",
+    "local/skill-evals/20260920-midea-e2e/parent-review/source-spot-check.json": "9495d3cdcf6b19b1729eec1e0a50598f0445388290b45dbef420c54ce57f58c2",
+    "local/skill-evals/20260920-midea-e2e/frozen-case-original.json": "6c66ba42759c964809dd17c71c96d95fe4d1e43465baa1b562d172c3f9cc6f72"
+  },
+  "artifact_path_relocation": {
+    "reason": "Portable descriptor now points to the original unmodified frozen case; verdict and criteria unchanged.",
+    "previous_review": "local/skill-evals/20260920-midea-e2e/review-before-path-relocation.json",
+    "previous_review_sha256": "9a3957fb710e6e68aa5197d0d0532aa379ddf1f8216ca69bbcf136ac2846d04d"
+  }
+}

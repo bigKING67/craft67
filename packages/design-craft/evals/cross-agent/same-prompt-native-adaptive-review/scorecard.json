@@ -1,0 +1,55 @@
+{
+  "schema": "design-craft.cross-agent-scorecard.v1",
+  "task_id": "same-prompt-native-adaptive-review",
+  "criteria": [
+    {
+      "id": "style_authority",
+      "label": "Style authority and product context",
+      "weight": 15,
+      "pass_evidence": "Separates adaptive product context from shared visual roles.",
+      "deduction_trigger": "Forces identical platform UI from a shared design file."
+    },
+    {
+      "id": "reference_selection",
+      "label": "Reference selection",
+      "weight": 15,
+      "pass_evidence": "Selects product, iOS, Android, adaptive, physics, and validation references.",
+      "deduction_trigger": "Applies only generic web or mobile guidance."
+    },
+    {
+      "id": "anti_generic_redesign",
+      "label": "Anti-generic redesign",
+      "weight": 15,
+      "pass_evidence": "Repairs native trust and task flow without decorative generic styling.",
+      "deduction_trigger": "Focuses on glass, gradients, cards, or identical mockup styling."
+    },
+    {
+      "id": "evidence_level",
+      "label": "Evidence level labeling",
+      "weight": 15,
+      "pass_evidence": "Labels prose/static evidence and avoids runtime or build claims.",
+      "deduction_trigger": "Claims simulator, accessibility, or performance proof without evidence."
+    },
+    {
+      "id": "verified_boundary",
+      "label": "Verified/unverified boundary",
+      "weight": 15,
+      "pass_evidence": "Separates prompt-supported violations from unverified source and runtime behavior.",
+      "deduction_trigger": "Treats described implementation as a completed runtime audit."
+    },
+    {
+      "id": "design_moves",
+      "label": "Concrete design moves",
+      "weight": 15,
+      "pass_evidence": "Proposes platform navigation, controls, tokens, adaptivity, accessibility, and parity moves.",
+      "deduction_trigger": "Says only to make it native or scales the phone layout."
+    },
+    {
+      "id": "scope_control",
+      "label": "Scope control and unrelated changes",
+      "weight": 10,
+      "pass_evidence": "Keeps recommendations within native UI conformance and decisive validation.",
+      "deduction_trigger": "Suggests backend changes or buries priorities in an overlong review."
+    }
+  ]
+}

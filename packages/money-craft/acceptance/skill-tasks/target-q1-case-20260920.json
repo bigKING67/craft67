@@ -1,0 +1,37 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "target-q1-guidance-replay",
+      "status": "READY_HISTORICAL",
+      "prompt": "请复核Target Corporation（US-NYSE:TGT普通股、交易及报告币种USD）这份季度业绩：EPS上涨是否支持原来的盈利修复逻辑？请结合三月指引，更新年度盈利基线、现金流判断及下一步条件。新的历史研究截止日为2025-05-21，2026年执行回放。正文尽量控制在600汉字，计算回执另附；不做估值目标价、正式归档或交易。",
+      "facts": "仅指定原始文件是事实来源，可用同目录同名txt定位。三月材料是旧信息，五月材料只适用于新的截止日，不可回写四月结论；这是事后回放，不是盲测或预测成绩。不得读取本案例验收标准、生成脚本、派生报告或其他会话答案；可读取执行正常Skill与审计工具。",
+      "evidence": [
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-target-valuation/guidance.html",
+          "sha256": "cc5eab890121b9a46d4eda35a22bf46d86e2d83ccee959b1811b1a3a20b1771b",
+          "url": "https://corporate.target.com/press/release/2025/03/target-corporation-reports-fourth-quarter-and-full-year-2024-earnings"
+        },
+        {
+          "source_id": "S12",
+          "path": "local/evidence/20260920-target-q1/earnings.pdf",
+          "sha256": "48f720395cbb6755ec9c3323bdd582b3703ea0bf231c7a848499b1d4b3607de9",
+          "url": "https://corporate.target.com/getmedia/06df3254-1476-4b4d-a968-d4ad5a19939e/Target-Corporation-Reports-First-Quarter-Earnings.pdf"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "自然选用安装版Skill并有效路由；不回写旧截止或声称事前预测",
+        "区分GAAP与调整后盈利，按披露的税后调整桥，不用名义税率编造税效",
+        "旧新年度指引同口径对照；不把较高GAAP上限当作盈利修复，不将指引当已实现值",
+        "现金流复算与FCF proxy边界准确，不将季报简单年化或宣称可分配现金",
+        "反方和下一窗口明确，数字/回执正确，未把假设自动转为交易动作"
+      ]
+    }
+  ]
+}

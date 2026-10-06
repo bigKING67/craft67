@@ -1,0 +1,1106 @@
+{
+  "schema": "design-craft.l4-screenshots.v1",
+  "case_id": "reference-assisted-evidence-dossier",
+  "created_at": "2026-08-17T06:24:04.357Z",
+  "source_tool": "tmwd_browser.browser_evidence_bundle_ops",
+  "artifacts": {
+    "before": {
+      "desktop": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts/screenshot-viewport-baseline-default-desktop-1440x900-final-v2-20260817T061737269Z-7baee696.png",
+        "artifact_sha256": "143fd73e6d7a0f8141d66c13bd688992bda33518d846b33efe842f55e7a605de",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "header": {
+              "computed": {
+                "display": "grid",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 76,
+                "height": 76,
+                "left": 0,
+                "right": 1440,
+                "top": 0,
+                "width": 1440,
+                "x": 0,
+                "y": 0
+              },
+              "selector": ".site-header"
+            },
+            "headline": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 577.2109375,
+                "height": 311.03125,
+                "left": 57.59375,
+                "right": 621.5,
+                "top": 266.1796875,
+                "width": 563.90625,
+                "x": 57.59375,
+                "y": 266.1796875
+              },
+              "selector": "#hero-title"
+            },
+            "posture": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 406.5546875,
+                "height": 132,
+                "left": 665.6953125,
+                "right": 1381.40625,
+                "top": 274.5546875,
+                "width": 715.7109375,
+                "x": 665.6953125,
+                "y": 274.5546875
+              },
+              "selector": ".hero-proof__heading"
+            },
+            "primary_action": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(255, 255, 255)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 755.765625,
+                "height": 48,
+                "left": 57.59375,
+                "right": 242.09375,
+                "top": 707.765625,
+                "width": 184.5,
+                "x": 57.59375,
+                "y": 707.765625
+              },
+              "selector": "[data-open-dossier]"
+            },
+            "proof": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 718.4296875,
+                "height": 444.875,
+                "left": 664.6953125,
+                "right": 1382.40625,
+                "top": 273.5546875,
+                "width": 717.7109375,
+                "x": 664.6953125,
+                "y": 273.5546875
+              },
+              "selector": ".hero-proof"
+            },
+            "support": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 755.765625,
+                "height": 135.359375,
+                "left": 57.59375,
+                "right": 617.59375,
+                "top": 620.40625,
+                "width": 560,
+                "x": 57.59375,
+                "y": 620.40625
+              },
+              "selector": ".hero__support"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D",
+        "title": "Cairn - Decision evidence dossier",
+        "capture": {
+          "method": "Page.captureScreenshot",
+          "format": "png",
+          "from_surface": true,
+          "capture_beyond_viewport": false,
+          "clip": null,
+          "max_pixels": 12000000,
+          "returns_base64": false
+        },
+        "run": {
+          "run_id": "20260817T060232364Z-6a6a4ed2",
+          "group": "design-craft",
+          "workspace_key": "design-craft",
+          "task_id": "reference-assisted-evidence-dossier-2026-08-17",
+          "run_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2",
+          "artifacts_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts",
+          "prepared": false
+        },
+        "tab_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735734",
+        "session_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735734",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 118878
+        }
+      },
+      "mobile": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts/screenshot-viewport-baseline-default-mobile-390x844-final-v2-20260817T061737327Z-1397c1ce.png",
+        "artifact_sha256": "9a02e901272e5086b838a4597e0056dc2f33406f3158f23663ff638cf766286d",
+        "dimensions": [
+          390,
+          844
+        ],
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "is_mobile": true
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "header": {
+              "computed": {
+                "display": "grid",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 64,
+                "height": 64,
+                "left": 0,
+                "right": 390,
+                "top": 0,
+                "width": 390,
+                "x": 0,
+                "y": 0
+              },
+              "selector": ".site-header"
+            },
+            "headline": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 394.3046875,
+                "height": 266.7578125,
+                "left": 20,
+                "right": 370,
+                "top": 127.546875,
+                "width": 350,
+                "x": 20,
+                "y": 127.546875
+              },
+              "selector": "#hero-title"
+            },
+            "posture": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 753.6953125,
+                "height": 105.59375,
+                "left": 21,
+                "right": 369,
+                "top": 648.1015625,
+                "width": 348,
+                "x": 21,
+                "y": 648.1015625
+              },
+              "selector": ".hero-proof__heading"
+            },
+            "primary_action": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(255, 255, 255)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 561.5078125,
+                "height": 48,
+                "left": 20,
+                "right": 370,
+                "top": 513.5078125,
+                "width": 350,
+                "x": 20,
+                "y": 513.5078125
+              },
+              "selector": "[data-open-dossier]"
+            },
+            "proof": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 994.5234375,
+                "height": 347.421875,
+                "left": 20,
+                "right": 370,
+                "top": 647.1015625,
+                "width": 350,
+                "x": 20,
+                "y": 647.1015625
+              },
+              "selector": ".hero-proof"
+            },
+            "support": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 623.1015625,
+                "height": 204.796875,
+                "left": 20,
+                "right": 370,
+                "top": 418.3046875,
+                "width": 350,
+                "x": 20,
+                "y": 418.3046875
+              },
+              "selector": ".hero__support"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D",
+        "title": "Cairn - Decision evidence dossier",
+        "capture": {
+          "method": "Page.captureScreenshot",
+          "format": "png",
+          "from_surface": true,
+          "capture_beyond_viewport": false,
+          "clip": null,
+          "max_pixels": 12000000,
+          "returns_base64": false
+        },
+        "run": {
+          "run_id": "20260817T060232364Z-6a6a4ed2",
+          "group": "design-craft",
+          "workspace_key": "design-craft",
+          "task_id": "reference-assisted-evidence-dossier-2026-08-17",
+          "run_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2",
+          "artifacts_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts",
+          "prepared": false
+        },
+        "tab_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735734",
+        "session_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735734",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 69852
+        }
+      }
+    },
+    "after": {
+      "desktop": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts/screenshot-viewport-reference-assisted-default-desktop-1440x900-final-v2-20260817T061753283Z-19349cfe.png",
+        "artifact_sha256": "fda0bddc0e23a49e081e6b1add98464a3dde5c08e36514c189abdcb50974b718",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "is_mobile": false
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "header": {
+              "computed": {
+                "display": "grid",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 76,
+                "height": 76,
+                "left": 0,
+                "right": 1440,
+                "top": 0,
+                "width": 1440,
+                "x": 0,
+                "y": 0
+              },
+              "selector": ".site-header"
+            },
+            "headline": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 426.0390625,
+                "height": 266.0859375,
+                "left": 57.59375,
+                "right": 842.4296875,
+                "top": 159.953125,
+                "width": 784.8359375,
+                "x": 57.59375,
+                "y": 159.953125
+              },
+              "selector": "#hero-title"
+            },
+            "posture": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 602.234375,
+                "height": 132,
+                "left": 58.59375,
+                "right": 825.5625,
+                "top": 470.234375,
+                "width": 766.96875,
+                "x": 58.59375,
+                "y": 470.234375
+              },
+              "selector": ".hero-proof__heading"
+            },
+            "primary_action": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(255, 255, 255)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 656.4765625,
+                "height": 48,
+                "left": 898.5546875,
+                "right": 1083.0546875,
+                "top": 608.4765625,
+                "width": 184.5,
+                "x": 898.5546875,
+                "y": 608.4765625
+              },
+              "selector": "[data-open-dossier]"
+            },
+            "proof": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 914.109375,
+                "height": 444.875,
+                "left": 57.59375,
+                "right": 826.5625,
+                "top": 469.234375,
+                "width": 768.96875,
+                "x": 57.59375,
+                "y": 469.234375
+              },
+              "selector": ".hero-proof"
+            },
+            "support": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 914.109375,
+                "height": 444.875,
+                "left": 869.7578125,
+                "right": 1382.40625,
+                "top": 469.234375,
+                "width": 512.6484375,
+                "x": 869.7578125,
+                "y": 469.234375
+              },
+              "selector": ".hero__support"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D",
+        "title": "Cairn - Decision evidence dossier",
+        "capture": {
+          "method": "Page.captureScreenshot",
+          "format": "png",
+          "from_surface": true,
+          "capture_beyond_viewport": false,
+          "clip": null,
+          "max_pixels": 12000000,
+          "returns_base64": false
+        },
+        "run": {
+          "run_id": "20260817T060232364Z-6a6a4ed2",
+          "group": "design-craft",
+          "workspace_key": "design-craft",
+          "task_id": "reference-assisted-evidence-dossier-2026-08-17",
+          "run_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2",
+          "artifacts_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts",
+          "prepared": false
+        },
+        "tab_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+        "session_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 124472
+        }
+      },
+      "mobile": {
+        "tool": "browser_screenshot_ops",
+        "target": "viewport",
+        "artifact_path": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts/screenshot-viewport-reference-assisted-default-mobile-390x844-final-v2-20260817T061753334Z-05a44f6f.png",
+        "artifact_sha256": "77baf8823040cd758241f998fb7f6153abad64cf305f3a35effbb6fe247d617a",
+        "dimensions": [
+          390,
+          844
+        ],
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "is_mobile": true
+        },
+        "layout_metrics": {
+          "horizontal_overflow": false,
+          "selectors": {
+            "header": {
+              "computed": {
+                "display": "grid",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 64,
+                "height": 64,
+                "left": 0,
+                "right": 390,
+                "top": 0,
+                "width": 390,
+                "x": 0,
+                "y": 0
+              },
+              "selector": ".site-header"
+            },
+            "headline": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 394.3046875,
+                "height": 266.7578125,
+                "left": 20,
+                "right": 370,
+                "top": 127.546875,
+                "width": 350,
+                "x": 20,
+                "y": 127.546875
+              },
+              "selector": "#hero-title"
+            },
+            "posture": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 520.09375,
+                "height": 105.59375,
+                "left": 21,
+                "right": 369,
+                "top": 414.5,
+                "width": 348,
+                "x": 21,
+                "y": 414.5
+              },
+              "selector": ".hero-proof__heading"
+            },
+            "primary_action": {
+              "computed": {
+                "display": "flex",
+                "outline_color": "rgb(255, 255, 255)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 944.3203125,
+                "height": 48,
+                "left": 20,
+                "right": 370,
+                "top": 896.3203125,
+                "width": 350,
+                "x": 20,
+                "y": 896.3203125
+              },
+              "selector": "[data-open-dossier]"
+            },
+            "proof": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 760.921875,
+                "height": 347.421875,
+                "left": 20,
+                "right": 370,
+                "top": 413.5,
+                "width": 350,
+                "x": 20,
+                "y": 413.5
+              },
+              "selector": ".hero-proof"
+            },
+            "support": {
+              "computed": {
+                "display": "block",
+                "outline_color": "rgb(20, 36, 58)",
+                "outline_style": "none",
+                "outline_width": "3px",
+                "overflow_x": "visible",
+                "overflow_y": "visible",
+                "position": "static",
+                "visibility": "visible"
+              },
+              "found": true,
+              "rect": {
+                "bottom": 1005.9140625,
+                "height": 225.796875,
+                "left": 20,
+                "right": 370,
+                "top": 780.1171875,
+                "width": 350,
+                "x": 20,
+                "y": 780.1171875
+              },
+              "selector": ".hero__support"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D",
+        "title": "Cairn - Decision evidence dossier",
+        "capture": {
+          "method": "Page.captureScreenshot",
+          "format": "png",
+          "from_surface": true,
+          "capture_beyond_viewport": false,
+          "clip": null,
+          "max_pixels": 12000000,
+          "returns_base64": false
+        },
+        "run": {
+          "run_id": "20260817T060232364Z-6a6a4ed2",
+          "group": "design-craft",
+          "workspace_key": "design-craft",
+          "task_id": "reference-assisted-evidence-dossier-2026-08-17",
+          "run_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2",
+          "artifacts_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts",
+          "prepared": false
+        },
+        "tab_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+        "session_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+        "artifact_verification": {
+          "verified": true,
+          "bytes": 72825
+        }
+      }
+    }
+  },
+  "evidence_bundle": {
+    "schema": "tmwd.design-craft-evidence-bundle.v1",
+    "normalized_entries": [
+      {
+        "phase": "before",
+        "key": "desktop"
+      },
+      {
+        "phase": "before",
+        "key": "mobile"
+      },
+      {
+        "phase": "after",
+        "key": "desktop"
+      },
+      {
+        "phase": "after",
+        "key": "mobile"
+      }
+    ],
+    "shared_artifact_keys": [
+      "desktop",
+      "mobile"
+    ],
+    "transport_health": {
+      "ok": true,
+      "status": "healthy",
+      "checked_at": "2026-08-17T06:18:05.921Z",
+      "mode": "tmwd",
+      "transports": [
+        {
+          "transport": "ws",
+          "status": "ok",
+          "latency_ms": 1,
+          "endpoint": "ws://127.0.0.1:18765",
+          "pages_count": 7,
+          "selected_tab_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+          "selected_url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D"
+        },
+        {
+          "transport": "link",
+          "status": "ok",
+          "latency_ms": 1,
+          "endpoint": "http://127.0.0.1:18766/link",
+          "pages_count": 7,
+          "selected_tab_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+          "selected_url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D"
+        }
+      ],
+      "preferred_transport": "ws",
+      "suggestion": "transport_ready"
+    },
+    "finalize_summary": {
+      "status": "success",
+      "action": "finalize_task",
+      "dry_run": false,
+      "finalizer_policy": {
+        "scope": "workspace",
+        "closes_only_managed_tabs": true,
+        "closes_keep_false": true,
+        "preserves_keep_true": true,
+        "ignores_unmanaged_user_tabs": true,
+        "releases_user_adopted_tabs": true,
+        "closes_user_adopted_tabs": false,
+        "prunes_stale_registry_records": true
+      },
+      "close_scope": {
+        "taskId": "reference-assisted-evidence-dossier-2026-08-17",
+        "workspaceKey": "design-craft",
+        "all": false,
+        "scope": "workspace"
+      },
+      "prune_stale": {
+        "status": "success",
+        "action": "prune_stale",
+        "dry_run": false,
+        "transport": "per_browser_instance",
+        "transport_attempts": [
+          {
+            "transport": "ws",
+            "status": "ok",
+            "reason": "forced_transport"
+          },
+          {
+            "transport": "ws",
+            "status": "ok",
+            "reason": "forced_transport"
+          },
+          {
+            "transport": "ws",
+            "status": "ok",
+            "reason": "forced_transport"
+          }
+        ],
+        "pruned_count": 0,
+        "would_prune_count": 0,
+        "pruned": [],
+        "kept": [
+          {
+            "tab_id": "1903735737",
+            "browser_instance_id": "b2ae6d9d-5420-496a-978e-1340fcff3584",
+            "session_key": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+            "workspace_key": "design-craft",
+            "url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D",
+            "reason": "live_session_registry"
+          },
+          {
+            "tab_id": "1903735734",
+            "browser_instance_id": "b2ae6d9d-5420-496a-978e-1340fcff3584",
+            "session_key": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735734",
+            "workspace_key": "design-craft",
+            "url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D",
+            "reason": "live_session_registry"
+          },
+          {
+            "tab_id": "1903735731",
+            "browser_instance_id": "b2ae6d9d-5420-496a-978e-1340fcff3584",
+            "session_key": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735731",
+            "workspace_key": "design-craft",
+            "url": "http://127.0.0.1:4178/?variant=%5BREDACTED%5D&state=%5BREDACTED%5D",
+            "reason": "live_session_registry"
+          }
+        ],
+        "result_limits": {
+          "max_items": 50,
+          "summary_only": false,
+          "pruned_returned_count": 0,
+          "kept_returned_count": 3,
+          "pruned_truncated": false,
+          "kept_truncated": false
+        },
+        "capabilities": {
+          "schema_revision": 3,
+          "server_revision": "managed-tabs-v4",
+          "supports_select_or_create": true,
+          "supports_tabs_close": true,
+          "supports_tabs_get": true,
+          "supports_include_unscriptable_tabs": true,
+          "supports_wait_until_visible": true,
+          "supports_prune_stale": true,
+          "supports_finalize_task": true,
+          "supports_finalize_hint": true,
+          "supports_close_verification": true,
+          "supports_screenshot_viewport_override": true,
+          "supports_screenshot_layout_metrics": true,
+          "supports_design_craft_l4_evidence_manifest": true,
+          "supports_durable_jobs": true,
+          "supports_job_restart_recovery": true,
+          "supports_job_abort": false,
+          "supports_persistent_debugger": false,
+          "supports_protocol_solver_apply": false,
+          "managed_registry_default_path": "~/.browser67/tab-workspace/managed-tabs.json",
+          "legacy_managed_registry_path": "~/.tmwd-browser-mcp/tab-workspace/managed-tabs.json"
+        },
+        "active_session_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+        "default_session_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735557",
+        "latest_session_id": "b2ae6d9d-5420-496a-978e-1340fcff3584:1903735737",
+        "active_browser_instance_id": "b2ae6d9d-5420-496a-978e-1340fcff3584",
+        "default_browser_instance_id": "b2ae6d9d-5420-496a-978e-1340fcff3584"
+      },
+      "close_unkept": {
+        "status": "success",
+        "action": "close_unkept",
+        "close_scope": {
+          "taskId": "reference-assisted-evidence-dossier-2026-08-17",
+          "workspaceKey": "design-craft",
+          "all": false,
+          "scope": "workspace"
+        },
+        "closed": [
+          {
+            "tab_id": "1903735737",
+            "closed": true,
+            "close_verified": true,
+            "close_verification": {
+              "verified": true,
+              "tab_id": "1903735737",
+              "method": "tmwd_tabs_get_or_list",
+              "timeout_ms": 1500,
+              "poll_ms": 100,
+              "polls": 1,
+              "elapsed_ms": 7
+            },
+            "transport": "tmwd_ws",
+            "transport_attempts": [
+              {
+                "transport": "tmwd_ws",
+                "phase": "execute",
+                "status": "ok",
+                "reason": "primary"
+              }
+            ]
+          },
+          {
+            "tab_id": "1903735734",
+            "closed": true,
+            "close_verified": true,
+            "close_verification": {
+              "verified": true,
+              "tab_id": "1903735734",
+              "method": "tmwd_tabs_get_or_list",
+              "timeout_ms": 1500,
+              "poll_ms": 100,
+              "polls": 1,
+              "elapsed_ms": 13
+            },
+            "transport": "tmwd_ws",
+            "transport_attempts": [
+              {
+                "transport": "tmwd_ws",
+                "phase": "execute",
+                "status": "ok",
+                "reason": "primary"
+              }
+            ]
+          },
+          {
+            "tab_id": "1903735731",
+            "closed": true,
+            "close_verified": true,
+            "close_verification": {
+              "verified": true,
+              "tab_id": "1903735731",
+              "method": "tmwd_tabs_get_or_list",
+              "timeout_ms": 1500,
+              "poll_ms": 100,
+              "polls": 1,
+              "elapsed_ms": 5
+            },
+            "transport": "tmwd_ws",
+            "transport_attempts": [
+              {
+                "transport": "tmwd_ws",
+                "phase": "execute",
+                "status": "ok",
+                "reason": "primary"
+              }
+            ]
+          }
+        ],
+        "errors": [],
+        "unmanaged_tabs_ignored": [],
+        "kept_tabs": []
+      },
+      "release_adopted": [],
+      "remaining": {
+        "total_count": 0,
+        "kept_count": 0,
+        "unkept_count": 0,
+        "tabs": [],
+        "returned_count": 0,
+        "truncated": false
+      },
+      "cleanup_summary": {
+        "scope": "workspace",
+        "workspace_key": "design-craft",
+        "task_id": "reference-assisted-evidence-dossier-2026-08-17",
+        "all": false,
+        "dry_run": false,
+        "closed_count": 3,
+        "would_close_count": 0,
+        "close_verified_count": 3,
+        "close_error_count": 0,
+        "stale_pruned_count": 0,
+        "stale_would_prune_count": 0,
+        "remaining_total_count": 0,
+        "remaining_kept_count": 0,
+        "remaining_unkept_count": 0
+      },
+      "delivery_summary": "browser67 cleanup: finalize_task workspace_key=design-craft task_id=reference-assisted-evidence-dossier-2026-08-17 closed=3 would_close=0 verified=3 stale_pruned=0 kept=0 remaining_unkept=0 errors=0",
+      "next_step": "Report the finalize_task result in the task handoff or final response."
+    },
+    "run": {
+      "ok": true,
+      "action": "finish",
+      "run": {
+        "schema_version": "browser67.run.v2",
+        "run_id": "20260817T060232364Z-6a6a4ed2",
+        "group": "design-craft",
+        "task_id": "reference-assisted-evidence-dossier-2026-08-17",
+        "workspace_key": "design-craft",
+        "title": "Cairn separate-target comparative evaluation",
+        "status": "completed",
+        "created_at": "2026-08-17T06:02:32.364Z",
+        "updated_at": "2026-08-17T06:23:50.146Z",
+        "checkpoint_at": "2026-08-17T06:23:50.147Z",
+        "finished_at": "2026-08-17T06:23:50.146Z",
+        "root": "browser67://runs",
+        "run_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2",
+        "artifacts_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/artifacts",
+        "logs_dir": "browser67://runs/design-craft/20260817T060232364Z-6a6a4ed2/logs",
+        "event_count": 3,
+        "input": {},
+        "summary": {
+          "outcome": "passed",
+          "managed_tabs_closed": 3,
+          "managed_tabs_close_verified": 3,
+          "remaining_unkept": 0
+        }
+      },
+      "event": {
+        "schema_version": "browser67.run.v2",
+        "id": "event_6fc041a0-9a08-47b0-8bea-b0a90ee6c199",
+        "ts": "2026-08-17T06:23:50.146Z",
+        "event": "finish",
+        "status": "completed",
+        "data": {
+          "outcome": "passed",
+          "managed_tabs_closed": 3,
+          "managed_tabs_close_verified": 3,
+          "remaining_unkept": 0
+        },
+        "evidence": {
+          "schema_version": "evidence.v1",
+          "id": "evidence_e72df2f3-d416-47f7-a42e-9840fcfa90c5",
+          "ts": "2026-08-17T06:23:50.146Z",
+          "source": "tool",
+          "confidence": "unknown",
+          "title": "",
+          "keys": {},
+          "timestamps": {},
+          "request_ids": [],
+          "script_ids": [],
+          "artifacts": [],
+          "data": {}
+        }
+      },
+      "checkpoint_written": true
+    }
+  }
+}

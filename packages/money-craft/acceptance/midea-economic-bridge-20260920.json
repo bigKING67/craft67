@@ -1,0 +1,27 @@
+{
+  "status": "PASS_BOUNDED_DISCLOSURE_SUPPLEMENT",
+  "full_research_status_changed": false,
+  "security_id": "CN-SZ:000333",
+  "calculation_count": 17,
+  "independent_review": false,
+  "P05": "UNVERIFIED",
+  "P06": "UNVERIFIED",
+  "artifacts": [
+    {
+      "path": "local/acceptance/20260920-midea-economic-bridge/review.md",
+      "sha256": "24fdeed41b8c0d8891a19d468fe07195f1f4fd911213b0889d61b96afaf0d533"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-economic-bridge/financial-audit.json",
+      "sha256": "d0319576d22f1a7df02516530c2e7b56828df239cb7c3a0d7cad34abc93e2a58"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-economic-bridge/semantic-review.json",
+      "sha256": "d749277d6d91eda8d4c32280664528eb77c6dfa6ae23db5bfa9ca15bc5c7982d"
+    },
+    {
+      "path": "local/acceptance/20260920-midea-economic-bridge/ledger-verification.json",
+      "sha256": "b2aad6cdf79c1cf0336466dca034f4e5f044fa9c66d6dcfa8bcc08c636b37a7d"
+    }
+  ]
+}

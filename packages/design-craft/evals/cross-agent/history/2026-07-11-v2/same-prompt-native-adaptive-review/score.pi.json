@@ -1,0 +1,60 @@
+{
+  "schema": "design-craft.cross-agent-score.v2",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "pi 0.80.3",
+  "model": "deepseek/deepseek-v4-pro",
+  "reasoning_profile": "high",
+  "runner_os": "macOS arm64",
+  "date": "2026-07-11",
+  "prompt_sha256": "56a6cf59d4a5e5e98280481ec5d04b5207714eb69f0fdafcba06c7bedbbdfc4c",
+  "scorecard_sha256": "cfd347d26e3cb72636be39f8e94c17948bc7c4eecbe21a8e68303760dd9396ee",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "487e45d780f51c00d954e9f29ded8dd4a138498d",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "skill_tree_sha256": "2f460d2c23e797f38aa08f7cf193b13cd539462571d621bcdb1f69cb42c7e761",
+  "skill_path": "~/Documents/sixseven/codeproject/design-craft/skills/design-craft",
+  "command_summary": "pi 0.80.3 --no-session --no-extensions --no-context-files with read-only tools, deepseek/deepseek-v4-pro, high thinking, explicit canonical design-craft 0.5.0, and the exact benchmark prompt; final Markdown normalized only for trailing whitespace",
+  "output_path": "pi-output.md",
+  "output_sha256": "5df6bbf34f1d45f999a84cc1a7b978945e4fe54758f046e5cb3746c3f5665162",
+  "score": 92,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Correctly separates explicit adaptive product context and release accessibility requirements from shared semantic DESIGN roles."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 14,
+      "note": "Covers iOS, Android, adaptive, product, accessibility, motion, design-system, and validation guidance, with some tool and framework recommendations beyond the evidence."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 14,
+      "note": "Rejects the fixed identical shell and restores native behavior, although several corrective moves prescribe libraries and implementation choices without repo evidence."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels L0 static evidence and explicitly identifies missing source, build, Simulator, Emulator, accessibility, window, and real-device proof."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 13,
+      "note": "Separates many prompt facts from runtime unknowns, but overstates several consequences as observed and incorrectly says a 500ms transition exceeds a cited 200-500ms range."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 13,
+      "note": "Provides a useful parity matrix and platform-specific navigation, controls, tokens, type, motion, and adaptivity moves, with over-prescriptive React Native library choices."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "Stays within native product quality and validation, but adds framework, scanner, device-matrix, and system-setting detail beyond the benchmark's minimal need."
+    }
+  }
+}

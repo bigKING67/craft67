@@ -1,0 +1,47 @@
+{
+  "schema": "money-craft.yfinance-cells-review.v1",
+  "date": "2026-09-19",
+  "module_status": "PARTIAL",
+  "scope": "Normalized table cell types before column truncation",
+  "source_hashes": {
+    "skills/money-craft/scripts/yfinance_adapter.py": "94f7bbccdf8eb48ab1ee44049b4d93b7bd2b85efea5dd7d499957c0f0a76a0e5",
+    "tests/test_yfinance_adapter.py": "44825346349078e9da61a1c83c55f3d8abcf89e820d1b2801cf80bd77e834873"
+  },
+  "findings": [
+    "Reject nonnumeric table cells rather than stringify them into financial data.",
+    "Reviewer identified legitimate Dividends FX text column in pinned 1.7.0 corporate-actions; fixed narrowly scoped explicit text-column exception."
+  ],
+  "validation": {
+    "yfinance_tests": 20,
+    "full_tests": 401,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 1,
+    "initial_red_errors": 1
+  },
+  "independent_review": {
+    "agent": "yf_admission_review",
+    "verdict": "No remaining blockers in declared cell-type scope",
+    "tests": 20,
+    "extra_checks": [
+      "Default frame rejects text.",
+      "Repeated text column labels preserve positions.",
+      "Invalid text-column container rejected even when column would be truncated."
+    ],
+    "source_hashes": {
+      "skills/money-craft/scripts/yfinance_adapter.py": "94f7bbccdf8eb48ab1ee44049b4d93b7bd2b85efea5dd7d499957c0f0a76a0e5",
+      "tests/test_yfinance_adapter.py": "44825346349078e9da61a1c83c55f3d8abcf89e820d1b2801cf80bd77e834873"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T085352369147Z"
+  },
+  "limits": [
+    "No real pandas/Provider validation; pd.NA/NaT, date range and economic meaning unverified.",
+    "Dividends FX accepts normalized text; no currency semantic validation claimed.",
+    "No app, commit, push or release."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/assurance-verification.schema.json",
+  "title": "Independent verifier result for an assured review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "reviewRunId",
+    "sourceFingerprint",
+    "createdAt",
+    "verifier",
+    "assessments",
+    "unverifiedClaims"
+  ],
+  "properties": {
+    "schema": {"const": "review-craft.assurance-verification.v1"},
+    "reviewRunId": {"type": "string", "minLength": 1},
+    "sourceFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "identifier", "independent"],
+      "properties": {
+        "kind": {"enum": ["HUMAN", "MODEL", "TOOL"]},
+        "identifier": {"type": "string", "minLength": 1},
+        "independent": {"const": true}
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["findingId", "disposition", "rationale", "evidenceRefs"],
+        "properties": {
+          "findingId": {"type": "string", "minLength": 1},
+          "disposition": {"enum": ["AGREED", "FALSIFIED", "BLOCKED"]},
+          "rationale": {"type": "string", "minLength": 1},
+          "evidenceRefs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "unverifiedClaims": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

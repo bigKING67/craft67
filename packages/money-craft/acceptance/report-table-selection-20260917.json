@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.report-table-selection.v1",
+  "date": "2026-09-17",
+  "scope": "Exclude code examples from chart tables and validate complete table separators",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "beaf2f3260c7d2d647d4215785c5c304949b9c06dc3b8c532705b0531b800444",
+    "tests/test_report_renderer.py": "fe29db4861ba2dcccabdc4a5cfd05fbcac55baed21a13a91e55ef511a65f85de",
+    "skills/money-craft/references/report-rendering.md": "81c1e79d0d334caec5d2be1cb094bb09f02a95320a61b9776fff17b5db879322"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Fenced/indented code tables and partially malformed separators could become chart inputs.",
+    "after": "Mask code boundaries including mixed tab indentation; require matching separator column counts and supported separator syntax."
+  },
+  "validation": {
+    "renderer_tests": 59,
+    "full_tests": 349,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 9,
+    "real_cli": "Fenced financial table stays visible as code but supplies no financial chart; normal scenario chart retained, source bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_AFTER_FIX",
+    "renderer_tests": 59,
+    "skipped_tests": 0,
+    "finding_closed": "Mixed space/tab indentation initially bypassed code masking; expandtabs(4) closes original sample.",
+    "real_markdown_indentation_cases": 5,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "beaf2f3260c7d2d647d4215785c5c304949b9c06dc3b8c532705b0531b800444",
+      "tests/test_report_renderer.py": "fe29db4861ba2dcccabdc4a5cfd05fbcac55baed21a13a91e55ef511a65f85de"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T151936273851Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "Not a complete Markdown grammar equivalence proof; blockquote/list nesting, HTML comments and raw HTML await review.",
+    "Other table-selection priority, full SVG and PDF/visual acceptance remain unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

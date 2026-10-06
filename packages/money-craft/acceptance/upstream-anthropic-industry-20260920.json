@@ -1,0 +1,81 @@
+{
+  "schema": "money-craft.upstream-industry-intake.v1",
+  "status": "PASS_BOUNDED_REVIEW_NO_RUNTIME_ABSORPTION",
+  "date": "2026-09-20",
+  "source_id": "anthropic-financial-services",
+  "revision": "fca3cc8e6c5692ba576b46d7c4783b8443c2a223",
+  "live_status": "review_required; unchanged observed revision; incomplete declared scope",
+  "full_text_review": [
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/sector-overview/SKILL.md",
+      "url": "https://raw.githubusercontent.com/anthropics/financial-services/fca3cc8e6c5692ba576b46d7c4783b8443c2a223/plugins/vertical-plugins/equity-research/skills/sector-overview/SKILL.md",
+      "local_path": "local/upstream-review/20260920/anthropic-industry/0.md",
+      "git_blob": "edd4cf59305095b46b6feb580271a772fdfd1a59",
+      "sha256": "8d4b7b47c3fe1591bde0a4260b1ffbe489e7ddbe3eddd3dbeb046ce29f315608",
+      "bytes": 3458,
+      "review": "FULL_TEXT"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/idea-generation/SKILL.md",
+      "url": "https://raw.githubusercontent.com/anthropics/financial-services/fca3cc8e6c5692ba576b46d7c4783b8443c2a223/plugins/vertical-plugins/equity-research/skills/idea-generation/SKILL.md",
+      "local_path": "local/upstream-review/20260920/anthropic-industry/1.md",
+      "git_blob": "2dc90ce59e15cce9a811ef22ac2484a391c1f63e",
+      "sha256": "e5f49f0f513fc434bb3448c8a942f6f99f66457e425a65b9375bb230922e9a45",
+      "bytes": 3855,
+      "review": "FULL_TEXT"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/commands/sector.md",
+      "url": "https://raw.githubusercontent.com/anthropics/financial-services/fca3cc8e6c5692ba576b46d7c4783b8443c2a223/plugins/vertical-plugins/equity-research/commands/sector.md",
+      "local_path": "local/upstream-review/20260920/anthropic-industry/2.md",
+      "git_blob": "ffaf66c4a336292324d8b350e5a301af3022f24c",
+      "sha256": "35bdeb7c0ae58fa51ba7fc57d7d584137f6258ed1cbf27563b78400f2f2a61bb",
+      "bytes": 322,
+      "review": "FULL_TEXT"
+    }
+  ],
+  "license": {
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/anthropics/financial-services/fca3cc8e6c5692ba576b46d7c4783b8443c2a223/LICENSE",
+    "local_path": "local/upstream-review/20260920/anthropic-industry/3.md",
+    "git_blob": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "review": "HASH_REVALIDATED_UNCHANGED_FROM_PRIOR_REVIEW"
+  },
+  "git_blob_and_sha256_verified": true,
+  "reviewer": "parent_agent",
+  "independent_review": false,
+  "source_level_state_before": {
+    "reviewed_revision": null,
+    "absorbed_revision": "734150c2d9f312421611926f6e84c09d07ba13b1"
+  },
+  "source_level_state_after": {
+    "reviewed_revision": null,
+    "absorbed_revision": "734150c2d9f312421611926f6e84c09d07ba13b1"
+  },
+  "mechanism_decisions": [
+    {
+      "mechanism": "Bound scope, value chain, counterevidence, source date",
+      "decision": "ALREADY_COVERED",
+      "local": "skills/money-craft/references/high-growth-alpha.md"
+    },
+    {
+      "mechanism": "Direct/indirect beneficiaries, pure-play/diversified exposure and realistic served market",
+      "decision": "DEFER_UNTIL_REAL_CANDIDATE_RESEARCH",
+      "missing": "Aligned segment economics, market denominators and valuations; lithium case intentionally did not select stocks."
+    },
+    {
+      "mechanism": "Generic screening cutoffs, output page/count quotas and prescriptive long/short framing",
+      "decision": "REJECT_AS_DEFAULTS",
+      "reason": "Not supported as universal investment criteria or current task scope."
+    }
+  ],
+  "runtime_changed": false,
+  "skill_changed": false,
+  "limitations": [
+    "Three selected files only; full 73-file declared scope not reviewed.",
+    "No copied templates/code or new runtime dependencies.",
+    "Mechanism suitability judgment, not demonstrated investment performance."
+  ]
+}

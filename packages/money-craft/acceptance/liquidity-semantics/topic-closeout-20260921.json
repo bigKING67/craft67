@@ -1,0 +1,35 @@
+{
+  "schema": "money-craft.liquidity-topic-closeout.v1",
+  "date": "2026-09-21",
+  "status": "PASS_BOUNDED_TOPIC",
+  "full_core_acceptance": false,
+  "current_company_research_complete": false,
+  "synthetic_host_cases": 4,
+  "real_company_host_cases": 4,
+  "real_company_criteria": 18,
+  "real_company_calculations": 28,
+  "coverage": {
+    "entity_scope": "liquidity-real-byde",
+    "debt_classification": "liquidity-real-xiaomi",
+    "restricted_cash_double_count": "liquidity-real-amazon",
+    "maturity_and_availability": "liquidity-real-apple"
+  },
+  "evidence_receipts": {
+    "acceptance/liquidity-semantics/implicit-host-20260921.json": "6499bf1fa03c6d42cb2214b251d5a86ee89e23d9dff4f13aa24e72c5f485d3dc",
+    "acceptance/liquidity-semantics/real-transfer-20260921.json": "0795775d3ef5bed218bbab53d005895b60db33d794eb38966336be8bfcf2347e",
+    "acceptance/liquidity-semantics/real-transfer-b-20260921.json": "e777705f9f0263231fa6b8ed0e4c79c8cca449891e79681dffa60e258cf12cb5"
+  },
+  "reopen_triggers": [
+    "Observed incorrect output in actual use",
+    "Relevant Skill or routing change",
+    "New accounting/disclosure structure not covered by existing cases"
+  ],
+  "limits": [
+    "Historical 2025 disclosures, not current research.",
+    "One issuer source per case, no independent financial-data cross-check.",
+    "Authored cases and parent semantic review, not held-out or independent review.",
+    "Prompt omits Skill entry and criteria but evidence paths reveal repo name; host rules direct selection.",
+    "Trace review found no criteria or other-answer reads; no filesystem isolation guarantee.",
+    "Raw local evidence required for replay."
+  ]
+}

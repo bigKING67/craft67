@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/reference-binding.schema.json",
+  "title": "Creative Craft Reference Binding v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "binding_id",
+    "project_id",
+    "reference_pack_id",
+    "pack_version",
+    "source",
+    "snapshot",
+    "selected_reference_ids",
+    "imported_at",
+    "imported_by",
+    "previous_binding_id",
+    "reason"
+  ],
+  "properties": {
+    "schema_version": {"const": "creative-craft.reference-binding.v1"},
+    "binding_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "reference_pack_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "pack_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "source": {
+      "type": "object",
+      "required": ["repository_or_uri", "ref", "commit", "pack_sha256"],
+      "properties": {
+        "repository_or_uri": {"type": ["string", "null"]},
+        "ref": {"type": ["string", "null"]},
+        "commit": {"type": ["string", "null"]},
+        "pack_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "snapshot": {
+      "type": "object",
+      "required": ["path", "tree_sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "tree_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "selected_reference_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "imported_at": {"type": "string", "minLength": 1},
+    "imported_by": {"type": "string", "minLength": 1},
+    "previous_binding_id": {"type": ["string", "null"]},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

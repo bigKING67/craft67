@@ -1,0 +1,118 @@
+{
+  "schema_version": "creative-craft.brief.v1",
+  "brief_id": "northstar-airlift-launch-v1",
+  "status": "locked",
+  "project": {
+    "name": "Northstar AirLift launch",
+    "owner": "Fictional Brand Team"
+  },
+  "objective": {
+    "business": "Introduce a fictional premium volumizing shampoo and create a reusable launch asset system.",
+    "communication": "Make natural-looking, mobile volume feel visibly different from stiff or over-styled volume."
+  },
+  "audience": {
+    "primary": "Urban professionals who value polished self-care but reject routines that look effortful.",
+    "context": "They encounter the asset in a fast vertical feed and decide within seconds whether the product feels premium and relevant.",
+    "current_belief": "Volumizing products often trade softness and movement for a rigid styled look."
+  },
+  "tension": {
+    "statement": "The audience wants visible control while preserving the appearance of ease.",
+    "evidence_state": "HYPOTHESIZED"
+  },
+  "insight": {
+    "statement": "For this audience, the most premium effort is effort that disappears from view.",
+    "evidence_state": "HYPOTHESIZED"
+  },
+  "support": [
+    {
+      "claim": "The fictional product is positioned around light, touchable volume rather than rigid hold.",
+      "evidence_state": "SPECIFIED",
+      "source": "fictional product brief"
+    }
+  ],
+  "proposition": "Visible lift that still moves like you.",
+  "desired_response": {
+    "feel": "Light, composed, and curious.",
+    "think": "This is volume without the visibly styled stiffness I avoid.",
+    "do": "Watch the product demonstration and explore the launch offer."
+  },
+  "channels": [
+    "vertical social video",
+    "social feed image",
+    "product landing page"
+  ],
+  "deliverables": [
+    {
+      "id": "hero-image",
+      "type": "image",
+      "channel": "social feed",
+      "placement": "launch post"
+    },
+    {
+      "id": "hero-video",
+      "type": "video",
+      "channel": "vertical social",
+      "placement": "in-feed"
+    }
+  ],
+  "mandatories": {
+    "include": [
+      "fictional AirLift bottle",
+      "Northstar wordmark",
+      "clear product silhouette"
+    ],
+    "exact_copy": [
+      "VOLUME THAT MOVES"
+    ]
+  },
+  "constraints": {
+    "must": [
+      "preserve fictional bottle geometry and label",
+      "show movement as proof",
+      "keep the world restrained and contemporary"
+    ],
+    "must_not": [
+      "make therapeutic or hair-growth claims",
+      "use stiff pageant-hair styling",
+      "copy a real campaign or identifiable celebrity"
+    ]
+  },
+  "references": [
+    {
+      "asset_id": "product-pack-001",
+      "role": "product geometry, label, cap, and liquid color"
+    },
+    {
+      "asset_id": "light-ref-001",
+      "role": "warm directional light and shadow softness only"
+    },
+    {
+      "asset_id": "motion-ref-001",
+      "role": "hair movement rhythm and camera acceleration only"
+    }
+  ],
+  "success": {
+    "evidence": [
+      "brand approval",
+      "output fidelity inspection",
+      "controlled hook test"
+    ],
+    "metrics": [
+      "3-second hold rate",
+      "product-page click-through rate"
+    ]
+  },
+  "assumptions": [
+    "Audience tension and insight are working hypotheses until research or test evidence is supplied."
+  ],
+  "approvals": [
+    {
+      "role": "brand",
+      "status": "approved-for-fictional-example"
+    },
+    {
+      "role": "rights",
+      "status": "fictional-assets-only"
+    }
+  ]
+}

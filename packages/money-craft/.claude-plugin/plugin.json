@@ -1,0 +1,17 @@
+{
+  "name": "money-craft",
+  "version": "0.3.0",
+  "description": "Evidence-first global investment research and wealth decision discipline.",
+  "author": {
+    "name": "bigKING67"
+  },
+  "homepage": "https://github.com/bigKING67/money-craft",
+  "repository": "https://github.com/bigKING67/money-craft",
+  "license": "MIT",
+  "keywords": [
+    "investment-research",
+    "global-investing",
+    "portfolio-analysis",
+    "agent-skill"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/data-response.v1.json",
+  "title": "Money Craft data response",
+  "type": "object",
+  "required": [
+    "schema",
+    "ok",
+    "provider",
+    "operation",
+    "request_id",
+    "fetched_at",
+    "source_timestamp_ms",
+    "parameters",
+    "data",
+    "warnings"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.data-response.v1"},
+    "ok": {"type": "boolean"},
+    "provider": {"type": ["string", "null"]},
+    "operation": {"type": ["string", "null"]},
+    "request_id": {"type": ["string", "null"]},
+    "fetched_at": {"type": "string", "format": "date-time"},
+    "source_timestamp_ms": {"type": ["integer", "string", "null"]},
+    "parameters": {"type": "object"},
+    "data": {"type": ["object", "null"]},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "error": {
+      "type": "object",
+      "required": ["kind", "code", "message", "retryable"],
+      "properties": {
+        "kind": {"type": "string"},
+        "code": {"type": ["integer", "string", "null"]},
+        "message": {"type": "string"},
+        "retryable": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"ok": {"const": false}}},
+      "then": {"required": ["error"]}
+    }
+  ],
+  "additionalProperties": true
+}
+

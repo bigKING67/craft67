@@ -1,0 +1,42 @@
+{
+  "schema": "whoami.chart.v1",
+  "chartId": "ec8a7360a77637e1e65e40fbe7fd5415e92687b321e20224aa5047f600bd92fe",
+  "status": "needs-input",
+  "input": {
+    "calendar": "solar",
+    "date": "2000-01-15",
+    "leapMonth": false,
+    "time": null,
+    "uncertaintyMinutes": 0,
+    "place": "合成地点（东经120度）",
+    "longitude": 120,
+    "timeZone": "Asia/Shanghai",
+    "gender": "female",
+    "timeBasis": "civil",
+    "dayBoundary": "zi",
+    "dstDisambiguation": "reject"
+  },
+  "policy": {
+    "baziYear": "lichun-absolute-instant",
+    "baziMonth": "jie-absolute-instant",
+    "dayBoundary": "zi",
+    "solarModel": "NOAA fractional-year",
+    "ziweiYear": "lunar-new-year"
+  },
+  "engines": {
+    "whoami": "0.2.0",
+    "calendar": "lunar-typescript@1.8.6",
+    "ziwei": "iztro@2.6.1",
+    "time": "@js-temporal/polyfill@0.5.1",
+    "tzdata": "2026b",
+    "node": "24.18.0"
+  },
+  "years": [
+    2026
+  ],
+  "questions": [
+    "出生时间未知：请提供时辰或大致时间范围；不能使用中午替代。"
+  ],
+  "warnings": [],
+  "candidates": []
+}

@@ -1,0 +1,261 @@
+{
+  "schema": "money-craft.research-lifecycle-acceptance.v1",
+  "date": "2026-09-16",
+  "overall": "PASS_BOUNDED_CLI_LIFECYCLE",
+  "runs": [
+    {
+      "runtime": "source",
+      "verdict": "PASS",
+      "commands": 21,
+      "receipts": [
+        {
+          "stage": "initialize",
+          "command": "init",
+          "exit_code": 0
+        },
+        {
+          "stage": "initial-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "missing-evidence-block",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "import-S11",
+          "command": "import-official",
+          "exit_code": 0
+        },
+        {
+          "stage": "import-S12",
+          "command": "import-official",
+          "exit_code": 0
+        },
+        {
+          "stage": "import-S13",
+          "command": "import-official",
+          "exit_code": 0
+        },
+        {
+          "stage": "duplicate-import-block",
+          "command": "import-official",
+          "exit_code": 4
+        },
+        {
+          "stage": "wrong-url-block",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "finalize",
+          "command": "finalize",
+          "exit_code": 0
+        },
+        {
+          "stage": "completed-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "idempotent-finalize",
+          "command": "finalize",
+          "exit_code": 0
+        },
+        {
+          "stage": "legacy-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "legacy-finalize",
+          "command": "finalize",
+          "exit_code": 0
+        },
+        {
+          "stage": "receipt-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "receipt-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "path-status",
+          "command": "status",
+          "exit_code": 4
+        },
+        {
+          "stage": "path-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "url-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "url-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "evidence-status",
+          "command": "status",
+          "exit_code": 4
+        },
+        {
+          "stage": "evidence-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        }
+      ],
+      "expected_error_kinds_asserted": true
+    },
+    {
+      "runtime": "installed",
+      "verdict": "PASS",
+      "commands": 21,
+      "receipts": [
+        {
+          "stage": "initialize",
+          "command": "init",
+          "exit_code": 0
+        },
+        {
+          "stage": "initial-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "missing-evidence-block",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "import-S11",
+          "command": "import-official",
+          "exit_code": 0
+        },
+        {
+          "stage": "import-S12",
+          "command": "import-official",
+          "exit_code": 0
+        },
+        {
+          "stage": "import-S13",
+          "command": "import-official",
+          "exit_code": 0
+        },
+        {
+          "stage": "duplicate-import-block",
+          "command": "import-official",
+          "exit_code": 4
+        },
+        {
+          "stage": "wrong-url-block",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "finalize",
+          "command": "finalize",
+          "exit_code": 0
+        },
+        {
+          "stage": "completed-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "idempotent-finalize",
+          "command": "finalize",
+          "exit_code": 0
+        },
+        {
+          "stage": "legacy-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "legacy-finalize",
+          "command": "finalize",
+          "exit_code": 0
+        },
+        {
+          "stage": "receipt-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "receipt-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "path-status",
+          "command": "status",
+          "exit_code": 4
+        },
+        {
+          "stage": "path-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "url-status",
+          "command": "status",
+          "exit_code": 0
+        },
+        {
+          "stage": "url-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        },
+        {
+          "stage": "evidence-status",
+          "command": "status",
+          "exit_code": 4
+        },
+        {
+          "stage": "evidence-finalize",
+          "command": "finalize",
+          "exit_code": 4
+        }
+      ],
+      "expected_error_kinds_asserted": true
+    }
+  ],
+  "source_install_parity": true,
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "df1c26b46dc948125a9270afed1a634ae889a9665090f0ffa02f6880e381a60c",
+    "tests/test_research_run.py": "d9fecf4fd232502003db87abeb31c639c0b4b1bdad33d8f68adf879870bdfd43"
+  },
+  "boundaries": [
+    "Missing official evidence blocks finalize.",
+    "Three official sources imported via CLI; repeated import refuses to overwrite.",
+    "Incorrect public URL blocks receipt creation; corrected draft can finalize.",
+    "Provider disabled remains evidence PARTIAL; claim support/freshness remain UNVERIFIED.",
+    "Completed status and repeated finalize preserve all workspace file hashes.",
+    "Legacy receipt without assessment remains accepted without rewrites.",
+    "Receipt metadata, external evidence path, mismatched URL and changed source bytes block completion/refinalization.",
+    "Negative variants use isolated copies; original sealed workspace unchanged."
+  ],
+  "limits": [
+    "Synthetic local PDF/HTML fixtures; no issuer semantics or current research proof.",
+    "Provider disabled, status declares no network; not kernel-enforced network isolation.",
+    "This is .research core workspace completion, not the separate formal money archive protocol.",
+    "No host natural-language rerun or new runtime implementation/install in this batch."
+  ],
+  "validation": {
+    "full_tests": 266,
+    "skips": 0,
+    "source_checks": 19,
+    "package_checks": 8,
+    "final_assertion_change": "After full run, added exact error-kind assertions and reran the complete 21-step lifecycle on both source and installed CLIs."
+  }
+}

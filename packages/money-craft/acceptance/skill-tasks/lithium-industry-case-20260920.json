@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "lithium-industry-demand-price",
+      "status": "READY_HISTORICAL",
+      "prompt": "请判断：全球电动车销量增长，是否足以证明锂需求增长并支撑锂价上涨？研究范围是全球锂矿/锂盐—电池—电动车三个环节，回看2024年，历史研究截止2025-05-31。请结合指定官方材料给出行业判断、关键供需计算、矛盾证据和下一观察条件。约800汉字正文，计算另附。不选股、不提供估值、目标价或交易，不做完整产业链报告。",
+      "facts": "仅以下原始文件是事实材料，可用同目录同名txt定位，但核对PDF原文和脚注。实际于2026-09-20回放，网页/PDF为事后捕获，未证明历史日原始快照一致；不作预测成绩。两机构视角不同不自动代表每个指标有独立双源，保留统计来源血缘限制。不得读取验收标准、其他会话答案或主代理报告；允许正常Skill引用及计算工具。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/evidence/20260920-lithium/iea.html",
+          "url": "https://www.iea.org/reports/global-ev-outlook-2025/executive-summary",
+          "sha256": "5b229ea86c942ea8e520e65c39b966affa88e8dccdef14266ad12c5da3dd73a7",
+          "publication_label": "2025-05-14",
+          "captured_at": "2026-09-20T05:53:06.931552+00:00",
+          "bytes": 262448,
+          "post_hoc": true
+        },
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-lithium/usgs.pdf",
+          "url": "https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-lithium.pdf",
+          "sha256": "7ec5654133aa5ef64fcfd6d4d23ac64a58f06f51bf1231576ebd8f595ad9257b",
+          "publication_label": "2025-01",
+          "captured_at": "2026-09-20T05:53:06.931982+00:00",
+          "bytes": 746901,
+          "post_hoc": true
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "自然选用安装Skill及行业引用、有效路由；限定全球三环节与历史窗口",
+        "销量与锂需求不作机械同比映射；2025展望与2024观察分开",
+        "产量排除美国且是锂含量吨，消费估计/修订基数、库存与口径差异明确，差额不认证为市场盈余",
+        "碳酸锂价格与锂含量数量分开；不同地域、时段及现货/合同不可拼接为同一价格序列",
+        "供给扩张与需求增长反证需求必然带来涨价；不同机构不冒充同指标独立交叉验证",
+        "有反方、具体下一窗口与可观察条件；无公司alpha、仓位或确定价格预测"
+      ]
+    }
+  ]
+}

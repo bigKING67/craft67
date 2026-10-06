@@ -1,0 +1,83 @@
+{
+  "version": 4,
+  "scale": {
+    "min": 0,
+    "max": 5
+  },
+  "pass": {
+    "minimum_total": 21,
+    "minimum_dimension": 2,
+    "hard_failures_must_be_empty": true
+  },
+  "dimensions": {
+    "strategic_coherence": "The answer makes explicit choices that connect objective, audience/problem, mechanism, and outcome without internal contradiction.",
+    "evidence_and_assumptions": "The answer separates confirmed facts, assumptions, currentness limits, and evidence needed for material claims.",
+    "mechanism_and_actionability": "The recommendation explains how it works and provides executable owners, sequence, gates, or decision rules appropriate to the task.",
+    "specialist_depth": "The answer demonstrates domain-specific judgment rather than generic channel lists or empty advice.",
+    "measurement_and_learning": "The answer defines meaningful outcomes, guardrails, attribution or learning limits, and a review decision.",
+    "risk_and_governance": "The answer addresses material commercial, brand, rights, compliance, operational, reputation, or consumer risks."
+  },
+  "hard_failures": [
+    "fabricated current fact, source, test, endorsement, certification, or market result",
+    "absolute profit or performance guarantee",
+    "material rights, reputation, compliance, refund, privacy, or safety risk ignored when directly relevant",
+    "recommendation contradicts stated economics or evidence",
+    "answer is mostly generic advice without a decision mechanism",
+    "analytics answer independently authorizes budget or stop/scale actions without an existing approved guardrail and accountable action owner",
+    "material quantitative business inference mixes metric populations or numerator/denominator scopes without explicitly establishing the required equality; a generic same-period or same-attribution-window caveat is insufficient"
+  ],
+  "domain_emphasis": {
+    "commerce_orchestration": [
+      "unit economics, assortment, pricing, and channel jobs",
+      "cross-Commerce and Marketing tradeoffs",
+      "refund, fulfillment, and recovery readiness",
+      "shared measurement, owners, dependencies, and decision gates"
+    ],
+    "marketing_orchestration": [
+      "audience, insight, positioning, and message",
+      "brand, content, paid growth, CRM, and campaign integration",
+      "budget and long-term versus short-term priority tradeoffs",
+      "shared measurement, owners, dependencies, and decision gates"
+    ],
+    "commercial": [
+      "unit economics",
+      "decision thresholds",
+      "channel and assortment tradeoffs",
+      "stop and scale conditions"
+    ],
+    "operations": [
+      "executable operating sequence",
+      "owner and escalation",
+      "inventory and fulfillment",
+      "exception recovery"
+    ],
+    "analytics": [
+      "metric definitions",
+      "data confidence",
+      "alternative explanations",
+      "next evidence and decision use",
+      "Respect domain ownership: analytics supplies facts and conditional decision implications; it must not invent or authorize budget, stop/scale or operational action thresholds. Requests for an accountable owner decision and cited existing approved guardrails are valid; do not penalize absence of an invented numeric threshold.",
+      "For ratio-based reconstruction, distinguish total channel GMV from the attributed GMV numerator of paid ROI. Unknown attributed growth means spend growth is unknown. An explicitly hypothetical calculation that states the missing same-population assumption and does not treat it as observed or likely is valid. A material missing assumption must trigger the quantitative-scope hard failure even if the rest of the answer is strong; mentioning it only in summary is insufficient."
+    ],
+    "brand": [
+      "brand and audience fit",
+      "rights and exclusivity",
+      "reputation and exit",
+      "activation and brand-asset measurement"
+    ],
+    "content": [
+      "content system",
+      "creator role and brief",
+      "proof and rights",
+      "search/landing handoff",
+      "asset learning"
+    ],
+    "growth": [
+      "bounded experiment",
+      "marginal economics",
+      "attribution or incrementality",
+      "stop and scale rules",
+      "lifecycle value"
+    ]
+  }
+}

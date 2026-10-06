@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/research-finalize.schema.json",
+  "title": "Money Craft research finalization result",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "run_id",
+    "evidence_manifest",
+    "audits",
+    "provider_gaps",
+    "receipt",
+    "automatic_trading"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.research-finalize.v1"},
+    "valid": {"type": "boolean"},
+    "run_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "evidence_manifest": {"type": "object"},
+    "audits": {"type": "object"},
+    "provider_gaps": {"type": "array", "items": {"type": "string"}},
+    "receipt": {"type": ["object", "null"]},
+    "automatic_trading": {"const": false}
+  },
+  "additionalProperties": false
+}

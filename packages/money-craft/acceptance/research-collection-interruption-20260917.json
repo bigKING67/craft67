@@ -1,0 +1,48 @@
+{
+  "schema": "money-craft.research-collection-interruption.v1",
+  "date": "2026-09-17",
+  "scope": "Registered capture without normalized result / production UUID staging detection; complete-result resume after event failure",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "4851cd54ba46345075e527affa61e3ba20546119939c4b1272ffde98db498dff",
+    "tests/test_research_run.py": "98821ebeb423d1f75764ffc642874f5f5df538ee8ffecc3639f25319f5a51a8c",
+    "skills/money-craft/references/company-research.md": "63905778bb3f741d9d42115373080bfb88891e87241120915f0b7cc1dbcffbd7"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Capture without normalized output was not detected by status; collect resume could invoke provider again before capture collision.",
+    "after": "load_workspace rejects incomplete_collection before CLI preflight or provider runner; preserve artifacts, no reconstruction or cleanup."
+  },
+  "validation": {
+    "research_tests": 45,
+    "full_tests": 308,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regression": "Old runtime did not reject capture without normalized result.",
+    "process_and_cli": "Kill real collection process with offline FakeProviderRunner before normalized publication; real CLI collect/status/finalize reject incomplete_collection exit4 and preserve workspace bytes.",
+    "resume": "All normalized outputs/captures present, event write failed: resume uses zero runner calls, records summary/event and preserves evidence bytes.",
+    "fixture_correction": "Removed redundant mkdir of init-created captures directory before final passing suites."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 45,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "4851cd54ba46345075e527affa61e3ba20546119939c4b1272ffde98db498dff",
+      "tests/test_research_run.py": "98821ebeb423d1f75764ffc642874f5f5df538ee8ffecc3639f25319f5a51a8c"
+    },
+    "production_compatibility": "Offline capture_result fixtures verified published capture and actual UUID staging naming detected. Reviewer-reported temporary fixtures."
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T062020882918Z"
+  },
+  "limits": [
+    "No live Provider network proof.",
+    "Unknown names, normalized reconstruction, automatic cleanup and other transactions remain outside this fix.",
+    "Zero-request resume requires complete outputs; missing untouched sources can still require collection.",
+    "Lifecycle remains PARTIAL; Windows, network filesystem and power-loss durability unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

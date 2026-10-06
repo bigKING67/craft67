@@ -1,0 +1,44 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "real-commercial-policies",
+      "status": "READY_HISTORICAL",
+      "prompt": "请比较德州仪器（US-NASDAQ:TXN）和Microchip（US-NASDAQ:MCHP）的给定披露，说明订单、交付与收入兑现能支持多强的经营判断，以及下一步应核验什么。两者均为普通股、交易和报告币种USD。历史研究截止2025-04-30，本次为2026年的材料回放；不需要完整公司报告、行情或买卖建议，请简洁回答。",
+      "facts": "投资事实仅限两份发行人正式文件的原文摘录。S01为TI 2024年度报告收入确认政策；S02为Microchip截至2024-09-30季度10-Q（2024-11-05提交）的订单风险与项目条款。两份PDF直接下载均返回403；输入是检索工具提取并带原页/行号的文本，不是原始PDF，本地哈希只校验提取文件。原件历史版本一致性未独立核验；不得读取主代理报告、测试标准或其他会话答案。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/evidence/20260920-ti-commercial/ti-excerpt.txt",
+          "sha256": "9a9020ac7c12a27b3954ba4c0dbea9d1da3f96f9a1b6217bd4b2546de754813c",
+          "url": "https://investor.ti.com/static-files/b38dfb94-9aaa-4fda-95a4-06e83fab06a0",
+          "capture_kind": "web_tool_pdf_text_extract_not_original_pdf",
+          "captured_on": "2026-09-20",
+          "raw_capture_sha256": "412a2ffbf52bf42696a203232f9b4dffd4d704ace7bd8bf08d57aba923a25246"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/evidence/20260920-ti-commercial/microchip-excerpt.txt",
+          "sha256": "ca2f25b5872a345fa104562c2805f7595bff416547ae76503975bf75ebab88ab",
+          "url": "https://www.microchip.com/content/dam/mchp/documents/financial/filings/fy25/10-Q%20Filed%2011-05-2024.pdf",
+          "capture_kind": "web_tool_pdf_text_extract_not_original_pdf",
+          "captured_on": "2026-09-20",
+          "raw_capture_sha256": "61a252f7af95ce05b30bde4ea156a74399ef9957018327e99cb849f344b00b5b"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": false
+      },
+      "criteria": [
+        "自动加载全局Skill，真实路由有效且公开来源链接完整",
+        "TI普通分销商销售控制权转移时确认，不强行要求所有分销商售出给终端才确认；付款不以再销售为条件",
+        "TI寄售在客户或分销商提取时控制权转移；存入寄售地点不等于收入，不与普通分销混淆",
+        "Microchip区分原PSP与2023修改版本条件及2024停止新增PSP；不误称LTSA一并终止",
+        "不可取消约束与协商延后/拒收执行风险并存，不保证收入也不武断否认合同约束",
+        "公司与时期分别讨论，无跨公司拼接、虚构订单金额/利润或当前交易建议；文本捕获限制如实披露"
+      ]
+    }
+  ]
+}

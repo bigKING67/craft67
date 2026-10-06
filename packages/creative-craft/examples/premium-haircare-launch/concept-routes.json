@@ -1,0 +1,92 @@
+{
+  "schema_version": "creative-craft.concept-routes.v1",
+  "brief_id": "northstar-airlift-launch-v1",
+  "routes": [
+    {
+      "route_id": "motion-is-proof",
+      "name": "Motion Is Proof",
+      "premise": "The hair's freedom of movement is the product demonstration.",
+      "tension_or_insight": "Visible volume usually looks controlled by stiffness; this route proves control through movement instead.",
+      "mechanism": "proof under motion",
+      "hook": "A still, polished silhouette breaks into an unexpectedly fluid turn.",
+      "architecture": "stillness -> movement test -> product reveal -> line",
+      "visual_world": "Warm minimal studio, close material detail, restrained air movement, clean negative space.",
+      "copy_world": "Short declarative proof language.",
+      "sound_world": "Quiet room tone, a soft air rise, one restrained low-frequency resolve.",
+      "hero_moment": "Hair arcs freely while the silhouette remains lifted and composed.",
+      "asset_system": [
+        "motion test films",
+        "hair-arc stills",
+        "product-and-air macros",
+        "short proof cutdowns"
+      ],
+      "feasibility": {
+        "image": "Strong as a frozen motion trace.",
+        "video": "Strong; movement directly carries the mechanism."
+      },
+      "risks": [
+        "Movement may look like a generic beauty shot unless the product proof is explicit.",
+        "Generated hair physics require inspection."
+      ],
+      "why_it_may_win": "The product benefit is demonstrated by the same visual behavior that creates attention.",
+      "falsification": "Reject if viewers read the movement as styling spectacle rather than light, touchable volume.",
+      "decision": "SELECT"
+    },
+    {
+      "route_id": "quiet-lift",
+      "name": "The Quiet Lift",
+      "premise": "Invisible air becomes a calm architectural force around the product and hair.",
+      "tension_or_insight": "Premium control is desirable when its mechanism stays visually quiet.",
+      "mechanism": "visual metaphor",
+      "hook": "Fine translucent planes rise almost imperceptibly from a still composition.",
+      "architecture": "invisible force appears -> structure lifts -> product revealed as source",
+      "visual_world": "Soft translucent layers, warm white space, precision still life, barely visible motion.",
+      "copy_world": "Poetic but precise.",
+      "sound_world": "Minimal air texture and delicate material resonance.",
+      "hero_moment": "Hair and translucent planes share one upward geometry without looking rigid.",
+      "asset_system": [
+        "architectural stills",
+        "slow material studies",
+        "premium product tableaux"
+      ],
+      "feasibility": {
+        "image": "Excellent.",
+        "video": "Good but vulnerable to over-artifice."
+      },
+      "risks": [
+        "May communicate design sophistication more strongly than product proof."
+      ],
+      "why_it_may_win": "Distinctive premium world with a recognizable campaign device.",
+      "falsification": "Reject if the metaphor obscures the practical benefit.",
+      "decision": "SELECT_FOR_TEST"
+    },
+    {
+      "route_id": "before-the-mirror-notices",
+      "name": "Before the Mirror Notices",
+      "premise": "The result appears inside a real morning before the person has time to perform for the mirror.",
+      "tension_or_insight": "Effort feels luxurious when it removes self-conscious checking.",
+      "mechanism": "documentary observation",
+      "hook": "An imperfect, candid turn catches naturally lifted hair before a mirror pose begins.",
+      "architecture": "real morning moment -> accidental proof -> subtle product reveal",
+      "visual_world": "Natural apartment light, intimate camera-roll framing, quiet realism.",
+      "copy_world": "Human, observational, understated.",
+      "sound_world": "Domestic ambience, fabric movement, no overt beauty-ad score.",
+      "hero_moment": "The subject turns away from the mirror and the hair holds airy movement.",
+      "asset_system": [
+        "morning vignettes",
+        "candid stills",
+        "creator adaptations"
+      ],
+      "feasibility": {
+        "image": "Good.",
+        "video": "Strong with live or controlled documentary production."
+      },
+      "risks": [
+        "Can lose premium distinction or become generic creator content."
+      ],
+      "why_it_may_win": "High audience relatability and low-advertising resistance.",
+      "falsification": "Reject if brand recognition and product memory are too weak.",
+      "decision": "HOLD"
+    }
+  ]
+}

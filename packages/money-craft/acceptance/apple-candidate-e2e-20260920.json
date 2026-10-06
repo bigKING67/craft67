@@ -1,0 +1,106 @@
+{
+  "schema": "money-craft.candidate-company-e2e-review.v1",
+  "checked_at": "2026-09-20T12:21:37.086344+00:00",
+  "status": "FAIL_E2E_ARCHIVE_RUNTIME_AND_DELIVERY_GATES",
+  "research_core": "PASS_BOUNDED_ACTUAL_HOST",
+  "elapsed_seconds": 955.735,
+  "exit_code": 0,
+  "timed_out": false,
+  "candidate_unchanged": true,
+  "global_install_unchanged": true,
+  "parent_research_intervention": false,
+  "source_candidate_files": 75,
+  "criteria": [
+    {
+      "id": "E01",
+      "status": "PASS",
+      "reason": "Frozen candidate explicitly read and invoked; route succeeded; not implicit discovery"
+    },
+    {
+      "id": "E02",
+      "status": "PASS_BOUNDED",
+      "reason": "Seven saved responses hashed; historical cutoff/post-hoc disclosed; duplicate filing and single-price-source limits retained"
+    },
+    {
+      "id": "E03",
+      "status": "PASS_BOUNDED",
+      "reason": "Parent replay: 78 arithmetic checks and core completion; extraction/semantic coverage not fully independently certified"
+    },
+    {
+      "id": "E04",
+      "status": "PARTIAL",
+      "reason": "Parent read business/cash/counterevidence prose and limitations; no independent full semantic or extraction review. Comparable operating margin trend is not presented despite available inputs."
+    },
+    {
+      "id": "E05",
+      "status": "PASS_BOUNDED",
+      "reason": "Scenarios explicitly hypothetical; historical unadjusted close and share-date mismatch disclosed; no price target or verified margin of safety claimed"
+    },
+    {
+      "id": "E06",
+      "status": "PASS",
+      "reason": "Same host self-corrected input failures and completed candidate core; parent read-only replay agrees"
+    },
+    {
+      "id": "E07",
+      "status": "FAIL",
+      "reason": "Archive fixed Python symlink target missing; renderer fallback overstates evidence and required derived correction; full visual gates not complete; no sealed revision"
+    },
+    {
+      "id": "E08",
+      "status": "PARTIAL",
+      "reason": "Ledger and raw/core readback pass, but no immutable formal revision exists"
+    }
+  ],
+  "remaining_actions": [
+    "Support explicit validated archive renderer Python runtime without repairing unrelated global symlinks",
+    "Remove or neutralize unsupported default renderer evidence claims",
+    "Resolve project-authority visual gate and operating-margin semantic coverage before full E2E assertion"
+  ],
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/host/prompt.txt",
+      "sha256": "3ca1ad4126ceed00bfc8eef7e6460b0cc9ff745f582817486da221bcf9c2fa06"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/host/host.json",
+      "sha256": "b8b23a71dafc92aff5a0eb5c23016e880c4f79e25b9ebfc806145122acf56cde"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/host/answer.md",
+      "sha256": "c179dc5ba125fc000c68b7a78202a5b4ced18259c6b40c954a20cf13898f2441"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/parent-review/core-status.json",
+      "sha256": "6bf2bfd1a7b42c2fcb2c6c798a6d591c99ae17764ae9d3755f179d03ea895205"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/parent-review/financial-audit.json",
+      "sha256": "8e05ec43f0cb00f81611cc1b4c7854ecf4ede3d68ec4988ead0cf98a197c2886"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/parent-review/source-readback.json",
+      "sha256": "131907f0a4ef37ccd30367dc884ae8eb8ffcc5256a08f9cc1779d8bf7bc1e86f"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/parent-review/ledger-verify.json",
+      "sha256": "aea6a710ebf9d63aae20562ff121472dfca9d4e3c4f877dbd983e62b39b2ec31"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/host/workspace/report.md",
+      "sha256": "69c3b43336ba72df0a582ff14f09a3db4a4d6971c81bc26b0a874240b240fb18"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/host/workspace/delivery-status.json",
+      "sha256": "be68ff7e1cd03f90b1a9e7e8cea98256fb4cdc353f9f3695f8bb3be3df9812e4"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/host/workspace/diagnostics/archive-runtime-blocker.json",
+      "sha256": "08a8d2c13cfaa1650da5b14d635c424f693edf7b92e6612d3a8e6244f57b775f"
+    },
+    {
+      "path": "local/skill-evals/20260920-apple-candidate-e2e/host/workspace/diagnostics/reading-corrections.json",
+      "sha256": "76bd775ce0434535e795d317186256a395c13d82566b64193df2e48de3a399e4"
+    }
+  ]
+}

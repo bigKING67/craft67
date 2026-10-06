@@ -1,0 +1,42 @@
+{
+  "schema": "money-craft.tracking-base-review.v1",
+  "date": "2026-09-17",
+  "scope": "Tracking finalize stale-base rejection and recovery; bounded review, not complete tracking integrity review",
+  "finding": {
+    "severity": "P2",
+    "before": "Two workspaces based on one old thesis both sealed as t0001/t0002 and verify returned true.",
+    "after": "Under tracking lock, validated previous hash must equal current thesis bytes before allocating/publishing a revision; stale_previous preserves workspace/history.",
+    "status": "FIXED_LOCAL"
+  },
+  "source_hashes": {
+    "skills/money-craft/scripts/tracking_workflow.py": "54548819c22514676b2bdc92c7f05aa8b63e6ce8c2f8f45b3e1ec80da7fe4b09",
+    "skills/money-craft/references/tracking-workflow.md": "06cb63bd2dbc9781f1b089a003078c28f7054247ac19e05c583fdbac37463d8a",
+    "tests/test_tracking_workflow.py": "7587914fa9556ccd62ea9f9a65ed4d048a169615d3c08c9fb104d9c16edb2413"
+  },
+  "validation": {
+    "tracking_tests": 16,
+    "full_tests": 267,
+    "skips": 0,
+    "package_checks": 8,
+    "default_cli": "Two prepared workspaces submitted sequentially; stale rejected, all files unchanged, fresh initialization plus appended record seals t0002."
+  },
+  "independent_review": {
+    "agent": "tracking_base_review",
+    "verdict": "NO_BLOCKING_FINDINGS",
+    "source_sha256": "54548819c22514676b2bdc92c7f05aa8b63e6ce8c2f8f45b3e1ec80da7fe4b09",
+    "tests": 16,
+    "additional_observation": "Reviewer reported two concurrently started actual CLI processes: one success, one stale_previous; retry preserves paths, content and permissions; verify passes.",
+    "evidence_boundary": "Independent reviewer report; raw concurrent-process transcript not registered in this artifact."
+  },
+  "limits": [
+    "No schema change; existing v1/v2 pointer support retained.",
+    "Content hash, not revision identity, determines whether baseline changed.",
+    "Windows locks, network filesystems, crash recovery, external writers bypassing locks and general history-chain integrity not verified.",
+    "Existing HTTPError fixture cleanup warnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T022640383754Z"
+  }
+}

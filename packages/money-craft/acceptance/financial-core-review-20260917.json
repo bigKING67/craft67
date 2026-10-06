@@ -1,0 +1,64 @@
+{
+  "schema": "money-craft.financial-core-review.v1",
+  "date": "2026-09-17",
+  "scope": "Whole financial_rigor and financial_reconciliation modules plus audit tests; bounded review",
+  "source_hashes": {
+    "skills/money-craft/scripts/financial_rigor.py": "44bbdf45d5b8b08737296cb0018683971c0ba62872bce9e1968be1651176c44b",
+    "skills/money-craft/scripts/financial_reconciliation.py": "9bf8642e0cdc9a560e4d248efeaa11f749cd64716074d1806e1fdf3f985394d9",
+    "skills/money-craft/references/financial-data-and-evidence.md": "6c14f8791c47064ed6bde752758c48633f3edcd2dca7d3c3a98bf83fb2a2ce16",
+    "tests/test_audits.py": "b416bb2a43bd5dfa8796c2a11915d9802d7edc36b8cacfff3bc3e938d20f0c14"
+  },
+  "findings": [
+    {
+      "before": "Multiline or malformed receipt comments skipped, including malformed beside valid receipt.",
+      "after": "Parse all closed markers across lines and reject unterminated/nested markers."
+    },
+    {
+      "before": "Raw reconciliation Decimal arithmetic overflow escaped audit result.",
+      "after": "Route addition/subtraction through shared calculate error handling."
+    },
+    {
+      "before": "Numeric JSON token 1.00000000000000000001 became 1.0 and passed zero-tolerance cash tie.",
+      "after": "Parse JSON fractional numbers as Decimal."
+    },
+    {
+      "before": "Array/object enum values and excessive integer token could raise uncaught errors.",
+      "after": "Validate enum types and catch JSON ValueError; malformed roles do not enter dictionary keys."
+    },
+    {
+      "before": "Checks for unrelated period 1999-1 passed despite current/comparison basis in 2026/2025.",
+      "after": "Checks must belong to period_basis; quarter-from-ytd must match current period."
+    }
+  ],
+  "validation": {
+    "audit_tests": 27,
+    "full_tests": 282,
+    "package_checks": 8,
+    "initial_regressions": "Before edits: receipt tests failed and statement overflow raised decimal.Overflow; float precision and malformed enum independently reproduced.",
+    "test_contract": "8 new test methods, including valid multiline receipt, malformed markers, overflow, JSON precision, enums with expected_contract, integer limit, foreign period and prior-quarter mismatch.",
+    "source_checks": 19
+  },
+  "independent_review": {
+    "agent": "financial_core_review",
+    "verdict": "NO_UNRESOLVED_FINDINGS",
+    "audit_tests": 27,
+    "source_hashes": {
+      "skills/money-craft/scripts/financial_rigor.py": "44bbdf45d5b8b08737296cb0018683971c0ba62872bce9e1968be1651176c44b",
+      "skills/money-craft/scripts/financial_reconciliation.py": "9bf8642e0cdc9a560e4d248efeaa11f749cd64716074d1806e1fdf3f985394d9"
+    },
+    "additional_probe_count": 312,
+    "additional_observations": "Scalar replacement with array/object/null/false and fixed expected contract/allowed sources returned structured results without uncaught exceptions. Mutations need not all fail.",
+    "evidence_boundary": "Mutation sweep is reviewer-reported temporary probe; raw transcript not persisted."
+  },
+  "limits": [
+    "No automated unit conversion or verification of source extraction accuracy.",
+    "Decimal context remains 34 significant digits; exactness claims remain bounded by that arithmetic precision.",
+    "Offline local synthetic fixtures; no real provider or cross-platform proof.",
+    "Existing HTTPError fixture cleanup ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ],
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T033604205098Z"
+  }
+}

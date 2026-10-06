@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/tracking-current.schema.json",
+  "title": "Money Craft Tracking Current Pointer",
+  "type": "object",
+  "required": ["schema", "security", "security_id", "tracking_revision", "path", "as_of", "data_cutoff", "tracking_manifest_sha256", "checksums_sha256", "thesis_sha256", "health_score", "diff_signal", "automatic_trading"],
+  "properties": {
+    "schema": {"const": "money-craft.tracking-current.v1"},
+    "security": {"type": "string", "minLength": 1},
+    "security_id": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]{1,15}:[A-Z0-9][A-Z0-9._-]{0,31}$"},
+    "tracking_revision": {"type": "string", "pattern": "^t[0-9]{4}$"},
+    "path": {"type": "string", "pattern": "^revisions/t[0-9]{4}$"},
+    "as_of": {"type": "string", "format": "date"},
+    "data_cutoff": {"type": "string", "format": "date-time"},
+    "tracking_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "checksums_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "thesis_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "health_score": {"type": "integer", "minimum": 1, "maximum": 10},
+    "diff_signal": {"type": "string", "minLength": 1},
+    "automatic_trading": {"const": false}
+  }
+}

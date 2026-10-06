@@ -1,0 +1,69 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "liquidity-real-apple",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL",
+      "category": "真实披露迁移",
+      "prompt": "核对年报现金与有价证券的合计，并评价这种说法：“把三列相加就是苹果当天可以立即向母公司股东分配的现金；非流动证券肯定一年内不能变现。”请区分披露事实、计算与尚需验证的条件。 只使用给定历史材料，不联网，不扩展成完整公司研究。",
+      "facts": "Apple Inc.，US-NASDAQ:AAPL，NASDAQ普通股，交易与报告币种USD。验收日2026-09-21；历史余额日2025-09-27，材料为2025 Form 10-K，非研究日最新余额。本地excerpt是原文机械提取，必要时可读取完整原件：local/skill-evals/20260921-liquidity-transfer/evidence/apple.html。没有提供其他独立来源。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260921-liquidity-transfer/evidence/apple-excerpt.txt",
+          "sha256": "14b8d0f8f01f8532ee9572d0f87ab20f46f709328bd314296c6c3b43eeb6cab3",
+          "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0000320193/c636d8a7-8025-47d2-9b13-bcf5465343b3.html",
+          "locator": "Note 4 Financial Instruments, printed pp37-38",
+          "raw_path": "local/skill-evals/20260921-liquidity-transfer/evidence/apple.html",
+          "raw_sha256": "eb08113db1fa3b847936c68ddf7bd9c31b5d708c14794c94355fd38ac3846850",
+          "captured_at": "2026-09-20T17:22:25.383677+00:00",
+          "post_hoc": true
+        }
+      ],
+      "criteria": [
+        "实际读取全局Skill及现金债务语义规则，成功路由并读取原始表格。",
+        "复算35934+18763+77723=132420，单位百万美元，区分现金与证券及流动性分类。",
+        "不将合并合计当作母公司立即可分配现金，也不把非流动列报当作绝对禁止出售；缺失条件不设零。",
+        "记录历史时点、单一发行人来源及当前/独立核验限制，保留公开链接和计算回执。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    },
+    {
+      "id": "liquidity-real-amazon",
+      "status": "READY_HISTORICAL",
+      "data_kind": "HISTORICAL_OFFICIAL",
+      "category": "真实披露迁移",
+      "prompt": "有人拟将现金流量表期末余额扣掉受限现金后，再减一次受限现金作为“保守可用现金”；另有人直接从现金及有价证券合计中扣掉受限项。请结合两张附注表逐项复算，判断两种处理是否成立，以及结果能否称为立即可分配现金。 只使用给定历史材料，不联网，不扩展成完整公司研究。",
+      "facts": "Amazon.com, Inc.，US-NASDAQ:AMZN，NASDAQ普通股，交易与报告币种USD。验收日2026-09-21；历史余额日2025-12-31，材料为2025 Form 10-K，非研究日最新余额。本地excerpt是原文机械提取，必要时可读取完整原件：local/skill-evals/20260921-liquidity-transfer/evidence/amazon.pdf。没有提供其他独立来源。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/skill-evals/20260921-liquidity-transfer/evidence/amazon-excerpt.txt",
+          "sha256": "5c0ff955a2e5328090ff3b5530cb4afc887b537770e68f06f24c2f15f5b28057",
+          "url": "https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf",
+          "locator": "Note 2 Financial Instruments, printed pp52-54",
+          "raw_path": "local/skill-evals/20260921-liquidity-transfer/evidence/amazon.pdf",
+          "raw_sha256": "63196177ef83756ddfaff5aacda547f0eabac4669c0f6144bcee8401cd8cfbfc",
+          "captured_at": "2026-09-20T17:22:52.209434+00:00",
+          "post_hoc": true
+        }
+      ],
+      "criteria": [
+        "实际读取全局Skill及现金债务语义规则，成功路由并读取原始表格。",
+        "复算受限300+2996=3296，90106-3296=86810；不得从86810重复扣减。",
+        "识别126325-3296=123029已经排除受限项，不能再扣；123029与86810资产范围不同。",
+        "不将余额当作立即可分配现金；保留历史时点、单源限制、公开链接及计算回执。"
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "calculations_required": true,
+        "allowed_route_blocks": []
+      }
+    }
+  ]
+}

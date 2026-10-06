@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/review-craft/contracts/package-check-receipt.schema.json",
+  "title": "Review Craft exact package check receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "packageVersion",
+    "sha256",
+    "sizeBytes",
+    "fileCount",
+    "platform",
+    "pythonVersion",
+    "nodeVersion",
+    "checks"
+  ],
+  "properties": {
+    "schema": {"const": "review-craft.package-check-receipt.v1"},
+    "packageVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sizeBytes": {"type": "integer", "minimum": 1},
+    "fileCount": {"type": "integer", "minimum": 1},
+    "platform": {"type": "string", "minLength": 1},
+    "pythonVersion": {"type": "string", "minLength": 1},
+    "nodeVersion": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+"},
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageBoundary",
+        "installation",
+        "doctor",
+        "canonicalE2E",
+        "assuranceE2E",
+        "remediationE2E",
+        "targetMutationBoundary"
+      ],
+      "properties": {
+        "packageBoundary": {"const": "PASSED"},
+        "installation": {"const": "PASSED"},
+        "doctor": {"const": "PASSED"},
+        "canonicalE2E": {"const": "PASSED"},
+        "assuranceE2E": {"const": "PASSED"},
+        "remediationE2E": {"const": "PASSED"},
+        "targetMutationBoundary": {"const": "PASSED"}
+      }
+    }
+  }
+}

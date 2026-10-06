@@ -1,0 +1,14 @@
+[project]
+name = "reverse-craft"
+version = "0.2.0"
+description = "Evidence-first reverse engineering and security research Agent Skill"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "bigKING67" }]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

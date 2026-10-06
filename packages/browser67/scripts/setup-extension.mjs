@@ -1,0 +1,231 @@
+#!/usr/bin/env node
+
+import { randomBytes } from "node:crypto";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { resolveBrowser67Home } from "../src/runtime/paths/home.mjs";
+import { buildExtension } from "./build-extension.mjs";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const repoRoot = resolve(__dirname, "..");
+const sourceDir = resolve(repoRoot, "extension");
+const homeResolution = resolveBrowser67Home();
+const defaultHome = homeResolution.path;
+const defaultTargetDir = resolve(defaultHome, "browser/tmwd_cdp_bridge");
+const defaultMcpRegistryPath = resolve(defaultHome, "mcp/servers.toml");
+const browserServerPath = resolve(repoRoot, "src/mcp/browser/server.mjs");
+const jsReverseServerPath = resolve(repoRoot, "src/mcp/js-reverse/server.mjs");
+const legacyBrowserServerPath = resolve(repoRoot, "src/server.mjs");
+const legacyJsReverseServerPath = resolve(repoRoot, "src/js-reverse-server.mjs");
+
+function parseArgs(argv) {
+  const parsed = {
+    targetDir: defaultTargetDir,
+    registryPath: defaultMcpRegistryPath,
+    json: false,
+    forceConfig: false,
+    skipRegistry: false,
+  };
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = argv[index] ?? "";
+    if (token === "--json") {
+      parsed.json = true;
+      continue;
+    }
+    if (token === "--force-config") {
+      parsed.forceConfig = true;
+      continue;
+    }
+    if (token === "--skip-registry") {
+      parsed.skipRegistry = true;
+      continue;
+    }
+    if (token === "--target") {
+      parsed.targetDir = resolve(requiredValue(argv, index, token));
+      index += 1;
+      continue;
+    }
+    if (token === "--registry") {
+      parsed.registryPath = resolve(requiredValue(argv, index, token));
+      index += 1;
+      continue;
+    }
+    if (token === "--help" || token === "-h") {
+      parsed.help = true;
+      continue;
+    }
+    throw new Error(`unknown argument: ${token}`);
+  }
+  return parsed;
+}
+
+function requiredValue(argv, index, token) {
+  const value = String(argv[index + 1] ?? "").trim();
+  if (!value || value.startsWith("--")) {
+    throw new Error(`missing ${token} value`);
+  }
+  return value;
+}
+
+function usage() {
+  return [
+    "Usage: node scripts/setup-extension.mjs [--target <dir>] [--registry <path>] [--force-config] [--skip-registry] [--json]",
+    "",
+    "Copies extension/ into the active browser67 unpacked-extension directory and writes config.js.",
+  ].join("\n");
+}
+
+function makeTid() {
+  return `__browser67_${randomBytes(6).toString("hex")}`;
+}
+
+function tomlString(value) {
+  return JSON.stringify(String(value));
+}
+
+function normalizeMcpRegistry(current) {
+  let next = current;
+  next = next.replace(/^(\s*name\s*=\s*)["']tmwd-browser-mcp["']/gm, '$1"tmwd_browser"');
+  for (const [legacyPath, canonicalPath] of [
+    [legacyBrowserServerPath, browserServerPath],
+    [legacyJsReverseServerPath, jsReverseServerPath],
+  ]) {
+    next = next.split(tomlString(legacyPath)).join(tomlString(canonicalPath));
+    next = next.split(`'${legacyPath}'`).join(`'${canonicalPath}'`);
+  }
+  return next;
+}
+
+function ensureMcpRegistry(registryPath) {
+  mkdirSync(dirname(registryPath), { recursive: true });
+  let current = existsSync(registryPath) ? readFileSync(registryPath, "utf8") : "";
+  let changed = false;
+  const normalized = normalizeMcpRegistry(current);
+  if (normalized !== current) {
+    writeFileSync(registryPath, normalized, "utf8");
+    current = normalized;
+    changed = true;
+  }
+  const blocks = [];
+  if (!/^\s*name\s*=\s*["'](?:tmwd_browser|tmwd-browser-mcp)["']/m.test(current)) {
+    blocks.push([
+      "",
+      "# browser67 real-browser automation MCP server.",
+      "[[servers]]",
+      "name = \"tmwd_browser\"",
+      "command = \"node\"",
+      `args = [${tomlString(browserServerPath)}]`,
+      "enabled = true",
+      "",
+      "[servers.env]",
+      "BROWSER_STRUCTURED_TMWD_MODE = \"tmwd\"",
+      "BROWSER_STRUCTURED_TMWD_TRANSPORT = \"auto\"",
+      "BROWSER_STRUCTURED_TMWD_WS_ENDPOINT = \"ws://127.0.0.1:18765\"",
+      "BROWSER_STRUCTURED_TMWD_LINK_ENDPOINT = \"http://127.0.0.1:18766/link\"",
+      "",
+    ].join("\n"));
+  }
+  if (!/^\s*name\s*=\s*["']js-reverse["']/m.test(current)) {
+    blocks.push([
+      "",
+      "# browser67-backed JavaScript reverse-engineering MCP server.",
+      "[[servers]]",
+      "name = \"js-reverse\"",
+      "command = \"node\"",
+      `args = [${tomlString(jsReverseServerPath)}]`,
+      "enabled = true",
+      "",
+      "[servers.env]",
+      "BROWSER_STRUCTURED_TMWD_MODE = \"tmwd\"",
+      "BROWSER_STRUCTURED_TMWD_TRANSPORT = \"auto\"",
+      "BROWSER_STRUCTURED_TMWD_WS_ENDPOINT = \"ws://127.0.0.1:18765\"",
+      "BROWSER_STRUCTURED_TMWD_LINK_ENDPOINT = \"http://127.0.0.1:18766/link\"",
+      "",
+    ].join("\n"));
+  }
+  if (blocks.length === 0) {
+    return { path: registryPath, changed };
+  }
+  appendFileSync(registryPath, blocks.join(""), "utf8");
+  return { path: registryPath, changed: true };
+}
+
+function run() {
+  const args = parseArgs(process.argv.slice(2));
+  if (args.help) {
+    process.stdout.write(`${usage()}\n`);
+    return 0;
+  }
+  if (!existsSync(sourceDir)) {
+    throw new Error(`missing extension source: ${sourceDir}`);
+  }
+  mkdirSync(args.targetDir, { recursive: true });
+  const extensionBuild = buildExtension({ source_dir: sourceDir, target_dir: args.targetDir });
+  const configPath = resolve(args.targetDir, "config.js");
+  const configExists = existsSync(configPath);
+  let configMigrated = false;
+  if (!configExists || args.forceConfig) {
+    writeFileSync(configPath, `globalThis.__browser67TID = '${makeTid()}';\n`, "utf8");
+  } else {
+    const currentConfig = readFileSync(configPath, "utf8");
+    const legacyTid = currentConfig.match(/\b(?:const|let|var)\s+TID\s*=\s*['"]([^'"]+)['"]/);
+    if (legacyTid && !currentConfig.includes("__browser67TID")) {
+      writeFileSync(configPath, `globalThis.__browser67TID = ${JSON.stringify(legacyTid[1])};\n`, "utf8");
+      configMigrated = true;
+    }
+  }
+  const registry = args.skipRegistry
+    ? { path: args.registryPath, changed: false, skipped: true }
+    : ensureMcpRegistry(args.registryPath);
+  const payload = {
+    ok: true,
+    product: "browser67",
+    active_home: defaultHome,
+    active_home_source: homeResolution.source,
+    canonical_home: homeResolution.canonical_default,
+    legacy_home: homeResolution.legacy_default,
+    extension_dir: args.targetDir,
+    extension_build: extensionBuild,
+    config_path: configPath,
+    config_created: !configExists || args.forceConfig,
+    config_migrated: configMigrated,
+    mcp_registry_path: registry.path,
+    mcp_registry_changed: registry.changed,
+    mcp_registry_skipped: registry.skipped === true,
+    next_steps: [
+      "Open chrome://extensions or edge://extensions",
+      "Enable Developer mode",
+      `Load unpacked extension from: ${args.targetDir}`,
+      "Run: npm run hub:start",
+      "For an already loaded extension, run: npm run extension:reload-live",
+      "Otherwise reload browser67 TMWD Bridge from the browser extension page",
+      "Run: npm run doctor",
+    ],
+  };
+  if (args.json) {
+    process.stdout.write(`${JSON.stringify(payload)}\n`);
+    return 0;
+  }
+  process.stdout.write(`Extension prepared: ${payload.extension_dir}\n`);
+  const identity = payload.extension_build.extension_identity;
+  process.stdout.write(`Extension version: ${identity.extension_version}\n`);
+  process.stdout.write(`Build revision: ${identity.build_revision} (${identity.build_revision_source}${identity.build_inputs_dirty ? ", dirty development build" : ""})\n`);
+  process.stdout.write("Live extension: UNVERIFIED until reload and doctor; remote latest version: NOT CHECKED\n");
+  process.stdout.write(`Active home: ${payload.active_home} (${payload.active_home_source})\n`);
+  process.stdout.write(`Config: ${payload.config_path}${payload.config_created ? " (created)" : " (kept)"}\n`);
+  process.stdout.write(`MCP registry: ${payload.mcp_registry_path}${payload.mcp_registry_changed ? " (updated)" : " (unchanged)"}\n`);
+  process.stdout.write("Next:\n");
+  for (const item of payload.next_steps) {
+    process.stdout.write(`  - ${item}\n`);
+  }
+  return 0;
+}
+
+try {
+  process.exitCode = run();
+} catch (error) {
+  process.stderr.write(`setup-extension failed: ${String(error?.message ?? error)}\n`);
+  process.exitCode = 1;
+}

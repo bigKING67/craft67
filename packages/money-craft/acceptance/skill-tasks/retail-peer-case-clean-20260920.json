@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "retail-peer-historical-clean-scope",
+      "status": "READY_HISTORICAL",
+      "prompt": "请根据所附三家公司的原始年报，比较Costco、Walmart和Target的收入增长及经营盈利质量，判断它们是否适合放进同一个可比估值组，以及这些材料能支持哪些估值结论。历史研究截止2025-04-30，2026年执行历史回放，不是当前投资建议。Costco为NASDAQ普通股COST，Walmart和Target为该历史截止日NYSE普通股WMT/TGT，三者交易和报告币种USD。请核对实际期间、数据定义与业务差异，给出紧凑的比较表、纳入或排除的理由、反方及下一步所需证据。关键计算保留可复算回执。不创建正式档案或跟踪版本。",
+      "facts": "仅使用下面指定的原始文件作为事实来源；可读取同目录同名txt辅助定位，原始PDF/HTML为事实真源。只研究所选年报，不声称覆盖截止日所有最新季报。无行情、持仓、分析师一致预期或旧论文输入。不得访问本案例的既有研究答案、build_case.py、派生结果或验收记录。事实来源限制不禁止读取或执行正常工作所需的Skill及其工具。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/research/20260920-retail-peer/sources/costco-2024.pdf",
+          "sha256": "bdeca9c1891ffbee65796ade60212f61f7a29790b962e15076b6159c6d288612",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_financials/2024/ar/COST-2024-Annual-Report.pdf"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/research/20260920-retail-peer/sources/walmart-2025.html",
+          "sha256": "d3eaf5782e1642f33c6301f1849a830354590c3b733a868d9f180b17dd582744",
+          "url": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0000104169-25-000021/wmt-20250131.htm"
+        },
+        {
+          "source_id": "S03",
+          "path": "local/research/20260920-retail-peer/sources/target-2024.pdf",
+          "sha256": "0ea59d72e596171693c01e46711ca63fd411da64d059f192a2e7dff2b6492271",
+          "url": "https://corporate.target.com/getmedia/c23bca62-1790-47bd-ad0e-6971aee4f78d/2024-Annual-Report-Target-Corporation.pdf"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "自然触发安装Money Craft并取得有效路由；无读取已有答案或验收标准",
+        "保持历史截止和补抓边界；发行人材料不冒充独立双源",
+        "区分真实财年结束日、52/53周及Walmart海外合并滞后，不强行年化为同口径增长",
+        "正确识别Target Net sales包含其他收入，Costco及Walmart另列收入；统一并说明计算分母",
+        "使用Target重分类后比较列，不将重分类解释为经营效率提升",
+        "关键增长/利润率计算与原文一致且回执完整；报告同比不冒充同店增长",
+        "区分集团与Sam’s Club分部，不用集团市值套分部盈利作为PE；可比组理由落到业务差异",
+        "缺同日价格/资本结构/盈利预期时不编造倍数、目标价或安全边际；给出具体补证条件"
+      ]
+    }
+  ]
+}

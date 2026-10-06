@@ -1,0 +1,18 @@
+{
+  "schema": "review-craft.runtime-benchmark-spec.v1",
+  "defaultSizes": [1000],
+  "scaleSizes": [1000, 10000, 100000],
+  "repetitions": 3,
+  "warmups": 1,
+  "fileBytes": 256,
+  "modules": 20,
+  "operations": [
+    "inventory",
+    "inventoryFingerprint",
+    "moduleMap",
+    "dependencyMap",
+    "worktreeFingerprint",
+    "preflight",
+    "draftValidation"
+  ]
+}

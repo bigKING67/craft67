@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/fix-assessment.schema.json",
+  "title": "Review Craft fix assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "kind", "assessor", "assessedAt", "findings", "remainingRisks"],
+  "properties": {
+    "documentType": {"const": "review-craft.fix-assessment"},
+    "schemaVersion": {"const": "review-craft.fix.v1"},
+    "kind": {"enum": ["HUMAN", "AGENT_ASSISTED", "AUTOMATED"]},
+    "assessor": {"type": "string", "minLength": 1},
+    "assessedAt": {"type": "string", "format": "date-time"},
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["findingId", "status", "rationale", "evidenceRefs"],
+        "properties": {
+          "findingId": {"type": "string", "minLength": 1},
+          "status": {"enum": ["RESOLVED", "LIKELY_RESOLVED", "PARTIAL", "UNRESOLVED", "REGRESSED", "NOT_APPLICABLE"]},
+          "rationale": {"type": "string", "minLength": 1},
+          "evidenceRefs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "remainingRisks": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  }
+}

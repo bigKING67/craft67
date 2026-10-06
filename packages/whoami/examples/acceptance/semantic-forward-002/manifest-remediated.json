@@ -1,0 +1,56 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-002-remediated",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "b6db7af5525fc8d9b7d3244ecba405049387dcc0eeeca02830ff3411a946cb15",
+    "bytes": 5366
+  },
+  "task": {
+    "path": "remediation-task.md",
+    "sha256": "1fe3fb3371ac8e9689f6fcbe35ebfeb94e898d88c0b0a2710db83a882682b5ca",
+    "bytes": 782
+  },
+  "rubric": {
+    "path": "remediation-rubric.md",
+    "sha256": "b2734c3a1633d400376055451f6bce51b64bf297533301f9616cc52457f9a849",
+    "bytes": 932
+  },
+  "cases": [
+    {
+      "id": "two-candidate-boundary-remediated",
+      "input": {
+        "path": "input.json",
+        "sha256": "14542ce929f8c359a19f9dd1361ab2187f0b127294ae13d2678cc766ea116d2b",
+        "bytes": 262
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "9a4782d916640ff0521276dddfc81235846614ca8dd5fc1fa734495eddc00e94",
+        "bytes": 108901
+      },
+      "response": {
+        "path": "response-remediated.md",
+        "sha256": "2b6af3a3855502ee299c5ed6f78b1416f894521097c43588973fb4a4f11f3c52",
+        "bytes": 2154
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

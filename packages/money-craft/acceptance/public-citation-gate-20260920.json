@@ -1,0 +1,369 @@
+{
+  "schema": "money-craft.public-citation-gate-review.v1",
+  "status": "PASS_BOUNDED_GATE_REGRESSION",
+  "date": "2026-09-20",
+  "original_host_reaudit": {
+    "schema": "money-craft.skill-task-machine-audit.v1",
+    "case_id": "msft-q3-capital-intensity",
+    "machine_checks_pass": false,
+    "research_complete": false,
+    "semantic_verdict": "REQUIRES_MANUAL_REVIEW",
+    "route": {
+      "state": "READY",
+      "attempts": [
+        {
+          "exit_code": 0,
+          "state": "READY",
+          "error_code": null
+        }
+      ],
+      "ready": true
+    },
+    "financial": {
+      "schema": "money-craft.financial-audit.v1",
+      "valid": true,
+      "checks": [
+        {
+          "id": "C01",
+          "operation": "divide",
+          "actual": "13.26910019722590449093084160496621",
+          "expected": "13.26910019722590449093084160",
+          "relative_error": "3.742687843323586744639376219724359E-28",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C02",
+          "operation": "divide",
+          "actual": "13.79639125252917209457024862108152",
+          "expected": "13.79639125252917209457024862",
+          "relative_error": "7.839151414336226293796207008007642E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C03",
+          "operation": "divide",
+          "actual": "16.02189913346144084695986367426852",
+          "expected": "16.02189913346144084695986367",
+          "relative_error": "2.664178549898167006109979634111006E-28",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C04",
+          "operation": "divide",
+          "actual": "15.57761201354468273052951857486382",
+          "expected": "15.57761201354468273052951857",
+          "relative_error": "3.122314251870520595416240057681193E-28",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C05",
+          "operation": "divide",
+          "actual": "17.70819089293039792150964036647067",
+          "expected": "17.70819089293039792150964037",
+          "relative_error": "1.993049443243243243243243242846018E-28",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C06",
+          "operation": "divide",
+          "actual": "12.85779122541603630862329803328290",
+          "expected": "12.85779122541603630862329803",
+          "relative_error": "2.553237910342393222732086128431642E-28",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C07",
+          "operation": "divide",
+          "actual": "16.06353980637277939655982705141461",
+          "expected": "16.06353980637277939655982705",
+          "relative_error": "8.806340427150380339379754243022443E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C08",
+          "operation": "divide",
+          "actual": "14.94966381079984757783978464223815",
+          "expected": "14.94966381079984757783978464",
+          "relative_error": "1.497123967686235816477553034264592E-28",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C09",
+          "operation": "divide",
+          "actual": "52.89444850255661066471877282688093",
+          "expected": "52.89444850255661066471877283",
+          "relative_error": "5.896781398239254272397721387534207E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C10",
+          "operation": "divide",
+          "actual": "55.11697817278787086655339171350150",
+          "expected": "55.11697817278787086655339171",
+          "relative_error": "6.352851908940004742708086317690759E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C11",
+          "operation": "divide",
+          "actual": "-3.176723109945146673026472692582876",
+          "expected": "-3.176723109945146673026472693",
+          "relative_error": "1.313063762762762762762762762590349E-28",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C12",
+          "operation": "divide",
+          "actual": "-9.273089124908865199314272202407929",
+          "expected": "-9.273089124908865199314272202",
+          "relative_error": "4.399062647896302592435189120465511E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C13",
+          "operation": "divide",
+          "actual": "44.58760386692101264185715671376378",
+          "expected": "44.58760386692101264185715671",
+          "relative_error": "8.441314790616728907581305972214679E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C14",
+          "operation": "divide",
+          "actual": "45.67122427425570176690548911026746",
+          "expected": "45.67122427425570176690548911",
+          "relative_error": "5.856203862500000000000000000034295E-30",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C15",
+          "operation": "subtract",
+          "actual": "1.08362040733468912504833240",
+          "expected": "1.08362040733468912504833240",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C16",
+          "operation": "divide",
+          "actual": "45.18307048421519443443554422240084",
+          "expected": "45.18307048421519443443554422",
+          "relative_error": "5.313583105952789910192864504380099E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C17",
+          "operation": "divide",
+          "actual": "45.89030752668267708480487911809551",
+          "expected": "45.89030752668267708480487912",
+          "relative_error": "4.150092040443713178706013481065493E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C18",
+          "operation": "subtract",
+          "actual": "0.70723704246748265036933490",
+          "expected": "0.70723704246748265036933490",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C19",
+          "operation": "divide",
+          "actual": "35.46671408710271913091273562029164",
+          "expected": "35.46671408710271913091273562",
+          "relative_error": "8.222921336432836501207894616959908E-30",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C20",
+          "operation": "divide",
+          "actual": "36.85667798932435132589272971198584",
+          "expected": "36.85667798932435132589272971",
+          "relative_error": "5.388005941759603469640644362124259E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C21",
+          "operation": "subtract",
+          "actual": "1.38996390222163219497999409",
+          "expected": "1.38996390222163219497999409",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C22",
+          "operation": "divide",
+          "actual": "36.64181379749993070761384739044874",
+          "expected": "36.64181379749993070761384739",
+          "relative_error": "1.224666449319213313161875945552063E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C23",
+          "operation": "divide",
+          "actual": "36.33958973709464495355192587793436",
+          "expected": "36.33958973709464495355192588",
+          "relative_error": "5.684268906017506937090309521252248E-29",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C24",
+          "operation": "subtract",
+          "actual": "-0.30222406040528575406192151",
+          "expected": "-0.30222406040528575406192151",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C25",
+          "operation": "subtract",
+          "actual": "20299",
+          "expected": "20299",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C26",
+          "operation": "subtract",
+          "actual": "20965",
+          "expected": "20965",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C27",
+          "operation": "subtract",
+          "actual": "46043",
+          "expected": "46043",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        },
+        {
+          "id": "C28",
+          "operation": "subtract",
+          "actual": "50749",
+          "expected": "50749",
+          "relative_error": "0",
+          "tolerance": "0.000001",
+          "passed": true
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "source_evidence": [
+      {
+        "source_id": "S01",
+        "hash_verified": true
+      },
+      {
+        "source_id": "S02",
+        "hash_verified": true
+      }
+    ],
+    "public_citations": [
+      {
+        "source_id": "S01",
+        "registered_public_link": false
+      },
+      {
+        "source_id": "S02",
+        "registered_public_link": false
+      }
+    ],
+    "errors": [
+      "PUBLIC_SOURCE_LINK_NOT_VERIFIED:S01",
+      "PUBLIC_SOURCE_LINK_NOT_VERIFIED:S02"
+    ],
+    "manual_criteria": [
+      {
+        "criterion": "安装Skill自然发现、路由成功、身份与历史截止正确",
+        "status": "PENDING"
+      },
+      {
+        "criterion": "分清单季和九个月累计现金流，现金FCF对比及利润率计算完整",
+        "status": "PENDING"
+      },
+      {
+        "criterion": "含租赁资本投入不能直接替代现金PP&E；差额不能冒充租赁现金还款",
+        "status": "PENDING"
+      },
+      {
+        "criterion": "单季与累计信号不同，不能仅凭强劲利润或单季现金流宣告资本负担缓解",
+        "status": "PENDING"
+      },
+      {
+        "criterion": "区分报告汇率和固定汇率；管理层解释及Q4展望不是已兑现事实",
+        "status": "PENDING"
+      },
+      {
+        "criterion": "反方、下一观察窗口和资料限制明确，未声称AI独立回报率或可分配现金",
+        "status": "PENDING"
+      }
+    ],
+    "input_hashes": {
+      "host.json": "df9f61621ab2972c0e685b5dc11130f342cd33d820cc4839cf4c148106ad4a08",
+      "events.jsonl": "1633b0857699175d61bcb76618667216461c301701da3254e1e77aacb5fa8682",
+      "answer.md": "d204982998181c499c01c0e1108ce9cce590a883d2ffe53735084e4fd83225f0"
+    },
+    "case_contract_sha256": "9cd6be1cde7b2ebef5ff770c7e16994c35dc9b13fac729d0ad03c3014f293498"
+  },
+  "corrected_delivery": {
+    "public_citations": [
+      {
+        "source_id": "S01",
+        "registered_public_link": true
+      },
+      {
+        "source_id": "S02",
+        "registered_public_link": true
+      }
+    ],
+    "errors": [],
+    "reviewer": "parent_agent",
+    "not_a_new_host_run": true
+  },
+  "report_definition_format": "PASS",
+  "tests": {
+    "command": "python3 -m unittest discover -s tests -p test_skill_task_audit.py -q",
+    "passed": 27
+  },
+  "scope": "Case opt-in via machine_contract.public_source_ids. Exact registered HTTPS URLs for source-labelled inline links or single-line definitions. No network or semantic claim verification. Public-manifest indirection and arbitrary Markdown syntax are not supported by this bounded gate.",
+  "artifacts": {
+    "acceptance/skill-tasks/msft-q3-case-20260920.json": "b79f97c81bb61bcb561b0d43744dacecfa99176bba61a8a28783009ea252341a",
+    "acceptance/skill-tasks/msft-q3-public-citations-case-20260920.json": "37d823edf2a2600555983ef17273a8a7c1e8dd9142a54a660fc114bd8170e4a3",
+    "acceptance/msft-q3/host-answer-corrected.md": "87b7f7df18b813aebc7486413b78dee1bf8a6b05d15fb0023a229cda1f5a234e",
+    "acceptance/msft-q3/reconstruction/report.md": "7d571159c34a483b99a4ed57943fc93cd09507819368d6978648e2a532f2207f",
+    "local/skill-evals/20260920-msft-q3/installed/answer.md": "d204982998181c499c01c0e1108ce9cce590a883d2ffe53735084e4fd83225f0",
+    "scripts/audit_skill_task.py": "1b120543bfb8c009453f25d294b9007bb2f571513d15d9b7280d28476b2ceca8",
+    "tests/test_skill_task_audit.py": "2cd9f84238a6217f593058d85fada472793121260c0ab056b2fb2df8ac35c64e"
+  }
+}

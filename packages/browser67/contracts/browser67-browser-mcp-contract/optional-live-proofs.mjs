@@ -1,0 +1,496 @@
+import assert from "node:assert/strict";
+import { promises as fs } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+
+import {
+  ALL_OPTIONAL_LIVE_PROOF_REQUIREMENTS,
+  buildOptionalLiveProofAudit,
+  buildProofRedactionChecklist,
+  DEFAULT_OPTIONAL_LIVE_PROOF_REQUIREMENTS,
+  ON_DEMAND_OPTIONAL_LIVE_PROOF_REQUIREMENTS,
+  validateProof,
+} from "../../scripts/optional-live-proof-audit.mjs";
+import { buildOptionalLiveProofPlan } from "../../scripts/optional-live-proof-plan.mjs";
+import { buildOptionalLiveProofRecord } from "../../scripts/optional-live-proof-record.mjs";
+import { buildOptionalLiveProofStatus } from "../../scripts/optional-live-proof-status.mjs";
+import { createProofTemplate } from "../../scripts/optional-live-proof-template.mjs";
+import {
+  PHYSICAL_INPUT_SOURCE_SCOPE,
+  buildOptionalProofSourceIdentity,
+  digestSourceFiles,
+} from "../../scripts/optional-live-proof-source-identity.mjs";
+
+function requirement(id) {
+  const found = ALL_OPTIONAL_LIVE_PROOF_REQUIREMENTS.find((item) => item.id === id);
+  assert.ok(found, `missing optional live proof requirement: ${id}`);
+  return found;
+}
+
+function validNativeProof(platform) {
+  return {
+    type: "native_live",
+    ok: true,
+    platform,
+    provider_id: "native-os",
+    actions: ["get_window_rect", "click", "drag"],
+    checked_at: "2026-06-17T00:00:00.000Z",
+    expires_at: "2099-06-17T00:00:00.000Z",
+    command: platform === "win32"
+      ? '$env:TMWD_NATIVE_LIVE_PHYSICAL="1"; $env:TMWD_NATIVE_LIVE_CONFIRM="1"; npm run proof:native-live -- --write'
+      : "TMWD_NATIVE_LIVE_PHYSICAL=1 TMWD_NATIVE_LIVE_CONFIRM=1 npm run proof:native-live -- --write",
+    source_identity: buildOptionalProofSourceIdentity(PHYSICAL_INPUT_SOURCE_SCOPE),
+    evidence: {
+      fixture: "local browser67-owned managed tab",
+      managed_tab_only: true,
+      fullscreen_screenshot: false,
+      secrets_redacted: true,
+      window_rect_verified: true,
+      window_rect_dimensions_positive: true,
+      drag_completed: true,
+      click_completed: true,
+      visible_completion_verified: true,
+      browser_private_state_access: false,
+      finalized_managed_tabs_closed: true,
+    },
+  };
+}
+
+function validIdpProof(providerKind) {
+  return {
+    type: "idp_live",
+    ok: true,
+    provider_kind: providerKind,
+    checked_at: "2026-06-17T00:00:00.000Z",
+    expires_at: "2099-06-17T00:00:00.000Z",
+    command: `npm run check:${providerKind}-live`,
+    manual_required_verified: true,
+    resume_verified: true,
+    evidence: {
+      approved_provider: "redacted test tenant",
+      profile_scope: "repo-external exact-origin profile",
+      secrets_redacted: true,
+    },
+  };
+}
+
+async function assertOptionalLiveProofContract() {
+  const sourceIdentity = buildOptionalProofSourceIdentity(PHYSICAL_INPUT_SOURCE_SCOPE);
+  assert.equal(sourceIdentity.schema, "browser67.optional-proof-source.v1");
+  assert.equal(sourceIdentity.source_scope, PHYSICAL_INPUT_SOURCE_SCOPE);
+  assert.match(sourceIdentity.source_digest, /^[a-f0-9]{64}$/u);
+  assert.equal(sourceIdentity.source_file_count > 0, true);
+
+  const digestTmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "tmwd-proof-source-digest-contract-"));
+  try {
+    const sourcePath = path.join(digestTmpDir, "fixture.mjs");
+    await fs.writeFile(sourcePath, "const first = 1;\nconst second = 2;\n");
+    const lfDigest = digestSourceFiles(digestTmpDir, ["fixture.mjs"]);
+    await fs.writeFile(sourcePath, "const first = 1;\r\nconst second = 2;\r\n");
+    const crlfDigest = digestSourceFiles(digestTmpDir, ["fixture.mjs"]);
+    assert.equal(crlfDigest, lfDigest);
+  } finally {
+    await fs.rm(digestTmpDir, { recursive: true, force: true });
+  }
+
+  const nativeLinux = requirement("native-live-linux");
+  assert.equal(nativeLinux.release_scope, "on_demand");
+  assert.equal(nativeLinux.default_required, false);
+  assert.equal(DEFAULT_OPTIONAL_LIVE_PROOF_REQUIREMENTS.some((item) => item.id === "native-live-linux"), false);
+  assert.equal(ON_DEMAND_OPTIONAL_LIVE_PROOF_REQUIREMENTS.some((item) => item.id === "native-live-linux"), true);
+  const nativeTemplate = createProofTemplate(nativeLinux, new Date("2026-06-17T00:00:00.000Z"));
+  const nativeTemplateValidation = validateProof(nativeTemplate, nativeLinux);
+  assert.equal(nativeTemplateValidation.ok, false);
+  assert.ok(nativeTemplateValidation.errors.includes("requirement_match_failed"));
+  assert.ok(nativeTemplateValidation.errors.includes("template_only_not_accepted"));
+  assert.equal(nativeTemplate.source_identity.source_scope, PHYSICAL_INPUT_SOURCE_SCOPE);
+
+  const nativeValid = validateProof(validNativeProof("linux"), nativeLinux);
+  assert.equal(nativeValid.ok, true, nativeValid.errors.join(","));
+  assert.equal(nativeValid.source_identity.source_equivalent, true);
+
+  const sourceEquivalentDifferentRevision = validateProof({
+    ...validNativeProof("linux"),
+    source_identity: {
+      ...buildOptionalProofSourceIdentity(PHYSICAL_INPUT_SOURCE_SCOPE),
+      build_revision: "different-commit-after-identical-behavior-bytes",
+      build_inputs_dirty: false,
+    },
+  }, nativeLinux);
+  assert.equal(sourceEquivalentDifferentRevision.ok, true);
+  assert.equal(sourceEquivalentDifferentRevision.source_identity.source_equivalent, true);
+  assert.equal(sourceEquivalentDifferentRevision.source_identity.revision_match, false);
+
+  const nativeLegacyProof = validNativeProof("linux");
+  delete nativeLegacyProof.source_identity;
+  const nativeLegacy = validateProof(nativeLegacyProof, nativeLinux);
+  assert.equal(nativeLegacy.ok, false);
+  assert.ok(nativeLegacy.errors.includes("source_identity_object_required"));
+  assert.ok(nativeLegacy.errors.includes("missing_field:source_identity"));
+
+  const nativeSourceMismatch = validateProof({
+    ...validNativeProof("linux"),
+    source_identity: {
+      ...buildOptionalProofSourceIdentity(PHYSICAL_INPUT_SOURCE_SCOPE),
+      source_digest: "0".repeat(64),
+    },
+  }, nativeLinux);
+  assert.equal(nativeSourceMismatch.ok, false);
+  assert.ok(nativeSourceMismatch.errors.includes("source_identity_digest_mismatch"));
+
+  const nativeMissingDrag = validateProof({
+    ...validNativeProof("linux"),
+    actions: ["click"],
+  }, nativeLinux);
+  assert.equal(nativeMissingDrag.ok, false);
+  assert.ok(nativeMissingDrag.errors.includes("native_drag_action_required"));
+
+  const nativeUnsafeEvidence = validateProof({
+    ...validNativeProof("linux"),
+    evidence: {
+      fixture: "local browser67-owned managed tab",
+      managed_tab_only: false,
+      fullscreen_screenshot: true,
+      secrets_redacted: false,
+      window_rect_verified: false,
+      drag_completed: false,
+      click_completed: false,
+      browser_private_state_access: true,
+    },
+  }, nativeLinux);
+  assert.equal(nativeUnsafeEvidence.ok, false);
+  assert.ok(nativeUnsafeEvidence.errors.includes("native_managed_tab_only_must_be_true"));
+    assert.ok(nativeUnsafeEvidence.errors.includes("native_fullscreen_screenshot_must_be_false"));
+    assert.ok(nativeUnsafeEvidence.errors.includes("native_secrets_redacted_must_be_true"));
+    assert.ok(nativeUnsafeEvidence.errors.includes("native_window_rect_verified_must_be_true"));
+    assert.ok(nativeUnsafeEvidence.errors.includes("native_drag_completed_must_be_true"));
+    assert.ok(nativeUnsafeEvidence.errors.includes("native_click_completed_must_be_true"));
+    assert.ok(nativeUnsafeEvidence.errors.includes("native_browser_private_state_access_must_be_false"));
+
+  const idpOauth = requirement("idp-oauth-popup");
+  const idpValid = validateProof(validIdpProof("oauth_popup"), idpOauth);
+  assert.equal(idpValid.ok, true, idpValid.errors.join(","));
+
+  const idpPlaceholder = validateProof({
+    ...validIdpProof("oauth_popup"),
+    command: "replace with exact approved external live gate command",
+  }, idpOauth);
+  assert.equal(idpPlaceholder.ok, false);
+  assert.ok(idpPlaceholder.errors.includes("placeholder_command_not_accepted"));
+
+  const idpSensitive = validateProof({
+    ...validIdpProof("oauth_popup"),
+    evidence: {
+      secrets_redacted: true,
+      session_token: "redacted-but-key-is-forbidden",
+    },
+  }, idpOauth);
+  assert.equal(idpSensitive.ok, false);
+  assert.ok(idpSensitive.errors.some((error) => error.startsWith("sensitive_keys_present:")));
+
+  const idpSensitiveValue = validateProof({
+    ...validIdpProof("oauth_popup"),
+    evidence: {
+      approved_provider: "redacted test tenant",
+      profile_scope: "repo-external exact-origin profile",
+      secrets_redacted: true,
+      callback_header: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.example.example",
+    },
+  }, idpOauth);
+  assert.equal(idpSensitiveValue.ok, false);
+  assert.ok(idpSensitiveValue.errors.some((error) => error.startsWith("sensitive_values_present:")));
+
+  const idpIdentifierLeak = validateProof({
+    ...validIdpProof("oauth_popup"),
+    evidence: {
+      approved_provider: "Acme Okta tenant",
+      profile_scope: "repo-external exact-origin profile",
+      secrets_redacted: true,
+    },
+  }, idpOauth);
+  assert.equal(idpIdentifierLeak.ok, false);
+  assert.ok(idpIdentifierLeak.errors.some((error) => error.startsWith("idp_identifier_values_must_be_redacted:")));
+
+  const idpChecklist = buildProofRedactionChecklist(validIdpProof("oauth_popup"), idpOauth);
+  assert.equal(idpChecklist.ok, true);
+  assert.equal(idpChecklist.checks.some((item) => item.id === "idp_identifiers_redacted"), true);
+
+  const localCaptcha = requirement("captcha-assist-physical-local");
+  const captchaUnsafeState = validateProof({
+    type: "captcha_physical_live",
+    ok: true,
+    platform: process.platform,
+    provider_id: "native-os",
+    actions: ["drag", "click"],
+    checked_at: "2026-06-17T00:00:00.000Z",
+    expires_at: "2099-06-17T00:00:00.000Z",
+    command: "TMWD_CAPTCHA_ASSIST_PHYSICAL=1 TMWD_CAPTCHA_ASSIST_CONFIRM=1 npm run check:captcha-assist-physical-live",
+    source_identity: buildOptionalProofSourceIdentity(PHYSICAL_INPUT_SOURCE_SCOPE),
+    managed_tab_only: true,
+    fixture: "local browser67-owned managed tab",
+    slider_completed: true,
+    checkbox_completed: true,
+    fullscreen_screenshot: false,
+    js_cdp_widget_click: false,
+    secrets_redacted: true,
+    evidence: {
+      slider_visual_offset: 260,
+      slider_delta_live: "260",
+      handle_transform: "translateX(260px)",
+      checkbox_click_inside: true,
+      browser_private_state_access: true,
+    },
+  }, localCaptcha);
+  assert.equal(captchaUnsafeState.ok, false);
+  assert.ok(captchaUnsafeState.errors.includes("browser_private_state_access_must_be_false"));
+
+  const captchaMissingVisualProof = validateProof({
+    type: "captcha_physical_live",
+    ok: true,
+    platform: process.platform,
+    provider_id: "native-os",
+    actions: ["drag", "click"],
+    checked_at: "2026-06-17T00:00:00.000Z",
+    expires_at: "2099-06-17T00:00:00.000Z",
+    command: "TMWD_CAPTCHA_ASSIST_PHYSICAL=1 TMWD_CAPTCHA_ASSIST_CONFIRM=1 npm run check:captcha-assist-physical-live",
+    source_identity: buildOptionalProofSourceIdentity(PHYSICAL_INPUT_SOURCE_SCOPE),
+    managed_tab_only: true,
+    fixture: "local browser67-owned managed tab",
+    slider_completed: true,
+    checkbox_completed: true,
+    fullscreen_screenshot: false,
+    js_cdp_widget_click: false,
+    secrets_redacted: true,
+    evidence: {
+      slider_visual_offset: 0,
+      slider_delta_live: "0",
+      handle_transform: "none",
+      checkbox_click_inside: true,
+      browser_private_state_access: false,
+    },
+  }, localCaptcha);
+  assert.equal(captchaMissingVisualProof.ok, false);
+  assert.ok(captchaMissingVisualProof.errors.includes("slider_visual_offset_must_be_at_least_180"));
+  assert.ok(captchaMissingVisualProof.errors.includes("slider_delta_live_must_be_at_least_180"));
+  assert.ok(captchaMissingVisualProof.errors.includes("handle_transform_translatex_required"));
+
+  const recordTmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "tmwd-optional-proof-record-contract-"));
+  try {
+    const inputPath = path.join(recordTmpDir, "linux-proof-input.json");
+    await fs.writeFile(inputPath, `${JSON.stringify(validNativeProof("linux"), null, 2)}\n`);
+    const dryRunRecord = await buildOptionalLiveProofRecord({
+      id: "native-live-linux",
+      from_json: inputPath,
+      proof_dir: recordTmpDir,
+    });
+    assert.equal(dryRunRecord.ok, true);
+    assert.equal(dryRunRecord.status, "validated");
+    assert.equal(dryRunRecord.written, false);
+    assert.equal(dryRunRecord.redaction_checklist.ok, true);
+    await assert.rejects(
+      () => fs.stat(path.join(recordTmpDir, "native-live-linux.json")),
+      /ENOENT/,
+    );
+
+    const writtenRecord = await buildOptionalLiveProofRecord({
+      id: "native-live-linux",
+      from_json: inputPath,
+      proof_dir: recordTmpDir,
+      write: true,
+    });
+    assert.equal(writtenRecord.ok, true);
+    assert.equal(writtenRecord.status, "written");
+    assert.equal(writtenRecord.written, true);
+    assert.equal(writtenRecord.output.sha256.length, 64);
+    const persisted = JSON.parse(await fs.readFile(path.join(recordTmpDir, "native-live-linux.json"), "utf8"));
+    assert.equal(persisted.platform, "linux");
+
+    const blockedRecord = await buildOptionalLiveProofRecord({
+      id: "native-live-linux",
+      from_json: inputPath,
+      proof_dir: recordTmpDir,
+      write: true,
+    });
+    assert.equal(blockedRecord.ok, false);
+    assert.equal(blockedRecord.status, "blocked_existing_proof");
+
+    const templatePath = path.join(recordTmpDir, "linux-proof-template.json");
+    await fs.writeFile(templatePath, `${JSON.stringify(nativeTemplate, null, 2)}\n`);
+    const invalidRecord = await buildOptionalLiveProofRecord({
+      id: "native-live-linux",
+      from_json: templatePath,
+      proof_dir: recordTmpDir,
+      write: true,
+      replace: true,
+    });
+    assert.equal(invalidRecord.ok, false);
+    assert.equal(invalidRecord.status, "invalid");
+    assert.ok(invalidRecord.validation.errors.includes("template_only_not_accepted"));
+  } finally {
+    await fs.rm(recordTmpDir, { recursive: true, force: true });
+  }
+
+  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "tmwd-optional-proof-contract-"));
+  try {
+    await fs.writeFile(
+      path.join(tmpDir, "native-live-linux.template.json"),
+      `${JSON.stringify(nativeTemplate, null, 2)}\n`,
+    );
+    await fs.writeFile(
+      path.join(tmpDir, "native-live-win32.json"),
+      `${JSON.stringify(validNativeProof("win32"), null, 2)}\n`,
+    );
+    const audit = await buildOptionalLiveProofAudit({ proof_dir: tmpDir });
+    assert.equal(audit.requirements.some((item) => item.id === "native-live-linux"), false);
+    assert.equal(audit.summary.required_count, 5);
+    assert.equal(audit.summary.available_count, 6);
+    const linux = audit.on_demand_requirements.find((item) => item.id === "native-live-linux");
+    assert.equal(linux?.satisfied, false);
+    assert.equal(linux?.release_scope, "on_demand");
+    assert.equal(linux?.default_required, false);
+    assert.equal(linux?.candidates?.length, 1);
+    assert.ok(linux.candidates[0].validation.errors.includes("template_only_not_accepted"));
+    const win32 = audit.requirements.find((item) => item.id === "native-live-win32");
+    assert.equal(win32?.satisfied, true);
+    assert.equal(win32?.accepted?.path?.endsWith("native-live-win32.json"), true);
+    assert.equal(win32?.accepted?.expires_at, "2099-06-17T00:00:00.000Z");
+    assert.equal(win32?.accepted?.source_identity?.source_equivalent, true);
+    assert.equal(typeof win32?.accepted?.expires_in_days, "number");
+    const fullAudit = await buildOptionalLiveProofAudit({
+      proof_dir: tmpDir,
+      include_on_demand: true,
+    });
+    assert.equal(fullAudit.include_on_demand, true);
+    assert.equal(fullAudit.summary.required_count, 6);
+    assert.equal(fullAudit.summary.on_demand_missing_count, 1);
+    assert.equal(fullAudit.required_missing.includes("native-live-linux"), true);
+
+    const deterministicHost = {
+      ok: false,
+      status: "requirements_missing",
+      platform: "contract-os",
+      supports_click: false,
+      supports_drag: false,
+      requirements: ["contract fixture has no native pointer"],
+    };
+    const plan = await buildOptionalLiveProofPlan({
+      proof_dir: tmpDir,
+      current_platform: "contract-os",
+      native_pointer: deterministicHost,
+    });
+    assert.equal(plan.action, "optional-live-proof-plan");
+    assert.equal(plan.summary.invalid_file_count, 0);
+    assert.equal(plan.summary.required_count, 5);
+    assert.equal(plan.summary.rejected_candidate_count, 0);
+    assert.equal(plan.safe_defaults.includes("This plan does not move the mouse."), true);
+    assert.equal(plan.safe_defaults.includes("This plan does not read browser private state."), true);
+    const captchaPlan = plan.items.find((item) => item.id === "captcha-assist-physical-local");
+    assert.ok(captchaPlan);
+    assert.equal(captchaPlan.collection_mode, "local_gui_physical_gate");
+    assert.equal(captchaPlan.commands.live_gate.includes("TMWD_CAPTCHA_ASSIST_PHYSICAL=1"), true);
+    assert.equal(captchaPlan.evidence_requirements.includes("slider_visual_offset>=180"), true);
+    assert.equal(captchaPlan.evidence_requirements.includes("checkbox_click_inside=true"), true);
+    assert.equal(captchaPlan.collection_steps.includes("Run the native pointer readiness check."), true);
+    assert.equal(
+      captchaPlan.safety_boundaries.includes("Do not use JS/CDP clicks on CAPTCHA widgets."),
+      true,
+    );
+    const filteredPlan = await buildOptionalLiveProofPlan({
+      proof_dir: tmpDir,
+      id: "idp-oauth-popup",
+      current_platform: "contract-os",
+      native_pointer: deterministicHost,
+    });
+    assert.equal(filteredPlan.filter.id, "idp-oauth-popup");
+    assert.equal(filteredPlan.items.length, 1);
+    assert.equal(filteredPlan.items[0].id, "idp-oauth-popup");
+    assert.equal(filteredPlan.summary.required_count, 1);
+    assert.equal(filteredPlan.summary.missing_count, 1);
+    await assert.rejects(
+      () => buildOptionalLiveProofPlan({ proof_dir: tmpDir, id: "unknown-proof" }),
+      /unknown optional live proof id/,
+    );
+    const win32Plan = plan.items.find((item) => item.id === "native-live-win32");
+    assert.equal(win32Plan?.satisfied, true);
+    assert.equal(win32Plan?.proof_path?.endsWith("native-live-win32.json"), true);
+    assert.equal(win32Plan?.accepted?.expires_at, "2099-06-17T00:00:00.000Z");
+    assert.equal(win32Plan?.accepted?.source_identity?.source_equivalent, true);
+    assert.equal(typeof win32Plan?.accepted?.expires_in_days, "number");
+    assert.equal(win32Plan?.next_command, `TMWD_OPTIONAL_PROOF_DIR=${tmpDir} npm run check:optional-live-proofs`);
+    assert.equal(win32Plan?.commands.record_replace, "npm run proof:optional-live-record -- --id native-live-win32 --from-json <sanitized.json> --write --replace");
+    assert.equal(plan.items.some((item) => item.id === "native-live-linux"), false);
+    const linuxOnlyPlan = await buildOptionalLiveProofPlan({
+      proof_dir: tmpDir,
+      id: "native-live-linux",
+      current_platform: "contract-os",
+      native_pointer: deterministicHost,
+    });
+    assert.equal(linuxOnlyPlan.summary.required_count, 1);
+    assert.equal(linuxOnlyPlan.summary.rejected_candidate_count, 1);
+    const linuxPlan = linuxOnlyPlan.items[0];
+    assert.equal(linuxPlan?.release_scope, "on_demand");
+    assert.equal(linuxPlan?.default_required, false);
+    assert.equal(linuxPlan?.collection_mode, "cross_os_native_physical_gate");
+    assert.equal(linuxPlan?.target_platform, "linux");
+    assert.equal(linuxPlan?.next_command, "Run this plan on a linux GUI host");
+    assert.equal(linuxPlan?.commands.template, "npm run proof:optional-live-template -- --id native-live-linux --write");
+    assert.equal(linuxPlan?.commands.native_live_readiness, "npm run check:native-live");
+    assert.match(linuxPlan?.commands.live_gate ?? "", /npm run proof:native-live/);
+    assert.equal(
+      linuxPlan?.commands.validate,
+      `TMWD_OPTIONAL_PROOF_DIR=${tmpDir} npm run check:optional-live-proofs -- --include-on-demand`,
+    );
+    assert.equal(linuxPlan?.evidence_requirements.includes("actions include get_window_rect"), true);
+    assert.equal(linuxPlan?.evidence_requirements.includes("evidence.window_rect_verified=true"), true);
+    assert.equal(
+      linuxPlan?.commands.record,
+      "npm run proof:optional-live-record -- --id native-live-linux --from-json <sanitized.json>",
+    );
+    assert.equal(
+      linuxPlan?.commands.record_write,
+      "npm run proof:optional-live-record -- --id native-live-linux --from-json <sanitized.json> --write",
+    );
+    const idpPlan = plan.items.find((item) => item.id === "idp-oauth-popup");
+    assert.equal(idpPlan?.status, "requires_approved_external_provider");
+    assert.equal(idpPlan?.next_command, "Run approved external oauth_popup handoff/resume gate");
+    assert.equal(idpPlan?.commands.local_fixture_baseline, "npm run check:auth-live");
+    assert.equal(idpPlan?.evidence_requirements.includes("manual_required_verified=true"), true);
+    assert.equal(idpPlan?.collection_steps.includes("Resume ensure_login and record sanitized proof JSON."), true);
+
+    const status = await buildOptionalLiveProofStatus({
+      proof_dir: tmpDir,
+      current_platform: "contract-os",
+      native_pointer: deterministicHost,
+    });
+    assert.equal(status.action, "optional-live-proof-status");
+    assert.equal(status.status, "needs_local_action");
+    assert.equal(status.summary.invalid_file_count, 0);
+    assert.equal(status.summary.required_count, 5);
+    assert.equal(status.summary.rejected_candidate_count, 0);
+    assert.equal(status.safe_defaults.includes("This status output does not execute any listed command."), true);
+    assert.equal(status.accepted.some((item) => item.id === "native-live-win32"), true);
+    assert.equal(status.checklist.some((item) => item.id === "native-live-linux"), false);
+    const idpChecklist = status.checklist.find((item) => item.id === "idp-oauth-popup");
+    assert.equal(idpChecklist?.scope, "external_approved_idp");
+    assert.equal(idpChecklist?.owner, "oauth_popup_test_tenant_operator");
+    assert.equal(status.completion_policy.forbidden.some((item) => item.includes("Do not fabricate")), true);
+    const filteredStatus = await buildOptionalLiveProofStatus({
+      proof_dir: tmpDir,
+      id: "native-live-linux",
+      current_platform: "contract-os",
+      native_pointer: deterministicHost,
+    });
+    assert.equal(filteredStatus.filter.id, "native-live-linux");
+    assert.equal(filteredStatus.filter.release_scope, "on_demand");
+    assert.equal(filteredStatus.summary.required_count, 1);
+    assert.equal(filteredStatus.accepted.length, 0);
+    assert.equal(filteredStatus.checklist.length, 1);
+    assert.equal(filteredStatus.checklist[0].id, "native-live-linux");
+    assert.equal(filteredStatus.checklist[0].owner, "linux_gui_operator");
+    assert.equal(filteredStatus.checklist[0].record_write_command, "npm run proof:optional-live-record -- --id native-live-linux --from-json <sanitized.json> --write");
+  } finally {
+    await fs.rm(tmpDir, { recursive: true, force: true });
+  }
+}
+
+export { assertOptionalLiveProofContract };

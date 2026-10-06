@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/creative-direction.schema.json",
+  "title": "Creative Craft Creative Direction v1",
+  "type": "object",
+  "required": [
+    "schema_version", "direction_id", "brief_id", "selected_route_id", "status",
+    "message_hierarchy", "visual_world", "copy_direction", "image_art_direction",
+    "video_treatment", "script", "storyboard", "shot_plan", "motion_direction",
+    "sound_direction", "performance_direction", "reference_roles", "invariants",
+    "deliverables", "approval", "remaining_unknowns"
+  ],
+  "properties": {
+    "schema_version": {"const": "creative-craft.creative-direction.v1"},
+    "direction_id": {"type": "string", "minLength": 1},
+    "brief_id": {"type": "string", "minLength": 1},
+    "selected_route_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["draft", "working", "locked", "approved", "superseded"]},
+    "message_hierarchy": {"type": "array", "items": {"type": "string"}},
+    "visual_world": {"type": "array", "items": {"type": "string"}},
+    "copy_direction": {"type": "array", "items": {"type": "string"}},
+    "image_art_direction": {"type": "array", "items": {"type": "string"}},
+    "video_treatment": {"type": "array", "items": {"type": "string"}},
+    "script": {"type": "array", "items": {"$ref": "#/$defs/scriptBeat"}},
+    "storyboard": {"type": "array", "items": {"$ref": "#/$defs/storyboardFrame"}},
+    "shot_plan": {"type": "array", "items": {"$ref": "#/$defs/shot"}},
+    "motion_direction": {"type": "array", "items": {"type": "string"}},
+    "sound_direction": {"type": "array", "items": {"type": "string"}},
+    "performance_direction": {"type": "array", "items": {"type": "string"}},
+    "reference_roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "roles", "preserve"],
+        "properties": {
+          "asset_id": {"type": "string", "minLength": 1},
+          "roles": {"type": "array", "items": {"type": "string"}},
+          "preserve": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "invariants": {"type": "array", "items": {"type": "string"}},
+    "deliverables": {"type": "array", "items": {"$ref": "#/$defs/deliverable"}},
+    "approval": {
+      "type": "object",
+      "required": ["status", "approved_by", "approved_at", "basis"],
+      "properties": {
+        "status": {"enum": ["pending", "approved", "rejected"]},
+        "approved_by": {"type": ["string", "null"]},
+        "approved_at": {"type": ["string", "null"]},
+        "basis": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "remaining_unknowns": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "scriptBeat": {
+      "type": "object",
+      "required": ["range", "purpose"],
+      "properties": {
+        "range": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string", "minLength": 1},
+        "copy": {"type": "string"},
+        "audio": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "storyboardFrame": {
+      "type": "object",
+      "required": ["shot_id", "frame"],
+      "properties": {
+        "shot_id": {"type": "string", "minLength": 1},
+        "frame": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "shot": {
+      "type": "object",
+      "required": ["shot_id", "camera"],
+      "properties": {
+        "shot_id": {"type": "string", "minLength": 1},
+        "camera": {"type": "string", "minLength": 1},
+        "action": {"type": "string"},
+        "duration_seconds": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "deliverable": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "type": {"enum": ["image", "video", "audio", "copy", "other"]},
+        "channel": {"type": "string"},
+        "aspect_ratio": {"type": "string"},
+        "duration_seconds": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

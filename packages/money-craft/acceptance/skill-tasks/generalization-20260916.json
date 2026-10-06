@@ -1,0 +1,193 @@
+{
+  "schema": "money-craft.generalization-acceptance.v1",
+  "date": "2026-09-16",
+  "overall": "PASS_BOUNDED_WITH_WORDING_NOTE",
+  "scope": "Three new prompts on unchanged Skill; two synthetic cases and one new prompt over previously used official filings. Not an unseen-company or unseen-document sample.",
+  "source_tree_sha256": "c63fa81bb6e68d1bbc9efc181582b408967ae391bfa11402b6b9646e81dcff3c",
+  "case_file": {
+    "path": "acceptance/skill-tasks/generalization-cases.json",
+    "sha256": "dd9b65aef528e0d3dfd98b5742ed2564b06a5cd45b1b6ed438912ab07e39641d"
+  },
+  "freeze": {
+    "path": "local/skill-evals/20260916/generalization/freeze.json",
+    "sha256": "613df4c7890d98083b96f04d69ca75d177a9741336ebddc89dc325a37850d28a"
+  },
+  "runs": [
+    {
+      "case_id": "loss-to-profit",
+      "data_kind": "SYNTHETIC",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 12,
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "归母扭亏、改善12，负基数不输出常规利润同比增长百分比；收入增长25%。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "归母利润/收入-10%到4%，改善14个百分点；不能写成增长14%。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "扣非归母从-8到-2，仍亏损；不能把归母盈利等同核心经营已反转。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "现金流仍负且恶化，短期数据不能证明持续反转；不捏造非经常损益原因。",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "负基数不报常规利润同比；收入+25%，归母改善12，归母利润/收入-10%到4%，扣非仍亏-2，现金流恶化，不认定持续反转。"
+      },
+      "observations": [],
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/generalization/loss-to-profit/host.json",
+          "sha256": "9a3b1203bdc25879b2ee7eba6b092cdd58102a5996fe02989abf36e089292b25"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/generalization/loss-to-profit/answer.md",
+          "sha256": "568c8c98a06ada1e42252a4bc5a9c394a1f592f9f0bc3004cf718c34c5b5e600"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/generalization/loss-to-profit/events.jsonl",
+          "sha256": "d243ffddc8ee76009a80cc78f8b98ccb6addcdb0ccfc5916d05b4c3a6e745dc0"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/generalization/loss-to-profit/machine-audit.json",
+          "sha256": "73adc800e43a1efad75079df2b1a4c3cbf90a5b4d26977d35db4180d3bee2a98"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/generalization/loss-to-profit/case-snapshot.json",
+          "sha256": "2f610fccb43ff2204cb2fd643e599331e208839891ac1f3f554b5dddd8bcbe00"
+        }
+      }
+    },
+    {
+      "case_id": "restated-dilution",
+      "data_kind": "SYNTHETIC",
+      "verdict": "PASS_WITH_WORDING_NOTE",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 14,
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "同比使用2025H1重述后50/5而非原全年100/10或重述前40/4；收入利润均增长20%。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "EPS用加权平均普通股：0.5元到0.4元，下降20%，不能因利润增20%推断每股同样增长。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "归母利润/收入均10%，保留重述前后区分，旧全年与半年不可直接同比。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不覆盖历史原披露；现金流影响未知，无股价不能推出便宜或买入。",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "采用重述后同半年比较列，收入利润+20%；基本EPS0.5到0.4元，-20%；保留原披露和重述区别，未假定现金流不受影响。"
+      },
+      "observations": [
+        "正文一次使用“利润总额增加”指代归母利润金额增加，术语不严谨；表格、EPS公式和结论均使用正确归母口径。非阻断，保留原回答。"
+      ],
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/generalization/restated-dilution/host.json",
+          "sha256": "2a8a4204975b6e48ae1ee87490c9f1b93634f1834ce6277f7b45320f6dfb67b8"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/generalization/restated-dilution/answer.md",
+          "sha256": "4ebcde20f5bdfcbc6a88f66b96fcd9508714796e926025eafcf6227c6575067e"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/generalization/restated-dilution/events.jsonl",
+          "sha256": "fa939d1c7e2e7ad6dcc2c3780d700eb903291d5f488a75de20ee9d8c9bc9d4b9"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/generalization/restated-dilution/machine-audit.json",
+          "sha256": "779e98ff40aa3ecc399c172a9284875aeeb0696439a5c611cf3b9c8e17d24cd6"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/generalization/restated-dilution/case-snapshot.json",
+          "sha256": "0e0447a49e9359a6c0e5c5fed62274e6fb2e4debcdc26ec2fc89e85ae5196856"
+        }
+      }
+    },
+    {
+      "case_id": "historical-open-earnings",
+      "data_kind": "HISTORICAL_OFFICIAL_FILINGS",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 5,
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "实际读取原始PDF并核对哈希；营业收入、归母利润和OCF来源单位正确。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "给出营业收入及归母利润同比，指出归母利润增速略低于收入；不把利润金额增长直接等同盈利率提高。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "自发比较归母利润/营业收入及百分点变化，定义准确且不冒充毛利率。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "现金流同比和辅助现金比率可复算；不因合并OCF/归母利润就证明所有盈利质量或因果。",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "保留历史截止与post-hoc获取、同发行人来源限制，无当前估值或买卖结论。",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "读取两份PDF第5页并核对哈希；直接引用原表同比，主动比较归母利润/收入50.60%到50.46%，-0.14518个百分点及OCF/归母利润0.89到1.07；限制同源、历史回放及原因未知。"
+      },
+      "observations": [],
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/generalization/historical-open-earnings/host.json",
+          "sha256": "e578d1dbaadf76cdfd7721bcdb5475e758ed39f1f49abb426420187caa87cc58"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/generalization/historical-open-earnings/answer.md",
+          "sha256": "a912b92fd603ff6b7465c22879c6ed21d79d7d6c3d37f4ef95ef19b489258d14"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/generalization/historical-open-earnings/events.jsonl",
+          "sha256": "3eed24a0a7636d31113cd29f11cd58fa4e8730cd125b9568cdbaf475a2f036aa"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/generalization/historical-open-earnings/machine-audit.json",
+          "sha256": "d8b559f9a65933cbb7a1ff477ec3284934bf623457e22802f7bd667e44312954"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/generalization/historical-open-earnings/case-snapshot.json",
+          "sha256": "206e6386f19ef3c93c40b5b40c7f6a1a092cbc8faa046a8d56edb739586a525c"
+        }
+      }
+    }
+  ],
+  "total_calculation_checks": 31,
+  "limitations": [
+    "Criteria were fixed before launch and withheld from host; primary agent authored and manually judged cases, not an independent blinded evaluator.",
+    "Each new prompt ran once with explicit source Skill; no statistical reliability or natural-trigger claim.",
+    "Real filings were previously used; source diversity did not expand.",
+    "Historical growth percentages are directly disclosed source values, not newly derived numbers requiring new calculation receipts.",
+    "No Skill or runtime changes, global install, code-suite rerun, commit, push or release in this batch."
+  ]
+}

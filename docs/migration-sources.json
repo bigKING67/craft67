@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "imported_at": "2026-10-06T07:57:51.863846+00:00",
+  "strategy": "tracked working-tree snapshot at source HEAD; original histories retained in original repositories; no history rewrite",
+  "packages": [
+    {
+      "name": "design-craft",
+      "source_repository": "https://github.com/bigKING67/design-craft.git",
+      "source_commit": "f52ac60ad8fcebad89b125d761775bf5050cc4d0",
+      "path": "packages/design-craft",
+      "excluded_tracked_paths": [],
+      "files": 990,
+      "bytes": 6438773,
+      "submodules": [
+        {
+          "path": "upstreams/emilkowalski-skills",
+          "commit": "7bb7061b5cf7de15ea1aeaf00fbd9e6592a20fce",
+          "url": "https://github.com/emilkowalski/skills.git"
+        },
+        {
+          "path": "upstreams/impeccable",
+          "commit": "80e4dd0d581fcdb42be62252b7bc07dcd2238330",
+          "url": "https://github.com/pbakaus/impeccable.git"
+        },
+        {
+          "path": "upstreams/jakubkrehel-skills",
+          "commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+          "url": "https://github.com/jakubkrehel/skills.git"
+        },
+        {
+          "path": "upstreams/taste-skill",
+          "commit": "b17742737e796305d829b3ad39eda3add0d79060",
+          "url": "https://github.com/Leonxlnx/taste-skill.git"
+        }
+      ],
+      "source_tree_sha256": "ae0f044d874a6ef96839c2762175914a26ba8a1c76ebb8cab4cb48486cfc821d"
+    },
+    {
+      "name": "creative-craft",
+      "source_repository": "https://github.com/bigKING67/creative-craft.git",
+      "source_commit": "1c5688e0c617bfb98e7b3c6b787f6f0734fc2afd",
+      "path": "packages/creative-craft",
+      "excluded_tracked_paths": [
+        ".codex/config.toml"
+      ],
+      "files": 386,
+      "bytes": 3178445,
+      "submodules": [],
+      "source_tree_sha256": "5935d4a00febc8547c8e6a0b0a0026a63cc0506115a64f45b2aab32f366b3ef7"
+    },
+    {
+      "name": "review-craft",
+      "source_repository": "https://github.com/bigKING67/review-craft.git",
+      "source_commit": "76307c2674baebf4586d1dd6ab07149ceb6b3fdd",
+      "path": "packages/review-craft",
+      "excluded_tracked_paths": [],
+      "files": 143,
+      "bytes": 1192885,
+      "submodules": [],
+      "source_tree_sha256": "658a42d8713490774f23e0550367d7faa792675aca884b6648b48d6a7f0e00cc"
+    },
+    {
+      "name": "money-craft",
+      "source_repository": "https://github.com/bigKING67/money-craft.git",
+      "source_commit": "bd85d017df6eea1cd852f419ed47c32ba17059a2",
+      "path": "packages/money-craft",
+      "excluded_tracked_paths": [],
+      "files": 574,
+      "bytes": 3895322,
+      "submodules": [
+        {
+          "path": "upstreams/ai-berkshire",
+          "commit": "fef5533145e2a505c7e07592d61165c7485a98b9",
+          "url": "https://github.com/xbtlin/ai-berkshire.git"
+        }
+      ],
+      "source_tree_sha256": "079735473c563b15ba64de973784b3bb0f45f4bf1446b5262f89307689353972"
+    },
+    {
+      "name": "whoami",
+      "source_repository": "https://github.com/bigKING67/whoami.git",
+      "source_commit": "2383b87f71fb8d7221f55a53f5e3d9614b47c1af",
+      "path": "packages/whoami",
+      "excluded_tracked_paths": [
+        ".codex/config.toml"
+      ],
+      "files": 585,
+      "bytes": 8266469,
+      "submodules": [],
+      "source_tree_sha256": "88cdd692a4647f52ba733620a02556d8d9a265a8e71d3bf8fc7d83fe855f840d"
+    },
+    {
+      "name": "browser67",
+      "source_repository": "https://github.com/bigKING67/browser67.git",
+      "source_commit": "3d448f01a5fee1483c613c5561c4583cd5e02c43",
+      "path": "packages/browser67",
+      "excluded_tracked_paths": [],
+      "files": 590,
+      "bytes": 3586094,
+      "submodules": [],
+      "source_tree_sha256": "e43fc97c680f88e32207b2f639838de61f8401b02598cdb350a0f8abe014446c"
+    },
+    {
+      "name": "commerce-growth-os",
+      "source_repository": "https://github.com/bigKING67/commerce-growth-os.git",
+      "source_commit": "dea412e14827965e4e6aaff1ca63fbb29dde7d28",
+      "path": "packages/commerce-growth-os",
+      "excluded_tracked_paths": [],
+      "files": 169,
+      "bytes": 756871,
+      "submodules": [],
+      "source_tree_sha256": "e8a21fcd5bb946d9d9a8f70ba1252da0f347ee6a233025e43839d31558fc5235"
+    },
+    {
+      "name": "3d-craft",
+      "source_repository": "https://github.com/bigKING67/3D-Craft.git",
+      "source_commit": "8cbbd0d4c134deb2abed718f06e4c4c7726cb26e",
+      "path": "packages/3d-craft",
+      "excluded_tracked_paths": [],
+      "files": 72,
+      "bytes": 967040,
+      "submodules": [],
+      "source_tree_sha256": "e4817e046f2a2ebe39042bf0f875600bb1f164cbb7dfe9daf328bc19d796fa3a"
+    },
+    {
+      "name": "reverse-craft",
+      "source_repository": "https://github.com/bigKING67/reverse-craft.git",
+      "source_commit": "f2f7aa22656391c64eb5d8cc0ace89cfc0471ea2",
+      "path": "packages/reverse-craft",
+      "excluded_tracked_paths": [
+        ".codex/config.toml"
+      ],
+      "files": 87,
+      "bytes": 337209,
+      "submodules": [],
+      "source_tree_sha256": "4ba66ca8f5b55e97e53917099fe96ff75b821baae1f4b592fe5fbc857690f3a8"
+    },
+    {
+      "name": "write-craft",
+      "source_repository": "https://github.com/bigKING67/write-craft.git",
+      "source_commit": "659ff5f31dd22294865a1efb56573f47dea7186d",
+      "path": "packages/write-craft",
+      "excluded_tracked_paths": [
+        ".codex/config.toml"
+      ],
+      "files": 49,
+      "bytes": 817064,
+      "submodules": [
+        {
+          "path": "upstreams/agent-skills",
+          "commit": "42dd24080fce6d731d00e2a1134f398c3da4171b",
+          "url": "https://github.com/arjunprabhulal/agent-skills.git"
+        },
+        {
+          "path": "upstreams/anthropic-skills",
+          "commit": "34040c9c568585f6929bedeaad110ad08f079624",
+          "url": "https://github.com/anthropics/skills.git"
+        },
+        {
+          "path": "upstreams/awesome-claude-skills",
+          "commit": "be2a406907dbc61b73e6827ded415c96139d13a2",
+          "url": "https://github.com/ComposioHQ/awesome-claude-skills.git"
+        },
+        {
+          "path": "upstreams/elements-of-style",
+          "commit": "05fc4f0d2b97b7c042dd9949ad658568e4a1324e",
+          "url": "https://github.com/obra/the-elements-of-style.git"
+        }
+      ],
+      "source_tree_sha256": "fced33c995e1beada87dd7d891003685d92bcbdb8e9b1ccde4da3f6e654a4899"
+    }
+  ]
+}

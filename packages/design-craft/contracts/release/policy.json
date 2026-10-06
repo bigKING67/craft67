@@ -1,0 +1,49 @@
+{
+  "schema": "design-craft.release-policy.v1",
+  "version": 1,
+  "levels": {
+    "operational_95": {
+      "score": 95,
+      "required_hosts": ["codex", "pi"],
+      "required_native": ["ios_simulator", "android_emulator"],
+      "allowed_unverified": ["cursor", "claude", "physical_device"],
+      "required_domains": [
+        "contract_completeness",
+        "operational_maturity",
+        "performance_regression",
+        "comparative_evaluation"
+      ],
+      "assets": [
+        "design-craft-{version}.tgz",
+        "design-craft-{version}.tgz.sha256",
+        "design-craft-v{version}-release-assets.json",
+        "design-craft-v{version}.spdx.json"
+      ],
+      "permanent_native_bundle": false
+    },
+    "certified_100": {
+      "score": 100,
+      "extends": "operational_95",
+      "required_hosts": ["codex", "pi", "cursor", "claude"],
+      "required_native": ["ios_simulator", "android_emulator", "physical_device"],
+      "allowed_unverified": [],
+      "required_domains": [
+        "contract_completeness",
+        "operational_maturity",
+        "performance_regression",
+        "comparative_evaluation",
+        "release_certification"
+      ],
+      "assets": [
+        "design-craft-{version}.tgz",
+        "design-craft-{version}.tgz.sha256",
+        "design-craft-v{version}-release-assets.json",
+        "design-craft-v{version}.spdx.json",
+        "design-craft-v{version}-native-runtime.tgz",
+        "design-craft-v{version}-native-runtime.tgz.sha256",
+        "design-craft-v{version}-native-runtime.json"
+      ],
+      "permanent_native_bundle": true
+    }
+  }
+}

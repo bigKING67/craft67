@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/delivery-manifest-v2.schema.json",
+  "title": "Creative Craft Delivery v2",
+  "type": "object",
+  "required": ["schema_version", "delivery_id", "project_id", "status", "brief_id", "selected_route_id", "direction_id", "job_refs", "receipt_refs", "inspection_refs", "revision_refs", "evaluation_refs", "files", "validation", "remaining_risks"],
+  "properties": {
+    "schema_version": {"const": "creative-craft.delivery.v2"},
+    "delivery_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["planned", "ready", "delivered", "superseded"]},
+    "brief_id": {"type": "string", "minLength": 1},
+    "selected_route_id": {"type": "string", "minLength": 1},
+    "direction_id": {"type": "string", "minLength": 1},
+    "job_refs": {"type": "array", "items": {"type": "string", "pattern": "^cc://"}},
+    "receipt_refs": {"type": "array", "items": {"type": "string", "pattern": "^cc://"}},
+    "inspection_refs": {"type": "array", "items": {"type": "string", "pattern": "^cc://"}},
+    "revision_refs": {"type": "array", "items": {"type": "string", "pattern": "^cc://"}},
+    "evaluation_refs": {"type": "array", "items": {"type": "string", "pattern": "^cc://"}},
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "path", "sha256", "mime_type", "bytes", "job_id", "receipt_id", "inspection_id", "rights_status", "known_limitations"],
+        "properties": {
+          "asset_id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "mime_type": {"type": "string", "minLength": 1},
+          "bytes": {"type": "integer", "minimum": 0},
+          "job_id": {"type": "string", "minLength": 1},
+          "receipt_id": {"type": "string", "minLength": 1},
+          "inspection_id": {"type": "string", "minLength": 1},
+          "rights_status": {"enum": ["CLEARED", "LIMITED", "REJECTED", "UNVERIFIED"]},
+          "known_limitations": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "validation": {"type": "array", "items": {"type": "string"}},
+    "remaining_risks": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

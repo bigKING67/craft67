@@ -1,0 +1,127 @@
+{
+  "schema": "money-craft.company-research-closeout.v1",
+  "date": "2026-09-19",
+  "version": "0.3.0-working-tree",
+  "case": "Amazon historical research as of 2025-02-07",
+  "verdicts": {
+    "engineering": "PASS_BOUNDED",
+    "full_natural_language_behavior": "PASS_BOUNDED",
+    "investment_decision_readiness": "UNVERIFIED"
+  },
+  "installed_skill": {
+    "authorized_install": true,
+    "file_count": 72,
+    "source_install_parity": true,
+    "frozen_manifest_sha256": "e5a8d3710762dbe9cf7b0fe71bc0573d7f8c3edbe605c7e44bbc4fd07f57009d",
+    "host_runtime_overlap_matches_freeze": true,
+    "backup_created": true,
+    "release": false
+  },
+  "host": {
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "exit_code": 0,
+    "timed_out": false,
+    "timeout_seconds": 900,
+    "elapsed_seconds": 558.646,
+    "completed_commands": 24,
+    "machine_checks_pass": true,
+    "calculation_checks": 51,
+    "manual_criteria_passed": 8,
+    "manual_criteria_total": 8,
+    "reviewer": "root-agent",
+    "independent_review": false,
+    "machine_research_complete": false
+  },
+  "research": {
+    "installed_cli": true,
+    "complete": true,
+    "source_count": 8,
+    "report_calculation_checks": 38,
+    "financial_reconciliation_checks": 3,
+    "assessment": {
+      "artifact_integrity": "VERIFIED",
+      "receipt_integrity": "VERIFIED",
+      "evidence_coverage": "PARTIAL",
+      "citation_binding": "VERIFIED",
+      "claim_support": "UNVERIFIED",
+      "source_freshness": "UNVERIFIED"
+    },
+    "provider_gaps": [
+      "provider:yfinance:disabled"
+    ],
+    "citation_correction": "Fresh research-reviewed run fixes duplicate/misdirected governance citations; initial sealed research run preserved."
+  },
+  "tracking": {
+    "installed_verify_valid": true,
+    "revision_count": 2,
+    "latest_revision": "t0002",
+    "historical_versions_modified": false,
+    "investment_status_not_promoted": true
+  },
+  "ledger": {
+    "completed": true,
+    "receipt_count": 12,
+    "artifacts_verified": true
+  },
+  "validation": {
+    "source_checks": 19,
+    "source_checks_pass": true,
+    "harness_audit_tests": 20,
+    "harness_audit_tests_pass": true,
+    "timeout_901_rejected": true,
+    "runtime_regression_tests_from_unchanged_patch_receipt": 481,
+    "runtime_regression_rerun_this_closeout": false,
+    "validation_environment": "Isolated ignored project-local venv with PyYAML 6.0.3; default Python lacked external quick_validate dependency."
+  },
+  "preserved_failure": {
+    "prior_full_host_timeout_seconds": 300,
+    "answer_present": false,
+    "completed_commands": 33,
+    "completed_command_failures": 0,
+    "interpretation": "Harness terminated before final answer; does not prove a stuck subprocess. New run also adds two official materials, so not a timeout-only controlled comparison."
+  },
+  "source_supplements": [
+    {
+      "kind": "2024 proxy statement",
+      "url": "https://s2.q4cdn.com/299287126/files/doc_financials/2024/ar/Amazon-com-Inc-2024-Proxy-Statement.pdf",
+      "sha256": "33e5dccc65afa9cf9596e856f94028a2f4f2c75565d70f07032cd71e61a186a6"
+    },
+    {
+      "kind": "2024 shareholder written Q&A, responses as of 2024-06-07, not Q4 earnings-call transcript",
+      "url": "https://ir.aboutamazon.com/files/doc_downloads/AnnualMeetingMaterials/2024/06/Shareholder_Meeting_QA_Answers_2024.pdf",
+      "sha256": "91b67d358613b372ba0b6b2f76497ebef1ff18937b0777b7b860508ef33dd873"
+    }
+  ],
+  "audio": {
+    "downloaded": true,
+    "duration_seconds": 3124.746,
+    "bytes": 604713522,
+    "transcribed": false,
+    "content_verified": false,
+    "used_for_claim_support": false
+  },
+  "limits": [
+    "Host Markdown answer and parent-operated deterministic research CLI are separate verified surfaces, not one autonomous end-to-end host archival run.",
+    "No current price, defensible valuation multiple/discount rate, or complete maintenance-capex/normalized-owner-cash evidence.",
+    "Financial sources share issuer lineage; file integrity is not independent claim verification.",
+    "Historical post-hoc replay; not live investment advice or predictive performance.",
+    "No application, commit, push, release or trading."
+  ],
+  "artifact_hashes": {
+    "local/research/20260919-amazon-final/frozen-skill.json": "e5a8d3710762dbe9cf7b0fe71bc0573d7f8c3edbe605c7e44bbc4fd07f57009d",
+    "local/research/20260919-amazon-final/install.json": "7305756e177ca7a20767c2de9b2576c7293262c4c81539c030ca706795d099a1",
+    "local/research/20260919-amazon-final/host-full/host.json": "a6b55f7cf3b6a19fbe32dbd146b403d7266464354b9a352b2c8af52af437ba8e",
+    "local/research/20260919-amazon-final/host-full/events.jsonl": "33864b87a3d2c5684ef0f6cfccd6f702985ef96289a26a2780f2b4a2b2de9811",
+    "local/research/20260919-amazon-final/host-full/answer.md": "9f74a37c95eecf7567baed11ad3309cd9cd182641af3d1f9d594e2d6062d9b21",
+    "local/research/20260919-amazon-final/host-full/machine-audit.json": "82a0f3e03361b833637cdc5ae7b9d511244b66d0d4ad196eef537d0f95f76ced",
+    "local/research/20260919-amazon-final/manual-host-review.json": "bf9ef0aa0800bee54e4a584f778955cee39c67e42044f7f1c3173cd8a8c0eaa2",
+    "local/research/20260919-amazon-final/research-reviewed/report.md": "c583348bdddf70f3bdf07afaeff00dc1dde3692a5f3fe50ac0b4e4cd83215f23",
+    "local/research/20260919-amazon-final/research-reviewed/thesis.md": "e4af54b37cbee205589ee23654e6962936b309797c7b7a9717222925cca68e8b",
+    "local/research/20260919-amazon-final/research-reviewed/completion-receipt.json": "bae9c14c801795b3554f674680939c0be5b74bbdbfb811c0e03c4b544faf1110",
+    "local/research/20260919-amazon-final/reviewed-status.json": "71db8da1afb848336bfcb9df58bcbd85b949565b4251478fa86352b271eed695",
+    "local/research/20260919-amazon-final/tracking-verify-installed.json": "dffc029a9aba59e81da4b5463fbc0faed2cf4ad4568dd9fdd685ea28cdb549d8",
+    "local/research/20260919-amazon-final/ledger-verify.json": "a0b1f2dfc85a2a231bee9e15513df30e789f373ecea06371c37daf6aa000ac5e",
+    "local/research/20260919-amazon-final/source-validation-final-with-deps.json": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684",
+    "local/research/20260919-amazon-final/parity-final.json": "bbbc5a976da4e364f041bd304406c3984e5fce4cfa449dbde55f94b86a466d68"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "base": {
+    "id": "C1-5ad54bcf",
+    "representativeTime": {
+      "instant": "1993-11-08T06:20:00Z",
+      "civil": "1993-11-08T14:20:00+08:00[Asia/Shanghai]",
+      "trueSolar": "1993-11-08T14:36:06.763",
+      "chartClock": "1993-11-08T14:36:06.763",
+      "offsetMinutes": 480,
+      "longitudeCorrectionMinutes": 0,
+      "equationOfTimeMinutes": 16.11272036377023,
+      "totalCorrectionMinutes": 16.11272036377023,
+      "model": "NOAA fractional-year equation of time",
+      "solarShiftMinutes": 0,
+      "screeningMarginMinutes": 2
+    },
+    "bazi": {
+      "pillars": [
+        {
+          "position": "year",
+          "value": "癸酉"
+        },
+        {
+          "position": "month",
+          "value": "癸亥"
+        },
+        {
+          "position": "day",
+          "value": "癸巳"
+        },
+        {
+          "position": "hour",
+          "value": "己未"
+        }
+      ]
+    },
+    "ziwei": {
+      "time": "未时",
+      "soulPalace": "卯",
+      "bodyPalace": "巳",
+      "lunarDate": "一九九三年九月廿五"
+    }
+  },
+  "minus": {
+    "id": "C1-5ad54bcf",
+    "representativeTime": {
+      "instant": "1993-11-08T05:50:00Z",
+      "civil": "1993-11-08T13:50:00+08:00[Asia/Shanghai]",
+      "trueSolar": "1993-11-08T14:06:06.87",
+      "chartClock": "1993-11-08T14:06:06.87",
+      "offsetMinutes": 480,
+      "longitudeCorrectionMinutes": 0,
+      "equationOfTimeMinutes": 16.114498407624293,
+      "totalCorrectionMinutes": 16.114498407624293,
+      "model": "NOAA fractional-year equation of time",
+      "solarShiftMinutes": 0,
+      "screeningMarginMinutes": 2
+    },
+    "bazi": {
+      "pillars": [
+        {
+          "position": "year",
+          "value": "癸酉"
+        },
+        {
+          "position": "month",
+          "value": "癸亥"
+        },
+        {
+          "position": "day",
+          "value": "癸巳"
+        },
+        {
+          "position": "hour",
+          "value": "己未"
+        }
+      ]
+    },
+    "ziwei": {
+      "time": "未时",
+      "soulPalace": "卯",
+      "bodyPalace": "巳",
+      "lunarDate": "一九九三年九月廿五"
+    }
+  },
+  "plus": {
+    "id": "C1-224a1ce5",
+    "representativeTime": {
+      "instant": "1993-11-08T06:50:00Z",
+      "civil": "1993-11-08T14:50:00+08:00[Asia/Shanghai]",
+      "trueSolar": "1993-11-08T15:06:06.656",
+      "chartClock": "1993-11-08T15:06:06.656",
+      "offsetMinutes": 480,
+      "longitudeCorrectionMinutes": 0,
+      "equationOfTimeMinutes": 16.110936417622167,
+      "totalCorrectionMinutes": 16.110936417622167,
+      "model": "NOAA fractional-year equation of time",
+      "solarShiftMinutes": 0,
+      "screeningMarginMinutes": 2
+    },
+    "bazi": {
+      "pillars": [
+        {
+          "position": "year",
+          "value": "癸酉"
+        },
+        {
+          "position": "month",
+          "value": "癸亥"
+        },
+        {
+          "position": "day",
+          "value": "癸巳"
+        },
+        {
+          "position": "hour",
+          "value": "庚申"
+        }
+      ]
+    },
+    "ziwei": {
+      "time": "申时",
+      "soulPalace": "寅",
+      "bodyPalace": "午",
+      "lunarDate": "一九九三年九月廿五"
+    }
+  }
+}

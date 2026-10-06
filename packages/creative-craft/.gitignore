@@ -1,0 +1,16 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+*.tgz
+dist/
+
+# Pinned caption font binary; fetch with `npm run fetch-font` in integrations/local-production
+integrations/local-production/fonts/*.ttf
+# Pinned static font for the optional image renderer
+integrations/image-production/fonts/*.otf
+# Local generated outputs
+output/
+# Agent worktrees
+.claude/worktrees/

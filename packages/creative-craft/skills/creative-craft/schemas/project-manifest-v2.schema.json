@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/project-manifest-v2.schema.json",
+  "title": "Creative Craft Project Manifest v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_id",
+    "manifest_id",
+    "contract_version",
+    "copy_policy",
+    "artifacts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.project-manifest.v2"
+    },
+    "project_id": {"type": "string", "minLength": 1},
+    "manifest_id": {"type": "string", "minLength": 1},
+    "contract_version": {"const": "0.3"},
+    "copy_policy": {"const": "required"},
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "artifact_type",
+          "artifact_id",
+          "schema_version",
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "artifact_type": {"type": "string", "minLength": 1},
+          "artifact_id": {"type": "string", "minLength": 1},
+          "schema_version": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

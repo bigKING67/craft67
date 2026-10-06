@@ -1,0 +1,115 @@
+{
+  "schema": "design-craft.l4-screenshots.v1",
+  "case_id": "datahub-live-center-review-workbench",
+  "route": "http://127.0.0.1:3000/content/live-center",
+  "artifacts": {
+    "before": {
+      "desktop": {
+        "tool": "tmwd_browser.browser_screenshot_ops",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T143721691Z-ce83d279/artifacts/screenshot-viewport-datahub-live-center-before-desktop-20260630T143721693Z-014d4baf.png",
+        "sha256": "a79713c06d20b7ab77e759a0b8175468e3259b7b45d84cdb1f659b1ce5e73a98",
+        "dimensions": [
+          3024,
+          1638
+        ],
+        "viewport": {
+          "width": 1512,
+          "height": 823,
+          "dpr": 2
+        }
+      },
+      "mobile": {
+        "tool": "headless-chrome-cdp",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T144317Z-headless-before-mobile/artifacts/screenshot-viewport-datahub-live-center-before-mobile-headless-chrome.png",
+        "evidence_path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T144317Z-headless-before-mobile/artifacts/evidence-before-mobile-headless-chrome.json",
+        "sha256": "119653d0bbcb7634a853678d2204723238742c50907906923637b3de0ce79c1f",
+        "dimensions": [
+          780,
+          1688
+        ],
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 2
+        }
+      }
+    },
+    "after": {
+      "desktop": {
+        "tool": "tmwd_browser.browser_screenshot_ops",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T145222425Z-ec2814d7/artifacts/screenshot-viewport-datahub-live-center-after-desktop-20260630T145222428Z-a6b69728.png",
+        "sha256": "85a78e25e470e3ef1810f52064badf3e206b14f4651657c587a8171269310a67",
+        "dimensions": [
+          3024,
+          1638
+        ],
+        "viewport": {
+          "width": 1512,
+          "height": 823,
+          "dpr": 2
+        }
+      },
+      "mobile": {
+        "tool": "headless-chrome-cdp",
+        "target": "viewport",
+        "path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T145400Z-headless-after-mobile/artifacts/screenshot-viewport-datahub-live-center-after-mobile-headless-chrome.png",
+        "evidence_path": "~/.tmwd-browser-mcp/runtime/runs/datahub-live-center-l4/20260630T145400Z-headless-after-mobile/artifacts/evidence-after-mobile-headless-chrome.json",
+        "sha256": "0970600b90780d1145989557b127ecb010479039379b89c52ba106ad27718142",
+        "dimensions": [
+          780,
+          1688
+        ],
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 2
+        }
+      }
+    }
+  },
+  "layout_delta": {
+    "desktop": {
+      "page_header_height": {
+        "before": 258,
+        "after": 234
+      },
+      "command_strip_height": {
+        "before": 103,
+        "after": 91
+      },
+      "filter_panel_height": {
+        "before": 71,
+        "after": 63
+      },
+      "workbench_top": {
+        "before": 481,
+        "after": 449
+      }
+    },
+    "mobile": {
+      "page_header_height": {
+        "before": 526,
+        "after": 338
+      },
+      "command_strip_height": {
+        "before": 298,
+        "after": 163
+      },
+      "filter_panel_height": {
+        "before": 307,
+        "after": 264
+      },
+      "workbench_top": {
+        "before": 1008,
+        "after": 777
+      },
+      "workbench_top_in_first_viewport": {
+        "before": false,
+        "after": true
+      }
+    }
+  }
+}

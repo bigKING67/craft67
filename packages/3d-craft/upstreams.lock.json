@@ -1,0 +1,68 @@
+{
+  "schema": "3d-craft.upstreams.v1",
+  "reviewed_at": "2026-09-02",
+  "upstreams": [
+    {
+      "repo": "ifBars/blender-agent-studio",
+      "commit": "b1cefdd1bcc1b7bf40423259a5c6fa154e2259f4",
+      "license": "MIT",
+      "relationship": "absorbed_reference",
+      "freshness": {"strategy": "target-path-git-blob"},
+      "source_paths": ["README.md", "SKILL.md", "LICENSE"],
+      "absorbed_concepts": ["graybox-to-polish stages", "deterministic source authority", "fixed multiview evidence", "baseline versus skill versus tool separation"],
+      "copied_files": [],
+      "local_destinations": ["references/blender-production.md", "scripts/blend_inspect.py", "scripts/render_evidence.py"],
+      "validation_cases": ["evals/coffee-grinder"]
+    },
+    {
+      "repo": "RobLe3/cc-blender-skill",
+      "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+      "license": "MIT",
+      "relationship": "absorbed_reference",
+      "freshness": {"strategy": "target-path-git-blob"},
+      "source_paths": ["README.md", "LICENSE"],
+      "absorbed_concepts": ["bounded repair loop", "reference identity gates reserved for V0.3"],
+      "copied_files": [],
+      "local_destinations": ["references/repair-and-security.md", "docs/ROADMAP.md"],
+      "validation_cases": ["tests/test_cli.py"]
+    },
+    {
+      "repo": "EnzeD/r3f-skills",
+      "commit": "4a11805f097396fb0b893172efd1e359e8051f92",
+      "license": "MIT (declared in README; no LICENSE file at reviewed commit)",
+      "relationship": "absorbed_reference",
+      "freshness": {"strategy": "target-path-git-blob"},
+      "source_paths": ["README.md", "skills/r3f-fundamentals/SKILL.md", "skills/r3f-loaders/SKILL.md"],
+      "absorbed_concepts": ["version-pinned examples", "typecheck plus Chromium rendering", "remount verification"],
+      "copied_files": [],
+      "local_destinations": ["assets/r3f-viewer", "references/web3d-runtime-qa.md"],
+      "validation_cases": ["npm run viewer:typecheck", "npm run viewer:build"]
+    },
+    {
+      "repo": "img2threejs/img2threejs",
+      "commit": "9fbd0ca5bbcc3b13bebe712745d6784d33db0b85",
+      "license": "Apache-2.0",
+      "relationship": "absorbed_reference",
+      "freshness": {"strategy": "target-path-git-blob"},
+      "source_paths": ["README.md", "SKILL.md", "LICENSE"],
+      "absorbed_concepts": ["run state machine", "identity-feature ledger", "hidden-region uncertainty", "fail-closed quality stages reserved for V0.3"],
+      "copied_files": [],
+      "local_destinations": ["schemas/run.v1.schema.json", "schemas/scene.v1.schema.json", "docs/ROADMAP.md"],
+      "validation_cases": ["evals/coffee-grinder/scene.json"]
+    },
+    {
+      "repo": "KhronosGroup/glTF-Validator",
+      "commit": "bcd52cc4ba5f333b2999a58f67cc05ddf28b4fb1",
+      "license": "Apache-2.0",
+      "relationship": "vendored_runtime",
+      "freshness": {"strategy": "npm-package-integrity"},
+      "package": "gltf-validator@2.0.0-dev.3.10",
+      "npm_integrity": "sha512-odJ4k0tRkGXiDGn78yDBg+fBbAIvBnXxh3RwAta0emSxGtyagFE8B4xELB1oYe3S5RD8Ci3uZAsZaascH2LAEQ==",
+      "source_paths": ["module.mjs", "gltf_validator.dart.js", "LICENSE", "NOTICES", "package.json"],
+      "absorbed_concepts": ["Khronos glTF 2.0 validation"],
+      "copied_files": ["module.mjs", "gltf_validator.dart.js", "LICENSE", "NOTICES", "package.json"],
+      "local_destinations": ["skills/3d-craft/vendor/gltf-validator"],
+      "validation_cases": ["tests/test_packaging.py", "scripts/release_gate.py"]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "dir": "examples",
+    "evidenceId": "00e5027d0ac2b1678d35691b1ed418e5106b72d2bd7f652088580883ba9545bc",
+    "candidates": 1,
+    "anchors": "PASS",
+    "bytes": 58263
+  },
+  {
+    "dir": "examples/acceptance/ordinary",
+    "evidenceId": "cb4f1f77bb6816fe8f935181aa29f8e782cb254515755bfaeff9370ff1245887",
+    "candidates": 1,
+    "anchors": "PASS",
+    "bytes": 50041
+  },
+  {
+    "dir": "examples/acceptance/boundary",
+    "evidenceId": "de07a1759cfc67dbe8b852ebeeaf7b71b374d661645b4ed438a72811f025a068",
+    "candidates": 2,
+    "anchors": "PASS",
+    "bytes": 114596
+  },
+  {
+    "dir": "examples/acceptance/full-1996",
+    "evidenceId": "7e155f3e7aee71553c39e8d36f113a517eb9d07eecde1d48a8fed9639cf5303d",
+    "candidates": 1,
+    "anchors": "PASS",
+    "bytes": 53821
+  }
+]

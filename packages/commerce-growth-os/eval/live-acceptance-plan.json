@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "kind": "live_acceptance_proposal",
+  "execution_authorized": false,
+  "status": "PREPARED_WITH_BLOCKERS",
+  "model": null,
+  "budget": {
+    "max_model_calls": 13,
+    "automatic_retries": 0,
+    "model_timeout_sum_seconds": 3180,
+    "money_cap": null,
+    "note": "Invocation cap is not a token or money cap. Stage limits are separate, not an enforced global wall-clock deadline."
+  },
+  "inputs": {
+    "eval/execution/cases.json": "2a4fb6dde2d0f181f268d2b714f10835879b404128434b20081bb6db7a7fa0cb",
+    "eval/structured-judge/cases.json": "f0f7f98974fb513483e0b79417f58617fd6237ae027ea37ca73d65907fd07bb8",
+    "eval/structured-judge/rubric.json": "0de59d254832315715106ed30b885fb2d34d7de03880ae6d8254b9e02698f0a7"
+  },
+  "placeholders": {
+    "model": "Explicitly approved model identifier; no silent default.",
+    "artifact_root": "Fresh private real directory outside tracked sources; replace before execution."
+  },
+  "execution_cases": [
+    "commercial_budget_decision",
+    "live_operations_sop",
+    "weekly_commerce_analysis"
+  ],
+  "calibration_cases": [
+    "qianchuan_budget_scale",
+    "negative_commercial_wrong_cac",
+    "tmall_conversion_diagnosis",
+    "negative_operations_no_recovery",
+    "weekly_data_review_douyin_tmall",
+    "negative_analytics_causality"
+  ],
+  "stages": [
+    {
+      "id": "loading_smoke",
+      "calls": 1,
+      "gate": "Explicit model/budget approval and host loading receipt capability required before execution.",
+      "argv": [
+        "python3",
+        "tooling/evaluation/run_execution_eval.py",
+        "--case-id",
+        "commercial_budget_decision",
+        "--model",
+        "{model}",
+        "--timeout",
+        "300",
+        "--max-model-calls",
+        "1",
+        "--max-total-seconds",
+        "360",
+        "--answer-dir",
+        "{artifact_root}/loading-answers",
+        "--output",
+        "{artifact_root}/loading.json",
+        "--backend",
+        "app-server"
+      ]
+    },
+    {
+      "id": "commercial_budget_decision",
+      "calls": 2,
+      "gate": "Loading evidence must pass before this stage; stop after any failure.",
+      "argv": [
+        "bash",
+        "scripts/run_quality_regression.sh",
+        "--layer",
+        "execution",
+        "--layer",
+        "judge",
+        "--case-id",
+        "commercial_budget_decision",
+        "--model",
+        "{model}",
+        "--timeout",
+        "300",
+        "--max-model-calls",
+        "2",
+        "--max-total-seconds",
+        "660",
+        "--repeat",
+        "1",
+        "--boundary-repeat",
+        "0",
+        "--output-dir",
+        "{artifact_root}/commercial_budget_decision",
+        "--execution-backend",
+        "app-server"
+      ]
+    },
+    {
+      "id": "live_operations_sop",
+      "calls": 2,
+      "gate": "Loading evidence must pass before this stage; stop after any failure.",
+      "argv": [
+        "bash",
+        "scripts/run_quality_regression.sh",
+        "--layer",
+        "execution",
+        "--layer",
+        "judge",
+        "--case-id",
+        "live_operations_sop",
+        "--model",
+        "{model}",
+        "--timeout",
+        "300",
+        "--max-model-calls",
+        "2",
+        "--max-total-seconds",
+        "660",
+        "--repeat",
+        "1",
+        "--boundary-repeat",
+        "0",
+        "--output-dir",
+        "{artifact_root}/live_operations_sop",
+        "--execution-backend",
+        "app-server"
+      ]
+    },
+    {
+      "id": "weekly_commerce_analysis",
+      "calls": 2,
+      "gate": "Loading evidence must pass before this stage; stop after any failure.",
+      "argv": [
+        "bash",
+        "scripts/run_quality_regression.sh",
+        "--layer",
+        "execution",
+        "--layer",
+        "judge",
+        "--case-id",
+        "weekly_commerce_analysis",
+        "--model",
+        "{model}",
+        "--timeout",
+        "300",
+        "--max-model-calls",
+        "2",
+        "--max-total-seconds",
+        "660",
+        "--repeat",
+        "1",
+        "--boundary-repeat",
+        "0",
+        "--output-dir",
+        "{artifact_root}/weekly_commerce_analysis",
+        "--execution-backend",
+        "app-server"
+      ]
+    },
+    {
+      "id": "three_domain_calibration",
+      "calls": 6,
+      "gate": "Generated answers reviewed; six calibration results must match expected polarity.",
+      "argv": [
+        "python3",
+        "tooling/evaluation/run_structured_judge.py",
+        "--model",
+        "{model}",
+        "--timeout",
+        "180",
+        "--max-model-calls",
+        "6",
+        "--repeat",
+        "1",
+        "--boundary-repeat",
+        "0",
+        "--output",
+        "{artifact_root}/calibration.json",
+        "--case-id",
+        "qianchuan_budget_scale",
+        "--case-id",
+        "negative_commercial_wrong_cac",
+        "--case-id",
+        "tmall_conversion_diagnosis",
+        "--case-id",
+        "negative_operations_no_recovery",
+        "--case-id",
+        "weekly_data_review_douyin_tmall",
+        "--case-id",
+        "negative_analytics_causality"
+      ]
+    }
+  ],
+  "blockers": [
+    "Model and monetary/provider budget are not approved.",
+    "App Server records accepted explicit input, not a host attestation of injected bytes; loading verification remains false.",
+    "Authentication with a fresh CODEX_HOME and real turns is unverified.",
+    "No verified Skill-disabled runtime is available; omitting $skill is not a valid no-Skill control."
+  ],
+  "ablation": {
+    "status": "BLOCKED_NOT_IN_BUDGET",
+    "requirements": [
+      "Matched model/settings/task and tool permissions.",
+      "Host evidence that Skill discovery and loading are disabled in control.",
+      "Blind human comparison of facts, calculations, domain boundaries and executable actions."
+    ],
+    "claim_limit": "Three cases are a pilot and cannot establish population-level quality improvement."
+  },
+  "evidence_requirements": [
+    "Exact source and installed bundle hashes; prompt and answer hashes.",
+    "Host receipt bound to this invocation, canonical Skill path and loaded content digest.",
+    "Observed model and duration, errors and all attempted calls including failures.",
+    "Judge raw structured results and human disagreement notes.",
+    "No secrets or full unrelated host logs."
+  ],
+  "execution_backend": "app-server",
+  "platforms": [
+    "posix"
+  ]
+}

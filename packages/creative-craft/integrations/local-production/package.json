@@ -1,0 +1,28 @@
+{
+  "name": "@creative-craft/local-production",
+  "version": "0.13.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "smoke": "node smoke.mjs",
+    "retention": "node retention.mjs",
+    "fetch-font": "node fetch-font.mjs",
+    "fetch-asr-model": "node fetch-asr-model.mjs"
+  },
+  "dependencies": {
+    "@hyperframes/lint": "0.8.108",
+    "@hyperframes/producer": "0.8.108",
+    "gsap": "3.13.0"
+  },
+  "overrides": {
+    "@hyperframes/core": "0.8.108",
+    "@hyperframes/engine": "0.8.108",
+    "@hyperframes/lint": "0.8.108",
+    "@hyperframes/parsers": "0.8.108",
+    "@hyperframes/studio-server": "0.8.108"
+  }
+}

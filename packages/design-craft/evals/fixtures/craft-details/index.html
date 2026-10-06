@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-variant="before" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ef">
+  <link rel="icon" href="data:,">
+  <title>Media detail inspection</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --surface: #f4f3ef; --panel: #fff; --ink: #242522; --muted: #585b55;
+      --line: #d4d6cf; --focus: #175cce; --media-edge: #24252238;
+      --radius: 24px; --border: 2px; --inset: 10px;
+      font: 100%/1.5 system-ui, sans-serif;
+      background: #fff;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --surface: #171b1c; --panel: #252c2e; --ink: #f4f3ef; --muted: #b9c2c2;
+      --line: #4d5a5d; --focus: #91bcff; --media-edge: #10191d70;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 16px; color: var(--ink); }
+    main { max-width: 920px; margin: auto; padding: clamp(16px, 4vw, 36px); background: var(--surface); }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.15; margin: 0 0 12px; }
+    h2 { font-size: 1.1rem; margin: 16px 0 4px; }
+    p { margin: 0 0 16px; }
+    .muted { color: var(--muted); }
+    .toolbar, .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .toolbar { margin-block: 24px; }
+    button { font: inherit; color: inherit; border: 1px solid var(--line); background: var(--panel); cursor: pointer; }
+    .toolbar button { min-height: 44px; padding: 8px 12px; border-radius: 8px; }
+    button:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+    .card { max-width: 460px; padding: var(--inset); border: var(--border) solid var(--line); border-radius: var(--radius); background: var(--panel); }
+    .media { position: relative; display: block; width: 100%; border: 0; padding: 0; border-radius: var(--radius); }
+    .media img { display: block; width: 100%; height: auto; border-radius: inherit; }
+    .media::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
+    .details { padding: 0 6px 6px; }
+    .actions { align-items: center; }
+    .icon-button { flex: 0 0 48px; width: 48px; height: 48px; display: grid; place-items: center; padding: 0; border-radius: 50%; }
+    .icon-button svg { width: 24px; height: 24px; fill: currentColor; }
+    output { display: block; margin-top: 20px; font-variant-numeric: tabular-nums; }
+    :root[data-variant="after"] { background: var(--surface); }
+    [data-variant="after"] .media { border-radius: max(0px, calc(var(--radius) - var(--border) - var(--inset))); }
+    [data-variant="after"] .media::after { box-shadow: inset 0 0 0 1px var(--media-edge); }
+    [data-variant="after"] .play-glyph { transform: translateX(2px); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Media detail inspection</h1>
+    <p class="muted">Controlled before / after fixture. The baseline issues are deliberately seeded.</p>
+    <div class="toolbar" aria-label="Inspection settings">
+      <button id="variant" type="button" aria-pressed="false">Use refined details</button>
+      <button id="theme" type="button" aria-pressed="false">Use dark theme</button>
+    </div>
+    <article class="card" aria-labelledby="media-title">
+      <button class="media" type="button" aria-label="Open media preview">
+        <img width="640" height="300" alt="Original illustration of a blue disc on pale paper"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='300' viewBox='0 0 640 300'%3E%3Crect width='640' height='300' fill='%23ffffff'/%3E%3Ccircle cx='320' cy='150' r='86' fill='%23385a73'/%3E%3Ccircle cx='320' cy='150' r='28' fill='%23cadbe4'/%3E%3C/svg%3E">
+      </button>
+      <div class="details">
+        <h2 id="media-title">An afternoon recording</h2>
+        <p class="muted">Local illustration · Preview controls</p>
+        <div class="actions">
+          <button class="icon-button" id="play" type="button" aria-label="Play preview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="play-glyph" d="M6 5 L18 12 L6 19 Z"/></svg>
+          </button>
+          <button class="icon-button" id="stop" type="button" aria-label="Stop preview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 H18 V18 H6 Z"/></svg>
+          </button>
+          <span>Play / stop</span>
+        </div>
+      </div>
+    </article>
+    <output id="result" aria-live="polite">No action yet.</output>
+  </main>
+  <script>
+    const root = document.documentElement;
+    const query = new URLSearchParams(location.search);
+    root.dataset.variant = query.get('variant') === 'after' ? 'after' : 'before';
+    root.dataset.theme = query.get('theme') === 'dark' ? 'dark' : 'light';
+    const variant = document.querySelector('#variant');
+    const theme = document.querySelector('#theme');
+    function sync() {
+      variant.setAttribute('aria-pressed', String(root.dataset.variant === 'after'));
+      theme.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+      document.querySelector('meta[name="theme-color"]').content = getComputedStyle(root).getPropertyValue('--surface').trim();
+    }
+    variant.addEventListener('click', () => {
+      root.dataset.variant = root.dataset.variant === 'before' ? 'after' : 'before'; sync();
+    });
+    theme.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light'; sync();
+    });
+    let count = 0;
+    for (const button of document.querySelectorAll('.card button')) {
+      button.addEventListener('click', () => { document.querySelector('#result').textContent = `${button.getAttribute('aria-label')} · ${++count}`; });
+    }
+    sync();
+  </script>
+</body>
+</html>

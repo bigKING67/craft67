@@ -1,0 +1,47 @@
+{
+  "schema": "money-craft.report-render-paths.v1",
+  "date": "2026-09-17",
+  "scope": "Renderer output/input alias checks before writing",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "3f8279937545c96710c88210e1707ca0a726e2adf233138482d595a5743fca2e",
+    "tests/test_report_renderer.py": "bb900e7848ae45b6ef148341adaa71e0606af332a95b758facdb373ed281d679",
+    "skills/money-craft/references/report-rendering.md": "023a72b3cf7596704c1fa95ae183a411e20f4f6c1786993eaae84e232ad7c780"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Output could overwrite source Markdown before the post-render hash check, or overwrite other inputs / collide with PDF output.",
+    "after": "Resolved paths and existing samefile identities checked across all eight input types and both outputs before reading content or writing."
+  },
+  "validation": {
+    "renderer_tests": 22,
+    "full_tests": 312,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regressions": "All 13 collision variants failed on old renderer: mutation before rejection or no rejection.",
+    "collision_variants": 13,
+    "real_cli": "Source-target collision refused without mutation; distinct HTML generated and verify_rendered_report passed.",
+    "pdf_boundary": "PDF writer mocked for path-collision tests; no actual PDF generation verified."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_FOR_INCREMENT",
+    "renderer_tests": 22,
+    "skipped_tests": 0,
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "3f8279937545c96710c88210e1707ca0a726e2adf233138482d595a5743fca2e",
+      "tests/test_report_renderer.py": "bb900e7848ae45b6ef148341adaa71e0606af332a95b758facdb373ed281d679"
+    }
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T071206946760Z"
+  },
+  "limits": [
+    "report_renderer is PARTIAL: escaping, SVG, actual PDF, visual checks and failure publication remain unreviewed.",
+    "Path identity checked at call time; external path replacement races not protected.",
+    "No cross-output transaction or rollback guarantee.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}

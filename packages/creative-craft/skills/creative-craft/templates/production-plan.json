@@ -1,0 +1,26 @@
+{
+  "schema_version": "creative-craft.production-plan.v1",
+  "plan_id": "plan-tbd",
+  "title": "TBD",
+  "brief_ref": null,
+  "intended_use": "TBD",
+  "output": {"duration_seconds_target": 30, "ratio": "9:16", "language": "zh-CN"},
+  "delivery_promises": [
+    {"id": "length", "statement": "Final cut runs 25-35 seconds.", "check": {"kind": "duration_range", "min": 25, "max": 35}},
+    {"id": "captions", "statement": "Spoken lines are captioned.", "check": {"kind": "captions_present"}}
+  ],
+  "beats": [
+    {
+      "id": "beat-1",
+      "role": "hook",
+      "purpose": "TBD",
+      "duration_seconds": 30,
+      "source_kind": "tbd",
+      "requirement": "TBD",
+      "hard_constraints": [],
+      "selection": null,
+      "generation_ref": null,
+      "locked": false
+    }
+  ]
+}

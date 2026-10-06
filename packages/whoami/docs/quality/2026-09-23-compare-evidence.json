@@ -1,0 +1,51 @@
+{
+  "initial": {
+    "exitCode": 2,
+    "status": "needs-selection",
+    "candidates": [
+      "C1-c6a1740f",
+      "C2-2f8865eb"
+    ]
+  },
+  "selected": {
+    "exitCode": 0,
+    "status": "compared",
+    "selected": {
+      "before": "C1-c6a1740f",
+      "after": "C2-2f8865eb"
+    },
+    "inputState": "ambiguous",
+    "changedFactKeys": [
+      "input.time",
+      "bazi.year",
+      "bazi.month",
+      "bazi.day",
+      "bazi.hour",
+      "bazi.dayMaster",
+      "bazi.monthExposure",
+      "bazi.wealthReview",
+      "bazi.roots",
+      "bazi.visibleElements",
+      "bazi.relations",
+      "bazi.rootDetails",
+      "bazi.cycles",
+      "ziwei.base",
+      "ziwei.palace-0",
+      "ziwei.palace-1",
+      "ziwei.palace-2",
+      "ziwei.palace-3",
+      "ziwei.palace-4",
+      "ziwei.palace-5",
+      "ziwei.palace-6",
+      "ziwei.palace-7",
+      "ziwei.palace-8",
+      "ziwei.palace-9",
+      "ziwei.palace-10",
+      "ziwei.palace-11",
+      "ziwei.cycles",
+      "ziwei.transformations"
+    ],
+    "bindingMatch": true
+  },
+  "limit": "Binding equality does not validate report prose or confirm a birth candidate"
+}

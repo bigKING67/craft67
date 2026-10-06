@@ -1,0 +1,54 @@
+{
+  "schema": "money-craft.retail-peer-semantic-review.v1",
+  "reviewer": "main_agent_self_review",
+  "independent_host_test": false,
+  "correct_report": "SUPPORTED_WITHIN_STATED_SCOPE",
+  "variants": [
+    {
+      "id": "same-calendar",
+      "claim": "三个FY2024/2025都等于自然年2024，可直接横向排名。",
+      "financial_audit_valid": true,
+      "semantic_verdict": "CONTRADICTED",
+      "basis": "period end dates and duration",
+      "reviewer": "main_agent_self_review",
+      "sha256": "b773bb43c06af82528fc3c3b91e8f903d8948f7af560052da5f42933d53f8c72"
+    },
+    {
+      "id": "same-net-sales",
+      "claim": "三个Net sales字段都是不含其他收入的纯商品销售。",
+      "financial_audit_valid": true,
+      "semantic_verdict": "CONTRADICTED",
+      "basis": "Target Note 2; Costco and Walmart income statements",
+      "reviewer": "main_agent_self_review",
+      "sha256": "81a61b7c54b2f3f45640a2aa3f6c9788f6783695c382b065574ab8a911816132"
+    },
+    {
+      "id": "reclass-efficiency",
+      "claim": "Target费用重分类本身证明营业利润和经营效率提高。",
+      "financial_audit_valid": true,
+      "semantic_verdict": "CONTRADICTED",
+      "basis": "Target Note 3: no operating income impact",
+      "reviewer": "main_agent_self_review",
+      "sha256": "144d4398e1350d10ea9f300c0b6236d58d03c1b5777db111be9161a05ee638c0"
+    },
+    {
+      "id": "segment-pe",
+      "claim": "用Walmart集团市值除Sam’s Club分部营业利润就是该分部PE。",
+      "financial_audit_valid": true,
+      "semantic_verdict": "CONTRADICTED",
+      "basis": "group versus segment identity and operating versus equity earnings",
+      "reviewer": "main_agent_self_review",
+      "sha256": "d112951af7aabc09280b2a2dfcc139371f03a81cf531690896385c180f4a57b2"
+    },
+    {
+      "id": "margin-to-value",
+      "claim": "Target营业利润率最高，因此应享受最高合理PE。",
+      "financial_audit_valid": true,
+      "semantic_verdict": "UNVERIFIED",
+      "basis": "business model, normalized earnings and valuation inputs absent",
+      "reviewer": "main_agent_self_review",
+      "sha256": "5e06914377af3e5408838f4085cb5f4ebc21dba86acaebe3c2f1a3521a001e81"
+    }
+  ],
+  "automated_semantic_detection": false
+}

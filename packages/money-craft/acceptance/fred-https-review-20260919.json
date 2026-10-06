@@ -1,0 +1,60 @@
+{
+  "schema": "money-craft.fred-https-review.v1",
+  "date": "2026-09-19",
+  "status": "REVIEWED_BOUNDED",
+  "scope": "FRED adapter whole-file closure with independent review and default HTTPS opener loopback acceptance",
+  "source_hashes": {
+    "skills/money-craft/scripts/fred_adapter.py": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+    "skills/money-craft/scripts/money_craft.py": "c0ccf6b989020dac0fdff8ff6cc093ac13995f34799993dd285ce30d1f330bd3",
+    "tests/test_fred_adapter.py": "53c64451784e239faa879dd86c59d4138752427a865e75e054c0bcd89365bf50",
+    "tests/test_fred_https.py": "ab717ef51711d3a4e4e1ae655f8771a96dca18ad1ac51436cfa36a6e4cfae94a"
+  },
+  "findings": [
+    {
+      "id": "decimal-json-overflow",
+      "status": "FIXED",
+      "evidence": "Initial regression error 1; InvalidOperation mapped to malformed_response; reviewer verified CLI EXIT_SCHEMA."
+    },
+    {
+      "id": "redirect-unbounded-drain-and-close",
+      "status": "FIXED",
+      "evidence": "Reviewer reproduced unbounded inherited read and missing close; bounded wrapper, all five aliases and finally close verified; loopback oversized and truncated redirect covered."
+    }
+  ],
+  "validation": {
+    "fred_adapter_tests": 40,
+    "fred_https_tests": 4,
+    "full_tests": 389,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "runtime": "Current macOS/Python 3.14.7, loopback TLS with temporary CA via process environment; production opener and certificate verification active."
+  },
+  "independent_review": {
+    "agent": "fred_final_review",
+    "verdict": "No remaining validated blockers in declared scope",
+    "tests": 44,
+    "source_hashes": {
+      "skills/money-craft/scripts/fred_adapter.py": "bcae2a7a7372202a3f08ff2386df19b1e5ff6c787a8ac4529f80aa61c16650ed",
+      "skills/money-craft/scripts/money_craft.py": "c0ccf6b989020dac0fdff8ff6cc093ac13995f34799993dd285ce30d1f330bd3",
+      "tests/test_fred_adapter.py": "53c64451784e239faa879dd86c59d4138752427a865e75e054c0bcd89365bf50",
+      "tests/test_fred_https.py": "ab717ef51711d3a4e4e1ae655f8771a96dca18ad1ac51436cfa36a6e4cfae94a"
+    },
+    "extra_checks": [
+      "Short redirect body retried three times, no target request.",
+      "Closed BytesIO wrapper returns empty bytes.",
+      "Decimal overflow through CLI returns EXIT_SCHEMA."
+    ]
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260919T083400062765Z"
+  },
+  "limits": [
+    "No real FRED/ALFRED or real credential requests.",
+    "No other Python versions, Windows/NFS, parent-directory trust or same-inode concurrent-write guarantees.",
+    "No automatic pagination or independent verification of provider arithmetic/economic meaning.",
+    "No new host Skill injection, app, commit, push or release."
+  ]
+}

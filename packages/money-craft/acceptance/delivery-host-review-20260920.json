@@ -1,0 +1,108 @@
+{
+  "schema": "money-craft.autonomous-delivery-review.v1",
+  "status": "PASS_BOUNDED_AUTONOMOUS_DELIVERY",
+  "date": "2026-09-20",
+  "scope": "existing-report delivery, not fresh company research E2E",
+  "first_attempt": {
+    "seconds": 368.645,
+    "result": "BLOCKED_NESTED_SANDBOX",
+    "preserved": true
+  },
+  "successful_attempt": {
+    "seconds": 515.798,
+    "exit_code": 0,
+    "timed_out": false,
+    "sandbox": "danger-full-access matching parent; internal Seatbelt verifier active"
+  },
+  "criteria": {
+    "D01": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "Actual explicit candidate and ready format-existing route"
+    },
+    "D02": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "Canonical report and audit unchanged; original post-hoc provenance preserved"
+    },
+    "D03": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "Actual audited rendering and PDF visual verification within classic-paper scope"
+    },
+    "D04": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "All cited sources promoted offline with evidence complete"
+    },
+    "D05": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "Guarded snapshot verification with execution guard"
+    },
+    "D06": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "Readonly revision,current,index,transactions verify"
+    },
+    "D07": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "Run ledger and artifact hashes verify after exit"
+    },
+    "D08": {
+      "verdict": "PASS_WITHIN_FROZEN_SCOPE",
+      "criterion": "No parent intervention or writes to protected inputs/tools/install; honest scope"
+    }
+  },
+  "candidate_files": 75,
+  "source_parity": true,
+  "candidate_unchanged": true,
+  "global_install_unchanged": true,
+  "host_tools_unchanged": true,
+  "input_unchanged": true,
+  "parent_intervention_during_host": false,
+  "parent_postexit_verification": {
+    "snapshot": true,
+    "current": true,
+    "all": true,
+    "ledger": true
+  },
+  "status_artifacts_verified": 37,
+  "pages_visually_reviewed": 7,
+  "source_groups": 7,
+  "browser_responsive_verified": false,
+  "money_design_verified": false,
+  "original_company_research_e2e_reclassified": false,
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/host/host.json",
+      "sha256": "503036f60b3488746fb09c9b0cf0a7ebf167fb69b49f13c7663bfd0230d1c875"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/host/answer.md",
+      "sha256": "4ac328f0883ed5982743990ec6b7bded60f175b72b79e2b3cdc31056aa30d0cc"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/host/workspace/delivery-status.json",
+      "sha256": "9496552c480bb6d08f0e139459b9bf2b58630405601b9bc687e2031c97941936"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/parent-review/review.json",
+      "sha256": "81e54ebe1158c25ee163449057fd38a2f5e3035eb52b069442ac101138faac28"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/parent-review/visual-and-provenance.json",
+      "sha256": "14c37bf860d41999045ae6e61d220cebee5136c8a598573f945bebd6ad3d047e"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/parent-review/snapshot.json",
+      "sha256": "ce58220d2b69bbb14e1ad02b197e691013d97acb536a0e7859d24fe46952053f"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/parent-review/current.json",
+      "sha256": "0d17dfe24a71fca752d8bc0bd626aaa915934a57397f055482d7a2c6cd53f710"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/parent-review/all.json",
+      "sha256": "211e8eaa5ce55bf093af3975f5aa1d8b5a686bcd346e1d441721cbbd82ce3901"
+    },
+    {
+      "path": "local/skill-evals/20260920-delivery-host-runtime/parent-review/ledger.json",
+      "sha256": "b0d4c8393035d4ad5fc5bd8da03a869b377378c7246e98aa1329841b1badc061"
+    }
+  ]
+}

@@ -1,0 +1,903 @@
+{
+  "description": "Machine-readable watch list for docs/upstream-absorption.md. Read-only drift checks compare each pinned research SHA with the upstream default branch for the watched paths only. A change is a prompt for human review, never an automatic absorption. Update pinned_sha only together with a dated record in upstream-absorption.md.",
+  "upstreams": [
+    {
+      "id": "hyperframes",
+      "repo": "heygen-com/hyperframes",
+      "pinned_sha": "70900216f0dab460fc16256b0d43a973fd5e519b",
+      "license": "Apache-2.0 (root); assets, fonts and dependencies checked separately",
+      "status": "implemented",
+      "adoption": "package dependency + method",
+      "npm": {
+        "package": "@hyperframes/producer",
+        "pinned_in": "integrations/local-production/package.json"
+      },
+      "watch": [
+        {
+          "path": "skills/hyperframes-core/references/creator-editing-recipes.md",
+          "why": "edit recipes: trim, split, speed, crossfade, ducking",
+          "maps_to": [
+            "integrations/local-production/operations.mjs",
+            "docs/content-production-architecture.md#video-harness-v1"
+          ]
+        },
+        {
+          "path": "skills/hyperframes-cli/SKILL.md",
+          "why": "agent loop: lint, check, snapshot, preview, render",
+          "maps_to": [
+            "integrations/local-production/render.mjs",
+            "integrations/local-production/qa.mjs"
+          ]
+        },
+        {
+          "path": "skills/hyperframes-cli/references/lint-validate-inspect.md",
+          "why": "self-check tools the QA gate may reuse",
+          "maps_to": [
+            "integrations/local-production/qa.mjs"
+          ]
+        },
+        {
+          "path": "packages/producer/README.md",
+          "why": "executeRenderJob signature and render config",
+          "maps_to": [
+            "integrations/local-production/render.mjs"
+          ]
+        },
+        {
+          "path": "packages/sdk/src/types.ts",
+          "why": "EditOp union compared with our edit operations",
+          "maps_to": [
+            "integrations/local-production/operations.mjs"
+          ]
+        },
+        {
+          "path": "packages/cli/src/commands/timeline.ts",
+          "why": "timeline apply/undo and edit plans",
+          "maps_to": [
+            "integrations/local-production/operations.mjs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chatcut-agent-plugin",
+      "repo": "ChatCut-Inc/agent-plugin",
+      "pinned_sha": "877b9177144feeecdef0da70f0e4d5cb760f6037",
+      "license": "unconfirmed at repository root; do not assume per-package terms",
+      "status": "implemented",
+      "adoption": "method",
+      "history_rewritten": true,
+      "watch": [
+        {
+          "path": "codex/skills/chatcut-plugin-basics/SKILL.md",
+          "why": "asset vs item model, layered reads, gap/ripple rules",
+          "maps_to": [
+            "skills/creative-craft/schemas/edit-document-v2.schema.json",
+            "skills/creative-craft/references/video-production.md#editing-an-existing-project"
+          ]
+        },
+        {
+          "path": "codex/skills/verification/SKILL.md",
+          "why": "re-read and inspect composited frames after edits",
+          "maps_to": [
+            "integrations/local-production/qa.mjs",
+            "skills/creative-craft/schemas/render-qa.schema.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "openchatcut",
+      "repo": "0xsline/OpenChatCut",
+      "pinned_sha": "d03acbd6c7b15e7fd08b48f2c54cd1eaaeabc35a",
+      "license": "AGPL-3.0: method reference only, no source copying",
+      "status": "implemented",
+      "adoption": "method",
+      "watch": [
+        {
+          "path": "src/editor/reducerActions.ts",
+          "why": "shared human/agent edit operation set",
+          "maps_to": [
+            "integrations/local-production/operations.mjs"
+          ]
+        },
+        {
+          "path": "src/editor/reducerHistory.ts",
+          "why": "batch-as-one-step undo semantics",
+          "maps_to": [
+            "integrations/local-production/project.mjs"
+          ]
+        },
+        {
+          "path": "src/editor/trackTypes.ts",
+          "why": "track roles, anchor/follower ducking (P2)",
+          "maps_to": [
+            "skills/creative-craft/schemas/edit-document-v2.schema.json"
+          ]
+        },
+        {
+          "path": "assets/agent/openchatcut-tool-schemas.json",
+          "why": "agent tool granularity, validateOnly, verify_export",
+          "maps_to": [
+            "integrations/local-production/cli.mjs",
+            "integrations/local-production/qa.mjs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "openmontage",
+      "repo": "calesthio/OpenMontage",
+      "pinned_sha": "08e2151fa02de28a5d6a312b3d575692bf147ad7",
+      "license": "AGPL-3.0: method reference only, no source copying",
+      "status": "implemented",
+      "adoption": "method",
+      "watch": [
+        {
+          "path": "pipeline_defs/hybrid.yaml",
+          "why": "stage inputs, outputs and approval defaults",
+          "maps_to": [
+            "skills/creative-craft/scripts/creative_craft_video.py"
+          ]
+        },
+        {
+          "path": "lib/checkpoint.py",
+          "why": "code-enforced gates and stage artifacts",
+          "maps_to": [
+            "skills/creative-craft/scripts/creative_craft_video.py"
+          ]
+        },
+        {
+          "path": "tools/cost_tracker.py",
+          "why": "reserve-then-settle budget ledger",
+          "maps_to": [
+            "skills/creative-craft/scripts/creative_craft_video.py"
+          ]
+        },
+        {
+          "path": "lib/slideshow_risk.py",
+          "why": "pre-render delivery-promise and degradation checks",
+          "maps_to": [
+            "skills/creative-craft/schemas/production-plan.schema.json",
+            "integrations/local-production/qa.mjs"
+          ]
+        },
+        {
+          "path": "skills/meta/video-reference-analyst.md",
+          "why": "per-shot reference teardown dimensions",
+          "maps_to": [
+            "skills/creative-craft/references/video-production.md"
+          ]
+        },
+        {
+          "path": "skills/meta/reviewer.md",
+          "why": "structured review findings",
+          "maps_to": [
+            "skills/creative-craft/schemas/render-qa.schema.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "remotion",
+      "repo": "remotion-dev/remotion",
+      "pinned_sha": "579e314165ce798cc7a4dfb229c50921bf4572ed",
+      "license": "Remotion License: company use has conditions; re-check before adoption",
+      "status": "candidate",
+      "adoption": "comparison only",
+      "watch": [
+        {
+          "path": "LICENSE.md",
+          "why": "license terms gate any adoption",
+          "maps_to": [
+            "docs/upstream-absorption.md#remotion"
+          ]
+        },
+        {
+          "path": "packages/skills/skills/remotion-markup/transitions.md",
+          "why": "transition premount rules (P2 transitions)",
+          "maps_to": [
+            "docs/content-production-architecture.md#video-harness-v1"
+          ]
+        },
+        {
+          "path": "packages/skills/skills/remotion-markup/audio.md",
+          "why": "keyframed volume (P2 fades, ducking)",
+          "maps_to": [
+            "docs/content-production-architecture.md#video-harness-v1"
+          ]
+        },
+        {
+          "path": "packages/skills/skills/remotion-markup/timing-props.md",
+          "why": "from/trim/duration semantics",
+          "maps_to": [
+            "docs/content-production-architecture.md#video-harness-v1"
+          ]
+        },
+        {
+          "path": "packages/skills/skills/remotion-markup/connected-compositions.md",
+          "why": "typed editable props with own timeline (P2 graphic templates)",
+          "maps_to": [
+            "docs/content-production-architecture.md#video-harness-v1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cerul",
+      "repo": "cerul-ai/cerul",
+      "pinned_sha": "e93237887eaa1788c03b85e5e6220d674a1ed7d3",
+      "license": "Apache-2.0 (Rust core); tools and model weights checked separately",
+      "status": "implemented",
+      "adoption": "method",
+      "watch": [
+        {
+          "path": "DESIGN.md",
+          "why": "index windows, multi-route recall, fusion and rebuild",
+          "maps_to": [
+            "skills/creative-craft/references/video-production.md#evidence-grounded-footage-selection"
+          ]
+        },
+        {
+          "path": "schemas/search-result.json",
+          "why": "hit structure with per-modality evidence",
+          "maps_to": [
+            "skills/creative-craft/schemas/production-plan.schema.json"
+          ]
+        },
+        {
+          "path": "schemas/fusion-moment.json",
+          "why": "fusion evidence fields",
+          "maps_to": [
+            "skills/creative-craft/schemas/production-plan.schema.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "opencut",
+      "repo": "OpenCut-app/OpenCut",
+      "pinned_sha": "400f097becba5db0fbc305d5a65348cb81c20356",
+      "license": "MIT",
+      "status": "deferred",
+      "adoption": "none",
+      "watch": [
+        {
+          "path": "README.md",
+          "why": "re-evaluate when Editor API, MCP or headless ship as runnable",
+          "maps_to": [
+            "docs/upstream-absorption.md#opencut"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "openpencil",
+      "repo": "open-pencil/open-pencil",
+      "pinned_sha": "6a05e30f15398de70d36deda011003b4347d1627",
+      "reviewed_at": "2026-10-05",
+      "license": "MIT；资源/依赖另核",
+      "status": "reference",
+      "adoption": "local addressable-object, shared batch, revision and Agent inspection methods implemented; no upstream editor source reuse or runtime integration",
+      "watch": [
+        {
+          "path": "packages/docs/programmable/mcp-server.md",
+          "why": "shared tool inputs, read/write access and app transport",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects"
+          ]
+        },
+        {
+          "path": "packages/core/src/tools/schema.ts",
+          "why": "tool execution and mutation metadata",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license and adoption boundary",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invokeai",
+      "repo": "invoke-ai/InvokeAI",
+      "pinned_sha": "1c6c8d02be298390c57bbcbf8a3f934ca70b0af7",
+      "reviewed_at": "2026-10-04",
+      "license": "Apache-2.0；模型/附带模块另核",
+      "status": "reference",
+      "adoption": "local candidate staging/decision method implemented; no upstream source reuse or runtime integration",
+      "watch": [
+        {
+          "path": "docs/src/content/docs/development/Front End/canvas-projects.mdx",
+          "why": "canvas archive version, assets and recovery limits",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "invokeai/frontend/webv2/src/workbench/canvasStagingView.ts",
+          "why": "candidate staging and queue placeholders",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects",
+            "integrations/image-production/candidates.mjs",
+            "integrations/image-production/candidate-store.mjs",
+            "integrations/image-production/provider.mjs"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license and adoption boundary",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "krita-ai-diffusion",
+      "repo": "Acly/krita-ai-diffusion",
+      "pinned_sha": "828b70c33c5c97f326e03170cd693beef798231e",
+      "reviewed_at": "2026-10-04",
+      "license": "GPL-3.0；插件/模型条款分别核",
+      "status": "reference",
+      "adoption": "local context/protection/blend method implemented; no upstream source reuse or runtime integration",
+      "watch": [
+        {
+          "path": "ai_diffusion/document.py",
+          "why": "selection, document and layer access",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects",
+            "integrations/image-production/candidates.mjs"
+          ]
+        },
+        {
+          "path": "ai_diffusion/image.py",
+          "why": "mask bounds and image geometry",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1",
+            "integrations/image-production/composite.mjs",
+            "integrations/image-production/provider.mjs",
+            "integrations/image-production/tests/provider.test.mjs"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "copyleft and target-file adoption review",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comfyui",
+      "repo": "Comfy-Org/ComfyUI",
+      "pinned_sha": "f1072eb0350638a3390ddb6afbcaa8c6b237c6fd",
+      "reviewed_at": "2026-10-04",
+      "license": "GPL-3.0；节点/模型另核",
+      "status": "reference",
+      "adoption": "method/product reference only; no runtime integration",
+      "watch": [
+        {
+          "path": "server.py",
+          "why": "workflow submission, queue, upload and progress routes",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "execution.py",
+          "why": "workflow execution and result handling",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "backend deployment and distribution review",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fabricjs",
+      "repo": "fabricjs/fabric.js",
+      "pinned_sha": "39471c7a379c08347841f4282dd3940b49ed4c71",
+      "reviewed_at": "2026-10-04",
+      "license": "MIT",
+      "status": "candidate",
+      "adoption": "implementation comparison only; no dependency selected",
+      "watch": [
+        {
+          "path": "packages/core/src/canvas/StaticCanvas.ts",
+          "why": "canvas serialization and deterministic export surface",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "supported editor/runtime capabilities and compatibility",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "satori",
+      "repo": "vercel/satori",
+      "pinned_sha": "34028689b9e8184b3873eaf9758db5ccdf8f7c6e",
+      "reviewed_at": "2026-10-04",
+      "license": "MPL-2.0；字体/依赖另核",
+      "status": "implemented",
+      "adoption": "pinned npm dependency for optional local image P0; no editor source copying",
+      "watch": [
+        {
+          "path": "README.md",
+          "why": "supported HTML/CSS subset, fonts and rendering limits",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1",
+            "integrations/image-production/render-worker.mjs"
+          ]
+        },
+        {
+          "path": "src/text/index.ts",
+          "why": "text layout and font behavior",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ],
+      "npm": {
+        "package": "satori",
+        "pinned_in": "integrations/image-production/package.json"
+      }
+    },
+    {
+      "id": "jaaz",
+      "repo": "11cafe/jaaz",
+      "pinned_sha": "145dd85067be77e36d400637a595e19a7b07c77a",
+      "reviewed_at": "2026-10-04",
+      "license": "Community/Commercial 自定义双许可；团队部署/二开/再分发受限",
+      "status": "reference",
+      "adoption": "method/product reference only; no runtime integration",
+      "watch": [
+        {
+          "path": "README.md",
+          "why": "product workflow reference only",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "commercial and UI/UX restrictions before any reuse",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiftyone",
+      "repo": "voxel51/fiftyone",
+      "pinned_sha": "eaf7f2c9f1ed4a2bcdd028d8af6dfbffec224d07",
+      "reviewed_at": "2026-10-04",
+      "license": "Apache-2.0；服务/模型另核",
+      "status": "reference",
+      "adoption": "method/product reference only; no runtime integration",
+      "watch": [
+        {
+          "path": "README.md",
+          "why": "asset browsing and dataset/search capability references",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license; enterprise/service terms separate",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sharp",
+      "repo": "lovell/sharp",
+      "pinned_sha": "1189cf4943af2b31ea41ee0cdf4f8d8bfb393317",
+      "reviewed_at": "2026-10-04",
+      "license": "Apache-2.0；libvips/依赖另核",
+      "status": "implemented",
+      "adoption": "pinned npm dependency for optional local image P0; no editor source copying",
+      "watch": [
+        {
+          "path": "docs/src/content/docs/api-composite.md",
+          "why": "composition geometry, alpha and text/font inputs",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1",
+            "integrations/image-production/project.mjs"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "color, alpha and image processing behavior",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license and native dependency review",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ],
+      "npm": {
+        "package": "sharp",
+        "pinned_in": "integrations/image-production/package.json"
+      }
+    },
+    {
+      "id": "iopaint",
+      "repo": "Sanster/IOPaint",
+      "pinned_sha": "61a759fb3f332bacdce8b2813f4837495c9b86e0",
+      "reviewed_at": "2026-10-04",
+      "license": "Apache-2.0；模型另核",
+      "status": "deferred",
+      "adoption": "method/product reference only; no runtime integration",
+      "archived_at_review": true,
+      "watch": [
+        {
+          "path": "README.md",
+          "why": "archived product's inpainting/outpainting behavior",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "historical source license",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "penpot",
+      "repo": "penpot/penpot",
+      "pinned_sha": "7c039231f79022f26b252776817c41fa61476aa3",
+      "reviewed_at": "2026-10-04",
+      "license": "MPL-2.0；具体 MCP 文件另核",
+      "status": "reference",
+      "adoption": "method/product reference only; no runtime integration",
+      "watch": [
+        {
+          "path": "mcp/README.md",
+          "why": "MCP/plugin execution and setup boundaries",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "shared design and host capability context",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license; subpackages checked separately",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "konva",
+      "repo": "konvajs/konva",
+      "pinned_sha": "ca62a92ee60095803bf69abae29d92b936ee2eef",
+      "reviewed_at": "2026-10-04",
+      "license": "Konva 根许可 MIT；react-konva 采用时另固定",
+      "status": "candidate",
+      "adoption": "implementation comparison only; no dependency selected",
+      "watch": [
+        {
+          "path": "src/Node.ts",
+          "why": "scene node attributes, transforms and serialization",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "rendering backends and framework adapters",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "root license; adapter licenses separate",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sam2",
+      "repo": "facebookresearch/sam2",
+      "pinned_sha": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "reviewed_at": "2026-10-04",
+      "license": "Apache-2.0（主体）；第三方代码/字体另核",
+      "status": "reference",
+      "adoption": "method/product reference only; no runtime integration",
+      "watch": [
+        {
+          "path": "sam2/sam2_image_predictor.py",
+          "why": "prompted mask generation and predictor API",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "checkpoint and model capability boundaries",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "code/checkpoint and third-party terms reviewed separately",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sam3",
+      "repo": "facebookresearch/sam3",
+      "pinned_sha": "2345a4ad109ac29c569da749c91d84f10dc08c40",
+      "reviewed_at": "2026-10-04",
+      "license": "SAM License；不能沿用 SAM 2 的许可结论",
+      "status": "reference",
+      "adoption": "method/product reference only; no runtime integration",
+      "watch": [
+        {
+          "path": "sam3/model/sam3_image_processor.py",
+          "why": "text/visual prompting, masks and object coordinates",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "checkpoint versions and inference requirements",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "custom model/code license before adoption",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vitmatte",
+      "repo": "hustvl/ViTMatte",
+      "pinned_sha": "8cd7ef068380977c3962c4cb733cb1fe7f2241a5",
+      "reviewed_at": "2026-10-04",
+      "license": "MIT（代码）；权重/数据分别核",
+      "status": "reference",
+      "adoption": "method/product reference only; no runtime integration",
+      "watch": [
+        {
+          "path": "run_one_image.py",
+          "why": "trimap input and alpha matte output",
+          "maps_to": [
+            "skills/creative-craft/references/image-production.md#editable-image-projects"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "matting workflow and model input limitations",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "code license; checkpoints/datasets separate",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pymatting",
+      "repo": "pymatting/pymatting",
+      "pinned_sha": "6d5c4a6bed0e5672abac0bad078e594423ffe4fd",
+      "reviewed_at": "2026-10-04",
+      "license": "MIT（根 LICENSE.md 与本次 1.1.16 包许可已读）；依赖分别核",
+      "status": "candidate",
+      "adoption": "isolated real-product experiment only; no production runtime dependency",
+      "watch": [
+        {
+          "path": "pymatting/alpha/estimate_alpha_cf.py",
+          "why": "trimap constraints and alpha estimation; retain dark-background failure cases",
+          "maps_to": [
+            "docs/content-production-architecture.md#真实商品-matte-试验与质量边界",
+            "integrations/image-production/README.md"
+          ]
+        },
+        {
+          "path": "pymatting/foreground/estimate_foreground_ml.py",
+          "why": "foreground/background color estimation rather than multiplying alpha by flattened RGB",
+          "maps_to": [
+            "docs/upstream-absorption.md#真实商品-matting-比较2026-10-04",
+            "integrations/image-production/README.md"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "API, supported Python dependencies and reproducible experiment inputs",
+          "maps_to": [
+            "docs/roadmap.md"
+          ]
+        },
+        {
+          "path": "LICENSE.md",
+          "why": "code/package terms before any runtime adoption",
+          "maps_to": [
+            "docs/source-policy.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resvg",
+      "repo": "linebender/resvg",
+      "pinned_sha": "1fe3cfe88bc692612f1ccd4403ba3476b2cdd813",
+      "reviewed_at": "2026-10-04",
+      "license": "Apache-2.0 OR MIT（当前核心）；字体/依赖另核",
+      "status": "candidate",
+      "adoption": "implementation comparison only; no dependency selected",
+      "watch": [
+        {
+          "path": "crates/resvg/src/lib.rs",
+          "why": "static SVG rasterization API",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "README.md",
+          "why": "SVG subset and rendering portability",
+          "maps_to": [
+            "docs/content-production-architecture.md#image-harness-v1"
+          ]
+        },
+        {
+          "path": "LICENSE-APACHE",
+          "why": "Apache option at research pin",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        },
+        {
+          "path": "LICENSE-MIT",
+          "why": "MIT option at research pin",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resvg-js",
+      "repo": "thx/resvg-js",
+      "pinned_sha": "9de8ddd9dd62293006d849dd846a3b91ba992f23",
+      "reviewed_at": "2026-10-04",
+      "license": "MPL-2.0; binding and bundled older resvg core are distinct from current linebender/resvg",
+      "status": "implemented",
+      "adoption": "@resvg/resvg-js 2.6.2 pinned npm dependency; research main SHA is not the npm source revision",
+      "npm": {
+        "package": "@resvg/resvg-js",
+        "pinned_in": "integrations/image-production/package.json"
+      },
+      "watch": [
+        {
+          "path": "README.md",
+          "why": "Node binding render API, native platforms and font loading",
+          "maps_to": [
+            "integrations/image-production/render-worker.mjs"
+          ]
+        },
+        {
+          "path": "index.d.ts",
+          "why": "Resvg options, render and output contract",
+          "maps_to": [
+            "integrations/image-production/render-worker.mjs",
+            "integrations/image-production/render.mjs"
+          ]
+        },
+        {
+          "path": "Cargo.toml",
+          "why": "actual binding/core dependency and native build license boundary",
+          "maps_to": [
+            "integrations/image-production/README.md"
+          ]
+        },
+        {
+          "path": "LICENSE",
+          "why": "binding license separate from current resvg core",
+          "maps_to": [
+            "docs/upstream-absorption.md#image-engineering-references"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "noto-cjk",
+      "repo": "notofonts/noto-cjk",
+      "pinned_sha": "f8d157532fbfaeda587e826d4cd5b21a49186f7c",
+      "reviewed_at": "2026-10-04",
+      "license": "OFL-1.1 (Sans font license)",
+      "status": "implemented",
+      "adoption": "pinned static Regular OTF fetched optionally, then bound by digest in each image project; binary not vendored",
+      "watch": [
+        {
+          "path": "Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf",
+          "why": "static font bytes, Chinese glyph and Satori compatibility regression",
+          "maps_to": [
+            "integrations/image-production/fonts/manifest.json",
+            "integrations/image-production/font.mjs"
+          ]
+        },
+        {
+          "path": "Sans/LICENSE",
+          "why": "font license and redistribution terms",
+          "maps_to": [
+            "integrations/image-production/fonts/OFL.txt",
+            "integrations/image-production/README.md"
+          ]
+        }
+      ]
+    }
+  ]
+}

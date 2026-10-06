@@ -1,0 +1,425 @@
+{
+  "schema": "money-craft.frozen-suite-acceptance.v1",
+  "date": "2026-09-16",
+  "overall": "PASS_BOUNDED_FROZEN_SUITE_AND_NATURAL_HOST",
+  "source_unchanged_throughout": true,
+  "source_install_parity": true,
+  "freeze": {
+    "path": "local/skill-evals/20260916/final-convergence/freeze.json",
+    "sha256": "f0cf7e69cad03b4d42d8c66759366c3aa62fda068060b5d7b8ff88de65f93b8a"
+  },
+  "runs": [
+    {
+      "run": "earnings-periods",
+      "case_id": "earnings-periods",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 29,
+      "calculation_coverage": "PASS",
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分累计与单季，不能把Provider quarterly直接读为单季",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "比较同比和利润率，并说明量价/原因资料不足",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "保留合成与未来报告期限制，不形成真实买卖结论",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "累计拆单季60/9对40/8；同比50%/12.5%；利润率20%到15%、-5个百分点完整回执；合成未来报告期及Q2缺口明确。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/final-convergence/earnings-periods/host.json",
+          "sha256": "648d5e0b2cafbafb62a154421abb06a3138d7854021118945a81b1ee60e17970"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/final-convergence/earnings-periods/answer.md",
+          "sha256": "d804a83600ea764f833b1e671902f41d5cbcfd8039401374dae6bab7e515eb29"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/final-convergence/earnings-periods/events.jsonl",
+          "sha256": "72fb1b1117d4b96f5d3cd3c06c2c9c05ee60e4981c1ac73ad55ea26928f41c41"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/final-convergence/earnings-periods/machine-audit.json",
+          "sha256": "c120409ed7be2314b3a966638a7d21edb8e0f3e735cb1bb738a8b885076298eb"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/final-convergence/earnings-periods/case-snapshot.json",
+          "sha256": "defe179a80bf065499d068a540f02c9be61f716770deedf49c421e17f9dc936e"
+        }
+      }
+    },
+    {
+      "run": "preview-replay",
+      "case_id": "preview-replay",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 6,
+      "calculation_coverage": "PASS",
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "使用A评价事前预测，B标为事后版本不能替换历史",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "差额收入-10/-10%，利润-5/-25%",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "C01过期无证据为逾期待核实，不能宣称发生",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分结果偏差与原因未知，不声称封存哈希已核验",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "保留事前A，B为事后重建；偏差-10/-10%、-5/-25%回执完整；催化剂逾期待核实，不伪称封存已核验。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/final-convergence/preview-replay/host.json",
+          "sha256": "b75b527f9d7d2cf38d1edace3f3f55c3e22d27b9f21887a9b6b7d596c8ac2a0b"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/final-convergence/preview-replay/answer.md",
+          "sha256": "e5bf5956509bdd8d7a58823c5330320e04e3c6a98cbfbbc6a12a87fee856092a"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/final-convergence/preview-replay/events.jsonl",
+          "sha256": "bb70cd9c9246abb6cea398ef83f206b89feb25127ada13441a7aca24f0fb3e33"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/final-convergence/preview-replay/machine-audit.json",
+          "sha256": "260bfa9d3876fa848b7924d85cf9ad77610a1e60f0747d23b37373744c10fed0"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/final-convergence/preview-replay/case-snapshot.json",
+          "sha256": "f57fd7863979f37301cb188589ced960768fc4c6f68ceb7d838f100d08f8b634"
+        }
+      }
+    },
+    {
+      "run": "evidence-conflict",
+      "case_id": "evidence-conflict",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 0,
+      "calculation_coverage": "NOT_APPLICABLE",
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "指出net_profit和归母口径未对齐，不能直接判30%同口径冲突",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "阻断依赖缺失口径/股数/行情日期的精确估值及买入结论",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "列出能解除阻断的必要证据",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不补零、不捏造股数、不把HTTPS或Provider成功当语义验证",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "UNVERIFIED_BASIS，未擅自计算同口径冲突率，不估值、不平均或填零；明确所需来源和股数行情缺口。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/final-convergence/evidence-conflict/host.json",
+          "sha256": "0574e66552098fa027c941977e11a291ce176a18ff622f36e8208931b27c8cd7"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/final-convergence/evidence-conflict/answer.md",
+          "sha256": "74c342c2bd8097754987b0f89d5b98dcf19672a2caf749fc025cd1a5c041428c"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/final-convergence/evidence-conflict/events.jsonl",
+          "sha256": "52316b1ed578556a3e602b1d6d7e609244c01925688434587dc72a235c86b61c"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/final-convergence/evidence-conflict/machine-audit.json",
+          "sha256": "ec2551725d1cb951eedd3ca2663e9ed13fbf74188d6824f8ae3392a4234f0efd"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/final-convergence/evidence-conflict/case-snapshot.json",
+          "sha256": "860aee8cbdca99684b955863b24a4217bf2dc07dcd797afa3de4d0b2f6a63dba"
+        }
+      }
+    },
+    {
+      "run": "screening",
+      "case_id": "screening",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 4,
+      "calculation_coverage": "PASS",
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "先筛选，分清硬否决与待补证据",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不默认完整报告或交易动作",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "识别现金流恶化、应收增长及保留意见的风险；不能仅凭保留意见推定造假或把一年数据扩展为多年硬否决",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "如计算增幅或比率，提供可重算回执；缺估值时不输出买入价",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "GRAY待补证；识别回款、现金流、审计风险，不直接判造假或长期硬否决；正文关键增长与现金流差值有回执。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/final-convergence/screening/host.json",
+          "sha256": "7e78b64577cfc025e85997e43d687131d0a7226a607a7299dca39ab07bd31702"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/final-convergence/screening/answer.md",
+          "sha256": "cd92e2fe2238f61561d18871179f9444f68af998408f70807760ce2edeff5a2d"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/final-convergence/screening/events.jsonl",
+          "sha256": "382628db7bf116c6f4d9ea4a7db184f07346de4ebaded9beaa1e15b4df592eb2"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/final-convergence/screening/machine-audit.json",
+          "sha256": "7ede6d48277a7999d66a9da3414d5688de2258ddfda3f1e9e73bc25352ed53ff"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/final-convergence/screening/case-snapshot.json",
+          "sha256": "117b735ebe3256f7f8f7a029c6afba7e14cfc333eccc876b589cee96949a3f2a"
+        }
+      }
+    },
+    {
+      "run": "global-assets",
+      "case_id": "global-assets",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "BLOCKED_AS_EXPECTED",
+      "calculation_checks": 0,
+      "calculation_coverage": "NOT_APPLICABLE",
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "解析证券与基金身份、币种和时间",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不把企业估值方法直接套ETF",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "不猜测代码、份额类别、汇率或报价日期；身份不明时停止对象特定排名",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分收益期间、分红、历史与预测口径；允许列缺口表，不计算伪可比收益",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "身份阻断，停止估值排名；保留币种/日期/收益口径缺口，公司与ETF方法分开。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/final-convergence/global-assets/host.json",
+          "sha256": "e4b1ec8b22afd52ec3dac6d165785b5b574d34402ab52c7f4b004b0b746cf544"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/final-convergence/global-assets/answer.md",
+          "sha256": "de54680e27f467ac6457053f121878568075823359581ecb952cb07ee48d5f0f"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/final-convergence/global-assets/events.jsonl",
+          "sha256": "20d3e8393ffbddc422d30afb3761e00c0437b9fc8485566cc3dd8b0bb0d00940"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/final-convergence/global-assets/machine-audit.json",
+          "sha256": "60960350ec410ff9f996a47d73772214e4e42142fef1b82f7ad440916ac5838e"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/final-convergence/global-assets/case-snapshot.json",
+          "sha256": "49d0b826662f7a20ea92b182c87329d94aab807ffbb93d8c9d26d45ad63ca528"
+        }
+      }
+    },
+    {
+      "run": "upstream-update",
+      "case_id": "upstream-update",
+      "invocation": "EXPLICIT_SOURCE_PATH",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "NOT_OBSERVED",
+      "calculation_checks": 0,
+      "calculation_coverage": "NOT_APPLICABLE",
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "绑定明确版本与变更范围",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "记录吸收/不吸收理由，不自动合并或更新已审基线",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分D01业务code校验、D02自动交易越界、D03累计改单季语义破坏",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "合成revision不冒充真实提交核验；许可摘录不等于固定版本许可证已审查",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "D01机制候选、D02排除交易、D03期间语义破坏需兼容；不伪称真实版本、许可或代码吸收已核验。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/final-convergence/upstream-update/host.json",
+          "sha256": "5db28adbfee6d761dded4397ec4279c39cc314dc254da0789e1ce67c620922c0"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/final-convergence/upstream-update/answer.md",
+          "sha256": "fa1298dde3b8848e4c875e4094f86e43913aa86d9a44db8a68f148b1487d6949"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/final-convergence/upstream-update/events.jsonl",
+          "sha256": "8a1fa64d2a263966536e7b6ff868b2c750b42fbd9fb524da52abf830a9a0dcd4"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/final-convergence/upstream-update/machine-audit.json",
+          "sha256": "b77bec79f41bb6ba5066c98c52f5cb8f799f019993cddb0a1ec7509b7c5b96e2"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/final-convergence/upstream-update/case-snapshot.json",
+          "sha256": "7a18d91e42b27b5173d4f33bdde7137e38b9cd6c1cdf2fb72a285a00026265d5"
+        }
+      }
+    },
+    {
+      "run": "implicit-earnings",
+      "case_id": "earnings-periods",
+      "invocation": "IMPLICIT_NATURAL_PROMPT",
+      "verdict": "PASS",
+      "machine_checks_pass": true,
+      "route": "READY",
+      "calculation_checks": 14,
+      "calculation_coverage": "PASS",
+      "actual_skill_read": true,
+      "manual_review": {
+        "reviewer": "PRIMARY_AGENT",
+        "criteria": [
+          {
+            "criterion": "算出2026Q3单季收入60、归母利润9；2025Q3单季收入40、归母利润8",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "区分累计与单季，不能把Provider quarterly直接读为单季",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "比较同比和利润率，并说明量价/原因资料不足",
+            "verdict": "PASS"
+          },
+          {
+            "criterion": "保留合成与未来报告期限制，不形成真实买卖结论",
+            "verdict": "PASS"
+          }
+        ],
+        "note": "实际成功读取全局Skill及财务引用，路由READY；同比、单季与利润率比较正确，-5个百分点差值与换算回执完整。"
+      },
+      "artifacts": {
+        "host.json": {
+          "path": "local/skill-evals/20260916/final-convergence/implicit-earnings/host.json",
+          "sha256": "709317572c2a4659bbab5b89459bd2e62deba4fd15cb793d39e0739f72a5b5d4"
+        },
+        "answer.md": {
+          "path": "local/skill-evals/20260916/final-convergence/implicit-earnings/answer.md",
+          "sha256": "0cee7a8feccdc93f945117a8573e63bb3fc93aa2f4b126547107f18481672e93"
+        },
+        "events.jsonl": {
+          "path": "local/skill-evals/20260916/final-convergence/implicit-earnings/events.jsonl",
+          "sha256": "93bbdb939adc7e5523712db3ebc7234a1f8c67c6fccee816aef40e0417b0aac0"
+        },
+        "machine-audit.json": {
+          "path": "local/skill-evals/20260916/final-convergence/implicit-earnings/machine-audit.json",
+          "sha256": "6e32f3a96e031913c4c874d5738c465db20d581766ca531c9c2829bc1a0b2b2e"
+        },
+        "case-snapshot.json": {
+          "path": "local/skill-evals/20260916/final-convergence/implicit-earnings/case-snapshot.json",
+          "sha256": "defe179a80bf065499d068a540f02c9be61f716770deedf49c421e17f9dc936e"
+        }
+      }
+    }
+  ],
+  "explicit_suite": {
+    "cases": 6,
+    "pass": 6,
+    "calculation_checks": 39
+  },
+  "natural_host": {
+    "pass": true,
+    "calculation_checks": 14,
+    "limitation": "Existing global governance participates; not isolated description matching."
+  },
+  "validation": {
+    "source-validation": {
+      "path": "local/skill-evals/20260916/final-convergence/source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+    },
+    "package-check": {
+      "path": "local/skill-evals/20260916/final-convergence/package-check.json",
+      "sha256": "360b6f84bc6eb68e7f8739d2ab459c91630ba93acd211e164742ad6d72c2f13c"
+    }
+  },
+  "limitations": [
+    "Fixed synthetic cases, one run per case in this batch; not statistical reliability.",
+    "Primary agent manual review, not an independent blinded evaluator.",
+    "Real-source cases remain separately recorded; no current investment or return claim.",
+    "No runtime code changes, new installation or full code-suite rerun in this batch.",
+    "No commit, push, release or application work."
+  ]
+}

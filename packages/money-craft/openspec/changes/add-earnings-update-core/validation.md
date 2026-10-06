@@ -1,0 +1,14 @@
+# UP-02 first-loop validation
+
+Date: 2026-09-15 Asia/Shanghai. Uncommitted source changes on HEAD `2d33799b939fab61fa842f0dfab420ed19239f19`, retaining the preceding upstream-governance and UP-01 work.
+
+- Full suite: 195 tests successful, three existing optional Markdown renderer skips. The 12 new earnings tests cover comparisons, units/periods/evidence, restatement, expectation timing, scenario conservation, immutable history, CLI results and tracking handoff.
+- Independent bounded review identified three issues: quarter/full-year expectation mismatch, later annual filing used instead of first actual disclosure, and user proposal overriding prior state. All were fixed with regression cases; independent re-review passed 12 tests and ten invalid-input variants, with no remaining blocker in that scope.
+- Seven JSON Schema checks covered ordinary/dated-expectation inputs and outputs, a blocked unverified comparison, and the official-data replay input/output.
+- Source validation passed without warnings/errors. Package checks passed all seven gates, including temporary installation and installed research smoke. OpenSpec strict validation and Git whitespace checks passed.
+- The two-filing historical fixture ran using the issuer's actual 2023 and 2024 annual PDFs, verified by SHA-256. Selected figures and comparison columns were manually checked; ordinary share count was separately confirmed from share-count disclosures rather than inferred from the monetary share-capital line. The acceptance README records URLs and page locators.
+- `scripts/check_earnings_case.py` generated the earnings calculation receipt, initialized tracking from the prior audited fixture, sealed the explicitly reviewed current fixture as t0001, and passed tracking verification. Status correctly reported the historical deadline as STALE, with UNVERIFIED thesis status and null score. Reusing the same output directory was rejected without changing its receipt.
+
+Source/file hashes and assumptions are preserved in `acceptance/earnings/600519-2023-2024.json`; previous/current thesis examples are adjacent. Full PDFs, calculation output and tracking artifacts remain outside the repository. The successful local replay output is `/tmp/money-craft-up02-final-replay/`; repeat it with privately stored PDFs and a fresh output directory using the committed check script.
+
+This is an engineering historical replay with hypothetical valuation assumptions, not a contemporaneous historical recommendation, latest research, actual market consensus or a live account workflow. The software cannot independently prove extracted content or the earliest disclosure event. No DCF, full peer-comparison engine, application, real-host installation, remote CI, commit or push is claimed. The existing HTTP 400/429 fixture ResourceWarnings were non-failing; optional renderer coverage remains skipped.

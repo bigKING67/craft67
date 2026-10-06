@@ -1,0 +1,51 @@
+{
+  "rationale": "B 最贴合全部核心判据，尤其在两个最容易遗漏的环节上最精确：中断必须从当前 on-screen presentation value 无跳变继续，以及释放速度必须以明确单位参与受限端点投影、snap 选择和后续 settle。A 的速度连续性与呈现值恢复描述不够完整；C 与 B 接近，但投影约束、证据措辞和输出预算控制较弱。三项总分均由所列 criterion 分值重新相加得到。",
+  "results": [
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 14,
+        "motion_necessity": 9,
+        "performance": 10,
+        "velocity_projection": 11
+      },
+      "label": "A",
+      "summary": "静态证据边界清楚，完整识别抓取偏移、拖拽门控、pointer capture、布局属性、transform 冲突和 Reduced Motion 问题。主要缺口是中断方案没有明确读取动画当下的呈现值，速度方案也未规定 CSS px/s 单位或把释放速度连续传入 settle；篇幅接近但略超 150 行。",
+      "total": 93
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 8,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 10,
+        "performance": 10,
+        "velocity_projection": 15
+      },
+      "label": "B",
+      "summary": "覆盖最完整：明确要求从当前屏幕呈现值无跳变地中断和重定向，使用 CSS px/s 释放速度、受限投影端点、明确的 snap 选择语义并把速度传入 settle；同时处理 transform 分层、非空间 Reduced Motion 反馈和最小运行时检查。唯一明显扣分是输出约 195 行，超出 150 行预算。",
+      "total": 98
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 7,
+        "direct_manipulation": 15,
+        "evidence_honesty": 14,
+        "interruption": 15,
+        "motion_necessity": 9,
+        "performance": 10,
+        "velocity_projection": 14
+      },
+      "label": "C",
+      "summary": "技术覆盖很强，直接操控、中断、px/s 速度采样、投影 snap、transform 所有权和无障碍路径均有具体措施。扣分来自把“会感觉滑脱、跳跃”写得略像未经运行验证的确定结论，投影距离缺少明确的时间尺度或边界约束，并且篇幅显著超过 150 行，运行计划也不是最小化表达。",
+      "total": 94
+    }
+  ],
+  "winner": "B"
+}

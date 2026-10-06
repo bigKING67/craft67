@@ -1,0 +1,19 @@
+---
+description: Trigger design-craft for product UI/UX and frontend design-quality work.
+globs:
+  - "**/*.{css,scss,sass,less,tsx,jsx,ts,js,mdx,vue,svelte,astro,html}"
+  - "**/{DESIGN,design,AGENTS,agents}.md"
+  - "**/*{theme,tokens,tailwind,styles,components}*.{js,ts,json,css}"
+alwaysApply: false
+---
+
+Use `design-craft` for product UI/UX, visual taste critique, design-system
+enforcement, UI polish, motion review, responsive/browser validation, and
+frontend craft.
+
+Do not use it for backend-only logic, database-only migrations, pure algorithms,
+CLI-only tools, or non-visual refactors unless UI quality is affected.
+
+Authority order: live runtime and browser evidence, project rules/README,
+project `DESIGN.md` or equivalent style authority, then `design-craft`
+references. Do not generic-redesign a project over its existing product context.

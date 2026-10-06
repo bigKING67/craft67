@@ -1,0 +1,51 @@
+{
+  "schema_version": "creative-craft.evaluation.v2",
+  "evaluation_id": "evaluation-tbd",
+  "target_ref": "cc://creative-direction/direction-tbd#",
+  "stage": "direction",
+  "brief_id": "brief-tbd",
+  "dimensions": [
+    {
+      "id": "strategic_fit",
+      "weight": 25,
+      "score": 0,
+      "evidence_state": "UNVERIFIED",
+      "evidence_refs": [],
+      "rationale": "TBD"
+    },
+    {
+      "id": "audience_relevance",
+      "weight": 20,
+      "score": 0,
+      "evidence_state": "UNVERIFIED",
+      "evidence_refs": [],
+      "rationale": "TBD"
+    },
+    {
+      "id": "concept_distinctiveness",
+      "weight": 20,
+      "score": 0,
+      "evidence_state": "UNVERIFIED",
+      "evidence_refs": [],
+      "rationale": "TBD"
+    },
+    {
+      "id": "creative_coherence",
+      "weight": 20,
+      "score": 0,
+      "evidence_state": "UNVERIFIED",
+      "evidence_refs": [],
+      "rationale": "TBD"
+    },
+    {
+      "id": "production_feasibility",
+      "weight": 15,
+      "score": 0,
+      "evidence_state": "UNVERIFIED",
+      "evidence_refs": [],
+      "rationale": "TBD"
+    }
+  ],
+  "recommendation": "TBD",
+  "remaining_unknowns": []
+}

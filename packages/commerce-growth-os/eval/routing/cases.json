@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "cases": [
+    {"id": "full_commerce_plan", "prompt": "给我一套完整经营方案和90天跨渠道增长计划", "expected": ["commerce-growth-os"]},
+    {"id": "creator_economics", "prompt": "这个达人坑位费和佣金值不值得", "expected": ["commerce-commercial-strategy"]},
+    {"id": "live_operations", "prompt": "给我直播排品和自播运营SOP", "expected": ["commerce-operations"]},
+    {"id": "weekly_analysis", "prompt": "分析这份周报的漏斗和异常诊断", "expected": ["commerce-analytics"]},
+    {"id": "annual_marketing", "prompt": "制定全年营销战略和营销预算分配", "expected": ["consumer-marketing-os"]},
+    {"id": "spokesperson", "prompt": "如何评估品牌代言人并控制舆情风险", "expected": ["brand-strategy-communications"]},
+    {"id": "social_content", "prompt": "做一套小红书内容矩阵和达人Brief", "expected": ["content-creative-social-marketing"]},
+    {"id": "paid_growth", "prompt": "千川预算如何放量并设计增量实验", "expected": ["growth-performance-lifecycle-marketing"]},
+    {"id": "spokesperson_profit_composition", "prompt": "品牌代言人费用值不值得，如何回收", "expected": ["brand-strategy-communications", "commerce-commercial-strategy"]},
+    {"id": "paid_scale_composition", "prompt": "千川ROI下降后还值不值得继续放量", "expected": ["growth-performance-lifecycle-marketing", "commerce-commercial-strategy"]},
+    {"id": "economic_ceiling_only", "prompt": "只计算盈亏平衡ROI、利润止损和最大经济可承受投放额，不设计媒体实验", "expected": ["commerce-commercial-strategy"]},
+    {"id": "approved_guardrail_experiment", "prompt": "商业护栏已批准，只设计聚光实验投入上限、增量步长和边际止损", "expected": ["growth-performance-lifecycle-marketing"]},
+    {"id": "brand_ambassador", "prompt": "品牌大使合作应该如何设计", "expected": ["brand-strategy-communications"]},
+    {"id": "tmall_store_operations", "prompt": "天猫店铺运营和售后怎么优化", "expected": ["commerce-operations"]},
+    {"id": "xiaohongshu_paid_search", "prompt": "聚光搜索营销预算如何测试", "expected": ["growth-performance-lifecycle-marketing"]},
+    {"id": "platform_data_analysis", "prompt": "做一份小红书数据分析和指标口径", "expected": ["commerce-analytics"]},
+    {"id": "talent_live_composition", "prompt": "达人直播排品和佣金怎么定", "expected": ["commerce-operations", "commerce-commercial-strategy"]},
+    {"id": "content_paid_composition", "prompt": "小红书内容投流聚光怎么协同", "expected": ["content-creative-social-marketing", "growth-performance-lifecycle-marketing"]},
+    {"id": "brand_content_bounded", "prompt": "品牌定位已确认，只做公关口径审批和小红书达人Brief", "expected": ["brand-strategy-communications", "content-creative-social-marketing"]},
+    {"id": "integrated_launch_conflict", "prompt": "做完整新品上市整合营销并裁决营销优先级冲突", "expected": ["consumer-marketing-os"]},
+    {"id": "annual_brand_paid_composition", "prompt": "年度营销如何协同品牌代言人和千川", "expected": ["consumer-marketing-os", "brand-strategy-communications", "growth-performance-lifecycle-marketing"]}
+  ]
+}

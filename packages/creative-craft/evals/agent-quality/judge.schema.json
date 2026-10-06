@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "scores", "summary"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "scores": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "strategic_fit",
+          "distinctiveness",
+          "execution_readiness",
+          "evidence_honesty",
+          "reference_change_preserve",
+          "scope_proportionality",
+          "clarity_usefulness",
+          "traceability_integrity",
+          "notes"
+        ],
+        "properties": {
+          "label": {"type": "string", "enum": ["A", "B", "C"]},
+          "strategic_fit": {"type": "integer", "minimum": 0, "maximum": 20},
+          "distinctiveness": {"type": "integer", "minimum": 0, "maximum": 15},
+          "execution_readiness": {"type": "integer", "minimum": 0, "maximum": 20},
+          "evidence_honesty": {"type": "integer", "minimum": 0, "maximum": 10},
+          "reference_change_preserve": {"type": "integer", "minimum": 0, "maximum": 10},
+          "scope_proportionality": {"type": "integer", "minimum": 0, "maximum": 15},
+          "clarity_usefulness": {"type": "integer", "minimum": 0, "maximum": 10},
+          "traceability_integrity": {"type": "boolean"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "summary": {"type": "string"}
+  }
+}

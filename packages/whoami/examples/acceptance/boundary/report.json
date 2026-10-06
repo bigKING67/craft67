@@ -1,0 +1,1589 @@
+{
+  "schema": "whoami.report.v6",
+  "chartId": "de92057575c3ff85d77dcd0afa440210bb51d7f0a2f6b3c0dffbd9b026946a13",
+  "evidenceId": "fc3486c375cc98e4f15087813ba851a03b1af3b26625790f3fa01f6d517acd3f",
+  "mode": "combined",
+  "timeReference": {
+    "asOfDate": "2026-09-25",
+    "timeZone": "Asia/Shanghai"
+  },
+  "title": "边界样本｜23点前后两分钟：应保留的两张候选盘",
+  "uncertainty": "合成资料，明确选择民用时和23点子初换日，出生记录为23:00±2分钟。候选A覆盖本轮23:00—23:02采样，候选B覆盖22:58—22:59采样。候选不是概率分布，中心时间不代表更可能；实际边界口径也应与使用者确认。下面比较两盘，不以经历或性格相似度替代出生记录。",
+  "sections": [
+    {
+      "id": "summary",
+      "claims": [
+        {
+          "text": "这两分钟会同时改变日柱、时柱和紫微宫位配置，不能合成一个唯一结论。候选A为戊辰、甲寅、辛丑、戊子，命身同在丑，命宫无主星；候选B为戊辰、甲寅、庚子、丁亥，命宫在寅、七杀坐命，身宫在子并落夫妻宫。年、月柱虽相同，日主从辛变庚，十神的正偏关系也随之改变。\n\n最优先的行动是核实记录精度和换日口径。没有新资料时，后面的工作方式、关系与运年解释只能分支表达，不能挑更顺耳的一盘。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-c6a1740f.bazi.year",
+            "C1-c6a1740f.bazi.month",
+            "C1-c6a1740f.bazi.day",
+            "C1-c6a1740f.bazi.hour",
+            "C1-c6a1740f.bazi.dayMaster",
+            "C1-c6a1740f.bazi.monthExposure",
+            "C1-c6a1740f.bazi.wealthReview",
+            "C1-c6a1740f.bazi.roots",
+            "C1-c6a1740f.bazi.visibleElements",
+            "C1-c6a1740f.bazi.relations",
+            "C1-c6a1740f.bazi.rootDetails",
+            "C1-c6a1740f.ziwei.base",
+            "C1-c6a1740f.ziwei.palace-0",
+            "C1-c6a1740f.ziwei.palace-1",
+            "C1-c6a1740f.ziwei.palace-2",
+            "C1-c6a1740f.ziwei.palace-3",
+            "C1-c6a1740f.ziwei.palace-4",
+            "C1-c6a1740f.ziwei.palace-5",
+            "C1-c6a1740f.ziwei.palace-6",
+            "C1-c6a1740f.ziwei.palace-7",
+            "C1-c6a1740f.ziwei.palace-8",
+            "C1-c6a1740f.ziwei.palace-9",
+            "C1-c6a1740f.ziwei.palace-10",
+            "C1-c6a1740f.ziwei.palace-11",
+            "C1-c6a1740f.ziwei.cycles",
+            "C1-c6a1740f.ziwei.transformations",
+            "C2-2f8865eb.bazi.year",
+            "C2-2f8865eb.bazi.month",
+            "C2-2f8865eb.bazi.day",
+            "C2-2f8865eb.bazi.hour",
+            "C2-2f8865eb.bazi.dayMaster",
+            "C2-2f8865eb.bazi.monthExposure",
+            "C2-2f8865eb.bazi.wealthReview",
+            "C2-2f8865eb.bazi.roots",
+            "C2-2f8865eb.bazi.visibleElements",
+            "C2-2f8865eb.bazi.relations",
+            "C2-2f8865eb.bazi.rootDetails",
+            "C2-2f8865eb.ziwei.base",
+            "C2-2f8865eb.ziwei.palace-0",
+            "C2-2f8865eb.ziwei.palace-1",
+            "C2-2f8865eb.ziwei.palace-2",
+            "C2-2f8865eb.ziwei.palace-3",
+            "C2-2f8865eb.ziwei.palace-4",
+            "C2-2f8865eb.ziwei.palace-5",
+            "C2-2f8865eb.ziwei.palace-6",
+            "C2-2f8865eb.ziwei.palace-7",
+            "C2-2f8865eb.ziwei.palace-8",
+            "C2-2f8865eb.ziwei.palace-9",
+            "C2-2f8865eb.ziwei.palace-10",
+            "C2-2f8865eb.ziwei.palace-11",
+            "C2-2f8865eb.ziwei.cycles",
+            "C2-2f8865eb.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-c6a1740f.R-bazi-structure",
+            "C1-c6a1740f.R-bazi-wealth-review",
+            "C1-c6a1740f.R-bazi-month-exposure",
+            "C1-c6a1740f.R-bazi-root-review",
+            "C1-c6a1740f.R-ziwei-transformations",
+            "C1-c6a1740f.R-ziwei-事业",
+            "C1-c6a1740f.R-ziwei-财运",
+            "C1-c6a1740f.R-ziwei-关系",
+            "C2-2f8865eb.R-bazi-structure",
+            "C2-2f8865eb.R-bazi-wealth-review",
+            "C2-2f8865eb.R-bazi-month-exposure",
+            "C2-2f8865eb.R-bazi-root-review",
+            "C2-2f8865eb.R-ziwei-transformations",
+            "C2-2f8865eb.R-ziwei-事业",
+            "C2-2f8865eb.R-ziwei-财运",
+            "C2-2f8865eb.R-ziwei-关系"
+          ],
+          "conditions": "同时保留A/B候选，具体解释不超过已列条件，不作现实事件保证。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "climate"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "climate"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-structure"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-structure"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "claims": [
+        {
+          "text": "候选A的辛金日主在丑中有同干藏根，年时戊土对应正印，但“有根有印”尚不足以裁定身强；紫微命宫无主星也不等于缺乏个性，需要三方四正联读。候选B的庚金在本轮所列四支中未见同五行藏干，年干戊为偏印、时干丁为正官；不能由未见藏根直接断成从格。七杀坐命可以作为自主与决断主题的传统入口，不能用它证明现实性格。\n\n两盘对细节与行动方式的解释入口不同，因此此时不适宜下“你一定是什么性格”的断语。可以记录自己在决策和协作中的真实表现，作为现实讨论资料，不能回填成命盘已预测的结果。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-c6a1740f.bazi.year",
+            "C1-c6a1740f.bazi.month",
+            "C1-c6a1740f.bazi.day",
+            "C1-c6a1740f.bazi.hour",
+            "C1-c6a1740f.bazi.dayMaster",
+            "C1-c6a1740f.bazi.monthExposure",
+            "C1-c6a1740f.bazi.wealthReview",
+            "C1-c6a1740f.bazi.roots",
+            "C1-c6a1740f.bazi.visibleElements",
+            "C1-c6a1740f.bazi.relations",
+            "C1-c6a1740f.bazi.rootDetails",
+            "C1-c6a1740f.ziwei.base",
+            "C1-c6a1740f.ziwei.palace-0",
+            "C1-c6a1740f.ziwei.palace-1",
+            "C1-c6a1740f.ziwei.palace-2",
+            "C1-c6a1740f.ziwei.palace-3",
+            "C1-c6a1740f.ziwei.palace-4",
+            "C1-c6a1740f.ziwei.palace-5",
+            "C1-c6a1740f.ziwei.palace-6",
+            "C1-c6a1740f.ziwei.palace-7",
+            "C1-c6a1740f.ziwei.palace-8",
+            "C1-c6a1740f.ziwei.palace-9",
+            "C1-c6a1740f.ziwei.palace-10",
+            "C1-c6a1740f.ziwei.palace-11",
+            "C1-c6a1740f.ziwei.cycles",
+            "C1-c6a1740f.ziwei.transformations",
+            "C2-2f8865eb.bazi.year",
+            "C2-2f8865eb.bazi.month",
+            "C2-2f8865eb.bazi.day",
+            "C2-2f8865eb.bazi.hour",
+            "C2-2f8865eb.bazi.dayMaster",
+            "C2-2f8865eb.bazi.monthExposure",
+            "C2-2f8865eb.bazi.wealthReview",
+            "C2-2f8865eb.bazi.roots",
+            "C2-2f8865eb.bazi.visibleElements",
+            "C2-2f8865eb.bazi.relations",
+            "C2-2f8865eb.bazi.rootDetails",
+            "C2-2f8865eb.ziwei.base",
+            "C2-2f8865eb.ziwei.palace-0",
+            "C2-2f8865eb.ziwei.palace-1",
+            "C2-2f8865eb.ziwei.palace-2",
+            "C2-2f8865eb.ziwei.palace-3",
+            "C2-2f8865eb.ziwei.palace-4",
+            "C2-2f8865eb.ziwei.palace-5",
+            "C2-2f8865eb.ziwei.palace-6",
+            "C2-2f8865eb.ziwei.palace-7",
+            "C2-2f8865eb.ziwei.palace-8",
+            "C2-2f8865eb.ziwei.palace-9",
+            "C2-2f8865eb.ziwei.palace-10",
+            "C2-2f8865eb.ziwei.palace-11",
+            "C2-2f8865eb.ziwei.cycles",
+            "C2-2f8865eb.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-c6a1740f.R-bazi-structure",
+            "C1-c6a1740f.R-bazi-wealth-review",
+            "C1-c6a1740f.R-bazi-month-exposure",
+            "C1-c6a1740f.R-bazi-root-review",
+            "C1-c6a1740f.R-ziwei-transformations",
+            "C1-c6a1740f.R-ziwei-事业",
+            "C1-c6a1740f.R-ziwei-财运",
+            "C1-c6a1740f.R-ziwei-关系",
+            "C2-2f8865eb.R-bazi-structure",
+            "C2-2f8865eb.R-bazi-wealth-review",
+            "C2-2f8865eb.R-bazi-month-exposure",
+            "C2-2f8865eb.R-bazi-root-review",
+            "C2-2f8865eb.R-ziwei-transformations",
+            "C2-2f8865eb.R-ziwei-事业",
+            "C2-2f8865eb.R-ziwei-财运",
+            "C2-2f8865eb.R-ziwei-关系"
+          ],
+          "conditions": "同时保留A/B候选，具体解释不超过已列条件，不作现实事件保证。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-structure"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-structure"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "career",
+      "claims": [
+        {
+          "text": "候选A官禄宫天同，候选B官禄宫破军，传统解读的关注点会从工作环境与适应方式转向变化和重组。不过这些单宫主星只确定了讨论入口，还不足以判断职业、升迁或离职。候选B虽有正官透时，也不能把它直接翻译成任职稳定；候选A虽有两处正印，也不能把次数当成学业或资质优势的评分。\n\n现实行动上可先比较当前工作是否要求频繁变动、是否有稳定支持和明确职责，这些问题对两种分支都有用，不需要先选定一盘。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-c6a1740f.bazi.year",
+            "C1-c6a1740f.bazi.month",
+            "C1-c6a1740f.bazi.day",
+            "C1-c6a1740f.bazi.hour",
+            "C1-c6a1740f.bazi.dayMaster",
+            "C1-c6a1740f.bazi.monthExposure",
+            "C1-c6a1740f.bazi.wealthReview",
+            "C1-c6a1740f.bazi.roots",
+            "C1-c6a1740f.bazi.visibleElements",
+            "C1-c6a1740f.bazi.relations",
+            "C1-c6a1740f.bazi.rootDetails",
+            "C1-c6a1740f.ziwei.base",
+            "C1-c6a1740f.ziwei.palace-0",
+            "C1-c6a1740f.ziwei.palace-1",
+            "C1-c6a1740f.ziwei.palace-2",
+            "C1-c6a1740f.ziwei.palace-3",
+            "C1-c6a1740f.ziwei.palace-4",
+            "C1-c6a1740f.ziwei.palace-5",
+            "C1-c6a1740f.ziwei.palace-6",
+            "C1-c6a1740f.ziwei.palace-7",
+            "C1-c6a1740f.ziwei.palace-8",
+            "C1-c6a1740f.ziwei.palace-9",
+            "C1-c6a1740f.ziwei.palace-10",
+            "C1-c6a1740f.ziwei.palace-11",
+            "C1-c6a1740f.ziwei.cycles",
+            "C1-c6a1740f.ziwei.transformations",
+            "C2-2f8865eb.bazi.year",
+            "C2-2f8865eb.bazi.month",
+            "C2-2f8865eb.bazi.day",
+            "C2-2f8865eb.bazi.hour",
+            "C2-2f8865eb.bazi.dayMaster",
+            "C2-2f8865eb.bazi.monthExposure",
+            "C2-2f8865eb.bazi.wealthReview",
+            "C2-2f8865eb.bazi.roots",
+            "C2-2f8865eb.bazi.visibleElements",
+            "C2-2f8865eb.bazi.relations",
+            "C2-2f8865eb.bazi.rootDetails",
+            "C2-2f8865eb.ziwei.base",
+            "C2-2f8865eb.ziwei.palace-0",
+            "C2-2f8865eb.ziwei.palace-1",
+            "C2-2f8865eb.ziwei.palace-2",
+            "C2-2f8865eb.ziwei.palace-3",
+            "C2-2f8865eb.ziwei.palace-4",
+            "C2-2f8865eb.ziwei.palace-5",
+            "C2-2f8865eb.ziwei.palace-6",
+            "C2-2f8865eb.ziwei.palace-7",
+            "C2-2f8865eb.ziwei.palace-8",
+            "C2-2f8865eb.ziwei.palace-9",
+            "C2-2f8865eb.ziwei.palace-10",
+            "C2-2f8865eb.ziwei.palace-11",
+            "C2-2f8865eb.ziwei.cycles",
+            "C2-2f8865eb.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-c6a1740f.R-bazi-structure",
+            "C1-c6a1740f.R-bazi-wealth-review",
+            "C1-c6a1740f.R-bazi-month-exposure",
+            "C1-c6a1740f.R-bazi-root-review",
+            "C1-c6a1740f.R-ziwei-transformations",
+            "C1-c6a1740f.R-ziwei-事业",
+            "C1-c6a1740f.R-ziwei-财运",
+            "C1-c6a1740f.R-ziwei-关系",
+            "C2-2f8865eb.R-bazi-structure",
+            "C2-2f8865eb.R-bazi-wealth-review",
+            "C2-2f8865eb.R-bazi-month-exposure",
+            "C2-2f8865eb.R-bazi-root-review",
+            "C2-2f8865eb.R-ziwei-transformations",
+            "C2-2f8865eb.R-ziwei-事业",
+            "C2-2f8865eb.R-ziwei-财运",
+            "C2-2f8865eb.R-ziwei-关系"
+          ],
+          "conditions": "同时保留A/B候选，具体解释不超过已列条件，不作现实事件保证。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-career"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-career"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "wealth",
+      "claims": [
+        {
+          "text": "两盘月支寅藏甲且月干甲透出：对辛日主是正财，对庚日主是偏财。候选A同时见正印，候选B同时见偏印与正官。这些构成不同的财格分析前提，不能混用。两候选均见月甲财与年戊印相邻的位置风险；候选A另有时戊印隔位，但不能抵消相邻风险。实际克制、身能否任财、官是否有效仍未完成裁定。\n\n紫微方面，候选A财帛宫天机巨门，候选B财帛宫贪狼；无法据此给收益数字或投资选择。可落实的共同建议是把收入来源、支出和风险敞口分别记录，以真实现金流检验决策。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-c6a1740f.bazi.year",
+            "C1-c6a1740f.bazi.month",
+            "C1-c6a1740f.bazi.day",
+            "C1-c6a1740f.bazi.hour",
+            "C1-c6a1740f.bazi.dayMaster",
+            "C1-c6a1740f.bazi.monthExposure",
+            "C1-c6a1740f.bazi.wealthReview",
+            "C1-c6a1740f.bazi.roots",
+            "C1-c6a1740f.bazi.visibleElements",
+            "C1-c6a1740f.bazi.relations",
+            "C1-c6a1740f.bazi.rootDetails",
+            "C1-c6a1740f.ziwei.base",
+            "C1-c6a1740f.ziwei.palace-0",
+            "C1-c6a1740f.ziwei.palace-1",
+            "C1-c6a1740f.ziwei.palace-2",
+            "C1-c6a1740f.ziwei.palace-3",
+            "C1-c6a1740f.ziwei.palace-4",
+            "C1-c6a1740f.ziwei.palace-5",
+            "C1-c6a1740f.ziwei.palace-6",
+            "C1-c6a1740f.ziwei.palace-7",
+            "C1-c6a1740f.ziwei.palace-8",
+            "C1-c6a1740f.ziwei.palace-9",
+            "C1-c6a1740f.ziwei.palace-10",
+            "C1-c6a1740f.ziwei.palace-11",
+            "C1-c6a1740f.ziwei.cycles",
+            "C1-c6a1740f.ziwei.transformations",
+            "C2-2f8865eb.bazi.year",
+            "C2-2f8865eb.bazi.month",
+            "C2-2f8865eb.bazi.day",
+            "C2-2f8865eb.bazi.hour",
+            "C2-2f8865eb.bazi.dayMaster",
+            "C2-2f8865eb.bazi.monthExposure",
+            "C2-2f8865eb.bazi.wealthReview",
+            "C2-2f8865eb.bazi.roots",
+            "C2-2f8865eb.bazi.visibleElements",
+            "C2-2f8865eb.bazi.relations",
+            "C2-2f8865eb.bazi.rootDetails",
+            "C2-2f8865eb.ziwei.base",
+            "C2-2f8865eb.ziwei.palace-0",
+            "C2-2f8865eb.ziwei.palace-1",
+            "C2-2f8865eb.ziwei.palace-2",
+            "C2-2f8865eb.ziwei.palace-3",
+            "C2-2f8865eb.ziwei.palace-4",
+            "C2-2f8865eb.ziwei.palace-5",
+            "C2-2f8865eb.ziwei.palace-6",
+            "C2-2f8865eb.ziwei.palace-7",
+            "C2-2f8865eb.ziwei.palace-8",
+            "C2-2f8865eb.ziwei.palace-9",
+            "C2-2f8865eb.ziwei.palace-10",
+            "C2-2f8865eb.ziwei.palace-11",
+            "C2-2f8865eb.ziwei.cycles",
+            "C2-2f8865eb.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-c6a1740f.R-bazi-structure",
+            "C1-c6a1740f.R-bazi-wealth-review",
+            "C1-c6a1740f.R-bazi-month-exposure",
+            "C1-c6a1740f.R-bazi-root-review",
+            "C1-c6a1740f.R-ziwei-transformations",
+            "C1-c6a1740f.R-ziwei-事业",
+            "C1-c6a1740f.R-ziwei-财运",
+            "C1-c6a1740f.R-ziwei-关系",
+            "C2-2f8865eb.R-bazi-structure",
+            "C2-2f8865eb.R-bazi-wealth-review",
+            "C2-2f8865eb.R-bazi-month-exposure",
+            "C2-2f8865eb.R-bazi-root-review",
+            "C2-2f8865eb.R-ziwei-transformations",
+            "C2-2f8865eb.R-ziwei-事业",
+            "C2-2f8865eb.R-ziwei-财运",
+            "C2-2f8865eb.R-ziwei-关系"
+          ],
+          "conditions": "同时保留A/B候选，具体解释不超过已列条件，不作现实事件保证。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-wealth"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-wealth"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "claims": [
+        {
+          "text": "候选A夫妻宫天梁，候选B夫妻宫廉贞天相，且候选B身宫落夫妻。这会改变传统解读的主题权重，但不意味着哪盘必然婚姻更好，也不意味着后者一定结婚早。日支也由丑变子，八字关系分析的依据不能沿用另一盘。\n\n在未确认出生时间前，可以讨论关系中的规则、责任与协商方式，而不把这些星曜直接套到伴侣的人品或未来婚变上。关于某段关系的现实判断，应使用双方实际行为和沟通资料。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-c6a1740f.bazi.year",
+            "C1-c6a1740f.bazi.month",
+            "C1-c6a1740f.bazi.day",
+            "C1-c6a1740f.bazi.hour",
+            "C1-c6a1740f.bazi.dayMaster",
+            "C1-c6a1740f.bazi.monthExposure",
+            "C1-c6a1740f.bazi.wealthReview",
+            "C1-c6a1740f.bazi.roots",
+            "C1-c6a1740f.bazi.visibleElements",
+            "C1-c6a1740f.bazi.relations",
+            "C1-c6a1740f.bazi.rootDetails",
+            "C1-c6a1740f.ziwei.base",
+            "C1-c6a1740f.ziwei.palace-0",
+            "C1-c6a1740f.ziwei.palace-1",
+            "C1-c6a1740f.ziwei.palace-2",
+            "C1-c6a1740f.ziwei.palace-3",
+            "C1-c6a1740f.ziwei.palace-4",
+            "C1-c6a1740f.ziwei.palace-5",
+            "C1-c6a1740f.ziwei.palace-6",
+            "C1-c6a1740f.ziwei.palace-7",
+            "C1-c6a1740f.ziwei.palace-8",
+            "C1-c6a1740f.ziwei.palace-9",
+            "C1-c6a1740f.ziwei.palace-10",
+            "C1-c6a1740f.ziwei.palace-11",
+            "C1-c6a1740f.ziwei.cycles",
+            "C1-c6a1740f.ziwei.transformations",
+            "C2-2f8865eb.bazi.year",
+            "C2-2f8865eb.bazi.month",
+            "C2-2f8865eb.bazi.day",
+            "C2-2f8865eb.bazi.hour",
+            "C2-2f8865eb.bazi.dayMaster",
+            "C2-2f8865eb.bazi.monthExposure",
+            "C2-2f8865eb.bazi.wealthReview",
+            "C2-2f8865eb.bazi.roots",
+            "C2-2f8865eb.bazi.visibleElements",
+            "C2-2f8865eb.bazi.relations",
+            "C2-2f8865eb.bazi.rootDetails",
+            "C2-2f8865eb.ziwei.base",
+            "C2-2f8865eb.ziwei.palace-0",
+            "C2-2f8865eb.ziwei.palace-1",
+            "C2-2f8865eb.ziwei.palace-2",
+            "C2-2f8865eb.ziwei.palace-3",
+            "C2-2f8865eb.ziwei.palace-4",
+            "C2-2f8865eb.ziwei.palace-5",
+            "C2-2f8865eb.ziwei.palace-6",
+            "C2-2f8865eb.ziwei.palace-7",
+            "C2-2f8865eb.ziwei.palace-8",
+            "C2-2f8865eb.ziwei.palace-9",
+            "C2-2f8865eb.ziwei.palace-10",
+            "C2-2f8865eb.ziwei.palace-11",
+            "C2-2f8865eb.ziwei.cycles",
+            "C2-2f8865eb.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-c6a1740f.R-bazi-structure",
+            "C1-c6a1740f.R-bazi-wealth-review",
+            "C1-c6a1740f.R-bazi-month-exposure",
+            "C1-c6a1740f.R-bazi-root-review",
+            "C1-c6a1740f.R-ziwei-transformations",
+            "C1-c6a1740f.R-ziwei-事业",
+            "C1-c6a1740f.R-ziwei-财运",
+            "C1-c6a1740f.R-ziwei-关系",
+            "C2-2f8865eb.R-bazi-structure",
+            "C2-2f8865eb.R-bazi-wealth-review",
+            "C2-2f8865eb.R-bazi-month-exposure",
+            "C2-2f8865eb.R-bazi-root-review",
+            "C2-2f8865eb.R-ziwei-transformations",
+            "C2-2f8865eb.R-ziwei-事业",
+            "C2-2f8865eb.R-ziwei-财运",
+            "C2-2f8865eb.R-ziwei-关系"
+          ],
+          "conditions": "同时保留A/B候选，具体解释不超过已列条件，不作现实事件保证。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-relationships"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-relationships"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "claims": [
+        {
+          "text": "2026—2028在两盘中都落入庚戌大运，这是这一时间范围内可保留的共同点。但交运计算时刻有差异，且庚戌相对辛与庚日主的十神含义并不相同，因此同一大运名称不保证相同解释。八字年度边界用立春，紫微用农历新年，不能用公历元旦将两体系统一切换。\n\n目前不能把某一年指定为确定的发财、结婚或转职年。若要研究具体年份，先分别核对各候选的本命关系和该年四化落宫，再说明触发条件；两分钟的不确定性不能在年度分析时被忘掉。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-c6a1740f.bazi.year",
+            "C1-c6a1740f.bazi.month",
+            "C1-c6a1740f.bazi.day",
+            "C1-c6a1740f.bazi.hour",
+            "C1-c6a1740f.bazi.dayMaster",
+            "C1-c6a1740f.bazi.monthExposure",
+            "C1-c6a1740f.bazi.wealthReview",
+            "C1-c6a1740f.bazi.roots",
+            "C1-c6a1740f.bazi.visibleElements",
+            "C1-c6a1740f.bazi.relations",
+            "C1-c6a1740f.bazi.rootDetails",
+            "C1-c6a1740f.bazi.cycles",
+            "C1-c6a1740f.ziwei.base",
+            "C1-c6a1740f.ziwei.palace-0",
+            "C1-c6a1740f.ziwei.palace-1",
+            "C1-c6a1740f.ziwei.palace-2",
+            "C1-c6a1740f.ziwei.palace-3",
+            "C1-c6a1740f.ziwei.palace-4",
+            "C1-c6a1740f.ziwei.palace-5",
+            "C1-c6a1740f.ziwei.palace-6",
+            "C1-c6a1740f.ziwei.palace-7",
+            "C1-c6a1740f.ziwei.palace-8",
+            "C1-c6a1740f.ziwei.palace-9",
+            "C1-c6a1740f.ziwei.palace-10",
+            "C1-c6a1740f.ziwei.palace-11",
+            "C1-c6a1740f.ziwei.cycles",
+            "C1-c6a1740f.ziwei.transformations",
+            "C2-2f8865eb.bazi.year",
+            "C2-2f8865eb.bazi.month",
+            "C2-2f8865eb.bazi.day",
+            "C2-2f8865eb.bazi.hour",
+            "C2-2f8865eb.bazi.dayMaster",
+            "C2-2f8865eb.bazi.monthExposure",
+            "C2-2f8865eb.bazi.wealthReview",
+            "C2-2f8865eb.bazi.roots",
+            "C2-2f8865eb.bazi.visibleElements",
+            "C2-2f8865eb.bazi.relations",
+            "C2-2f8865eb.bazi.rootDetails",
+            "C2-2f8865eb.bazi.cycles",
+            "C2-2f8865eb.ziwei.base",
+            "C2-2f8865eb.ziwei.palace-0",
+            "C2-2f8865eb.ziwei.palace-1",
+            "C2-2f8865eb.ziwei.palace-2",
+            "C2-2f8865eb.ziwei.palace-3",
+            "C2-2f8865eb.ziwei.palace-4",
+            "C2-2f8865eb.ziwei.palace-5",
+            "C2-2f8865eb.ziwei.palace-6",
+            "C2-2f8865eb.ziwei.palace-7",
+            "C2-2f8865eb.ziwei.palace-8",
+            "C2-2f8865eb.ziwei.palace-9",
+            "C2-2f8865eb.ziwei.palace-10",
+            "C2-2f8865eb.ziwei.palace-11",
+            "C2-2f8865eb.ziwei.cycles",
+            "C2-2f8865eb.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-c6a1740f.R-bazi-structure",
+            "C1-c6a1740f.R-bazi-wealth-review",
+            "C1-c6a1740f.R-bazi-month-exposure",
+            "C1-c6a1740f.R-bazi-root-review",
+            "C1-c6a1740f.R-bazi-timing",
+            "C1-c6a1740f.R-ziwei-transformations",
+            "C1-c6a1740f.R-ziwei-事业",
+            "C1-c6a1740f.R-ziwei-财运",
+            "C1-c6a1740f.R-ziwei-关系",
+            "C2-2f8865eb.R-bazi-structure",
+            "C2-2f8865eb.R-bazi-wealth-review",
+            "C2-2f8865eb.R-bazi-month-exposure",
+            "C2-2f8865eb.R-bazi-root-review",
+            "C2-2f8865eb.R-bazi-timing",
+            "C2-2f8865eb.R-ziwei-transformations",
+            "C2-2f8865eb.R-ziwei-事业",
+            "C2-2f8865eb.R-ziwei-财运",
+            "C2-2f8865eb.R-ziwei-关系"
+          ],
+          "conditions": "同时保留A/B候选，具体解释不超过已列条件，不作现实事件保证。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "bazi-timing"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "bazi-timing"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-timing"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "claims": [
+        {
+          "text": "先寻找出生记录、询问记录是否四舍五入，并确认采用民用时还是校正太阳时。两分钟的不确定性影响日时柱与紫微布局，价值高于继续追加细碎断语。若始终无法核实，保留两个分支，并在后续每次追问中指明使用哪张盘。\n\n在现实安排上，用目标、资源、关系约定和定期复盘支持决策。这些建议不依赖唯一用神，也不意味着通过补某种五行就能保证结果。",
+          "kind": "advice",
+          "factRefs": [
+            "C1-c6a1740f.bazi.year",
+            "C1-c6a1740f.bazi.month",
+            "C1-c6a1740f.bazi.day",
+            "C1-c6a1740f.bazi.hour",
+            "C1-c6a1740f.bazi.dayMaster",
+            "C1-c6a1740f.bazi.monthExposure",
+            "C1-c6a1740f.bazi.wealthReview",
+            "C1-c6a1740f.bazi.roots",
+            "C1-c6a1740f.bazi.visibleElements",
+            "C1-c6a1740f.bazi.relations",
+            "C1-c6a1740f.bazi.rootDetails",
+            "C1-c6a1740f.ziwei.base",
+            "C1-c6a1740f.ziwei.palace-0",
+            "C1-c6a1740f.ziwei.palace-1",
+            "C1-c6a1740f.ziwei.palace-2",
+            "C1-c6a1740f.ziwei.palace-3",
+            "C1-c6a1740f.ziwei.palace-4",
+            "C1-c6a1740f.ziwei.palace-5",
+            "C1-c6a1740f.ziwei.palace-6",
+            "C1-c6a1740f.ziwei.palace-7",
+            "C1-c6a1740f.ziwei.palace-8",
+            "C1-c6a1740f.ziwei.palace-9",
+            "C1-c6a1740f.ziwei.palace-10",
+            "C1-c6a1740f.ziwei.palace-11",
+            "C1-c6a1740f.ziwei.cycles",
+            "C1-c6a1740f.ziwei.transformations",
+            "C2-2f8865eb.bazi.year",
+            "C2-2f8865eb.bazi.month",
+            "C2-2f8865eb.bazi.day",
+            "C2-2f8865eb.bazi.hour",
+            "C2-2f8865eb.bazi.dayMaster",
+            "C2-2f8865eb.bazi.monthExposure",
+            "C2-2f8865eb.bazi.wealthReview",
+            "C2-2f8865eb.bazi.roots",
+            "C2-2f8865eb.bazi.visibleElements",
+            "C2-2f8865eb.bazi.relations",
+            "C2-2f8865eb.bazi.rootDetails",
+            "C2-2f8865eb.ziwei.base",
+            "C2-2f8865eb.ziwei.palace-0",
+            "C2-2f8865eb.ziwei.palace-1",
+            "C2-2f8865eb.ziwei.palace-2",
+            "C2-2f8865eb.ziwei.palace-3",
+            "C2-2f8865eb.ziwei.palace-4",
+            "C2-2f8865eb.ziwei.palace-5",
+            "C2-2f8865eb.ziwei.palace-6",
+            "C2-2f8865eb.ziwei.palace-7",
+            "C2-2f8865eb.ziwei.palace-8",
+            "C2-2f8865eb.ziwei.palace-9",
+            "C2-2f8865eb.ziwei.palace-10",
+            "C2-2f8865eb.ziwei.palace-11",
+            "C2-2f8865eb.ziwei.cycles",
+            "C2-2f8865eb.ziwei.transformations"
+          ],
+          "ruleRefs": [
+            "C1-c6a1740f.R-bazi-structure",
+            "C1-c6a1740f.R-bazi-wealth-review",
+            "C1-c6a1740f.R-bazi-month-exposure",
+            "C1-c6a1740f.R-bazi-root-review",
+            "C1-c6a1740f.R-ziwei-transformations",
+            "C1-c6a1740f.R-ziwei-事业",
+            "C1-c6a1740f.R-ziwei-财运",
+            "C1-c6a1740f.R-ziwei-关系",
+            "C2-2f8865eb.R-bazi-structure",
+            "C2-2f8865eb.R-bazi-wealth-review",
+            "C2-2f8865eb.R-bazi-month-exposure",
+            "C2-2f8865eb.R-bazi-root-review",
+            "C2-2f8865eb.R-ziwei-transformations",
+            "C2-2f8865eb.R-ziwei-事业",
+            "C2-2f8865eb.R-ziwei-财运",
+            "C2-2f8865eb.R-ziwei-关系"
+          ],
+          "conditions": "同时保留A/B候选，具体解释不超过已列条件，不作现实事件保证。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-career"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-wealth"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-relationships"
+            },
+            {
+              "candidate": "C1-c6a1740f",
+              "topic": "ziwei-timing"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-career"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-wealth"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-relationships"
+            },
+            {
+              "candidate": "C2-2f8865eb",
+              "topic": "ziwei-timing"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    }
+  ],
+  "baziReasoning": [
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "strength",
+      "status": "unresolved",
+      "conclusion": "辛在日支丑中有同干根，年时戊印透；但尚不据此定身强。",
+      "supportRefs": [
+        "C1-c6a1740f.bazi.dayMaster",
+        "C1-c6a1740f.bazi.month",
+        "C1-c6a1740f.bazi.rootDetails",
+        "C1-c6a1740f.bazi.monthExposure",
+        "C1-c6a1740f.bazi.wealthReview",
+        "C1-c6a1740f.bazi.year",
+        "C1-c6a1740f.bazi.hour",
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterRefs": [
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterReview": "有根与印透不能独立排除月令和关系中的制约；未自动裁定各线索有效性。",
+      "conditions": "月令与根印的实际作用还需核验；出现次数不是权重。",
+      "alternatives": "若根印作用、月令取法不同，强弱分支可能改变；先保留分歧。",
+      "ruleRefs": [
+        "C1-c6a1740f.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "pattern",
+      "status": "unresolved",
+      "conclusion": "寅藏甲透月，对辛为正财，且见正印透出。",
+      "supportRefs": [
+        "C1-c6a1740f.bazi.dayMaster",
+        "C1-c6a1740f.bazi.month",
+        "C1-c6a1740f.bazi.rootDetails",
+        "C1-c6a1740f.bazi.monthExposure",
+        "C1-c6a1740f.bazi.wealthReview",
+        "C1-c6a1740f.bazi.year",
+        "C1-c6a1740f.bazi.hour",
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterRefs": [
+        "C1-c6a1740f.bazi.relations",
+        "C1-c6a1740f.bazi.wealthReview"
+      ],
+      "counterReview": "有根与印透不能独立排除月令和关系中的制约；未自动裁定各线索有效性。 月干甲财与年干戊印相邻，已识别位置风险；候选A另有时戊隔位，但不抵消年、月相邻。正偏身份按本候选保留。",
+      "conditions": "财印相邻位置已核对；相邻风险是否被改变、官的作用及成败救应仍未核验，候选不等于成格。 财旺生官的显干分支入口未满足，本模块不据此否定暗官或其他取法。",
+      "alternatives": "先保留财的候选入口，不把A的正偏十神替换进B。",
+      "ruleRefs": [
+        "C1-c6a1740f.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "climate",
+      "status": "unresolved",
+      "conclusion": "辛生寅月的调候尚未由本次证据完成核验。",
+      "supportRefs": [
+        "C1-c6a1740f.bazi.dayMaster",
+        "C1-c6a1740f.bazi.month",
+        "C1-c6a1740f.bazi.rootDetails",
+        "C1-c6a1740f.bazi.monthExposure",
+        "C1-c6a1740f.bazi.wealthReview",
+        "C1-c6a1740f.bazi.year",
+        "C1-c6a1740f.bazi.hour",
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterRefs": [
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterReview": "有根与印透不能独立排除月令和关系中的制约；未自动裁定各线索有效性。",
+      "conditions": "月支相同不表示两个日主的调候条件完全相同，需要核对对应原文及全局条件。",
+      "alternatives": "不要以财透或身强身弱代替调候推演。",
+      "ruleRefs": [
+        "C1-c6a1740f.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "balance",
+      "status": "unresolved",
+      "conclusion": "强弱未裁定，扶抑用神不指定唯一五行。",
+      "supportRefs": [
+        "C1-c6a1740f.bazi.dayMaster",
+        "C1-c6a1740f.bazi.month",
+        "C1-c6a1740f.bazi.rootDetails",
+        "C1-c6a1740f.bazi.monthExposure",
+        "C1-c6a1740f.bazi.wealthReview",
+        "C1-c6a1740f.bazi.year",
+        "C1-c6a1740f.bazi.hour",
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterRefs": [
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterReview": "有根与印透不能独立排除月令和关系中的制约；未自动裁定各线索有效性。",
+      "conditions": "先判断本候选根印、财官及相互作用，不能只看元素是否缺少。",
+      "alternatives": "强弱的不同分支可能导致不同取用，不据用户偏好选分支。",
+      "ruleRefs": [
+        "C1-c6a1740f.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "selection",
+      "status": "unresolved",
+      "conclusion": "目前保留用神未决，并同时保留出生时间候选。",
+      "supportRefs": [
+        "C1-c6a1740f.bazi.dayMaster",
+        "C1-c6a1740f.bazi.month",
+        "C1-c6a1740f.bazi.rootDetails",
+        "C1-c6a1740f.bazi.monthExposure",
+        "C1-c6a1740f.bazi.wealthReview",
+        "C1-c6a1740f.bazi.year",
+        "C1-c6a1740f.bazi.hour",
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterRefs": [
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterReview": "有根与印透不能独立排除月令和关系中的制约；未自动裁定各线索有效性。",
+      "conditions": "格局、调候与扶抑都未完成充分裁定，且出生边界会改变日主。",
+      "alternatives": "先补时间资料，再比较各口径；一般行动建议不冒充用神结论。",
+      "ruleRefs": [
+        "C1-c6a1740f.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "bazi-timing",
+      "status": "unresolved",
+      "years": [
+        2026,
+        2027,
+        2028
+      ],
+      "conclusion": "候选 1 的 2026—2028 均落在庚戌大运；当前只确认流年范围与立春边界，不据同一大运名称推导事件。",
+      "supportRefs": [
+        "C1-c6a1740f.bazi.cycles",
+        "C1-c6a1740f.bazi.relations"
+      ],
+      "counterRefs": [],
+      "counterReview": "已核对候选 1 的交运区间和年度柱；庚戌相对辛日主的作用、逐年制化与现实触发尚未完成，且两分钟出生边界仍未消除。",
+      "conditions": "仅适用于候选 1 与 2026—2028；出生时刻、换日口径或所问主题变化时须重算。",
+      "alternatives": "若出生记录不能排除候选 2，应继续并列两套运年链，不能拿候选 1 的年度解释覆盖另一盘。",
+      "ruleRefs": [
+        "C1-c6a1740f.R-bazi-timing"
+      ],
+      "timingChain": {
+        "target": "general",
+        "cycleRefs": [
+          "C1-c6a1740f.bazi.cycles"
+        ],
+        "annualReviews": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-c6a1740f.bazi.relations"
+            ],
+            "review": "2026 年丙午：只确认该立春流年位于庚戌大运，并以本候选的本命干支关系为复核入口；具体作用未裁定。"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-c6a1740f.bazi.relations"
+            ],
+            "review": "2027 年丁未：只确认该立春流年位于庚戌大运，并以本候选的本命干支关系为复核入口；具体作用未裁定。"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C1-c6a1740f.bazi.relations"
+            ],
+            "review": "2028 年戊申：只确认该立春流年位于庚戌大运，并以本候选的本命干支关系为复核入口；具体作用未裁定。"
+          }
+        ],
+        "crossLayerReview": "本候选的本命干支关系、庚戌大运与各立春流年已经分层；出生边界、逐年制化和现实触发仍未闭合。",
+        "missingLinks": [
+          "两分钟出生边界尚未由原始记录消除",
+          "缺少逐年制化、主题落点与现实反馈资料"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "当前报告没有绑定能排除另一候选的出生记录，也没有逐年现实事件与反馈。",
+          "source": null
+        },
+        "withdrawalConditions": "原始出生记录确定另一候选，或换日口径、起运边界与现实资料变化时，撤回本候选作用链。"
+      }
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "strength",
+      "status": "unresolved",
+      "conclusion": "庚在本轮藏干表未见同五行根，仍有戊印与丁官等关系，不能直接定从弱。",
+      "supportRefs": [
+        "C2-2f8865eb.bazi.dayMaster",
+        "C2-2f8865eb.bazi.month",
+        "C2-2f8865eb.bazi.rootDetails",
+        "C2-2f8865eb.bazi.monthExposure",
+        "C2-2f8865eb.bazi.wealthReview",
+        "C2-2f8865eb.bazi.year",
+        "C2-2f8865eb.bazi.hour",
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterRefs": [
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterReview": "未见同五行藏根不等于全盘没有支持；戊印仍需纳入，不能直接跳到从格。",
+      "conditions": "月令与根印的实际作用还需核验；出现次数不是权重。",
+      "alternatives": "若根印作用、月令取法不同，强弱分支可能改变；先保留分歧。",
+      "ruleRefs": [
+        "C2-2f8865eb.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "pattern",
+      "status": "unresolved",
+      "conclusion": "寅藏甲透月，对庚为偏财，且见偏印、正官透出。",
+      "supportRefs": [
+        "C2-2f8865eb.bazi.dayMaster",
+        "C2-2f8865eb.bazi.month",
+        "C2-2f8865eb.bazi.rootDetails",
+        "C2-2f8865eb.bazi.monthExposure",
+        "C2-2f8865eb.bazi.wealthReview",
+        "C2-2f8865eb.bazi.year",
+        "C2-2f8865eb.bazi.hour",
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterRefs": [
+        "C2-2f8865eb.bazi.relations",
+        "C2-2f8865eb.bazi.wealthReview"
+      ],
+      "counterReview": "未见同五行藏根不等于全盘没有支持；戊印仍需纳入，不能直接跳到从格。 月干甲财与年干戊印相邻，已识别位置风险；候选A另有时戊隔位，但不抵消年、月相邻。正偏身份按本候选保留。",
+      "conditions": "财印相邻位置已核对；相邻风险是否被改变、官的作用及成败救应仍未核验，候选不等于成格。 显财显官分支未见显干伤官、七杀反例，仅为pending；财旺、身强、官的作用及藏干影响仍需另证。",
+      "alternatives": "先保留财的候选入口，不把A的正偏十神替换进B。",
+      "ruleRefs": [
+        "C2-2f8865eb.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "climate",
+      "status": "unresolved",
+      "conclusion": "庚生寅月的调候尚未由本次证据完成核验。",
+      "supportRefs": [
+        "C2-2f8865eb.bazi.dayMaster",
+        "C2-2f8865eb.bazi.month",
+        "C2-2f8865eb.bazi.rootDetails",
+        "C2-2f8865eb.bazi.monthExposure",
+        "C2-2f8865eb.bazi.wealthReview",
+        "C2-2f8865eb.bazi.year",
+        "C2-2f8865eb.bazi.hour",
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterRefs": [
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterReview": "未见同五行藏根不等于全盘没有支持；戊印仍需纳入，不能直接跳到从格。",
+      "conditions": "月支相同不表示两个日主的调候条件完全相同，需要核对对应原文及全局条件。",
+      "alternatives": "不要以财透或身强身弱代替调候推演。",
+      "ruleRefs": [
+        "C2-2f8865eb.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "balance",
+      "status": "unresolved",
+      "conclusion": "强弱未裁定，扶抑用神不指定唯一五行。",
+      "supportRefs": [
+        "C2-2f8865eb.bazi.dayMaster",
+        "C2-2f8865eb.bazi.month",
+        "C2-2f8865eb.bazi.rootDetails",
+        "C2-2f8865eb.bazi.monthExposure",
+        "C2-2f8865eb.bazi.wealthReview",
+        "C2-2f8865eb.bazi.year",
+        "C2-2f8865eb.bazi.hour",
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterRefs": [
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterReview": "未见同五行藏根不等于全盘没有支持；戊印仍需纳入，不能直接跳到从格。",
+      "conditions": "先判断本候选根印、财官及相互作用，不能只看元素是否缺少。",
+      "alternatives": "强弱的不同分支可能导致不同取用，不据用户偏好选分支。",
+      "ruleRefs": [
+        "C2-2f8865eb.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "selection",
+      "status": "unresolved",
+      "conclusion": "目前保留用神未决，并同时保留出生时间候选。",
+      "supportRefs": [
+        "C2-2f8865eb.bazi.dayMaster",
+        "C2-2f8865eb.bazi.month",
+        "C2-2f8865eb.bazi.rootDetails",
+        "C2-2f8865eb.bazi.monthExposure",
+        "C2-2f8865eb.bazi.wealthReview",
+        "C2-2f8865eb.bazi.year",
+        "C2-2f8865eb.bazi.hour",
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterRefs": [
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterReview": "未见同五行藏根不等于全盘没有支持；戊印仍需纳入，不能直接跳到从格。",
+      "conditions": "格局、调候与扶抑都未完成充分裁定，且出生边界会改变日主。",
+      "alternatives": "先补时间资料，再比较各口径；一般行动建议不冒充用神结论。",
+      "ruleRefs": [
+        "C2-2f8865eb.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "bazi-timing",
+      "status": "unresolved",
+      "years": [
+        2026,
+        2027,
+        2028
+      ],
+      "conclusion": "候选 2 的 2026—2028 也落在庚戌大运；这只给出可复算的时间骨架，不说明它与候选 1 具有相同含义。",
+      "supportRefs": [
+        "C2-2f8865eb.bazi.cycles",
+        "C2-2f8865eb.bazi.relations"
+      ],
+      "counterRefs": [],
+      "counterReview": "已核对候选 2 的交运区间和年度柱；庚戌相对庚日主的十神关系、逐年作用与现实条件仍未闭合。",
+      "conditions": "仅适用于候选 2 与 2026—2028；若出生资料或时间边界改判，须撤回本项并重新计算。",
+      "alternatives": "在候选未定时，年度问题必须同时展示两盘的共点与差异，不能因大运干支同名而合并解释。",
+      "ruleRefs": [
+        "C2-2f8865eb.R-bazi-timing"
+      ],
+      "timingChain": {
+        "target": "general",
+        "cycleRefs": [
+          "C2-2f8865eb.bazi.cycles"
+        ],
+        "annualReviews": [
+          {
+            "year": 2026,
+            "pillar": "丙午",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C2-2f8865eb.bazi.relations"
+            ],
+            "review": "2026 年丙午：只确认该立春流年位于庚戌大运，并以本候选的本命干支关系为复核入口；具体作用未裁定。"
+          },
+          {
+            "year": 2027,
+            "pillar": "丁未",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C2-2f8865eb.bazi.relations"
+            ],
+            "review": "2027 年丁未：只确认该立春流年位于庚戌大运，并以本候选的本命干支关系为复核入口；具体作用未裁定。"
+          },
+          {
+            "year": 2028,
+            "pillar": "戊申",
+            "boundary": "lichun",
+            "natalRefs": [
+              "C2-2f8865eb.bazi.relations"
+            ],
+            "review": "2028 年戊申：只确认该立春流年位于庚戌大运，并以本候选的本命干支关系为复核入口；具体作用未裁定。"
+          }
+        ],
+        "crossLayerReview": "本候选的本命干支关系、庚戌大运与各立春流年已经分层；出生边界、逐年制化和现实触发仍未闭合。",
+        "missingLinks": [
+          "两分钟出生边界尚未由原始记录消除",
+          "缺少逐年制化、主题落点与现实反馈资料"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "当前报告没有绑定能排除另一候选的出生记录，也没有逐年现实事件与反馈。",
+          "source": null
+        },
+        "withdrawalConditions": "原始出生记录确定另一候选，或换日口径、起运边界与现实资料变化时，撤回本候选作用链。"
+      }
+    }
+  ],
+  "ziweiReasoning": [
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "ziwei-structure",
+      "status": "conditional",
+      "conclusion": "命身宫及所引本命宫星曜已经定位，可形成范围明确的本命结构阅读；这只确认传统主题入口，不定性完整人格或现实结果。",
+      "counterReview": "已检查单星不能脱离宫位、关联宫和命身位置单独下结论；尚未把星曜组合换算成现实人格测量。",
+      "conditions": "仅在当前出生候选和全书派设置下成立；须联读命身宫、主题宫与三方四正，资料变化后重算。",
+      "alternatives": "若相关宫位为空、星曜定位改变或现实资料不支持，只保留宫位事实，不沿用性格化解释。",
+      "supportRefs": [
+        "C1-c6a1740f.ziwei.base",
+        "C1-c6a1740f.ziwei.palace-11",
+        "C1-c6a1740f.ziwei.palace-1"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-c6a1740f.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "ziwei-career",
+      "status": "conditional",
+      "conclusion": "官禄、命身及关联宫事实可形成事业主题的条件性阅读，但不能由星曜直接推出职业、升迁或工作结果。",
+      "counterReview": "已检查主题宫不能由单星或单一四化独断；跨层四化与现实职责尚需逐项核对。",
+      "conditions": "具体判断须同时说明官禄宫、命身宫、三方四正、时间层和现实职业条件。",
+      "alternatives": "若联宫信息不一致或现实角色不匹配，退回为工作方式的复盘问题，不给职业定性。",
+      "supportRefs": [
+        "C1-c6a1740f.ziwei.base",
+        "C1-c6a1740f.ziwei.transformations",
+        "C1-c6a1740f.ziwei.palace-3"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-c6a1740f.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "ziwei-wealth",
+      "status": "conditional",
+      "conclusion": "财帛及关联宫事实可形成资源主题的条件性阅读，但不构成收入、收益、投资方向或风险承受能力证明。",
+      "counterReview": "已检查财帛宫不能脱离官禄、福德、迁移等关联宫，也不以化禄或化权直接断财。",
+      "conditions": "资源判断须与主题宫、关联宫、时间层及真实现金流、合同和风险资料共同核对。",
+      "alternatives": "现实财务资料不支持时，只保留预算和复盘建议，不沿用盘面收益叙述。",
+      "supportRefs": [
+        "C1-c6a1740f.ziwei.base",
+        "C1-c6a1740f.ziwei.transformations",
+        "C1-c6a1740f.ziwei.palace-7"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-c6a1740f.R-ziwei-财运"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "ziwei-relationships",
+      "status": "conditional",
+      "conclusion": "夫妻及关联宫事实可形成关系与合作主题的条件性阅读，但不能推出婚恋事件、对象性格或关系结局。",
+      "counterReview": "已检查夫妻宫须与命身、福德、官禄等关联宫联读，四化并存也不自动抵消或定吉凶。",
+      "conditions": "只讨论沟通、承诺与边界主题；现实关系仍取决于双方行为、意愿和环境。",
+      "alternatives": "若现实对象、关系类型或时间范围不同，退回为沟通复盘问题，不给事件判断。",
+      "supportRefs": [
+        "C1-c6a1740f.ziwei.base",
+        "C1-c6a1740f.ziwei.transformations",
+        "C1-c6a1740f.ziwei.palace-9"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-c6a1740f.R-ziwei-关系"
+      ]
+    },
+    {
+      "candidate": "C1-c6a1740f",
+      "topic": "ziwei-timing",
+      "status": "unresolved",
+      "conclusion": "大限、流年与四化的年份、星名和已定位宫位可复算，但作用轻重、跨层取舍和现实触发尚未完成，不能据此生成固定年度行动日程。",
+      "counterReview": "已检查本命落宫与流年宫职分层、同星跨层异化和定位缺口；未计算宫干飞化、自化、流月流日或事件强度。",
+      "conditions": "给年度主题前须补齐本命落宫、流年宫职、主题宫星曜、三方四正、跨层差异及现实触发与撤回条件。",
+      "alternatives": "条件不足时只报告年表和定位事实；行动时机按现实目标、资源、风险与反馈决定。",
+      "supportRefs": [
+        "C1-c6a1740f.ziwei.transformations",
+        "C1-c6a1740f.ziwei.cycles",
+        "C1-c6a1740f.ziwei.palace-11",
+        "C1-c6a1740f.ziwei.palace-1",
+        "C1-c6a1740f.ziwei.palace-3",
+        "C1-c6a1740f.ziwei.palace-7",
+        "C1-c6a1740f.ziwei.palace-9"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C1-c6a1740f.R-ziwei-transformations"
+      ],
+      "timingChain": {
+        "target": "general",
+        "years": [
+          2026,
+          2027,
+          2028
+        ],
+        "transformationRefs": [
+          "C1-c6a1740f.ziwei.transformations"
+        ],
+        "cycleRefs": [
+          "C1-c6a1740f.ziwei.cycles"
+        ],
+        "palaceRefs": [
+          "C1-c6a1740f.ziwei.palace-11",
+          "C1-c6a1740f.ziwei.palace-1",
+          "C1-c6a1740f.ziwei.palace-3",
+          "C1-c6a1740f.ziwei.palace-7",
+          "C1-c6a1740f.ziwei.palace-9"
+        ],
+        "crossLayerReview": "已区分本命落宫、流年宫职、大限与流年四化；同星跨层信息并存时不相互抵消，也不直接换算为现实事件。",
+        "missingLinks": [
+          "现实目标、经历和约束尚未绑定",
+          "目标主题的逐年作用关系尚未闭合"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "当前资料只有命盘计算事实，没有可核对的现实触发记录。",
+          "source": null
+        },
+        "withdrawalConditions": "出生资料、时间层定位、主题宫联读或现实反馈发生变化时，撤回当前年度主题并重新核对。"
+      }
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "ziwei-structure",
+      "status": "conditional",
+      "conclusion": "命身宫及所引本命宫星曜已经定位，可形成范围明确的本命结构阅读；这只确认传统主题入口，不定性完整人格或现实结果。",
+      "counterReview": "已检查单星不能脱离宫位、关联宫和命身位置单独下结论；尚未把星曜组合换算成现实人格测量。",
+      "conditions": "仅在当前出生候选和全书派设置下成立；须联读命身宫、主题宫与三方四正，资料变化后重算。",
+      "alternatives": "若相关宫位为空、星曜定位改变或现实资料不支持，只保留宫位事实，不沿用性格化解释。",
+      "supportRefs": [
+        "C2-2f8865eb.ziwei.base",
+        "C2-2f8865eb.ziwei.palace-0",
+        "C2-2f8865eb.ziwei.palace-2"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C2-2f8865eb.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "ziwei-career",
+      "status": "conditional",
+      "conclusion": "官禄、命身及关联宫事实可形成事业主题的条件性阅读，但不能由星曜直接推出职业、升迁或工作结果。",
+      "counterReview": "已检查主题宫不能由单星或单一四化独断；跨层四化与现实职责尚需逐项核对。",
+      "conditions": "具体判断须同时说明官禄宫、命身宫、三方四正、时间层和现实职业条件。",
+      "alternatives": "若联宫信息不一致或现实角色不匹配，退回为工作方式的复盘问题，不给职业定性。",
+      "supportRefs": [
+        "C2-2f8865eb.ziwei.base",
+        "C2-2f8865eb.ziwei.transformations",
+        "C2-2f8865eb.ziwei.palace-4"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C2-2f8865eb.R-ziwei-事业"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "ziwei-wealth",
+      "status": "conditional",
+      "conclusion": "财帛及关联宫事实可形成资源主题的条件性阅读，但不构成收入、收益、投资方向或风险承受能力证明。",
+      "counterReview": "已检查财帛宫不能脱离官禄、福德、迁移等关联宫，也不以化禄或化权直接断财。",
+      "conditions": "资源判断须与主题宫、关联宫、时间层及真实现金流、合同和风险资料共同核对。",
+      "alternatives": "现实财务资料不支持时，只保留预算和复盘建议，不沿用盘面收益叙述。",
+      "supportRefs": [
+        "C2-2f8865eb.ziwei.base",
+        "C2-2f8865eb.ziwei.transformations",
+        "C2-2f8865eb.ziwei.palace-8"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C2-2f8865eb.R-ziwei-财运"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "ziwei-relationships",
+      "status": "conditional",
+      "conclusion": "夫妻及关联宫事实可形成关系与合作主题的条件性阅读，但不能推出婚恋事件、对象性格或关系结局。",
+      "counterReview": "已检查夫妻宫须与命身、福德、官禄等关联宫联读，四化并存也不自动抵消或定吉凶。",
+      "conditions": "只讨论沟通、承诺与边界主题；现实关系仍取决于双方行为、意愿和环境。",
+      "alternatives": "若现实对象、关系类型或时间范围不同，退回为沟通复盘问题，不给事件判断。",
+      "supportRefs": [
+        "C2-2f8865eb.ziwei.base",
+        "C2-2f8865eb.ziwei.transformations",
+        "C2-2f8865eb.ziwei.palace-10"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C2-2f8865eb.R-ziwei-关系"
+      ]
+    },
+    {
+      "candidate": "C2-2f8865eb",
+      "topic": "ziwei-timing",
+      "status": "unresolved",
+      "conclusion": "大限、流年与四化的年份、星名和已定位宫位可复算，但作用轻重、跨层取舍和现实触发尚未完成，不能据此生成固定年度行动日程。",
+      "counterReview": "已检查本命落宫与流年宫职分层、同星跨层异化和定位缺口；未计算宫干飞化、自化、流月流日或事件强度。",
+      "conditions": "给年度主题前须补齐本命落宫、流年宫职、主题宫星曜、三方四正、跨层差异及现实触发与撤回条件。",
+      "alternatives": "条件不足时只报告年表和定位事实；行动时机按现实目标、资源、风险与反馈决定。",
+      "supportRefs": [
+        "C2-2f8865eb.ziwei.transformations",
+        "C2-2f8865eb.ziwei.cycles",
+        "C2-2f8865eb.ziwei.palace-0",
+        "C2-2f8865eb.ziwei.palace-2",
+        "C2-2f8865eb.ziwei.palace-4",
+        "C2-2f8865eb.ziwei.palace-8",
+        "C2-2f8865eb.ziwei.palace-10"
+      ],
+      "counterRefs": [],
+      "ruleRefs": [
+        "C2-2f8865eb.R-ziwei-transformations"
+      ],
+      "timingChain": {
+        "target": "general",
+        "years": [
+          2026,
+          2027,
+          2028
+        ],
+        "transformationRefs": [
+          "C2-2f8865eb.ziwei.transformations"
+        ],
+        "cycleRefs": [
+          "C2-2f8865eb.ziwei.cycles"
+        ],
+        "palaceRefs": [
+          "C2-2f8865eb.ziwei.palace-0",
+          "C2-2f8865eb.ziwei.palace-2",
+          "C2-2f8865eb.ziwei.palace-4",
+          "C2-2f8865eb.ziwei.palace-8",
+          "C2-2f8865eb.ziwei.palace-10"
+        ],
+        "crossLayerReview": "已区分本命落宫、流年宫职、大限与流年四化；同星跨层信息并存时不相互抵消，也不直接换算为现实事件。",
+        "missingLinks": [
+          "现实目标、经历和约束尚未绑定",
+          "目标主题的逐年作用关系尚未闭合"
+        ],
+        "realityBasis": {
+          "status": "not-provided",
+          "summary": "当前资料只有命盘计算事实，没有可核对的现实触发记录。",
+          "source": null
+        },
+        "withdrawalConditions": "出生资料、时间层定位、主题宫联读或现实反馈发生变化时，撤回当前年度主题并重新核对。"
+      }
+    }
+  ],
+  "crossSystem": [
+    {
+      "target": "general",
+      "years": [],
+      "relationship": "insufficient",
+      "text": "A：目前八字与紫微只提供各自结构入口，没有足够依据把两体系概括为同一项现实判断。",
+      "factRefs": [
+        "C1-c6a1740f.bazi.dayMaster",
+        "C1-c6a1740f.ziwei.base"
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C1-c6a1740f",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C1-c6a1740f",
+          "topic": "pattern"
+        },
+        {
+          "candidate": "C1-c6a1740f",
+          "topic": "climate"
+        },
+        {
+          "candidate": "C1-c6a1740f",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C1-c6a1740f",
+          "topic": "selection"
+        },
+        {
+          "candidate": "C1-c6a1740f",
+          "topic": "ziwei-structure"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    },
+    {
+      "target": "general",
+      "years": [],
+      "relationship": "insufficient",
+      "text": "B：目前八字与紫微只提供各自结构入口，没有足够依据把两体系概括为同一项现实判断。",
+      "factRefs": [
+        "C2-2f8865eb.bazi.dayMaster",
+        "C2-2f8865eb.ziwei.base"
+      ],
+      "reasoningRefs": [
+        {
+          "candidate": "C2-2f8865eb",
+          "topic": "strength"
+        },
+        {
+          "candidate": "C2-2f8865eb",
+          "topic": "pattern"
+        },
+        {
+          "candidate": "C2-2f8865eb",
+          "topic": "climate"
+        },
+        {
+          "candidate": "C2-2f8865eb",
+          "topic": "balance"
+        },
+        {
+          "candidate": "C2-2f8865eb",
+          "topic": "selection"
+        },
+        {
+          "candidate": "C2-2f8865eb",
+          "topic": "ziwei-structure"
+        }
+      ],
+      "premiseStatus": "unresolved"
+    }
+  ],
+  "assertions": []
+}

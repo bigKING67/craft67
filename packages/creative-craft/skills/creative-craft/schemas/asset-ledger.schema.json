@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/creative-craft/schemas/asset-ledger.schema.json",
+  "title": "Creative Craft Asset Ledger v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_id",
+    "assets"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "creative-craft.asset-ledger.v1"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "path_or_uri",
+          "mime_type",
+          "creator",
+          "owner",
+          "rights_status",
+          "consent_status",
+          "allowed_use",
+          "reference_roles"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path_or_uri": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mime_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-fA-F0-9]{64}$"
+          },
+          "creator": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "rights_status": {
+            "enum": [
+              "CLEARED",
+              "LIMITED",
+              "EXPIRED",
+              "REJECTED",
+              "UNVERIFIED"
+            ]
+          },
+          "consent_status": {
+            "enum": [
+              "CLEARED",
+              "LIMITED",
+              "REJECTED",
+              "UNVERIFIED",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "allowed_use": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reference_roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "parent_assets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

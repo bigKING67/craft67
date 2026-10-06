@@ -1,0 +1,120 @@
+{
+  "blind_map_sha256": "2d2fa60d571c5723244fbf4fa7b016c3ba960d5baf22506521039a6a4252fc48",
+  "blind_packet_sha256": "6f4525b28bb52cee92a49d2d4f21b6eff84e6553dde2f44572cd207bfb8fd99f",
+  "case_id": "emil-motion-planning-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "d1ea989a59d37cd8891686830948cc5b1c7c779c93333370f0d852e2fb31d6ba",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "eb6702604304414438a66f3749a145044651249f4c13a591722db6fc657f7e8f",
+    "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.144.1"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "b90b0fc1ec877d783cbffba9848944df30f73b9a7270c094a1cab2d7c37d9e71",
+  "judgment_sha256": "d337fb40beb3cb6358a1d2cc3f6037fc8b82e18aefdcbf6dce20844f13ce09a7",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "rationale": "C 以微弱优势胜出，因为它最完整地命中了技术准确性要求中的五个关键面向：属性成本、变换原点、可中断性、指针跟踪以及关键帧与 transition 的取舍，同时对所有运行时和手感结论都保持了明确的未验证边界。B 在约定复用、优先级、机械检查和实施可读性上更均衡，几乎并列，但拖拽最后采样处理、坐标空间与挂载生命周期存在更明显缺口。A 的结构和可访问性覆盖良好，但核心交互机制分析较浅，并对片段外 Reduced Motion 覆盖作了稍强推断。三份输出都比题目要求的紧凑程度更长，因此没有任何一份在计划简洁性上获得满分。",
+  "recorded_at": "2026-07-12T13:33:27Z",
+  "results": {
+    "baseline": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility_performance": 9,
+        "evidence_recon": 13,
+        "plan_self_containment": 18,
+        "prioritization": 8,
+        "project_conventions": 10,
+        "purpose_frequency": 10,
+        "technical_accuracy": 10,
+        "verification_quality": 8
+      },
+      "score": 86,
+      "summary": "静态证据梳理完整，准确识别了令牌、按钮先例、运动分布和产品节奏，三份计划也覆盖了路径、步骤、边界、检查、Reduced Motion 与漂移条件。主要不足是把片段中未显示 Reduced Motion 略过度概括为全局“不一致”，并且对弹层变换原点、动画中断、拖拽坐标空间与抓取偏移，以及将关键帧改为 transition 时的挂载生命周期分析不够深入；性能验证也主要停留在间接检查。"
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility_performance": 10,
+        "evidence_recon": 15,
+        "plan_self_containment": 18,
+        "prioritization": 9,
+        "project_conventions": 9,
+        "purpose_frequency": 9,
+        "technical_accuracy": 15,
+        "verification_quality": 9
+      },
+      "score": 94,
+      "summary": "技术诊断覆盖最完整，明确处理了布局属性成本、锚定式与居中式变换原点、关键帧和状态 transition 的生命周期差异、当前呈现值与中断、拖拽坐标空间、抓取偏移、指针捕获及 transform 所有权，并始终区分静态风险和未验证运行时结论。扣分点是队列计划扩展到速度历史和动画原语前置任务，范围略大于最小高杠杆修正；允许约 240–400ms 的距离相关 settle 也弱化了现有 160/240ms 令牌及高吞吐目标。全文同样偏长。"
+    },
+    "emil": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility_performance": 9,
+        "evidence_recon": 15,
+        "plan_self_containment": 19,
+        "prioritization": 9,
+        "project_conventions": 10,
+        "purpose_frequency": 10,
+        "technical_accuracy": 12,
+        "verification_quality": 9
+      },
+      "score": 93,
+      "summary": "整体最均衡：对静态证据边界表达严谨，充分复用现有令牌和按钮先例，优先级与高频键盘操作目标一致，计划结构完整且机械检查较具体。技术层面能够谨慎处理弹层原点、动画取消和 transform 消费方式，但拖拽方案没有深入核对坐标空间与抓取偏移；在 pointerup 时直接取消待执行的 requestAnimationFrame 还可能丢失最后一次指针采样。此外，命令面板由关键帧改为状态 transition 前，对挂载/卸载语义的检查仍不充分。"
+    }
+  },
+  "schema": "design-craft.comparative-result.v3",
+  "scorecard_json_sha256": "a06d975f9da69fa9bea87362ee0e4f90bdc790e552561e6b6ac96f650bb53a88",
+  "scorecard_sha256": "b6d4e57b1800cf71f9cc91c5dacda55169279634d8f9346544354d9d5afbc2b0",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "df27c29a2c558285fb27330646aba526622e59b630ad6b782ddf07e5bf3be8cc",
+      "run_path": "run.baseline.json",
+      "run_sha256": "861a25a2b8cad887bbf915587a06e40d896a3b34e556d83e4807c98dbd6f285e",
+      "skill_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "974dc964d8e20b894a3e2f03718bad254dba039e03a68dc5af3d28b81e05d16c",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "90d32cff3a1e2d746f4bcc11a6454dbc2704c968aed1985b792e2ef055643742",
+      "skill_trees": {
+        "skills/design-craft": "c165a78d91eed7392b33659633efb756acbe03c1a0a06b16c8889604854f72f8"
+      },
+      "thinking": "high"
+    },
+    "emil": {
+      "contract_sha256": "61aa1dc6d424ddbd6ab93df764c16bfeaab5609573268b526b18c575c9091616",
+      "host": "pi",
+      "host_version": "0.80.3",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.emil.md",
+      "output_sha256": "b85fc17f3d487b5f633605a977d2a2fd361ae3c8ffa9f075c4dda1002a284d7b",
+      "run_path": "run.emil.json",
+      "run_sha256": "1e046310432c9bfc9cc963ec2c5ca66f39e3759ed8211580874c0c666e0ba3b4",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

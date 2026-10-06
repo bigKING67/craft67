@@ -1,0 +1,27 @@
+[submodule "packages/design-craft/upstreams/emilkowalski-skills"]
+	path = packages/design-craft/upstreams/emilkowalski-skills
+	url = https://github.com/emilkowalski/skills.git
+[submodule "packages/design-craft/upstreams/impeccable"]
+	path = packages/design-craft/upstreams/impeccable
+	url = https://github.com/pbakaus/impeccable.git
+[submodule "packages/design-craft/upstreams/jakubkrehel-skills"]
+	path = packages/design-craft/upstreams/jakubkrehel-skills
+	url = https://github.com/jakubkrehel/skills.git
+[submodule "packages/design-craft/upstreams/taste-skill"]
+	path = packages/design-craft/upstreams/taste-skill
+	url = https://github.com/Leonxlnx/taste-skill.git
+[submodule "packages/money-craft/upstreams/ai-berkshire"]
+	path = packages/money-craft/upstreams/ai-berkshire
+	url = https://github.com/xbtlin/ai-berkshire.git
+[submodule "packages/write-craft/upstreams/agent-skills"]
+	path = packages/write-craft/upstreams/agent-skills
+	url = https://github.com/arjunprabhulal/agent-skills.git
+[submodule "packages/write-craft/upstreams/anthropic-skills"]
+	path = packages/write-craft/upstreams/anthropic-skills
+	url = https://github.com/anthropics/skills.git
+[submodule "packages/write-craft/upstreams/awesome-claude-skills"]
+	path = packages/write-craft/upstreams/awesome-claude-skills
+	url = https://github.com/ComposioHQ/awesome-claude-skills.git
+[submodule "packages/write-craft/upstreams/elements-of-style"]
+	path = packages/write-craft/upstreams/elements-of-style
+	url = https://github.com/obra/the-elements-of-style.git

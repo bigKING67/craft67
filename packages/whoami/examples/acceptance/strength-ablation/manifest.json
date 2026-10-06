@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-23",
+  "design": "paired ablation, three preselected synthetic dates, one generation per arm, no historical snapshot claim",
+  "years": [
+    2026,
+    2027,
+    2028
+  ],
+  "files": {
+    "common.md": "42f47ceb876874898006811084bec579e1b2052e8181272fe89c0956eff6dfde",
+    "method.md": "7d1ccacaa7ab6133fc4c622053d0788a058e6e1aed3c975e3a543d276c3605bb",
+    "rubric.md": "8ad34198e6aa66bcfc826ec70f4bf0154cc70924075b20aaade01803e50095b1",
+    "case-01-birth.json": "6183b3b01a4015e198d9aba9120b50be1e3e35cdc02e381dc2f1544f3eda4740",
+    "case-01-context.json": "f66b668cc7de4460a6b8a121d80ef6f5a580604e4cea0799a003e2d5ae434575",
+    "case-02-birth.json": "45ec10cb7b05d81f106c3018c83d880f17c531107c80c278a76880d1ddda7fba",
+    "case-02-context.json": "dd28d9a8b538da5abe80e67bdfc3c8c26f2bd211b5055fcde24d4e51118ed30a",
+    "case-03-birth.json": "b868ecc1238334d4c942ae0937a9647aa11ce847654e4ac31fc55a66494b45d6",
+    "case-03-context.json": "31c90b91eee2033406cf7d97bae73ec72e5c37665c427ac35a3b800251def560",
+    "protocol.md": "7344d9eb081808378f1f9da6e216e06b00a16da3a2181ccf34a14668b67f2099",
+    "fact-audit.json": "4ec8cb2b2357972724d59f64a08aae4b7b9e1eec25470ab0d41ffc9a6e2a83fa"
+  },
+  "runtime": {
+    "requested": "default agents, inherited parent model and effort, no overrides",
+    "effective_model": "UNVERIFIED",
+    "sampling_seed": "not exposed",
+    "temperature": "not exposed"
+  },
+  "cases": [
+    "case-01",
+    "case-02",
+    "case-03"
+  ]
+}

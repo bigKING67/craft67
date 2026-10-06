@@ -1,0 +1,99 @@
+{
+  "schema": "money-craft.rendition-closeout.v1",
+  "as_of": "2026-09-23",
+  "status": "PASS_BOUNDED_INSTALLED_ACTIVE_RENDITION",
+  "render_id": "r20260923-yoy-fix",
+  "source_install_parity": true,
+  "tree_sha256": "2a25b65bb3b385aab626c556256ab0516bd47f4f1a6e065bca8297bc1017c2f1",
+  "research_revision_unchanged_and_verified": true,
+  "active_rendition_verified": true,
+  "readonly_rendition": true,
+  "research_evidence": "PARTIAL",
+  "shared_host_tool_change": {
+    "path": "~/.codex/tools/investment_archive_rendition.py",
+    "scope": "company directory regex accepts 5 or 6 digits instead of only 6",
+    "checks": 6,
+    "activation_failed_before_fix": true,
+    "retry_and_pointer_verified": true
+  },
+  "visual_review": {
+    "pdf_pages": 9,
+    "contact_sheet_pages_viewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "detail_pages_viewed": [
+      8
+    ],
+    "fresh_browser_review": false,
+    "notes": "Additional archive metadata produces 9 pages; trailing sparse pages remain, no numeric or source content truncation observed."
+  },
+  "company_reading": {
+    "company_directory": "local/skill-evals/20260923-current-full-e2e/host/workspace/archive/09988-Alibaba",
+    "html": "local/skill-evals/20260923-current-full-e2e/host/workspace/archive/09988-Alibaba/report.html",
+    "pdf": "local/skill-evals/20260923-current-full-e2e/host/workspace/archive/09988-Alibaba/report.pdf",
+    "pointer": "local/skill-evals/20260923-current-full-e2e/host/workspace/archive/09988-Alibaba/current-reading.json",
+    "reading": {
+      "schema": "codex.investment-company-current-reading.v1",
+      "research_id": "09988-Alibaba/2025-07-01",
+      "research_revision": "r0001",
+      "render_id": "r20260923-yoy-fix",
+      "html": "report.html",
+      "pdf": "report.pdf",
+      "html_sha256": "613a463ff9d1c8d5f4d63df5e672249aa828d7792bdeb175cc380ab357b77c8c",
+      "pdf_sha256": "a24732b9fcd21860fe637d57ea0b89d03fde4ec3db92558fab0f8e30529c7566",
+      "published_at_utc": "2026-09-23T03:10:19.018576+00:00"
+    }
+  },
+  "limits": [
+    "Single isolated historical archive, not full research rerun.",
+    "No current investment recommendation or improvement in independent-source evidence.",
+    "Browser responsive/dark/keyboard checks not repeated for this rendition.",
+    "Global host tool fix is bounded directory compatibility, not a general transaction rollback audit."
+  ],
+  "artifacts": [
+    {
+      "path": "local/validation/20260923-rendition-install/sync.json",
+      "sha256": "843ba1f61ecb6387d23de0c93b3c291c4fa1b6d10f6197f11594d6fe69a57568"
+    },
+    {
+      "path": "local/validation/20260923-rendition-install/create.json",
+      "sha256": "0b1bf0117325146041fcbf0afd6b3610903ac5c4fd60d0cc8fdcc045683ace7b"
+    },
+    {
+      "path": "local/validation/20260923-rendition-install/review.json",
+      "sha256": "336ed876c9fbd1d4c8208aaefb069d613e95b4e86e8b5fb704177b37bb6cdf6c"
+    },
+    {
+      "path": "local/validation/20260923-rendition-install/activate.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/validation/20260923-rendition-install/activate-retry.json",
+      "sha256": "48c1bfe53d0f61e084d5edf3464ff6d4b8facac152542aa15e380307c95ec548"
+    },
+    {
+      "path": "local/validation/20260923-rendition-install/verify-all.json",
+      "sha256": "1f9c52a78ad338d9a3976226f5486826b7f597ebb708c66711928b65d646ce21"
+    },
+    {
+      "path": "local/validation/20260923-rendition-install/research-verify.json",
+      "sha256": "41f0d3a1cf859921767e26df87a3890b781e3e04afe3c2ea4d2023dcea0d619b"
+    },
+    {
+      "path": "local/skill-evals/20260923-current-full-e2e/host/workspace/archive/09988-Alibaba/2025-07-01/renders/r0001/r20260923-yoy-fix/RENDER.json",
+      "sha256": "875b4b0d25e5de84f50407c5e92f2bb6ac07e39a7909976bcf046e209477605a"
+    },
+    {
+      "path": "~/.codex/tools/investment_archive_rendition.py",
+      "sha256": "963ebec3bf487591e35ceca6ee34477ecf9690a121e2ac09af7815d25b342cbe"
+    }
+  ]
+}

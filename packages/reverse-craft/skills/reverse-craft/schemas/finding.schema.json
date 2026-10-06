@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/reverse-craft/schemas/finding.schema.json",
+  "title": "Reverse Craft finding snapshot v1",
+  "type": "object",
+  "required": ["schema", "items"],
+  "properties": {
+    "schema": {"const": "reverse-craft.findings.v1"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "statement", "severity", "status", "confidence", "evidence_ids", "reproduction", "created_at"],
+        "properties": {
+          "id": {"pattern": "^F-[0-9]{4,}$"},
+          "title": {"type": "string", "minLength": 1},
+          "statement": {"type": "string", "minLength": 1},
+          "severity": {"enum": ["info", "low", "medium", "high", "critical"]},
+          "status": {"enum": ["hypothesis", "supported", "confirmed", "refuted"]},
+          "confidence": {"enum": ["low", "medium", "high"]},
+          "evidence_ids": {"type": "array", "uniqueItems": true, "items": {"pattern": "^E-[0-9]{4,}$"}},
+          "reproduction": {"type": ["string", "null"]},
+          "created_at": {"type": "string", "format": "date-time"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

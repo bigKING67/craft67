@@ -1,0 +1,67 @@
+{
+  "schema": "design-craft.cross-agent-score.v4",
+  "task_id": "same-prompt-motion-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.145.0",
+  "model": "gpt-5.6-sol",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "max",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "date": "2026-07-25",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_json_sha256": "5b0b6a0d6df83ce49b9e2c598a9cdd79149efca50a9e12069667bc008462d183",
+  "contract_sha256": "907627714e2c4078558dba2e0449c2df2bf1d6d7db5e91e0f1e8b2017c22d0c9",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "ffa4c71ad9347f075cb971c6643dc3710485044a75a46bd42b7dd462334458c0",
+  "skill_version": "0.5.4",
+  "skill_source_commit": "0239d83a826a51206953c411c564da72c51c4425",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "0aacdc6e7ec587121f24fce3b055814b907aebda0663d54d42e84d36f2b5e5f5",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "provenance_skill_path": "$DESIGN_CRAFT_HOME/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-5.6-sol -c 'model_reasoning_effort=\"max\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "e290a8a467ecf7ced2f91a07acfec13a0be33ef66c1b0d114024c694d5526a3f",
+  "score": 97,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Centers a calm, repeatedly used web operations sheet and makes direct control, immediate re-grab, stable task context, and legible snap state the motion policy."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 15,
+      "note": "Applies motion quality, interaction physics, pointer ownership, transform tracking, interruption, accessibility, performance tracing, responsive validation, and device evidence."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Keeps causal pointer feedback, 1:1 displacement, short settle, and non-spatial state feedback while rejecting transition-all, layout animation, whole-sheet scale, input lockout, and decorative bounce."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the critique L0 static and avoids claiming observed smoothness, frame rate, computed-style priority, touch conflict, responsiveness, or device results."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates source-visible control flow and missing branches from unverified geometry, cascade behavior, performance cost, gesture arbitration, external accessibility code, browsers, and devices."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Provides eight moves covering handle feedback, pointer capture, grab-offset transform tracking, interruption, CSS-px/s velocity handoff, bounded authorized projection, resistance, and Reduced Motion, but does not define snap-target hysteresis."
+    },
+    "scope_control": {
+      "passed": false,
+      "earned": 8,
+      "note": "Remains read-only and motion-specific with five findings and eight moves, but contains 163 logical lines, exceeding the 150-line cap by 13 lines."
+    }
+  }
+}

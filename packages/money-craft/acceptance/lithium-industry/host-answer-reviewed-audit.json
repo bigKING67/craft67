@@ -1,0 +1,80 @@
+{
+  "schema": "money-craft.financial-audit.v1",
+  "valid": true,
+  "checks": [
+    {
+      "id": "C01",
+      "operation": "cagr",
+      "actual": "0.294117647058823529411764705882353",
+      "expected": "0.294117647058823529411764705882353",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "operation": "cagr",
+      "actual": "0.176470588235294117647058823529412",
+      "expected": "0.176470588235294117647058823529412",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "operation": "subtract",
+      "actual": "34000",
+      "expected": "34000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "operation": "subtract",
+      "actual": "20000",
+      "expected": "20000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "operation": "subtract",
+      "actual": "-14000",
+      "expected": "-14000",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "operation": "divide",
+      "actual": "0.09090909090909090909090909090909091",
+      "expected": "0.09090909090909090909090909090909091",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C07",
+      "operation": "multiply",
+      "actual": "191400.00",
+      "expected": "191400.00",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    },
+    {
+      "id": "C08",
+      "operation": "divide",
+      "actual": "-0.3517241379310344827586206896551724",
+      "expected": "-0.3517241379310344827586206896551724",
+      "relative_error": "0",
+      "tolerance": "0.000001",
+      "passed": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}

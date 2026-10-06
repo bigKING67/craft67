@@ -1,0 +1,68 @@
+{
+  "case_id": "groland-content-assets-l3",
+  "evidence_level": "L3",
+  "collected_at": "2026-06-30T09:18:33Z",
+  "page_type": "material operations dashboard",
+  "expected_score": 84,
+  "acceptable_range": [82, 86],
+  "maturity_band": "clean but generic",
+  "screenshot_sha256": "6c05a3c171460bf65a2132fbbe4709085d2c46fda59f0c7a5decf68b9544476a",
+  "screenshot_dimensions": [3024, 1646],
+  "responsive_viewports": [
+    {
+      "name": "desktop",
+      "css_size": [1512, 823],
+      "artifact_sha256": "6c05a3c171460bf65a2132fbbe4709085d2c46fda59f0c7a5decf68b9544476a",
+      "dimensions": [3024, 1646],
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile",
+      "css_size": [390, 844],
+      "artifact_sha256": "8ac950915841ce88450072ae224913f7f2dafd276b86ba1fc87b79f5cb8a3091",
+      "dimensions": [780, 1688],
+      "horizontal_overflow": false
+    }
+  ],
+  "selector_or_clip_artifacts": [
+    {
+      "target": "clip",
+      "purpose": "desktop priority area",
+      "artifact_sha256": "0060f55209e9c49addcdfaf24e46b4b555e7c541e3874b6e0e9ca3934e639a59",
+      "dimensions": [2420, 1220]
+    },
+    {
+      "target": "clip",
+      "purpose": "focused upload button",
+      "artifact_sha256": "871235d5420d12c45e502c21248aa08379583c7007669be2a2d3d17e3f2edede",
+      "dimensions": [500, 140]
+    }
+  ],
+  "state_checks": {
+    "focus": {
+      "status": "partial",
+      "target": "upload button",
+      "computed_outline": "3px none rgb(255, 255, 255)",
+      "visible_indicator": "primary shadow and border only",
+      "finding": "focus-visible should be stronger before scoring this as refined"
+    },
+    "loading": "not verified",
+    "empty": "not verified",
+    "error": "not verified",
+    "success": "not verified",
+    "keyboard_navigation": "not verified beyond programmatic focus sample"
+  },
+  "required_findings": [
+    "desktop and mobile layouts avoid horizontal overflow",
+    "mobile layout remains readable with adapted controls and a two-column metric grid",
+    "focus evidence is partial because the focused primary button has no explicit outline",
+    "metric cards still create flat hierarchy and card soup, so score must stay near the top of the clean-but-generic band",
+    "raw operator terms such as asset_id, TOS, preview, and video ID should be softened or explained"
+  ],
+  "false_positive_guards": [
+    "do not score above 84 while flat hierarchy and card soup remain visible",
+    "do not claim loading, empty, error, success, or full keyboard validation",
+    "do not treat responsive fit as proof of improved task prioritization",
+    "do not treat this as L4 because no implementation diff or before/after evidence exists"
+  ]
+}

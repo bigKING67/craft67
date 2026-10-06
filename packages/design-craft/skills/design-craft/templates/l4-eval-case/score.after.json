@@ -1,0 +1,19 @@
+{
+  "case_id": "template-after",
+  "evidence_level": "L4",
+  "expected_score": 0,
+  "acceptable_range": [0, 0],
+  "maturity_band": "template only",
+  "screenshot_sha256": "",
+  "screenshot_dimensions": [0, 0],
+  "required_findings": [
+    "replace this with a real after strength or remaining issue",
+    "replace this with a real after strength or remaining issue",
+    "replace this with a real after strength or remaining issue"
+  ],
+  "false_positive_guards": [
+    "do not count the template as real evidence",
+    "do not claim browser states unless captured",
+    "do not claim implementation improvement without a diff"
+  ]
+}

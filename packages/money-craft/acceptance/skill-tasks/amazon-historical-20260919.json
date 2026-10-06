@@ -1,0 +1,121 @@
+{
+  "schema": "money-craft.historical-semantic-acceptance.v1",
+  "date": "2026-09-19",
+  "case_id": "amazon-fy2024-cash-quality",
+  "status": "CORE_BEHAVIOR_SUPPORTED_WITH_FOLLOWUP_WINDOW_GAP",
+  "research_as_of": "2025-02-06",
+  "post_hoc_retrieval": true,
+  "source": {
+    "url": "https://s2.q4cdn.com/299287126/files/doc_financials/2024/q4/AMZN-Q4-2024-Earnings-Release.pdf",
+    "final_url": "https://s2.q4cdn.com/299287126/files/doc_financials/2024/q4/AMZN-Q4-2024-Earnings-Release.pdf",
+    "sha256": "0435f36d49cc40373c1ec7d6a8aa77abf83f90f7774b477d69f28b3859e7fe72",
+    "bytes": 358812,
+    "retrieved_at": "2026-09-19T13:40:01.626206+00:00"
+  },
+  "source_official_index": "https://ir.aboutamazon.com/events/event-details/2025/Q4-2024-Amazoncom-Inc-Earnings-Conference-Call/default.aspx",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "host_runs": 1,
+  "skill_frozen_unchanged": true,
+  "frozen_file_count": 72,
+  "results": {
+    "machine_checks_pass": true,
+    "route": "READY",
+    "calculations_passed": 24,
+    "criteria_passed": 6,
+    "criteria_partial": 1,
+    "source_checks": 19
+  },
+  "semantic_review": {
+    "reviewer": "main-agent source-and-answer review",
+    "independent": false,
+    "verdict": "CORE_BEHAVIOR_SUPPORTED_WITH_FOLLOWUP_WINDOW_GAP",
+    "criteria": [
+      {
+        "index": 1,
+        "status": "PASS",
+        "evidence": "命令轨迹显示安装Skill自然触发、语义指引实际读取，独立shasum匹配，路由READY。"
+      },
+      {
+        "index": 2,
+        "status": "PASS",
+        "evidence": "直接读取第5页三个月与十二个月列；净利和OCF的四列一致，未误报单季缺失。"
+      },
+      {
+        "index": 3,
+        "status": "PASS",
+        "evidence": "按第10页脚注净资本开支定义核对全年38219/36813，没有以购买固定资产毛额代替净额。"
+      },
+      {
+        "index": 4,
+        "status": "PASS",
+        "evidence": "按第5页推算Q4 FCF19584/29112，明确推算值、下降32.73%，与全年增长3.82%并存。"
+      },
+      {
+        "index": 5,
+        "status": "PASS",
+        "evidence": "全年和Q4 OCF/净利均下降，现金绝对额增加没有被当作转换效率改善。"
+      },
+      {
+        "index": 6,
+        "status": "PASS",
+        "evidence": "明确三种全年FCF口径及替代关系，指出均非股东可分配现金。"
+      },
+      {
+        "index": 7,
+        "status": "PARTIAL",
+        "evidence": "反方改变结论，非现金/营运资本、单发行人和历史边界解释正确；但补证窗口只有后续可比季度与完整年度，未具体到财年/季度。"
+      }
+    ],
+    "answer_sha256": "e715bfcd32b31a3ec2dfcd59c4c5924c8e3abfab78f8ceb331e2302c7cb9979b"
+  },
+  "limits": [
+    "Main-agent review, not independent reviewer or evidence of unseen model training data.",
+    "No Amazon case found in prior repository skill-task acceptance files; this is a new repository evaluation, not proof of global novelty.",
+    "Single-issuer historical replay, not current investment advice or independent two-source verification.",
+    "Follow-up period specificity failed part of predefined criterion 7; correction is a reviewer addendum, not a rerun host success.",
+    "No Skill/runtime/install changes, full suite rerun, application, trading, commit, push or release."
+  ],
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260919-amazon/frozen-skill.json",
+      "sha256": "3b5e5c1358336b713db4869ded925754f4b43ce4d3c23c289dadf1d34262e5f9"
+    },
+    {
+      "path": "local/skill-evals/20260919-amazon/reference-calculations.json",
+      "sha256": "422dc4fea33a3c66c864a91b748d4c6229671594514aaeb24ce2344cc118015d"
+    },
+    {
+      "path": "local/skill-evals/20260919-amazon/source-validation.json",
+      "sha256": "02efa736a63f95be5ca537c0d036b0a535f9b227c00b4f40108c2df1903e6684"
+    },
+    {
+      "path": "local/skill-evals/20260919-amazon/run-r1/host.json",
+      "sha256": "fef560305bf3d1d709b32f84668407387f358a77804e26f95611f25763e2e213"
+    },
+    {
+      "path": "local/skill-evals/20260919-amazon/run-r1/events.jsonl",
+      "sha256": "4356fded61677f267e59559acab7a7fd72458335a89a1fe9f43c95aeb60febbb"
+    },
+    {
+      "path": "local/skill-evals/20260919-amazon/run-r1/answer.md",
+      "sha256": "e715bfcd32b31a3ec2dfcd59c4c5924c8e3abfab78f8ceb331e2302c7cb9979b"
+    },
+    {
+      "path": "local/skill-evals/20260919-amazon/run-r1/machine-audit.json",
+      "sha256": "66d932d120c9af86d251d139456d9bd0ff2cc924ca7288c3d1cbe050cbc226e0"
+    },
+    {
+      "path": "local/skill-evals/20260919-amazon/run-r1/semantic-review.json",
+      "sha256": "525b0e72480692f8c7ceda44e780f5058f090f31e46acdefb350943ecbbd21e5"
+    },
+    {
+      "path": "acceptance/skill-tasks/amazon-historical-case-20260919.json",
+      "sha256": "6dc479257c26fc308ed32706b1351ab748d595f192cdea39964342fe9fda4c70"
+    }
+  ],
+  "reviewer_addendum": {
+    "path": "docs/amazon-historical-acceptance-20260919.md",
+    "sha256": "a763b95e91cd71ac263e80f8f153ceff21a36c23a7f0eb2f56692a911cb01ec1",
+    "host_replayed": false
+  }
+}

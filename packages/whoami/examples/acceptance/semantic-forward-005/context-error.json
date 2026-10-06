@@ -1,0 +1,1 @@
+{"schema":"whoami.error.v1","status":"error","command":"context","years":[2026],"code":"NONEXISTENT_LOCAL_TIME","message":"夏令时跳变导致该钟表时间不存在，请更正出生资料"}

@@ -1,0 +1,16 @@
+Decision: do not shift half the seeding budget yet; run a small test only after current verification.
+
+Currentness:
+- Stable principle: competitor search interception can work only when search intent, landing conversion, brand-safety risk, and contribution profit are acceptable.
+- Needs current verification: whether Juguang Search still supports the exact competitor-term setup, entrance, policy, and report field in the current official/backend product.
+- Official/backend to check: Xiaohongshu business/Juguang official help and the user's current backend.
+
+Assumptions: no current backend screenshot or official page evidence is supplied here, so the tactic remains unverified.
+
+Economics: compare Juguang test spend against seeding asset value, store/detail visits, payment CVR, and channel net profit, not exposure alone.
+
+Compliance risk: competitor terms can create brand-safety and platform review risk; copy and landing must avoid misleading comparison.
+
+Stop rule: stop if search click cost rises, payment CVR is weak, complaint/review risk appears, or backend policy blocks the setup. Scale rule: scale only if verified entrance works and the test beats seeding on contribution profit plus search asset quality.
+
+Mechanism: verify the live backend first, then run a bounded comparison against seeding rather than reallocating half the budget. Owner: growth lead with an analytics owner for incrementality. Success signal: verified eligibility and contribution-profit lift without compliance incidents. Next review: after the first complete attribution window.

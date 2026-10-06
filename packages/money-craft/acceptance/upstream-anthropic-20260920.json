@@ -1,0 +1,143 @@
+{
+  "schema": "money-craft.upstream-anthropic-review.v1",
+  "date": "2026-09-20",
+  "checked_at": "2026-09-20T02:02:22.593771+00:00",
+  "status": "BOUNDED_REVIEW_COMPLETE_NO_RUNTIME_CHANGE",
+  "source_revision": "fca3cc8e6c5692ba576b46d7c4783b8443c2a223",
+  "previous_observed_revision": "734150c2d9f312421611926f6e84c09d07ba13b1",
+  "registered_file_count": 73,
+  "tracked_changes": [
+    {
+      "path": "README.md",
+      "old": "208fa8a018ebbdee88da1dde7d87e8346d58c656",
+      "new": "5c203c0ea8f19361b447c7f9592f4658b33b5fae"
+    }
+  ],
+  "tree_truncated": false,
+  "verified_files": [
+    {
+      "path": "LICENSE",
+      "bytes": 11358,
+      "git_blob": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "review_scope": "full_text"
+    },
+    {
+      "path": "README.md",
+      "bytes": 15894,
+      "git_blob": "5c203c0ea8f19361b447c7f9592f4658b33b5fae",
+      "sha256": "52f689c6c32bd2a505fb75e774c8857d4a70db77b1b0057353fb10e7a6e5ca42",
+      "review_scope": "complete_one_line_diff_with_context_only"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/earnings-preview/SKILL.md",
+      "bytes": 2757,
+      "git_blob": "555d593882e86885e4a8c11328fcbfd299c5a764",
+      "sha256": "a30d383a6f1c06b732b4d34e422dd2ff18f6340db67229a3347d057d52697f33",
+      "review_scope": "full_text"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/catalyst-calendar/SKILL.md",
+      "bytes": 3111,
+      "git_blob": "af2ccb6bf1733c9a6d8df01e05a2b5805ed35000",
+      "sha256": "12ac4ae7659ab848a8910dfceadab5b21479f23c8d3e0c57a3f5bf814bcf8186",
+      "review_scope": "full_text"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/thesis-tracker/SKILL.md",
+      "bytes": 2736,
+      "git_blob": "f9a3ce9187bdc3410d3f4f3713ce70a6f6b8f221",
+      "sha256": "6b4ce2967c5e01c6b42f5c140fa1e94dee2713b5d2de3eb71957ff5a5c11469b",
+      "review_scope": "full_text"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/earnings-analysis/SKILL.md",
+      "bytes": 8684,
+      "git_blob": "447de2f9ec277f976eb2b52501465250c80e1adf",
+      "sha256": "4db857c27a53141b6ebc38ec9ee7f0020dec59cab084ae6753e53366d118c8ee",
+      "review_scope": "previously_reviewed_content_hash_unchanged_not_reread"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/model-update/SKILL.md",
+      "bytes": 3354,
+      "git_blob": "dc90f5948f7efff2ff0c17c6cfefd67505e0ca81",
+      "sha256": "62b2256bf3b52ac3759cb446a10aaa3066a51b4909e09bae0e3b98b741a37fb5",
+      "review_scope": "previously_reviewed_content_hash_unchanged_not_reread"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/initiating-coverage/SKILL.md",
+      "bytes": 29772,
+      "git_blob": "122d5d1439829701f10d7ac476fe0a4b3ba075e0",
+      "sha256": "9d21c6e460bc3692e19eeda6dc6d425a704b21243bd28af7f13b6f1dd888ed63",
+      "review_scope": "lines_1_110_and_heading_inventory_only"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/initiating-coverage/references/task1-company-research.md",
+      "bytes": 12068,
+      "git_blob": "ab8c0e60f733d3b8fed2a2e3aa53defa8e2c5d2a",
+      "sha256": "00ec47ca64c1cfdf6e1b74fa8c693633b5e12e98264667b40f2d7dea90b48227",
+      "review_scope": "full_text"
+    },
+    {
+      "path": "plugins/vertical-plugins/equity-research/skills/initiating-coverage/references/valuation-methodologies.md",
+      "bytes": 14111,
+      "git_blob": "3bccca44d9e5347ead89db76a79d14b4354bf70e",
+      "sha256": "fed84dc2b45794cf2abd682db8f346820d61c316cbcd058ec386ea51351f1633",
+      "review_scope": "full_text"
+    },
+    {
+      "path": "plugins/vertical-plugins/financial-analysis/skills/dcf-model/SKILL.md",
+      "bytes": 49630,
+      "git_blob": "cc17fc002b7e739d00e6b62c4c7a3a806b6f3f22",
+      "sha256": "2bb3ed672ab2fa76f8820ee919b158a67dc6df10e7052eeb661599140a9a2494",
+      "review_scope": "previously_reviewed_content_hash_unchanged_not_reread"
+    },
+    {
+      "path": "plugins/vertical-plugins/financial-analysis/skills/comps-analysis/SKILL.md",
+      "bytes": 30783,
+      "git_blob": "8eea74c4f9c91e449657ca51d8e2c7f106f601dd",
+      "sha256": "2d49d9d694297da6ca3b084564ce10ed496f4ff21f275dae6b6c50d7b4dd889a",
+      "review_scope": "previously_reviewed_content_hash_unchanged_not_reread"
+    },
+    {
+      "path": "plugins/vertical-plugins/financial-analysis/skills/competitive-analysis/SKILL.md",
+      "bytes": 11478,
+      "git_blob": "2632b3d1507424ac2d81578c7e05f81e7d54791d",
+      "sha256": "65c6e2a68ba67660076e1f5b7d3602f71b3e97d3cdc1f2a6b03c12c05c24f1f9",
+      "review_scope": "full_text"
+    }
+  ],
+  "full_text_reads": 7,
+  "partial_reads": 2,
+  "previous_reads_hash_reverified": 4,
+  "license": {
+    "root": "Apache-2.0",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "nearer_license_in_selected_paths": false,
+    "notice_or_attribution_in_tree": false,
+    "code_or_templates_copied": false
+  },
+  "existing_coverage": {
+    "earnings_preview_and_catalyst": "skills/money-craft/scripts/earnings_baseline.py",
+    "thesis_versions": "skills/money-craft/scripts/research_workflow.py",
+    "financial_update": "skills/money-craft/scripts/earnings_update.py"
+  },
+  "decision": "retain_existing_core; defer duplication and unproven model expansion; reject fixed presentation quotas and unconditional defaults",
+  "reviewed_revision": null,
+  "absorbed_revision": "734150c2d9f312421611926f6e84c09d07ba13b1",
+  "runtime_dependency": false,
+  "runtime_changed": false,
+  "new_behavior_validated": false,
+  "limits": [
+    "73 registered files are not fully reviewed",
+    "Hash verification proves fixed-commit file identity, not quality or investment performance",
+    "No paid data connectors, CRM integrations, workbook models or advisor workflows executed"
+  ],
+  "evidence_root": "local/upstream-review/20260920/anthropic",
+  "validation": {
+    "upstream_tests_passed": 30,
+    "source_checks_passed": 19,
+    "frozen_source_global_file_parity": 75,
+    "diff_check_passed": true
+  }
+}

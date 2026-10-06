@@ -1,0 +1,254 @@
+import assert from "node:assert/strict";
+import { assertOpenAiToolSchemaCompatibility } from "./schema-compat.mjs";
+
+async function assertToolSurface({ rpc, timeoutMs }) {
+  const toolsList = await rpc.call("tools/list", {}, timeoutMs);
+  const tools = Array.isArray(toolsList?.result?.tools) ? toolsList.result.tools : [];
+  assertOpenAiToolSchemaCompatibility(tools, "browser67-tmwd-browser");
+  const names = tools
+    .map((entry) => (typeof entry?.name === "string" ? entry.name : ""))
+    .filter((name) => name.length > 0);
+  assert.equal(tools.length, 19);
+  for (const tool of tools) {
+    assert.deepEqual(
+      tool?.inputSchema?.properties?.output_mode?.enum,
+      ["full", "compact"],
+      `${tool?.name} must expose full/compact output_mode`,
+    );
+    assert.equal(
+      tool?.inputSchema?.properties?.browser_instance_id?.type,
+      "string",
+      `${tool?.name} must expose browser_instance_id`,
+    );
+  }
+  assert.equal(names.includes("browser_instance_ops"), true);
+  assert.equal(names.includes("browser_scan"), true);
+  assert.equal(names.includes("browser_execute_js"), true);
+  assert.equal(names.includes("browser_extract"), true);
+  assert.equal(names.includes("browser_wait"), true);
+  assert.equal(names.includes("browser_transport_health"), true);
+  assert.equal(names.includes("browser_run_ops"), true);
+  assert.equal(names.includes("browser_job_ops"), true);
+  assert.equal(names.includes("browser_screenshot_ops"), true);
+  assert.equal(names.includes("browser_evidence_bundle_ops"), true);
+  assert.equal(names.includes("browser_tab_ops"), true);
+  assert.equal(names.includes("browser_native_input"), true);
+  assert.equal(names.includes("browser_file_ops"), true);
+  assert.equal(names.includes("browser_download_ops"), true);
+  assert.equal(names.includes("browser_tab_lifecycle"), true);
+  assert.equal(names.includes("browser_auth_ops"), true);
+  assert.equal(names.includes("browser_clipboard_ops"), true);
+  assert.equal(names.includes("browser_console_ops"), true);
+
+  const browserInstanceTool = tools.find((entry) => entry?.name === "browser_instance_ops");
+  assert.deepEqual(
+    browserInstanceTool?.inputSchema?.properties?.action?.enum,
+    ["list", "set_default", "clear_default"],
+  );
+
+  const executeJsTool = tools.find((entry) => entry?.name === "browser_execute_js");
+  const scanTool = tools.find((entry) => entry?.name === "browser_scan");
+  const extractTool = tools.find((entry) => entry?.name === "browser_extract");
+  const tabOpsTool = tools.find((entry) => entry?.name === "browser_tab_ops");
+  const nativeInputTool = tools.find((entry) => entry?.name === "browser_native_input");
+  const consoleOpsTool = tools.find((entry) => entry?.name === "browser_console_ops");
+  assert.deepEqual(consoleOpsTool?.inputSchema?.properties?.action?.enum, ["observe"]);
+  assert.equal(consoleOpsTool?.inputSchema?.properties?.duration_ms?.maximum, 30_000);
+  assert.equal(consoleOpsTool?.inputSchema?.properties?.max_entries?.maximum, 500);
+  assert.equal(consoleOpsTool?.inputSchema?.properties?.max_total_chars?.maximum, 300_000);
+  assert.deepEqual(consoleOpsTool?.inputSchema?.properties?.tmwd_mode?.enum, ["auto", "tmwd"]);
+  assert.equal(consoleOpsTool?.inputSchema?.properties?.include_log_entries?.default, true);
+  assert.equal(consoleOpsTool?.inputSchema?.properties?.include_stack_trace?.default, false);
+  assert.equal(consoleOpsTool?.description?.includes("non-persistent"), true);
+  assert.equal(executeJsTool?.inputSchema?.properties?.output_mode?.enum?.includes("compact"), true);
+  assert.equal(executeJsTool?.inputSchema?.properties?.max_return_chars?.maximum, 300_000);
+  assert.equal(executeJsTool?.inputSchema?.properties?.new_tab_wait_ms?.minimum, 0);
+  assert.equal(executeJsTool?.inputSchema?.properties?.new_tab_wait_ms?.maximum, 5_000);
+  assert.equal(Object.hasOwn(executeJsTool?.inputSchema?.properties ?? {}, "code"), false);
+  for (const [label, tool, fields] of [
+    ["browser_scan", scanTool, ["tab_id", "workspace_key", "task_id", "timeout_ms"]],
+    ["browser_extract", extractTool, ["tab_id", "workspace_key", "task_id", "timeout_ms"]],
+    ["browser_wait", tools.find((entry) => entry?.name === "browser_wait"), ["workspace_key", "task_id"]],
+    ["browser_tab_ops", tabOpsTool, ["include_unmanaged", "workspace_key", "task_id", "timeout_ms"]],
+  ]) {
+    for (const field of fields) {
+      assert.equal(
+        Object.hasOwn(tool?.inputSchema?.properties ?? {}, field),
+        true,
+        `${label} must accept compatibility field ${field}`,
+      );
+    }
+  }
+
+  const waitTool = tools.find((entry) => entry?.name === "browser_wait");
+  assert.equal(waitTool?.inputSchema?.properties?.type?.enum?.includes("selector"), true);
+  assert.equal(waitTool?.inputSchema?.properties?.type?.enum?.includes("dom_stable"), true);
+  assert.equal(waitTool?.inputSchema?.properties?.timeout_ms?.maximum, 120_000);
+
+  const runOpsTool = tools.find((entry) => entry?.name === "browser_run_ops");
+  assert.equal(runOpsTool?.inputSchema?.properties?.action?.enum?.includes("prepare"), true);
+  assert.equal(runOpsTool?.inputSchema?.properties?.action?.enum?.includes("record_event"), true);
+  assert.equal(runOpsTool?.inputSchema?.properties?.action?.enum?.includes("inspect"), true);
+  assert.equal(runOpsTool?.inputSchema?.properties?.evidence?.type, "object");
+  assert.equal(runOpsTool?.inputSchema?.properties?.include_storage?.default, false);
+  assert.equal(runOpsTool?.inputSchema?.properties?.stale_running_after_minutes?.default, 120);
+
+  const transportHealthTool = tools.find((entry) => entry?.name === "browser_transport_health");
+  assert.equal(transportHealthTool?.inputSchema?.properties?.tmwd_transport?.enum?.includes("ws"), true);
+  assert.equal(transportHealthTool?.inputSchema?.properties?.include_target_metadata?.default, false);
+
+  const jobOpsTool = tools.find((entry) => entry?.name === "browser_job_ops");
+  assert.equal(jobOpsTool?.inputSchema?.properties?.action?.enum?.includes("start"), true);
+  assert.equal(jobOpsTool?.inputSchema?.properties?.action?.enum?.includes("result"), true);
+  assert.equal(jobOpsTool?.inputSchema?.properties?.action?.enum?.includes("cancel"), true);
+  assert.equal(jobOpsTool?.inputSchema?.properties?.summary_only?.default, false);
+  assert.equal(jobOpsTool?.inputSchema?.properties?.output_mode?.default, "compact");
+  assert.equal(jobOpsTool?.inputSchema?.properties?.new_tab_wait_ms?.maximum, 5_000);
+  assert.equal(Object.hasOwn(jobOpsTool?.inputSchema?.properties ?? {}, "code"), false);
+
+  assert.equal(
+    executeJsTool?.inputSchema?.properties?.native_auto_fallback?.type,
+    "boolean",
+  );
+  assert.equal(
+    executeJsTool?.inputSchema?.properties?.native_auto_fallback_policy?.type,
+    "string",
+  );
+  assert.deepEqual(
+    executeJsTool?.inputSchema?.properties?.native_auto_fallback_policy?.enum,
+    ["strict", "balanced", "aggressive"],
+  );
+  assert.equal(
+    executeJsTool?.inputSchema?.properties?.native_auto_fallback_policy?.default,
+    "balanced",
+  );
+  assert.equal(
+    executeJsTool?.inputSchema?.properties?.native_auto_execute?.type,
+    "boolean",
+  );
+  assert.equal(
+    executeJsTool?.inputSchema?.properties?.native_execute_action_scope?.type,
+    "string",
+  );
+  assert.equal(
+    executeJsTool?.inputSchema?.properties?.native_fallback_action?.type,
+    "string",
+  );
+  assert.equal(
+    executeJsTool?.inputSchema?.properties?.native_fallback_args?.type,
+    "object",
+  );
+
+  const screenshotTool = tools.find((entry) => entry?.name === "browser_screenshot_ops");
+  assert.equal(screenshotTool?.inputSchema?.properties?.action?.enum?.includes("capture"), true);
+  assert.equal(screenshotTool?.inputSchema?.properties?.target?.enum?.includes("viewport"), true);
+  assert.equal(screenshotTool?.inputSchema?.properties?.target?.enum?.includes("clip"), true);
+  assert.equal(screenshotTool?.inputSchema?.properties?.target?.enum?.includes("selector"), true);
+  assert.equal(screenshotTool?.inputSchema?.properties?.target?.enum?.includes("full_page"), true);
+  assert.deepEqual(screenshotTool?.inputSchema?.properties?.format?.enum, ["png"]);
+  assert.equal(screenshotTool?.inputSchema?.properties?.clip?.type, "object");
+  assert.equal(screenshotTool?.inputSchema?.properties?.viewport?.type, "object");
+  assert.equal(screenshotTool?.inputSchema?.properties?.layout_selectors?.type, "object");
+  assert.equal(screenshotTool?.inputSchema?.properties?.include_layout_metrics?.type, "boolean");
+  assert.equal(screenshotTool?.inputSchema?.properties?.max_pixels?.maximum, 50_000_000);
+  assert.equal(screenshotTool?.inputSchema?.properties?.prepare_run?.default, true);
+  assert.equal(screenshotTool?.description?.includes("never screenshot base64"), true);
+
+  const evidenceBundleTool = tools.find((entry) => entry?.name === "browser_evidence_bundle_ops");
+  assert.equal(
+    evidenceBundleTool?.inputSchema?.properties?.action?.enum?.includes("build_design_craft_l4_manifest"),
+    true,
+  );
+  assert.equal(evidenceBundleTool?.inputSchema?.properties?.case_id?.type, "string");
+  assert.equal(evidenceBundleTool?.inputSchema?.properties?.entries?.type, "array");
+  assert.deepEqual(evidenceBundleTool?.inputSchema?.properties?.entries?.items?.properties?.phase?.enum, ["before", "after"]);
+  assert.equal(evidenceBundleTool?.inputSchema?.properties?.write?.default, false);
+  assert.equal(evidenceBundleTool?.inputSchema?.properties?.confirm_write?.default, false);
+  assert.equal(evidenceBundleTool?.description?.includes("design-craft L4"), true);
+
+  const tabLifecycleTool = tools.find((entry) => entry?.name === "browser_tab_lifecycle");
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.action?.enum?.includes("select_or_create"),
+    true,
+  );
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.action?.enum?.includes("prune_stale"),
+    true,
+  );
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.action?.enum?.includes("finalize_task"),
+    true,
+  );
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.ownership_policy?.default,
+    "tmwd_only",
+  );
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.reuse_scope?.default,
+    "origin_path",
+  );
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.scope?.enum?.includes("all"),
+    true,
+  );
+  assert.equal(tabLifecycleTool?.inputSchema?.properties?.all?.type, "boolean");
+  assert.equal(tabLifecycleTool?.inputSchema?.properties?.confirm_all?.type, "boolean");
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.wait_until?.default,
+    "listed",
+  );
+  assert.equal(
+    tabLifecycleTool?.inputSchema?.properties?.wait_until?.enum?.includes("none"),
+    true,
+  );
+  assert.equal(tabLifecycleTool?.inputSchema?.properties?.prune_stale?.type, "boolean");
+  assert.equal(tabLifecycleTool?.inputSchema?.properties?.summary_only?.type, "boolean");
+  assert.equal(tabLifecycleTool?.inputSchema?.properties?.max_items?.maximum, 500);
+  assert.equal(tabLifecycleTool?.inputSchema?.properties?.max_stale_items?.maximum, 500);
+  assert.equal(tabLifecycleTool?.inputSchema?.properties?.wait_timeout_ms?.maximum, 120_000);
+
+  const authTool = tools.find((entry) => entry?.name === "browser_auth_ops");
+  assert.equal(authTool?.inputSchema?.properties?.action?.enum?.includes("ensure_login"), true);
+  assert.equal(authTool?.inputSchema?.properties?.action?.enum?.includes("list_profiles"), true);
+  assert.equal(authTool?.inputSchema?.properties?.action?.enum?.includes("suggest_profile"), true);
+  assert.equal(authTool?.inputSchema?.properties?.action?.enum?.includes("upsert_profile"), true);
+  assert.equal(authTool?.inputSchema?.properties?.action?.enum?.includes("plan_captcha_assist"), true);
+  assert.equal(authTool?.inputSchema?.properties?.action?.enum?.includes("assist_captcha"), true);
+  assert.equal(authTool?.inputSchema?.properties?.assist_target?.enum?.includes("slider"), true);
+  assert.deepEqual(
+    authTool?.inputSchema?.properties?.captcha_solver_mode?.enum,
+    ["auto", "coordinate_only", "protocol_allowed", "manual_only"],
+  );
+  assert.deepEqual(
+    authTool?.inputSchema?.properties?.captcha_locator_provider?.enum,
+    ["auto", "local", "vision", "jfbym"],
+  );
+  assert.equal(authTool?.inputSchema?.properties?.captcha_provider_config_dir?.type, "string");
+  assert.equal(authTool?.inputSchema?.properties?.confirm_protocol_solver?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.use_provider_coordinates?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.confirm_provider_coordinates?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.physical_input_provider?.enum?.includes("ljq-ctrl"), true);
+  assert.equal(authTool?.inputSchema?.properties?.confirm_physical_input?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.auto_screen_coordinates?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.confirm_auto_coordinates?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.run_vision_correction?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.use_vision_corrected_coordinates?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.confirm_corrected_coordinates?.type, "boolean");
+  assert.equal(authTool?.inputSchema?.properties?.screen_to_x?.type, "number");
+  assert.equal(authTool?.inputSchema?.properties?.drag_steps?.maximum, 240);
+  assert.equal(authTool?.inputSchema?.properties?.pre_input_settle_ms?.maximum, 5_000);
+  assert.equal(authTool?.inputSchema?.properties?.wait_after_ms?.minimum, 1_000);
+  assert.equal(nativeInputTool?.inputSchema?.properties?.window_tab_id?.type, "integer");
+  assert.equal(nativeInputTool?.inputSchema?.properties?.window_tab_id?.minimum, 1);
+  assert.equal(nativeInputTool?.inputSchema?.properties?.window_url?.type, "string");
+  assert.deepEqual(
+    nativeInputTool?.inputSchema?.properties?.window_application?.enum,
+    ["Google Chrome", "Microsoft Edge"],
+  );
+  assert.equal(authTool?.inputSchema?.properties?.tmwd_mode?.default, "tmwd");
+  assert.equal(authTool?.inputSchema?.properties?.cdp_endpoint, undefined);
+
+  return { tools, names };
+}
+
+export { assertToolSurface };

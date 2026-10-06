@@ -1,0 +1,40 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "costco-fiscal-cash-quality",
+      "status": "READY_HISTORICAL",
+      "prompt": "请根据所附Costco正式历史材料，复核2024财年的增长、盈利、现金创造与股东回报质量。对象Costco Wholesale Corporation，NASDAQ普通股COST，交易/报告/基础币种USD，研究截止2024-12-11。请比较全年和Q4，解释利润、现金余额和权益变化，评价会员业务及分红能否支持可持续股东回报，给出反方证据、不能确认的结论和下一次具体复核窗口。需要计算的地方保留计算回执；没有证据支持的正常化或估值不要补数。这是2026年执行的历史回放，不是当前投资建议。只交付Markdown财报复核，不创建工作区、档案或跟踪版本。正文力求紧凑，主要财务表和计算回执保留。",
+      "facts": "仅使用下面两份原始文件；可读取同目录同名txt以定位原文，但原文件是事实真源。不得读取其他公司报告、既有研究答案、验收标准或上级目录。原资料的实际财年、发布日期、单位和定义以原文为准。无旧论文、持仓或行情输入。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/research/20260919-costco-transfer/sources/2024-annual.pdf",
+          "sha256": "bdeca9c1891ffbee65796ade60212f61f7a29790b962e15076b6159c6d288612",
+          "url": "https://s201.q4cdn.com/287523651/files/doc_financials/2024/ar/COST-2024-Annual-Report.pdf"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/research/20260919-costco-transfer/sources/2024-release.html",
+          "sha256": "d9c671dffcf834664c9d62ff10233bf39b762005b2360f32fca8034c9d87e1ce",
+          "url": "https://investor.costco.com/news/news-details/2024/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Operating-Results/default.aspx"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "实际自然触发安装Money Craft、earnings和语义指引，路由READY；不声称建立了不存在的旧论文或正式跟踪版本",
+        "明确历史身份、截止与post-hoc边界，资料同属发行人血缘而非独立双源",
+        "识别全年52/53周与Q4的16/17周差异，区分报告增幅、可比周同店及排除汇率油价口径；不能机械年化为真实可比增长",
+        "会员费确认为递延摊销，会员费收入不等于独立利润；9月1日提价不冒充2024全年利润增长主因",
+        "现金变化以现金流和资本配置解释，区分分红宣告与实际支付、特别分红与常规分红，不把现金下降自动归因经营恶化",
+        "OCF减capex仅为proxy，不当可分配现金；股东权益下降及ROE不能脱离分红基数效应解释",
+        "税收等非经常影响和可持续性有边界，估值及提价效果缺输入时不虚构正常化、目标价或安全边际",
+        "最强反方实际约束判断，下一次复核明确财政期、指标及资料不足时的停止点"
+      ]
+    }
+  ]
+}

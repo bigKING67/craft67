@@ -1,0 +1,46 @@
+{
+  "command": "pi --print --no-session --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-5.5 --thinking high --skill '$VARIANT_SKILL_1'",
+  "contract_sha256": "754b4b9ba3f127a6bf99b51aa5fc923a72fef58a72e2625989b3f38fe2bc74f4",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 73.572,
+  "host": "pi",
+  "host_version": "0.80.6",
+  "installed_skill_paths": {
+    "upstreams/impeccable/.agents/skills/impeccable": "$VARIANT_WORKSPACE/.pi/skills/01-impeccable"
+  },
+  "model": "codex/gpt-5.5",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.impeccable.md",
+  "output_sha256": "9fac53c3c5e97152166ef69b65c91ce3bfe9b73f80ec0cadc0afa6ed0c23ec34",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "returncode": 0,
+  "runner_os": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v4",
+  "skill_install_mode": "isolated_case_projection",
+  "skill_trees": {
+    "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+  },
+  "source_commit": "773fe501cc1696f5887c5d9120fe409a8579980f",
+  "source_fingerprints": {
+    "upstreams/impeccable/.agents/skills/impeccable": {
+      "kind": "tree",
+      "projected_tree_sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+      "sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+      "source_dirty": false
+    }
+  },
+  "source_trees": {
+    "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+  },
+  "started_at": "2026-09-19T12:42:42Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "high",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 600,
+  "variant": "impeccable",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "bda2afc439bb72e18a99b02c89ea959b1b0b4b66b5d3866eaf8f0c58fe8122e5",
+  "worktree_before_sha256": "bda2afc439bb72e18a99b02c89ea959b1b0b4b66b5d3866eaf8f0c58fe8122e5",
+  "worktree_unchanged": true
+}

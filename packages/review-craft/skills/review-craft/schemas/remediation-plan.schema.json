@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/remediation-plan.schema.json",
+  "title": "Review remediation plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "changeClass", "targetScore", "targetEvidenceLevel", "targetArchitecture", "phases"],
+  "properties": {
+    "documentType": {"const": "review-craft.remediation-plan"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "changeClass": {"enum": ["LOCAL_OPTIMIZATION", "MODULE_REFACTOR", "ARCHITECTURE_ADJUSTMENT"]},
+    "targetScore": {"type": "integer", "minimum": 0, "maximum": 100},
+    "targetEvidenceLevel": {"enum": ["E1", "E2", "E3", "E4"]},
+    "targetArchitecture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overview", "moduleBoundaries", "dependencyDirection", "coreDataFlow", "stateAndErrors", "directoryStructure", "testingStructure", "deliveryFlow"],
+      "properties": {
+        "overview": {"type": "string"},
+        "moduleBoundaries": {"$ref": "#/$defs/strings"},
+        "dependencyDirection": {"$ref": "#/$defs/strings"},
+        "coreDataFlow": {"$ref": "#/$defs/strings"},
+        "stateAndErrors": {"$ref": "#/$defs/strings"},
+        "directoryStructure": {"$ref": "#/$defs/strings"},
+        "testingStructure": {"$ref": "#/$defs/strings"},
+        "deliveryFlow": {"$ref": "#/$defs/strings"}
+      }
+    },
+    "phases": {"type": "array", "minItems": 5, "maxItems": 5, "items": {"$ref": "#/$defs/phase"}}
+  },
+  "$defs": {
+    "strings": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "modificationScope", "prerequisites", "expectedBenefits", "risks", "acceptanceCriteria"],
+      "properties": {
+        "id": {"enum": ["phase-0", "phase-1", "phase-2", "phase-3", "phase-4"]},
+        "title": {"type": "string", "minLength": 1},
+        "modificationScope": {"$ref": "#/$defs/strings"},
+        "prerequisites": {"$ref": "#/$defs/strings"},
+        "expectedBenefits": {"$ref": "#/$defs/strings"},
+        "risks": {"$ref": "#/$defs/strings"},
+        "acceptanceCriteria": {"$ref": "#/$defs/strings"}
+      }
+    }
+  }
+}

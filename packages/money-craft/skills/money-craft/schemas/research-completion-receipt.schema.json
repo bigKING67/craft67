@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/research-completion-receipt.schema.json",
+  "title": "Money Craft research completion receipt",
+  "type": "object",
+  "required": [
+    "schema",
+    "valid",
+    "run_id",
+    "completed_at",
+    "plan_sha256",
+    "bindings",
+    "provider_gaps",
+    "automatic_trading"
+  ],
+  "properties": {
+    "schema": {"const": "money-craft.research-completion-receipt.v1"},
+    "valid": {"const": true},
+    "run_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "bindings": {
+      "type": "object",
+      "minProperties": 9,
+      "maxProperties": 11,
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "provider_gaps": {"type": "array", "items": {"type": "string"}},
+    "assessment": {
+      "type": "object",
+      "required": [
+        "artifact_integrity",
+        "receipt_integrity",
+        "evidence_coverage",
+        "citation_binding",
+        "claim_support",
+        "source_freshness"
+      ],
+      "properties": {
+        "artifact_integrity": {"const": "VERIFIED"},
+        "receipt_integrity": {"const": "VERIFIED"},
+        "evidence_coverage": {"enum": ["COMPLETE", "PARTIAL"]},
+        "citation_binding": {"const": "VERIFIED"},
+        "claim_support": {"const": "UNVERIFIED"},
+        "source_freshness": {"const": "UNVERIFIED"}
+      },
+      "additionalProperties": false
+    },
+    "automatic_trading": {"const": false}
+  },
+  "additionalProperties": false
+}

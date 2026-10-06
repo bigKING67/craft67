@@ -1,0 +1,386 @@
+{
+  "schema": "whoami.report.v3",
+  "chartId": "4b6a66ef698209a07964e294019e8ad54923b3fc74eccaa1786dc7aeaa20f62a",
+  "evidenceId": "8412f9eadc80551ea35b44533fafb97fe6dad691f990827416b521d2e1aeb410",
+  "mode": "bazi",
+  "title": "丁火日主：普通格旺衰、扶抑与2026—2028条件性解读",
+  "uncertainty": "本报告按公历1990-12-18 08:20、女性、东经120度、Asia/Shanghai、真太阳时与子初换日计算；太阳时为08:23:46.963，核心提示其均时差模型及±2分钟边界筛查并非秒级精度承诺。仅有一个候选盘（庚午、戊子、丁巳、甲辰）。以下是普通格扶抑的传统条件性讨论，未把它当作现实预测、职业/投资/婚姻决定或唯一用神裁定。",
+  "sections": [
+    {
+      "id": "summary",
+      "claims": [
+        {
+          "text": "本命日主为丁火，四柱为庚午、戊子、丁巳、甲辰。普通格假设下，判断暂不取‘极弱从势’：丁火在午、巳各有同类藏干线索，时柱甲及辰中乙亦构成印星通道；但月支子为水，月干戊伤官透出，冬令背景和泄身同时存在。两边并非可用计数相抵，因而较稳妥的说法是：日主暂偏弱、承受持续泄耗和压力的能力有条件，而不是断为必然身强或必然从弱。\n\n这个结论只回答普通格的承载问题；它不把月令格局、调候和扶抑混成一个‘喜用’，也不推出现实事件。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-f7863f9a.bazi.dayMaster",
+            "C1-f7863f9a.bazi.month",
+            "C1-f7863f9a.bazi.roots",
+            "C1-f7863f9a.bazi.rootDetails",
+            "C1-f7863f9a.bazi.hour"
+          ],
+          "ruleRefs": [
+            "C1-f7863f9a.R-bazi-structure",
+            "C1-f7863f9a.R-bazi-root-review"
+          ],
+          "conditions": "采用普通格扶抑而非从势、专旺或化气路径；午中丁与巳中丙的实际根气不可只凭出现认定，甲/乙印能否实际发挥也未由核心裁定。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "climate"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "selection"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "claims": [
+        {
+          "text": "从十神结构只能作倾向性描述：丁火日主之外，月干戊为伤官，时干甲为正印，年干庚为正财。把它们并置，更适合理解为表达、学习吸收与资源/结果意识可能同时被看重；这不是把某一十神翻译成固定性格，更不能从此判断现实成败。若伤官的外放与印星的整理能形成稳定节奏，才可把它视作较能反思和组织表达的条件；若泄身已重，则同样的表达任务会转成负荷。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-f7863f9a.bazi.month",
+            "C1-f7863f9a.bazi.hour",
+            "C1-f7863f9a.bazi.year",
+            "C1-f7863f9a.bazi.day"
+          ],
+          "ruleRefs": [
+            "C1-f7863f9a.R-bazi-structure"
+          ],
+          "conditions": "此处仅按本命十神位置作传统描述；不以未核验的制化、格局或现实经历补强。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "pattern"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "career",
+      "claims": [
+        {
+          "text": "月干戊伤官透出，年干庚财透出，子月癸杀有得令背景，三类负荷须分别比较。在普通格且日主暂偏弱的前提下，印绶可作为制泄或化生扶身的候选，但本轮尚不能裁定主要负荷，也未证明甲乙印可实际发挥。职业建议只能作为现实自查：核对任务强度、学习支持、协作资源与收入条件，不能据此指定木类职业或认定某岗位更好。",
+          "kind": "advice",
+          "factRefs": [
+            "C1-f7863f9a.bazi.month",
+            "C1-f7863f9a.bazi.year",
+            "C1-f7863f9a.bazi.monthExposure",
+            "C1-f7863f9a.bazi.hour"
+          ],
+          "ruleRefs": [
+            "C1-f7863f9a.R-bazi-structure"
+          ],
+          "conditions": "印星方向分别依赖食伤制泄或官杀化生路径成立；未裁定两者优先级。职业选择仍依据现实资料。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "selection"
+            }
+          ],
+          "premiseStatus": "conditional"
+        }
+      ]
+    },
+    {
+      "id": "wealth",
+      "claims": [
+        {
+          "text": "年干庚与日支巳中庚均为正财线索，但本轮财格规则复核的入口为月支财星同干透于年、月、时；子月不满足该入口，因此不能把财星出现升级成财格、财富结果或投资结论。若本命偏弱，财还可能构成‘任财’问题，须先核验比劫能否实际帮身及印星是否受制。故本报告没有把财当作可直接追逐的喜用，也不提供投资或收益建议。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-f7863f9a.bazi.year",
+            "C1-f7863f9a.bazi.day",
+            "C1-f7863f9a.bazi.wealthReview",
+            "C1-f7863f9a.bazi.roots"
+          ],
+          "ruleRefs": [
+            "C1-f7863f9a.R-bazi-wealth-review",
+            "C1-f7863f9a.R-bazi-structure"
+          ],
+          "conditions": "财格复核只覆盖显干入口，不否定其他传统取法；本段也没有核验财的实际作用、合化、救应或现实财务条件。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "selection"
+            }
+          ],
+          "premiseStatus": "conditional"
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "claims": [
+        {
+          "text": "本命可确认午子相冲，且子中癸、辰中癸为七杀藏干线索；这些是结构观察，不是关系好坏、婚恋成败或特定对象的结论。对关系议题更有用的条件性提醒是：若现实互动同时加重压力与持续输出，前述偏弱—印扶的讨论会更相关；若实际关系提供支持和边界，不能仅因有冲或七杀藏干便推断负面。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-f7863f9a.bazi.relations",
+            "C1-f7863f9a.bazi.monthExposure",
+            "C1-f7863f9a.bazi.rootDetails"
+          ],
+          "ruleRefs": [
+            "C1-f7863f9a.R-bazi-structure",
+            "C1-f7863f9a.R-bazi-root-review"
+          ],
+          "conditions": "地支冲不自动删除午中丁的根，也不自动对应现实事件；官杀的实际制化与关系现实资料均未核验。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "pattern"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "strength"
+            }
+          ],
+          "premiseStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "claims": [
+        {
+          "text": "请求范围内，大运为甲申（2024-07-03至2034-07-03），年度柱依次为2026丙午、2027丁未、2028戊申，年度边界按立春。2026与2027出现火的同类线索，2028则增加戊土与申金的泄耗/财线索；这只说明在同一普通格问题上，三个年份需要分别重看支持和负荷，不能直接推出升职、收入或吉凶事件。尤其本命午子冲、根气和制化的实际作用尚未完成传统规则核验。",
+          "kind": "interpretation",
+          "factRefs": [
+            "C1-f7863f9a.bazi.cycles",
+            "C1-f7863f9a.bazi.relations",
+            "C1-f7863f9a.bazi.rootDetails"
+          ],
+          "ruleRefs": [
+            "C1-f7863f9a.R-bazi-timing",
+            "C1-f7863f9a.R-bazi-root-review"
+          ],
+          "conditions": "年度柱是立春口径的年度层信息；未做流月、流日、合化或现实前提核验。",
+          "confidence": "low",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "strength"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "selection"
+            }
+          ],
+          "premiseStatus": "conditional"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "claims": [
+        {
+          "text": "可实行的建议只取现实低风险版本：面对持续输出或承担资源责任的安排，先设置学习、协作、休息和复盘的支持条件，再评估是否加码。这是一项需按现实负荷验证的通用建议；命理部分只提出印绶制泄或化生扶身的待核候选，不证明该建议更适合此人；并非命盘要求你选择某种颜色、地点、职业或作出财务与关系决定。若以后能核验根气、印受财制与食伤实际作用，扶抑方向才可能更明确。\n\n本分析基于传统八字理论框架，仅供文化研究与娱乐参考，不构成医疗、投资、婚姻、法律等任何决策依据。命运由个人选择与客观环境共同塑造。",
+          "kind": "advice",
+          "factRefs": [
+            "C1-f7863f9a.bazi.month",
+            "C1-f7863f9a.bazi.hour",
+            "C1-f7863f9a.bazi.rootDetails",
+            "C1-f7863f9a.bazi.wealthReview"
+          ],
+          "ruleRefs": [
+            "C1-f7863f9a.R-bazi-structure",
+            "C1-f7863f9a.R-bazi-root-review",
+            "C1-f7863f9a.R-bazi-wealth-review"
+          ],
+          "conditions": "普通格、偏弱及印星作用均须核验；食伤与官杀的负荷尚未排出优先级。现实建议不作为命理有效性的证据。",
+          "confidence": "medium",
+          "reasoningRefs": [
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "balance"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "selection"
+            },
+            {
+              "candidate": "C1-f7863f9a",
+              "topic": "strength"
+            }
+          ],
+          "premiseStatus": "conditional"
+        }
+      ]
+    }
+  ],
+  "baziReasoning": [
+    {
+      "candidate": "C1-f7863f9a",
+      "topic": "strength",
+      "status": "conditional",
+      "conclusion": "在普通格假设下，丁火暂倾向偏弱而非极弱：子月水背景限制火，戊伤官透月干形成泄身；午中丁与巳中丙提供同类根线索，甲透与辰中乙构成印星线索，因此尚不能把‘有根’直接改写为身强，也没有充分依据认定从弱。",
+      "supportRefs": [
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.roots",
+        "C1-f7863f9a.bazi.rootDetails",
+        "C1-f7863f9a.bazi.hour"
+      ],
+      "counterRefs": [
+        "C1-f7863f9a.bazi.relations",
+        "C1-f7863f9a.bazi.monthExposure"
+      ],
+      "counterReview": "已核对午子冲及午根的直接冲来源；冲不自动删根，但也不能把无直接冲的巳根当作足够根气。月令藏癸未透，提示不能只将水杀按显干实克处理；月令司权日数、根气等级、印是否受制、合化及制化有效性未在本轮事实中裁定。",
+      "conditions": "成立条件是普通格扶抑可用，且月令与透藏位置的作用未被特殊从势、专旺、化气或有效制化改写。",
+      "alternatives": "若后续传统核验认为巳午火根和甲乙印足以任受戊泄，则改判为相对可任负荷；若水势、泄耗或根受损被证明占决定性作用，才进一步偏向更弱分支。",
+      "ruleRefs": [
+        "C1-f7863f9a.R-bazi-structure",
+        "C1-f7863f9a.R-bazi-root-review"
+      ]
+    },
+    {
+      "candidate": "C1-f7863f9a",
+      "topic": "pattern",
+      "status": "unresolved",
+      "conclusion": "月支子藏癸七杀而未在年、月、时同干透出，月干则为戊伤官；可描述为伤官透、杀藏的结构线索，但本轮不能据此定成某一格或以格局用神替代扶抑。财格规则模块亦在入口外。",
+      "supportRefs": [
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.monthExposure",
+        "C1-f7863f9a.bazi.wealthReview"
+      ],
+      "counterRefs": [
+        "C1-f7863f9a.bazi.year",
+        "C1-f7863f9a.bazi.hour"
+      ],
+      "counterReview": "已保留年干庚财与时干甲印，不把一个透干结构孤立为成格。月令司权、伤官见杀的实际作用、印的制化与各柱位置均无已核验的成败规则。",
+      "conditions": "缺口属于关键作用规则尚未核验，而非仅因核心没有输出格局标签。",
+      "alternatives": "若后续取得可核对的月令司权和制化规则，可能形成更具体的格局讨论；在此以前，月令格局用神不进入最终取舍。",
+      "ruleRefs": [
+        "C1-f7863f9a.R-bazi-month-exposure",
+        "C1-f7863f9a.R-bazi-wealth-review"
+      ]
+    },
+    {
+      "candidate": "C1-f7863f9a",
+      "topic": "climate",
+      "status": "unresolved",
+      "conclusion": "子月的寒湿季节背景会使丁火调候问题值得单列，但本轮证据没有给出可核对的调候取法、司权日数或燥湿作用规则，不能由‘冬月’直接宣布某一五行是调候唯一用神。",
+      "supportRefs": [
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.dayMaster",
+        "C1-f7863f9a.bazi.visibleElements"
+      ],
+      "counterRefs": [
+        "C1-f7863f9a.bazi.day",
+        "C1-f7863f9a.bazi.hour"
+      ],
+      "counterReview": "已核对日支巳火及甲木印线索，它们阻止把冬令背景简化为单一缺元素诊断；四天干五行计数只是描述，不能替代寒暖燥湿判断。",
+      "conditions": "缺口为本次允许来源未提供该盘调候规则和月令司权资料。",
+      "alternatives": "若采用另有出处的调候体系，可能对火、木或其他通道提出不同条件；该口径必须与普通格扶抑分开呈现。",
+      "ruleRefs": [
+        "C1-f7863f9a.R-bazi-structure"
+      ]
+    },
+    {
+      "candidate": "C1-f7863f9a",
+      "topic": "balance",
+      "status": "conditional",
+      "conclusion": "若丁火暂偏弱的判断成立，本轮保留两条待比较路径：戊伤官透月的泄身，以及子月癸杀得令的克身。未透不等于作用弱，目前不足以裁定哪一项是主要负荷。在已采用的普通扶抑取法中，两条路径均可讨论印绶木：前者侧重制泄扶身，后者侧重化生扶身；方向相同不代表任何通道已成立。",
+      "supportRefs": [
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.hour",
+        "C1-f7863f9a.bazi.monthExposure",
+        "C1-f7863f9a.bazi.rootDetails"
+      ],
+      "counterRefs": [
+        "C1-f7863f9a.bazi.year",
+        "C1-f7863f9a.bazi.day"
+      ],
+      "counterReview": "已保留庚财透年和巳中庚财，故不能把全部压力只归为食伤；也未证明甲、乙印必能发挥、是否受财制或是否已足够扶身。 子月癸杀虽未透，其得令背景不能因戊已透就被降为次要。",
+      "conditions": "须先维持普通格和偏弱假设，再分别核验食伤与官杀作用、甲乙印能否介入及庚财制印条件；当前不设两种负荷的优先级。",
+      "alternatives": "若改判为偏弱但财为主要负荷，应转而讨论比劫帮身任财及其争财反证；若改判为可任泄，则不应沿用本条印扶优先级。",
+      "ruleRefs": [
+        "C1-f7863f9a.R-bazi-structure",
+        "C1-f7863f9a.R-bazi-root-review"
+      ]
+    },
+    {
+      "candidate": "C1-f7863f9a",
+      "topic": "selection",
+      "status": "conditional",
+      "conclusion": "本轮仅提出印星木的扶抑候选：在普通格且暂偏弱的前提下，食伤制泄与官杀化生两条待核路径都可讨论印星，但不能据此认定印已可用、伤官为主要负荷或木是唯一喜用。格局、调候及庚财制印问题仍须分别核验。",
+      "supportRefs": [
+        "C1-f7863f9a.bazi.hour",
+        "C1-f7863f9a.bazi.month",
+        "C1-f7863f9a.bazi.wealthReview",
+        "C1-f7863f9a.bazi.monthExposure"
+      ],
+      "counterRefs": [
+        "C1-f7863f9a.bazi.relations",
+        "C1-f7863f9a.bazi.roots"
+      ],
+      "counterReview": "午子冲、两处火根和藏干关系均已纳入，但它们不能自动证明木印必可用或火必为忌。财格模块入口外且根气、制化、调候均待核，故拒绝唯一化选择。",
+      "conditions": "该候选只在本命普通格扶抑语境有效；岁运、职业、颜色、居住地或现实决策仍需分别核验。",
+      "alternatives": "若格局或调候的独立规则得到核验，其取用可能与扶抑候选不同；若强弱转向可任负荷或偏旺，印扶方向也应撤回重审。",
+      "ruleRefs": [
+        "C1-f7863f9a.R-bazi-structure",
+        "C1-f7863f9a.R-bazi-root-review",
+        "C1-f7863f9a.R-bazi-wealth-review"
+      ]
+    }
+  ],
+  "crossSystem": [],
+  "assertions": [
+    {
+      "factRef": "C1-f7863f9a.bazi.dayMaster",
+      "value": "丁"
+    }
+  ]
+}

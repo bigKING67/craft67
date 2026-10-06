@@ -1,0 +1,408 @@
+# Changelog
+
+## Unreleased
+
+- Split browser67 Skill setup/maintenance and auth/native-input guidance into
+  linked references; keep readiness verification bound to only the references
+  explicitly linked from the Skill entry, and reject missing links or missing
+  CAPTCHA/native safety guidance.
+
+## 0.11.4 - 2026-09-05
+
+- Add explicit release updates: read-only latest-release checks, annotated-tag
+  pinning, package parity, extension reload verification, scoped Skill sync,
+  concurrent-install protection, and retained recovery receipts/backups.
+
+- Label JS reverse live assertion failures by phase and field, and emit bounded
+  cleanup results on failure without exposing page or session payloads.
+
+- Align the managed-tab live gate with deferred macOS fullscreen in background
+  mode; retain strict fullscreen assertions for explicit foreground acceptance.
+- Refresh the release reference-review ledger after inspecting moved external
+  JS reverse references; retain reference-only boundaries and no direct imports.
+
+## 0.11.3 - 2026-09-05
+
+- Show CLI version and extension setup build identity, and document tag-pinned
+  installation with separate installed and running version verification.
+
+- Apply workspace, task, and Browser Instance filters before managed-tab list
+  liveness checks, summaries, groups, and session pointers, including history
+  queries, so scoped inspection cannot return another task's managed metadata.
+- Preserve background focus when creating or reusing a macOS Agent window:
+  defer native Full Screen transitions that activate Chrome until an explicitly
+  requested foreground entry, and document that screenshot retries must not
+  activate windows without user authorization.
+- Keep timed-out debugger attachments isolated until late completion is cleaned
+  up, prevent batch cleanup from reentering a pending attach, and report release
+  as unverified while recovery is pending. Failed late detach keeps the tab
+  quarantined until extension restart; external-owner rejection never detaches
+  another debugger. Cover both command and batch recovery with regression tests.
+
+## 0.11.2 - 2026-09-03
+
+- Make mobile viewport and selector screenshots reliable in background hidden
+  tabs by replacing RAF-dependent probes with synchronous layout reads, adding
+  an atomic CDP layout barrier, and bounding debugger timeout cleanup so
+  emulation state and per-tab queues are always released.
+- Make the performance smoke resilient to isolated runner filesystem stalls by
+  enforcing the unchanged platform run-lifecycle budget against a three-sample
+  median; per-event latency and absolute/relative indexed-write gates remain
+  intact across every sample.
+
+## 0.11.1 - 2026-09-03
+
+- Separate the screenshot live gate's 25-second operation deadline from its
+  30-second RPC envelope so slow viewport cleanup or a structured timeout can
+  return without racing an identical client-side deadline.
+- Stabilize the Windows performance smoke gate with a platform-specific
+  run-lifecycle I/O budget while preserving the stricter macOS/Linux threshold
+  and the existing latency, total-write, and relative-filesystem checks.
+- Update the transitive `fast-uri` dependency to `3.1.7` so CI and local
+  installs include the upstream fixes for the newly disclosed high-severity
+  URL canonicalization and SSRF advisories.
+- Make the runtime permission audit explicitly skip unsupported POSIX mode
+  enforcement on Windows instead of reporting meaningless mode mismatches or
+  attempting to emulate ACL changes with `chmod`.
+
+## 0.11.0 - 2026-09-03
+
+- Make responsive screenshots atomic across viewport, selector, clip, and
+  bounded full-page targets on TMWD and explicit remote CDP. Each temporary
+  viewport override now stays on one debugger attachment through
+  set/probe/capture/clear, verifies both page metrics and PNG dimensions, and
+  rejects unsupported persistent overrides.
+- Bound browser, console, native-input, TMWD, and CDP execution with one
+  end-to-end operation deadline while retaining the exact failed phase and
+  safety error identity.
+- Harden browser67 runtime storage with process umask `077`, owner-only
+  directories and files, atomic private writers, permission auditing, stale-run
+  terminalization, and narrowly guarded empty-group pruning.
+- Canonicalize Browser Instance and tab identities across page context,
+  managed-tab registry, reuse, and finalization, and publish the compatible
+  `managed-tabs-v9` capability contract.
+- Extend the Agent integration doctor to compare browser67 and js-reverse MCP
+  tool schemas with Codex approval policy. The audit accepts either an explicit
+  server default or complete per-tool coverage, while failing closed on missing,
+  invalid, duplicate, or stale tool-policy entries.
+- Align Pi integration and release-governance guidance with Pi-67's explicit
+  external-repository lifecycle. Maintained Pi-67 installs now use
+  `pi-67 external install/update/doctor browser67` and verify the external
+  checkout revision instead of editing `settings.json` as a static package
+  pin; direct upstream Pi users may still pin a browser67 tag or commit.
+
+## 0.10.0 - 2026-09-01
+
+- Harden managed-browser isolation and bounded runtime ownership: fail closed
+  when agent-created work requests the user's current window, cap each task
+  scope at eight open unkept tabs, keep managed listings summary-only by
+  default, terminalize scoped unfinished runs during finalization, serialize
+  per-tab Debugger access, and add a privacy-safe rotating tool journal that
+  excludes URLs, scripts, page content, form inputs, cookies, and credentials.
+- Enforce screenshot `max_pixels` against the predicted final PNG bitmap after
+  device pixel ratio and capture scale for viewport, clip, selector, and
+  full-page targets. Captures also verify the decoded PNG dimensions before
+  writing an artifact, return predicted and actual bitmap metrics, and fail
+  closed with `INVALID_ARGUMENT` instead of silently emitting an oversized
+  HiDPI image.
+- Fix real local-file upload through the TMWD debugger batch by resolving the
+  actual `DOM.getDocument` / `DOM.querySelector` result shape. Rely on
+  `DOM.setFileInputFiles` for the native `input` / `change` events instead of
+  dispatching duplicates, and add a real-browser gate for ordered multi-file
+  input, ordinary single-file input, exact event counts, and temporary cleanup.
+- Add `browser_console_ops.observe` for non-persistent observation of console
+  API calls, uncaught runtime exceptions, and optional Log-domain entries on
+  an exact browser67-managed tab. Duration, entry count, and serialized
+  console-entry characters are hard-bounded; external debugger ownership and
+  unverified debugger release fail closed, and listeners plus the acquired
+  debugger lease are released before success.
+
+## 0.9.0 - 2026-08-31
+
+- Prevent live/release verification from leaving a browser67-created Agent
+  window that Chrome can later surface as an ordinary New Tab window. Scoped
+  finalizers may request exact empty-window retirement; the extension now keeps
+  a bounded Browser Profile startup-epoch ownership tombstone when the exact
+  anchor disappears or is replaced in place while retaining its tab ID. The
+  epoch survives extension reloads and rotates at the next browser startup. The
+  extension automatically retires the window only when Chrome substitutes a
+  sole internal New Tab page, and reports ownership-record removal as part of
+  the terminal receipt. Identity/epoch mismatches, unowned New Tab windows, and
+  any window containing user content remain untouched.
+- Bound the live-contract child process with a 60-second default supervisor
+  deadline and an explicit `live_timeout` result. MCP contract shutdown now
+  installs its close listener before signaling the child and has a hard settle
+  deadline, eliminating an intermittent unbounded wait during cold macOS Agent
+  Window presentation or cleanup.
+- Make explicit foreground work activate the exact browser67-owned native macOS
+  Full Screen Space while retaining Chrome/Edge browser chrome, fail closed on
+  process/window identity mismatch, and require live `visibilityState` plus RAF
+  progress evidence without changing ordinary user windows.
+- Scope JS-reverse hook, evidence, and task state by workspace/task with bounded
+  retention and successful-finalize cleanup; close every public tool input
+  schema, keep artifacts in the owning task scope, and add cross-workspace and
+  expiry regressions.
+- Validate layered browser governance through the thin global `AGENTS.md`
+  pointer, detailed browser rule, active Skill, and live Agent doctor; recognize
+  successful browser67 lifecycle receipts with `page:null` only when exact
+  `data.ready=true` evidence is present.
+- Stabilize the indexed-run performance gate with repeated measurements and a
+  same-filesystem control while retaining the absolute and total runtime
+  budgets.
+- Document Agent Window ownership, retirement, macOS Full Screen visibility,
+  JS-reverse state boundaries, and release/upgrade verification as explicit
+  operator contracts.
+- Review `zhaoxuya520/reverse-skill` through `71acc8e`; confirm its seven-commit
+  delta is limited to README star-history/sponsor presentation and one sponsor
+  image, retain `direct_import_allowed=false`, and import no external artifact.
+
+## 0.8.0 - 2026-08-30
+
+- Present the browser67-owned Agent Window with native platform behavior: enter
+  a macOS Full Screen Space while retaining Chrome tabs, address bar,
+  extensions, and bookmarks, and maximize the ordinary Chrome window on
+  Windows.
+- Bind Agent Window presentation to the exact browser67 anchor and window,
+  re-verify that identity after a native transition, and leave ordinary user
+  Chrome windows unchanged.
+- Review GenericAgent remote main through `efb3bc6`, confirm that its compiled
+  React Desktop 2.0 v0.2.1 update changes only `.github` and `frontends` while
+  preserving all six `assets/tmwd_cdp_bridge` blob hashes, and retain the
+  manual-merge extension decision and historical byte lock without syncing.
+
+## 0.7.0 - 2026-08-30
+
+- Make managed browser work non-exclusive by default: create/reuse new
+  browser67 and JS-reverse pages in a same-Profile dedicated non-focused Agent
+  window with `background_preferred` focus policy and `active:false`; retain an
+  explicit current-window compatibility mode and intentional foreground mode.
+- Add bounded managed-tab focus leases for CAPTCHA, native input, and real
+  paste, with guarded restoration that yields to user tab/window changes,
+  external-app focus changes, missing targets, foreground drift, expiry, and
+  extension service-worker recovery. Serialize concurrent lease acquisition,
+  live-validate dedicated-tab window ownership, quarantine tabs the user moved
+  out of the Agent window without moving them back, and propagate structured
+  focus errors across extension, Hub, WebSocket, HTTP Link, and MCP wrappers.
+- Serialize extension tab-inventory updates to remove create/update snapshot
+  races, add deterministic focus/window safety contracts, and make real
+  browser and JS-reverse live gates use isolated background managed fixtures
+  while preserving pre-existing active tabs and finalizing all temporary pages.
+- Treat the effective transport as managed-lifecycle authority: when an
+  explicitly permitted `tmwd_mode:auto` call falls back to controlled CDP,
+  preserve `isolated_target` ownership across reuse, liveness, and finalization
+  instead of filtering the page as a dedicated-window tab or refusing cleanup.
+- Bind CAPTCHA/native physical proof artifacts to a normalized
+  `physical-input-v1` behavior-source digest, reject missing or source-mismatched
+  historical proofs even when their expiry remains valid, and expose the
+  comparison through audit, plan, status, template, and record workflows.
+- Review GenericAgent remote main through `7ad2162`, confirm that the intervening
+  docs-only PC device-link SOP does not touch `assets/tmwd_cdp_bridge`, record
+  the local window/focus overlay files in `UPSTREAM.review.json`, and retain the
+  existing manual-merge extension decision and historical byte lock.
+
+## 0.6.0 - 2026-08-27
+
+- Make Browser Instance selection and managed-tab finalization fail closed:
+  require an explicit instance when multiple Profiles are active, keep cleanup
+  on the resolved instance, require `confirm_all_browser_instances:true` for
+  deliberate cross-instance finalization, and reject contradictory selectors.
+- Expose the resolved Browser Instance scope in finalizer and delivery summaries;
+  strengthen Agent integration readiness with instance-routing anchors and live
+  extension version, build, and active-instance evidence; retain valid
+  per-instance extension identity when multiple matching bridges are connected.
+- Add executable multi-instance lifecycle, relay, live-doctor, and Agent-doctor
+  regressions, and synchronize the project guidance and active browser67 Skill
+  with the fail-closed routing contract.
+
+## 0.5.0 - 2026-08-27
+
+- Make the background-job contract wait for both execution terminal status and
+  job-owned Run terminalization, closing a coverage-visible persistence race;
+  preserve full error stacks from the browser MCP contract runner.
+- Make verification subprocess execution fail closed on Windows: resolve npm
+  through its lifecycle CLI or an explicit command shell, preserve positive
+  child exit codes, and map missing status, spawn errors, or signals to a
+  diagnostic non-zero result so GitHub Actions cannot report a false green.
+- Treat POSIX mode bits as unavailable on Windows when validating login profile
+  files, avoiding false insecure-permission warnings from synthetic `stat.mode`
+  values while retaining strict `0600` checks on POSIX hosts.
+- Normalize extension background source line endings before applying overlay
+  transforms so Windows CRLF checkouts produce the same generated bridge as LF
+  checkouts.
+- Make the upstream-audit final-newline fixture deterministic across platforms
+  by removing an entire CRLF terminator instead of leaving a bare carriage
+  return on Windows.
+- Pin upstream-audit fixture extension files to byte-preserving Git attributes
+  so review-ledger hashes survive Windows checkout conversion unchanged.
+- Separate extension content identity from build revision, revision source, and
+  dirty-checkout provenance so an otherwise identical canonical bundle does not
+  trigger setup or reload, while actual source-digest, version, protocol, or
+  non-canonical identity drift remains fail-closed. Keep browser transport
+  health target metadata private by default, and add an explicit
+  privacy-preserving summary mode for JS-reverse page health.
+- Add privacy-preserving global Run and Job inspection with status, schema-age,
+  ownership, and optional storage aggregates. Auto-terminalize implicitly owned
+  screenshot and background-Job Runs, preserve caller-owned Run lifecycle, and
+  expose whether a caller must finish the Run explicitly. Route extension
+  network observation commands through the native per-instance tab id while
+  retaining composite Browser Instance session identity, and return new popup
+  targets with both native tab ids and collision-free composite session keys.
+- Rebuild the GitHub README as a bounded public landing page, move runtime
+  operations and the complete verification inventory into focused docs, and add
+  an executable README structure/link/provenance contract to the check tier.
+- Restore JS reverse canonical-doc/Skill parity for explicit Browser Instance
+  routing and fail-closed ambiguous or unavailable instance behavior.
+- Review GenericAgent remote main through `f06d550`, decline its WebSocket-only
+  badge/status changes because browser67 owns a transport-aware managed overlay,
+  keep the extension byte lock unchanged, refresh the review ledger hashes, and
+  make the default extension check compare that reviewed snapshot instead of a
+  mutable sibling checkout. Lock verification now hashes its declared Git commit
+  instead of requiring the sibling checkout HEAD to equal the historical pin.
+- Add the upstream GenericAgent copyright and complete MIT license text to the
+  third-party notices, with a public acknowledgement and provenance links at the
+  end of the README.
+- Refresh transitive lockfile resolutions for `fast-uri`, `nanoid`, and
+  `postcss` to versions that clear the current npm security advisories.
+- Review the force-rewritten `zhaoxuya520/reverse-skill` reference through
+  `289c24b`, retain it as reference-only, and record that its new broad router,
+  evidence, and JS side-path material does not require browser67 promotion.
+- Retire the `tmwd-browser-mcp` Skill from canonical source, Pi package exports,
+  active-skill synchronization, installed-Agent doctor checks, and release
+  contracts. Keep only the old CLI/runtime-home/launchd identifiers required to
+  migrate or clean up existing installations.
+- Keep temporary TMWD viewport emulation, page verification, PNG capture, and
+  cleanup in one debugger batch so mobile screenshots cannot lose the
+  session-scoped device metrics between bridge requests.
+- Add canonical `agents/openai.yaml` metadata to the browser67 Skill, refresh
+  the JS reverse descriptor to invoke `$js-reverse`, and lock descriptor parity
+  and package inclusion with executable contracts.
+- Add a deterministic extension build identity containing the package and
+  manifest version, Git revision and dirty state, generated source digest, and
+  protocol revision; report it from both `ext_ready` and `tabs_update`.
+- Add Hub runtime-info probes over WebSocket and HTTP Link, retain the connected
+  extension identity, and require the live identity to match a fresh build from
+  the current source before the TMWD doctor reports ready.
+- Report active-home and project-local installed identity candidates in the
+  live doctor so a stale Chrome-loaded unpacked extension path is observable
+  instead of being mistaken for a successful setup or reload.
+- Run the browser live contract in a scoped browser67-owned managed fixture tab,
+  finalize it before reporting success, and include the contract in the
+  verification manifest's live and verify tiers without operating on user tabs.
+- Refresh the GenericAgent review ledger through `41e1fce` after manual commit
+  comparisons confirmed that `4086d5c..41e1fce` does not touch
+  `assets/tmwd_cdp_bridge`, retain the audited browser67 extension fork, make
+  `extension:check` distinguish reviewed divergence from strict byte alignment,
+  bind that decision to reviewed per-file SHA-256 values, and refuse extension
+  synchronization unless review policy or an explicit post-review force flag
+  allows mutation.
+
+## 0.4.0 - 2026-07-23
+
+- Add top-level confirmed page context to `browser67.tool-outcome.v3`, including
+  page title, redacted URL, tab id, and managed/adopted policy state.
+- Add `full`/`compact` output mode to all 17 `tmwd_browser` tools while keeping
+  content-scope parameters independent; compact repeated session/transport
+  diagnostics and add deterministic response-size/serialization benchmarks.
+- Make browser MCP composition own session, WebSocket, transport-health,
+  scheduler, snapshot, download, network-observation, run, job, and adoption
+  lifecycle state while retaining explicit compatibility defaults for direct
+  imports and legacy contracts.
+- Add a `node:test` core runtime suite with an enforced 85% line/function/
+  statement and 80% branch coverage floor for bounded stores, scheduling,
+  page serialization, and structured batch references.
+- Remove 21 root-level compatibility or catch-all modules and move active
+  imports to capability-local auth, wrapper, CDP, TMWD, session, tab-workspace,
+  schema, evidence, run, native, and runtime-error surfaces; reduce the root
+  module budget from 26 to 5. Remove the unused MCP error-result formatter
+  instead of retaining another compatibility facade.
+- Teach the native dependency doctor to unwrap `browser67.tool-outcome.v3`
+  before evaluating supported actions and installer prerequisites, avoiding a
+  false not-ready result when the native capability probe is actually ready.
+- Pin isolated remote-CDP live checks to the exact fixture target across scan
+  and execution, revalidate target ID/URL/title after startup-tab cleanup, and
+  fail explicitly on target or URL drift instead of accepting `about:blank`.
+- Add an installed Agent integration doctor that separates repository/release
+  readiness from machine-local MCP, extension, active-skill, AGENTS route, and
+  live-runtime readiness.
+- Document and align the external frontend `planned_browser_lifecycle` policy
+  and runtime receipt boundary for managed-tab creation, explicit user-tab
+  adoption, scoped finalization, and login-state fail-closed behavior.
+- Align project/global Agent guidance with v0.3 user-tab adoption and the
+  deterministic connected-extension reload path.
+- Add a real TMWD hot-path performance gate with cold and p50/p95/p99 budgets
+  for extension transport, managed execution, actionable snapshots, and
+  selector waits.
+- Skip the extension's 200 ms new-tab grace period when execution explicitly
+  disables monitoring, including read-only scan, extraction, and wait paths;
+  preserve that policy across both Hub WebSocket and HTTP Link relay paths.
+- Tighten the real TMWD performance guardrails so the previous fixed 200 ms
+  per-execution regression cannot silently return.
+- Add a deterministic connected-extension self-reload command so installed
+  bridge updates no longer depend on extension-page coordinate clicks.
+- Move `native-live-linux` out of the default self-use readiness/release proof
+  set while retaining the Linux desktop provider, gate, templates, record
+  validation, and explicit on-demand audit path.
+- Refresh the two moved JS reverse reference-only ledgers after manual diff
+  review; retain browser67 as canonical, record that v0.3 already covers the
+  applicable MCP runtime patterns, and promote no external code.
+
+## 0.3.0 - 2026-07-21
+
+- Replace browser tool dispatch with Ajv-validated registries and a shared
+  `browser67.tool-outcome.v3` envelope on both browser and JS reverse MCP
+  surfaces.
+- Add explicit user-tab adoption with expiring capability tokens, renewable
+  leases, release-by-default finalization, and separate two-stage adopted-tab
+  close confirmation.
+- Guard adopted-tab navigation with short-lived one-shot extension
+  authorizations; suspend on user/out-of-band navigation, connection changes,
+  lease changes, or missing managed policy until a fresh re-adoption.
+- Add `browser67.actionable-snapshot.v2`, document-scoped NodeRef operations,
+  sensitive-value redaction, cross-origin/closed-shadow limitation metadata,
+  bounded marker/snapshot policy, and `browser67.semantic-diff.v2`.
+- Add request-lifecycle `network_idle`, retain the old resource-entry heuristic
+  as `resource_quiet`, add filtered `dom_stable`, and make main-only scanning a
+  single page pass. Raw scripts and structured operations can attach the same
+  bounded request observation.
+- Isolate ordinary tabs from CSP, dialog, badge, marker, content-bridge, and
+  network-observer side effects; generate managed behavior through the
+  browser67 extension overlay.
+- Add TMWD push-session caching, last-known-good transport routing, bounded
+  endpoint backoff, and per-tab execution scheduling.
+- Replace linear run/job recovery with atomic run checkpoints, append-only
+  group indexes, bounded NDJSON tail reads, active-job indexes, cleanup-time
+  compaction, and an explicit runtime-store migration command.
+- Remove the `browser_execute_js.code` and `browser_job_ops.code` aliases;
+  bridge commands now require strict JSON and TMWD raw execution requires an
+  agent-created or explicitly adopted managed tab. Automatic transport routing
+  does not treat a CDP fallback as explicit remote-CDP authorization.
+- Add Biome, scoped JavaScript type checking, dependency-cycle/boundary gates,
+  hot-path performance baselines, and a single executable verification
+  manifest with fast/check/CI/live/platform/release tiers.
+
+- Refresh GenericAgent and JS reverse reference review ledgers against current upstream commits while preserving browser67 as the canonical implementation.
+- Add strict release-time upstream freshness checks and require non-empty Unreleased notes for commits made after the current package version anchor.
+- Add run-backed browser job checkpoints, restart recovery to explicit `interrupted` results, and accurate non-preemptive cancellation metadata.
+- Add additive capability flags for durable jobs, debugger availability, and CAPTCHA protocol-solver apply support.
+- Add tiered verification commands, a machine-readable verification manifest, and cross-platform deterministic GitHub CI with isolated remote-CDP coverage.
+- Add a separate c8 coverage-baseline CI job that uploads a machine-readable summary without imposing an invented initial threshold.
+- Add p95/p99 run-event latency observations to the deterministic performance smoke gate.
+- Add a default 500-run retention ceiling alongside age and total-size cleanup budgets.
+- Add dedicated Linux/Windows GUI native-live proof gates that verify native window geometry plus physical drag/click and automatically record sanitized target-OS proof JSON.
+- Harden Windows physical pointer execution with foreground HWND verification, `SendInput`, cursor-position readback, and bounded drag/click telemetry.
+- Resolve managed Chrome windows by the active tab title and verify the Win32 foreground HWND before Windows physical CAPTCHA input.
+
+## 0.2.0 - 2026-07-01
+
+- Promote `browser67` as the canonical project/package/CLI/runtime identity.
+- Keep `tmwd-browser-mcp` and `tmwd-browser` as explicit compatibility aliases.
+- Move the default runtime home to `~/.browser67` while preserving
+  `~/.tmwd-browser-mcp` as copy-only migration compatibility.
+- Add canonical MCP entrypoints under `src/mcp/browser/` and
+  `src/mcp/js-reverse/` while retaining legacy server shims.
+- Normalize setup registry output to canonical MCP server paths.
+- Add release-readiness governance for version metadata, changelog coverage,
+  clean/synced release checks, Pi package pin follow-up, and optional live proof
+  boundaries.
+- Keep GenericAgent/TMWebDriver provenance explicit through upstream lock and
+  review gates.

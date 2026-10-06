@@ -1,0 +1,58 @@
+{
+  "schema": "money-craft.research-lifecycle-boundaries.v1",
+  "date": "2026-09-17",
+  "scope": "Collection event-capacity preflight and lifecycle acceptance scope consolidation",
+  "source_hashes": {
+    "skills/money-craft/scripts/research_run.py": "b8c4a95758ac8d3f16172dc0f9431ccd90e4f970c401f24b2c326d51a18986ed",
+    "tests/test_research_run.py": "7656e1186987f1ef71074e1c77533dd69a40d08ac95278defe9d24f03f9d1c3e",
+    "skills/money-craft/references/company-research.md": "d826b069ffb8828afece1dd8d95c13723a68c9b0da054a3878b6d1f539a6fb4e",
+    "docs/research-lifecycle-boundaries.md": "49bcce3c0b20174e42094b5958500b2f4a5ba7786f3a8537ec513b9251294402"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Exhausted event capacity detected only after collection requests or resume summary rewrite.",
+    "after": "Check event capacity before capture directory mutation, provider calls and summary writes."
+  },
+  "validation": {
+    "research_tests": 47,
+    "full_tests": 310,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "red_regression": "Initial collection used 14 synthetic provider calls; resume changed summary despite known exhausted event capacity.",
+    "fixed_regression": "Both paths reject state_limit with zero provider calls and unchanged workspace bytes."
+  },
+  "scope_consolidation": {
+    "document": "docs/research-lifecycle-boundaries.md",
+    "overall_status": "PARTIAL",
+    "categories": [
+      "verified behavior",
+      "remaining acceptance obligations",
+      "unsupported recovery capabilities",
+      "environment/evidence limits"
+    ],
+    "no_scope_upgrade": true
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "runtime_verdict": "AGREEMENT_FOR_INCREMENT",
+    "research_tests": 47,
+    "source_hashes": {
+      "skills/money-craft/scripts/research_run.py": "b8c4a95758ac8d3f16172dc0f9431ccd90e4f970c401f24b2c326d51a18986ed",
+      "tests/test_research_run.py": "7656e1186987f1ef71074e1c77533dd69a40d08ac95278defe9d24f03f9d1c3e"
+    },
+    "document_reviewed_sha256": "84d5555054b9815748a829e951902708e412fc2f402472cd7ba7c96e4befe48e",
+    "document_findings_resolution": "Parent narrowed busy to lock-acquisition conflict, hard-link publication to atomic_bytes(replace=False), and created this missing receipt. Final doc hash recorded above; these prose corrections parent-verified."
+  },
+  "installation": {
+    "parity": "PASS",
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T065630367364Z"
+  },
+  "limits": [
+    "No whole-file closure or Skill/app readiness claim; remaining input/I/O branches and other modules await acceptance.",
+    "No universal journal, rollback, normalized reconstruction or automatic cleanup.",
+    "Windows, network filesystems and power-loss durability unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No live provider, app, commit, push or release."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "whoami.acceptance-run.v1",
+  "suiteId": "semantic-forward-013",
+  "skill": {
+    "path": "SKILL.snapshot.md",
+    "sha256": "bdb0a59d74d74945a439bb284ce679b460e3b599e8e447b936ca284cb4ddb4f5",
+    "bytes": 7675
+  },
+  "task": {
+    "path": "task.md",
+    "sha256": "8b45c6334e02517edad5f35387162d90357942017e0a0ef4cc5635fe37d3de5d",
+    "bytes": 1950
+  },
+  "rubric": {
+    "path": "rubric.md",
+    "sha256": "1223ea2cd66efa1af78365ef72839fd227a71a912147b29c7c349f25e63370ba",
+    "bytes": 2209
+  },
+  "cases": [
+    {
+      "id": "vague-time-must-stop",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-stop.md",
+        "sha256": "ea7bdd6aee3ca3384152039612285421383a6e7bf6cb2e9f59fd4a03e2e43ed5",
+        "bytes": 617
+      }
+    },
+    {
+      "id": "explicit-2027-year-keeps-career-unresolved",
+      "input": {
+        "path": "input.json",
+        "sha256": "ec7ab3b93252faa9cfae431d1161cc7030e23430a6e69aa3c0a060f658349fbc",
+        "bytes": 272
+      },
+      "context": {
+        "path": "context.json",
+        "sha256": "5c6a9bf47472a1b285d6ae821926372901922cd49b6e3467d0a9dffdc66d6dbf",
+        "bytes": 57967
+      },
+      "response": {
+        "path": "response-annual.md",
+        "sha256": "06b4f0fb2a2be86a44f123aea717257168519941ad0f173b23e0f5c243d5545c",
+        "bytes": 1046
+      },
+      "report": {
+        "path": "report.json",
+        "sha256": "77b5694169e83f6f76ed7bd63904d7a07c9ff09c1c4ad3d2ff39a49d06575458",
+        "bytes": 15310
+      },
+      "responseClaims": {
+        "path": "response-claims.json",
+        "sha256": "986d79392d283507bd3b30ca2af86bffc2839f34e1aaa8a452c38a1c3fa61e7f",
+        "bytes": 2490
+      }
+    }
+  ],
+  "runtime": {
+    "provider": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "modelVersion": "UNVERIFIED",
+    "reasoningEffort": "UNVERIFIED",
+    "temperature": null,
+    "seed": null,
+    "receipt": null
+  },
+  "review": {
+    "status": "PASS",
+    "factErrors": 0,
+    "premiseOmissions": 0,
+    "candidateMixing": 0,
+    "unsupportedTimingClaims": 0,
+    "unsafeClaims": 0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "creative-craft.surface.v1",
+  "surface_id": "openai.image_api",
+  "provider": "OpenAI",
+  "label": "OpenAI Image API",
+  "available": true,
+  "verified_at": "2026-08-04",
+  "provider_profiles": ["openai.gpt-image-2.2026-04-21"],
+  "modes": ["single_turn", "generate", "edit"],
+  "notes": ["Creative Craft compiles an execution pack but includes no network adapter."]
+}

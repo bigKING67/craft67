@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "etf-portfolio-real-facts",
+      "status": "READY_HISTORICAL",
+      "prompt": "请审计一个用于验收的假设组合：IVV 50%、ITOT 30%、AGG 20%，均为美国NYSE Arca上市的iShares ETF、美元交易，基础币种人民币，名义本金100万元人民币。目标是10年以上长期积累，组合外另有6个月人民币生活费储备，未来三年无计划提款，可接受损失阈值20%，不加杠杆、不做账户交易。以上是测试设定，绝非用户真实持仓或风险画像。根据提供的官方基金资料分析：基金与基准身份、费用、持仓重叠和集中度、币种及利率风险、跟踪质量，说明这个组合能否支持上述约束，并给研究型再平衡触发条件。另做两个假设压力情景：IVV和ITOT均跌35%、AGG跌8%，情景A汇率不变，情景B在相同资产冲击下USD/CNY（每1美元对应的人民币数）下降10%。明确结果与概率或最大回撤保证的区别。仅用指定资料；资料不足则限定能算和不能算的内容，不要虚构相关性、精确最优权重或税务结论。研究日2026-09-19，保留资料各自日期和可重算计算回执。只交付紧凑Markdown审计，不创建档案或执行再平衡。",
+      "facts": "三份原文件为官方基金factsheet，具体持仓、统计、日期、费用及口径以原文为准。可读取同目录对应TXT辅助定位。上述读取限制针对研究事实资料；允许且应遵守宿主治理、读取必要Skill引用，并执行其要求的只读路由工具。除此之外不得读取其他研究材料、先前研究答案或验收标准。不提供当前完整持仓、价格与汇率序列、税务居住身份、账户条件或交易成本。上述压力冲击为纯假设，不是预测或实际历史。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/research/20260919-etf-portfolio/sources/IVV.pdf",
+          "sha256": "d3b9d8ac355f1dcfd7a436cd576876b70ba5fd1851661655d80c8805442373b0",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/ivv-ishares-core-s-p-500-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/research/20260919-etf-portfolio/sources/ITOT.pdf",
+          "sha256": "a20186a982cb4d0410d02f49a8c87eddc81ceb93d07e88eeb8ff06c120d08d49",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/itot-ishares-core-s-p-total-u-s-stock-market-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S03",
+          "path": "local/research/20260919-etf-portfolio/sources/AGG.pdf",
+          "sha256": "cfcff83b3eaef08f65f21a31e61d646d24e9f9e25e739e0b7ad1d33fa7c77f01",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/agg-ishares-core-u-s-aggregate-bond-etf-fund-fact-sheet-en-us.pdf"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "自然触发安装Money Craft及global-investing与证据指引；组合路由READY，声明METHOD_MANUAL，不冒充已运行优化器或公司研究CLI",
+        "区分真实基金与虚构组合，准确标识三基金/基准/币种、2026-06-30资料与2026-09-19研究日；同管理人不算独立多源",
+        "按权重计算组合费用，费率与本金费用单位正确，不把管理费叠加在总费用率上；交易税费未包含，NAV历史收益不重复扣费",
+        "识别IVV/ITOT大盘重叠；以有限持仓量化已知贡献或重叠下界，不将前十大推为完整重叠；Alphabet两类股须按同一发行人理解",
+        "区分交易/基础币种与底层风险，按(1+资产收益)*(1+汇率收益)-1计算人民币压力损失，不直接相加",
+        "80/20资产配置与情景A -29.6%、B -36.64%对应；不能称20%损失阈值有保证，不能把压力结果当实际最大回撤或概率",
+        "AGG不是现金或保本；久期利率敏感性有单位和近似边界，SEC收益率不冒充保证回报；基金/指数收益差不冒充tracking error或相关性",
+        "再平衡建议联系风险约束与实际证据；缺价格序列/完整持仓/税务身份时不给伪精确最优权重、确定税务结论或交易动作"
+      ]
+    }
+  ]
+}

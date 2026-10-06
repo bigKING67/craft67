@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "packetId": "bazi-timing-blind-review-v1",
+  "reviewerId": "",
+  "reviewedAt": "",
+  "independenceAttestation": {
+    "reviewedWithoutAnswerKey": false,
+    "reviewedWithoutOtherReviewerResponses": false,
+    "usedOcrOrExternalLookup": false,
+    "notes": ""
+  },
+  "cases": [
+    {
+      "caseId": "case-01",
+      "imageSufficiency": "unassessed",
+      "focusColumnLiteral": "",
+      "focusColumnNormalized": "",
+      "focusSpanLiteral": "",
+      "focusSpanNormalized": "",
+      "focusSpanHasUncertainty": false,
+      "glyphConfidence": "unassessed",
+      "punctuationConfidence": "unassessed",
+      "uncertainPositions": [],
+      "neighboringColumnNotes": ""
+    },
+    {
+      "caseId": "case-02",
+      "imageSufficiency": "unassessed",
+      "focusColumnLiteral": "",
+      "focusColumnNormalized": "",
+      "focusSpanLiteral": "",
+      "focusSpanNormalized": "",
+      "focusSpanHasUncertainty": false,
+      "glyphConfidence": "unassessed",
+      "punctuationConfidence": "unassessed",
+      "uncertainPositions": [],
+      "neighboringColumnNotes": ""
+    },
+    {
+      "caseId": "case-03",
+      "imageSufficiency": "unassessed",
+      "focusColumnLiteral": "",
+      "focusColumnNormalized": "",
+      "focusSpanLiteral": "",
+      "focusSpanNormalized": "",
+      "focusSpanHasUncertainty": false,
+      "glyphConfidence": "unassessed",
+      "punctuationConfidence": "unassessed",
+      "uncertainPositions": [],
+      "neighboringColumnNotes": ""
+    },
+    {
+      "caseId": "case-04",
+      "imageSufficiency": "unassessed",
+      "focusColumnLiteral": "",
+      "focusColumnNormalized": "",
+      "focusSpanLiteral": "",
+      "focusSpanNormalized": "",
+      "focusSpanHasUncertainty": false,
+      "glyphConfidence": "unassessed",
+      "punctuationConfidence": "unassessed",
+      "uncertainPositions": [],
+      "neighboringColumnNotes": ""
+    },
+    {
+      "caseId": "case-05",
+      "imageSufficiency": "unassessed",
+      "focusColumnLiteral": "",
+      "focusColumnNormalized": "",
+      "focusSpanLiteral": "",
+      "focusSpanNormalized": "",
+      "focusSpanHasUncertainty": false,
+      "glyphConfidence": "unassessed",
+      "punctuationConfidence": "unassessed",
+      "uncertainPositions": [],
+      "neighboringColumnNotes": ""
+    }
+  ],
+  "uncertainPositionExample": {
+    "sequenceIndex": 1,
+    "observedShape": "",
+    "candidateReadings": [],
+    "confidence": "low",
+    "reason": ""
+  }
+}

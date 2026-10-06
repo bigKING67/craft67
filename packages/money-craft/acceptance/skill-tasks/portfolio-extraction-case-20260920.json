@@ -1,0 +1,46 @@
+{
+  "schema": "money-craft.skill-task-cases.v1",
+  "cases": [
+    {
+      "id": "portfolio-raw-material-extraction",
+      "status": "READY_HISTORICAL",
+      "prompt": "请从提供的三份基金PDF自行整理一个可复用的组合审计输入，并实际调用此Skill现有组合核心。没有预填JSON。测试组合：IVV45%、ITOT25%、AGG30%，均NYSE Arca上市、美元交易，基础币种人民币，本金80万元；10年以上积累，组合外6个月生活费，三年不提款；情景损失上限18%、发行人权重上限5%，不加杠杆。全部是虚构验收设定。研究日2026-09-20。提取三基金总费用率和资料日期，以及IVV/ITOT披露的全部前十大证券及权重；证券类别要区分，发行人要正确合并。AGG只用于基金层费用和压力计算，本次不转录其无法唯一识别的债券明细，明确未知。情景A：IVV/ITOT各跌35%、AGG跌8%、汇率不变；情景B相同资产冲击且每美元对应人民币金额下降10%。自行读取输入schema及核心合同，将原文百分比正确转成比例，使用文件摘要和页码定位；不要把不存在的信息补齐。给出紧凑中文审计、完整机器输入与计算回执，区分提取证据、计算有效和风险满足。",
+      "facts": "只提供三份历史PDF原件及其元数据；可以用pdftotext输出到stdout自行提取，不能读取旁边TXT、以前JSON、答案或验收标准。允许读取必要Skill/schema/实现和宿主治理、执行只读路由。宿主为只读环境：可在Python进程内构造payload，调用源码portfolio_audit.review(payload, Path(...))并将完整JSON结果打印到stdout（输出包含input），无需写文件；父级验收将单独保存提取输入并用CLI重放。上述是执行方式约束，不提供任何费用、持仓数字或预期结果。不联网，不执行交易或修改项目/全局配置。",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "path": "local/research/20260919-etf-portfolio/sources/IVV.pdf",
+          "sha256": "d3b9d8ac355f1dcfd7a436cd576876b70ba5fd1851661655d80c8805442373b0",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/ivv-ishares-core-s-p-500-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S02",
+          "path": "local/research/20260919-etf-portfolio/sources/ITOT.pdf",
+          "sha256": "a20186a982cb4d0410d02f49a8c87eddc81ceb93d07e88eeb8ff06c120d08d49",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/itot-ishares-core-s-p-total-u-s-stock-market-etf-fund-fact-sheet-en-us.pdf"
+        },
+        {
+          "source_id": "S03",
+          "path": "local/research/20260919-etf-portfolio/sources/AGG.pdf",
+          "sha256": "cfcff83b3eaef08f65f21a31e61d646d24e9f9e25e739e0b7ad1d33fa7c77f01",
+          "url": "https://www.ishares.com/us/literature/fact-sheet/agg-ishares-core-u-s-aggregate-bond-etf-fund-fact-sheet-en-us.pdf"
+        }
+      ],
+      "machine_contract": {
+        "route_required": true,
+        "expected_route_state": "READY",
+        "calculations_required": true
+      },
+      "criteria": [
+        "只以原始PDF提取研究事实，无预填JSON或旧答案；读取源码Skill、组合引用/schema且路由READY",
+        "输出完整schema输入并实际执行共享组合核心；日期、费率、20项股票持仓转录与原文一致，数值为Decimal字符串",
+        "来源基金身份、SHA、页码定位准确；原文名称/类别到security及issuer映射有证据，Alphabet类别分开后聚合",
+        "按45/25/30与80万元计算费用、覆盖和重叠；AGG未知不等于零风险",
+        "集中度判定依据新权重与5%阈值；部分数据低于阈值不判合规",
+        "两情景正确组合资产与FX冲击；18%限制突破不等于输入失败，也不冒充预测或最大回撤",
+        "摘要完整性不认证原文真实性或独立性；历史快照、虚构约束及人工核验边界明确",
+        "最终结果可以从宿主提取的input经独立CLI重放，且与独立基准吻合"
+      ]
+    }
+  ]
+}

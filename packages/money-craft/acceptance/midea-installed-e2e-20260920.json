@@ -1,0 +1,140 @@
+{
+  "schema": "money-craft.installed-company-e2e-review.v1",
+  "checked_at": "2026-09-20T10:21:29.070058+00:00",
+  "status": "FAIL_E2E_ADDITIONAL_SOURCE_AND_RESEARCH_GATES",
+  "installed_public_source_fix": "PASS_BOUNDED_ACTUAL_HOST",
+  "same_frozen_prompt": true,
+  "same_eight_criteria": true,
+  "elapsed_seconds": 865.048,
+  "timed_out": false,
+  "exit_code": 0,
+  "parent_research_intervention": false,
+  "installed_unchanged_during_and_after_run": true,
+  "source_candidate_installed_files": 75,
+  "criteria": [
+    {
+      "id": "E01",
+      "status": "PASS",
+      "reason": "Installed Skill discovery and required route observed."
+    },
+    {
+      "id": "E02",
+      "status": "PASS_BOUNDED_WITH_TIME_LIMIT",
+      "reason": "10 response objects locally verified; S32 exact 15:00 time is inferred and explicitly not verified. Issuer/source independence gaps remain."
+    },
+    {
+      "id": "E03",
+      "status": "PARTIAL",
+      "reason": "50 arithmetic receipts pass. Reconciliation fails on unregistered S23 and unresolved presentation-to-economics item."
+    },
+    {
+      "id": "E04",
+      "status": "PASS_BOUNDED",
+      "reason": "Parent prose review finds qualified business/cash/FX judgments, counterevidence and remaining data gaps; not independent investment peer review."
+    },
+    {
+      "id": "E05",
+      "status": "PASS_BOUNDED",
+      "reason": "A/H equivalent value and actual market cap distinguished; price conflicts, share-date gaps and uncalibrated multiples kept conditional."
+    },
+    {
+      "id": "E06",
+      "status": "FAIL",
+      "reason": "No completion receipt; source, economic interpretation and document contracts fail."
+    },
+    {
+      "id": "E07",
+      "status": "BLOCKED",
+      "reason": "No Kami output, formal archive, guarded verifier or seal."
+    },
+    {
+      "id": "E08",
+      "status": "PARTIAL",
+      "reason": "Parent ledger/artifact verification and ordinary local readback pass with failed run state; no sealed revision to verify."
+    }
+  ],
+  "replay": {
+    "financial_valid": true,
+    "financial_checks": 50,
+    "public_results": [
+      {
+        "id": "S31",
+        "status": "imported",
+        "required": false,
+        "sha256": "2ae890ea091900d35362806e9a13e286e5ca8b33f095397b598524597a9ae425"
+      },
+      {
+        "id": "S32",
+        "status": "imported",
+        "required": false,
+        "sha256": "bd7efbb908bc9bcf10618ed871e4d81ca6195eb4a76747344581178749854bff"
+      }
+    ],
+    "source_objects": 10,
+    "ledger_ok": true,
+    "ledger_status": "failed",
+    "core_complete": false
+  },
+  "blockers": [
+    {
+      "id": "ADDITIONAL_OFFICIAL_SOURCE_ADMISSION",
+      "kind": "capability-gap",
+      "evidence": "S23 quarterly filing captured but not declared in immutable plan/case; import rejected.",
+      "next": "Bounded typed additional source declarations at plan/init, preserving mandatory filings and rejecting edits to existing plans."
+    },
+    {
+      "id": "UNRESOLVED_ECONOMIC_INTERPRETATION",
+      "kind": "research-evidence-gap",
+      "evidence": [
+        "checks[2].source_ids contains source IDs outside available research evidence: S23",
+        "presentation_to_economics.items[0].evidence_state must be resolved before finalization"
+      ],
+      "next": "Verify FX/financial-instrument economic bridge or retain explicitly blocked normalization; do not relabel UNVERIFIED to pass."
+    },
+    {
+      "id": "REPORT_SECTION_CONTRACT",
+      "kind": "host-output-contract",
+      "evidence": [
+        "missing or empty required section: 重大披露与期后事项",
+        "S23 is not a passed or imported research evidence source",
+        "S23 public source URL does not match its imported evidence URL"
+      ],
+      "next": "Use required section heading exactly; retain substantive content."
+    },
+    {
+      "id": "THESIS_TABLE_CONTRACT",
+      "kind": "host-output-contract",
+      "evidence": [
+        "证伪条件 table columns are invalid",
+        "S23 is not a passed or imported research evidence source",
+        "S23 public source URL does not match its imported evidence URL"
+      ],
+      "next": "Use declared falsification-table columns with evidence, without dropping conditions."
+    }
+  ],
+  "next_scope": "Address declaration gap and output contracts separately from substantive missing research evidence; no claim that interface changes alone guarantee full E2E.",
+  "formal_archive_complete": false,
+  "release": false,
+  "application_started": false,
+  "reviewer": "parent manual bounded review plus deterministic replay, not independent investment peer review",
+  "artifact_hashes": {
+    "local/skill-evals/20260920-midea-e2e-public-source/host/host.json": "61335d1a05678ccf1fac6b87b0d9e379b7bdde2a372b72ee7c7a2be89a5bbd5e",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/events.jsonl": "7c31c7680da0c01157c87af3b6b4e0e45f6227069561832922857c4865d130ed",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/prompt.txt": "3c27aae94d18b73f7eb4c246f07c1f4ce1c3b5e88f4558835cd52afc8c65cf4d",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/answer.md": "f9835e2207b77ce08be59be58b00fe0e9c1de11290b95412edf5125e27fd47f7",
+    "local/skill-evals/20260920-midea-e2e-public-source/rerun-contract.json": "a61690f362dca9dcc93da941c34b2eb04fb7f7e3841dd68a39af397fd0e3e57f",
+    "local/skill-evals/20260920-midea-e2e-public-source/frozen-case-original.json": "6c66ba42759c964809dd17c71c96d95fe4d1e43465baa1b562d172c3f9cc6f72",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/report.md": "3dc1a3de7bdd878e4ae61b0fdfe287f78d889c1112dba7d7d56ac331c2652679",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/thesis.md": "77002cbcc5aa8b27455ccf04c9ca7791c5fd19ac57dbf05227d4996f00e4a841",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/logs/core-finalize-first.json": "db53a26e5f54930c1a4b60a4c0233265c2d27a311094d60ef10aa560d7faa02e",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/logs/import-S23.json": "18402f8f1c5706a00b4cf9e8cea347bf3d6573cdf25e15d18615748d85815f97",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/logs/import-S31.json": "eafd8c554cf502bb7bc68e6658d1ad3eabb4358bb27b1a53ee1f8c48e5677718",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/logs/import-S32.json": "41b623b1fc1c5bb588af4f97631040bf9a780c82580ab5bb17adaa51bb92bc38",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/discovery-limitations.json": "650c152af3b4f5a88db1ef2485d0851aef4c8429b464259151db26f4aeb97848",
+    "local/skill-evals/20260920-midea-e2e-public-source/host/workspace/archive/000333-美的集团股份有限公司/2026-09-20/.research/9942c80089b44f4c9d4ff66efb1dac77/financial-reconciliation.json": "e8bdf12bb04429cb9fd1442c3fc36a822be06fa393dfea00dba4eeadf8ca36be",
+    "local/skill-evals/20260920-midea-e2e-public-source/parent-review/core-status.json": "bd6b473ea402e49c50c43d413af7f71b6c1e1f854e88b0d30da4d3196ec542f3",
+    "local/skill-evals/20260920-midea-e2e-public-source/parent-review/financial-audit.json": "51cbf01df74cf5165b344353acd5a3b0a4811879a4c43b6c4ed87f6a4677b906",
+    "local/skill-evals/20260920-midea-e2e-public-source/parent-review/ledger-verify.json": "36226351b86b072f07f75e9348773c170acebc9c4ccceec96bd24b22bd9ef194",
+    "local/skill-evals/20260920-midea-e2e-public-source/parent-review/local-readback.json": "383a8bf339be97da2c413914dbd02b5dfd7b8d18ebd44d16c04d78d86710729a"
+  }
+}

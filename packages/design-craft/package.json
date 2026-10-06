@@ -1,0 +1,39 @@
+{
+  "name": "design-craft",
+  "version": "0.7.0",
+  "description": "Web-first agent skill package for product UI, UX, visual taste, motion, and design engineering, with optional iOS, Android, and adaptive guidance.",
+  "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "agent-skill",
+    "design",
+    "frontend",
+    "ui",
+    "ux",
+    "motion",
+    "ios",
+    "android",
+    "cross-platform"
+  ],
+  "homepage": "https://github.com/bigKING67/design-craft#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigKING67/design-craft.git"
+  },
+  "files": [
+    "skills/design-craft",
+    "LICENSE",
+    "LICENSES",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "VERSION"
+  ],
+  "pi": {
+    "skills": [
+      "skills/design-craft"
+    ]
+  },
+  "scripts": {
+    "validate": "bash scripts/validate.sh"
+  }
+}

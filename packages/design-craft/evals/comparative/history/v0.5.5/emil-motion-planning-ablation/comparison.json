@@ -1,0 +1,120 @@
+{
+  "blind_map_sha256": "517437b58bb772fa23b8c0ea87aff1f03049b8490c60913dbc0149e860011a9a",
+  "blind_packet_sha256": "78ddfb7a43ac5c66513679448a27ae131ddf184f9466ee3a3a0b0d18e631066a",
+  "case_id": "emil-motion-planning-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "codex",
+    "model": "gpt-5.6-sol",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "76bd5be04a32056341124e9cc8326c8359671b2612f6d8393724faed0b73dcb4",
+    "reasoning": "max",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "4b4fd4afedab9c33df6601f9baa5616feb6753f3e521b0795a236cba881c6061",
+    "runner_os": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "version": "codex-cli 0.145.0"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "b90b0fc1ec877d783cbffba9848944df30f73b9a7270c094a1cab2d7c37d9e71",
+  "judgment_sha256": "8ae46e2c51ac75f351e061ecdc91cd95842302cfcc92524ac80452ff5e5aa4f1",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "rationale": "A 明显最接近满分标准：它不仅罗列静态问题，还把产品频率、因果反馈、输入连续性、动画属性成本、锚点、可中断性、Reduced Motion 和性能验证组织成三个可执行且有明确停止条件的计划。B 的 CSS 方案很具体，但未知动画 API 上的 spring 示例与时长单位不一致，并对直接 transform 的优越性推断过多。C 较稳健，却把体系一致性放在直接操作影响之前，并缺少队列交互所需的核心机械细节。因此 A 在证据纪律、技术准确性、自包含程度和可验证性上均占优。",
+  "recorded_at": "2026-07-25T05:51:06Z",
+  "results": {
+    "baseline": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility_performance": 8,
+        "evidence_recon": 14,
+        "plan_self_containment": 17,
+        "prioritization": 7,
+        "project_conventions": 8,
+        "purpose_frequency": 9,
+        "technical_accuracy": 9,
+        "verification_quality": 8
+      },
+      "score": 80,
+      "summary": "整体诚实、结构完整，能识别 `transition: all`、`top` 动画、硬编码时长和缺失的 Reduced Motion 分支，也为每项计划提供边界、检查和漂移停止条件。弱点是把全局一致性列为 P0 并优先于高频命令面板，用户影响和实现成本排序不够锋利；新增 `--duration-reduced` 及重复的 JS 毫秒常量形成额外同步面；保留居中 transform origin，未充分处理锚点因果关系；队列计划基本只是缩短固定 tween，缺少释放速度、从当前视觉值中断重定向、本地坐标和抓取偏移等关键机制。命令面板新样式的确切落盘文件也未明确。"
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility_performance": 10,
+        "evidence_recon": 15,
+        "plan_self_containment": 19,
+        "prioritization": 9,
+        "project_conventions": 10,
+        "purpose_frequency": 10,
+        "technical_accuracy": 15,
+        "verification_quality": 10
+      },
+      "score": 98,
+      "summary": "三份中最完整、最审慎。它清楚区分静态证据与未验证运行态，准确映射全部运动入口，并持续复用现有时长、缓动和按钮 Reduced Motion 先例。尤其是队列计划同时处理坐标空间、抓取偏移、pointer capture、速度采样、当前视觉值、可中断 settle、transform 归属及动画 API 未知性，技术覆盖最强。小幅扣分在于优先级表没有直接列出置信度和成本，且命令面板的状态样式最终落在哪个确切 CSS 文件仍留有条件分支，略弱于完全可直接照做的补丁级计划。"
+    },
+    "emil": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility_performance": 8,
+        "evidence_recon": 14,
+        "plan_self_containment": 18,
+        "prioritization": 9,
+        "project_conventions": 9,
+        "purpose_frequency": 9,
+        "technical_accuracy": 10,
+        "verification_quality": 9
+      },
+      "score": 86,
+      "summary": "Recon、优先级和计划结构都很强，命令面板的最小删除方案以及 popover/toast 的目标代码尤其具体，也明确保留焦点、语义和现有 token。主要失分来自队列方案：把父级 CSS 变量替换为直接写 transform 并不天然更优，可能覆盖已有 transform；计划没有充分处理本地坐标、抓取偏移、pointer capture 和 transform composition；示例还在同一未知 API 中混用 `duration: 0.5` 与 `duration: 80`，存在明显单位风险。Popover 的 Reduced Motion 只缩短时长，没有明确消除或压缩潜在空间位移。"
+    }
+  },
+  "schema": "design-craft.comparative-result.v3",
+  "scorecard_json_sha256": "a06d975f9da69fa9bea87362ee0e4f90bdc790e552561e6b6ac96f650bb53a88",
+  "scorecard_sha256": "ea04fd4fce3cbad1a31129f3b8ea45be2bca0ec334b07598a3d5223e41260d48",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "485dfcb152f2726e548985a99126ab3c6e414ba3aa9ef4711d5d46ab5017a1e7",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.baseline.md",
+      "output_sha256": "4b2c6a05a94bd8a97ee2dd1fdd965df0932bf87c4b09b5ab8945844a22142792",
+      "run_path": "run.baseline.json",
+      "run_sha256": "0c4bf55dd05459b643ee348626d71f27bc786f42320ac72fdca01758f8a66888",
+      "skill_trees": {},
+      "thinking": "high"
+    },
+    "design-craft": {
+      "contract_sha256": "485dfcb152f2726e548985a99126ab3c6e414ba3aa9ef4711d5d46ab5017a1e7",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "5cf9f4eac6d1a6a3b1390ce35a31ba3e04057324cc464c8525c3826237114ecf",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "4172808888133cd25a29bb6fbc755d8875b3c7c2fb52cd69749cb32f2099e6fc",
+      "skill_trees": {
+        "skills/design-craft": "7a171bf963a74139d7088c288a527bf2304765a5359597016dcd07eaf404c92b"
+      },
+      "thinking": "high"
+    },
+    "emil": {
+      "contract_sha256": "485dfcb152f2726e548985a99126ab3c6e414ba3aa9ef4711d5d46ab5017a1e7",
+      "host": "pi",
+      "host_version": "0.80.6",
+      "model": "codex/gpt-5.5",
+      "output_path": "output.emil.md",
+      "output_sha256": "a8022edbb96c0c677ae7e30cc1c6825dbd3eccd1052e844b6fd27ff6618dab64",
+      "run_path": "run.emil.json",
+      "run_sha256": "49da457fad16576e9117763ea22cca5690f7c78e2ff349af1adc31acbac7b358",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "high"
+    }
+  },
+  "winner": "design-craft"
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "money-craft.segment-rule-installed-review.v1",
+  "status": "PASS_BOUNDED_HOST_AND_INSTALL",
+  "reviewer": "parent",
+  "independent_semantic_review": false,
+  "synthetic_scenarios": 2,
+  "host_runs": 1,
+  "elapsed_seconds": 229.658,
+  "route_verified": true,
+  "financial_checks": 12,
+  "criteria": [
+    {
+      "criterion": "甲不将10/100=10%认定ROIC，指出分部投入资本及税后利润缺口",
+      "verdict": "PASS_BOUNDED"
+    },
+    {
+      "criterion": "甲仍能计算利润率10%至12%、增量利润/增量收入20%，不冒充投资回报",
+      "verdict": "PASS_BOUNDED"
+    },
+    {
+      "criterion": "乙计算税后经营利润30，ROIC20%，不因甲缺失而拒算乙",
+      "verdict": "PASS_BOUNDED"
+    },
+    {
+      "criterion": "不将乙20%等同安全边际、超过资本成本或未来稳定回报；保留合成限制",
+      "verdict": "PASS_BOUNDED"
+    }
+  ],
+  "explicit_source_host": true,
+  "implicit_discovery_tested": false,
+  "installed_runtime_after_copy_tested": false,
+  "source_installed_files_equal": 75,
+  "source_skill_sha256": "9502a9502ae319f96ebf6f383d59472ee361039372e6f88751c02d0bc1a75eec",
+  "installed_changes": [
+    "references/valuation-and-thesis.md",
+    "references/earnings-review.md",
+    "INSTALL_PROVENANCE.json"
+  ],
+  "initial_parity_assertion": "failed on install-only provenance metadata; all 75 content files matched; rechecked with installer canonical exclusion",
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260921-segment-roic/answer.md",
+      "sha256": "0c61bb00f13a7f7e609c154e25c35dad485e5cea69018c116da8a313020b6d10"
+    },
+    {
+      "path": "local/skill-evals/20260921-segment-roic/host.json",
+      "sha256": "dda39794ffbb750577aae845c4e51fa6320ce5a375d25751c7a3b6a7bb66c543"
+    },
+    {
+      "path": "local/skill-evals/20260921-segment-roic/machine-audit.json",
+      "sha256": "c463499fe8c8041002f79f3c3f8010ec9dbb944820499e83032040ecf8776b01"
+    },
+    {
+      "path": "acceptance/skill-tasks/segment-roic-20260921.json",
+      "sha256": "47d315b9f0b2bf039c3845fcc5001b07fde6f59597a2b95f7b780e8ae6d745c4"
+    }
+  ]
+}

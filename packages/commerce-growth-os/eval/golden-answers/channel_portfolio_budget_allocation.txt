@@ -1,0 +1,17 @@
+Decision: do not average-split budget by platform. Split by channel job and budget bucket.
+
+Confirmed facts: Douyin, Tmall, Xiaohongshu, JD, and private domain are running at the same time.
+
+Assumptions: need AOV, gross margin, SKU list, channel net profit, ROI, search volume, refund, review base, and repurchase.
+
+Channel jobs: Xiaohongshu = asset/search trust; Douyin = content test and self-live conversion; Tmall = flagship search/review landing; JD = trust/logistics/service search; private domain = retention and repurchase.
+
+Budget buckets: asset budget for Xiaohongshu/content proof; test budget for new SKU/channel experiments; scale budget for proven Douyin/Tmall/JD traffic; search budget for Tmall/JD brand/category words; retention budget for private domain; clearance budget only for isolated inventory.
+
+Economics: every scale budget needs channel net profit, break-even ROI, refund loss, and price conflict check.
+
+Risk: price conflict, weak search landing, duplicated SKU benefits, refund/fulfillment pressure, and treating private domain as new traffic.
+
+Stop rule: stop channels with below-break-even marginal ROI, poor payment CVR, or price complaints. Scale rule: add budget only where asset quality, conversion, channel net profit, and repurchase improve.
+
+Mechanism: allocate each budget bucket to its declared channel job, then release scale budget only after the economics gate passes. Owner: commercial lead, with one accountable channel owner per bucket. Success signal: channel net profit and the channel-job metric both clear their thresholds. Next review: weekly during reallocation and monthly for portfolio decisions.

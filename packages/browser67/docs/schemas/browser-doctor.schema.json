@@ -1,0 +1,492 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://browser67.local/schemas/browser-doctor.schema.json",
+  "title": "browser67 doctor JSON output",
+  "description": "Machine-readable output contract for `browser67 doctor --json`.",
+  "type": "object",
+  "required": [
+    "ok",
+    "stage",
+    "doctor",
+    "ensure_tmwd_hub",
+    "session_wait",
+    "event_log"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "ok": {
+      "type": "boolean"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "doctor_only",
+        "doctor_blocked",
+        "live_failed",
+        "live_passed"
+      ]
+    },
+    "doctor": {
+      "type": "object",
+      "required": [
+        "ok",
+        "mode",
+        "transport",
+        "allow_empty_tabs",
+        "readiness",
+        "checks",
+        "suggestions"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "tmwd",
+            "remote_cdp",
+            "cdp"
+          ]
+        },
+        "transport": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "ws",
+            "link"
+          ]
+        },
+        "allow_empty_tabs": {
+          "type": "boolean"
+        },
+        "capabilities": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "schema_revision": {
+              "type": "integer"
+            },
+            "server_revision": {
+              "type": "string"
+            },
+            "supports_select_or_create": {
+              "type": "boolean"
+            },
+            "supports_dedicated_agent_window": {
+              "type": "boolean"
+            },
+            "supports_focus_policy": {
+              "type": "boolean"
+            },
+            "supports_focus_lease": {
+              "type": "boolean"
+            },
+            "supports_focus_restore_guard": {
+              "type": "boolean"
+            },
+            "managed_window_policy_default": {
+              "type": "string",
+              "enum": ["dedicated"]
+            },
+            "managed_focus_policy_default": {
+              "type": "string",
+              "enum": ["background_preferred"]
+            },
+            "supports_tabs_close": {
+              "type": "boolean"
+            },
+            "supports_tabs_get": {
+              "type": "boolean"
+            },
+            "supports_include_unscriptable_tabs": {
+              "type": "boolean"
+            },
+            "supports_wait_until_visible": {
+              "type": "boolean"
+            },
+            "supports_prune_stale": {
+              "type": "boolean"
+            },
+            "supports_finalize_task": {
+              "type": "boolean"
+            },
+            "supports_created_agent_window_cleanup": {
+              "type": "boolean"
+            },
+            "supports_exact_agent_window_orphan_recovery": {
+              "type": "boolean"
+            },
+            "agent_window_orphan_recovery_policy": {
+              "type": "string",
+              "enum": ["same_browser_profile_epoch_exact_window_sole_browser_new_tab"]
+            },
+            "supports_finalize_hint": {
+              "type": "boolean"
+            }
+          }
+        },
+        "readiness": {
+          "type": "object",
+          "required": [
+            "ready",
+            "reason",
+            "path"
+          ],
+          "additionalProperties": true,
+          "properties": {
+            "ready": {
+              "type": "boolean"
+            },
+            "reason": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string",
+              "enum": [
+                "tmwd_ws",
+                "tmwd_link",
+                "cdp",
+                "none"
+              ]
+            }
+          }
+        },
+        "checks": {
+          "type": "object",
+          "required": [
+            "tmwd_ws_tcp",
+            "tmwd_link_tcp",
+            "cdp_tcp",
+            "tmwd_link_http",
+            "tmwd_ws_api",
+            "tmwd_link_runtime",
+            "tmwd_ws_runtime",
+            "cdp_http",
+            "cdp_targets"
+          ],
+          "additionalProperties": true,
+          "properties": {
+            "tmwd_ws_tcp": {
+              "$ref": "#/$defs/tcp_check"
+            },
+            "tmwd_link_tcp": {
+              "$ref": "#/$defs/tcp_check"
+            },
+            "cdp_tcp": {
+              "$ref": "#/$defs/tcp_check"
+            },
+            "tmwd_ws_api": {
+              "$ref": "#/$defs/api_check"
+            },
+            "tmwd_link_http": {
+              "$ref": "#/$defs/api_check"
+            },
+            "tmwd_ws_runtime": {
+              "$ref": "#/$defs/extension_runtime_check"
+            },
+            "tmwd_link_runtime": {
+              "$ref": "#/$defs/extension_runtime_check"
+            },
+            "cdp_http": {
+              "$ref": "#/$defs/api_check"
+            },
+            "cdp_targets": {
+              "$ref": "#/$defs/api_check"
+            }
+          }
+        },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ensure_tmwd_hub": {
+      "$ref": "#/$defs/ensure_tmwd_hub"
+    },
+    "session_wait": {
+      "$ref": "#/$defs/session_wait"
+    },
+    "event_log": {
+      "$ref": "#/$defs/event_log"
+    }
+  },
+  "$defs": {
+    "tcp_check": {
+      "type": "object",
+      "required": [
+        "endpoint",
+        "reachable",
+        "latency_ms",
+        "detail"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "reachable": {
+          "type": "boolean"
+        },
+        "latency_ms": {
+          "type": "integer"
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "api_check": {
+      "type": "object",
+      "required": [
+        "endpoint",
+        "ok",
+        "latency_ms",
+        "detail"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "latency_ms": {
+          "type": "integer"
+        },
+        "tab_count": {
+          "type": "integer"
+        },
+        "session_count": {
+          "type": "integer"
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "extension_identity": {
+      "type": "object",
+      "required": [
+        "schema",
+        "product",
+        "extension_version",
+        "manifest_version",
+        "build_revision",
+        "build_revision_source",
+        "build_inputs_dirty",
+        "source_digest",
+        "protocol_revision"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "browser67.extension-identity.v1"
+          ]
+        },
+        "product": {
+          "type": "string",
+          "enum": [
+            "browser67"
+          ]
+        },
+        "extension_version": {
+          "type": "string"
+        },
+        "manifest_version": {
+          "type": "string"
+        },
+        "build_revision": {
+          "type": "string"
+        },
+        "build_revision_source": {
+          "type": "string"
+        },
+        "build_inputs_dirty": {
+          "type": "boolean"
+        },
+        "source_digest": {
+          "type": "string"
+        },
+        "protocol_revision": {
+          "type": "integer"
+        }
+      }
+    },
+    "extension_runtime_check": {
+      "type": "object",
+      "required": [
+        "endpoint",
+        "ok",
+        "latency_ms",
+        "detail",
+        "extension_connected",
+        "extension_identity_status",
+        "expected_identity_path",
+        "expected_identity_available",
+        "identity_match",
+        "mismatches",
+        "observed_identity",
+        "expected_identity"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "latency_ms": {
+          "type": "integer"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "extension_connected": {
+          "type": "boolean"
+        },
+        "extension_identity_status": {
+          "type": "string",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid"
+          ]
+        },
+        "extension_identity_received_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expected_identity_path": {
+          "type": "string"
+        },
+        "expected_identity_basis": {
+          "type": "string"
+        },
+        "expected_identity_available": {
+          "type": "boolean"
+        },
+        "identity_match": {
+          "type": "boolean"
+        },
+        "mismatches": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "observed_identity": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "expected_identity": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "installed_identity_candidates": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "matching_installed_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ensure_tmwd_hub": {
+      "type": "object",
+      "required": [
+        "attempted",
+        "enabled",
+        "reason"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "attempted": {
+          "type": "boolean"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "session_wait": {
+      "type": "object",
+      "required": [
+        "attempted",
+        "wait_ms",
+        "reason"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "attempted": {
+          "type": "boolean"
+        },
+        "wait_ms": {
+          "type": "integer"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "event_log": {
+      "type": "object",
+      "required": [
+        "enabled"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "path": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

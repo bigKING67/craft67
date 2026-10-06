@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://3d-craft.local/schemas/browser-runtime-draft.v1.schema.json",
+  "title": "3D-Craft browser runtime observation draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "console_errors",
+    "network",
+    "raf",
+    "lifecycle",
+    "cross_runtime",
+    "responsive_layout",
+    "warnings",
+    "unverified"
+  ],
+  "properties": {
+    "schema": {"const": "3d-craft.browser-runtime-draft.v1"},
+    "status": {"$ref": "browser-runtime.v1.schema.json#/properties/status"},
+    "page_status": {"$ref": "browser-runtime.v1.schema.json#/properties/page_status"},
+    "blocker": {"$ref": "browser-runtime.v1.schema.json#/properties/blocker"},
+    "url": {"$ref": "browser-runtime.v1.schema.json#/properties/url"},
+    "browser_instance_id": {"$ref": "browser-runtime.v1.schema.json#/properties/browser_instance_id"},
+    "tab_id": {"$ref": "browser-runtime.v1.schema.json#/properties/tab_id"},
+    "console_errors": {"$ref": "browser-runtime.v1.schema.json#/properties/console_errors"},
+    "console_warnings": {"$ref": "browser-runtime.v1.schema.json#/properties/console_warnings"},
+    "console_observation": {"$ref": "browser-runtime.v1.schema.json#/properties/console_observation"},
+    "asset_url": {"type": "string", "minLength": 1},
+    "network": {"$ref": "browser-runtime.v1.schema.json#/properties/network"},
+    "raf": {"$ref": "browser-runtime.v1.schema.json#/properties/raf"},
+    "metrics": {"$ref": "browser-runtime.v1.schema.json#/properties/metrics"},
+    "performance_profile": {"$ref": "browser-runtime.v1.schema.json#/properties/performance_profile"},
+    "profile_observation_path": {"type": "string", "minLength": 1},
+    "lifecycle": {"$ref": "browser-runtime.v1.schema.json#/properties/lifecycle"},
+    "cross_runtime": {"$ref": "browser-runtime.v1.schema.json#/properties/cross_runtime"},
+    "desktop_screenshot": {"$ref": "#/$defs/screenshotDraft"},
+    "mobile_screenshot": {"$ref": "#/$defs/screenshotDraft"},
+    "responsive_layout": {"$ref": "browser-runtime.v1.schema.json#/properties/responsive_layout"},
+    "interaction": {"$ref": "browser-runtime.v1.schema.json#/properties/interaction"},
+    "scene": {"$ref": "browser-runtime.v1.schema.json#/properties/scene"},
+    "rejected_samples": {"$ref": "browser-runtime.v1.schema.json#/properties/rejected_samples"},
+    "warnings": {"$ref": "browser-runtime.v1.schema.json#/properties/warnings"},
+    "unverified": {"$ref": "browser-runtime.v1.schema.json#/properties/unverified"}
+  },
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {"metrics": {}},
+          "required": ["metrics"],
+          "not": {
+            "properties": {"profile_observation_path": {}},
+            "required": ["profile_observation_path"]
+          }
+        },
+        {
+          "properties": {
+            "profile_observation_path": {},
+            "lifecycle": {
+              "not": {
+                "type": "object",
+                "properties": {"resource_stability": {}},
+                "required": ["resource_stability"]
+              }
+            }
+          },
+          "required": ["profile_observation_path"],
+          "not": {
+            "anyOf": [
+              {
+                "properties": {"metrics": {}},
+                "required": ["metrics"]
+              },
+              {
+                "properties": {"performance_profile": {}},
+                "required": ["performance_profile"]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "if": {"properties": {"status": {"const": "ready"}}, "required": ["status"]},
+      "then": {
+        "properties": {"desktop_screenshot": {}},
+        "required": ["desktop_screenshot"]
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "BLOCKED"}}, "required": ["status"]},
+      "then": {
+        "properties": {"page_status": {}, "blocker": {}},
+        "required": ["page_status", "blocker"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "network": {
+            "type": "object",
+            "properties": {"status": {"const": "PASS"}},
+            "required": ["status"]
+          }
+        },
+        "required": ["network"]
+      },
+      "then": {
+        "properties": {
+          "network": {
+            "type": "object",
+            "properties": {"bytes": {}, "sha256": {}},
+            "required": ["bytes", "sha256"]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "screenshotDraft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_path",
+        "css_viewport",
+        "device_pixel_ratio",
+        "capture_target",
+        "visibility_state",
+        "horizontal_overflow",
+        "visual_review"
+      ],
+      "properties": {
+        "source_path": {"type": "string", "minLength": 1},
+        "css_viewport": {"$ref": "browser-runtime.v1.schema.json#/$defs/pair"},
+        "device_pixel_ratio": {"type": "number", "exclusiveMinimum": 0},
+        "capture_target": {"enum": ["viewport", "full_page"]},
+        "visibility_state": {"const": "visible"},
+        "horizontal_overflow": {"type": "boolean"},
+        "visual_review": {"enum": ["PASS", "FAIL", "UNVERIFIED"]},
+        "note": {"type": "string"}
+      }
+    }
+  }
+}

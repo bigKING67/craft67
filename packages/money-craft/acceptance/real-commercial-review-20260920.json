@@ -1,0 +1,62 @@
+{
+  "schema": "money-craft.real-commercial-review.v1",
+  "date": "2026-09-20",
+  "status": "PASS_BOUNDED_HISTORICAL_EXTRACT_CASE",
+  "reviewer": "main agent manual, not independent",
+  "run_dir": "local/skill-evals/20260920-real-commercial/installed",
+  "elapsed_seconds": 92.674,
+  "machine_checks_pass": true,
+  "semantic_checks": [
+    {
+      "criterion": "自动加载全局Skill，真实路由有效且公开来源链接完整",
+      "status": "PASS",
+      "reason": "Global installed references read, successful earnings route, both registered public citations and extraction hashes verified."
+    },
+    {
+      "criterion": "TI普通分销商销售控制权转移时确认，不强行要求所有分销商售出给终端才确认；付款不以再销售为条件",
+      "status": "PASS",
+      "reason": "Ordinary distributor sale may recognize revenue before resale; payment obligation distinguished from sell-through."
+    },
+    {
+      "criterion": "TI寄售在客户或分销商提取时控制权转移；存入寄售地点不等于收入，不与普通分销混淆",
+      "status": "PASS",
+      "reason": "Consignment revenue linked to customer/distributor withdrawal and control transfer, not stocking location."
+    },
+    {
+      "criterion": "Microchip区分原PSP与2023修改版本条件及2024停止新增PSP；不误称LTSA一并终止",
+      "status": "PASS",
+      "reason": "Original PSP, August 2023 revision and February 2024 new-order discontinuation separated; LTSA unaffected."
+    },
+    {
+      "criterion": "不可取消约束与协商延后/拒收执行风险并存，不保证收入也不武断否认合同约束",
+      "status": "PASS",
+      "reason": "Contractual restrictions retain value but postponement/enforcement/refusal risks prevent guaranteed-revenue inference."
+    },
+    {
+      "criterion": "公司与时期分别讨论，无跨公司拼接、虚构订单金额/利润或当前交易建议；文本捕获限制如实披露",
+      "status": "PASS",
+      "reason": "Issuer/time/policy boundaries kept; no invented financial estimates; extracted-text and historical-version limits explicit."
+    }
+  ],
+  "frozen_case_sha256": "fa121f8e0150fb3aed0b4ab8b335b04080711d34d7e3cc9dac98f255820a5ceb",
+  "artifact_hashes": {
+    "prompt.txt": "c649f9ed0a29d7a57562adb3e3fbb4a67cc1cd8aaf3cd5d7a85f5ab7712132d5",
+    "answer.md": "c630817cb7576759efb172b7c57a2fc7309460e15e40b0184f63c0125da395f9",
+    "events.jsonl": "8deffba70a020998cf697421340b4c5e2be05574a0f77a530a40fcbd28e7dfa0",
+    "host.json": "40ccbb3708ca342c008f45039f22c52e678e916670ae41c96886f41207539898",
+    "machine-audit.json": "98c73b5ba2961698669f49f9515c78c5411c73cff687fd10b022a6760156f0e7"
+  },
+  "source_capture": {
+    "direct_pdf_downloads": "Both failed HTTP403; no successful original PDF capture claimed",
+    "actual_evidence": "Web tool extracted issuer PDF text with line/page locations, saved privately and hashed",
+    "historical_version_consistency": "UNVERIFIED"
+  },
+  "calculations_required": false,
+  "skill_or_runtime_changed": false,
+  "global_install_changed": false,
+  "limits": [
+    "Qualitative historical policy interpretation, not complete current company research.",
+    "No original PDF integrity, contract enforceability opinion, independent customer confirmation or stable generalization proved.",
+    "No commit, push, publication or application work."
+  ]
+}

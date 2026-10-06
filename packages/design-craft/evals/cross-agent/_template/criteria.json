@@ -1,0 +1,37 @@
+{
+  "style_authority": {
+    "passed": false,
+    "earned": 0,
+    "note": "Score style-authority handling after the observed run."
+  },
+  "reference_selection": {
+    "passed": false,
+    "earned": 0,
+    "note": "Score reference selection after the observed run."
+  },
+  "anti_generic_redesign": {
+    "passed": false,
+    "earned": 0,
+    "note": "Score anti-generic judgment after the observed run."
+  },
+  "evidence_level": {
+    "passed": false,
+    "earned": 0,
+    "note": "Score evidence-level accuracy after the observed run."
+  },
+  "verified_boundary": {
+    "passed": false,
+    "earned": 0,
+    "note": "Score verified and unverified boundaries after the observed run."
+  },
+  "design_moves": {
+    "passed": false,
+    "earned": 0,
+    "note": "Score the specificity of design moves after the observed run."
+  },
+  "scope_control": {
+    "passed": false,
+    "earned": 0,
+    "note": "Score scope control after the observed run."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "design-craft.cross-agent-score.v2",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.144.1",
+  "model": "gpt-5.6-sol",
+  "reasoning_profile": "max",
+  "runner_os": "macOS arm64",
+  "date": "2026-07-11",
+  "prompt_sha256": "b622939ec19d093fc5bee6bc06d93f29f1016f47db66505642bd8752e74f584b",
+  "scorecard_sha256": "bb7c6d619794a0bf8b483f5d297d67aaf6767d4ac7c14a3a96e8b48a60d7571e",
+  "skill_version": "0.5.0",
+  "skill_source_commit": "487e45d780f51c00d954e9f29ded8dd4a138498d",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "skill_tree_sha256": "2f460d2c23e797f38aa08f7cf193b13cd539462571d621bcdb1f69cb42c7e761",
+  "skill_path": "~/Documents/sixseven/codeproject/design-craft/skills/design-craft",
+  "command_summary": "codex exec 0.144.1 --ephemeral --sandbox read-only --ignore-rules in the canonical repository with gpt-5.6-sol, max reasoning, canonical design-craft 0.5.0, and the exact benchmark prompt; final Markdown normalized only for trailing whitespace",
+  "output_path": "codex-output.md",
+  "output_sha256": "7d0a268641be2e05daeff95d2264613b53a14b589050fbc58258065090397fdd",
+  "score": 96,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Preserves the restrained enterprise-console authority and the operator's next-hour triage job instead of imposing a stock visual style."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 14,
+      "note": "Applies dashboard, taste, design-move, product, design-system, and validation guidance correctly, with some reference and acceptance-detail overhead."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Diagnoses equal KPI card soup and replaces decorative overview chrome with an exception-first operational decision surface."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the review L0 static, uses a bounded score band, and explicitly rejects screenshot, DOM, responsive, and runtime proof."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates prompt-attested structure and concept deductions from unverified rendering, interactions, states, accessibility, responsiveness, and performance."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Provides a lead risk object, compact support strip, exception queue, diagnostic chart, task-first table, contextual inspector, and concrete acceptance gates."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 7,
+      "note": "Stays read-only and dashboard-focused, but the 491-line response is substantially longer and more procedural than this benchmark requires."
+    }
+  }
+}

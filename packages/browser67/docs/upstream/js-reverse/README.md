@@ -1,0 +1,125 @@
+# js-reverse upstream and reference policy
+
+This directory tracks external JavaScript reverse-engineering references for
+browser67. These references are design input only unless a future lock/review
+process explicitly promotes one into an implementation upstream.
+
+## Canonical local implementation
+
+The browser67 repo is the canonical implementation for `js-reverse`:
+
+- `src/mcp/js-reverse/server.mjs`
+- `src/js-reverse-server/`
+- `skills/js-reverse/`
+- `docs/js-reverse/`
+- `docs/js-reverse-SOP.md`
+- `templates/tasks/js-reverse-task-template.json`
+- `contracts/js-reverse-mcp-contract/`
+- `contracts/js-reverse-mcp-live-gate/`
+
+The canonical path is browser67-backed: it uses the browser67 real-browser
+runtime, browser67-owned managed tabs, `finalize_task`, bounded artifacts, and
+`record_reverse_evidence` normalized to `evidence.v1`.
+
+## Legacy local snapshots
+
+Sibling local `js-reverse` skill directories, such as `../js-reverse`, are legacy
+local snapshot material unless they are Git repositories with a reviewed remote
+and lock. They are not implementation upstreams and must not override the
+browser67 canonical `skills/js-reverse/` or `docs/js-reverse/` content.
+
+A sibling local `js-reverse` directory was observed as a non-git standalone skill
+snapshot from 2026-04. It predates browser67-backed managed-tab lifecycle,
+`evidence.v1`, frame-aware discovery, scoped storage evidence, and
+`finalize_task` guidance.
+
+## External reference candidates
+
+These repositories are reference only:
+
+| Reference | Reviewed commit | Role |
+| --- | --- | --- |
+| `zhaoxuya520/reverse-skill` | `71acc8e3115f76bad7a914c36466c1086232288c` | reverse/security/CTF skill router pack |
+| `NoOne-hub/JSReverser-MCP` | `65e2e3cb70c10a79dfd1ba4410a2c876113e676c` | external JS reverse MCP reference candidate |
+| `zhizhuodemao/js-reverse-mcp` | `f45172a7b2a8d98daf29434e99baf35bc08bb959` | external JS reverse MCP reference candidate |
+
+Machine-readable details live in `references.json`.
+Per-reference absorption decisions live in `absorption-matrix.md`; keep it in
+sync with `references.json` through `npm run check:js-reverse-absorption-matrix`.
+
+The `zhaoxuya520/reverse-skill` review on 2026-08-14 used a full-tree comparison
+because its previous reviewed commit was no longer an ancestor of remote
+`main`. The broad router/case/cookbook additions remain reference-only. Its
+JS-specific update adds labels for JSVMP, control-flow/string-array
+deobfuscation, and anti-debug side paths, all already covered by browser67's
+VMP instrumentation, AST deobfuscation, hook-first, and breakpoint-last
+guidance. No external files or runtime semantics were imported.
+
+The 2026-08-31 incremental review from
+`37162cf9547c571c680c07005e9863d4610282dd` to
+`71acc8e3115f76bad7a914c36466c1086232288c` found only README star-history and
+sponsor presentation changes plus one sponsor image. No Skill, router, script,
+runtime, MCP schema, or browser workflow changed, so the review ledger advanced
+without importing any external artifact.
+
+Audit current remote freshness with:
+
+```bash
+npm run js-reverse:upstream-audit -- --json
+npm run check:js-reverse-upstream-audit
+npm run check:js-reverse-absorption-matrix
+```
+
+The audit is read-only. It compares every `reviewed_commit` in
+`references.json` with the corresponding remote `HEAD` / `refs/heads/main`,
+reports `status=review_needed` when an external reference has moved, and keeps
+`direct_import_allowed=false` as a hard policy boundary. Use
+`--require-current` only when a local gate should fail on moved external
+references.
+
+## Absorbable ideas
+
+Useful ideas may be translated into browser67 tools, contracts, SOPs, templates,
+or reference docs:
+
+- Reverse-task routing matrix.
+- Tool-index / bootstrap organization concepts, without importing automatic
+  installation behavior.
+- Field-journal / case-library organization.
+- `jshookmcp` / `anything-analyzer` as external fallback framing.
+- APK, binary, CTF, Burp, Kali, and mobile references as an external reading map.
+- JS reverse MCP tool-surface design for future comparison.
+- Report, artifact, and rebuild-bundle format ideas.
+- Hook, debugger, sourcemap, and AST deobfuscation workflow ideas.
+
+## Non-goals
+
+Do not:
+
+- Replace the browser67-backed `js-reverse` implementation or skill.
+- Import external auto-execution or "execute immediately after reading" semantics.
+- Automatically read external precedent journals.
+- Automatically install tools or write MCP configuration.
+- Copy a whole external skill pack into browser67.
+- Promote `jshookmcp`, `anything-analyzer`, Playwright, or Puppeteer into the
+  default browser67 entrypoint.
+- Let legacy local snapshots override browser67 canonical content.
+- Take over unmanaged user tabs.
+
+## Future review matrix
+
+Use this matrix before promoting any external reference beyond reference-only
+status.
+
+| Dimension | browser67 baseline | External review focus |
+| --- | --- | --- |
+| Browser ownership | browser67-owned managed tabs | Does it take over unmanaged user tabs? |
+| Runtime | Real Chrome/Edge profile through browser67 | Does it require a self-managed Chrome or remote CDP? |
+| Lifecycle | `workspace_key`, `task_id`, `finalize_task` | Does it have a cleanup model? |
+| Evidence | `record_reverse_evidence`, `evidence.v1` | Does it produce structured evidence bundles? |
+| Frames | `list_frames`, frame-aware first pass | Does it support iframe and microfrontend boundaries? |
+| Storage | Scoped storage helpers | Does it avoid broad storage dumps by default? |
+| Hook | Non-blocking hook preferred | Does it make breakpoints the default and risk anti-debug issues? |
+| Rebuild | `export_rebuild_bundle` | Can it export a reproducible local rebuild project? |
+| Anti-bot | Native fallback is last-mile evidence | Does it bypass browser67 boundaries by default? |
+| Install side effects | No automatic install or config write | Does it auto-write local configuration or install tools? |

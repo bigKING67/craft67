@@ -1,0 +1,497 @@
+import assert from "node:assert/strict";
+import { promises as fs } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import {
+  clearNativeInputCapabilitiesCache,
+  detectNativeInputCapabilities,
+} from "../../src/native-capabilities/index.mjs";
+import { buildNativePointerReadinessReport } from "../../src/native-capabilities/pointer-readiness.mjs";
+import { detectPhysicalInputCapabilities } from "../../src/physical-input/index.mjs";
+import {
+  ensureAgentWindow,
+  foregroundManagedTab,
+} from "../../src/browser-wrappers/presentation.mjs";
+import {
+  ensureNativeAgentWindowPresentation,
+  foregroundNativeAgentWindowTab,
+} from "../../src/native/agent-window-presentation.mjs";
+import {
+  applicationForBrowserFamily,
+  buildMacAgentWindowFullscreenScript,
+  parseMacAgentWindowFullscreenOutput,
+} from "../../src/native-macos/agent-window-presentation.mjs";
+
+async function assertAgentWindowPresentationContract() {
+  assert.equal(applicationForBrowserFamily("chrome"), "Google Chrome");
+  assert.equal(applicationForBrowserFamily("edge"), "Microsoft Edge");
+  assert.throws(() => applicationForBrowserFamily("unknown"), /unsupported Agent window browser family/);
+
+  const script = buildMacAgentWindowFullscreenScript({
+    anchorTabId: 67,
+    anchorUrl: "chrome-extension://fixture/browser67/window-anchor.html",
+    applicationName: "Google Chrome",
+    restoreTabId: 42,
+  }).join("\n");
+  assert.match(script, /AXFullScreen/);
+  assert.match(script, /keystroke \"f\" using \{control down, command down\}/);
+  assert.match(script, /menu item \"进入全屏幕\"/);
+  assert.match(script, /browser67 Agent anchor not found/);
+  assert.match(script, /front window does not contain the exact browser67 Agent anchor/);
+  assert.match(script, /chrome-extension:\/\/fixture\/browser67\/window-anchor\.html/);
+  assert.match(script, /set restoreTabId to 42/);
+
+  const parsed = parseMacAgentWindowFullscreenOutput([
+    "transition_requested",
+    "true",
+    "false",
+    "true",
+    "original_browser_tab",
+    "Google Chrome",
+    "view_menu_zh_cn",
+  ].join("\u001f"));
+  assert.equal(parsed.mode, "macos_native_fullscreen_space");
+  assert.equal(parsed.native_fullscreen, false);
+  assert.equal(parsed.verification_required, true);
+  assert.equal(parsed.toolbar_preserved, true);
+  assert.equal(parsed.focus_restored, true);
+  assert.equal(parsed.restore_reason, "original_browser_tab");
+
+  const presenterCalls = [];
+  const presented = await ensureNativeAgentWindowPresentation({
+    anchor_tab_id: 67,
+    anchor_url: "chrome-extension://fixture/browser67/window-anchor.html",
+    browser_family: "chrome",
+    focus_snapshot: {
+      browser_focused: true,
+      tab_id: 42,
+    },
+    presentation: {
+      mode: "macos_native_fullscreen_space",
+      status: "native_required",
+      native_action_required: true,
+      toolbar_preserved: true,
+      window_state: "normal",
+    },
+  }, {
+    host_platform: "darwin",
+    foreground_requested: true,
+    macos_presenter: async (options) => {
+      presenterCalls.push(options);
+      return parsed;
+    },
+  });
+  assert.equal(presenterCalls.length, 1);
+  assert.equal(presenterCalls[0].anchorTabId, 67);
+  assert.equal(presenterCalls[0].restoreTabId, 42);
+  assert.equal(presented.status, "verification_required");
+  assert.equal(presented.native_action_required, true);
+
+  for (const focusPolicy of [undefined, "background_preferred", "background_only"]) {
+    let nativeCalls = 0;
+    const background = await ensureAgentWindow(
+      { window_policy: "dedicated", focus_policy: focusPolicy, foreground_requested: false },
+      async () => ({ data: {
+        window_id: 3,
+        anchor_tab_id: 67,
+        browser_family: "chrome",
+        presentation: {
+          mode: "macos_native_fullscreen_space",
+          status: "native_required",
+          native_action_required: true,
+          window_state: "normal",
+        },
+      } }),
+      { agent_window_presentation: {
+        host_platform: "darwin",
+        foreground_requested: true,
+        macos_presenter: async () => { nativeCalls += 1; return parsed; },
+      } },
+    );
+    assert.equal(nativeCalls, 0, "background lifecycle must not activate the native presenter");
+    assert.equal(background.presentation.status, "deferred");
+    assert.equal(background.presentation.reason, "background_focus_preserved");
+    assert.equal(background.presentation.window_state, "normal");
+  }
+
+  let bridgeCalls = 0;
+  const wrapped = await ensureAgentWindow(
+    { window_policy: "dedicated" },
+    async () => {
+      bridgeCalls += 1;
+      const verified = bridgeCalls === 2;
+      return {
+        value: {
+          data: {
+          status: "ready",
+          created: !verified,
+          reused: verified,
+          window_id: 3,
+          anchor_tab_id: 67,
+          ownership_token: "agent-window-contract-token",
+          anchor_url: "chrome-extension://fixture/browser67/window-anchor.html",
+          browser_family: "chrome",
+          platform_os: "mac",
+          focus_snapshot: {
+            browser_focused: true,
+            tab_id: 42,
+            window_id: 1,
+          },
+          presentation: {
+            mode: "macos_native_fullscreen_space",
+            status: verified ? "ready" : "native_required",
+            native_action_required: !verified,
+            toolbar_preserved: true,
+            window_state: verified ? "fullscreen" : "normal",
+          },
+        },
+      },
+      };
+    },
+    {
+      ensure_agent_window_presentation: async () => presented,
+    },
+  );
+  assert.equal(bridgeCalls, 2);
+  assert.equal(wrapped.anchor_tab_id, 67);
+  assert.equal(wrapped.created, true);
+  assert.equal(wrapped.reused, false);
+  assert.equal(wrapped.ownership_token, "agent-window-contract-token");
+  assert.equal(wrapped.focus_snapshot.tab_id, 42);
+  assert.equal(wrapped.presentation.status, "ready");
+  assert.equal(wrapped.presentation.native_fullscreen, true);
+  assert.equal(wrapped.presentation.verification, "exact_extension_window_state");
+
+  const nativeForegroundCalls = [];
+  const nativeForeground = await foregroundNativeAgentWindowTab({
+    browser_family: "chrome",
+    presentation: {
+      mode: "macos_native_fullscreen_space",
+      status: "ready",
+      window_state: "fullscreen",
+    },
+  }, 91, {
+    host_platform: "darwin",
+    macos_foregrounder: async (options) => {
+      nativeForegroundCalls.push(options);
+      return {
+        foregrounded: true,
+        driver: "contract-native-foreground",
+        application_name: "Google Chrome",
+        browser_tab_id: 91,
+        window_index: 2,
+        tab_index: 1,
+      };
+    },
+  });
+  assert.equal(nativeForegroundCalls.length, 1);
+  assert.equal(nativeForegroundCalls[0].activate, true);
+  assert.equal(nativeForegroundCalls[0].preferredApplication, "Google Chrome");
+  assert.equal(nativeForegroundCalls[0].strictApplication, true);
+  assert.equal(nativeForegroundCalls[0].windowTabId, 91);
+  assert.equal(nativeForeground.status, "foregrounded");
+  assert.equal(nativeForeground.space_activation, "exact_tab_native_activation");
+  assert.equal(nativeForeground.document_visibility_verification, "caller_required");
+
+  const focusCommands = [];
+  const focusTransition = await foregroundManagedTab(
+    {
+      foreground_requested: true,
+      focus_policy: "foreground",
+      window_policy: "dedicated",
+    },
+    { focus_policy: "foreground" },
+    "91",
+    async (command) => {
+      focusCommands.push(command);
+      if (command.method === "acquire") {
+        return { value: { data: { status: "foregrounded", lease_id: "lease-91" } } };
+      }
+      return { value: { data: { status: "kept_foreground", restored: false } } };
+    },
+    {
+      agent_window: {
+        browser_family: "chrome",
+        presentation: { mode: "macos_native_fullscreen_space" },
+      },
+      native_agent_window_foreground: async (_agentWindow, tabId) => ({
+        status: "foregrounded",
+        foregrounded: true,
+        browser_tab_id: Number(tabId),
+      }),
+    },
+  );
+  assert.deepEqual(focusCommands.map((command) => command.method), ["acquire", "release"]);
+  assert.equal(focusTransition.native_foreground.foregrounded, true);
+  assert.equal(focusTransition.release.status, "kept_foreground");
+
+  const failureCommands = [];
+  await assert.rejects(
+    foregroundManagedTab(
+      {
+        foreground_requested: true,
+        focus_policy: "foreground",
+        window_policy: "dedicated",
+      },
+      { focus_policy: "foreground" },
+      "92",
+      async (command) => {
+        failureCommands.push(command);
+        if (command.method === "acquire") {
+          return { value: { data: { status: "foregrounded", lease_id: "lease-92" } } };
+        }
+        return { value: { data: { status: "kept_foreground", restored: false } } };
+      },
+      {
+        agent_window: {
+          browser_family: "chrome",
+          presentation: { mode: "macos_native_fullscreen_space" },
+        },
+        native_agent_window_foreground: async () => {
+          throw new Error("contract native activation failed");
+        },
+      },
+    ),
+    (error) => error?.errorCode === "FOCUS_LEASE_FAILED"
+      && /exact macOS Agent Window Full Screen Space/.test(error.message),
+  );
+  assert.deepEqual(failureCommands.map((command) => command.method), ["acquire", "release"]);
+}
+
+async function writeFakePythonProbe(dir, name, payload) {
+  const file = path.join(dir, name);
+  await fs.writeFile(
+    file,
+    [
+      "#!/bin/sh",
+      "cat <<'TMWD_LJQCTRL_JSON'",
+      JSON.stringify(payload),
+      "TMWD_LJQCTRL_JSON",
+      "",
+    ].join("\n"),
+    { mode: 0o700 },
+  );
+  await fs.chmod(file, 0o700);
+  return file;
+}
+
+async function assertLjqCtrlPythonCandidateSelection() {
+  if (process.platform === "win32") {
+    return;
+  }
+  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "tmwd-ljqctrl-candidates-"));
+  const failingPython = await writeFakePythonProbe(tmpDir, "python-no-ljqctrl", {
+    ok: false,
+    reason: "No module named 'ljqCtrl'",
+  });
+  const workingPython = await writeFakePythonProbe(tmpDir, "python-with-ljqctrl", {
+    ok: true,
+    has_click: true,
+    has_press: true,
+    has_find_block: true,
+    has_grab_window: true,
+    has_grab_window_bg: false,
+    has_mouse_dclick: false,
+    dpi_scale: 1,
+  });
+  const previousPython = process.env.TMWD_LJQCTRL_PYTHON;
+  const previousCandidates = process.env.TMWD_LJQCTRL_PYTHON_CANDIDATES;
+  const previousExecute = process.env.TMWD_LJQCTRL_EXECUTE;
+  try {
+    delete process.env.TMWD_LJQCTRL_PYTHON;
+    delete process.env.TMWD_LJQCTRL_EXECUTE;
+    process.env.TMWD_LJQCTRL_PYTHON_CANDIDATES = [failingPython, workingPython].join(path.delimiter);
+    const capabilities = await detectPhysicalInputCapabilities({
+      action: "click",
+      preferred_provider: "ljq-ctrl",
+      ljq_ctrl: {
+        probe: true,
+        execute: true,
+        refresh: true,
+        cache_ttl_ms: 0,
+      },
+    });
+    const ljq = capabilities.providers.find((provider) => provider.provider_id === "ljq-ctrl");
+    assert.equal(ljq?.status, "available");
+    assert.equal(ljq?.platform, process.platform);
+    assert.equal(Array.isArray(ljq?.supported_platforms), true);
+    assert.equal(ljq.supported_platforms.includes("win32"), true);
+    assert.equal(ljq?.platform_supported, process.platform === "win32");
+    assert.equal(ljq?.checks?.python, workingPython);
+    assert.equal(ljq?.checks?.python_candidate_source, "TMWD_LJQCTRL_PYTHON_CANDIDATES");
+    assert.equal(ljq?.checks?.python_selection_reason, "first_importable_candidate");
+    assert.equal(ljq?.checks?.ljqctrl_importable, true);
+    assert.equal(capabilities.provider_selection?.selected_provider_id, "ljq-ctrl");
+    assert.equal(Array.isArray(ljq?.checks?.python_candidates), true);
+    assert.equal(ljq.checks.python_candidates.length, 2);
+    assert.deepEqual(
+      ljq.checks.python_candidates.map((candidate) => ({
+        python: candidate.python,
+        exists: candidate.exists,
+        importable: candidate.importable,
+        selected: candidate.selected,
+      })),
+      [
+        { python: failingPython, exists: true, importable: false, selected: false },
+        { python: workingPython, exists: true, importable: true, selected: true },
+      ],
+    );
+  } finally {
+    if (previousPython === undefined) {
+      delete process.env.TMWD_LJQCTRL_PYTHON;
+    } else {
+      process.env.TMWD_LJQCTRL_PYTHON = previousPython;
+    }
+    if (previousCandidates === undefined) {
+      delete process.env.TMWD_LJQCTRL_PYTHON_CANDIDATES;
+    } else {
+      process.env.TMWD_LJQCTRL_PYTHON_CANDIDATES = previousCandidates;
+    }
+    if (previousExecute === undefined) {
+      delete process.env.TMWD_LJQCTRL_EXECUTE;
+    } else {
+      process.env.TMWD_LJQCTRL_EXECUTE = previousExecute;
+    }
+    await fs.rm(tmpDir, { recursive: true, force: true });
+  }
+}
+
+function assertNativePointerReadinessReportContract() {
+  const ready = buildNativePointerReadinessReport({
+    platform: "contract-os",
+    driver: "contract-driver",
+    supported_actions: ["click", "drag", "press"],
+    unsupported_actions: ["scroll"],
+    checks: { contract_ready: true },
+    requirements: [],
+    permission_notes: ["contract note"],
+  }, {
+    check: "contract-pointer-readiness",
+    ready_message: "ready contract message",
+  });
+  assert.equal(ready.ok, true);
+  assert.equal(ready.status, "pointer_ready");
+  assert.equal(ready.check, "contract-pointer-readiness");
+  assert.equal(ready.supports_click, true);
+  assert.equal(ready.supports_drag, true);
+  assert.deepEqual(ready.next_steps, ["ready contract message"]);
+  assert.deepEqual(ready.permission_notes, ["contract note"]);
+
+  const missingWithRequirement = buildNativePointerReadinessReport({
+    platform: "contract-os",
+    driver: "contract-driver",
+    supported_actions: ["press"],
+    unsupported_actions: ["click", "drag"],
+    checks: { contract_ready: false },
+    requirements: ["grant contract permission"],
+  }, {
+    include_readiness_command: true,
+  });
+  assert.equal(missingWithRequirement.ok, false);
+  assert.equal(missingWithRequirement.status, "requirements_missing");
+  assert.equal(missingWithRequirement.supports_click, false);
+  assert.equal(missingWithRequirement.supports_drag, false);
+  assert.deepEqual(missingWithRequirement.next_steps, [
+    "Run npm run check:native-pointer.",
+    "grant contract permission",
+  ]);
+  assert.equal(missingWithRequirement.permission_recovery, null);
+
+  const missingWithoutRequirement = buildNativePointerReadinessReport({
+    platform: "contract-os",
+    driver: "contract-driver",
+    supported_actions: ["click"],
+    unsupported_actions: ["drag"],
+    checks: {},
+  }, {
+    missing_message: "contract missing message",
+  });
+  assert.equal(missingWithoutRequirement.ok, false);
+  assert.equal(missingWithoutRequirement.status, "requirements_missing");
+  assert.equal(missingWithoutRequirement.supports_click, true);
+  assert.equal(missingWithoutRequirement.supports_drag, false);
+  assert.deepEqual(missingWithoutRequirement.requirements, []);
+  assert.deepEqual(missingWithoutRequirement.next_steps, ["contract missing message"]);
+  assert.equal(missingWithoutRequirement.permission_recovery, null);
+
+  const darwinPermissionRecovery = buildNativePointerReadinessReport({
+    platform: "darwin",
+    driver: "macos-osascript-cliclick",
+    supported_actions: ["press"],
+    unsupported_actions: ["click", "drag"],
+    checks: {
+      cliclick: true,
+      cliclick_accessibility: false,
+    },
+    requirements: ["Grant Accessibility permission."],
+  }, {
+    verify_command: "npm run check:native-pointer",
+    physical_gate_command: "TMWD_CAPTCHA_ASSIST_PHYSICAL=1 TMWD_CAPTCHA_ASSIST_CONFIRM=1 npm run check:captcha-assist-physical-live",
+  });
+  assert.equal(darwinPermissionRecovery.permission_recovery?.status, "permission_required");
+  assert.equal(
+    darwinPermissionRecovery.permission_recovery?.blocker,
+    "macos_accessibility_for_current_terminal",
+  );
+  assert.deepEqual(darwinPermissionRecovery.permission_recovery?.affected_actions, ["click", "drag"]);
+  assert.equal(
+    darwinPermissionRecovery.permission_recovery?.settings_path,
+    "System Settings -> Privacy & Security -> Accessibility",
+  );
+  assert.match(
+    darwinPermissionRecovery.permission_recovery?.open_settings_command ?? "",
+    /Privacy_Accessibility/,
+  );
+  assert.equal(
+    darwinPermissionRecovery.permission_recovery?.safe_defaults.includes("This report does not move the mouse."),
+    true,
+  );
+}
+
+async function assertNativeCapabilitySurface() {
+  await assertAgentWindowPresentationContract();
+  assertNativePointerReadinessReportContract();
+  clearNativeInputCapabilitiesCache();
+  const uncachedNativeCapabilities = await detectNativeInputCapabilities({
+    cache_ttl_ms: 60_000,
+    refresh: true,
+  });
+  const cachedNativeCapabilities = await detectNativeInputCapabilities({
+    cache_ttl_ms: 60_000,
+  });
+  const physicalInputCapabilities = await detectPhysicalInputCapabilities({
+    action: "drag",
+    preferred_provider: "auto",
+  });
+
+  assert.equal(Array.isArray(physicalInputCapabilities.providers), true);
+  assert.equal(
+    physicalInputCapabilities.providers.some((provider) => provider.provider_id === "native-os"),
+    true,
+  );
+  assert.equal(
+    physicalInputCapabilities.providers.some((provider) => provider.provider_id === "ljq-ctrl"),
+    true,
+  );
+  assert.equal(
+    typeof physicalInputCapabilities.providers.find((provider) => provider.provider_id === "ljq-ctrl")?.cache?.status,
+    "string",
+  );
+  assert.equal(typeof physicalInputCapabilities.provider_selection?.reason, "string");
+  assert.equal(
+    physicalInputCapabilities.capture_provider_selection?.action,
+    "capture_window_region",
+  );
+  assert.equal(typeof physicalInputCapabilities.capture_provider_selection?.reason, "string");
+  assert.deepEqual(
+    cachedNativeCapabilities.supported_actions,
+    uncachedNativeCapabilities.supported_actions,
+  );
+  assert.deepEqual(
+    cachedNativeCapabilities.unsupported_actions,
+    uncachedNativeCapabilities.unsupported_actions,
+  );
+  await assertLjqCtrlPythonCandidateSelection();
+}
+
+export { assertNativeCapabilitySurface };

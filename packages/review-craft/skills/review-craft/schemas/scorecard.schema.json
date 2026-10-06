@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigking67.github.io/review-craft/schemas/scorecard.schema.json",
+  "title": "Review scorecard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "status", "evidenceLevel", "confidence", "coveragePercent", "unresolvedCandidates", "dimensions", "total"],
+  "properties": {
+    "documentType": {"const": "review-craft.scorecard"},
+    "schemaVersion": {"enum": ["review-craft.run.v3", "review-craft.run.v4", "review-craft.run.v5"]},
+    "status": {"enum": ["provisional", "final"]},
+    "evidenceLevel": {"enum": ["E0", "E1", "E2", "E3", "E4"]},
+    "confidence": {"enum": ["LOW", "MEDIUM", "MEDIUM_HIGH", "HIGH"]},
+    "coveragePercent": {"type": "number", "minimum": 0, "maximum": 100},
+    "accountedPercent": {"type": "number", "minimum": 0, "maximum": 100},
+    "reviewedPercent": {"type": "number", "minimum": 0, "maximum": 100},
+    "unresolvedCandidates": {"type": "integer", "minimum": 0},
+    "assurance": {"$ref": "#/$defs/assurance"},
+    "dimensions": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"$ref": "#/$defs/dimension"}},
+    "total": {"type": "integer", "minimum": 0, "maximum": 100}
+  },
+  "$defs": {
+    "assurance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "completionStatus", "budget", "verifier", "unverifiedClaims", "skippedDimensions"],
+      "properties": {
+        "level": {"enum": ["fast", "standard", "assured"]},
+        "completionStatus": {"enum": ["COMPLETE", "PARTIAL"]},
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maxEligibleFiles", "maxEvidenceCommands", "maxCandidates", "eligibleFiles", "evidenceCommands", "candidates"],
+          "properties": {
+            "maxEligibleFiles": {"type": ["integer", "null"], "minimum": 0},
+            "maxEvidenceCommands": {"type": ["integer", "null"], "minimum": 0},
+            "maxCandidates": {"type": ["integer", "null"], "minimum": 0},
+            "eligibleFiles": {"type": "integer", "minimum": 0},
+            "evidenceCommands": {"type": "integer", "minimum": 0},
+            "candidates": {"type": "integer", "minimum": 0}
+          }
+        },
+        "verifier": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required", "status", "evidenceRef"],
+          "properties": {
+            "required": {"type": "boolean"},
+            "status": {"enum": ["NOT_REQUIRED", "MISSING", "VERIFIED"]},
+            "evidenceRef": {"type": ["string", "null"], "pattern": "^artifact:[a-z0-9][a-z0-9._-]{0,127}$"}
+          }
+        },
+        "unverifiedClaims": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "skippedDimensions": {
+          "type": "array",
+          "items": {"enum": ["correctness", "architecture", "maintainability", "performance", "codeQuality", "testing", "dependenciesSecurity", "repositoryExperience"]}
+        }
+      }
+    },
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "maximum", "awarded", "deductions"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "maximum": {"type": "integer", "minimum": 1},
+        "awarded": {"type": "integer", "minimum": 0},
+        "deductions": {"type": "array", "items": {"$ref": "#/$defs/deduction"}}
+      }
+    },
+    "deduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["points", "reason", "evidenceRefs"],
+      "properties": {
+        "points": {"type": "integer", "minimum": 1},
+        "reason": {"type": "string", "minLength": 1},
+        "evidenceRefs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}

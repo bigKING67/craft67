@@ -1,0 +1,25 @@
+{
+  "schema_version": "creative-craft.brand-pack.v1",
+  "brand_id": "brand-tbd",
+  "brand_name": "TBD",
+  "pack_id": "brand-tbd-pack-v1",
+  "version": "0.1.0",
+  "status": "draft",
+  "classification": "internal",
+  "owner": "TBD",
+  "approved_at": null,
+  "review_after": null,
+  "supersedes": null,
+  "authority_files": [
+    {
+      "role": "brand",
+      "path": "references/brand.md",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "asset_ledger": {
+    "path": "asset-ledger.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "source_references": []
+}

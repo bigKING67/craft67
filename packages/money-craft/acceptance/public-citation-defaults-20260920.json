@@ -1,0 +1,38 @@
+{
+  "schema": "money-craft.public-citation-defaults-review.v1",
+  "status": "PASS_BOUNDED_INTEGRATION",
+  "date": "2026-09-20",
+  "tests": {
+    "command": "python3 -m unittest discover -s tests -p test_skill_task_audit.py -q",
+    "passed": 31,
+    "host_integration": "simulated Popen; no new model invocation"
+  },
+  "historical_host": {
+    "default_bound_contract_pass": true,
+    "new_default_contract_errors": [
+      "PUBLIC_SOURCE_LINK_NOT_VERIFIED:S01",
+      "PUBLIC_SOURCE_LINK_NOT_VERIFIED:S02"
+    ],
+    "old_contract_hash": "c8d36469c6f9d0d06733f7f737e2311f30f898af3d5e79a784eff591b48d16e5",
+    "new_contract_hash": "9cd6be1cde7b2ebef5ff770c7e16994c35dc9b13fac729d0ad03c3014f293498",
+    "original_files_unchanged": true
+  },
+  "scope": [
+    "New runs default required links from registered HTTPS evidence unless an explicit case policy exists.",
+    "Prompt and saved contract share the effective policy.",
+    "Default re-audit uses the hash-bound run snapshot; explicit alternate contract remains supported.",
+    "Legacy cases are not retroactively relabelled."
+  ],
+  "limitations": [
+    "No new real-host generation or proof of model behavioral improvement.",
+    "URL matching is offline and does not establish reachability, source authority or claim support."
+  ],
+  "artifacts": {
+    "scripts/run_skill_task.py": "15b940ada9e230d2b81c02a2de08a4d0a119e508e1b544b1e7e881f0aa3f7535",
+    "scripts/audit_skill_task.py": "dd1f6656539c9543606aa155889b8d7ef8ee4f844485adfd7dba236c51fb9f93",
+    "tests/test_skill_task_audit.py": "03d81f183b7f9a557483cddcc2914a8946287192dbbd1e7e36a2a3b758918841",
+    "local/skill-evals/20260920-msft-q3/installed/host.json": "df9f61621ab2972c0e685b5dc11130f342cd33d820cc4839cf4c148106ad4a08",
+    "local/skill-evals/20260920-msft-q3/installed/case-snapshot.json": "2bf60d74d1b0ea9d75c41c2a14a90c754e30778088cc87bcb4e3ebca6f11e134",
+    "local/skill-evals/20260920-msft-q3/installed/answer.md": "d204982998181c499c01c0e1108ce9cce590a883d2ffe53735084e4fd83225f0"
+  }
+}

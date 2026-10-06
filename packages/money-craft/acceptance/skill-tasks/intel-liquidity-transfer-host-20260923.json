@@ -1,0 +1,87 @@
+{
+  "schema": "money-craft.bounded-host-review.v1",
+  "as_of": "2026-09-23",
+  "verdict": "PASS_BOUNDED_FIRST_RUN_TRANSFER",
+  "invocation": "IMPLICIT_NATURAL_PROMPT",
+  "manual_reviewer": "main-agent",
+  "independent_review": false,
+  "machine_checks_pass": true,
+  "calculation_receipts": 23,
+  "source_install_parity": true,
+  "installed_snapshot_unchanged": true,
+  "source_snapshot_unchanged": true,
+  "tree_sha256": "f4b30159de03c4ca9cc8a42da17701f897dd4f247c2ebf063c745822874801ce",
+  "checks": [
+    {
+      "criterion": 1,
+      "status": "PASS",
+      "reason": "实际读取安装Skill与引用、核对文件哈希；路由先误用Python运行shell入口，后纠正且取得有效回执；未观察到答案或criteria读取。"
+    },
+    {
+      "criterion": 2,
+      "status": "PASS",
+      "reason": "分别列投资活动购建23944及融资活动购建1178，简化现金缺口与公司调整后FCF分开。"
+    },
+    {
+      "criterion": 3,
+      "status": "PASS",
+      "reason": "全年和Q4使用直接披露的同口径列，保留全年改善与Q4恶化，计算正确。"
+    },
+    {
+      "criterion": 4,
+      "status": "PASS",
+      "reason": "政府补助、伙伴出资不当经营回款、不重复抵扣；主动保留43百万美元未解释勾稽差额。"
+    },
+    {
+      "criterion": 5,
+      "status": "PASS",
+      "reason": "现金与短投、短债与非流动债分列，缺少期限/限制时不判长期充足或危机。"
+    },
+    {
+      "criterion": 6,
+      "status": "PASS",
+      "reason": "次年指引不视为兑现，识别期后实际到账不计入上年现金；给出具体触发并结束限定材料核查。"
+    }
+  ],
+  "additional_observations": [
+    "2025 capital guidance component range differs from displayed net range; parent verified PDF page 17 visually. Answer preserves discrepancy without alleging misconduct."
+  ],
+  "artifacts": [
+    {
+      "path": "local/skill-evals/20260923-intel-liquidity/implicit/answer.md",
+      "sha256": "cb3471724d27d6fc92b90fdc1a8d863394fa089ba91dd997c299825592d0c015"
+    },
+    {
+      "path": "local/skill-evals/20260923-intel-liquidity/implicit/events.jsonl",
+      "sha256": "ef4456620080fcd054d7372a44b0cf8d2f29ad1859690c7c3105dafa127cd834"
+    },
+    {
+      "path": "local/skill-evals/20260923-intel-liquidity/implicit/host.json",
+      "sha256": "de148a8891d4d020789174485601ffeb3b59b074ae31bd3d0afff3bb2f3a1aa2"
+    },
+    {
+      "path": "local/skill-evals/20260923-intel-liquidity/implicit/machine-audit.json",
+      "sha256": "31453d9b59b231059a812a9f234522e701d28611cd94ace2fbfe76aa5a229309"
+    },
+    {
+      "path": "local/skill-evals/20260923-intel-liquidity/implicit/case-snapshot.json",
+      "sha256": "b9b84104915374d71afc300efbccdeb0677c05bc5b4573e208f3d5ec3f17ea2f"
+    },
+    {
+      "path": "acceptance/skill-tasks/intel-liquidity-transfer-case-20260923.json",
+      "sha256": "4a38317f6fbdd0ae76249c939a45896bff1b4f6ce68dcb2ff277fea82c5e0872"
+    },
+    {
+      "path": "local/skill-evals/20260923-intel-liquidity/sources/intel-fy2024.pdf",
+      "sha256": "22086ebbd41048b30e039762f6601b04548a63f7f485af3a41f2f9d4560941f0"
+    }
+  ],
+  "limits": [
+    "One authored new-to-repository issuer/document case, not proof of model-unseen training data or statistical reliability.",
+    "Main agent authored criteria and reviewed answer; not independent review.",
+    "Public PDF acquired post-hoc on 2026-09-23; historical as_of 2025-01-30, not current issuer analysis.",
+    "No Skill/core/installation changes or code-test rerun this turn.",
+    "Natural discovery depends on existing host governance; no other-host or live-provider validation.",
+    "Raw sources and host artifacts remain local dependencies."
+  ]
+}

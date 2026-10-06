@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bigKING67/money-craft/schemas/report-audit.v1.json",
+  "title": "Money Craft report audit",
+  "type": "object",
+  "required": ["schema", "valid", "metadata", "source_count", "citation_count", "warnings", "errors"],
+  "properties": {
+    "schema": {"const": "money-craft.report-audit.v1"},
+    "valid": {"type": "boolean"},
+    "metadata": {"type": "object"},
+    "source_count": {"type": "integer", "minimum": 0},
+    "citation_count": {"type": "integer", "minimum": 0},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "errors": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
+

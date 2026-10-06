@@ -1,0 +1,102 @@
+{
+  "schema": "money-craft.liquidity-semantic-cases.v1",
+  "scope": "Four authored interpretation pairs; not held-out or host evaluation",
+  "cases": [
+    {
+      "id": "entity-scope",
+      "category": "合并与母公司口径",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。集团现金900、选定融资负债600；母公司现金120，其他应付款450，未给对手方与到期安排。",
+      "task": "算集团差额，再判断能否作为母公司分红空间。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "900",
+          "600"
+        ],
+        "expected": "300",
+        "tolerance": "0"
+      },
+      "supported_claim": "集团现金减选定融资负债为300，不能据此计算母公司可分红现金。",
+      "contradicted_claim": "母公司可立即分红300，集团现金减融资负债已证明。",
+      "review_rationale": "集团列不能代替母公司列；其他应付款清偿安排未知。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "current-convertible",
+      "category": "其他流动负债融资工具",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。短期借款80、非流动借款20；其他流动负债另含零票息可转债30；附注债券表再次列同一可转债30。",
+      "task": "计算融资负债，并说明零票息与报表重分类是否影响纳入。",
+      "calculation": {
+        "id": "C01",
+        "operation": "add",
+        "inputs": [
+          "80",
+          "20"
+        ],
+        "expected": "100",
+        "tolerance": "0"
+      },
+      "supported_claim": "选定借款小计100；完整已知融资项还需加一次可转债30，得到130。",
+      "contradicted_claim": "全部融资负债100；可转债零票息，不需要纳入。",
+      "review_rationale": "漏掉30的流动可转债；附注重复出现不能再加第二次。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "restricted-cash",
+      "category": "重复扣除限制项",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。货币资金100，其中受限20；现金等价物80已明确排除该20，没有其他已披露调整。",
+      "task": "有人从现金等价物再扣受限资金，请检查计算与经济含义。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "80",
+          "20"
+        ],
+        "expected": "60",
+        "tolerance": "0"
+      },
+      "supported_claim": "80再减20虽等于60，但属重复扣减；已确认现金等价物仍为80，可分配性另查。",
+      "contradicted_claim": "保守可用现金为60：现金等价物80再减受限20。",
+      "review_rationale": "现金等价物已经排除受限20，不能重复扣减并称保守值。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    },
+    {
+      "id": "maturity-release",
+      "category": "到期与解押",
+      "data_kind": "SYNTHETIC",
+      "facts": "虚构公司，金额单位百万元，同一资产负债表日2026-06-30；不代表任何真实公司的数值。原始期限超过一年的产品共227，其中剩余一年内到期158、非流动69；质押19未分配到两桶，未提供解押日或提前退出条款。",
+      "task": "算一年内桶在质押配置假设下的余额，判断能否立即用于偿债。",
+      "calculation": {
+        "id": "C01",
+        "operation": "subtract",
+        "inputs": [
+          "158",
+          "19"
+        ],
+        "expected": "139",
+        "tolerance": "0"
+      },
+      "supported_claim": "假设全部质押落在一年内桶，扣后139；只是分桶演算，不是即刻可用资金下限。",
+      "contradicted_claim": "至少139现在可用于偿债，一年内到期且已扣全部质押。",
+      "review_rationale": "到期桶不是即刻到账；质押配置和其他可用条件未证实。",
+      "manual_labels": {
+        "supported_claim": "SUPPORTED_WITHIN_SCOPE",
+        "contradicted_claim": "CONTRADICTED"
+      }
+    }
+  ]
+}

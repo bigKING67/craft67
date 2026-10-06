@@ -1,0 +1,62 @@
+{
+  "schema": "money-craft.target-q1-review.v1",
+  "status": "PASS_BOUNDED_RETROSPECTIVE_REVIEW",
+  "as_of": "2025-05-21",
+  "executed_on": "2026-09-20",
+  "prior_review": "acceptance/target-drivers/review.json",
+  "prior_review_sha256": "e4c4fb6dd867e1246fe39f10f34821c3cbeef795861a3f8b7797cf392305d388",
+  "prior_artifacts_unchanged": true,
+  "source_count": 3,
+  "calculations": 46,
+  "negative_checks": [
+    {
+      "case": "future_disclosure",
+      "status": "PASS_REJECTED",
+      "error": "source disclosure exceeds research cutoff"
+    },
+    {
+      "case": "unchanged_cutoff",
+      "status": "PASS_REJECTED",
+      "error": "follow-up must advance the bound historical cutoff"
+    },
+    {
+      "case": "source_hash",
+      "status": "PASS_REJECTED",
+      "error": "source hash mismatch"
+    },
+    {
+      "case": "cash_bridge",
+      "status": "PASS_REJECTED",
+      "error": "cash bridge does not reconcile"
+    },
+    {
+      "case": "eps_bridge",
+      "status": "PASS_REJECTED",
+      "error": "EPS adjustment bridge does not reconcile"
+    }
+  ],
+  "semantic_reviewer": "parent_agent",
+  "semantic_checks": [
+    "GAAP uplift separated from adjusted deterioration using disclosed tax bridge.",
+    "Old scenario lineage retained; revised guidance supersedes current-guidance claims without rewriting historical artifacts.",
+    "Inventory trigger remains WATCH because only one of two required quarters verified.",
+    "Cash/proxy boundaries and repurchase disclosure mismatch retained.",
+    "No historical price reused as May valuation; no forecast score."
+  ],
+  "host_review": "acceptance/skill-tasks/target-q1-host-20260920.json",
+  "limitations": [
+    "Retrospective replay, not a blind forecast score.",
+    "Two selected issuer disclosures, not independent source lineages or a complete 10-Q review.",
+    "Normalized earnings, fair multiple and full intrinsic valuation remain unresolved."
+  ],
+  "artifacts": {
+    "acceptance/target-q1/input.json": "c51167efb72d2db33446e323119032c7787b0b05b95e444a82d587ae2e7f503f",
+    "acceptance/target-q1/evidence-manifest.json": "8851a8cef79b182fdab8b1fa0751a373ffc99d4f77e4b713a87376d8b0eff7f4",
+    "acceptance/target-q1/reproduce.py": "55759bb865a1e2a63c9a77a17e98a38e746d1525d5e0ab272e92567d8528142c",
+    "acceptance/target-q1/report.template.md": "671e1561ff87b8c4d9f3d990a142111091f59d9c6cdd62efd36dd22a0ec09f3c",
+    "acceptance/target-q1/reconstruction/report.md": "63c48d459796c502eb9cc0e7ba145929380ba0b71f8c34e32f95c9f402293857",
+    "acceptance/target-q1/reconstruction/result.json": "b17b601080262c8bafaec84e35c62be28081dd337bca724baed4bdab64a8bb86",
+    "acceptance/target-q1/reconstruction/financial-audit.json": "2a7a893e3b9a668f38d6061ac14d6e59d148d4758506394c1107d10355f152a2",
+    "acceptance/skill-tasks/target-q1-host-20260920.json": "c6f90fa296f22147bd1fab0f23a262e9b1b8f8bf9f82ee76ce2c140e367cbafb"
+  }
+}

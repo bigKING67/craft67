@@ -1,0 +1,55 @@
+{
+  "schema": "design-craft.cross-agent-scorecard.v1",
+  "task_id": "same-prompt-dashboard-review",
+  "criteria": [
+    {
+      "id": "style_authority",
+      "label": "Style authority and product context",
+      "weight": 15,
+      "pass_evidence": "Reads project style authority before judging dashboard polish.",
+      "deduction_trigger": "Applies stock dashboard styling without product context."
+    },
+    {
+      "id": "reference_selection",
+      "label": "Reference selection",
+      "weight": 15,
+      "pass_evidence": "Selects dashboard, taste, design-move, and validation references only as needed.",
+      "deduction_trigger": "Loads unrelated references or ignores dashboard guidance."
+    },
+    {
+      "id": "anti_generic_redesign",
+      "label": "Anti-generic redesign",
+      "weight": 15,
+      "pass_evidence": "Diagnoses decision hierarchy instead of rearranging generic cards.",
+      "deduction_trigger": "Uses gradients, equal cards, or template chrome as the main repair."
+    },
+    {
+      "id": "evidence_level",
+      "label": "Evidence level labeling",
+      "weight": 15,
+      "pass_evidence": "Labels screenshot, browser, responsive, or before/after evidence.",
+      "deduction_trigger": "Gives a precise score while hiding missing runtime evidence."
+    },
+    {
+      "id": "verified_boundary",
+      "label": "Verified/unverified boundary",
+      "weight": 15,
+      "pass_evidence": "Separates visible hierarchy issues from unverified interaction states.",
+      "deduction_trigger": "Claims interaction or mobile quality without evidence."
+    },
+    {
+      "id": "design_moves",
+      "label": "Concrete design moves",
+      "weight": 15,
+      "pass_evidence": "Proposes lead metric, support strip, work area, and exception queue moves.",
+      "deduction_trigger": "Gives vague cleanup advice without implementable structure."
+    },
+    {
+      "id": "scope_control",
+      "label": "Scope control and unrelated changes",
+      "weight": 10,
+      "pass_evidence": "Keeps recommendations within dashboard UI quality and decisive validation.",
+      "deduction_trigger": "Suggests backend changes or buries priorities in an overlong review."
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "schema": "money-craft.machine-gates-acceptance.v1",
+  "date": "2026-09-16",
+  "implementation_status": "IMPLEMENTED_AND_VERIFIED",
+  "research_quality_status": "PARTIAL_PREVIOUS_GAPS_REMAIN",
+  "changes": [
+    "保存事件与回答哈希绑定检查。",
+    "路由缺失、无有效JSON、末次失败及必需计算回执缺失返回非零。",
+    "身份阻断与READY区分；所有语义标准保持人工待审。",
+    "现有宿主runner自动写入machine-audit.json，退出码0仅表示机器门禁通过，4表示失败。"
+  ],
+  "tests": {
+    "total": 259,
+    "passed": 259,
+    "skipped": 0,
+    "new_regressions": 17,
+    "log": {
+      "path": "local/skill-evals/20260916/machine-recheck/core-tests-complete.log",
+      "sha256": "16a156bf1bc93a6a46f437c8eb1c63079a1ca0c9c56e666f28b6cdd2795eea5f"
+    }
+  },
+  "historical_recheck": {
+    "runs": 12,
+    "machine_pass": 8,
+    "machine_fail": 4,
+    "policy": "Current explicit case machine_contract; historical files and verdicts are not overwritten.",
+    "summary": {
+      "path": "local/skill-evals/20260916/machine-recheck/summary.json",
+      "sha256": "0cc23c7ace3134b451c1626ffe059837cbe8a1b45ac5230ea3e900b798809efb"
+    },
+    "results": [
+      {
+        "suite": "frozen-suite",
+        "case": "earnings-periods",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "READY",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-earnings-periods.json",
+          "sha256": "200dad6e7697c1ac03592882143eba445561a718367d5c88a659aebaec813f34"
+        }
+      },
+      {
+        "suite": "frozen-suite",
+        "case": "evidence-conflict",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "READY",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-evidence-conflict.json",
+          "sha256": "d835ba08506e75b3de0b941d1109bf593509d47ed97326bed5bcdb794de8a14d"
+        }
+      },
+      {
+        "suite": "frozen-suite",
+        "case": "global-assets",
+        "exit_code": 4,
+        "machine_checks_pass": false,
+        "route": "NOT_OBSERVED",
+        "errors": [
+          "ROUTE_REQUIRED_NOT_VERIFIED"
+        ],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-global-assets.json",
+          "sha256": "3947d92ab6137280bd38c91296e16e052c7a30cfed36bfe2630e56431cf229c1"
+        }
+      },
+      {
+        "suite": "frozen-suite",
+        "case": "preview-replay",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "READY",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-preview-replay.json",
+          "sha256": "b8fc382472585ef7033fbefd53620cf3107d9c92edb99159b91cf0c6bb4e3306"
+        }
+      },
+      {
+        "suite": "frozen-suite",
+        "case": "screening",
+        "exit_code": 4,
+        "machine_checks_pass": false,
+        "route": "INVALID",
+        "errors": [
+          "ROUTE_REQUIRED_NOT_VERIFIED",
+          "LAST_ROUTE_ATTEMPT_INVALID"
+        ],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-screening.json",
+          "sha256": "9104b846bd8614152738eb07c862bf351b4154bd7ba61f3a41c31eb48eba251d"
+        }
+      },
+      {
+        "suite": "frozen-suite",
+        "case": "upstream-update",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "NOT_OBSERVED",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-upstream-update.json",
+          "sha256": "a008964db8b69b954108e31274e62654821e426bbe92d72da825419575588bd3"
+        }
+      },
+      {
+        "suite": "frozen-suite-r2",
+        "case": "earnings-periods",
+        "exit_code": 4,
+        "machine_checks_pass": false,
+        "route": "NOT_OBSERVED",
+        "errors": [
+          "ROUTE_REQUIRED_NOT_VERIFIED"
+        ],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-r2-earnings-periods.json",
+          "sha256": "41b80c36a47ccacab036079c68473f263e9579076b9c849149540aaa6fe2fad2"
+        }
+      },
+      {
+        "suite": "frozen-suite-r2",
+        "case": "evidence-conflict",
+        "exit_code": 4,
+        "machine_checks_pass": false,
+        "route": "NOT_OBSERVED",
+        "errors": [
+          "ROUTE_REQUIRED_NOT_VERIFIED"
+        ],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-r2-evidence-conflict.json",
+          "sha256": "0664ab47d9c0a6215c70e779bdfb592152ca4ea94128772656424c51b9d5e8e9"
+        }
+      },
+      {
+        "suite": "frozen-suite-r2",
+        "case": "global-assets",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "BLOCKED_AS_EXPECTED",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-r2-global-assets.json",
+          "sha256": "07c9bee5d33835351e49101d49a4c3aa9085c1a8cf3ab07f1f1bb995f87fdcbc"
+        }
+      },
+      {
+        "suite": "frozen-suite-r2",
+        "case": "preview-replay",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "READY",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-r2-preview-replay.json",
+          "sha256": "a76edd6df6f63630fac5dad47dd77c5d5ddf0114dff2503e895aaceb24897173"
+        }
+      },
+      {
+        "suite": "frozen-suite-r2",
+        "case": "screening",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "READY",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-r2-screening.json",
+          "sha256": "b8ef48e600a565fa3ba9698eb62ee5fc1e462353791861d435cf476954c04c72"
+        }
+      },
+      {
+        "suite": "frozen-suite-r2",
+        "case": "upstream-update",
+        "exit_code": 0,
+        "machine_checks_pass": true,
+        "route": "NOT_OBSERVED",
+        "errors": [],
+        "artifact": {
+          "path": "local/skill-evals/20260916/machine-recheck/frozen-suite-r2-upstream-update.json",
+          "sha256": "f9054810cbbd1913a6f4bab58c05ec692330cb90bc10786f1bc4d2a5e72c75dc"
+        }
+      }
+    ]
+  },
+  "fresh_host": {
+    "case": "screening",
+    "invocation": "IMPLICIT_NATURAL_PROMPT",
+    "machine_checks_pass": true,
+    "route": "READY",
+    "calculation_checks": 4,
+    "manual_semantic_review": "PASS_BY_PRIMARY_AGENT",
+    "research_complete": false,
+    "artifacts": {
+      "prompt.txt": {
+        "path": "local/skill-evals/20260916/machine-gated-screening/prompt.txt",
+        "sha256": "2bfa3ade45011b3c939f1c5255b78ee062ba35d9e45be06576c57b4275a975e2"
+      },
+      "host.json": {
+        "path": "local/skill-evals/20260916/machine-gated-screening/host.json",
+        "sha256": "15e4ddda0b09378647820e783692a80332ed3901a1f4c628e0300b8e7d6586e3"
+      },
+      "events.jsonl": {
+        "path": "local/skill-evals/20260916/machine-gated-screening/events.jsonl",
+        "sha256": "51f2ff66ffdfc7f3e439d257984592cdd2155e67ce100707ef2291d2f11fc59a"
+      },
+      "answer.md": {
+        "path": "local/skill-evals/20260916/machine-gated-screening/answer.md",
+        "sha256": "9d2e92c570ef4e664a5dd67fb98a1456e18288308b8ab02671308dc5a67f9441"
+      },
+      "machine-audit.json": {
+        "path": "local/skill-evals/20260916/machine-gated-screening/machine-audit.json",
+        "sha256": "addfa426a8e6d7a19894e5e295ca3a237034f247dcc51aad2d4dbfa1f872601c"
+      }
+    },
+    "final_auditor_recheck": {
+      "path": "local/skill-evals/20260916/machine-recheck/fresh-screening-final-audit.json",
+      "sha256": "addfa426a8e6d7a19894e5e295ca3a237034f247dcc51aad2d4dbfa1f872601c"
+    }
+  },
+  "limits": [
+    "该工具是仓库验收门禁，不是全局宿主强制执行层。",
+    "数字回执存在且正确，不代表全部关键计算覆盖；利润率比较等仍人工审查。",
+    "路由回执结构与执行状态通过，不自动证明其意图分类正确或来源可信。",
+    "历史两轮仍为PARTIAL；本轮未重新声称六例完整语义稳定通过。",
+    "本轮未修改Skill运行包或全局安装，未commit、push或发布。"
+  ]
+}

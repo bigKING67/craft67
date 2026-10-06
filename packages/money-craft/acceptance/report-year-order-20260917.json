@@ -1,0 +1,49 @@
+{
+  "schema": "money-craft.report-year-order.v1",
+  "date": "2026-09-17",
+  "scope": "Chronological financial/cash chart order, duplicate year rejection and elapsed-year spacing",
+  "source_hashes": {
+    "skills/money-craft/scripts/report_renderer.py": "96f7a8e74c3b960e56bcd3287e175d7c91fba10de62159ceb1e0f9b9d3a134b1",
+    "tests/test_report_renderer.py": "a2c68ea92fc42d31693948030c4b2cd1175e8c8580b9bed1e035f2748ec3fd8b",
+    "skills/money-craft/references/report-rendering.md": "569ffca4b78312090178388ac861842aa811484574976375e3d64d166a3beb39"
+  },
+  "finding": {
+    "status": "FIXED",
+    "before": "Input column order determined time direction and all year gaps had equal spacing.",
+    "after": "Sort and deduplicate by integer year identity; map x coordinates by elapsed years; omit duplicate-year chart inputs."
+  },
+  "validation": {
+    "renderer_tests": 53,
+    "full_tests": 343,
+    "source_checks": 19,
+    "package_checks": 8,
+    "git_diff_check": "PASS",
+    "initial_red_failures": 2,
+    "real_cli": "Descending source table produces identical financial/cash charts to ascending canonical table; source bytes unchanged."
+  },
+  "independent_review": {
+    "agent": "research_lifecycle_review",
+    "verdict": "AGREEMENT_AFTER_FIX",
+    "renderer_tests": 53,
+    "skipped_tests": 0,
+    "initial_permutation_checks": 24,
+    "finding_closed": "Mixed Unicode digit forms bypassed string year identity and caused wrong ordering or division by zero; integer identity now closes both original reviewer samples.",
+    "source_hashes": {
+      "skills/money-craft/scripts/report_renderer.py": "96f7a8e74c3b960e56bcd3287e175d7c91fba10de62159ceb1e0f9b9d3a134b1",
+      "tests/test_report_renderer.py": "a2c68ea92fc42d31693948030c4b2cd1175e8c8580b9bed1e035f2748ec3fd8b"
+    },
+    "blocking_findings": 0
+  },
+  "installation": {
+    "parity": "PASS",
+    "files": 71,
+    "backup": "~/.agents/.skills-backups/money-craft.20260917T115248264852Z"
+  },
+  "limits": [
+    "Renderer remains PARTIAL.",
+    "Only supported 20xx year headers; no quarter parsing or data imputation.",
+    "Chart selection, evidence display, full SVG and PDF/visual acceptance remain unverified.",
+    "Existing HTTPError fixture ResourceWarnings remain.",
+    "No app, commit, push or release."
+  ]
+}
