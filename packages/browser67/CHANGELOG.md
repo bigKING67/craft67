@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Move release resolution to `bigKING67/craft67` with `browser67/vX.Y.Z` tags;
+  install from `packages/browser67`, isolate other packages' releases, and fail
+  explicitly when no browser67 release is available.
+- Keep GenericAgent outside the monorepo and resolve its sibling checkout from
+  the craft67 root; retain standalone checkout compatibility.
+
 - Split browser67 Skill setup/maintenance and auth/native-input guidance into
   linked references; keep readiness verification bound to only the references
   explicitly linked from the Skill entry, and reject missing links or missing
