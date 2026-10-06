@@ -4,16 +4,16 @@
     "name": "lsdefine/GenericAgent",
     "remote": "https://github.com/lsdefine/GenericAgent.git",
     "reviewed_ref": "main",
-    "reviewed_commit": "f6e5657fbe9c4fc57fae65dcf3789f71937dc97e",
-    "reviewed_at": "2026-09-03",
-    "release_context": "71cf559..f6e5657 review: one upstream commit changes only memory/ganet_pc_setup_sop.md for GAnet macOS setup; all six assets/tmwd_cdp_bridge Git blob hashes remain identical, so this refresh records review coverage without extension sync"
+    "reviewed_commit": "f308ee7eb079cc402edf5a934fa65f6d71a4c7ad",
+    "reviewed_at": "2026-10-06",
+    "release_context": "2026-10-06 scoped absorption review of f6e5657..f308ee7: GitHub compare reports 15 commits and 16 changed paths, none under assets/tmwd_cdp_bridge. A fresh temporary checkout audit confirms all six reviewed extension SHA-256 values are unchanged. Changes affect GenericAgent agent/LLM cancellation, host frontends, prompts and documentation; these are outside the browser67 bridge boundary and are not imported. Preserve the existing nine local drift paths and ten enhanced bridge features; direct sync remains disabled and the historical extension provenance lock stays unchanged. This is an absorption decision, not a full security audit of GenericAgent."
   },
   "decision": {
     "extension_merge_mode": "manual_merge_preserve_local_bridge_features",
     "direct_sync_allowed": false,
     "local_extension_action": "keep_local_bridge_and_selectively_cherry_pick_future_useful_hunks",
     "lock_action": "keep_UPSTREAM.lock.json_at_extension_sync_baseline_until_intentional_extension_sync",
-    "reason": "Latest upstream f6e5657fbe9c4fc57fae65dcf3789f71937dc97e was checked with upstream:audit:latest and an exact 71cf559..f6e5657 Git comparison on 2026-09-03. The single upstream commit changes only memory/ganet_pc_setup_sop.md for GAnet macOS setup; all six assets/tmwd_cdp_bridge Git blob hashes are unchanged. Current local-vs-upstream drift remains background.js,browser67/debugger-runtime.js,browser67/managed-content.js,browser67/runtime.js,browser67/window-anchor.html,browser67/window-focus-runtime.js,content.js,disable_dialogs.js,manifest.json; upstream background.js still lacks the recorded local enhanced bridge features (batch_uses_handle_tabs,cdp_tabid_validation,cookies_tabid_validation,handle_tabs_dispatch,include_unscriptable,numeric_tab_id_validation,tabs_close,tabs_get,unsupported_tabs_method,ws_exec_tabid_validation), so direct sync remains disabled, UPSTREAM.lock.json stays at the historical extension sync baseline, and the local bridge stays authoritative."
+    "reason": "2026-10-06 scoped absorption review of f6e5657..f308ee7: GitHub compare reports 15 commits and 16 changed paths, none under assets/tmwd_cdp_bridge. A fresh temporary checkout audit confirms all six reviewed extension SHA-256 values are unchanged. Changes affect GenericAgent agent/LLM cancellation, host frontends, prompts and documentation; these are outside the browser67 bridge boundary and are not imported. Preserve the existing nine local drift paths and ten enhanced bridge features; direct sync remains disabled and the historical extension provenance lock stays unchanged. This is an absorption decision, not a full security audit of GenericAgent."
   },
   "extension_review": {
     "changed_files": [
