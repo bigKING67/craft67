@@ -95,8 +95,7 @@ browser67 结果冒充为已验证；三类证据单独报告。
 
 ## 项目状态
 
-当前版本 `0.2.0`。npm package 仍保持私有；`v0.2.0` Git tag 是可复现 Skill 安装源，本次不创建
-GitHub Release。
+当前源码版本 `0.2.0`，npm package 仍保持私有。旧仓库的裸版本标签不再作为安装入口；请使用 craft67 的已验证完整提交及 `packages/reverse-craft/skills/reverse-craft` 子目录。候选包与下载验证见根仓库 [发布流程迁移](../../docs/release-migration.md)，候选通过不代表已创建 GitHub Release。
 
 架构、验证层级和上游更新流程见 [`docs/architecture.md`](docs/architecture.md)、
 [`docs/verification.md`](docs/verification.md) 与 [`docs/upstream-audit.md`](docs/upstream-audit.md)。

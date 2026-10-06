@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: [review-craft, 3d-craft, creative-craft, whoami]
+        package: [review-craft, 3d-craft, creative-craft, whoami, money-craft, reverse-craft]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -49,7 +49,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: [review-craft, 3d-craft, creative-craft, whoami]
+        package: [review-craft, 3d-craft, creative-craft, whoami, money-craft, reverse-craft]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:

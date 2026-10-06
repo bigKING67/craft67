@@ -12,7 +12,7 @@ import zipfile
 from versions import inspect_package
 
 ROOT = Path(__file__).resolve().parents[1]
-SUPPORTED = ('review-craft', '3d-craft', 'creative-craft', 'whoami')
+SUPPORTED = ('review-craft', '3d-craft', 'creative-craft', 'whoami', 'money-craft', 'reverse-craft')
 MANIFEST = 'candidate.json'
 
 
@@ -40,7 +40,7 @@ def verify(directory, package, expected_sha):
             or manifest['version'] != version_for(package)):
         raise ValueError('candidate identity does not match the requested source/package/version')
     files = manifest['files']
-    extension = '.tgz' if package in ('review-craft', 'creative-craft') else '.zip'
+    extension = '.tgz' if package in ('review-craft', 'creative-craft', 'money-craft', 'reverse-craft') else '.zip'
     if not isinstance(files, dict) or not any(name.endswith(extension) for name in files):
         raise ValueError('candidate has no package archive')
     if {p.name for p in directory.iterdir()} != set(files) | {MANIFEST}:
@@ -88,6 +88,25 @@ def build_whoami(directory, version):
         (directory / 'package-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
 
 
+def build_npm_candidate(package, directory):
+    source = ROOT / 'packages' / package
+    subprocess.run([sys.executable, str(ROOT / 'scripts/check.py'), '--package', package], check=True)
+    packed = json.loads(subprocess.check_output(
+        ['npm', 'pack', '--json', '--pack-destination', str(directory)], cwd=source, text=True))
+    if not isinstance(packed, list) or len(packed) != 1:
+        raise ValueError('npm pack must produce exactly one candidate')
+    filename = packed[0]['filename']
+    if Path(filename).name != filename or not filename.endswith('.tgz'):
+        raise ValueError('invalid npm candidate filename')
+    archive = directory / filename
+    receipt = json.loads(subprocess.check_output(
+        [sys.executable, 'scripts/package_smoke.py', '--package', str(archive)], cwd=source, text=True))
+    if receipt.get('valid') is not True:
+        raise ValueError(f'{package} exact package smoke did not pass')
+    receipt['artifact_sha256'] = digest(archive)
+    (directory / 'package-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
+
+
 def build(package, directory):
     if directory == ROOT or ROOT in directory.parents:
         raise ValueError('candidate output must be outside the repository')
@@ -108,6 +127,9 @@ def build(package, directory):
     elif package == 'whoami':
         command = None
         build_whoami(directory, version)
+    elif package in ('money-craft', 'reverse-craft'):
+        command = None
+        build_npm_candidate(package, directory)
     else:
         raise ValueError(f'unsupported candidate package: {package}')
     if command:

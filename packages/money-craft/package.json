@@ -5,10 +5,11 @@
   "description": "Evidence-first global investment research, wealth decision support, valuation, and thesis tracking for agent hosts.",
   "license": "MIT",
   "author": "bigKING67",
-  "homepage": "https://github.com/bigKING67/money-craft#readme",
+  "homepage": "https://github.com/bigKING67/craft67/tree/main/packages/money-craft#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bigKING67/money-craft.git"
+    "url": "git+https://github.com/bigKING67/craft67.git",
+    "directory": "packages/money-craft"
   },
   "files": [
     ".env.example",

@@ -49,7 +49,7 @@ class CandidateTests(unittest.TestCase):
         self.archive.unlink()
         for package in candidate.SUPPORTED:
             with self.subTest(package=package):
-                suffix = '.tgz' if package in ('review-craft', 'creative-craft') else '.zip'
+                suffix = '.tgz' if package in ('review-craft', 'creative-craft', 'money-craft', 'reverse-craft') else '.zip'
                 artifact = self.directory / (package + suffix)
                 artifact.write_bytes(b'fixture')
                 self.manifest.update(package=package, package_path=f'packages/{package}',
