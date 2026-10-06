@@ -8,7 +8,7 @@ from pathlib import Path
 
 from ..repo import REPO_ROOT
 from .evidence import REPORT_SCHEMA
-from .integrity import publish_asset_set
+from .integrity import release_tag, publish_asset_set
 from .integrity import repository_head as _head
 from .integrity import repository_version as _version
 from .integrity import sha256_file as _sha256
@@ -285,7 +285,7 @@ def build_assets(
         manifest = {
             "schema": MANIFEST_SCHEMA,
             "version": version,
-            "tag": f"v{version}",
+            "tag": release_tag(version),
             "release_level": level.name,
             "source_commit": evidence["source_commit"],
             "verified_hosts": evidence["verified_hosts"],
@@ -362,7 +362,7 @@ def validate_assets(output_dir: Path, *, level: ReleaseLevel) -> dict[str, objec
         errors.append(f"invalid release manifest: {exc}")
     if manifest.get("schema") != MANIFEST_SCHEMA or manifest.get("release_level") != level.name:
         errors.append("release manifest schema or release_level is invalid")
-    if manifest.get("version") != version or manifest.get("tag") != f"v{version}":
+    if manifest.get("version") != version or manifest.get("tag") != release_tag(version):
         errors.append("release manifest version or tag is invalid")
     if not _is_commit(manifest.get("source_commit")) or manifest.get("source_commit") != _head():
         errors.append("release manifest source_commit must match HEAD")

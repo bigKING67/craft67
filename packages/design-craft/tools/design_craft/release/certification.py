@@ -8,7 +8,7 @@ from pathlib import Path
 
 from .assets import collect_native_evidence, load_release_evidence, validate_assets
 from .github_runs import load_artifact_observation, load_observation
-from .integrity import repository_head, repository_version, sha256_file
+from .integrity import release_tag, repository_head, repository_version, sha256_file
 from .policy import ReleaseLevel
 from .run_bindings import validate_release_run_bindings
 
@@ -18,7 +18,8 @@ ARTIFACT_DIGEST_PATTERN = re.compile(r"sha256:[0-9a-f]{64}")
 
 
 def artifact_name(tag: str, run_id: int) -> str:
-    return f"release-certification-{tag}-{run_id}"
+    safe_tag = tag.replace("/", "-")
+    return f"release-certification-{safe_tag}-{run_id}"
 
 
 def _safe_relative_path(raw: object, *, label: str) -> Path:
@@ -64,7 +65,7 @@ def build_certification_bundle(
 ) -> dict[str, object]:
     version = repository_version()
     head = repository_head()
-    if tag != f"v{version}":
+    if tag != release_tag(version):
         raise ValueError("certification tag must match the repository version")
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
         raise ValueError("certification repository must be owner/name")
@@ -223,7 +224,7 @@ def validate_certification_bundle(
     head = repository_head()
     if manifest.get("release_level") != level.name:
         errors.append("certification release_level does not match the requested level")
-    if manifest.get("tag") != f"v{version}":
+    if manifest.get("tag") != release_tag(version):
         errors.append("certification tag must match the repository version")
     if manifest.get("source_commit") != head:
         errors.append("certification source_commit must match current HEAD")
@@ -330,7 +331,7 @@ def validate_certification_bundle(
             if not isinstance(value, int) or isinstance(value, bool) or value <= 0:
                 errors.append(f"certification_workflow.{field} must be a positive integer")
         if isinstance(run_id, int) and not isinstance(run_id, bool) and run_id > 0:
-            expected_name = artifact_name(str(manifest.get("tag")), run_id)
+            expected_name = artifact_name(release_tag(version), run_id)
             if manifest.get("artifact_name") != expected_name:
                 errors.append("certification artifact_name does not match its workflow run")
 

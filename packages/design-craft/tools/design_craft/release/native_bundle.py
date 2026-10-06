@@ -11,7 +11,7 @@ from .github_runs import (
     validate_run,
     validate_workflow_binding,
 )
-from .integrity import publish_asset_set, repository_head, repository_version, sha256_file
+from .integrity import release_tag, publish_asset_set, repository_head, repository_version, sha256_file
 from .native_archive import write_deterministic_tar
 from .native_evidence import (
     EVIDENCE_LAYOUT,
@@ -174,7 +174,7 @@ def build_native_bundle(
         manifest = {
             "schema": SCHEMA,
             "version": version,
-            "tag": f"v{version}",
+            "tag": release_tag(version),
             "source_commit": repository_head(),
             "github_runs": {
                 "native": native_run,
@@ -314,7 +314,7 @@ def validate_native_bundle(
     errors.extend(_exact_keys(manifest, MANIFEST_KEYS, "native release manifest"))
     if manifest.get("schema") != SCHEMA:
         errors.append(f"native release manifest schema must be {SCHEMA}")
-    if manifest.get("version") != version or manifest.get("tag") != f"v{version}":
+    if manifest.get("version") != version or manifest.get("tag") != release_tag(version):
         errors.append("native release manifest version/tag must match VERSION")
     if manifest.get("source_commit") != repository_head():
         errors.append("native release manifest source_commit must match current HEAD")

@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from ..repo import REPO_ROOT
-from .integrity import repository_head, repository_version
+from .integrity import release_tag, repository_head, repository_version
 
 
 OBSERVATION_SCHEMA = "design-craft.github-run-observation.v1"
@@ -57,7 +57,7 @@ class RunContract:
     tag_bound: bool = False
 
     def head_branch(self, version: str) -> str:
-        return f"v{version}" if self.tag_bound else "main"
+        return release_tag(version) if self.tag_bound else "main"
 
     def ref(self, version: str) -> str:
         prefix = "tags" if self.tag_bound else "heads"
@@ -221,7 +221,7 @@ def validate_run(
 
 def latest_native_tag_run(repository: str) -> dict[str, object]:
     head = repository_head()
-    tag = f"v{repository_version()}"
+    tag = release_tag(repository_version())
     result = _run(
         [
             "gh",

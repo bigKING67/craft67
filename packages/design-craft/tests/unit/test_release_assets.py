@@ -45,7 +45,7 @@ def workflow(*, physical: bool = False) -> dict[str, object]:
         "url": f"https://github.com/bigKING67/design-craft/actions/runs/{run_id}",
         "event": "workflow_dispatch" if physical else "push",
         "head_sha": HEAD,
-        "ref": "refs/heads/main" if physical else f"refs/tags/v{VERSION}",
+        "ref": "refs/heads/main" if physical else f"refs/tags/design-craft/v{VERSION}",
     }
 
 
@@ -56,7 +56,7 @@ def selected_workflow_run() -> dict[str, object]:
         "status": "completed",
         "conclusion": "success",
         "headSha": HEAD,
-        "headBranch": f"v{VERSION}",
+        "headBranch": f"design-craft/v{VERSION}",
         "event": "push",
         "createdAt": "2026-07-23T00:00:00Z",
         "url": "https://github.com/bigKING67/design-craft/actions/runs/123",
@@ -70,7 +70,7 @@ def native_run_observation(run_id: int = 123) -> dict[str, object]:
         "workflow": ".github/workflows/native-runtime.yml",
         "workflow_name": "Native runtime evidence",
         "event": "push",
-        "head_branch": f"v{VERSION}",
+        "head_branch": f"design-craft/v{VERSION}",
         "head_sha": HEAD,
         "status": "completed",
         "conclusion": "success",
@@ -86,7 +86,7 @@ def benchmark_run_observation(run_id: int = 456) -> dict[str, object]:
         "workflow": ".github/workflows/benchmark.yml",
         "workflow_name": "Performance benchmark",
         "event": "workflow_dispatch",
-        "head_branch": f"v{VERSION}",
+        "head_branch": f"design-craft/v{VERSION}",
         "head_sha": HEAD,
         "status": "completed",
         "conclusion": "success",
@@ -127,7 +127,7 @@ def attach_benchmark_binding(
                     ),
                     "event": "workflow_dispatch",
                     "head_sha": HEAD,
-                    "ref": f"refs/tags/v{VERSION}",
+                    "ref": f"refs/tags/design-craft/v{VERSION}",
                 },
             }
             return
@@ -184,7 +184,7 @@ def write_assets(root: Path, level: ReleaseLevel) -> Path:
     manifest = {
         "schema": "design-craft.release-assets.v2",
         "version": VERSION,
-        "tag": f"v{VERSION}",
+        "tag": f"design-craft/v{VERSION}",
         "release_level": level.name,
         "source_commit": HEAD,
         "verified_hosts": list(level.required_hosts),

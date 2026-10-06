@@ -149,7 +149,7 @@ def run_observation() -> dict[str, object]:
         "workflow": NATIVE_WORKFLOW_PATH,
         "workflow_name": NATIVE_WORKFLOW_NAME,
         "event": "push",
-        "head_branch": f"v{VERSION}",
+        "head_branch": f"design-craft/v{VERSION}",
         "head_sha": HEAD,
         "status": "completed",
         "conclusion": "success",

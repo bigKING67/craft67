@@ -34,7 +34,7 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 | 包 | 已有入口 | 下一步需要完成的发布准备 |
 | --- | --- | --- |
-| design-craft | 根 `native-runtime.yml`、`benchmark.yml`；包内认证/发布参考 | 已接入手动 native 和性能证据采集；命名空间标签、认证 observation 与正式发布链仍需迁移 |
+| design-craft | 根 `native-runtime.yml`、`benchmark.yml`；包内认证/发布参考 | 已接入手动 native 和性能证据采集；本地认证工具已限定命名空间标签；根认证工作流与正式发布链仍需迁移 |
 | creative-craft | 根 Offline candidates → 原 `scripts/build_release.py` | 已接入离线候选；真实宿主模型调用和创意质量证据仍需独立验收 |
 | review-craft | 根 Offline candidates → 原 `scripts/release_gate.py` | 本轮接入 Ubuntu 候选；旧包 CI 的同一 tarball 跨平台复验尚未迁入，真实宿主声明仍需单独验收 |
 | money-craft | 根 Offline candidates → 原包检查与 `scripts/package_smoke.py` | 已接入实际打包和隔离 smoke；数据源 live 与研究质量证据仍需独立验收 |
@@ -64,7 +64,7 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 后续认证迁移必须同时处理：
 
-1. `release/github_runs.py` 的 tag-bound observation 合同，目前仍构造裸 `v<version>`；新仓库必须限定 `design-craft/v<version>`，拒绝其他包标签，并明确历史兼容边界。
+1. 已迁移本地 tag-bound observation、metadata、assets、native bundle 和 certification 校验：仅接受当前版本的 `design-craft/v<version>`，拒绝裸标签及其他包标签；旧标签与旧证据保留为历史，不作为当前认证输入。认证附件采用 `release-certification-design-craft-v<version>-<run_id>`，避免标签中的斜杠进入附件名。远端检查器已改为查询根 `check.yml` 与 `native-runtime.yml`；包内历史工作流尚未同步，不能直接调用为新认证入口。
 2. 原认证/发布工作流的 checkout、包 cwd、artifact 路径、标签校验及不可覆盖语义。
 3. native tag-push、对应 benchmark 与认证 run 的精确 SHA、事件、workflow、attempt 和产物 digest 绑定。
 4. certified 等级所需的真实物理设备与各宿主证据；本轮不触发 self-hosted 物理设备流程，不执行会写本机安装目录的 `publish-local`。

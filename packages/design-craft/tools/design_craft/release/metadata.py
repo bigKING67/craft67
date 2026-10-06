@@ -6,6 +6,7 @@ import subprocess
 from pathlib import Path
 
 from ..repo import REPO_ROOT
+from .integrity import release_tag
 
 
 SCHEMA = "design-craft.release-metadata.v1"
@@ -96,7 +97,7 @@ def validate_release_metadata(
 
     head_result = _git("rev-parse", "HEAD", root=root)
     head = head_result.stdout.strip() if head_result.returncode == 0 else ""
-    tag = f"v{version}"
+    tag = release_tag(version)
     if phase == "final":
         tag_target = _git("rev-list", "-n", "1", tag, root=root)
         tag_type = _git("cat-file", "-t", tag, root=root)

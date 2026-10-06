@@ -17,13 +17,14 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from tools.design_craft.release.assets import validate_assets
+from tools.design_craft.release.integrity import release_tag
 from tools.design_craft.release.github_runs import validate_run
 from tools.design_craft.release.native_bundle import validate_native_bundle
 from tools.design_craft.release.policy import LEVELS, load_policy
 
 
 SCHEMA = "design-craft.github-checks.v2"
-WORKFLOWS = ("validate.yml", "native-runtime.yml")
+WORKFLOWS = ("check.yml", "native-runtime.yml")
 
 
 def run(command: list[str]) -> subprocess.CompletedProcess[str]:
@@ -149,7 +150,7 @@ def run_self_check() -> None:
         **manual_success,
         "databaseId": 2,
         "conclusion": "failure",
-        "headBranch": "v0.5.0",
+        "headBranch": "design-craft/v0.5.0",
         "event": "push",
         "createdAt": "2026-01-02T00:00:00Z",
         "url": "https://example.invalid/tag-failure",
@@ -159,7 +160,7 @@ def run_self_check() -> None:
         [manual_success, tag_failure],
         head=head,
         required_event="push",
-        required_branch="v0.5.0",
+        required_branch="design-craft/v0.5.0",
     )
     if latest != tag_failure or not errors:
         raise RuntimeError("tag-run validation accepted an older manual success")
@@ -175,7 +176,7 @@ def run_self_check() -> None:
         [manual_success, tag_failure, tag_success],
         head=head,
         required_event="push",
-        required_branch="v0.5.0",
+        required_branch="design-craft/v0.5.0",
     )
     if latest != tag_success or errors:
         raise RuntimeError("latest successful tag run did not validate")
@@ -194,7 +195,7 @@ def run_self_check() -> None:
                     "head_sha": head,
                     "event": "push",
                     "url": tag_success["url"],
-                    "ref": "refs/tags/v0.5.0",
+                    "ref": "refs/tags/design-craft/v0.5.0",
                 }
             }
             for native in ("ios_simulator", "android_emulator")
@@ -262,7 +263,7 @@ def main() -> int:
             errors.append(repo_result.stderr.strip() or "cannot resolve GitHub repository")
 
     version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
-    tag = f"v{version}"
+    tag = release_tag(version)
     required_event = "push" if args.require_tag_run else None
     required_branch = tag if args.require_tag_run else None
     if args.require_tag_run:

@@ -11,6 +11,11 @@ from pathlib import Path
 from ..repo import REPO_ROOT
 
 
+def release_tag(version: str) -> str:
+    """Canonical Design tag in the craft67 monorepo; legacy tags are historical."""
+    return f"design-craft/v{version}"
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:

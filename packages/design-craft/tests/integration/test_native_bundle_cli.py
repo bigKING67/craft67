@@ -31,7 +31,7 @@ class NativeBundleCliTests(unittest.TestCase):
             "workflow": BENCHMARK_WORKFLOW_PATH,
             "workflow_name": BENCHMARK_WORKFLOW_NAME,
             "event": "workflow_dispatch",
-            "head_branch": f"v{VERSION}",
+            "head_branch": f"design-craft/v{VERSION}",
             "head_sha": HEAD,
             "status": "completed",
             "conclusion": "success",

@@ -82,7 +82,7 @@ def write_artifact_observation(
                 "repository": repository,
                 "artifact": {
                     "id": artifact_id,
-                    "name": artifact_name(f"v{VERSION}", run_id),
+                    "name": artifact_name(f"design-craft/v{VERSION}", run_id),
                     "size_in_bytes": 1024,
                     "digest": selected_digest,
                     "expired": False,
@@ -138,7 +138,7 @@ class ReleaseCertificationTests(unittest.TestCase):
         result = build_certification_bundle(
             output,
             level=self.level,
-            tag=f"v{VERSION}",
+            tag=f"design-craft/v{VERSION}",
             evidence_path=evidence_path,
             evidence_root=evidence_root,
             native_observation=native_observation,
@@ -161,13 +161,36 @@ class ReleaseCertificationTests(unittest.TestCase):
             bundle.rename(relocated)
             result = validate_certification_bundle(relocated, level=self.level)
             self.assertTrue(result["ok"], result["errors"])
-            self.assertEqual(result["artifact_name"], artifact_name(f"v{VERSION}", 789))
+            self.assertEqual(result["artifact_name"], artifact_name(f"design-craft/v{VERSION}", 789))
             self.assertTrue(
                 (relocated / "observations/benchmark-run.json").is_file()
             )
             self.assertTrue(
                 (relocated / "benchmark/benchmark-result-full.json").is_file()
             )
+
+    def test_namespaced_artifact_name_is_upload_safe(self) -> None:
+        self.assertEqual(
+            artifact_name(f"design-craft/v{VERSION}", 789),
+            f"release-certification-design-craft-v{VERSION}-789",
+        )
+
+    def test_manifest_rejects_wrong_tag_source_and_artifact_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            bundle = self.build_fixture(Path(raw))
+            path = bundle / "certification.json"
+            original = json.loads(path.read_text())
+            for field, value, error_fragment in (
+                ("tag", f"v{VERSION}", "tag must match"),
+                ("tag", f"browser67/v{VERSION}", "tag must match"),
+                ("source_commit", "0" * 40, "source_commit"),
+                ("artifact_name", f"release-certification-browser67-v{VERSION}-789", "artifact_name"),
+            ):
+                with self.subTest(field=field, value=value):
+                    path.write_text(json.dumps({**original, field: value}))
+                    result = validate_certification_bundle(bundle, level=self.level)
+                    self.assertFalse(result["ok"])
+                    self.assertTrue(any(error_fragment in error for error in result["errors"]), result["errors"])
 
     def test_benchmark_result_tamper_is_rejected_after_relocation(self) -> None:
         with tempfile.TemporaryDirectory() as raw:

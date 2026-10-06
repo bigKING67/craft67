@@ -35,7 +35,7 @@ def observed_run(run_id: int = 123) -> dict[str, object]:
         "workflow": NATIVE_WORKFLOW_PATH,
         "workflow_name": NATIVE_WORKFLOW_NAME,
         "event": "push",
-        "head_branch": f"v{VERSION}",
+        "head_branch": f"design-craft/v{VERSION}",
         "head_sha": HEAD,
         "status": "completed",
         "conclusion": "success",
@@ -52,7 +52,7 @@ def listed_run(
         "attempt": 1,
         "workflowName": NATIVE_WORKFLOW_NAME,
         "event": "push",
-        "headBranch": f"v{VERSION}",
+        "headBranch": f"design-craft/v{VERSION}",
         "headSha": HEAD,
         "status": "completed",
         "conclusion": conclusion,
@@ -86,7 +86,7 @@ def benchmark_run(run_id: int = 456) -> dict[str, object]:
         "workflow": BENCHMARK_WORKFLOW_PATH,
         "workflow_name": BENCHMARK_WORKFLOW_NAME,
         "event": "workflow_dispatch",
-        "head_branch": f"v{VERSION}",
+        "head_branch": f"design-craft/v{VERSION}",
         "head_sha": HEAD,
         "status": "completed",
         "conclusion": "success",
@@ -115,6 +115,17 @@ def certification_run(run_id: int = 789) -> dict[str, object]:
 class NativeGitHubRunTests(unittest.TestCase):
     def test_valid_run_matches_current_tag_contract(self) -> None:
         self.assertEqual(validate_run(observed_run(), kind="native"), [])
+
+    def test_tag_bound_runs_reject_other_packages_legacy_tags_and_wrong_sha(self) -> None:
+        for kind, fixture in (("native", observed_run), ("benchmark", benchmark_run)):
+            for tag in (f"v{VERSION}", f"browser67/v{VERSION}", f"design-craft/v{VERSION}-rc.1"):
+                with self.subTest(kind=kind, tag=tag):
+                    run = fixture()
+                    run["head_branch"] = tag
+                    self.assertTrue(any("head_branch" in error for error in validate_run(run, kind=kind)))
+            run = fixture()
+            run["head_sha"] = "0" * 40
+            self.assertTrue(any("head_sha" in error for error in validate_run(run, kind=kind)))
 
     def test_valid_physical_run_matches_main_dispatch_contract(self) -> None:
         self.assertEqual(validate_run(physical_run(), kind="physical"), [])
