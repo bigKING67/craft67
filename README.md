@@ -70,7 +70,7 @@ python3 scripts/verify-layout.py --check-checkouts
 
 ## CI 与版本
 
-[根统一工作流](.github/workflows/check.yml) 先验证结构和版本元数据，再从 catalog 生成所有包的检查矩阵；同一事件与分支的新运行会取消尚未完成的旧运行。结果见 [Actions](https://github.com/bigKING67/craft67/actions/workflows/check.yml)。包内 `.github/` 保留原工程合同和发布参考，不会被 GitHub 自动作为根工作流执行。
+[根统一工作流](.github/workflows/check.yml) 先验证结构和版本元数据，再从 catalog 生成所有包的检查矩阵；同一事件与分支的新运行会取消尚未完成的旧运行。Browser67 另有手动触发的 [多平台与隔离浏览器检查](.github/workflows/browser67-platform.yml)。结果见 [Actions](https://github.com/bigKING67/craft67/actions/workflows/check.yml)。包内 `.github/` 保留原工程合同和发布参考，不会被 GitHub 自动作为根工作流执行。
 
 各包独立版本，标签采用 `<包名>/v<版本>`；craft67 整体快照由 commit SHA 标识。版本来源、镜像同步和发布约束见 [版本与发布](docs/versioning.md)。源码版本、CI 通过、正式 Release、已安装文件和宿主运行态是不同状态；离线 CI 不替代真实浏览器、目标平台或正式安装验收。原发布工作流尚未全部切换到本仓库；候选构建入口与逐包缺口见 [发布流程迁移](docs/release-migration.md)。
 

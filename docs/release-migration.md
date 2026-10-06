@@ -39,10 +39,19 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 | review-craft | 根 Offline candidates → 原 `scripts/release_gate.py` | 本轮接入 Ubuntu 候选；旧包 CI 的同一 tarball 跨平台复验尚未迁入，真实宿主声明仍需单独验收 |
 | money-craft | 根 Offline candidates → 原包检查与 `scripts/package_smoke.py` | 已接入实际打包和隔离 smoke；数据源 live 与研究质量证据仍需独立验收 |
 | whoami | 根 Offline candidates → 原 `pack-skill.mjs` | 已接入精简导出、解包后生产依赖安装和 CLI 样例验证；宿主解读与真实行为证据仍需独立验收 |
-| browser67 | `npm run release:ready` | 迁移旧跨平台、remote-CDP 与覆盖率 CI；按发布目标完成真实 TMWD/live 门禁，之后才准备新版本标签 |
+| browser67 | 根 `browser67-platform.yml`；原 `npm run release:ready` | 已接入手动跨平台、remote-CDP 与覆盖率工作流；运行结果按精确 SHA 核对。真实 TMWD/live 发布门禁仍需完成 |
 | commerce-growth-os | `scripts/build_release.sh <quality-evidence>` | 绑定有效质量回归证据，保留八 bundle 安装校验与 archive verifier；不以普通 validate 替代质量证据 |
 | 3d-craft | 根 Offline candidates → 原 `scripts/release_gate.py` | 本轮接入离线候选；Blender、实际宿主与视觉声明仍按目标验收 |
 | reverse-craft | 根 Offline candidates → `check:all` 与 exact-package smoke | 已接入源码字节核对及解包后 CLI 流程；真实宿主、browser67 和目标环境验收仍需独立执行 |
 | write-craft | `scripts/release_check.py` | 先通过当前 Skill/用例摘要绑定的真实行为基线、评审器校准与真人阅读证据，再接入候选构建 |
 
 包内旧 `.github/workflows/` 是历史参考，不会被 GitHub 自动执行。根 `check.yml` 当前是 Ubuntu 包级离线矩阵；不能据此声称旧多平台、native、benchmark 或发布工作流已经迁移。本页列出的是实际入口及缺口，不是所有门禁已通过的声明。
+
+## 剩余四包的证据核对（2026-10-06）
+
+- **Write Craft：发布检查失败。** 在 `a15cc0c` 源码上实际运行 `python3 scripts/release_check.py`，当前 Skill 摘要、用例 digest 与历史版本基线不一致，且缺少符合当前合同的完整 PASS、探索披露、评审器校准与真人阅读摘要。普通源码 CI 通过不改变此结果。需要重新采集真实行为与真人证据；不能复制旧 PASS、改摘要或删除门禁使其通过。
+- **Commerce：证据输入待准备。** `tooling/build/package_release.py` 明确要求 quality-regression 通过、干净当前 HEAD、完整选择/执行/评审/校准层、活跃安装一致性，以及同一个显式指定模型。当前未提供符合新 HEAD 的质量证据包；未执行正式打包或触发付费模型评测。仓库中的评测用例不是通过证据。
+- **Design：认证链迁移尚未完成。** operational/certified 产物构建需要 native observation、benchmark observation/result、证据目录及后续标签绑定校验。旧认证/发布工作流仍在包内，不能在根目录复制单个 build 命令就声称完成迁移。本轮没有运行或宣称这些认证通过。
+- **Browser67：先恢复平台验证入口。** 根 [Browser67 platform checks](../.github/workflows/browser67-platform.yml) 保留旧四格系统/Node 矩阵、Ubuntu 隔离 Chrome remote-CDP、覆盖率附件；只手动触发。它不访问用户浏览器配置，不运行真实 TMWD/Profile 验收，不代替 `release:ready` 中的 live、上游当前性与截图稳定性条件，因此暂不加入离线候选支持名单。
+
+剩余缺口是实际验收和工作流迁移工作，不是缺少版本号。六个已接入包的候选入口继续独立可用。

@@ -85,8 +85,12 @@ npm run verify:manifest
 - `npm run verify:local`: default full verification plus active skill drift.
 - `npm run verify:all`: local verification plus isolated remote CDP.
 
-Repository CI runs deterministic contracts on Linux, Windows, and macOS, plus
-an isolated Ubuntu remote-CDP job and a separate coverage-summary job.
+The monorepo [Browser67 platform checks](../../../.github/workflows/browser67-platform.yml)
+workflow is manually dispatched. It preserves the former Linux Node 20/22,
+Windows Node 22 and macOS Node 22 contract matrix, an isolated Ubuntu remote-CDP
+job, and a separate coverage-summary job. The ordinary root package workflow
+checks Linux Node 24 only; it does not imply these platform jobs have run.
+Verify the platform workflow result for the exact source SHA before citing it.
 Real-profile TMWD live gates remain local or self-hosted because shared CI must
 not access a user's browser profile.
 
