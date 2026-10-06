@@ -29,6 +29,9 @@ jobs:
         working-directory: packages/${{ matrix.package }}
         run: |
           if [ -f package-lock.json ]; then npm ci --ignore-scripts; fi
+      - name: Initialize Money upstream required by its source gate
+        if: matrix.package == 'money-craft'
+        run: git submodule update --init --recursive -- packages/money-craft/upstreams/ai-berkshire
       - name: Install pinned Creative validation dependencies
         if: matrix.package == 'creative-craft'
         run: python3 -m pip install -r packages/creative-craft/requirements-dev.txt

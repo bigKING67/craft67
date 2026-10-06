@@ -15,7 +15,13 @@
 
 根封装额外要求干净源码、构建前后 SHA 不变，记录包版本、完整源码 SHA、包路径与各产物 SHA-256。产物存于 runner 临时目录，通过 Actions 附件保留 7 天；独立下载任务重新核对身份、完整文件集合与校验值，校验不符直接失败。校验值用于发现文件变化，不构成独立签名或供应链认证。
 
-本地已准备对应包依赖后，也可以构建到仓库外不存在的目录：
+本地已准备对应包依赖后，也可以构建到仓库外不存在的目录。Money 的源码门禁还要求初始化其固定 AI Berkshire 上游（候选工作流会执行该步骤）：
+
+```sh
+git submodule update --init --recursive -- packages/money-craft/upstreams/ai-berkshire
+```
+
+构建与复核示例：
 
 ```sh
 python3 scripts/candidate.py build --package review-craft --directory /tmp/review-craft-candidate
