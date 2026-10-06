@@ -54,7 +54,7 @@ node dist/cli.js compare --before examples/acceptance/full-1996/birth.json --aft
 npm run check
 ```
 
-GitHub Actions 的 [CI 工作流](.github/workflows/ci.yml) 在 push、PR 或手动触发时，使用 Ubuntu + Node 24.18.0，从锁文件安装依赖并执行同一检查入口，覆盖类型检查、测试和构建。实际运行状态见 [Actions](https://github.com/bigKING67/whoami/actions/workflows/ci.yml)；工作流文件存在不代表远端检查已通过。固定验收样例的命盘 ID 包含完整 Node 和 tzdata 版本，因此 CI 固定 Node 24.18.0；`engines.node >=22` 是运行要求，不表示这些固定证据可跨版本直接复用。升级验证环境时应同步复核样例，不能跳过证据绑定检查。
+GitHub Actions 的 [统一 CI 工作流](../../.github/workflows/check.yml) 在 push、PR 或手动触发时，使用 Ubuntu + Node 24.18.0，从锁文件安装依赖并执行同一检查入口，覆盖类型检查、测试和构建。实际运行状态见 [Actions](https://github.com/bigKING67/craft67/actions/workflows/check.yml)；工作流文件存在不代表远端检查已通过。固定验收样例的命盘 ID 包含完整 Node 和 tzdata 版本，因此 CI 固定 Node 24.18.0；`engines.node >=22` 是运行要求，不表示这些固定证据可跨版本直接复用。升级验证环境时应同步复核样例，不能跳过证据绑定检查。
 
 自然语言回归、benchmark、运行回执、Ed25519 外部签发和 Codex runtime audit 都属于维护流程，完整命令和信任边界集中在[维护与验收契约](references/acceptance.md)。历史结果见[验证记录](docs/validation.md)。这些机制验证文件、计算和回答之间的绑定，不能证明传统命理或现实预测有效。
 

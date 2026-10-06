@@ -1,10 +1,14 @@
-# 本地迁移验收
+# 迁移历史记录（阶段快照）
 
 日期：2026-10-06。
 
+> 本页保留不同迁移阶段的原始记录，后文“未 push”“原目录仍保留”“CI 尚未远程执行”等均是当时状态，不代表当前状态。源码已统一到 `packages/`，统一 CI 已运行，旧目录与旧远端的后续处置见 [退役记录](remote-retirement.md)。使用入口以 [根 README](../README.md) 为准，版本规则见 [版本与发布](versioning.md)，最新 CI 以对应提交的 [Actions](https://github.com/bigKING67/craft67/actions/workflows/check.yml) 为准。
+>
+> 当前结构门禁为 `scripts/verify-layout.py`；原迁移快照核对保留为 `scripts/verify-migration.py`，需初始化上游 checkout，旧源目录已删除时不能重做原目录逐文件比较。历史 pin 不约束后续正常升级。
+
 ## 安装切换更新
 
-以下为本地导入阶段之后的更新；后文“未 push”“6 个差异”等描述保留为当时的阶段记录，以本节为准。
+以下为本地导入阶段之后的更新；后文“未 push”“6 个差异”等描述保留为当时的阶段记录，仅用于还原该阶段。
 
 - GitHub main 已推送，提交 `bd923f5` 的统一 CI 10/10 通过（run `37440612021`）。
 - Creative 的 6 个安装差异已审阅并从新源码原子更新，保留原安装备份；Design、Money 的安装来源记录已更新到 craft67。

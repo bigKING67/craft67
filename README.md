@@ -1,51 +1,81 @@
 # craft67
 
-集中维护 Craft 工程与 Agent Skills 的源码仓库。10 个项目、18 个独立 Skill，保留各自的运行代码、测试、依赖与许可证。
+集中维护 Craft 工程与 Agent Skills 的源码仓库：设计、创意、工程审查、投资研究、商业经营、浏览器操作等能力在同一处维护，各包保留独立版本、依赖、测试与许可证。目前包含 10 个项目、18 个 Skill；准确入口和检查命令以 [catalog.json](catalog.json) 为准。
 
-## 项目与入口
+## 选择能力
 
-| 项目目录 | Skill |
-| --- | --- |
-| [design-craft](packages/design-craft) | design-craft |
-| [creative-craft](packages/creative-craft) | creative-craft |
-| [review-craft](packages/review-craft) | review-craft |
-| [money-craft](packages/money-craft) | money-craft |
-| [whoami](packages/whoami) | whoami，含 TypeScript 计算核心 |
-| [browser67](packages/browser67) | browser67、js-reverse，含 CLI、MCP 与浏览器扩展 |
-| [commerce-growth-os](packages/commerce-growth-os) | 4 个商业 Skill、4 个营销 Skill |
-| [3d-craft](packages/3d-craft) | 3d-craft |
-| [reverse-craft](packages/reverse-craft) | reverse-craft |
-| [write-craft](packages/write-craft) | write-craft |
+| 项目与使用说明 | 用途与产出 | Skill |
+| --- | --- | --- |
+| [Design Craft](packages/design-craft/README.md) | Web、桌面与原生界面设计、实现和视觉验证 | design-craft |
+| [Creative Craft](packages/creative-craft/README.md) | 广告概念、文案、艺术指导、图像 Brief 与视频方案 | creative-craft |
+| [Review Craft](packages/review-craft/README.md) | 有覆盖范围和证据的工程审查、整改与验收 | review-craft |
+| [Money Craft](packages/money-craft/README.md) | 投资研究、财报、估值与组合分析 | money-craft |
+| [Whoami](packages/whoami/README.md) | 八字、紫微排盘计算与有依据的解读 | whoami |
+| [Browser67](packages/browser67/README.md) | 真实浏览器操作及授权范围内的前端 JS 逆向；含 CLI、MCP 和扩展 | browser67、js-reverse |
+| [Commerce Growth OS](packages/commerce-growth-os/README.md) | 商业策略、营销、平台运营与经营分析 | 4 个商业 Skill、4 个营销 Skill |
+| [3D Craft](packages/3d-craft/README.md) | Blender 产品道具、GLB 与 Web3D 查看器的制作和验证 | 3d-craft |
+| [Reverse Craft](packages/reverse-craft/README.md) | 授权范围内的逆向、CTF、DFIR、协议与威胁证据分析 | reverse-craft |
+| [Write Craft](packages/write-craft/README.md) | 将复杂方案、进展与工程说明整理为读者可判断、可行动的中文文档 | write-craft |
 
-`catalog.json` 登记确切入口和包级验证命令。日常开发在对应包目录进行；Git 操作属于 craft67 主仓库。上游参考仍通过固定版本 submodule 管理。
+## 使用 Skill
+
+1. 从上表选择所需能力，阅读对应包的 README，按包内说明安装或构建。
+2. 在宿主中启用相应 Skill；按需加载，不必一次安装全部能力。
+3. 源码更新后按对应安装器同步，并在新会话验证加载。文件一致不等于正在运行的会话已加载新版本。
+
+获取维护源：
+
+```sh
+git clone https://github.com/bigKING67/craft67.git
+cd craft67
+```
+
+各包的安装方式不同：Design / Creative / Money / 3D 使用现有安装器及目标目录参数；Commerce 必须通过包内 `scripts/install.sh` 构建或安装，装配八个独立 bundle 所需的共享合同；Whoami 先安装依赖并构建，独立分发使用 `npm run pack:skill -- <不存在的目标目录>`；Browser67 的 Skill 与 CLI/MCP/扩展分别安装。Review / Reverse / Write 沿用包内分发入口。
+
+`packages/` 是维护源，`~/.agents/skills` 等目录是宿主安装副本。旧的 10 个 GitHub 仓库已删除，历史下载链接不可作为安装入口；新发布以 [craft67 Releases](https://github.com/bigKING67/craft67/releases) 中对应包的实际状态为准。
 
 ## 开发与验证
 
+日常开发在 `packages/<name>/` 内进行，Git 操作属于 craft67 根仓库。改动前读取根及包内 `AGENTS.md`。
+
+根检查器使用 Python 3.12+ 和 Git。JavaScript 包的统一 CI 使用 Node 24；Whoami 的固定验收证据绑定 **Node 24.18.0**。Review Craft 还需要 uv；其他依赖和平台要求见各包 README。检查器不代替依赖安装。
+
 ```sh
-git submodule update --init --recursive
+# 查看版本、检查命令与当前目录/注册关系
 python3 scripts/versions.py
 python3 scripts/check.py --list
+python3 scripts/verify-layout.py
+
+# 根元数据与检查器回归
+python3 scripts/versions.py --check
+python3 -m unittest discover -s scripts -p 'test_*.py'
+
+# 示例：准备 Whoami 依赖后运行其门禁
+cd packages/whoami
+npm ci --ignore-scripts
+cd ../..
 python3 scripts/check.py --package whoami
 ```
 
-先在有 `package-lock.json` 的对应包目录运行 `npm ci --ignore-scripts`。Python 门禁使用 Python 3.12+；Review Craft 还需要 uv，并按包内锁文件准备环境。检查脚本不自动安装到全局，不提交，不发布。
+多个受影响包可重复传入 `--package`；不传则检查全部包，须先准备所有包的依赖。检查命令不自动全局安装、提交或发布。
 
-根 `.github/workflows/check.yml` 是统一的包检查入口。包内 `.github/` 保留原工程合同和发布参考，不会被 GitHub 自动作为根工作流执行。各包独立版本，现有版本来源和新标签规范见 [版本与发布](docs/versioning.md)。原发布工作流尚未全部切换到本仓库；源码版本不代表新仓库已有同名 Release。
+需要上游参考内容或校验实际 submodule checkout 时：
 
-## 使用与安装
+```sh
+git submodule update --init --recursive
+python3 scripts/verify-layout.py --check-checkouts
+```
 
-按需使用一个或多个 Skill，不必全部加载。包内 `SKILL.md` 及随附代码是维护源；`~/.agents/skills` 等位置是宿主安装入口。
+默认结构检查核对 catalog、目录、根 `.gitmodules` 和当前 Git index 的 pin；不会把未初始化的 checkout 当作已验证。历史迁移审计独立保留在 `scripts/verify-migration.py`，不用于日常开发门禁。
 
-- Design / Creative / Money / 3D：使用各包已有安装器及其目标目录参数，保留校验、备份和回退机制。
-- Commerce：必须通过 `packages/commerce-growth-os/scripts/install.sh` 构建或安装，确保共享合同被装入八个独立 bundle。
-- Whoami：本地开发可链接到 `packages/whoami`，先安装依赖并构建；独立分发使用包内 `npm run pack:skill -- <不存在的目标目录>`。
-- Browser67：Skill 安装与 CLI/MCP/扩展安装分开，按包内 README 操作。
-- Review / Reverse / Write：使用包内现有独立 Skill 或包分发入口。
+## CI 与版本
 
-旧的 10 个 GitHub 仓库已删除；历史发布链接不可再作为安装入口。新发布状态须逐包核验，不能据此假定 craft67 已发布。新仓库源码入口以本页和 catalog 为准。安装文件一致不代表已打开的宿主会话加载了新版本。
+[根统一工作流](.github/workflows/check.yml) 先验证结构和版本元数据，再从 catalog 生成所有包的检查矩阵；同一事件与分支的新运行会取消尚未完成的旧运行。结果见 [Actions](https://github.com/bigKING67/craft67/actions/workflows/check.yml)。包内 `.github/` 保留原工程合同和发布参考，不会被 GitHub 自动作为根工作流执行。
 
-## 迁移与许可
+各包独立版本，标签采用 `<包名>/v<版本>`；craft67 整体快照由 commit SHA 标识。版本来源、镜像同步和发布约束见 [版本与发布](docs/versioning.md)。源码版本、CI 通过、正式 Release、已安装文件和宿主运行态是不同状态；离线 CI 不替代真实浏览器、目标平台或正式安装验收。原发布工作流尚未全部切换到本仓库。
 
-来源提交、文件计数与导入摘要见 [migration-sources.json](docs/migration-sources.json)，验收及待办见 [migration.md](docs/migration.md)。本次采用源码快照导入；旧项目目录及旧远端已完成删除，执行范围见 [退役记录](docs/remote-retirement.md)；monorepo 不包含完整旧仓库历史。根仓库不重新许可各包，许可证和第三方声明随原路径保留。
+## 迁移记录与许可
 
-凭据、本地执行配置、个人资料、依赖目录、缓存和运行输出不属于公开源码。原目录清理、正式提交、推送、发布均需分别核对授权。
+本仓库采用源码快照导入，不包含完整旧仓库历史。来源提交和导入摘要见 [migration-sources.json](docs/migration-sources.json)，阶段验收见 [迁移历史记录](docs/migration.md)，旧目录与旧远端的后续处置见 [退役记录](docs/remote-retirement.md)。历史记录中的阶段状态不代表当前安装或发布状态。
+
+根仓库不重新许可各包，许可证和第三方声明随原路径保留。凭据、本地执行配置、个人资料、依赖目录、缓存和运行输出不属于公开源码。

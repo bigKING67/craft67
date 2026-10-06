@@ -44,8 +44,10 @@ repository-only text A/B evaluation harness. It also includes first-class
 `creative-craft.copy-sheet.v1` authority, public-copy approval gates, a v2
 copy-bound Project Manifest, modular portable runtime/test boundaries, safe
 atomic writes, indexed `uniqueItems` validation, and evidence-backed Agent
-creative-quality improvements. The latest published and installable GitHub
-release is the immutable `v0.3.0` tag.
+creative-quality improvements. The former repository published `v0.3.0`, but that repository has been
+retired; its release is no longer an installation entry. Use the source
+installation instructions below and check [craft67 releases](https://github.com/bigKING67/craft67/releases)
+for separately verified releases. The source version does not imply a published release.
 
 Company-specific Brand Packs and non-authoritative Reference Packs remain
 private, portable, and separate from this public method. The fictional example

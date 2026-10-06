@@ -21,7 +21,7 @@
 - `python3 scripts/versions.py` 查看版本；`--check` 检查版本来源与现有镜像一致。
 - `python3 scripts/check.py --list` 查看命令；`python3 scripts/check.py --package <name>` 先检查版本，再在包目录运行离线检查。多个受影响包可重复传 `--package`；不传则运行全部包。
 - 修改 catalog、根检查器或 CI 时检查所有包元数据，并运行 `python3 -m unittest discover -s scripts -p 'test_*.py'`；修改包内容时跑对应包门禁。只有新增风险、失败或既定门禁需要时扩大验证。
-- 需要检查 submodule 工作树时先按 README 初始化，再运行 `python3 scripts/verify-layout.py`；缺失 checkout 不能当作 pin 已核验。
+- `python3 scripts/verify-layout.py` 检查当前 catalog、目录与 Git index 中的 submodule 注册；`--matrix` 生成 CI 矩阵。实际 checkout 校验须先初始化，再加 `--check-checkouts`。`scripts/verify-migration.py` 仅核对历史导入快照，不作日常结构门禁；缺失 checkout 不能当作工作树 pin 已核验。
 - 源码、离线测试、安装一致性、宿主加载、live/平台验收和远端发布分别报告。指令文件静态检查不等于新会话行为已验证。
 
 ## 安装、数据与授权

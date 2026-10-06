@@ -5,14 +5,40 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.catalog.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Check root contracts and package metadata
+        run: |
+          python3 -m unittest discover -s scripts -p 'test_*.py'
+          python3 scripts/versions.py --check
+          python3 scripts/verify-layout.py --check-checkouts
+      - name: Generate package matrix from catalog
+        id: catalog
+        run: |
+          matrix=$(python3 scripts/verify-layout.py --matrix)
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
   packages:
+    name: packages (${{ matrix.package }})
+    needs: metadata
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       fail-fast: false
-      matrix:
-        package: [design-craft, creative-craft, review-craft, money-craft, whoami, browser67, commerce-growth-os, 3d-craft, reverse-craft, write-craft]
+      matrix: ${{ fromJSON(needs.metadata.outputs.matrix) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -26,10 +52,8 @@ jobs:
           # whoami frozen evidence binds the exact Node and tzdata versions.
           node-version: ${{ matrix.package == 'whoami' && '24.18.0' || '24' }}
       - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
-      - name: Check version validation contracts
-        run: python3 -m unittest discover -s scripts -p test_versions.py
       - name: Install locked JavaScript dependencies when present
-        working-directory: packages/${{ matrix.package }}
+        working-directory: ${{ matrix.path }}
         run: |
           if [ -f package-lock.json ]; then npm ci --ignore-scripts; fi
       - name: Run package checks
