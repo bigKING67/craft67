@@ -25,14 +25,14 @@ V0.2 不负责广告创意、产品 UI 微文案、飞书或 Word 的平台操�
 
 ## 安装与加载
 
-Pi 可以从本地源码加载，也可以安装固定的 Git 提交或标签：
+先将 craft67 检出到已验证的提交，再从 `packages/write-craft` 加载或安装：
 
 ```bash
 # 开发或评测：直接加载当前源码，不修改 Pi 的安装设置
 pi --no-skills --skill skills/write-craft
 
-# 日常使用：将 <ref> 替换为经过验证的提交 SHA 或标签
-pi install git:github.com/bigKING67/write-craft@<ref>
+# 日常使用：安装包子目录，不要安装 monorepo 根目录
+pi install /path/to/craft67/packages/write-craft
 ```
 
 要给同时读取 Agent Skills 目录的宿主使用，可将 `skills/write-craft/`
@@ -45,8 +45,8 @@ pi install git:github.com/bigKING67/write-craft@<ref>
 仓库使用 Git submodule 固定上游参考版本。完整克隆源码时使用：
 
 ```bash
-git clone --recurse-submodules https://github.com/bigKING67/write-craft.git
-cd write-craft
+git clone --recurse-submodules https://github.com/bigKING67/craft67.git
+cd craft67/packages/write-craft
 ```
 
 只使用已打包的 `skills/write-craft/` 不需要加载上游仓库。

@@ -1,6 +1,6 @@
 # browser67
 
-[![CI](https://github.com/bigKING67/browser67/actions/workflows/ci.yml/badge.svg)](https://github.com/bigKING67/browser67/actions/workflows/ci.yml)
+[![CI](https://github.com/bigKING67/craft67/actions/workflows/check.yml/badge.svg)](https://github.com/bigKING67/craft67/actions/workflows/check.yml)
 
 browser67 is an evidence-first real-browser runtime for AI agents. It connects
 Codex, Pi, and other MCP clients to a user's existing Chrome or Edge profile
@@ -102,8 +102,8 @@ See [Architecture](docs/architecture.md) and
 ### Install and prepare
 
 ```bash
-git clone https://github.com/bigKING67/browser67.git
-cd browser67
+git clone https://github.com/bigKING67/craft67.git
+cd craft67/packages/browser67
 npm ci
 npm run setup
 ```
@@ -160,12 +160,11 @@ pi-67 external update browser67
 pi-67 external doctor browser67 --deep
 ```
 
-For direct upstream Pi package use outside Pi-67, pin a tag or commit so that
-package checkout remains reproducible:
-
-```bash
-pi install git:github.com/bigKING67/browser67@<tag-or-commit>
-```
+For direct upstream Pi package use outside Pi-67, install from the local
+`craft67/packages/browser67` directory after checking out the intended craft67
+commit. Do not pass the craft67 repository root as a browser67 package.
+The external Pi-67 installer has its own repository mapping; its cutover must
+be verified separately before retiring the old remote repository.
 
 MCP config remains an agent-local concern. Editing this repository does not
 automatically update active Skill copies or a running agent session. Use

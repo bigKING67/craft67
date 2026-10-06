@@ -7,9 +7,13 @@ import { resolveRelease, checkUpdate, observeLive } from "../scripts/update-rele
 import { installRelease, verifyInstalledFiles } from "../scripts/update-release/install.mjs";
 import { npmInvocation } from "../scripts/update-release/process.mjs";
 
-const release = { tag: "v1.2.3", version: "1.2.3", commit: "a".repeat(40), tag_object: "b".repeat(40) };
+const release = { tag: "browser67/v1.2.3", version: "1.2.3", commit: "a".repeat(40), tag_object: "b".repeat(40) };
 const remoteDependencies = {
-  fetch: async () => ({ ok: true, json: async () => ({ tag_name: release.tag, draft: false, prerelease: false }) }),
+  fetch: async (url) => {
+    assert.ok(url.startsWith("https://api.github.com/repos/bigKING67/craft67/releases"));
+    const item = { tag_name: release.tag, draft: false, prerelease: false };
+    return { ok: true, json: async () => url.includes("/tags/") ? item : [item] };
+  },
   run: async () => `${release.tag_object}\trefs/tags/${release.tag}\n${release.commit}\trefs/tags/${release.tag}^{}\n`,
 };
 assert.throws(() => parseArgs([]), /explicit --tag/);
@@ -20,6 +24,27 @@ assert.equal((await resolveRelease(undefined, remoteDependencies)).commit, relea
 await assert.rejects(resolveRelease(release.tag, { ...remoteDependencies, run: async () => "" }), /annotated tag/);
 await assert.rejects(resolveRelease(release.tag, { ...remoteDependencies,
   fetch: async () => ({ ok: true, json: async () => ({ tag_name: release.tag, draft: false, prerelease: true }) }),
+}), /published stable/);
+assert.equal((await resolveRelease("v1.2.3", remoteDependencies)).tag, release.tag);
+assert.equal(parseArgs(["--tag", release.tag]).tag, release.tag);
+await assert.rejects(resolveRelease(undefined, { ...remoteDependencies,
+  fetch: async () => ({ ok: true, json: async () => [
+    { tag_name: "money-craft/v1.2.3", draft: false, prerelease: false },
+    { tag_name: "v1.2.3", draft: false, prerelease: false },
+    { tag_name: release.tag, draft: true, prerelease: false },
+  ] }),
+}), /no published stable browser67/);
+let pages = 0;
+assert.equal((await resolveRelease(undefined, { ...remoteDependencies,
+  fetch: async (url) => { pages++; assert.ok(url.endsWith(`page=${pages}`));
+    return { ok: true, json: async () => pages === 1
+      ? Array.from({ length: 100 }, () => ({ tag_name: "whoami/v9.0.0", draft: false, prerelease: false }))
+      : [{ tag_name: release.tag, draft: false, prerelease: false }] };
+  },
+})).tag, release.tag);
+assert.equal(pages, 2);
+await assert.rejects(resolveRelease(release.tag, { ...remoteDependencies,
+  fetch: async () => ({ ok: true, json: async () => ({ tag_name: "money-craft/v1.2.3", draft: false, prerelease: false }) }),
 }), /published stable/);
 assert.throws(() => npmInvocation([], { platform: "win32", env: {}, execPath: "/missing/node" }), /npm-cli/);
 const linkOnly = await observeLive("/unused", async () => JSON.stringify({ doctor: { checks: {
@@ -60,7 +85,10 @@ async function fixture(mode) {
       commands.push(config.phase);
       if (mode === config.phase) throw new Error(`injected ${mode}`);
       if (config.phase === "locate_global_package") return join(directory, "global");
-      if (config.phase === "fetch_release") { await cp(source, args.at(-1), { recursive: true }); return ""; }
+      if (config.phase === "fetch_release") { assert.ok(args.includes("https://github.com/bigKING67/craft67.git"));
+        await mkdir(join(args.at(-1), "packages"), { recursive: true });
+        await cp(source, join(args.at(-1), "packages/browser67"), { recursive: true });
+        await json(join(args.at(-1), "package.json"), { name: "craft67", version: "99.0.0" }); return ""; }
       if (config.phase === "verify_commit") return release.commit;
       if (config.phase === "verify_tag") return release.tag_object;
       if (config.phase === "pack") {

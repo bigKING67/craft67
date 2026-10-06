@@ -20,9 +20,9 @@ class InstallationContractTests(unittest.TestCase):
 
         required_fragments = (
             "## Install for Codex CLI",
-            "--repo bigKING67/review-craft",
-            "--path skills/review-craft",
-            "--ref <release-tag>",
+            "--repo bigKING67/craft67",
+            "--path packages/review-craft/skills/review-craft",
+            "--ref <verified-craft67-commit-or-release-tag>",
             '--dest "$HOME/.agents/skills"',
             "$review-craft perform a bounded",
             "## Install for Claude Code",

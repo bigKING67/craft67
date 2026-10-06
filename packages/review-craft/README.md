@@ -8,7 +8,7 @@ count.
 The current source version is **0.7.3**, pending formal publication. This source update
 does not create a `v0.7.3` tag, GitHub Release, or npm release. For a published installation,
 use an existing exact release tag or npm version rather than a moving branch.
-See [CHANGELOG.md](https://github.com/bigKING67/review-craft/blob/main/CHANGELOG.md) for the 0.7.3 changes and compatibility boundary.
+See [CHANGELOG.md](https://github.com/bigKING67/craft67/blob/main/packages/review-craft/CHANGELOG.md) for the 0.7.3 changes and compatibility boundary.
 
 Version 0.7.2 rejects failed Git status reads before review or delivery evidence can claim
 a clean worktree. Automatic project profiling reads only inventory-bound ordinary text
@@ -109,9 +109,9 @@ the exact release tag rather than a moving branch:
 ```bash
 CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 python3 "$CODEX_HOME/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
-  --repo bigKING67/review-craft \
-  --path skills/review-craft \
-  --ref <release-tag> \
+  --repo bigKING67/craft67 \
+  --path packages/review-craft/skills/review-craft \
+  --ref <verified-craft67-commit-or-release-tag> \
   --dest "$HOME/.agents/skills"
 ```
 

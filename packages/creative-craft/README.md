@@ -321,21 +321,23 @@ Distribution is **GitHub-only**. The npm package name is reserved for package
 metadata and Pi discovery, but this project is private-to-npm and is not
 published to the npm registry.
 
-Pi is a Tier 1 host. Install the immutable release globally or for one project:
+Pi is a Tier 1 host. Check out a verified craft67 commit, then install its
+package subdirectory globally or for one project:
 
 ```bash
-pi install git:github.com/bigKING67/creative-craft@v0.3.0
-pi install -l git:github.com/bigKING67/creative-craft@v0.3.0
+pi install /path/to/craft67/packages/creative-craft
+pi install -l /path/to/craft67/packages/creative-craft
 ```
 
 Codex is a Tier 1 host. Ask the built-in `skill-installer` to install
-`bigKING67/creative-craft`, path `skills/creative-craft`, ref `v0.3.0`, or run:
+`bigKING67/craft67`, path `packages/creative-craft/skills/creative-craft`,
+pinned to a verified craft67 commit, or run:
 
 ```bash
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --repo bigKING67/creative-craft \
-  --ref v0.3.0 \
-  --path skills/creative-craft
+  --repo bigKING67/craft67 \
+  --ref <verified-craft67-commit> \
+  --path packages/creative-craft/skills/creative-craft
 ```
 
 The skill becomes available to Codex on the next turn/session. A generic Agent

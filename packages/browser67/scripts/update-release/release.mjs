@@ -2,20 +2,42 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { run, parseJsonOutput } from "./process.mjs";
 
-export const REMOTE = "https://github.com/bigKING67/browser67.git";
-const API = "https://api.github.com/repos/bigKING67/browser67/releases";
-export const TAG_PATTERN = /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
+export const REMOTE = "https://github.com/bigKING67/craft67.git";
+export const SOURCE_SUBDIRECTORY = "packages/browser67";
+const API = "https://api.github.com/repos/bigKING67/craft67/releases";
+const RELEASE_TAG_PATTERN = /^browser67\/v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
+export const TAG_PATTERN = /^(?:browser67\/)?v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
 
 export async function resolveRelease(tag, dependencies = {}) {
-  if (tag && !TAG_PATTERN.test(tag)) throw new Error("--tag must be a stable version such as v0.11.3");
-  const response = await (dependencies.fetch ?? fetch)(tag ? `${API}/tags/${tag}` : `${API}/latest`, {
-    headers: { Accept: "application/vnd.github+json", "User-Agent": "browser67-update" },
-    signal: AbortSignal.timeout(15_000), redirect: "error",
-  });
-  if (!response.ok) throw new Error(`GitHub release query failed: HTTP ${response.status}`);
-  const release = await response.json();
-  if (release.draft !== false || release.prerelease !== false || !TAG_PATTERN.test(release.tag_name)
-    || (tag && release.tag_name !== tag)) throw new Error("expected a published stable GitHub Release");
+  if (tag && !TAG_PATTERN.test(tag)) throw new Error("--tag must be a stable version such as v0.11.3 or browser67/v0.11.3");
+  const requestedTag = tag ? (tag.startsWith("browser67/") ? tag : `browser67/${tag}`) : null;
+  async function query(url) {
+    const response = await (dependencies.fetch ?? fetch)(url, {
+      headers: { Accept: "application/vnd.github+json", "User-Agent": "browser67-update" },
+      signal: AbortSignal.timeout(15_000), redirect: "error",
+    });
+    if (!response.ok) throw new Error(`GitHub release query failed: HTTP ${response.status}`);
+    return response.json();
+  }
+  const stable = (item) => item?.draft === false && item?.prerelease === false
+    && RELEASE_TAG_PATTERN.test(item.tag_name);
+  let release;
+  if (requestedTag) {
+    release = await query(`${API}/tags/${encodeURIComponent(requestedTag)}`);
+  } else {
+    // A monorepo's /latest may belong to another package. Search only our namespace.
+    for (let page = 1; page <= 10; page++) {
+      const rows = await query(`${API}?per_page=100&page=${page}`);
+      if (!Array.isArray(rows)) throw new Error("expected a GitHub Release list");
+      release = rows.find(stable);
+      if (release || rows.length < 100) break;
+      if (page === 10) throw new Error("release search limit reached; select an explicit --tag");
+    }
+    if (!release) throw new Error("no published stable browser67 Release in craft67; publish a browser67/vX.Y.Z release first");
+  }
+  if (!stable(release) || (requestedTag && release.tag_name !== requestedTag)) {
+    throw new Error("expected a published stable GitHub Release for browser67");
+  }
   const selectedTag = release.tag_name;
   const refs = await (dependencies.run ?? run)("git", ["ls-remote", "--tags", REMOTE,
     `refs/tags/${selectedTag}`, `refs/tags/${selectedTag}^{}`], { phase: "resolve_tag", timeout: 30_000 });
@@ -27,8 +49,8 @@ export async function resolveRelease(tag, dependencies = {}) {
   if (!/^[a-f0-9]{40}$/.test(tagObject ?? "") || !/^[a-f0-9]{40}$/.test(commit ?? "") || tagObject === commit) {
     throw new Error("release must resolve to an annotated tag and peeled commit");
   }
-  return { tag: selectedTag, version: selectedTag.slice(1), tag_object: tagObject, commit,
-    url: `https://github.com/bigKING67/browser67/releases/tag/${selectedTag}` };
+  return { tag: selectedTag, version: selectedTag.slice("browser67/v".length), tag_object: tagObject, commit,
+    url: `https://github.com/bigKING67/craft67/releases/tag/${selectedTag}` };
 }
 
 export async function readJsonIfPresent(path) {

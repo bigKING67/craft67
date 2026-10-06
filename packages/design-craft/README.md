@@ -167,16 +167,17 @@ installer flags through `INSTALL_ARGS`.
 
 ## Install as a Pi package
 
-For Pi, prefer package installation over copying into `~/.pi/agent/skills`:
+For Pi, check out a verified craft67 commit and install the package subdirectory
+rather than the monorepo root:
 
 ```bash
-pi install git:github.com/bigKING67/design-craft@<tag-or-commit>
+pi install /path/to/craft67/packages/design-craft
 ```
 
 For local development, use the checkout path:
 
 ```bash
-export DESIGN_CRAFT_HOME=/path/to/design-craft
+export DESIGN_CRAFT_HOME=/path/to/craft67/packages/design-craft
 pi install "$DESIGN_CRAFT_HOME"
 ```
 

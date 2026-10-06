@@ -52,8 +52,13 @@ To install, always select a version explicitly:
 browser67 update --tag v0.11.3
 ```
 
-The command only accepts stable `vX.Y.Z` releases from
-`bigKING67/browser67`. It resolves the annotated tag and peeled commit, fetches
+The command uses stable `browser67/vX.Y.Z` releases from
+`bigKING67/craft67`. The shorthand `--tag vX.Y.Z` selects that same namespaced
+tag; `--tag browser67/vX.Y.Z` is also accepted. Discovery excludes other packages,
+drafts and prereleases. It reads up to 1,000 releases; beyond that, select an
+explicit tag. If craft67 has no browser67 release, the command stops with a
+publication-required error; it does not fall back to the retired repository.
+The package source is `packages/browser67` within the tagged monorepo. It resolves the annotated tag and peeled commit, fetches
 that tag into a private preparation directory, checks package/lock versions,
 and verifies the remote tag again before installation. It packs and installs
 with npm lifecycle scripts disabled, compares installed files with the prepared
@@ -103,15 +108,15 @@ Use a clean detached worktree at the verified annotated tag and pack there:
 (
 set -e
 git fetch origin --tags
-release_tag=v0.11.3
+release_tag=browser67/v0.11.3
 test "$(git cat-file -t "$release_tag")" = tag
 release_sha=$(git rev-parse "$release_tag^{commit}")
 test "$(git rev-parse HEAD)" = "$release_sha"
 test -z "$(git status --porcelain)"
 release_dir=$(mktemp -d)
 git worktree add --detach "$release_dir/source" "$release_tag"
-(cd "$release_dir/source" && npm pack --pack-destination "$release_dir")
-npm install -g "$release_dir/browser67-${release_tag#v}.tgz"
+(cd "$release_dir/source/packages/browser67" && npm pack --ignore-scripts --pack-destination "$release_dir")
+npm install -g "$release_dir/browser67-${release_tag#browser67/v}.tgz"
 browser67 --version
 BROWSER67_EXTENSION_BUILD_REVISION="$release_sha" browser67 setup
 )

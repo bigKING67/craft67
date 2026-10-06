@@ -17,13 +17,14 @@
     "codex",
     "pi-package"
   ],
-  "homepage": "https://github.com/bigKING67/browser67#readme",
+  "homepage": "https://github.com/bigKING67/craft67/tree/main/packages/browser67#readme",
   "bugs": {
-    "url": "https://github.com/bigKING67/browser67/issues"
+    "url": "https://github.com/bigKING67/craft67/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bigKING67/browser67.git"
+    "url": "git+https://github.com/bigKING67/craft67.git",
+    "directory": "packages/browser67"
   },
   "bin": {
     "browser67": "./bin/browser67.mjs",

@@ -2,7 +2,7 @@ import { randomUUID, createHash } from "node:crypto";
 import { cp, lstat, mkdir, mkdtemp, readFile, writeFile, rename, unlink, realpath } from "node:fs/promises";
 import { join, resolve, isAbsolute, relative, dirname, basename } from "node:path";
 import { run, parseJsonOutput } from "./process.mjs";
-import { REMOTE, checkUpdate, resolveRelease, observeLive, readJsonIfPresent } from "./release.mjs";
+import { REMOTE, SOURCE_SUBDIRECTORY, checkUpdate, resolveRelease, observeLive, readJsonIfPresent } from "./release.mjs";
 
 async function requireDirectory(path) {
   const stat = await lstat(path);
@@ -112,12 +112,15 @@ export async function installRelease(options, dependencies = {}) {
       installed_root: installedRoot, browser_instance_id: selected.id,
       mutation_started: false, recovery: {}, host_action: before.host_action };
     await save();
-    const source = join(directory, "source");
-    await execute("git", ["clone", "--quiet", "--depth", "1", "--branch", release.tag, "--single-branch", REMOTE, source],
+    const checkout = join(directory, "source");
+    const source = join(checkout, SOURCE_SUBDIRECTORY);
+    await execute("git", ["clone", "--quiet", "--depth", "1", "--branch", release.tag, "--single-branch", REMOTE, checkout],
       { phase: "fetch_release" });
-    const commit = await execute("git", ["rev-parse", "HEAD"], { cwd: source, phase: "verify_commit" });
-    const tagObject = await execute("git", ["rev-parse", `refs/tags/${release.tag}`], { cwd: source, phase: "verify_tag" });
+    const commit = await execute("git", ["rev-parse", "HEAD"], { cwd: checkout, phase: "verify_commit" });
+    const tagObject = await execute("git", ["rev-parse", `refs/tags/${release.tag}`], { cwd: checkout, phase: "verify_tag" });
     if (commit !== release.commit || tagObject !== release.tag_object) throw new Error("tag changed while preparing update");
+    await requireDirectory(join(checkout, "packages"));
+    await requireDirectory(source);
     const pkg = await readJsonIfPresent(join(source, "package.json"));
     const lockfile = await readJsonIfPresent(join(source, "package-lock.json"));
     if (pkg?.name !== "browser67" || pkg.version !== release.version || lockfile?.version !== release.version
