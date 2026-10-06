@@ -45,6 +45,19 @@ class CandidateTests(unittest.TestCase):
                     self.verify()
                 self.manifest[field] = original
 
+    def test_all_supported_package_formats(self):
+        self.archive.unlink()
+        for package in candidate.SUPPORTED:
+            with self.subTest(package=package):
+                suffix = '.tgz' if package in ('review-craft', 'creative-craft') else '.zip'
+                artifact = self.directory / (package + suffix)
+                artifact.write_bytes(b'fixture')
+                self.manifest.update(package=package, package_path=f'packages/{package}',
+                                     files={artifact.name: candidate.digest(artifact)})
+                self.save()
+                candidate.verify(self.directory, package, 'a' * 40)
+                artifact.unlink()
+
     def test_unlisted_file_fails(self):
         (self.directory / 'unexpected').write_text('extra')
         with self.assertRaises(ValueError):

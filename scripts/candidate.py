@@ -6,11 +6,13 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
+import zipfile
 
 from versions import inspect_package
 
 ROOT = Path(__file__).resolve().parents[1]
-SUPPORTED = ('review-craft', '3d-craft')
+SUPPORTED = ('review-craft', '3d-craft', 'creative-craft', 'whoami')
 MANIFEST = 'candidate.json'
 
 
@@ -38,7 +40,7 @@ def verify(directory, package, expected_sha):
             or manifest['version'] != version_for(package)):
         raise ValueError('candidate identity does not match the requested source/package/version')
     files = manifest['files']
-    extension = '.tgz' if package == 'review-craft' else '.zip'
+    extension = '.tgz' if package in ('review-craft', 'creative-craft') else '.zip'
     if not isinstance(files, dict) or not any(name.endswith(extension) for name in files):
         raise ValueError('candidate has no package archive')
     if {p.name for p in directory.iterdir()} != set(files) | {MANIFEST}:
@@ -49,6 +51,41 @@ def verify(directory, package, expected_sha):
                 or not path.is_file() or digest(path) != checksum):
             raise ValueError(f'candidate file is invalid or changed: {name}')
     return manifest
+
+
+def build_whoami(directory, version):
+    source = ROOT / 'packages/whoami'
+    subprocess.run(['npm', 'run', 'check'], cwd=source, check=True)
+    chart = ['node', 'dist/cli.js', 'chart', '--input', 'examples/birth.json', '--years', '2026']
+    expected = json.loads(subprocess.check_output(chart, cwd=source, text=True))
+    archive_path = directory / f'whoami-{version}.zip'
+    with tempfile.TemporaryDirectory(prefix='craft67-whoami-') as temporary:
+        temporary = Path(temporary)
+        exported = temporary / 'exported'
+        subprocess.run(['node', 'scripts/pack-skill.mjs', str(exported)], cwd=source, check=True)
+        with zipfile.ZipFile(archive_path, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
+            for path in sorted(exported.rglob('*')):
+                if path.is_symlink():
+                    raise ValueError('Whoami export must not contain symlinks')
+                if path.is_file():
+                    archive.write(path, 'whoami/' + path.relative_to(exported).as_posix())
+        # Verify the archive bytes, not the original staging directory.
+        extracted = temporary / 'extracted'
+        with zipfile.ZipFile(archive_path) as archive:
+            archive.extractall(extracted)
+        installed = extracted / 'whoami'
+        subprocess.run(['npm', 'ci', '--omit=dev', '--ignore-scripts'], cwd=installed, check=True)
+        subprocess.run(['node', 'dist/cli.js', '--help'], cwd=installed, check=True, stdout=subprocess.DEVNULL)
+        observed = json.loads(subprocess.check_output(chart, cwd=installed, text=True))
+        if observed != expected:
+            raise ValueError('exported Whoami chart differs from the checked source fixture')
+        receipt = {'schema': 'whoami.candidate-smoke.v1', 'status': 'PASS',
+                   'version': version, 'artifact_sha256': digest(archive_path),
+                   'node': subprocess.check_output(['node', '--version'], text=True).strip(),
+                   'checks': ['source-check', 'canonical-export', 'archive-extraction',
+                              'production-dependencies-only', 'cli-help', 'synthetic-chart-parity'],
+                   'limitations': ['Distribution parity only; no prediction or model quality claim.']}
+        (directory / 'package-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
 
 
 def build(package, directory):
@@ -64,9 +101,17 @@ def build(package, directory):
         command = [sys.executable, 'scripts/release_gate.py',
                    '--package-output', str(directory / 'review-craft.tgz'),
                    '--package-receipt', str(directory / 'package-receipt.json')]
-    else:
+    elif package == '3d-craft':
         command = [sys.executable, 'scripts/release_gate.py', '--output-dir', str(directory), '--json']
-    subprocess.run(command, cwd=ROOT / 'packages' / package, check=True)
+    elif package == 'creative-craft':
+        command = [sys.executable, 'scripts/build_release.py', '--output', str(directory)]
+    elif package == 'whoami':
+        command = None
+        build_whoami(directory, version)
+    else:
+        raise ValueError(f'unsupported candidate package: {package}')
+    if command:
+        subprocess.run(command, cwd=ROOT / 'packages' / package, check=True)
     if git('rev-parse', 'HEAD') != source_sha or git('status', '--porcelain', '--untracked-files=all'):
         raise ValueError('source changed during candidate build')
     files = {p.name: digest(p) for p in sorted(directory.iterdir()) if p.is_file()}
