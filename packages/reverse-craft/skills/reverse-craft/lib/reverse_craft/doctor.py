@@ -138,7 +138,9 @@ def _browser67_candidates() -> list[Path]:
         candidates.append(Path(os.environ["BROWSER67_HOME"]).expanduser())
     repo_candidate = Path(__file__).resolve().parents[5] / "browser67"
     candidates.append(repo_candidate)
-    candidates.append(Path.home() / "Documents" / "sixseven" / "codeproject" / "browser67")
+    workspace = Path.home() / "Documents" / "sixseven" / "codeproject"
+    candidates.append(workspace / "craft67" / "packages" / "browser67")
+    candidates.append(workspace / "browser67")
     unique: list[Path] = []
     for candidate in candidates:
         resolved = candidate.resolve()

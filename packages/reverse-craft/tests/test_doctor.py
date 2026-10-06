@@ -1,16 +1,27 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 import subprocess
 import unittest
 from unittest import mock
 
 from test_support import ROOT  # noqa: F401
 
-from reverse_craft.doctor import _mcp_inventory
+from reverse_craft.doctor import _mcp_inventory, _browser67_candidates
 
 
 class DoctorTests(unittest.TestCase):
+    @mock.patch.dict("os.environ", {"BROWSER67_HOME": "/explicit/browser67"})
+    @mock.patch("reverse_craft.doctor.Path.home", return_value=Path("/fixture/home"))
+    def test_installed_lookup_prefers_monorepo_before_legacy(self, _home):
+        with mock.patch("reverse_craft.doctor.__file__", "/fixture/home/.agents/skills/reverse-craft/lib/reverse_craft/doctor.py"):
+            candidates = _browser67_candidates()
+        workspace = Path("/fixture/home/Documents/sixseven/codeproject")
+        self.assertEqual(candidates[0], Path("/explicit/browser67").resolve())
+        self.assertLess(candidates.index(workspace / "craft67/packages/browser67"),
+                        candidates.index(workspace / "browser67"))
+
     @mock.patch("reverse_craft.doctor.subprocess.run")
     @mock.patch("reverse_craft.doctor.shutil.which", return_value="/mock/codex")
     def test_mcp_inventory_never_returns_transport_secrets(self, _which: mock.Mock, run: mock.Mock) -> None:

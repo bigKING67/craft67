@@ -2,6 +2,20 @@
 
 日期：2026-10-06。
 
+## 安装切换更新
+
+以下为本地导入阶段之后的更新；后文“未 push”“6 个差异”等描述保留为当时的阶段记录，以本节为准。
+
+- GitHub main 已推送，提交 `bd923f5` 的统一 CI 10/10 通过（run `37440612021`）。
+- Creative 的 6 个安装差异已审阅并从新源码原子更新，保留原安装备份；Design、Money 的安装来源记录已更新到 craft67。
+- Creative/Money 安装器已改用 craft67 仓库及准确 Skill 子目录记录来源。Reverse 独立安装的 browser67 查找先尝试新 monorepo 位置，显式环境变量仍优先、旧位置作为兼容回退。
+- Reverse 安装已原子切换并备份；从安装副本执行路径选择，实际选中 craft67/packages/browser67。
+- 18 个 Skill 安装内容一致：10 个普通入口逐文件比较，8 个商业营销入口通过原生 bundle 校验。
+- 新 Codex 启动上下文在 developer Skill catalog 中发现全部 18 个入口，别名展开后对应文件均存在。新的只读 Codex 会话实际通过文件工具读取了 design-craft、creative-craft、money-craft、reverse-craft、whoami 五个入口，命令均成功。此为显式入口读取验收，不等于所有 Skill 的自然语言路由或领域执行验收。
+- 回归：Creative 安装器测试 7/7、Money 合同测试 13/13、Reverse check:all 通过。
+- 安装回退路径、一致性、新会话工具读取证据保留于 gitignored `.migration-local/`。原项目目录仍保留，未做清理。
+
+
 ## 已完成
 
 - 从 10 个原仓库的本地 HEAD 对应受控文件导入 3,645 个文件，原始内容合计 29,436,172 字节；逐包提交与导入内容摘要见 `migration-sources.json`。

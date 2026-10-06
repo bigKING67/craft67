@@ -211,7 +211,9 @@ class RepositoryContractTests(unittest.TestCase):
             root = Path(directory) / "skills"
             destination, backup = install_skill.install(root, force=False)
             self.assertIsNone(backup)
-            self.assertTrue((destination / "INSTALL_PROVENANCE.json").is_file())
+            provenance = json.loads((destination / "INSTALL_PROVENANCE.json").read_text())
+            self.assertEqual(provenance["source_repository"], "https://github.com/bigKING67/craft67")
+            self.assertEqual(provenance["source_subdirectory"], "packages/money-craft/skills/money-craft")
             with self.assertRaises(ValueError):
                 install_skill.install(root, force=False)
             destination, backup = install_skill.install(root, force=True)

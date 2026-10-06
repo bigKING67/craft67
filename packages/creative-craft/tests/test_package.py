@@ -145,7 +145,9 @@ class InstallerTests(unittest.TestCase):
             destination, backup = installer.install(Path(directory), False)
             self.assertIsNone(backup)
             self.assertTrue((destination / "SKILL.md").is_file())
-            self.assertTrue((destination / "INSTALL_PROVENANCE.json").is_file())
+            provenance = json.loads((destination / "INSTALL_PROVENANCE.json").read_text())
+            self.assertEqual(provenance["source_repository"], "https://github.com/bigKING67/craft67")
+            self.assertEqual(provenance["source_subdirectory"], "packages/creative-craft/skills/creative-craft")
 
     def test_failed_force_install_preserves_existing_destination(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
