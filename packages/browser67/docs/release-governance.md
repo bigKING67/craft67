@@ -139,7 +139,7 @@ Pi-67 external checkout through its explicit lifecycle:
 
 ```bash
 pi-67 external update browser67 --json
-git -C ~/.agents/packages/browser67 rev-parse HEAD
+git -C ~/.agents/packages/craft67 rev-parse HEAD
 pi-67 external doctor browser67 --deep --json
 pi-67 status --json
 pi-67 report --operation browser67-release --output /tmp/pi67-browser67-release-report.json --json
@@ -153,11 +153,11 @@ valid alternate MCP root.
 
 Do not edit Pi-67 `settings.json` to create a static browser67 package pin. The
 maintained Pi-67 distribution owns browser67 through the external-repository
-contract. Direct upstream Pi users outside Pi-67 may still use a reproducible
-package pin when that is their selected integration model:
+contract. Direct upstream Pi users outside Pi-67 can install from a craft67 checkout
+pinned to the reviewed commit, using the package subdirectory:
 
 ```bash
-pi install git:github.com/bigKING67/browser67@<tag-or-commit>
+pi install /path/to/craft67/packages/browser67
 ```
 
 ## Tagging and publishing boundary

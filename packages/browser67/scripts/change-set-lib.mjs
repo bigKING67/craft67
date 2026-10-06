@@ -366,7 +366,7 @@ const GROUPS = [
     patterns: [
       /^UPSTREAM\.(?:lock|review)\.json$/,
       /^THIRD_PARTY_NOTICES\.md$/,
-      /^scripts\/(?:upstream-audit|upstream-lock|upstream-review-refresh-plan)\.mjs$/,
+      /^scripts\/(?:upstream-audit|upstream-lock|upstream-paths|upstream-review-refresh-plan)\.mjs$/,
       /^contracts\/(?:upstream-audit-contract|upstream-lock-contract|upstream-review-refresh-plan-contract)\.mjs$/,
       /^contracts\/upstream-review-schema-contract\.mjs$/,
       /^docs\/schemas\/upstream-review\.schema\.json$/,

@@ -5,11 +5,12 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { defaultGenericAgentRoot as resolveGenericAgentRoot } from "./upstream-paths.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, "..");
 const lockPath = resolve(repoRoot, "UPSTREAM.lock.json");
-const genericAgentRoot = resolve(repoRoot, "..", "GenericAgent");
+const genericAgentRoot = resolveGenericAgentRoot(repoRoot);
 const ignoredExtensionFiles = new Set(["config.js"]);
 
 function exec(command, args, cwd) {

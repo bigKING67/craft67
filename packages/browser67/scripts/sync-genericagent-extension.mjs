@@ -12,14 +12,13 @@ import {
 } from "node:fs";
 import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { defaultGenericAgentRoot as resolveGenericAgentRoot } from "./upstream-paths.mjs";
 
 const currentFile = fileURLToPath(import.meta.url);
 const __dirname = dirname(currentFile);
 const repoRoot = resolve(__dirname, "..");
 const defaultSourceDir = resolve(
-  repoRoot,
-  "..",
-  "GenericAgent",
+  resolveGenericAgentRoot(repoRoot),
   "assets",
   "tmwd_cdp_bridge",
 );

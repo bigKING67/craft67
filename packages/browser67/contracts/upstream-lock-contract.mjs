@@ -7,6 +7,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
+import { defaultGenericAgentRoot } from "../scripts/upstream-paths.mjs";
 import { collectGitSnapshot } from "../scripts/upstream-lock.mjs";
 
 function run(command, args, cwd) {
@@ -23,6 +24,14 @@ function main() {
   const root = mkdtempSync(path.join(tmpdir(), "browser67-upstream-lock-"));
   const extensionRoot = path.resolve(root, "assets", "tmwd_cdp_bridge");
   try {
+    // Both source layouts locate the same external sibling without a duplicate checkout.
+    const standalone = path.join(root, "browser67");
+    const monorepo = path.join(root, "craft67");
+    mkdirSync(monorepo);
+    writeFileSync(path.join(monorepo, "catalog.json"), "{}");
+    assert.equal(defaultGenericAgentRoot(standalone), path.join(root, "GenericAgent"));
+    assert.equal(defaultGenericAgentRoot(path.join(monorepo, "packages/browser67")), path.join(root, "GenericAgent"));
+    assert.equal(defaultGenericAgentRoot(path.join(monorepo, "other/browser67")), path.join(monorepo, "other/GenericAgent"));
     mkdirSync(extensionRoot, { recursive: true });
     run("git", ["init"], root);
     run("git", ["checkout", "-B", "main"], root);

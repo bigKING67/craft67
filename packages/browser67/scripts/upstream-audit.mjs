@@ -13,12 +13,13 @@ import { dirname, relative, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
+import { defaultGenericAgentRoot as resolveGenericAgentRoot } from "./upstream-paths.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, "..");
 const lockPath = resolve(repoRoot, "UPSTREAM.lock.json");
 const defaultReviewPath = resolve(repoRoot, "UPSTREAM.review.json");
-const defaultGenericAgentRoot = resolve(repoRoot, "..", "GenericAgent");
+const defaultGenericAgentRoot = resolveGenericAgentRoot(repoRoot);
 const defaultSourceDir = resolve(defaultGenericAgentRoot, "assets", "tmwd_cdp_bridge");
 const defaultUpstreamRemote = "https://github.com/lsdefine/GenericAgent.git";
 const targetDir = resolve(repoRoot, "extension");
