@@ -15,7 +15,11 @@
           "make",
           "validate-portable"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     },
     {
       "name": "creative-craft",
@@ -35,7 +39,11 @@
           "python3",
           "scripts/check_package.py"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     },
     {
       "name": "review-craft",
@@ -51,7 +59,11 @@
           "python3",
           "scripts/release_gate.py"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     },
     {
       "name": "money-craft",
@@ -81,7 +93,11 @@
           "python3",
           "scripts/check_package.py"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     },
     {
       "name": "whoami",
@@ -98,7 +114,12 @@
           "run",
           "check"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "package.json",
+        "format": "json",
+        "field": "version"
+      }
     },
     {
       "name": "browser67",
@@ -119,7 +140,12 @@
           "run",
           "check"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "package.json",
+        "format": "json",
+        "field": "version"
+      }
     },
     {
       "name": "commerce-growth-os",
@@ -163,7 +189,12 @@
           "bash",
           "scripts/validate.sh"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "skill-pack.json",
+        "format": "json",
+        "field": "pack_version"
+      }
     },
     {
       "name": "3d-craft",
@@ -194,7 +225,11 @@
           "run",
           "viewer:build"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     },
     {
       "name": "reverse-craft",
@@ -211,7 +246,11 @@
           "run",
           "check:all"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     },
     {
       "name": "write-craft",
@@ -237,7 +276,11 @@
           "run",
           "package:check"
         ]
-      ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     }
   ]
 }

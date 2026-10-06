@@ -23,13 +23,14 @@
 
 ```sh
 git submodule update --init --recursive
+python3 scripts/versions.py
 python3 scripts/check.py --list
 python3 scripts/check.py --package whoami
 ```
 
 先在有 `package-lock.json` 的对应包目录运行 `npm ci --ignore-scripts`。Python 门禁使用 Python 3.12+；Review Craft 还需要 uv，并按包内锁文件准备环境。检查脚本不自动安装到全局，不提交，不发布。
 
-根 `.github/workflows/check.yml` 是统一的包检查入口。包内 `.github/` 保留原工程合同和发布参考，不会被 GitHub 自动作为根工作流执行。原发布工作流尚未切换到本仓库，独立包的版本与发布状态保持原语义。
+根 `.github/workflows/check.yml` 是统一的包检查入口。包内 `.github/` 保留原工程合同和发布参考，不会被 GitHub 自动作为根工作流执行。各包独立版本，现有版本来源和新标签规范见 [版本与发布](docs/versioning.md)。原发布工作流尚未全部切换到本仓库；源码版本不代表新仓库已有同名 Release。
 
 ## 使用与安装
 
@@ -41,10 +42,10 @@ python3 scripts/check.py --package whoami
 - Browser67：Skill 安装与 CLI/MCP/扩展安装分开，按包内 README 操作。
 - Review / Reverse / Write：使用包内现有独立 Skill 或包分发入口。
 
-包内指向旧仓库的发布链接及安装命令代表既有发布来源，不能据此假定 craft67 已发布。新仓库源码入口以本页和 catalog 为准。安装文件一致不代表已打开的宿主会话加载了新版本。
+旧的 10 个 GitHub 仓库已删除；历史发布链接不可再作为安装入口。新发布状态须逐包核验，不能据此假定 craft67 已发布。新仓库源码入口以本页和 catalog 为准。安装文件一致不代表已打开的宿主会话加载了新版本。
 
 ## 迁移与许可
 
-来源提交、文件计数与导入摘要见 [migration-sources.json](docs/migration-sources.json)，验收及待办见 [migration.md](docs/migration.md)。本次采用源码快照导入；原仓库历史留在原目录，未改写或删除。根仓库不重新许可各包，许可证和第三方声明随原路径保留。
+来源提交、文件计数与导入摘要见 [migration-sources.json](docs/migration-sources.json)，验收及待办见 [migration.md](docs/migration.md)。本次采用源码快照导入；旧项目目录及旧远端已完成删除，执行范围见 [退役记录](docs/remote-retirement.md)；monorepo 不包含完整旧仓库历史。根仓库不重新许可各包，许可证和第三方声明随原路径保留。
 
 凭据、本地执行配置、个人资料、依赖目录、缓存和运行输出不属于公开源码。原目录清理、正式提交、推送、发布均需分别核对授权。
