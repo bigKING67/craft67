@@ -1,3 +1,5 @@
+[English](README.en.md) · 简体中文
+
 # craft67
 
 集中维护 Craft 工程与 Agent Skills 的源码仓库：设计、创意、工程审查、投资研究、商业经营、浏览器操作等能力在同一处维护，各包保留独立版本、依赖、测试与许可证。目前包含 10 个项目、18 个 Skill；准确入口和检查命令以 [catalog.json](catalog.json) 为准。
