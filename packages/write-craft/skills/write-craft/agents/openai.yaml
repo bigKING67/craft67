@@ -1,6 +1,6 @@
 interface:
   display_name: "Write Craft"
-  short_description: "把复杂技术方案写成可理解、可判断、可行动的决策文档"
+  short_description: "把复杂技术方案写成可理解、可判断、可行动的决策文档，或把项目 README 改成读者能快速判断的入口"
   default_prompt: "使用 $write-craft，把这份复杂技术方案重组为非技术读者能够理解、判断并采取行动的决策文档。"
 
 policy:

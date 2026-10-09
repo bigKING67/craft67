@@ -15,7 +15,7 @@
 | [Commerce Growth OS](packages/commerce-growth-os/README.md) | 商业策略、营销、平台运营与经营分析 | 4 个商业 Skill、4 个营销 Skill |
 | [3D Craft](packages/3d-craft/README.md) | Blender 产品道具、GLB 与 Web3D 查看器的制作和验证 | 3d-craft |
 | [Reverse Craft](packages/reverse-craft/README.md) | 授权范围内的逆向、CTF、DFIR、协议与威胁证据分析 | reverse-craft |
-| [Write Craft](packages/write-craft/README.md) | 将复杂方案、进展与工程说明整理为读者可判断、可行动的中文文档 | write-craft |
+| [Write Craft](packages/write-craft/README.md) | 将复杂方案、进展与工程说明整理为读者可判断、可行动的文档，并审查改写项目 README | write-craft |
 
 ## 使用 Skill
 

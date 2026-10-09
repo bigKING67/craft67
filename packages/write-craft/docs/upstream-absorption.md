@@ -114,3 +114,47 @@ validation.
 本轮进一步把写作组织明确为中心回答、纵向依据、同层分组和逻辑顺序，并加入完整合成决策示范及跨形式删除检查。依据 Minto 的公开概念说明（https://www.barbaraminto.com/concept，2026-09-26）独立编写；未复制书籍或课程文字。ljg 来源固定版本与不采用项保持不变。
 
 实现、细则迁移映射、首稿对照协议与证据层次见 `pyramid-writing-change.md`。此项不是另一份附加万能清单：主入口围绕写作动作组织，特定事实与形式边界迁入必读参考，保持原语义。任何效果判断以当前冻结候选的实际对照为准。
+
+## better-readme：项目 README 场景
+
+评审日期：2026-10-09。来源：[tommy0103/better-readme-skill](https://github.com/tommy0103/better-readme-skill)，
+固定版本：`fa3dce198b4b6f798ffc61c6483e7e7aa15b8cde`（main）。仓库根
+[LICENSE](https://github.com/tommy0103/better-readme-skill/blob/fa3dce198b4b6f798ffc61c6483e7e7aa15b8cde/LICENSE)
+为 MIT，Copyright (c) 2026 tommy0103 and contributors。与 ljg-skills 相同，按非
+vendored 来源评审处理：未新增 upstream checkout，未修改 `upstreams.lock.json`。
+
+### 已读范围
+
+- [skills/better-readme/SKILL.md](https://github.com/tommy0103/better-readme-skill/blob/fa3dce198b4b6f798ffc61c6483e7e7aa15b8cde/skills/better-readme/SKILL.md)
+- [skills/better-readme/references/art-of-readme.md](https://github.com/tommy0103/better-readme-skill/blob/fa3dce198b4b6f798ffc61c6483e7e7aa15b8cde/skills/better-readme/references/art-of-readme.md)：
+  该文件是 noffle《Art of README》的转存全文。原仓库
+  `noffle/art-of-readme` 与 `hackergrrl/art-of-readme` 在评审日均已无法访问，
+  原文的再使用条款无法核实；better-readme 仓库的 MIT 不能覆盖第三方原文。
+
+### 吸收方式
+
+Write Craft 的定位扩展为多场景写作，README 作为决策文档之外的第二个场景，
+规则独立写在 `skills/write-craft/references/readme.md`，入口 `SKILL.md` 只负责场景
+分流。共享规则（编辑权限、来源核对、中文表达、clean 交付）继续由现有 reference
+负责，不在 README 场景里复制。
+
+| 来源方法 | 本地落点 | 调整 |
+| --- | --- | --- |
+| 按读者判断是否适用的顺序组织 README，库与应用的安装/API 顺序不同 | `readme.md` 读者顺序 | 不为凑齐顺序补空章节 |
+| 维护者内容迁出并留链接、每条事实只写一处、表格承载可扫读细节 | `readme.md` 改写规则 | 与 Write Craft 的“信息只放一处”合并表达 |
+| 改仓库文件前检查未提交改动、测试中固定的文案和派生副本 | `readme.md` 仓库检查 | 只在直接改仓库文件时执行；未提交改动视为用户最新素材而非改写基线之外的内容；不采用“以默认分支为准”，以免回滚 feature 分支上的 README 改动；改测试须用户请求包含仓库改动 |
+| 沿用旧 README 的说法前对照代码核实 | `readme.md` + `source-integrity.md` | 状态词（已实现、实验、计划、未验证）沿用来源核对规则 |
+| 翻译按意思写、结构保持对齐、互相链接、更新锚点 | `readme.md` + `clear-chinese.md` | 默认保留 README 原有语言 |
+| 以决策清单汇报改动 | `readme.md` 交付规则，`SKILL.md` 交付节注明例外 | 仅限在仓库中改文件；README 正文仍保持 clean |
+
+### 明确不采用
+
+- 不复制或转存《Art of README》原文；只吸收公开流传的读者漏斗原则。
+- 不复制 better-readme 的正文措辞；本地规则独立表达。
+- 不把完整 API 参考手册、运维手册或 changelog 纳入 README 场景。
+
+当前状态：规则与路由已落地，新增两条 exploration 评测用例。2026-10-09 用
+`anthropic/claude-sonnet-4-6` 生成过一次改写用例候选稿，Skill 读取轨迹包含
+`readme.md`；自动评审因结构化评审不支持经 Claude Code 运行、Pi 未配置其他
+provider 而未执行，仅做过人工对照合同核对。尚无行为基线，不能据此宣称 README
+写作效果已经验证。

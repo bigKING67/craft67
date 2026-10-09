@@ -1,6 +1,6 @@
 ---
 name: write-craft
-description: 将复杂技术方案、项目提案、阶段进展和工程说明重组为目标读者，尤其是非技术决策者，可理解、可判断、可行动的中文文档；用于老板版改写、立项或决策文档、不同读者版本、选项比较、技术转业务说明及相应诊断。不要用于广告创意、产品 UI 微文案、纯文件排版、飞书平台操作或面向开发者的 API 文档。
+description: 将复杂技术方案、项目提案、阶段进展、工程说明和项目 README 重组为目标读者可理解、可判断、可行动的文档；用于面向非技术决策者的老板版改写、立项或决策文档、不同读者版本、选项比较、技术转业务说明，以及项目 README 的审查、改写和中英版本，并做相应诊断。不要用于广告创意、产品 UI 微文案、纯文件排版、飞书平台操作、完整的 API 参考手册、运维手册或开发者教程。
 ---
 
 # Write Craft
@@ -35,7 +35,23 @@ For Diagnose, read [references/source-integrity.md](references/source-integrity.
 before responding; its diagnosis rules and source distinctions are required.
 
 Use the user's requested format and language. When the user writes in Chinese
-and gives no contrary direction, write natural Simplified Chinese.
+and gives no contrary direction, write natural Simplified Chinese. A README
+itself keeps its existing language unless the user asks for a translation;
+replies about it follow the user's language.
+
+## Choose the document scenario
+
+The modes above apply to every scenario; the scenario decides the reader and
+the structure.
+
+- **Decision and project communication** — proposals, approvals, progress
+  updates, option comparisons, and technical explanations for business readers.
+  This is the default; the rest of this file is written for it.
+- **Project README** — a repository's entry document for prospective users.
+  Read [references/readme.md](references/readme.md) before diagnosing,
+  drafting, or rewriting. Its reader order, repository checks, and delivery
+  rules replace the decision-document structure; editing authority, source
+  integrity, and clear-language rules still apply.
 
 ## Set the editing authority
 
@@ -138,7 +154,7 @@ the request nor the source specifies an approval, owner, pilot, or next-step
 process, do not manufacture one from the gaps; explain what the supplied
 material supports and keep consequential unknowns visible.
 
-For substantial decision writing or restructuring, read
+For substantial decision writing or restructuring outside the README scenario, read
 [references/decision-documents.md](references/decision-documents.md) before
 outlining. For a long draft that repeats itself, use its complete restructuring
 example to distinguish a paragraph's contribution from its topic. Apply its
@@ -197,6 +213,9 @@ reader's task; they are not process commentary.
 Do not expose the mode classification, source inventory, internal decision
 analysis, loaded Skill rules, or a justification for the structure. Begin with
 the document the user can use.
+
+When README files are edited in a repository, the files stay clean and the
+reply adds the decision list that `readme.md` requires.
 
 Use **annotated** delivery only when the user asks to learn from the edit, see
 the changes, or review the reasoning. Give the complete document first, then

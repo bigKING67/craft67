@@ -20,6 +20,12 @@ package. No absence of an explicit license is interpreted as permission to copy.
   `fdea0bea5133246de418d19015f65eeb18699623`. No upstream text, templates, or
   scripts are vendored. `ljg-plain` remains supplementary reference only.
   Exact paths, license link, and exclusions are in `docs/upstream-absorption.md`.
+- **tommy0103, `better-readme-skill`** — repository MIT, Copyright (c) 2026
+  tommy0103 and contributors. README audit and rewrite methods were
+  independently expressed after reviewing
+  `fa3dce198b4b6f798ffc61c6483e7e7aa15b8cde`. No upstream text is vendored.
+  Its archived copy of noffle's *Art of README* has unverifiable reuse terms
+  and is used for principles only.
 - **Anthropic, `skills`, `doc-coauthoring`** — the reviewed source path does
   not declare reuse terms. Write Craft independently expresses the general
   ideas of context-aware drafting and fresh-reader testing; no text is copied.

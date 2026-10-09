@@ -31,6 +31,7 @@ REQUIRED_PATHS = {
     "skills/write-craft/references/decision-documents.md",
     "skills/write-craft/references/document-presentation.md",
     "skills/write-craft/references/reader-testing.md",
+    "skills/write-craft/references/readme.md",
     "skills/write-craft/references/source-integrity.md",
     "skills/write-craft/references/source-map.md",
 }

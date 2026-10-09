@@ -2,7 +2,7 @@
   "name": "@bigking67/write-craft",
   "version": "0.2.1",
   "private": true,
-  "description": "Agent Skill for turning complex technical proposals into clear, decision-ready documents for non-technical readers.",
+  "description": "Agent Skill for turning complex technical proposals into clear, decision-ready documents for non-technical readers, and for auditing and rewriting project READMEs.",
   "license": "MIT",
   "author": "bigKING67",
   "homepage": "https://github.com/bigKING67/write-craft#readme",
@@ -24,7 +24,8 @@
     "decision-writing",
     "plain-language",
     "technical-communication",
-    "executive-communication"
+    "executive-communication",
+    "readme"
   ],
   "pi": {
     "skills": [

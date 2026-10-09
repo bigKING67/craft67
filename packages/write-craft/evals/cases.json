@@ -694,6 +694,70 @@
           "把“本文未同步修改规则库、代码或部署”这类编辑说明写进正文或改写成工作现状"
         ]
       }
+    },
+    {
+      "id": "readme-rewrite-separates-maintainer-content",
+      "suite": "full",
+      "track": "exploration",
+      "tags": ["rewrite", "readme", "structure", "evidence"],
+      "request": "帮我把这个 CLI 项目的 README 按使用者的阅读顺序改一下，直接给我改好的 README 正文。",
+      "source": "# synclite\n\n## Repository layout\n\nsrc/ holds the engine, adapters/ holds storage adapters, scripts/release.sh cuts releases.\n\n## Releasing\n\nMaintainers run scripts/release.sh after setting NPM_TOKEN and GH_TOKEN in CI secrets.\n\n## About\n\nsynclite syncs a local SQLite file to S3-compatible storage on every commit. Requires Node 20+.\n\nA GCS adapter is planned but not implemented.\n\n## Usage\n\nRun `synclite watch ./app.db --bucket my-bucket`.\n\nRequires Node 20+.\n\n## Install\n\n`npm install -g synclite`\n\n## License\n\nMIT",
+      "expected": {
+        "must": [
+          "在开头一句话说明 synclite 是什么、解决什么问题",
+          "把用法放在仓库结构与发布流程之前，并保留 synclite watch 命令原样",
+          "把仓库结构与发布流程移出 README 正文，并留下指向 CONTRIBUTING 或 docs 的链接或单独标注目标文件的内容块",
+          "Node 20+ 只出现在一处",
+          "README 正文保持原有英文"
+        ],
+        "must_not": [
+          "删除发布流程而不给去处",
+          "把计划中的 GCS 适配器写成已支持",
+          "编造命令输出、额外参数、安装方式或许可证",
+          "在 README 正文里附加修改说明"
+        ]
+      },
+      "semantic_contract": {
+        "facts": [
+          "synclite 在每次提交时把本地 SQLite 文件同步到兼容 S3 的存储",
+          "需要 Node 20+",
+          "用法命令是 synclite watch ./app.db --bucket my-bucket",
+          "安装命令是 npm install -g synclite",
+          "GCS 适配器在计划中，尚未实现",
+          "发布流程需要维护者在 CI secrets 中设置 NPM_TOKEN 和 GH_TOKEN 后运行 scripts/release.sh",
+          "许可证是 MIT"
+        ],
+        "allowed_inferences": [
+          "可以把仓库结构和发布流程整理为 CONTRIBUTING.md 或 docs 下的内容块并在 README 留链接",
+          "可以把 GCS 适配器作为限制或计划单独列出"
+        ],
+        "forbidden_inferences": [
+          "声称支持 GCS 或其他未列出的存储",
+          "补充来源没有的命令参数、配置项或输出示例",
+          "删除维护者内容而不交代去处"
+        ],
+        "unknowns": [],
+        "reader_truths": [],
+        "reader_misreadings": []
+      }
+    },
+    {
+      "id": "readme-routing-excludes-api-reference",
+      "suite": "full",
+      "track": "exploration",
+      "tags": ["routing", "readme"],
+      "request": "分别判断这些请求是否应由 write-craft 主导：改写开源项目 README、补一份中文版 README、写完整的 REST API 参考手册、老板版立项方案。",
+      "source": "Write Craft 主导两类写作：把复杂技术方案和项目材料重组为非技术决策者能够理解和判断的文档；审查、改写和翻译项目 README，让潜在使用者快速判断是否适用。它不主导完整的 API 参考手册、广告创意、产品 UI 微文案或飞书平台操作。",
+      "expected": {
+        "must": [
+          "把 README 改写、中文版 README 和老板版立项方案路由到 write-craft",
+          "不把完整 REST API 参考手册路由到 write-craft"
+        ],
+        "must_not": [
+          "把所有人类可读文字都吸收到 write-craft",
+          "把 README 场景等同于 API 参考手册"
+        ]
+      }
     }
   ]
 }
