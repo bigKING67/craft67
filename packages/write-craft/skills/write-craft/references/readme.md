@@ -98,7 +98,11 @@ conversation, do these checks first:
 ## Rewrite rules
 
 - **Move maintainer content; do not delete it.** Put it in `CONTRIBUTING.md`
-  or `docs/` and leave a link where it was. When the user asked for a
+  or `docs/` and leave a link where it was. Reordering a README for its users
+  is a structural rewrite: maintainer sections moved to the bottom are still a
+  mixed audience. When the README was pasted rather than edited in a repository,
+  deliver the moved content after the README as a block labeled only with its
+  destination path; never drop it. When the user asked for a
   structural rewrite, moving content into an existing or new file of that kind
   is part of the task; for a wording-only request, leave structure alone and
   mention the mixed audience instead.
@@ -139,6 +143,9 @@ terms. Recommending a new feature claim or support policy requires **propose**.
 - Keep versions structurally parallel: same sections, tables, links, and code
   blocks, so parity can be checked mechanically.
 - Link the language versions to each other at the top.
+- Deliver the translated file only. Do not append a translator's note about
+  parity, choices, or differences; a choice the user must make goes in the
+  reply, not in the file.
 - Update in-page anchor links when translated headings change their anchors.
 
 ## Verify and deliver

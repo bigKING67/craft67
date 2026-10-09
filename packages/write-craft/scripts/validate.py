@@ -69,6 +69,7 @@ REQUIRED_FILES = {
     SKILL / "VERSION",
     SKILL / "agents" / "openai.yaml",
 }
+SKILL_MAX_LINES = 200
 SEMVER = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
 COMMIT = re.compile(r"^[0-9a-f]{40}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
@@ -647,6 +648,12 @@ def validate() -> list[str]:
     for required_phrase in ("非技术决策者", "老板版", "不要用于"):
         if required_phrase not in description:
             errors.append(f"SKILL.md description must discriminate routing with: {required_phrase}")
+
+    if len(skill_text.splitlines()) > SKILL_MAX_LINES:
+        errors.append(
+            f"SKILL.md must stay within {SKILL_MAX_LINES} lines; some hosts read only "
+            "the first 200 lines of an entrypoint"
+        )
 
     linked_refs = set(re.findall(r"\(references/([^)]+\.md)\)", skill_text))
     actual_refs = {

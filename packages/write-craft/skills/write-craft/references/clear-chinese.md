@@ -208,7 +208,12 @@ negations. For example, `格式相同只是初筛条件，不代表都能直接�
 
 ## Keep the whole answer within a hard length limit
 
-`SKILL.md` defines what the limit covers. When drafting to it, count
+Unless the user limits only a named section, the limit applies to the entire
+user-visible answer, including titles, headings, table text, appendices, notes,
+caveats, change explanations, and unresolved items. Budget space across those
+parts; do not exceed the limit and then label the overflow as outside the
+“main text”. If the critical facts still cannot fit, surface that conflict
+instead of silently omitting them or overrunning the limit. When drafting to it, count
 conservatively and leave margin instead of drafting to the exact edge. Shorten
 headings, remove repeated conclusions, flatten low-value structure, and combine
 compatible qualifications before removing a fact that changes the decision.
@@ -228,8 +233,9 @@ check, not banned wording:
 
 - **Contrast frames.** `不只是 X，更是 Y` or `看似 X，本质 Y` where both sides
   are abstract evaluations. Replace the frame with the concrete change:
-  `本次升级把审批从三级减为两级`. Keep a contrast that corrects a fact, excludes a
-  scope, or quotes someone.
+  `本次升级把审批从三级减为两级`. A softened variant such as `不只是换一套系统，
+  审批方式也变了` is the same frame. Keep a contrast that corrects a fact,
+  excludes a scope, or quotes someone.
 - **Elevated endings.** `标志着……`, `彰显了……`, `迈向新阶段` beyond what the
   facts support. State the fact; if the author made the evaluation, keep it as
   the author's judgment after the fact rather than deleting it.

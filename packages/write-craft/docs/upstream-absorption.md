@@ -190,3 +190,25 @@ Write Craft 的定位扩展为多场景写作，README 作为决策文档之外�
 剩余大头是 `clear-chinese.md` 的“按意思删改”示范与 `source-integrity.md` 的状态规则。
 
 当前状态：规则已落地，新增两条 exploration 用例；效果尚未经全量回归与真人验收确认。
+
+### 三模型全量回归（2026-10-09）
+
+评审统一用 `deepseek/deepseek-flash`（judge thinking medium），31 条用例，每条 1 次；评审协议错误
+（引用原句不匹配、结构化提交漏项）用 `--rejudge` 重评，不计入失败。
+
+| 生成模型 | 第一轮（拆分入口后） | 最终轮（修复后） |
+| --- | --- | --- |
+| `anthropic/claude-sonnet-5-5` | 30/31 | 31/31 |
+| `deepseek/deepseek-flash` | 29/31 | 31/31 |
+| `codex/gpt-5.5` | 22/31（4 条 regression 失败） | 23 PASS、3 FAIL、5 条因 DeepSeek 余额不足未完成评审 |
+
+发现与处理：
+
+- 拆分入口后 Codex 回归：同样 4 条 regression 用例在 main 旧版上全部通过、新版全部失败。原因是“不得从
+  空缺编造审批、门槛、后果与后续安排”被挪出入口；该规则改为通用核心规则放回 `SKILL.md`，并附真实出现的
+  反例，4 条随后全部通过。
+- Codex 常以 `limit=200` 读取入口且不补读（40 次中 17 次）。`SKILL.md` 压缩到 200 行以内，`validate.py`
+  强制该上限。
+- 最终轮 Codex 剩余失败：诊断写入读者反应（已在入口加反例）、README 改写删除维护者内容未给去处（已把
+  粘贴场景的交付块要求并入移出规则）、业务场景复述（上一轮通过，属模型波动，未改规则）。这三条修复与 5 条
+  未评审用例待 DeepSeek 充值后复验。

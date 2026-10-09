@@ -37,7 +37,9 @@ validator matches links to top-level files). A new scenario needs:
   neighboring exclusions.
 
 Do not put a scenario's exception into `SKILL.md`; put the override in the
-scenario reference.
+scenario reference. Keep `SKILL.md` within 200 lines (`validate.py` enforces
+it): Codex (GPT-5.5) through Pi often reads only the first 200 lines of the
+entrypoint, and a rule moved out of the entrypoint loses salience for it.
 
 ## Source and change discipline
 
