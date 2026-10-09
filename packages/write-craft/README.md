@@ -57,6 +57,7 @@ cd craft67/packages/write-craft
 - `skills/write-craft/`：唯一可安装产品。
 - `upstreams/`：固定提交的原始参考仓库，不进入安装包。
 - `docs/upstream-absorption.md`：吸收、拒绝和延期矩阵。
+- `docs/human-acceptance.md`：发布前真人验收的流程与记录模板；真实材料不进仓库。
 - `evals/cases.json`：行为验收案例，不包含模型生成结果。
 - `scripts/` 与 `tests/`：源码、上游和打包验证。
 
