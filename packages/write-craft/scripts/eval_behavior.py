@@ -1044,11 +1044,15 @@ def run_process(
     args: list[str], timeout: int, *, cwd: Path = ROOT, stdin: str | None = None
 ) -> dict[str, Any]:
     started = time.monotonic()
+    # Pi waits for an inherited non-TTY stdin to close; never let it inherit ours.
+    stdin_kwargs: dict[str, Any] = (
+        {"input": stdin} if stdin is not None else {"stdin": subprocess.DEVNULL}
+    )
     try:
         completed = subprocess.run(
             args,
             cwd=cwd,
-            input=stdin,
+            **stdin_kwargs,
             text=True,
             capture_output=True,
             check=False,

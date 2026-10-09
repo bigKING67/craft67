@@ -154,8 +154,9 @@ Write Craft 的定位扩展为多场景写作，README 作为决策文档之外�
 - 不把完整 API 参考手册、运维手册或 changelog 纳入 README 场景。
 
 当前状态：规则与路由已落地，新增两条 exploration 评测用例。2026-10-09 在 Pi
-`1.0.0` 上以 `anthropic/claude-sonnet-5-5` 生成、`deepseek/deepseek-v4-pro` 评审：
-judge 校准中事实合同判断全部符合预期，唯一不符是实验性编辑检查的一条 fixture；
-4 条 smoke 回归 PASS；README 路由用例 PASS；README 改写用例首轮因 CONTRIBUTING
-块标签附带“moved from the old README”过程说明而 FAIL，收紧 `readme.md` 交付规则
-（标签只写目标路径）后重跑 PASS。每条仅 1 次运行，无真人验收，不构成发布基线。
+`1.0.0` 上以 `anthropic/claude-sonnet-5-5` 生成、`deepseek/deepseek-flash`
+（judge thinking medium）评审：35 个 judge 校准 fixture 全部符合预期；4 条 smoke
+回归、README 改写与路由用例均 PASS。README 改写用例此前一轮因 CONTRIBUTING 块标签
+附带过程说明而 FAIL，收紧 `readme.md` 交付规则（标签只写目标路径）后通过。期间修复
+评测器缺陷：Pi 子进程继承非 TTY 的 stdin 时会一直等待其关闭而超时，现在无输入时
+显式使用 `/dev/null`。每条仅 1 次运行，无真人验收，不构成发布基线。

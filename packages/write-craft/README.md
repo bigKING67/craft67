@@ -110,7 +110,7 @@ python3 scripts/eval_behavior.py \
   --reader-model deepseek/deepseek-flash \
   --reader-judge-model deepseek/deepseek-flash \
   --thinking medium \
-  --judge-thinking high
+  --judge-thinking medium
 ```
 
 在依赖评审器结果前，可以单独运行正反校准集；该模式不生成候选稿：
@@ -119,7 +119,7 @@ python3 scripts/eval_behavior.py \
 python3 scripts/eval_behavior.py \
   --calibrate-judge \
   --judge-model deepseek/deepseek-flash \
-  --judge-thinking high
+  --judge-thinking medium
 ```
 
 `--suite smoke` 运行四个核心案例；`--suite full` 运行全部案例；重复
