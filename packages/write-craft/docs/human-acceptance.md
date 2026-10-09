@@ -18,8 +18,11 @@
 1. 选定 3 份真实材料，按平常的请求方式交给 write-craft（记录使用的宿主与模型）。
 2. 把原稿、请求和成稿存到仓库外的验收目录，每份一个子目录。
 3. 验收人只读成稿，按下面的模板逐份填写；需要时再对照原稿核实事实。
-4. 3 份都通过后，计算记录文件的 sha256，写入 `evals/baselines/pi-v<版本>.json` 的
-   `acceptance.human_acceptance`，与行为基线一起提交。
+4. 3 份都通过后，先升版本号冻结 Skill，再对每条用例单独运行
+   `eval_behavior.py --case <id> --output-dir <root>/<id>`；评审协议错误用 `--rejudge` 重评。
+5. 用 `scripts/build_baseline.py` 从这些产物生成 `evals/baselines/pi-v<版本>.json`：它校验每条结果都来自
+   冻结的 Skill 和当前用例，任何回归用例缺少 PASS 证据就不写文件；验收记录只以 sha256 写入
+   `acceptance.human_acceptance`。最后运行 `npm run release:check`。
 
 ## 记录模板
 
