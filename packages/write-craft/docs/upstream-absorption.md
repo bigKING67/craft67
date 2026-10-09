@@ -15,10 +15,12 @@ repository is pinned.
 
 ## Local behavior map
 
-- `SKILL.md` owns routing, task modes, evidence boundaries, question policy,
+- `SKILL.md` owns scenario routing and the rules shared by every scenario: task
+  modes, editing-authority principle, evidence boundaries, question policy,
   delivery order, and reference loading.
-- `references/decision-documents.md` owns decision framing, information
-  layering, scenario use, and decision-relevant technical constraints.
+- `references/decision-documents.md` is the default scenario reference: its
+  commitments, reading order, reader versions, decision framing, information
+  layering, usage-scenario use, and decision-relevant technical constraints.
 - `references/clear-chinese.md` owns Chinese expression, terminology, precision,
   and naturalness.
 - `references/document-presentation.md` owns platform-neutral visual hierarchy,
@@ -26,7 +28,9 @@ repository is pinned.
   outside Write Craft.
 - `references/source-integrity.md` owns faithful explanation, two-way coverage,
   relevant unknowns, and unresolved source conflicts.
-- `references/reader-testing.md` owns fresh-context acceptance and fallback.
+- `references/reader-testing.md` owns the review order, the shared revision
+  budget, fresh-context acceptance, and fallback.
+- `references/readme.md` is the README scenario reference.
 - `references/source-map.md` records provenance and rejected behaviors for the
   installed product without requiring upstream files at runtime.
 - `scripts/validate.py` checks source and immutable historical evidence;

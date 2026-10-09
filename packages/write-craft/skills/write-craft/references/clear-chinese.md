@@ -1,8 +1,10 @@
 # Clear Chinese
 
-Use this reference for Simplified Chinese drafting and editing. The goal is
-natural, professional writing that a capable non-specialist can understand on
-the first reading without losing precision.
+Read this reference for every Draft or Rewrite and for sentence-level editing.
+Its examples are Simplified Chinese; its clarity, precision and final reader
+checks apply in every language. The goal is natural, professional writing that
+a capable non-specialist can understand on the first reading without losing
+precision.
 
 ## Give each unit one job
 
@@ -160,6 +162,11 @@ Do not delete or silently strengthen:
 
 Use “预计”“目标”“假设”“待验证” only when those are the true evidence states.
 Avoid decorative hedging; uncertainty should be specific enough to act on.
+
+A source's disclaimer is a condition to keep, not wording to copy. Rewrite it
+as the positive condition in its natural place; never delete it to reduce
+negations. For example, `格式相同只是初筛条件，不代表都能直接录入` becomes
+`格式相同的报名表还要核对姓名、日期和签字，再决定能否录入`.
 
 ## Keep the whole answer within a hard length limit
 

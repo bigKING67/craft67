@@ -1,11 +1,15 @@
 # Decision documents
 
-Use this reference when a draft must help a non-technical reader understand a
-complex proposal, compare options, approve a bounded next step, or decide not
-to proceed. It is guidance, not a mandatory template.
+This is the scenario reference for decision and project communication: a draft
+that must help a non-technical reader understand a complex proposal, follow
+progress, compare options, approve a bounded next step, or decide not to
+proceed. Read it for every Draft, Rewrite, or Diagnose in this scenario. It is
+guidance, not a mandatory template. The two long example sections at the end
+are needed only when restructuring a long or repetitive draft.
 
 ## Contents
 
+- Scenario contract
 - Start from the decision
 - Find the load-bearing idea
 - Build a pyramid of findings
@@ -19,6 +23,33 @@ to proceed. It is guidance, not a mandatory template.
 - A worked decision structure
 - Learn from complete synthetic examples
 - Complete restructuring: each paragraph contributes something different
+
+## Scenario contract
+
+**Commitments under preserve.** Budget, schedule, scope, staffing, acceptance,
+approval state, and the chosen approach. This includes approved plans: do not
+redesign one into a pilot or reopen a decision merely because another option
+reads better.
+
+**Reading order.** Lead with the bottom line that the reader needs. A decision
+document normally lets a scanning reader find the problem, recommendation,
+strongest reason, material uncertainty, and requested decision before
+implementation detail. Decision-ready does not mean every document needs a new
+decision. If neither the request nor the source specifies an approval, owner,
+pilot, or next-step process, do not manufacture one from the gaps; explain what
+the supplied material supports and keep consequential unknowns visible. Do not
+invent an approval request when the source is only a status update. Do not
+impose a fixed number of reasons or a stock “背景—方案—收益—总结” outline.
+
+**Versions for different readers.** Change emphasis, order, and explanation
+depth. Do not turn a source activity into a new audit duty, ongoing
+confirmation requirement, acceptance purpose, or control process merely because
+the execution version needs more detail.
+
+**Optional forms.** Apply the usage-scenario (使用场景), appendix, and separate-decision-entry
+rules below when those forms are requested or useful; their source boundaries
+remain mandatory. For a long draft that repeats itself, use the complete
+restructuring example to distinguish a paragraph's contribution from its topic.
 
 ## Start from the decision
 

@@ -1,8 +1,9 @@
 # Source integrity
 
-Use this reference when a rewrite depends on multiple sources, consequential
-facts, ambiguous evidence, or an explanation that could be mistaken for a new
-claim. The aim is faithful transformation, not literal copying.
+Read this reference for every Draft, Rewrite, and Diagnose in every scenario.
+Its rules matter most when material has multiple sources, consequential facts,
+ambiguous evidence, or an explanation that could be mistaken for a new claim.
+The aim is faithful transformation, not literal copying.
 
 Plausibility is not provenance. A cause, workflow step, baseline state, owner,
 decision, boundary, or reader behavior remains unsupported when the source does
@@ -81,6 +82,13 @@ verified`, `planned`, and `approved` are different states.
 Do not turn a current, phase-specific, or approved boundary into a permanent
 commitment. `当前/本期必须人工确认` does not support `永久如此`, `不是过渡做法`,
 or `以后也不会自动化` unless the source states that time scope.
+
+Keep the modality exact in the other direction too. `不要求`, `暂不`, and `先保留`
+state what the phase does not require; they are not `不做`, `不涉及`, `由人工处理`,
+or a promise that the item belongs to a later stage. `试点不要求建成完整平台` can
+become `试点只需做好单一类目，不需要完整平台`. A target such as `每天 200 张是后续
+目标，不是试点门槛` can move to the stage that pursues it only when the source
+places it there; otherwise keep the non-requirement where the scope is stated.
 
 ## Status, scope and missing information
 

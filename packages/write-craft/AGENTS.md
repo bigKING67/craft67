@@ -21,6 +21,24 @@ packaging; they must not become runtime requirements for the installed Skill.
   Ask only for missing information that can change the decision, scope, cost,
   acceptance, or material risk.
 
+## Adding a scenario
+
+`SKILL.md` holds only rules that apply to every scenario, plus the scenario
+routing table. Everything specific to one document type lives in that
+scenario's reference under `skills/write-craft/references/` (flat; the
+validator matches links to top-level files). A new scenario needs:
+
+- a reference that states its reader, reading order, the commitments that
+  **preserve** protects, any delivery companion, and every core rule it
+  overrides, such as allowing labeled hypotheses in a postmortem;
+- one row in the routing table and, when it widens triggering, a description
+  update that keeps the existing routing phrases checked by `validate.py`;
+- behavior cases for the scenario and a routing case that separates it from
+  neighboring exclusions.
+
+Do not put a scenario's exception into `SKILL.md`; put the override in the
+scenario reference.
+
 ## Source and change discipline
 
 - Keep `upstreams/` pristine. Review pinned sources, then write independent

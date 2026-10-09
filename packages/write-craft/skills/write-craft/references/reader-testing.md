@@ -1,17 +1,47 @@
 # Reader testing
 
-Reader testing checks whether the final document works without the author's
-conversation history. It is not a confidence ritual and must not be claimed
-unless a genuinely fresh context received only the final document and test
-questions.
+Read this reference for every consequential Draft or Rewrite, as `SKILL.md`
+defines it. Reader testing checks whether the final document works without the
+author's conversation history. It is not a confidence ritual and must not be
+claimed unless a genuinely fresh context received only the final document and
+test questions.
 
 ## Contents
 
+- Review order and revision budget
 - Prepare answerable understanding points
 - Run a human reading test
 - Use an independent model context when appropriate
 - Interpret results without confusing disagreement with misunderstanding
 - Revise within a fixed budget
+
+## Review order and revision budget
+
+Treat drafting, source review, and any reader test as one bounded quality
+workflow. After the first draft, apply the two-way check in
+`source-integrity.md` before asking a blind reader to interpret the document.
+Use a genuinely independent context for review only when the capability is
+available and authorized; otherwise self-check and do not claim independence.
+
+When independent review is used to assess writing quality, give the editor the
+request and complete draft as a separate reading task. A long source checklist
+is not a substitute for reading the prose continuously. The source reviewer
+must confirm or reject the editor's proposed issues against the request and
+sources before revision. Keep preferences distinct from located problems and
+preserve necessary actors, conditions and checks.
+
+If a fact or reader check finds a blocking issue, or a confirmed editorial check
+locates an actual problem such as duplicated meaning or an unsupported argument,
+use at most one additional revision. Remove, narrow, or correctly label
+unsupported claims; repair the located problem without dropping necessary
+conditions. Do not revise merely to satisfy a reviewer's format preference.
+Then rerun the affected checks, including source fidelity after an editorial
+change. All three kinds of feedback share this one revision budget; a later
+reader test does not reset it. If a blocking conflict, unsupported claim or
+located editorial problem remains, do not call the document ready; surface the
+unresolved limitation. Keep clean copy free of testing instructions; if
+validation status is requested or required for acceptance, report the missing
+check separately and concisely.
 
 ## Prepare answerable understanding points
 

@@ -35,33 +35,31 @@ For Diagnose, read [references/source-integrity.md](references/source-integrity.
 before responding; its diagnosis rules and source distinctions are required.
 
 Use the user's requested format and language. When the user writes in Chinese
-and gives no contrary direction, write natural Simplified Chinese. A README
-itself keeps its existing language unless the user asks for a translation;
-replies about it follow the user's language.
+and gives no contrary direction, write natural Simplified Chinese, unless the
+scenario keeps the document's existing language.
 
 ## Choose the document scenario
 
-The modes above apply to every scenario; the scenario decides the reader and
-the structure.
+The modes and the rules in this file apply to every scenario. The scenario
+decides the reader, the structure, and what the editing authority protects.
+Read its reference before diagnosing, drafting, or rewriting; where it states
+an override, the override wins.
 
-- **Decision and project communication** — proposals, approvals, progress
-  updates, option comparisons, and technical explanations for business readers.
-  This is the default; the rest of this file is written for it.
-- **Project README** — a repository's entry document for prospective users.
-  Read [references/readme.md](references/readme.md) before diagnosing,
-  drafting, or rewriting. Its reader order, repository checks, and delivery
-  rules replace the decision-document structure; editing authority, source
-  integrity, and clear-language rules still apply.
+| Scenario | Use for | Read |
+| --- | --- | --- |
+| Decision and project communication (default) | Proposals, approvals, progress updates, option comparisons, versions for different readers, technical explanations for business readers | [references/decision-documents.md](references/decision-documents.md) |
+| Project README | A repository's entry document for prospective users, its audit, rewrite, or translation | [references/readme.md](references/readme.md) |
 
 ## Set the editing authority
 
-Default to **preserve** for rewrites and drafts based on an existing proposal.
+Default to **preserve** for rewrites and for drafts based on existing material.
 You may change order, headings, wording, explanation, and faithful summaries,
-but not budget, schedule, scope, staffing, acceptance, approval state, or the
-chosen approach. This includes approved plans: do not redesign one into a pilot
-or reopen a decision merely because another option reads better.
+but not the commitments the document records. The scenario reference lists
+what those commitments are; for decision documents they include budget,
+schedule, scope, staffing, acceptance, approval state, and the chosen approach.
+Do not reopen a settled choice merely because another option reads better.
 
-Use **propose** only when the user explicitly asks to improve the plan itself or
+Use **propose** only when the user explicitly asks to improve the substance or
 allows new recommendations. Keep proposed changes visibly separate from source-
 supported facts and existing decisions; never write a new suggestion as though
 it were already approved.
@@ -97,8 +95,9 @@ mark the gap as `待确认` and deliver the draft instead of blocking.
 
 Read [references/source-integrity.md](references/source-integrity.md) before every
 Draft or Rewrite, including short updates and single-source explanations, and
-for multi-source, conflicting material or Diagnose. Apply its detailed status, gap, scope and
-source-entailment rules; moving them to a reference does not make them optional.
+for multi-source, conflicting material or Diagnose. Apply its detailed status,
+gap, scope, modality and source-entailment rules;
+moving them to a reference does not make them optional.
 
 ## Compose around an answer, then test the structure
 
@@ -138,28 +137,8 @@ summary. Short progress updates need no artificial argument or section scaffold.
 
 A short answer plus its detailed support is useful hierarchy. A short answer
 followed by paraphrases of the same answer is repetition. More headings do not
-create a logical structure. Do not impose a fixed number of reasons or a stock
-“背景—方案—收益—总结” outline.
-
-When producing versions for different readers, change emphasis, order, and
-explanation depth. Do not turn a source activity into a new audit duty, ongoing
-confirmation requirement, acceptance purpose, or control process merely
-because the execution version needs more detail.
-
-Lead with the bottom line that the reader needs. A decision document normally
-lets a scanning reader find the problem, recommendation, strongest reason,
-material uncertainty, and requested decision before implementation detail.
-Decision-ready does not mean every document needs a new decision. If neither
-the request nor the source specifies an approval, owner, pilot, or next-step
-process, do not manufacture one from the gaps; explain what the supplied
-material supports and keep consequential unknowns visible.
-
-For substantial decision writing or restructuring outside the README scenario, read
-[references/decision-documents.md](references/decision-documents.md) before
-outlining. For a long draft that repeats itself, use its complete restructuring
-example to distinguish a paragraph's contribution from its topic. Apply its
-scenario, appendix and separate-decision-entry rules when
-those forms are requested or useful; their source boundaries remain mandatory.
+create a logical structure. The scenario reference supplies the reading order
+for its document type; do not impose a stock outline beyond it.
 
 ## Say what is true, once
 
@@ -179,29 +158,23 @@ words in the right place, not with a disclaimer after every paragraph.
   `本文未修改代码` describes an edit; drop it rather than turning it into a
   claim about the work such as `代码尚未调整`. Keep the work's own evidence
   state when the source gives it, such as `现有渲染能力待复核`.
-
-A source's disclaimer is a condition to keep, not wording to copy. Rewrite it
-as the positive condition in its natural place; never delete it to reduce
-negations. For example, `格式相同只是初筛条件，不代表都能直接录入` becomes
-`格式相同的报名表还要核对姓名、日期和签字，再决定能否录入`.
-
-Keep the modality exact. `不要求`, `暂不`, and `先保留` state what the phase
-does not require; they are not `不做`, `不涉及`, `由人工处理`, or a promise that
-the item belongs to a later stage. `试点不要求建成完整平台` can become
-`试点只需做好单一类目，不需要完整平台`. A target such as `每天 200 张是后续目
-标，不是试点门槛` can move to the stage that pursues it only when the source
-places it there; otherwise keep the non-requirement where the scope is stated.
+- A source's disclaimer is a condition to keep, not wording to copy: rewrite it
+  as the positive condition in its natural place, and keep modal words such as
+  `不要求`, `暂不`, and `先保留` exactly as strong as the source.
 
 If many sentences end in a `不/未/非` qualification, rewrite them as positive
 statements plus one status passage, then recheck the source in both directions.
-[references/clear-chinese.md](references/clear-chinese.md) has a worked example.
 
 ## Make the language clear without hollowing it out
 
 For every Draft or Rewrite and for sentence-level editing, read
 [references/clear-chinese.md](references/clear-chinese.md). Its general clarity,
 precision and final reader checks apply in every language; Chinese examples do
-not override the user's requested language.
+not override the user's requested language. For every Chinese Draft or Rewrite,
+finish its editorial pass before delivery: check information order, paragraph
+contribution, sentence relationships, wording, and useful presentation. This is
+part of composing the draft, not a mandatory extra model call. Check changed
+wording against the source again; concision must not erase a condition.
 
 ## Deliver a usable document
 
@@ -212,17 +185,14 @@ risks, and missing decisions belong in the document when they affect the
 reader's task; they are not process commentary.
 Do not expose the mode classification, source inventory, internal decision
 analysis, loaded Skill rules, or a justification for the structure. Begin with
-the document the user can use.
-
-When README files are edited in a repository, the files stay clean and the
-reply adds the decision list that `readme.md` requires.
+the document the user can use. A scenario reference may add a required companion
+outside the document, such as a decision list for files edited in a repository.
 
 Use **annotated** delivery only when the user asks to learn from the edit, see
 the changes, or review the reasoning. Give the complete document first, then
 explain only a few consequential changes with the original wording, revision,
 and reason. Diagnose mode still returns diagnosis rather than a silent rewrite.
 
-Do not invent an approval request when the source is only a status update.
 Preserve the author's voice when a sample exists; clarity is not permission to
 replace it with a generic corporate voice.
 
@@ -234,45 +204,19 @@ It defines semantic presentation, not platform operations. Keep pure layout or
 document-platform requests outside Write Craft, and use the destination
 platform's document capability to apply and verify actual styles.
 
-## Verify the draft, then test the reader
+## Check before calling it ready
 
-For every Chinese Draft or Rewrite, finish the editorial pass in
-`clear-chinese.md` before delivery: check information order, paragraph
-contribution, sentence relationships, wording, and useful presentation. This
-is part of composing the draft, not a mandatory extra model call. Check changed
-wording against the source again; concision must not erase a condition.
+A document is **consequential** when its reader will approve, fund, publish,
+or act on it, or when the user asks for verification. Ordinary short,
+low-stakes edits need only the self-checks above.
 
-For a consequential Draft or Rewrite, treat drafting, source review, and any
-reader test as one bounded quality workflow. After the first draft, apply the
-two-way check in `source-integrity.md` before asking a blind reader to interpret
-the document. Use a genuinely independent context for review only when the
-capability is available and authorized; otherwise self-check and do not claim
-independence. When independent review is used to assess writing quality, give
-the editor the request and complete draft as a separate reading task. A long
-source checklist is not a substitute for reading the prose continuously; the
-source reviewer must confirm or reject the editor's proposed issues against
-the request and sources before revision. Keep preferences distinct from located
-problems and preserve necessary actors, conditions and checks.
-
-If a fact or reader check finds a blocking issue, or an editorial check locates
-an actual problem such as duplicated meaning or an unsupported argument, use at
-most one additional revision. Remove, narrow, or correctly label unsupported
-claims; repair the located editorial problem without dropping necessary
-conditions. Do not revise merely to satisfy a reviewer's format preference.
-Then rerun the affected checks, including source fidelity after an editorial
-change. All three kinds of feedback share this one revision budget; a later
-reader test does not reset it. If a blocking conflict, unsupported claim or
-located editorial problem remains, do not call the document ready; surface the
-unresolved limitation. Ordinary short, low-stakes edits do not require an
-independent review.
-
-For a consequential final document, read
-[references/reader-testing.md](references/reader-testing.md). If no independent
-reader context is available or authorized, do not claim that a test ran. Provide
-the fallback prompt only when the user requests a testing aid. Keep clean copy
-free of testing instructions; if validation status is requested or required for
-acceptance, report the missing check separately and concisely. Report first-draft
-and revised results separately when the extra revision is used.
+For a consequential Draft or Rewrite, read
+[references/reader-testing.md](references/reader-testing.md) and follow its
+review order, independence rules, and revision budget: at most one additional
+revision, triggered only by a confirmed blocking issue or a located problem,
+never by a reviewer's format preference. If no independent context is
+available or authorized, do not claim that a review or reader test ran. If a
+blocking issue remains, do not call the document ready; surface it.
 
 Read [references/source-map.md](references/source-map.md) only when maintaining,
 auditing, or explaining Write Craft's upstream provenance.
