@@ -49,7 +49,7 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 ## 剩余四包的证据核对（2026-10-06）
 
-- **Write Craft：发布检查失败。** 在 `a15cc0c` 源码上实际运行 `python3 scripts/release_check.py`，当前 Skill 摘要、用例 digest 与历史版本基线不一致，且缺少符合当前合同的完整 PASS、探索披露、评审器校准与真人阅读摘要。普通源码 CI 通过不改变此结果。需要重新采集真实行为与真人证据；不能复制旧 PASS、改摘要或删除门禁使其通过。
+- **Write Craft：发布检查失败（2026-10-06）；2026-10-09 起 0.3.0 已通过。** 当日在 `a15cc0c` 上 Skill 摘要、用例 digest 与旧基线不一致，缺完整 PASS、探索披露、评审器校准与真人阅读摘要。之后重新采集了证据：冻结的 0.3.0 Skill 在 Sonnet 5.5 生成、火山方舟 DeepSeek Flash 评审下 21 条回归用例全部通过，评审器校准 35/35，3 份真实文档真人验收的记录以 sha256 绑定（`packages/write-craft/evals/baselines/pi-v0.3.0.json`）。没有复制旧 PASS、改摘要或放宽门禁。
 - **Commerce：证据输入待准备。** `tooling/build/package_release.py` 明确要求 quality-regression 通过、干净当前 HEAD、完整选择/执行/评审/校准层、活跃安装一致性，以及同一个显式指定模型。当前未提供符合新 HEAD 的质量证据包；未执行正式打包或触发付费模型评测。仓库中的评测用例不是通过证据。
 - **Design：认证链迁移尚未完成。** operational/certified 产物构建需要 native observation、benchmark observation/result、证据目录及后续标签绑定校验。根手动认证入口已迁移，但尚未取得完整 tag-bound 认证成功证据，正式发布工作流仍在包内。本轮没有运行或宣称这些认证通过。
 - **Browser67：先恢复平台验证入口。** 根 [Browser67 platform checks](../.github/workflows/browser67-platform.yml) 保留旧四格系统/Node 矩阵、Ubuntu 隔离 Chrome remote-CDP、覆盖率附件；只手动触发。它不访问用户浏览器配置，不运行真实 TMWD/Profile 验收，不代替 `release:ready` 中的 live、上游当前性与截图稳定性条件，因此暂不加入离线候选支持名单。
