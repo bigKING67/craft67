@@ -140,9 +140,13 @@ terms. Recommending a new feature claim or support policy requires **propose**.
   translationese. For Chinese, apply `clear-chinese.md`.
 - Keep a term in English when the target community actually uses the English
   term; translate it when a natural native term exists.
-- Keep versions structurally parallel: same sections, tables, links, and code
-  blocks, so parity can be checked mechanically.
-- Link the language versions to each other at the top.
+- Start every language version with a language-switch line, such as
+  `[English](README.md) · 简体中文`, even when the original has none yet. It is
+  the one allowed difference from the original and does not break parity. If
+  you deliver only the translation, give the matching line for the original in
+  your reply.
+- Otherwise keep versions structurally parallel: same sections, tables, links,
+  and code blocks, so parity can be checked mechanically.
 - Deliver the translated file only. Do not append a translator's note about
   parity, choices, or differences; a choice the user must make goes in the
   reply, not in the file.
