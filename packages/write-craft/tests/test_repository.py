@@ -211,6 +211,8 @@ class RepositoryContractTests(unittest.TestCase):
         reference_root = ROOT / "skills" / "write-craft" / "references"
         integrity = (reference_root / "source-integrity.md").read_text(encoding="utf-8")
         decisions = (reference_root / "decision-documents.md").read_text(encoding="utf-8")
+        diagnosis = (reference_root / "diagnosis.md").read_text(encoding="utf-8")
+        normalized_diagnosis = " ".join(diagnosis.split())
         normalized_integrity = " ".join(integrity.split())
         self.assertIn("before responding; its diagnosis rules and source distinctions are required", skill_text)
         self.assertIn("before every", skill_text)
@@ -228,10 +230,10 @@ class RepositoryContractTests(unittest.TestCase):
         self.assertIn("没有可放入附录的内容", decisions)
         self.assertIn("mode classification", skill_text)
         self.assertIn("separate application is required", normalized_integrity)
-        self.assertIn("Treat an unstated reader task as an observed gap", integrity)
-        self.assertIn("A Diagnose response is incomplete", integrity)
-        self.assertIn("读者看完不知道如何回应", integrity)
-        self.assertIn("infer each component's business contribution", integrity)
+        self.assertIn("Treat an unstated reader task as an observed gap", diagnosis)
+        self.assertIn("A Diagnose response is incomplete", diagnosis)
+        self.assertIn("读者看完不知道如何回应", diagnosis)
+        self.assertIn("infer each component's business contribution", diagnosis)
         self.assertIn("完整工程方案见文件二", decisions)
         self.assertIn("document-presentation.md", skill_text)
         presentation_case = next(

@@ -31,7 +31,8 @@ the requested classification and one direct boundary reason for each item,
 then stop. Do not turn a routing answer into a mode tutorial, an invitation to
 send material, or an explanation of unrelated editing rules.
 
-For Diagnose, read [references/source-integrity.md](references/source-integrity.md)
+For Diagnose, read [references/diagnosis.md](references/diagnosis.md) and
+[references/source-integrity.md](references/source-integrity.md)
 before responding; its diagnosis rules and source distinctions are required.
 
 Use the user's requested format and language. When the user writes in Chinese
@@ -47,7 +48,7 @@ an override, the override wins.
 
 | Scenario | Use for | Read |
 | --- | --- | --- |
-| Decision and project communication (default) | Proposals, approvals, progress updates, option comparisons, versions for different readers, technical explanations for business readers | [references/decision-documents.md](references/decision-documents.md) |
+| Decision and project communication (default) | Proposals, approvals, progress updates, option comparisons, versions for different readers, technical explanations for business readers | [references/decision-documents.md](references/decision-documents.md); add [references/decision-examples.md](references/decision-examples.md) only when restructuring a long or repetitive draft |
 | Project README | A repository's entry document for prospective users, its audit, rewrite, or translation | [references/readme.md](references/readme.md) |
 
 ## Set the editing authority
@@ -191,7 +192,11 @@ outside the document, such as a decision list for files edited in a repository.
 Use **annotated** delivery only when the user asks to learn from the edit, see
 the changes, or review the reasoning. Give the complete document first, then
 explain only a few consequential changes with the original wording, revision,
-and reason. Diagnose mode still returns diagnosis rather than a silent rewrite.
+and reason. Explain only changes you made. End after the last change: no
+closing note such as `另外，我没有补充……` or `如果需要……建议你补上……`. If a
+missing fact matters to the reader, it belongs in the document itself as an
+open item, not in the annotation. Diagnose mode still returns diagnosis rather
+than a silent rewrite.
 
 Preserve the author's voice when a sample exists; clarity is not permission to
 replace it with a generic corporate voice.

@@ -77,7 +77,7 @@ or fix the problems that actually appear, in order of reader impact:
 - **Unlinked reference material.** Detailed docs exist in the repository but the
   README never points to them.
 
-The Diagnose rules in `source-integrity.md` still apply: ground each problem in
+The rules in `diagnosis.md` still apply: ground each problem in
 the supplied README and repository, not in an imagined reader's reaction.
 
 ## Check the repository before editing files

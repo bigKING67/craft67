@@ -14,6 +14,7 @@ without any upstream checkout.
 | Arjun `plain-language` | Explain technical material without deleting precision or uncertainty | Selectively absorbed under MIT | `decision-documents.md`, `clear-chinese.md` |
 | Pi Skill documentation | Progressive Skill loading and package integration boundaries | Packaging and validation guidance only | Repository tooling; no runtime dependency |
 | tommy0103 `better-readme` (MIT) | Reader-order README audit, maintainer-content separation, repository pre-checks, translated-README parity | Independently expressed; behavior improvement not yet established | `readme.md`, scenario routing in `SKILL.md` |
+| LifelongLazyLearner `qu-ai-wei` (MIT) and op7418 `Humanizer-zh` (MIT) | Protection order for edits, relation-preserving rewrites, hollow rhetorical frames, stacked adverbials, citation binding | Independently expressed; behavior improvement not yet established | `clear-chinese.md`, `source-integrity.md` |
 | lijigang `ljg-writes` and selected `ljg-paper` guidance | Separate content review from Chinese editing; paragraph contribution, continuity, and reader-facing explanation | Independently expressed methods; behavior improvement not yet established | `SKILL.md`, `clear-chinese.md`, revised examples in `decision-documents.md` |
 
 The pyramid-building method independently applies the grouping-to-insight

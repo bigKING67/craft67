@@ -130,10 +130,8 @@ Compare the reader's answer with the source-grounded understanding points:
 - A reader can understand a proposal and still disagree with it or ask a normal
   business question. Disagreement is not evidence of unclear writing.
 
-Fix the document, not the test, when a material question cannot be answered.
-The one additional revision after the first draft is shared with any earlier
-source-integrity correction; reader testing does not start a new revision
-budget. Rerun the affected checks and report first-draft and revised results
+Fix the document, not the test, when a material question cannot be answered,
+within the shared budget above. Report first-draft and revised results
 separately. Do not keep trying until one favorable output appears or polish
 indefinitely for minor preferences.
 

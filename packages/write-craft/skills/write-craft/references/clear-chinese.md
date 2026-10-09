@@ -6,6 +6,16 @@ checks apply in every language. The goal is natural, professional writing that
 a capable non-specialist can understand on the first reading without losing
 precision.
 
+When a clearer sentence would cost something, protect in this order:
+
+1. facts and meaning, including logical relations, evidence strength, ranking,
+   timing, and which source supports which claim;
+2. what the user fixed: purpose, scope, the commitments preserve protects, and
+   protected text such as quotations, code, commands, links, and anchors;
+3. the author's voice, judgments, and stated uncertainty;
+4. natural Chinese;
+5. the original sentence shapes, paragraph order, and formatting.
+
 ## Give each unit one job
 
 - A heading should carry a finding, boundary, or question when that helps a
@@ -120,6 +130,11 @@ Turn noun piles into actions:
 - “实现效率层面的全面提升” -> state whose time changes, in which step, and
   how it will be measured; otherwise mark it as an unverified goal.
 
+Move stacked opening phrases behind the main clause when they make the reader
+wait for who does what: `在降本背景下，基于现有素材，通过模板化，团队将……`
+becomes `团队用现有素材做模板，以降低……`. Keep a scope phrase in front when it
+defines where a rule or term applies.
+
 Do not inflate a short update. “已完成接口联调和本地测试；下周补监控，目前
 没有需要管理层协调的事项” is clearer than expanding three facts into a project
 proposal. `完成本地测试` still does not mean `测试通过` or `已经上线`.
@@ -130,6 +145,10 @@ Place a conclusion next to the source-supported reason, condition, or evidence
 gap that qualifies it. For example: “方案值得继续比较，因为它复用现有素材；
 但尚无同批耗时对照，暂不能确认效率收益。” Do not add a reason merely to make
 the paragraph feel complete. If the source gives only a goal, call it a goal.
+
+A chain such as `这意味着……这说明……由此可见……` is a symptom when each link only
+restates the previous one at a higher level. Keep a step that adds a real
+premise or consequence; drop the steps that only escalate.
 
 ## Treat jargon deliberately
 
@@ -144,6 +163,12 @@ Do not replace a precise term with a vague benefit word, and do not
 infantilize a non-technical reader by removing precision. If the reader will
 meet the term in later discussions, withholding its name makes the document
 less useful.
+
+Do not blur a stated role into an association. When the source says who reviews
+or approves, `与审核有关` loses that. A coined label such as `采集-审核-发布一体
+化` that is immediately followed by its definition adds a term without adding
+meaning; keep the definition. When the source gives only an association, keep
+the general wording rather than inventing a role.
 
 A plain-language rewrite must explain a term, not merely move it into a shorter
 sentence. For example, `120 个已缓存查询样本` can become `120 条能够直接从缓存中
@@ -160,8 +185,21 @@ Do not delete or silently strengthen:
 - the distinction between “不能”“暂不支持”“尚未验证”“计划实现”;
 - constraints that change cost, time, risk, or the decision.
 
+Keep these relations intact when splitting, merging, or reordering sentences:
+
+- **Exclusion stays exclusion.** `延期不能归因于供应商延误` must not become
+  `供应商一直按时交付`; ruling out one cause does not establish its opposite.
+- **Ranking and timing stay as stated.** `首要风险是授权，其次是日志` must not
+  flatten into `风险包括授权和日志`, and `同时` must not become a sequence. Do not
+  add an order the source does not give.
+- **Placeholders stay placeholders.** `预算 XX 万元`, `[负责人]`, or a pending link
+  remains visibly unfilled; do not polish it into prose or guess a value.
+
 Use “预计”“目标”“假设”“待验证” only when those are the true evidence states.
-Avoid decorative hedging; uncertainty should be specific enough to act on.
+Avoid decorative hedging; uncertainty should be specific enough to act on. When
+several hedges express one level of uncertainty, such as `也许可能`, keep the
+most accurate one; keep separate qualifications such as a condition plus
+`尚未验证`.
 
 A source's disclaimer is a condition to keep, not wording to copy. Rewrite it
 as the positive condition in its natural place; never delete it to reduce
@@ -184,6 +222,21 @@ owner, observable result, or test when possible.
 Do not add symmetrical slogans, repeated conclusions, unnecessary quotation
 marks, or mechanical “首先、其次、最后” transitions merely to sound polished.
 Vary sentence rhythm only after the logic is clear.
+
+Three patterns are symptoms when they carry no new fact; treat them as cues to
+check, not banned wording:
+
+- **Contrast frames.** `不只是 X，更是 Y` or `看似 X，本质 Y` where both sides
+  are abstract evaluations. Replace the frame with the concrete change:
+  `本次升级把审批从三级减为两级`. Keep a contrast that corrects a fact, excludes a
+  scope, or quotes someone.
+- **Elevated endings.** `标志着……`, `彰显了……`, `迈向新阶段` beyond what the
+  facts support. State the fact; if the author made the evaluation, keep it as
+  the author's judgment after the fact rather than deleting it.
+- **Mechanical triads.** Three near-synonyms such as `稳定、高效、智能`, or several
+  parallel paragraphs followed by an empty summary line. Use the specific
+  capabilities the source gives. Keep real lists and every independent example,
+  and do not strengthen `体现了` into `实现了` while trimming.
 
 ## Keep the author's voice
 
@@ -210,7 +263,8 @@ short update this can be a brief self-check, not a separate workflow or output.
   to, and how conditions qualify the claim. Repair missing relationships from
   supported material. Do not force short sentences or remove useful connectives.
 - **Wording:** check accurate meaning, natural collocations, and consistent
-  terminology and tone. If synonym substitution leaves an awkward sentence,
+  terminology and tone. Call one object by one name; switching among `平台`,
+  `工具`, and `方案` for the same system makes the reader re-identify it. If synonym substitution leaves an awkward sentence,
   reconstruct it around its intended meaning. Keep already natural wording.
 - **Presentation and ending:** headings should help navigation, tables should
   expose a comparison, and emphasis should identify something important. Remove

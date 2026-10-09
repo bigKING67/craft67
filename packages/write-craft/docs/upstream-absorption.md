@@ -164,3 +164,29 @@ Write Craft 的定位扩展为多场景写作，README 作为决策文档之外�
 附带过程说明而 FAIL，收紧 `readme.md` 交付规则（标签只写目标路径）后通过。期间修复
 评测器缺陷：Pi 子进程继承非 TTY 的 stdin 时会一直等待其关闭而超时，现在无输入时
 显式使用 `/dev/null`。每条仅 1 次运行，无真人验收，不构成发布基线。
+
+## qu-ai-wei 与 Humanizer-zh：中文去 AI 味
+
+评审日期：2026-10-09。来源：[LifelongLazyLearner/qu-ai-wei](https://github.com/LifelongLazyLearner/qu-ai-wei)
+`1d32e803f091ec90808a69683ebf49e8a970a5e7`（MIT）；[op7418/Humanizer-zh](https://github.com/op7418/Humanizer-zh)
+`f4518a8eab97b8bfebc66a89d34320a89bef6930`（MIT）。按非 vendored 来源处理，未修改 `upstreams.lock.json`。
+已读 qu-ai-wei 的 `SKILL.md`、`references/`（pattern-catalog、editing-boundaries、whitelists、examples 等）与
+`tests/fixtures/`，以及 Humanizer-zh 的 `SKILL.md`；两仓库中的脚本均未执行。
+
+| 吸收的方法 | 本地落点 |
+| --- | --- |
+| 改写冲突时的保护顺序（事实含逻辑关系、证据强度与引用绑定 > 用户指定与受保护文字 > 作者口吻 > 自然中文 > 原格式） | `clear-chinese.md` 开头 |
+| 排除不改写成反向事实；排序、同时与先后保持；未填槽位原样保留；同层叠加的模糊限定只留一个 | `clear-chinese.md` Preserve qualifications |
+| 空洞对举骨架、无证据的意义拔高、机械三连（作为需检查的症状而非禁词） | `clear-chinese.md` Remove abstract filler |
+| 前置状语堆叠、推论台阶、模糊关联与生造标签、同一对象轮换称呼 | `clear-chinese.md` 对应各节 |
+| 引用随陈述移动；单一来源结论超出自身限制时保留结论与限制并呈现冲突 | `source-integrity.md` |
+
+不采用：门检与打磨报告等固定输出（与 clean 交付冲突）、真人文本停手与授权判定（write-craft 的任务即授权改写）、
+凭证检测（属宿主安全层）、品牌/自媒体/平台语体与白名单、AI 高频词表（词表式黑名单），以及句长节奏调节
+（易诱导为变而变）。
+
+同轮结构调整：`SKILL.md` 拆为通用核心与场景路由；`decision-examples.md` 与 `diagnosis.md` 从原文件拆出，按需读取；
+合并决策参考与来源核对之间的重复规则。典型决策稿的必读量由约 1214 行降至约 1026 行，未达到 800 行的目标；
+剩余大头是 `clear-chinese.md` 的“按意思删改”示范与 `source-integrity.md` 的状态规则。
+
+当前状态：规则已落地，新增两条 exploration 用例；效果尚未经全量回归与真人验收确认。

@@ -26,6 +26,11 @@ package. No absence of an explicit license is interpreted as permission to copy.
   `fa3dce198b4b6f798ffc61c6483e7e7aa15b8cde`. No upstream text is vendored.
   Its archived copy of noffle's *Art of README* has unverifiable reuse terms
   and is used for principles only.
+- **LifelongLazyLearner, `qu-ai-wei`** and **op7418, `Humanizer-zh`** — both
+  repository MIT. Chinese de-AI-flavor editing methods were independently
+  expressed after reviewing `1d32e803f091ec90808a69683ebf49e8a970a5e7` and
+  `f4518a8eab97b8bfebc66a89d34320a89bef6930`. No pattern catalog, word list,
+  example, fixture, or script is vendored.
 - **Anthropic, `skills`, `doc-coauthoring`** — the reviewed source path does
   not declare reuse terms. Write Craft independently expresses the general
   ideas of context-aware drafting and fresh-reader testing; no text is copied.

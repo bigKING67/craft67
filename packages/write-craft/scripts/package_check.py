@@ -29,6 +29,8 @@ REQUIRED_PATHS = {
     "skills/write-craft/agents/openai.yaml",
     "skills/write-craft/references/clear-chinese.md",
     "skills/write-craft/references/decision-documents.md",
+    "skills/write-craft/references/decision-examples.md",
+    "skills/write-craft/references/diagnosis.md",
     "skills/write-craft/references/document-presentation.md",
     "skills/write-craft/references/reader-testing.md",
     "skills/write-craft/references/readme.md",
