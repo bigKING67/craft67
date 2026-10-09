@@ -752,6 +752,20 @@ def generator_prompt(case: dict[str, Any], source: str) -> str:
 """
 
 
+# Presentation issues are recorded but never spend the revision budget alone:
+# the Skill forbids revising merely to satisfy a reviewer's format preference.
+REVISION_EDITORIAL_KINDS = frozenset(
+    {"redundancy", "irrelevant_commentary", "structure", "sentence", "wording"}
+)
+
+
+def editorial_requires_revision(editorial: dict[str, Any]) -> bool:
+    return any(
+        issue.get("kind") in REVISION_EDITORIAL_KINDS
+        for issue in editorial.get("issues", [])
+    )
+
+
 def revision_prompt(
     case: dict[str, Any],
     source: str,
@@ -1682,7 +1696,7 @@ def evaluate_case(
 
     if max_revisions == 1 and (
         judgment["status"] != "PASS"
-        or judgment["editorial"]["status"] == "NEEDS_EDIT"
+        or editorial_requires_revision(judgment["editorial"])
     ):
         revision_dir = case_dir / "revision-1"
         revision_dir.mkdir()

@@ -1287,6 +1287,37 @@ class BehaviorEvaluationTests(unittest.TestCase):
                 revised_candidate,
             )
 
+    def test_presentation_only_editorial_issue_does_not_revise(self) -> None:
+        case = sample_case()
+        case["max_revisions"] = 1
+        judgment = {
+            "schema": "write-craft.judgment.v1", "case_id": case["id"],
+            "status": "PASS",
+            "must": [{"criterion": "保留事实", "status": "PASS", "evidence": "保留"}],
+            "must_not": [{"criterion": "编造数据", "status": "PASS", "evidence": "未出现"}],
+            "blocking_issues": [],
+        }
+        args = fact_tool_arguments(judgment)
+        args["editorial"]["issues"] = [{
+            "kind": "presentation", "quote": "初稿",
+            "reason": "单独成段，没有小标题", "suggestion": "并入上一节",
+        }]
+        outputs = [pi_text_output("初稿"), pi_tool_output(FACT_JUDGMENT_TOOL, args)]
+        with tempfile.TemporaryDirectory() as raw_dir, patch(
+            "scripts.eval_behavior.run_command", side_effect=outputs
+        ) as mocked:
+            result = evaluate_case(
+                case=case, run_index=1, output_root=Path(raw_dir),
+                model="generator/model", judge_model="judge/model",
+                reader_model="reader/model", reader_judge_model="reader/model",
+                thinking="low", judge_thinking="low", reader_thinking="low",
+                reader_judge_thinking="low", timeout=1,
+            )
+            self.assertEqual(mocked.call_count, 2)
+            self.assertEqual(result["revisions_used"], 0)
+            self.assertEqual(result["status"], "PASS")
+            self.assertEqual(result["editorial"]["status"], "NEEDS_EDIT")
+
     def test_evaluate_case_stops_after_one_failed_correction(self) -> None:
         case = sample_case()
         case["track"] = "regression"

@@ -758,6 +758,111 @@
           "把 README 场景等同于 API 参考手册"
         ]
       }
+    },
+    {
+      "id": "draft-from-notes-without-interview",
+      "suite": "full",
+      "track": "exploration",
+      "tags": ["draft", "evidence"],
+      "request": "根据下面的会议笔记，帮我起草一份发给部门负责人的进展说明。",
+      "source": "周三同步会笔记：\n- 客服工单自动分类原型已接入测试环境，跑了上周 1200 张历史工单，人工抽查 200 张，分类正确 171 张。\n- 退款类工单容易被分到“物流”，原因还在查。\n- 下周计划：补 300 张退款样本重新训练，然后再抽查一次。\n- 上线时间没定，要等抽查结果。\n- 不需要负责人审批，只是同步。",
+      "expected": {
+        "must": [
+          "直接交付可用的进展说明，不先追问",
+          "保留 1200 张、抽查 200 张、正确 171 张的数据口径",
+          "保留退款类误分到物流且原因未查明",
+          "说明下周补样本和再次抽查，上线时间未定"
+        ],
+        "must_not": [
+          "把抽查结果写成整体准确率或已达到上线标准",
+          "编造原因、上线日期、负责人或新的审批请求",
+          "附加修改说明或后续服务话术"
+        ]
+      }
+    },
+    {
+      "id": "annotated-delivery-on-request",
+      "suite": "full",
+      "track": "exploration",
+      "tags": ["rewrite", "delivery"],
+      "request": "把这段改得让老板一眼看懂，改完告诉我你主要改了哪几处、为什么。",
+      "source": "关于数据看板项目，经过前期的调研和技术评估，我们认为当前的报表体系存在一定的问题，主要包括数据口径不统一、更新不及时等方面，因此我们计划在下个季度对现有报表进行重构，预计需要两名工程师投入约六周时间，重构后预计可以提升数据的一致性和及时性。",
+      "expected": {
+        "must": [
+          "先给完整的改写稿",
+          "在改写稿之后只说明少数几处关键修改，并给出原文、改法和理由",
+          "保留两名工程师、约六周、下个季度和口径不统一、更新不及时"
+        ],
+        "must_not": [
+          "把修改说明放在改写稿之前",
+          "逐句罗列所有改动或描述写作过程",
+          "把预计提升写成已经提升或给出量化收益"
+        ]
+      }
+    },
+    {
+      "id": "english-request-keeps-english",
+      "suite": "full",
+      "track": "exploration",
+      "tags": ["rewrite", "language"],
+      "request": "Rewrite this for our VP so they can decide quickly. Keep it in English.",
+      "source": "We evaluated two options for the search backend. Option A (managed OpenSearch) costs about $4k/month and the team has run it before. Option B (self-hosted Typesense) costs about $1.5k/month in infrastructure but nobody on the team has operated it, and we have not load-tested it. Both meet the current latency target in a small benchmark. The team leans toward A. We need a decision by the end of the month to keep the Q3 schedule.",
+      "expected": {
+        "must": [
+          "Output in English",
+          "Lead with the decision needed and the deadline",
+          "Keep both costs, the team's operating experience, and that B is not load-tested",
+          "State that the team leans toward A without presenting it as already approved"
+        ],
+        "must_not": [
+          "Switch to Chinese",
+          "Claim either option meets production load or invent savings beyond the stated costs",
+          "Add process commentary about the rewrite"
+        ]
+      }
+    },
+    {
+      "id": "readme-diagnose-without-rewrite",
+      "suite": "full",
+      "track": "exploration",
+      "tags": ["diagnose", "readme"],
+      "request": "先帮我看看这个 README 有什么问题，别直接改。",
+      "source": "# pgsnap\n\n## Architecture\n\npgsnap uses a WAL reader, a chunker, and an uploader. The chunker splits WAL segments into 4 MB blocks; the uploader retries with exponential backoff.\n\n## Development\n\nRun `make dev` to start Postgres in Docker. Integration tests need AWS credentials in .env.\n\n## What is pgsnap\n\npgsnap continuously backs up a PostgreSQL database to S3.\n\n## Usage\n\n`pgsnap run --db postgres://localhost/app --bucket backups`\n\n## License\n\nApache-2.0",
+      "expected": {
+        "must": [
+          "只做诊断，不输出完整改写稿",
+          "指出项目是什么和用法出现在架构与开发说明之后",
+          "指出开发者内容与使用者内容混在一起，并建议移到 CONTRIBUTING 或 docs",
+          "给出按影响排序或明确优先级的修改建议"
+        ],
+        "must_not": [
+          "输出完整替换的 README",
+          "断言读者一定会离开或看不懂等无来源的读者反应",
+          "编造安装命令、版本要求或功能"
+        ]
+      }
+    },
+    {
+      "id": "readme-translation-keeps-parity",
+      "suite": "full",
+      "track": "exploration",
+      "tags": ["rewrite", "readme", "language"],
+      "request": "把这个 README 翻成中文版 README.zh-CN.md，结构要和英文版对齐。",
+      "source": "# tidylog\n\nStructured logging for Go services with zero allocations on the hot path.\n\n## Usage\n\n```go\nlog := tidylog.New(os.Stdout)\nlog.Info(\"user signed in\", tidylog.String(\"user_id\", id))\n```\n\n## Install\n\n```sh\ngo get github.com/example/tidylog\n```\n\n## Caveats\n\n- Sampling is experimental and may change.\n\n## License\n\nMIT",
+      "expected": {
+        "must": [
+          "输出中文 README，章节、代码块和列表与英文版一一对应",
+          "代码块与命令保持原样",
+          "保留采样功能是实验性、可能变化的状态",
+          "在开头给出与英文版互相切换的链接"
+        ],
+        "must_not": [
+          "新增或删除章节、功能或安装方式",
+          "翻译代码中的标识符或命令",
+          "把实验性功能写成稳定功能",
+          "附加翻译说明或过程说明"
+        ]
+      }
     }
   ]
 }
