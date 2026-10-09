@@ -155,7 +155,8 @@ Delivery depends on the input:
 
 - **Pasted README text:** deliver the clean document as `SKILL.md` describes.
   When maintainer content moves out, deliver it as a separate block labeled
-  with its destination file.
+  only with its destination path, such as `CONTRIBUTING.md`; the label does
+  not say where the content came from or why it moved.
 - **Files edited in a repository:** the README itself stays free of process
   commentary, but the reply reports the changes as a short decision list: what
   moved where, what was removed and why, which test assertions changed, and

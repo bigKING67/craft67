@@ -2188,11 +2188,11 @@ def rejudge_case(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--model", help="Pi generator model, e.g. deepseek/deepseek-v4-flash")
+    parser.add_argument("--model", help="Pi generator model, e.g. deepseek/deepseek-flash")
     parser.add_argument(
         "--judge-model",
         required=True,
-        help="Pi judge model, e.g. deepseek/deepseek-v4-flash",
+        help="Pi judge model, e.g. deepseek/deepseek-flash",
     )
     parser.add_argument(
         "--reader-model",

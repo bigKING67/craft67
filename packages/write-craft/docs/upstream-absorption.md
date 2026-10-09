@@ -153,8 +153,9 @@ Write Craft 的定位扩展为多场景写作，README 作为决策文档之外�
 - 不复制 better-readme 的正文措辞；本地规则独立表达。
 - 不把完整 API 参考手册、运维手册或 changelog 纳入 README 场景。
 
-当前状态：规则与路由已落地，新增两条 exploration 评测用例。2026-10-09 用
-`anthropic/claude-sonnet-4-6` 生成过一次改写用例候选稿，Skill 读取轨迹包含
-`readme.md`；自动评审因结构化评审不支持经 Claude Code 运行、Pi 未配置其他
-provider 而未执行，仅做过人工对照合同核对。尚无行为基线，不能据此宣称 README
-写作效果已经验证。
+当前状态：规则与路由已落地，新增两条 exploration 评测用例。2026-10-09 在 Pi
+`1.0.0` 上以 `anthropic/claude-sonnet-5-5` 生成、`deepseek/deepseek-v4-pro` 评审：
+judge 校准中事实合同判断全部符合预期，唯一不符是实验性编辑检查的一条 fixture；
+4 条 smoke 回归 PASS；README 路由用例 PASS；README 改写用例首轮因 CONTRIBUTING
+块标签附带“moved from the old README”过程说明而 FAIL，收紧 `readme.md` 交付规则
+（标签只写目标路径）后重跑 PASS。每条仅 1 次运行，无真人验收，不构成发布基线。

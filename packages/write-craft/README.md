@@ -105,10 +105,10 @@ python3 scripts/release_check.py
 ```bash
 python3 scripts/eval_behavior.py \
   --suite smoke \
-  --model deepseek/deepseek-v4-flash \
-  --judge-model deepseek/deepseek-v4-flash \
-  --reader-model deepseek/deepseek-v4-flash \
-  --reader-judge-model deepseek/deepseek-v4-flash \
+  --model deepseek/deepseek-flash \
+  --judge-model deepseek/deepseek-flash \
+  --reader-model deepseek/deepseek-flash \
+  --reader-judge-model deepseek/deepseek-flash \
   --thinking medium \
   --judge-thinking high
 ```
@@ -118,7 +118,7 @@ python3 scripts/eval_behavior.py \
 ```bash
 python3 scripts/eval_behavior.py \
   --calibrate-judge \
-  --judge-model deepseek/deepseek-v4-flash \
+  --judge-model deepseek/deepseek-flash \
   --judge-thinking high
 ```
 
@@ -131,7 +131,7 @@ python3 scripts/eval_behavior.py \
 判分、模型与 Pi 版本、Skill 摘要、结构化提交扩展摘要和退出状态。原始 Pi
 JSONL 默认不落盘；仅在排障需要时显式增加 `--keep-raw-jsonl`，每个阶段仍受
 `--raw-jsonl-max-bytes` 限制（默认 1 MiB），不能用它替代紧凑结果文件。当前执行器
-按 Pi `0.80.6` 的 JSONL 工具调用事件格式验证；这表示已验证版本，不声明为
+按 Pi `0.80.6` 的 JSONL 工具调用事件格式验证；2026-10-09 另在 Pi `1.0.0` 上跑通 smoke 与 README 用例；这表示已验证版本，不声明为
 最低兼容版本。已保存的
 v0.2.1 基线使用同一个 Sonnet 4.6 模型的两个独立上下文完成生成与评审，因此
 可证明那一版本的上下文隔离，但不能宣称跨模型复核，也不能作为当前未验收
@@ -179,8 +179,8 @@ python3 scripts/eval_writing_sample.py \
   --skill skills/write-craft \
   --cases evals/pyramid-heldout.json \
   --output-dir .artifacts/write-craft-evals/writing-sample \
-  --model deepseek/deepseek-v4-flash \
-  --judge-model deepseek/deepseek-v4-flash
+  --model deepseek/deepseek-flash \
+  --judge-model deepseek/deepseek-flash
 ```
 
 修改前后的 Skill 分别使用同一批材料、同一模型与参数，并写入不同新目录。脚本禁止修订和覆盖样本，事实检查与写作比较、真人验收分别记录。六份合成材料在首次使用后即为已见集；后续调优不能继续把它们当作未见验收材料，也不能用合成稿替代真实脱敏文档的真人阅读。
