@@ -159,12 +159,19 @@ silently weaken or repeat the conclusion: keep the author's conclusion and its
 stated limit, and put the tension in the status passage or open items.
 
 Do not resolve a conflict for the reader by computing results under the
-unconfirmed alternative. When two sources give different rates, prices, or
-standards and the source only reports totals under one of them, name both
-values, say which figures use which, and say what remains unconfirmed. Stop
-there. Recomputing every option under the other standard adds figures the
-source does not give and needs allocation choices it does not make, such as
-how a partial unit is charged. Real failure, after the user asked “别自己补”:
+unconfirmed alternative. This covers any calculation basis: a rate, price,
+subsidy standard, headcount, quantity, or scope. When two sources give
+different bases and the source only reports totals under one of them, name
+both values, say which figures use which, and say what remains unconfirmed.
+Stop there. This holds even when the other basis looks likely to apply and
+even when the user asks to make each option's cost clear: the clear cost is
+the stated total plus the open question, not a second table. Do not recommend
+budgeting on the unconfirmed basis either. Recomputing every option under the
+other basis adds figures the source does not give and needs allocation choices
+it does not make, such as how a partial unit is charged. A headcount example:
+the plan prices 85 staff, and a later notice may add 12 contractors. Write
+“报价按85人计算；如纳入12名外包人员，人数为97人，是否纳入尚待确认”, not
+“按97人测算，甲、乙方案分别为……”. Real failure, after the user asked “别自己补”:
 “如按100元套算，甲、乙、丙每晚分别为1200元、700元、1200元……丙的第一节按半晚
 （50元）计。” Faithful version: “教务处按每人每晚80元测算，上表金额均按此标准；
 财务处邮件称2026年起标准为100元，尚未核实以哪个为准。” Direct arithmetic

@@ -162,6 +162,21 @@ class BehaviorEvaluationTests(unittest.TestCase):
                 self.assertEqual(b.skill_digest(), b.skill_digest(snapshot))
             self.assertNotEqual(b.skill_digest(), b.skill_digest(snapshot))
 
+    def test_skill_option_selects_snapshot_and_rejects_missing_entry(self) -> None:
+        from scripts import eval_behavior as b
+        with tempfile.TemporaryDirectory() as tmp, patch.object(b, "SKILL_ROOT", b.SKILL_ROOT):
+            snapshot = Path(tmp) / "snapshot"
+            snapshot.mkdir()
+            base = ["--judge-model", "judge", "--rejudge", str(Path(tmp) / "missing")]
+            with patch("sys.stderr"):
+                self.assertEqual(b.main(base + ["--skill", str(snapshot)]), 2)
+            self.assertNotEqual(b.SKILL_ROOT, snapshot.resolve())
+            (snapshot / "SKILL.md").write_text("snapshot\n")
+            with patch("sys.stderr"):
+                b.main(base + ["--skill", str(snapshot)])
+            self.assertEqual(b.SKILL_ROOT, snapshot.resolve())
+            self.assertEqual(b.skill_digest(), b.skill_digest(snapshot))
+
     def test_skill_read_trace_records_results_without_private_contents(self):
         from scripts import eval_behavior as b
         events = [

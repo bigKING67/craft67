@@ -2222,6 +2222,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--reader-judge-model",
         help="reader-comprehension judge; defaults to --judge-model",
     )
+    parser.add_argument(
+        "--skill",
+        type=Path,
+        help="Skill directory to evaluate; defaults to skills/write-craft in this package",
+    )
     parser.add_argument("--suite", choices=sorted(VALID_SUITES), default="smoke")
     parser.add_argument("--track", choices=sorted(VALID_TRACKS))
     parser.add_argument("--case", action="append", default=[], dest="case_ids")
@@ -2285,6 +2290,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.calibrate_judge and args.case_ids:
         print("ERROR: --case selects generation cases, not judge calibration fixtures", file=sys.stderr)
         return 2
+    if args.skill is not None:
+        if not (args.skill / "SKILL.md").is_file():
+            print(f"ERROR: --skill has no SKILL.md: {args.skill}", file=sys.stderr)
+            return 2
+        global SKILL_ROOT
+        SKILL_ROOT = args.skill.resolve()
     if args.rejudge:
         try:
             result = rejudge_case(
