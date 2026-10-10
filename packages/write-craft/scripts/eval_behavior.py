@@ -114,7 +114,9 @@ def apply_deterministic_checks(
     return judgment
 
 
-def skill_digest(skill_root: Path = SKILL_ROOT) -> str:
+def skill_digest(skill_root: Path | None = None) -> str:
+    # Resolve at call time so run records follow a SKILL_ROOT override.
+    skill_root = SKILL_ROOT if skill_root is None else skill_root
     digest = hashlib.sha256()
     for path in sorted(skill_root.rglob("*")):
         if not path.is_file() or "__pycache__" in path.parts:

@@ -153,6 +153,15 @@ def sample_reader_case() -> dict[str, object]:
 
 
 class BehaviorEvaluationTests(unittest.TestCase):
+    def test_skill_digest_follows_skill_root_override(self) -> None:
+        from scripts import eval_behavior as b
+        with tempfile.TemporaryDirectory() as tmp:
+            snapshot = Path(tmp)
+            (snapshot / "SKILL.md").write_text("snapshot\n")
+            with patch.object(b, "SKILL_ROOT", snapshot):
+                self.assertEqual(b.skill_digest(), b.skill_digest(snapshot))
+            self.assertNotEqual(b.skill_digest(), b.skill_digest(snapshot))
+
     def test_skill_read_trace_records_results_without_private_contents(self):
         from scripts import eval_behavior as b
         events = [
