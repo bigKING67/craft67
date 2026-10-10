@@ -86,7 +86,8 @@ mark the gap as `待确认` and deliver the draft instead of blocking.
 Read [references/source-integrity.md](references/source-integrity.md) before every
 Draft or Rewrite, including short updates and single-source explanations, and
 for multi-source, conflicting material or Diagnose. Apply its detailed status,
-gap, scope, modality and source-entailment rules;
+gap, scope, modality, conflict and source-entailment rules; when sources give two
+standards, name both and do not recompute options under the unconfirmed one;
 moving them to a reference does not make them optional.
 
 ## Compose around an answer, then test the structure

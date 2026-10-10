@@ -158,6 +158,20 @@ cannot separate two causes and then naming one as the main cause. Do not
 silently weaken or repeat the conclusion: keep the author's conclusion and its
 stated limit, and put the tension in the status passage or open items.
 
+Do not resolve a conflict for the reader by computing results under the
+unconfirmed alternative. When two sources give different rates, prices, or
+standards and the source only reports totals under one of them, name both
+values, say which figures use which, and say what remains unconfirmed. Stop
+there. Recomputing every option under the other standard adds figures the
+source does not give and needs allocation choices it does not make, such as
+how a partial unit is charged. Real failure, after the user asked “别自己补”:
+“如按100元套算，甲、乙、丙每晚分别为1200元、700元、1200元……丙的第一节按半晚
+（50元）计。” Faithful version: “教务处按每人每晚80元测算，上表金额均按此标准；
+财务处邮件称2026年起标准为100元，尚未核实以哪个为准。” Direct arithmetic
+on figures the source already gives, such as the difference between two stated
+totals, is not this kind of recomputation, unless the user forbids any
+calculation.
+
 When traceability is required, cite the real supplied source location. Do not
 invent line numbers, quotes, hashes, or provenance. A valid quote proves where
 text came from; it does not by itself prove that the interpretation is correct.
