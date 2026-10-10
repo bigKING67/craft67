@@ -1,6 +1,6 @@
 {
   "name": "@bigking67/write-craft",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "description": "Agent Skill for turning complex technical proposals into clear, decision-ready documents for non-technical readers, and for auditing and rewriting project READMEs.",
   "license": "MIT",
