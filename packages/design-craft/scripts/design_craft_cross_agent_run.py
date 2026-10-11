@@ -13,6 +13,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import tomllib
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -164,19 +165,60 @@ def command_for(
     )
 
 
-def host_environment(host: str, temp_root: Path) -> dict[str, str]:
+def _toml_value(value: object) -> str:
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, (int, float)):
+        return str(value)
+    if isinstance(value, str):
+        return json.dumps(value, ensure_ascii=False)
+    raise ValueError(f"unsupported Codex provider value: {value!r}")
+
+
+def minimal_codex_config(source: Path) -> str:
+    """Keep only the selected model provider; drop MCP servers, hooks and instructions."""
+    config = tomllib.loads(source.read_text(encoding="utf-8")) if source.is_file() else {}
+    provider = config.get("model_provider")
+    lines: list[str] = []
+    if isinstance(provider, str):
+        lines.append(f"model_provider = {_toml_value(provider)}")
+        table = (config.get("model_providers") or {}).get(provider)
+        if isinstance(table, dict):
+            lines.append(f"\n[model_providers.{provider}]")
+            lines.extend(
+                f"{key} = {_toml_value(value)}"
+                for key, value in table.items()
+                if not isinstance(value, dict)
+            )
+    return "\n".join(lines) + "\n"
+
+
+def host_environment(
+    host: str, temp_root: Path, *, source_home: Path | None = None
+) -> dict[str, str]:
     env = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}
     if host == "codex":
-        # A private CODEX_HOME keeps provider config and auth (symlinked, not
-        # copied) but drops the operator's global AGENTS.md instructions.
-        source_home = Path(
+        # A private CODEX_HOME keeps only the model provider and API-key auth.
+        # The operator's AGENTS.md, MCP servers and notify hooks stay out.
+        home = source_home or Path(
             os.environ.get("CODEX_HOME") or Path.home() / ".codex"
         ).expanduser()
         isolated_home = temp_root / "codex-home"
         isolated_home.mkdir()
-        for name in ("config.toml", "auth.json"):
-            if (source_home / name).is_file():
-                (isolated_home / name).symlink_to(source_home / name)
+        (isolated_home / "config.toml").write_text(
+            minimal_codex_config(home / "config.toml"), encoding="utf-8"
+        )
+        auth = home / "auth.json"
+        if auth.is_file():
+            payload = json.loads(auth.read_text(encoding="utf-8"))
+            if payload.get("tokens"):
+                # A refresh would rotate tokens inside the temporary home and
+                # strand the operator's real login.
+                raise ValueError(
+                    "isolated Codex runs require API-key auth; OAuth tokens in "
+                    f"{auth} could be rotated by a benchmark run"
+                )
+            (isolated_home / "auth.json").symlink_to(auth)
         env["CODEX_HOME"] = str(isolated_home)
     return env
 
@@ -258,24 +300,34 @@ def run_self_check() -> None:
 
         source_home = root / "source-codex-home"
         source_home.mkdir()
-        for name in ("config.toml", "auth.json", "AGENTS.md"):
-            (source_home / name).write_text(name, encoding="utf-8")
+        (source_home / "config.toml").write_text(
+            'model_provider = "proxy"\nnotify = ["say"]\n'
+            '[model_providers.proxy]\nbase_url = "http://127.0.0.1:1/v1"\n'
+            'requires_openai_auth = true\n[mcp_servers.leak]\ncommand = "x"\n',
+            encoding="utf-8",
+        )
+        (source_home / "auth.json").write_text('{"OPENAI_API_KEY": "k"}', encoding="utf-8")
+        (source_home / "AGENTS.md").write_text("operator rules", encoding="utf-8")
         isolation_root = root / "codex-isolation"
         isolation_root.mkdir()
-        previous = os.environ.get("CODEX_HOME")
-        os.environ["CODEX_HOME"] = str(source_home)
-        try:
-            env = host_environment("codex", isolation_root)
-        finally:
-            if previous is None:
-                os.environ.pop("CODEX_HOME", None)
-            else:
-                os.environ["CODEX_HOME"] = previous
+        env = host_environment("codex", isolation_root, source_home=source_home)
         isolated = Path(env["CODEX_HOME"])
         if sorted(path.name for path in isolated.iterdir()) != ["auth.json", "config.toml"]:
             raise RuntimeError("Codex host home must expose only config and auth")
-        if not all((isolated / name).is_symlink() for name in ("auth.json", "config.toml")):
-            raise RuntimeError("Codex host home must link, not copy, config and auth")
+        config = tomllib.loads((isolated / "config.toml").read_text(encoding="utf-8"))
+        if set(config) != {"model_provider", "model_providers"}:
+            raise RuntimeError("Codex host config must keep only the model provider")
+        if not (isolated / "auth.json").is_symlink():
+            raise RuntimeError("Codex host home must link, not copy, API-key auth")
+        (source_home / "auth.json").write_text('{"tokens": {"refresh_token": "r"}}', encoding="utf-8")
+        oauth_root = root / "codex-oauth"
+        oauth_root.mkdir()
+        try:
+            host_environment("codex", oauth_root, source_home=source_home)
+        except ValueError:
+            pass
+        else:
+            raise RuntimeError("Codex isolation must refuse OAuth token auth")
 
         destination = root / "published.md"
         publish_files({destination: b"first\n"})
@@ -403,7 +455,12 @@ def main() -> int:
         try:
             result = subprocess.run(
                 run_command,
-                input=prompt if prompt_via_stdin else None,
+                # Prompts passed as arguments must not wait on an inherited stdin.
+                **(
+                    {"input": prompt}
+                    if prompt_via_stdin
+                    else {"stdin": subprocess.DEVNULL}
+                ),
                 cwd=workspace,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,

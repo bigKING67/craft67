@@ -103,7 +103,7 @@ def validate_current_source(
                 f"{score_path}: current skill source is not in a Git repository"
             )
             return errors
-        if not git_is_ancestor(repository, source_commit):
+        if not git_is_ancestor(REPO_ROOT, source_commit):
             errors.append(
                 f"{score_path}: skill_source_commit must be an ancestor of current HEAD"
             )

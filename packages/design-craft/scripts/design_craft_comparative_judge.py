@@ -93,6 +93,8 @@ def command_for(
             "",
             "--no-session-persistence",
             "--no-chrome",
+            # Keep user-scope MCP servers and their instructions out of the judge.
+            "--strict-mcp-config",
             "--setting-sources",
             "project",
             "--json-schema",

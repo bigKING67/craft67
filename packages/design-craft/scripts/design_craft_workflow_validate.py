@@ -611,8 +611,9 @@ def validate() -> dict:
             git_attributes,
             (
                 "* text=auto eol=lf",
-                "evals/comparative/*/blind-packet.md whitespace=-blank-at-eol",
-                "evals/comparative/*/output.*.md whitespace=-blank-at-eol",
+                "evals/comparative/**/blind-packet.md whitespace=-blank-at-eol",
+                "evals/comparative/**/output.*.md whitespace=-blank-at-eol",
+                "evals/cross-agent/**/*-output.md whitespace=-blank-at-eol",
             ),
             ".gitattributes",
         )
