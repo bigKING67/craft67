@@ -151,8 +151,10 @@ def command_for(
             "--no-session-persistence",
             "--no-chrome",
             "--strict-mcp-config",
+            # User settings carry the operator's CLAUDE.md and rules, which
+            # would leak personal instructions into the benchmark.
             "--setting-sources",
-            "user,project",
+            "project",
             "--model",
             model,
             "--effort",
@@ -160,6 +162,23 @@ def command_for(
         ],
         False,
     )
+
+
+def host_environment(host: str, temp_root: Path) -> dict[str, str]:
+    env = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}
+    if host == "codex":
+        # A private CODEX_HOME keeps provider config and auth (symlinked, not
+        # copied) but drops the operator's global AGENTS.md instructions.
+        source_home = Path(
+            os.environ.get("CODEX_HOME") or Path.home() / ".codex"
+        ).expanduser()
+        isolated_home = temp_root / "codex-home"
+        isolated_home.mkdir()
+        for name in ("config.toml", "auth.json"):
+            if (source_home / name).is_file():
+                (isolated_home / name).symlink_to(source_home / name)
+        env["CODEX_HOME"] = str(isolated_home)
+    return env
 
 
 def public_command(command: list[str], workspace: Path, installed_skill: Path) -> str:
@@ -229,10 +248,34 @@ def run_self_check() -> None:
             if host == "pi" and str(host_skill) not in command:
                 raise RuntimeError("Pi command is not bound to the isolated skill")
             if host == "claude":
-                if "user,project" not in command or "Read,Grep,Glob" not in command:
-                    raise RuntimeError("Claude command must preserve auth and expose read-only tools")
+                sources = command[command.index("--setting-sources") + 1]
+                if sources != "project" or "Read,Grep,Glob" not in command:
+                    raise RuntimeError(
+                        "Claude command must load project settings only and expose read-only tools"
+                    )
                 if any(tool in command for tool in ("Bash", "Edit", "Write")):
                     raise RuntimeError("Claude command exposed a mutating tool")
+
+        source_home = root / "source-codex-home"
+        source_home.mkdir()
+        for name in ("config.toml", "auth.json", "AGENTS.md"):
+            (source_home / name).write_text(name, encoding="utf-8")
+        isolation_root = root / "codex-isolation"
+        isolation_root.mkdir()
+        previous = os.environ.get("CODEX_HOME")
+        os.environ["CODEX_HOME"] = str(source_home)
+        try:
+            env = host_environment("codex", isolation_root)
+        finally:
+            if previous is None:
+                os.environ.pop("CODEX_HOME", None)
+            else:
+                os.environ["CODEX_HOME"] = previous
+        isolated = Path(env["CODEX_HOME"])
+        if sorted(path.name for path in isolated.iterdir()) != ["auth.json", "config.toml"]:
+            raise RuntimeError("Codex host home must expose only config and auth")
+        if not all((isolated / name).is_symlink() for name in ("auth.json", "config.toml")):
+            raise RuntimeError("Codex host home must link, not copy, config and auth")
 
         destination = root / "published.md"
         publish_files({destination: b"first\n"})
@@ -367,7 +410,7 @@ def main() -> int:
                 text=True,
                 timeout=args.timeout,
                 check=False,
-                env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
+                env=host_environment(args.host, temp_root),
             )
         except subprocess.TimeoutExpired as exc:
             parser.error(f"{args.host} inference timed out after {args.timeout}s: {exc}")
