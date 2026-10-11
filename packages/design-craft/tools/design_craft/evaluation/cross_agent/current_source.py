@@ -109,13 +109,15 @@ def validate_current_source(
             )
         elif schema == OBSERVED_SCHEMA_V5:
             try:
+                # The evidence graph and domain paths are package-relative; in
+                # the monorepo the Git toplevel is an ancestor of REPO_ROOT.
                 committed_behavior = git_domain_fingerprint(
-                    repository,
+                    REPO_ROOT,
                     str(payload.get("behavior_domain", "")),
                     source_commit,
                 )
                 committed_projection = git_projected_skill_tree_sha256(
-                    repository,
+                    REPO_ROOT,
                     skill_root,
                     str(payload.get("behavior_domain", "")),
                     source_commit,
