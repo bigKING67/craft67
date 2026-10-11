@@ -196,6 +196,19 @@ COVERAGE = {
             "score / applicable maximum",
         ],
     },
+    "operate_code_led_and_dashboard_meaning": {
+        "paths": [
+            "skills/design-craft/references/surface-playbooks.md",
+            "skills/design-craft/references/web-image-direction.md",
+        ],
+        "terms": [
+            "surfaces are code-led",
+            "do not propose a comp as the default first step",
+            "one state worth seeing, never placeholder tiles",
+            "only where a state carries meaning",
+            "shows its recent history",
+        ],
+    },
 }
 
 
@@ -360,6 +373,7 @@ def self_check() -> None:
         "platform_quality",
         "design_system_corrections",
         "latest_judgment",
+        "operate_code_led_and_dashboard_meaning",
     }:
         raise RuntimeError("internal impeccable coverage map drifted")
 

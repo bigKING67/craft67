@@ -60,7 +60,7 @@ preflight thinking.
 - Pinned compatibility commit:
   `80e4dd0d581fcdb42be62252b7bc07dcd2238330`
 - Selected-behavior boundary:
-  `524fb8c9500e16a00fa2d55b5ee2d8ca787e2b36`
+  `c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2`
 - Cumulative status: `selective_absorbed` for the command taxonomy,
   brief/change-scope authority, surface modes, craft floor, applicable scoring,
   detector/native guidance and correctness, reference-first fidelity,
@@ -72,6 +72,9 @@ preflight thinking.
   review may also use a repository-owned committed visual-regression baseline
   after exact target, freshness, theme/variant, and source reconciliation,
   without upgrading it to live browser or native evidence.
+  The 2026-10-11 review adds only Operate/Read surfaces not being comp-first
+  and real-data, meaningful-state and headline-history guidance for Operate
+  comps and dashboards.
 - Contract: `docs/impeccable-absorption.md`, validated by
   `scripts/design_craft_impeccable_absorption.py` in the canonical repository.
 - Detector evidence boundary: local function-level fixtures prove selected
@@ -172,9 +175,12 @@ digests in `docs/gustavo-fior-craft-reference.md`.
 ### Jakub Krehel skills — selected writing and hardening guidance
 
 - Source: https://github.com/jakubkrehel/skills
-- Fixed reviewed revision: `267330e1adfc66a718fb65fa6918c1f06d0a689e`.
+- Pinned compatibility revision: `267330e1adfc66a718fb65fa6918c1f06d0a689e`;
+  reviewed through `c0588bb6d654eb725046f0bf9deec338c34891ab`.
 - Selected paths: `skills/better-writing/SKILL.md`, `skills/break/SKILL.md`
-  and `skills/break/scenarios.md`.
+  and `skills/break/scenarios.md`; plus the product-language state grouping
+  principle from `skills/state-machine/SKILL.md` at
+  `c0588bb6d654eb725046f0bf9deec338c34891ab`.
 - Local adaptations: voice/content in `design-system-contract.md` and
   component scenario inspection in `impeccable-workflow.md`.
 - License/attribution: MIT, copyright 2026 Jakub Krehel; preserved in the

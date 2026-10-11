@@ -207,3 +207,9 @@ Global route-pack writes, installation, push and release remain separate actions
 See [the current bounded adoption review](upstream-adoption-review-2026-10-06.md) for the exact new ranges, complete path counts, deferred candidates and exclusions. The compatibility inventories and previously absorbed behavior documented above remain unchanged; this follow-up imports no new Skill behavior.
 
 Adoption-screened range: `267330e1adfc66a718fb65fa6918c1f06d0a689e..d574cc8a576dc24256ad38268b8d03d86724a1b3`. Latest disposition: `deferred`. This does not advance the absorbed-behavior boundary.
+
+## 2026-10-11 adoption follow-up
+
+See [the 2026-10-11 bounded adoption review](upstream-adoption-review-2026-10-11.md) for the exact range, path counts and exclusions.
+
+Adoption-screened range: `d574cc8a576dc24256ad38268b8d03d86724a1b3..c0588bb6d654eb725046f0bf9deec338c34891ab`. Latest disposition: `partial`. Only the product-language grouping of many scenario cases is adapted into component scenario inspection in `impeccable-workflow.md`; the absorbed-behavior boundary advances to `c0588bb6d654eb725046f0bf9deec338c34891ab` for that principle alone. Switcher markup, the fixed 232px layout, the container-query recipe and the `__state` param convention are not adopted. The pinned 11-entry inventory and entrypoint decisions are unchanged; the beyond-pin selection is recorded in `skill_inventory.latest_range_entrypoint_decisions` (`state-machine`: partial, `variant`: deferred), with local coverage and the reviewed `skills/state-machine/SKILL.md` digest, and is checked by `tests/unit/test_jakub_upstream_contract.py`.

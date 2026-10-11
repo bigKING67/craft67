@@ -12,6 +12,10 @@ a specified set must be complete. Do not turn an unspecified page into six or
 eight generations, require a horizontal frame per section, or add sections to
 fill a funnel template. A full-page comp is valid when its details are readable.
 
+A requested comp of an `Operate` surface shows the screen's real content:
+product name, realistic data with plausible values and units, real labels, and
+one state worth seeing, never placeholder tiles.
+
 Keep project DESIGN authority, supplied assets, and approved factual copy above
 generic aesthetic options. Use `visual-judgment.md` for direction choices and
 `surface-playbooks.md` when the page's job needs more specific guidance.

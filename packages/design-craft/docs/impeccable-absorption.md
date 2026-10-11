@@ -217,13 +217,17 @@ through `5c5553b1d7f9e89bb833f9179cea681742a17720` was reviewed on
 ### Cumulative selected boundary
 
 The cumulative absorption state remains `selective_absorbed` through the
-selected behavior boundary `524fb8c9500e16a00fa2d55b5ee2d8ca787e2b36`:
+selected behavior boundary `c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2`
+(advanced from `524fb8c9500e16a00fa2d55b5ee2d8ca787e2b36` by the 2026-10-11
+follow-up below):
 
 | Capability | Status | Local target or boundary |
 | --- | --- | --- |
 | Explicit brief authority and evidence-based visual authority | absorbed | `visual-judgment.md` |
 | Refinement preserves; redesign replaces the visual world without replacing product truth | absorbed | `visual-judgment.md`, existing-redesign playbook |
 | Per-surface `Persuade`, `Operate`, `Read`, and `Experience` modes | absorbed | `surface-playbooks.md` |
+| `Operate` and `Read` surfaces are code-led, not comp-first (2026-10-11) | absorbed | `surface-playbooks.md` mode definitions |
+| Operate comps and dashboards carry real data, one meaningful state, semantic status color only where meaningful, and headline-metric history (2026-10-11) | absorbed | `web-image-direction.md`, dashboard playbook in `surface-playbooks.md` |
 | Direction-first craft floor and applicable-denominator critique scoring | absorbed | `impeccable-workflow.md` |
 | At-most-two batched rendered-verification passes | absorbed | `SKILL.md`; per-tweak screenshot loops remain outside the default workflow |
 | Radial halo/spotlight glow, kicker, meaningless section number, fake cursor/pulse, shape-assembled illustration, and aphoristic-copy signals | absorbed | `visual-judgment.md`; treated as contextual signals, not universal bans |
@@ -294,3 +298,17 @@ focused Impeccable upstream 97, no-skill baseline 96.
 See [the current bounded adoption review](upstream-adoption-review-2026-10-06.md) for the exact new ranges, complete path counts, deferred candidates and exclusions. The compatibility inventories and previously absorbed behavior documented above remain unchanged; this follow-up imports no new Skill behavior.
 
 Adoption-screened range: `f2c7051853848826aac2f4646581d62a732155ad..cf3d2fa07d3ad1814ac5fbbbb5b2043b795eaef1`. Latest disposition: `deferred`. This does not advance the absorbed-behavior boundary.
+
+## 2026-10-11 adoption follow-up
+
+See [the 2026-10-11 bounded adoption review](upstream-adoption-review-2026-10-11.md) for the exact range, path counts and exclusions.
+
+Adoption-screened range: `cf3d2fa07d3ad1814ac5fbbbb5b2043b795eaef1..c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2`. Latest disposition: `partial`. The selected behavior boundary advances to `c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2` for the two rows marked absorbed below only. It does not mean the deferred `695df68..f2c7051` or `f2c7051..cf3d2fa` behavior is represented; those ranges remain deferred and the compatibility pin stays `80e4dd0`.
+
+| Capability | Status | Local target or boundary |
+| --- | --- | --- |
+| Operate and Read surfaces are code-led, not comp-first | absorbed | `surface-playbooks.md` mode definitions; local comps were already request-only, so this only blocks proposing one as the default first step. `operate_code_led_and_dashboard_meaning` coverage terms guard it |
+| Operate comps and dashboards: real data with units, one meaningful state, semantic state color, headline-metric history with onset | absorbed | `web-image-direction.md`, dashboard playbook in `surface-playbooks.md` |
+| Per-reference visual description (ground, colours, type voices, signature) in new-work concept seeding | deferred | No local cultural-world seeding step exists to attach it to; deferred until such a workflow is chosen |
+| Decision-card dealing, `buildPath` config and toggle, comp sketch skeletons | intentionally-rejected | Depends on the upstream CLI, decision page and persisted config the package does not implement |
+| Audit dimension renumbering, version files, engine pins, URL-capture/detector engine, CLI and Firefox extension fixes | provenance-only | Engine changes stay behind the unchanged compatibility pin; a pin bump needs local executable fixtures |

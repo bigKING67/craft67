@@ -32,6 +32,10 @@ Choose the mode from the current surface, not the product's category or brand:
 A developer tool's landing page is still `Persuade`; a fashion brand's guide
 is still `Read`. Persist the choice only for the surface being designed.
 
+`Operate` and `Read` surfaces are code-led: do not propose a comp as the
+default first step, because working screens and documents are judged better
+built than pictured. An explicit request for a comp still governs.
+
 ## Landing or brand page
 
 Primary job: persuade, explain, convert, or establish taste.
@@ -50,6 +54,10 @@ Primary job: monitor, compare, operate, decide.
 - Density should be purposeful, not sparse by default.
 - Tables need scanning, sorting/filtering, empty/loading/error states.
 - Charts need correct scales, labels, legends, tooltips, and responsive behavior.
+- Semantic status color (see `design-move-library.md`) sits on top of the
+  established palette only where a state carries meaning, not as decoration.
+- A headline number that moves over time shows its recent history, with the
+  onset marked when something changed and the data supports it.
 - Motion should be quiet and state-oriented.
 
 ## Persistent agent workspace

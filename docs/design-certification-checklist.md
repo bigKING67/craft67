@@ -38,6 +38,12 @@
 
 更新采用决策及精确范围后，`upstream_absorption_report.py --remote-details --fail-on-unreviewed` 已通过，四项 `reviewed_remote_drift=false`；吸收合同与 25 项 portable 门禁通过。上表保留 `6d0676a` 的原始失败快照，本节记录后续已解决的元数据/采用决策缺口。兼容性 pin、已吸收行为边界和 Skill 文件均未改变。宿主/对照评测失败、native 标签证据及最终认证缺口仍然存在。
 
+## 上游采用边界复核（2026-10-11 后续）
+
+10-06 之后的远端变化见 [2026-10-11 采用边界审查报告](../packages/design-craft/docs/upstream-adoption-review-2026-10-11.md)。Taste 8 个提交只涉及 README 和赞助素材，记为 `provenance_only`；Emil 无新提交。Impeccable（32 个提交、431 个路径）和 Jakub（4 个提交、5 个路径）记为 `partial`，向本地 reference 吸收三条规则：Operate/Read 页面默认直接写代码而非先出效果图；Operate 效果图与仪表盘使用真实数据、有含义的状态色和核心指标近期走势；场景用例较多时按产品语言分组。两者的已吸收行为边界相应推进，兼容性 pin 不变；10-06 及更早的暂缓区间仍为暂缓。
+
+本次 Skill 文件有改动，因此上文 `6d0676a` 的评测结果不覆盖这些新规则。吸收合同、联网新鲜度检查（四项 `reviewed_remote_drift=false`）与 25 项 portable 门禁已通过；宿主/对照评测与最终认证缺口不变。
+
 ## 真实评测执行顺序
 
 所有命令从 `packages/design-craft` 执行。模型、推理档位、费用预算尚未指定；下面是待执行清单，不是已经执行的记录。

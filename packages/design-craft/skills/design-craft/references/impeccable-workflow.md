@@ -219,8 +219,11 @@ imports, navigation and shipping bundles. Use the existing isolated preview or
 Shadow Lab boundary when a scratch route would otherwise enter production.
 
 Label each case and place a short observed-failure note beside the affected
-instance. Container widths test container behavior only: they do not exercise
-viewport media queries, viewport units, browser zoom or device input. Exercise
+instance. Name cases the way the product talks about them; when there are
+more than about seven, group them under product-language headings by what
+changes, such as data, account or access, so the set stays scannable.
+Container widths test container behavior only: they do not exercise viewport
+media queries, viewport units, browser zoom or device input. Exercise
 those through the actual runtime and verify the resulting conditions. Use
 real interactions for focus, hover and recovery rather than a styled imitation.
 
