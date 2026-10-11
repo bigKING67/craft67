@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "claude",
+  "verified": true,
+  "agent_version": "2.1.291 (Claude Code)",
+  "model": "claude-opus-5-5",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-11",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "5312f07de06bddc0f503cd1787100a6e856aa365a87c7d8fcc30967fa4c178b1",
+  "run_manifest_path": "run.claude.json",
+  "run_manifest_sha256": "b4550c72e79a8dd7381afd950420bc204c39d11eace8b449b83aa233154c4681",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "75c347e1a3c2ef71f378c21f91cddd9d596b4b23",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a",
+  "skill_path": "$BENCHMARK_WORKSPACE/.claude/skills/design-craft",
+  "behavior_domain": "skill-production-review",
+  "behavior_sha256": "23f743bd1eadedb3c3c9200063accb2137cfbb3609b970d4cd68d40f41a7ef11",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "07e34fbd214d6829c7480dc3473387e13b9c1ce55371f8a5897b7f45faa4f7e2",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "claude --print --permission-mode plan --tools Read,Grep,Glob --no-session-persistence --no-chrome --strict-mcp-config --setting-sources project --model claude-opus-5-5 --effort medium",
+  "output_path": "claude-output.md",
+  "output_sha256": "93c018aa4261d59e4ed5574a736ac7db29af533675449e0837e5aea8f92374c1",
+  "score": 93,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Anchors the critique in the stated restrained enterprise, token-only authority (\"Operate, not Persuade\", \"No hero, no global CTA\", semantic status tokens only). Its validation plan also asks to read DESIGN.md and token files before building."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 14,
+      "note": "Applies dashboard-specific vocabulary it can show working: the \"Bad dashboard\" pattern, \"Dashboard card soup -> decision surface\", the Enterprise dense / Ops command center treatment, the cap at 84 and the L0/L2/L3 evidence tiers. It also adds a performance-budget layer that this concept review didn't strictly need."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Treats the problem as a missing lead object and a missing exception queue (\"No lead object\", \"Nothing above the fold answers what needs attention\"), not as card styling. It favours dividers over card shadows and removes the decorative chart and the tips rail."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 13,
+      "note": "Labels the evidence as L0 static prose and calls the score provisional, with an explicit ceiling of 84. But the 72-80 band stretches into \"Clean but generic\", which is generous for a flat card-soup layout with no runtime evidence."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 14,
+      "note": "Has a clear Verified (prompt text only) / Inferred / Unverified split that covers hover, focus, states, responsive behaviour and charts, and says no browser was opened. Calling prompt facts \"Verified\" is slightly loose wording."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Includes every expected structural move with implementable detail: a lead risk object (\"Revenue at risk now: $X across N accounts\"), a 5-6 metric supporting strip, an exception queue with defined row fields and Assign/Open actions, and task-first table column order. It also maps each blocker to its moves."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "Stays within the hard limits: 125 lines, 5 blocking findings, 8 moves. It loses points for scope creep into numeric performance budgets (p95 <= 100 ms, CLS) and a data-contract dependency, and it is the longest of the three reviews."
+    }
+  }
+}

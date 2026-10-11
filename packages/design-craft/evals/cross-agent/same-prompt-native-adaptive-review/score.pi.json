@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "1.0.0",
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-11",
+  "prompt_sha256": "61f2e14e7f03ad0f21bff2db3770e0b6c0ffba120aa7598dab1f73411256b2bd",
+  "scorecard_json_sha256": "260126ae8e6eb6765184f92ad040b5e32995c941f559d654a303a0d5305e210f",
+  "contract_sha256": "5312f07de06bddc0f503cd1787100a6e856aa365a87c7d8fcc30967fa4c178b1",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "7965e2a45dae97d8b089c8f5a7adb433709ec909e71cd67dfe4573dcc7ead414",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "75c347e1a3c2ef71f378c21f91cddd9d596b4b23",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "behavior_domain": "skill-native-adaptive-review",
+  "behavior_sha256": "2c1bc56a5efb1851b61be907f5dc9d1f9818e0be161d8f84b00df9cadaefae87",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "09c09ad1fdbb5f4ba63ffdffcc0b554fbda0686e7b748765977a644de238b8ab",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-extensions --no-prompt-templates --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium",
+  "output_path": "pi-output.md",
+  "output_sha256": "84ec6492df17226f6a9b797508aedd413128c2f3ece59de0e85305cae9b7a1fc",
+  "score": 98,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "States DESIGN.md 'shares semantic roles and hierarchy—not identical platform presentation' and resolves adaptive from PRODUCT.md; parity matrix keeps meaning shared while adapting presentation."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 13,
+      "note": "Explicitly applies product, iOS, Android, adaptive, and validation references with platform-specific numbers (44pt/48dp, predictive Back); notes the motion/physics file was unavailable, so physics coverage is partial."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Diagnosis says problems 'concern task access and OS behavior, not visual polish'; moves restore native navigation, controls, and calm completion with no decorative styling."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels 'L0 static, prose-only' and explicitly states no simulator, emulator, hardware, or release-readiness pass is claimed."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Each finding has a 'Runtime unknown' column and section 5 separates the prompt-established conflicts from unverified source/runtime; contrast ratio flagged as 'conditional arithmetic'."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Eight concrete moves covering native stack/predictive Back, scaling, 44pt/48dp targets, sidebar vs bar/rail/drawer by window size, semantic color mapping, SF/Material symbols, and a full parity matrix."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "79 lines, exactly five prioritized blockers and eight moves; the persistence move ties to the stated interruption requirement rather than backend redesign."
+    }
+  }
+}
