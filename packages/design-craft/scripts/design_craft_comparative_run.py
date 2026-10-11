@@ -311,6 +311,9 @@ def main() -> int:
             try:
                 run = subprocess.run(
                     [*command, prompt],
+                    # The prompt is an argument; an inherited non-TTY stdin
+                    # makes Pi wait for piped input indefinitely.
+                    stdin=subprocess.DEVNULL,
                     cwd=workspace,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
