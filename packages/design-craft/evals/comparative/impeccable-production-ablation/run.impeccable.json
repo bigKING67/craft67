@@ -1,0 +1,46 @@
+{
+  "command": "pi --print --no-session --no-extensions --no-prompt-templates --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium --skill '$VARIANT_SKILL_1'",
+  "contract_sha256": "c8d8f0dc00ae9736862d5b703c8c4ba7fd3ea351ab21c569f4a0940fab1ecb0a",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 125.59,
+  "host": "pi",
+  "host_version": "1.1.0",
+  "installed_skill_paths": {
+    "upstreams/impeccable/.agents/skills/impeccable": "$VARIANT_WORKSPACE/.pi/skills/01-impeccable"
+  },
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.impeccable.md",
+  "output_sha256": "7518cf19f05e2de3f438ef25223b5b77ae9869ec2635550a25bc0521893f1d7c",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "returncode": 0,
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v4",
+  "skill_install_mode": "isolated_case_projection",
+  "skill_trees": {
+    "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+  },
+  "source_commit": "08ab91ead4c4b708c0771a83f3b38cf818103663",
+  "source_fingerprints": {
+    "upstreams/impeccable/.agents/skills/impeccable": {
+      "kind": "tree",
+      "projected_tree_sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+      "sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+      "source_dirty": false
+    }
+  },
+  "source_trees": {
+    "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+  },
+  "started_at": "2026-10-11T15:15:18Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "medium",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 2400,
+  "variant": "impeccable",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "60fa688163aad1ea4c70f51403e6c722ff2750327c6488a51cf790b1dd0afdc7",
+  "worktree_before_sha256": "60fa688163aad1ea4c70f51403e6c722ff2750327c6488a51cf790b1dd0afdc7",
+  "worktree_unchanged": true
+}

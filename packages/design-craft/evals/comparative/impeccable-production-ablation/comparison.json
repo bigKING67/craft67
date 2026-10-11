@@ -1,0 +1,146 @@
+{
+  "blind_map_sha256": "3d59e6220793078e1bcd18381562eb5f6eb0a3c12eea0d7d6f8d3690ae7a6089",
+  "blind_packet_sha256": "0e486581c9c67f5af336bb918865218e3383cdc877190ec72e3946103bef779f",
+  "case_id": "impeccable-production-ablation",
+  "focused_variant": "impeccable",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "5b1a000292511183f993817f2a92049831389592e26dbad633333728c8a529dd",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "47f6156bb1b40aa9edf35dd279a98205c1c07dbee92476477e71698f1deddc9d",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.291 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "8ab06e3fbd808dfb94de68b17ca25a94d56d3e15c485f64756f3528fdfdae4ce",
+  "judgment_sha256": "fe590f9ea16cb2c5620edacfda672975debc307d5215ab9be689b338f6038695",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "rationale": "All three are honest read-only audits, stay in scope, and cover hostile data and failure states well. A wins because it is the most implementation-ready: every finding has its own acceptance criteria, and its validation plan uses quantified, ratifiable thresholds with explicit rollback and safety-on-rollback rules, which best meets the measurement-first criterion. C is close behind, with the best detector reconciliation and a strong recovery matrix, but its performance thresholds are thinner. B is comprehensive but less concrete on measurement gates and on acceptance conditions for each fix.",
+  "recorded_at": "2026-10-11T15:19:48Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 12,
+        "mode_sequence": 8,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "score": 87,
+      "summary": "A clear P0-P3 table separates source evidence from runtime hypotheses. Hardening covers failures, uploads, selection scope and permissions well, and the modal versus nonmodal drawer nuance is good. Its performance gates are thinner and less specific, and fixes do not carry per-finding acceptance conditions. Detector reconciliation and scope honesty are solid."
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 14
+      },
+      "score": 93,
+      "summary": "Each finding comes with evidence, unknowns, repairs and acceptance criteria. It gives a full recovery contract for 401, 403, 409, 429, 500/timeout and offline, and covers stale writes and partial-batch failures. Its performance gates are concrete (INP, long tasks, mounted rows, CLS, memory, regression deltas) and it has explicit rollback and safety-on-rollback rules. It reconciles static signals carefully and avoids redesign. It is long but stays in scope."
+    },
+    "impeccable": {
+      "blind_label": "C",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 12,
+        "mode_sequence": 9,
+        "production_fixes": 18,
+        "responsive_accessibility": 14
+      },
+      "score": 91,
+      "summary": "It has an excellent failure and recovery matrix and the strongest static-signal table, which states what each signal proves and what context is still needed. It handles the WCAG target-size point accurately and reconciles well with the design system. Performance budgets are thinner: only a p75 latency target, with fewer thresholds for memory, CLS or long tasks. Acceptance and rollback conditions are solid but less quantified than A's."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "1941a30865724592c32ea8a4440e36e85cedc2d19bad7d65c9e4300de81ccd7b",
+  "scorecard_sha256": "b82445ccf5f79e3dcebbf76c7b4133151b0f54a6c8ddc3e348d7d0d5348230a2",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "c8d8f0dc00ae9736862d5b703c8c4ba7fd3ea351ab21c569f4a0940fab1ecb0a",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "39ebd929ad8f8f238bcc98cf2db58e4a50fe1aebcc772ae03a25bde063cceb62",
+      "run_path": "run.baseline.json",
+      "run_sha256": "171ae8fd587fd372ce8f8333990efe4ce0c3a81f112e198c739c5cabf8cbb7e2",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "08ab91ead4c4b708c0771a83f3b38cf818103663",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "c8d8f0dc00ae9736862d5b703c8c4ba7fd3ea351ab21c569f4a0940fab1ecb0a",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "492be92ffbaabc324d98156037799b35d83d76df043f590377475b0a12c5b1a1",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "0f4a0139717e2b4f5831f2c1f0b551f52bb2a8a4062c85923af481f117d896d3",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "07e34fbd214d6829c7480dc3473387e13b9c1ce55371f8a5897b7f45faa4f7e2"
+      },
+      "source_commit": "08ab91ead4c4b708c0771a83f3b38cf818103663",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-production-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "07e34fbd214d6829c7480dc3473387e13b9c1ce55371f8a5897b7f45faa4f7e2",
+          "sha256": "23f743bd1eadedb3c3c9200063accb2137cfbb3609b970d4cd68d40f41a7ef11",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a"
+      },
+      "thinking": "medium"
+    },
+    "impeccable": {
+      "contract_sha256": "c8d8f0dc00ae9736862d5b703c8c4ba7fd3ea351ab21c569f4a0940fab1ecb0a",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.impeccable.md",
+      "output_sha256": "7518cf19f05e2de3f438ef25223b5b77ae9869ec2635550a25bc0521893f1d7c",
+      "run_path": "run.impeccable.json",
+      "run_sha256": "8e6f09d61c72583da7acb303c9cce3b1e258bdaf0075bffbd265c6a1246a612a",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "source_commit": "08ab91ead4c4b708c0771a83f3b38cf818103663",
+      "source_fingerprints": {
+        "upstreams/impeccable/.agents/skills/impeccable": {
+          "kind": "tree",
+          "projected_tree_sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "design-craft"
+}

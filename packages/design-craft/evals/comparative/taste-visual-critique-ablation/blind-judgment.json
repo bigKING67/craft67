@@ -1,0 +1,48 @@
+{
+  "rationale": "I scored each output against the seven scorecard criteria and recomputed every total from its criterion points: A 91, C 90, B 85.\n\nAll three outputs are read-only, label the evidence honestly as coming from the static description, and correctly decline to give a numeric score. A wins narrowly. Its type, spacing, radius and elevation corrections are the most implementation-ready. Every redesign move maps to a finding, and its validation plan is tightly scoped. C is nearly as good: its next-hour filter is the most operationally specific, but its visual-craft guidance is a little less precise. B is competent but less specific on surface craft, and its validation plan is slightly heavier than needed.",
+  "results": [
+    {
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 18,
+        "evidence_honesty": 10,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 8,
+        "visual_craft": 14
+      },
+      "label": "A",
+      "summary": "Very thorough. Each move is traced back to a finding ID, and the craft guidance is the most specific of the three: 14px/1.4 text, an 8/16/24 spacing scale, 4–8px radii, shadows only on overlays, and tabular numerals. Overdue items are kept separate from next-hour items. The evidence labeling is careful and the validation plan is decisive. It is long and close to the line budget, and treating the chart/insights finding as blocking is debatable.",
+      "total": 91
+    },
+    {
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 17,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 8,
+        "visual_craft": 12
+      },
+      "label": "B",
+      "summary": "Solid and concise, with 5+5 findings and 8 moves, each with acceptance criteria. It preserves the brand and workflows and gives explicit next-hour triage. The craft guidance is less precise on radius and elevation. Running the validation task with two analysts makes the plan less minimal than requested. Overall it is sound but somewhat less specific than A and C.",
+      "total": 85
+    },
+    {
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 9,
+        "visual_craft": 13
+      },
+      "label": "C",
+      "summary": "Strong fit to the product's main job: an explicit 'Due within 1 hour' filter that shows timezone, time boundary and result count, plus a safeguard that destructive actions don't become easier to trigger. The row-hierarchy questions are useful and the state criteria are good. The type and surface guidance is slightly less precise than A's. The 1366×768 target with five visible rows is ambitious and not justified.",
+      "total": 90
+    }
+  ],
+  "winner": "A"
+}

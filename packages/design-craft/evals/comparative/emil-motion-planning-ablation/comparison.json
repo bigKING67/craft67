@@ -1,0 +1,165 @@
+{
+  "blind_map_sha256": "abf64eaaaed25e7df5ac37892ad85267faa17c07572087b8966d706d773b0560",
+  "blind_packet_sha256": "81914260c51904f508bf98f38ed0358623e56cf3f4927ad5a630517f235bd089",
+  "case_id": "emil-motion-planning-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "dd256f43374f25f0c5f7fa2278e17ac76ecd0f4e656f756cd7ef4131d2968d90",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "7eaa920d742d23b51de9d68fa8925b37edb92e10506c48fa08b050eb0df81dd3",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.291 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "b90b0fc1ec877d783cbffba9848944df30f73b9a7270c094a1cab2d7c37d9e71",
+  "judgment_sha256": "77f540b23a331b36d0b11765fb8069d580a1886d59cb9286bcefc551e5996f1b",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "rationale": "C and A are close. C wins on prioritization because it explicitly sets aside unsupported findings: the centered origin and the drag-variable invalidation concern. It also wins on plan concreteness, with exact replacement CSS and the right release-ordering fix in the queue, and it stays concise. A has equally strong technical depth but adds a speculative velocity experiment. B falls behind because it keeps a palette entrance animation on a high-frequency keyboard surface and its priority ranking barely separates the findings.",
+  "recorded_at": "2026-10-11T15:13:33Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility_performance": 8,
+        "evidence_recon": 13,
+        "plan_self_containment": 18,
+        "prioritization": 7,
+        "project_conventions": 9,
+        "purpose_frequency": 7,
+        "technical_accuracy": 12,
+        "verification_quality": 8
+      },
+      "score": 82,
+      "summary": "Output B has well-structured plans that quote full excerpts, with separate Reduced Motion and drift-stop sections and explicit endpoint handling. However, it keeps a 240ms entrance on the high-frequency command palette, which conflicts with keyboard throughput. It rates four findings as P1, so the ranking separates little. Its queue analysis is lighter on pointer tracking, coordinate space and grab offset. It also asks for few measured performance checks."
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility_performance": 9,
+        "evidence_recon": 14,
+        "plan_self_containment": 18,
+        "prioritization": 9,
+        "project_conventions": 9,
+        "purpose_frequency": 9,
+        "technical_accuracy": 14,
+        "verification_quality": 9
+      },
+      "score": 91,
+      "summary": "Output A has a strong, honest recon and labels every runtime claim as unverified. It makes the palette instant, which suits a keyboard-heavy console. Its popover fix is opacity-only and uses the existing tokens. For the queue it examines the clientY coordinate space, grab offset, pointer capture and re-grab handling. Each surface gets a Reduced Motion path, and rendering-cost claims are tied to a performance trace. Two things weaken it: the velocity-projection experiment adds speculative bulk, and Plan A's excerpts are inline fragments instead of full blocks."
+    },
+    "emil": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility_performance": 8,
+        "evidence_recon": 14,
+        "plan_self_containment": 19,
+        "prioritization": 10,
+        "project_conventions": 9,
+        "purpose_frequency": 9,
+        "technical_accuracy": 14,
+        "verification_quality": 9
+      },
+      "score": 92,
+      "summary": "Output C is tight and evidence-disciplined. It explicitly decides that transform-origin: center and the --drag-y variable are not defects without further evidence. It makes the palette instant and gives concrete replacement CSS for the popover and toast that uses the existing tokens. Its queue plan captures the latest position before setDragging clears it and rebases the settle on re-grab. Each plan has clear drift stops. Its performance-measurement guidance is somewhat thinner than A's."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "a06d975f9da69fa9bea87362ee0e4f90bdc790e552561e6b6ac96f650bb53a88",
+  "scorecard_sha256": "ea04fd4fce3cbad1a31129f3b8ea45be2bca0ec334b07598a3d5223e41260d48",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "c8d8f0dc00ae9736862d5b703c8c4ba7fd3ea351ab21c569f4a0940fab1ecb0a",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "2a83f82013a426776b86a44d611b3cc5dca067d88bbc3c770660d35cd0e2fa7c",
+      "run_path": "run.baseline.json",
+      "run_sha256": "6855eae050c73c4d07ce1b266d1a4564198c15d977d37de3c0787e501249bf84",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "08ab91ead4c4b708c0771a83f3b38cf818103663",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "c8d8f0dc00ae9736862d5b703c8c4ba7fd3ea351ab21c569f4a0940fab1ecb0a",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "2e2a95517e6042f48aaa8773a7a884133ef67816adad773f7a49f34deca0f1d9",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "6c40048b142b98c629963e1c07a4bf6dd727e1be18401a3ca9ff96bf47b7b7d4",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "e4adc193c6827ce3f8ac1fe4236893625cf1280decfd09d821dc725032f5b280"
+      },
+      "source_commit": "08ab91ead4c4b708c0771a83f3b38cf818103663",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-motion-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "e4adc193c6827ce3f8ac1fe4236893625cf1280decfd09d821dc725032f5b280",
+          "sha256": "ace9e40bbed036f9ac7d42be3728aeee82b32e9702b09af51be6195e5a1708e0",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a"
+      },
+      "thinking": "medium"
+    },
+    "emil": {
+      "contract_sha256": "c8d8f0dc00ae9736862d5b703c8c4ba7fd3ea351ab21c569f4a0940fab1ecb0a",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.emil.md",
+      "output_sha256": "e92746aed879b9bf66f0aa6b832c40500fc884c8cb10a757a27e5a1385008429",
+      "run_path": "run.emil.json",
+      "run_sha256": "60034d587c79e28b7bab6cd6d178d7bfd7ccb80b4c023bc0ed4b401ad9f95b5e",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "source_commit": "08ab91ead4c4b708c0771a83f3b38cf818103663",
+      "source_fingerprints": {
+        "upstreams/emilkowalski-skills/skills/apple-design": {
+          "kind": "tree",
+          "projected_tree_sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/improve-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/review-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "emil"
+}
