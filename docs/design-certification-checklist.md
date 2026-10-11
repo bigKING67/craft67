@@ -44,6 +44,35 @@
 
 本次 Skill 文件有改动，因此上文 `6d0676a` 的评测结果不覆盖这些新规则。吸收合同、联网新鲜度检查（四项 `reviewed_remote_drift=false`）与 25 项 portable 门禁已通过；宿主/对照评测与最终认证缺口不变。
 
+## 2026-10-11 真实评测重采
+
+0.7.0 旧证据已归档到 `evals/*/history/v0.7.0/`。新一批证据在 `bd39030`（宿主）与 `b7fe6b1`（对照）记录，绑定 `c9abb87` 之后的评测合同。
+
+宿主：Codex、Pi 用 `gpt-6-astra` medium，Claude 用 `claude-opus-5-5` medium。评分由匿名 rubric 评分代理按各任务 JSON scorecard 给出，评分模型与 Claude 宿主同属一个模型家族。
+
+| 任务 | Codex | Pi | Claude |
+| --- | --- | --- | --- |
+| dashboard | 未准入（91） | 95 | 95 |
+| motion | 91 | 91 | 93 |
+| native-adaptive | 未准入（93） | 94 | 未准入（91） |
+
+“未准入”的 3 份已完成并评分，但输出准入规则要求出现 “design move” 字样，它们写的是 “moves”，因此未登记、标为 `unverified`。没有在看到结果后放宽规则；是否调整规则或 prompt 留待下一批证据前决定。
+
+对照（Pi `codex/gpt-6-astra` medium，Claude `claude-opus-5-5` medium 独立盲评，seed 20261011）：
+
+| case | 无 skill | 单一上游 | design-craft |
+| --- | --- | --- | --- |
+| emil-motion | 85 | 95 | **98** |
+| emil-motion-planning | 82 | **92** | 91 |
+| impeccable-production | 87 | 91 | **93** |
+| taste-visual-critique | 85 | 90 | **91** |
+
+design-craft 在 emil-motion-planning 以 1 分落后，`comparative-observed-check` 不通过。评审认为 Emil 更明确地排除证据不足的发现、更简洁，design-craft 多了一段推测性的速度实验。
+
+`operational_95` 候选检查 18/24 通过。仍失败：Codex 宿主（2 个任务未准入）、对照评测、iOS/Android 原生证据、性能回归（本机与 Linux 基线不可比，需 CI），以及 `upstream_remote_review`（Emil 在 10-11 新增 `animation-performance` skill，尚未审查）。Pi 宿主已通过。
+
+本轮修复的评测运行器问题：Pi 用户扩展导致挂起并注入规则、Codex/Claude 读取操作者全局指令与 MCP、Claude 评审 schema 不兼容、monorepo 下包根路径错误、子进程继承 stdin 挂起，以及历史证据缺少空白保护。
+
 ## 真实评测执行顺序
 
 所有命令从 `packages/design-craft` 执行。模型、推理档位、费用预算尚未指定；下面是待执行清单，不是已经执行的记录。
