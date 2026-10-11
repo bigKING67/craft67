@@ -203,8 +203,12 @@ def main() -> int:
         parser.error("; ".join(errors))
 
     packet = packet_path.read_text(encoding="utf-8")
+    # The Claude CLI rejects the draft 2020-12 "$schema" dialect URI; the
+    # constraints themselves are unchanged.
+    schema_payload = json.loads(schema_source.read_text(encoding="utf-8"))
+    schema_payload.pop("$schema", None)
     schema_json = json.dumps(
-        json.loads(schema_source.read_text(encoding="utf-8")),
+        schema_payload,
         ensure_ascii=False,
         separators=(",", ":"),
         sort_keys=True,
@@ -260,7 +264,11 @@ def main() -> int:
         try:
             result = subprocess.run(
                 run_command,
-                input=packet if prompt_via_stdin else None,
+                **(
+                    {"input": packet}
+                    if prompt_via_stdin
+                    else {"stdin": subprocess.DEVNULL}
+                ),
                 cwd=workspace,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
