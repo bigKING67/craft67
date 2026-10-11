@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-motion-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "1.0.0",
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-11",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_json_sha256": "5b0b6a0d6df83ce49b9e2c598a9cdd79149efca50a9e12069667bc008462d183",
+  "contract_sha256": "dc467330252ed6a418e15748999ee3e417ff3f315da6d4a5f5db640d4145e7ab",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "b69b6c20485b20c9bf2bbd331e938486294d31226a1c602675dc1364af5e2857",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "b7fe6b15c8d154b1171aaeeb57265d38462d4a23",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "behavior_domain": "skill-motion-review",
+  "behavior_sha256": "ace9e40bbed036f9ac7d42be3728aeee82b32e9702b09af51be6195e5a1708e0",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "e4adc193c6827ce3f8ac1fe4236893625cf1280decfd09d821dc725032f5b280",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-extensions --no-prompt-templates --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium",
+  "output_path": "pi-output.md",
+  "output_sha256": "610033696c5417164b015cbc85a096e416d5d1642ca8a31e16b08f8be8a5398f",
+  "score": 91,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Opens with a reading of the 'calm utility styling' operations sheet and the 'surface I control' mental model, then derives the do-not-animate list from it. Motion policy is applied rather than separately audited."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 11,
+      "note": "Says 'Using design-craft' but names no specific references; physics guidance is visibly applied (rubber-band r = o×D×0.55/(D+0.55|o|), clamped projection horizon, critically damped spring). No visible design-system or validation reference selection, so it relies partly on bare assertion."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "'Yes, narrowly' with explicit exclusions: no CSS-transitioned pointer tracking, no whole-sheet press scaling, no transition: all, no autonomous travel under Reduced Motion."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels evidence as 'static code plus product context' and states 'Runtime consequences remain hypotheses until tested'; performance gates are explicitly 'provisional gates to ratify'. No smoothness or performance claims."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 14,
+      "note": "Verified list is scoped to 'these snippets'; unverified list covers jumps, delay, frame rate, velocity continuity, accessible semantics and device feel. Reduced Motion and interruption are covered by the 'no Reduced Motion run' statement rather than named individually."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Eight concrete moves cover owned 1:1 translateY tracking, sample-before-cancel interruption with an explicit ownership state machine, CSS px/s velocity handoff, conditional projection, soft boundaries and Reduced Motion. No explicit hysteresis near snap midpoints."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "78 lines, five findings, eight moves, within limits. Move 8 (keyboard controls/focus) and responsive/orientation validation drift slightly beyond motion behavior, and the table cells are dense."
+    }
+  }
+}

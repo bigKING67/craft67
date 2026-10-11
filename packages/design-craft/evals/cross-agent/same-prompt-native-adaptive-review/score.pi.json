@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "1.1.0",
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-11",
+  "prompt_sha256": "61f2e14e7f03ad0f21bff2db3770e0b6c0ffba120aa7598dab1f73411256b2bd",
+  "scorecard_json_sha256": "260126ae8e6eb6765184f92ad040b5e32995c941f559d654a303a0d5305e210f",
+  "contract_sha256": "dc467330252ed6a418e15748999ee3e417ff3f315da6d4a5f5db640d4145e7ab",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "7447397fc6afff21696afcd2365e08942eccf0535602b38a82f962877b7cd2f2",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "b7fe6b15c8d154b1171aaeeb57265d38462d4a23",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "behavior_domain": "skill-native-adaptive-review",
+  "behavior_sha256": "2c1bc56a5efb1851b61be907f5dc9d1f9818e0be161d8f84b00df9cadaefae87",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "09c09ad1fdbb5f4ba63ffdffcc0b554fbda0686e7b748765977a644de238b8ab",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-extensions --no-prompt-templates --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium",
+  "output_path": "pi-output.md",
+  "output_sha256": "0609fb740dc139ea4df2963504360cf3fa737b167812afa73bcb7f3c21abbc92",
+  "score": 94,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Includes an explicit Authority line: \"DESIGN.md shares semantic roles and hierarchy, not identical controls or navigation\". It also states \"Shared product semantics are appropriate; forced behavioral and pixel parity are not\", which cleanly separates the product context from the visual roles."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 12,
+      "note": "Applies iOS/Android target baselines, predictive Back, iPad sidebar vs Android rail/drawer, and OS motion settings. It only says \"design-craft guidance consulted\" and \"platform and interaction guidance\", without naming the adaptive or validation references, so selection is largely asserted."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 14,
+      "note": "Repairs native trust with platform-owned navigation, reachable completion, removal of \"decorative overshoot\", and visible recovery. No glass or gradient styling. M8's manager conflict review drifts slightly from UI repair."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the evidence \"L0 static—prompt and implementation description only\" and says the findings are \"not observed runtime failures\". It claims no simulator, build or device run."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "§5 separates established-from-prompt, independently verified (guidance only) and unverified claims. The contrast ratio is explicitly conditional (\"not a measured screen result\"), and a11y, keyboard and persistence are listed as \"release gates, not proven defects\"."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Its 8 moves cover native-backed stack and predictive Back, scalable type roles, 44pt/48dp floors with 8dp separation, window-driven list/detail with iPad sidebar and Android rail, calm motion with OS-setting paths, semantic appearance mappings, and native primitives behind shared APIs. The parity matrix is clear, but the moves lack specific size-class breakpoints or token examples."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 9,
+      "note": "At 75 lines with five blockers (F6 labeled a verification gate) and eight moves, it stays within the limits. M8's sync/conflict manager review and the acceptance-record step add slight scope beyond native UI conformance."
+    }
+  }
+}

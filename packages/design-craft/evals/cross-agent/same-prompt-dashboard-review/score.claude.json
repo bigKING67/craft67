@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "claude",
+  "verified": true,
+  "agent_version": "2.1.291 (Claude Code)",
+  "model": "claude-opus-5-5",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-11",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "dc467330252ed6a418e15748999ee3e417ff3f315da6d4a5f5db640d4145e7ab",
+  "run_manifest_path": "run.claude.json",
+  "run_manifest_sha256": "74d9e77b8bc87baeed26830faf6b1f54cdc7e0d6c062f73c95fb6829df71389b",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "b7fe6b15c8d154b1171aaeeb57265d38462d4a23",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a",
+  "skill_path": "$BENCHMARK_WORKSPACE/.claude/skills/design-craft",
+  "behavior_domain": "skill-production-review",
+  "behavior_sha256": "23f743bd1eadedb3c3c9200063accb2137cfbb3609b970d4cd68d40f41a7ef11",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "07e34fbd214d6829c7480dc3473387e13b9c1ce55371f8a5897b7f45faa4f7e2",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "claude --print --permission-mode plan --tools Read,Grep,Glob --no-session-persistence --no-chrome --strict-mcp-config --setting-sources project --model claude-opus-5-5 --effort medium",
+  "output_path": "claude-output.md",
+  "output_sha256": "e8c35e1002b9e263675bfff0ba931da36c6f459eefd36980d3b7e4d2dce163fa",
+  "score": 95,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "It sets the treatment as 'Enterprise dense' with Operate surface mode and enforces 'no raw hex outside tokens' and 'No hero treatment'. Validation step 2 reads 'the project's `DESIGN.md` and tokens' before implementation. Authority is deferred rather than applied, but it is handled explicitly."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 14,
+      "note": "It lists the sources it read: taste-score-calibration, design-move-library, and the surface-playbooks dashboard section. It visibly applies them through the 'Bad dashboard' pattern, the anti-inflation caps and `lead + support + action queue`. The selection is focused, though it rests partly on its own assertion."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "F1 'Card soup with no lead object' and F2 'No exception queue' diagnose the missing decision object instead of rearranging cards. The rail becomes a contextual detail panel instead of decoration."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 14,
+      "note": "Labels the evidence 'L0 static' with a 'Not scored' list and the 84/88 ceilings. The 72–78 band is narrower than the evidence supports and straddles two bands, which slightly overstates precision."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Splits the claims into 'Verified, from the prompt text only', 'Inferred, not verified' (including the three-second failure and column order) and 'Unverified, nothing observed'. Its stated stance is 'I make no browser, screenshot or runtime claims.'"
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "M2 gives a concrete lead risk object ('3 campaigns below ROAS floor · $X/hr at risk') plus a 4–6 value supporting strip. M3 is a ranked exception queue with an impact/onset/action row anatomy, and M5 is a task-first table. All four required elements are explicit and buildable."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "It stays within the hard limits: 81 lines, 5 findings, 8 moves. But the 'minimal' validation plan grows to 8 steps with p95/long-task/CLS performance gates and a 20% rollback rule, which goes beyond decisive pre-implementation validation."
+    }
+  }
+}

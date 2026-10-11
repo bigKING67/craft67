@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "1.1.0",
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-11",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "dc467330252ed6a418e15748999ee3e417ff3f315da6d4a5f5db640d4145e7ab",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "3ec331b35c0c2a947ef491a99fd62a3a7a90a2f2e792929d182d61c6df0d9fb1",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "b7fe6b15c8d154b1171aaeeb57265d38462d4a23",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "15dc56c7ce1068cde2a6e8c1eb2fc42e9a9c676ce6c4525d638f5d94e72be73a",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "behavior_domain": "skill-production-review",
+  "behavior_sha256": "23f743bd1eadedb3c3c9200063accb2137cfbb3609b970d4cd68d40f41a7ef11",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "07e34fbd214d6829c7480dc3473387e13b9c1ce55371f8a5897b7f45faa4f7e2",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-extensions --no-prompt-templates --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium",
+  "output_path": "pi-output.md",
+  "output_sha256": "ca72197cef73dc54519172742a6f277f8e64697adafdfe53b2c03b74193f3c16",
+  "score": 95,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Reads the brief as an 'Operate, not Persuade' surface and keeps the enterprise-dense, token-backed treatment ('not a marketing-sized hero'). Validation step 1 obtains the 'actual tokens/components' before judging. It never explicitly names a project DESIGN authority file."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 12,
+      "note": "Names the design-craft `critique` method and applies the rubric's evidence and score bands, surface mode, and dashboard tiers ('lead/support/diagnostic tiers'). It does not state which references were selected, so credit is partial."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "'Density is appropriate; undifferentiated attention is not' frames the issue as decision hierarchy. M2 replaces card soup with tiers, and it warns against 'inventing an opaque risk score' and against fabricated insight content."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Labels the evidence 'L0 static — prose concept only' and explains why it is not L1. The 60–74 band is explicitly provisional, with 'A precise visual score is not defensible' and the 84 cap."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Section 5 cleanly separates 'Established from the supplied brief', 'Reasoned judgments, not observed outcomes' and 'Unverified' (responsive, hover/focus, states). It also says 'M6–M8 are design requirements for validation—not additional diagnosed defects.'"
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "M2 (lead operational state plus supporting strip) and M3 (task-first exception queue with ordered fields and verb-object actions) supply the required structure. The lead is a 'Needs attention' state rather than a concrete example metric, which keeps it slightly abstract."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "71 lines, 4 blocking findings and 8 moves, all within limits. The validation plan stays on decision semantics and design contract review, with no backend work."
+    }
+  }
+}
