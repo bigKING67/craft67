@@ -108,6 +108,10 @@ def command_for(
                 "pi",
                 "--print",
                 "--no-session",
+                # User extensions such as memory sync or rules loaders inject
+                # outside instructions and can stall a print-mode run.
+                "--no-extensions",
+                "--no-prompt-templates",
                 "--no-skills",
                 "--skill",
                 str(installed_skill),

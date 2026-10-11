@@ -144,6 +144,9 @@ def command_for(
         "pi",
         "--print",
         "--no-session",
+        # Keep user extensions (memory sync, rules loaders) out of the variants.
+        "--no-extensions",
+        "--no-prompt-templates",
         "--no-context-files",
         "--no-skills",
         "--tools",
