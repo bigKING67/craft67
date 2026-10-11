@@ -123,7 +123,7 @@ class EvaluationCliTests(unittest.TestCase):
         self.assertIn("not allowed with argument", result.stderr)
 
     def test_comparative_definitions_only_ignores_stale_observed_artifacts(self) -> None:
-        source = REPO_ROOT / "evals/comparative/emil-motion-ablation"
+        source = REPO_ROOT / "evals/comparative/history/v0.7.0/emil-motion-ablation"
         with tempfile.TemporaryDirectory() as temp_dir:
             case_dir = Path(temp_dir) / source.name
             shutil.copytree(source, case_dir)
@@ -159,7 +159,7 @@ class EvaluationCliTests(unittest.TestCase):
         self.assertIn("--definitions-only is not valid", result.stderr)
 
     def test_comparative_blind_rejects_stale_scorecard_before_outputs(self) -> None:
-        source = REPO_ROOT / "evals/comparative/emil-motion-ablation"
+        source = REPO_ROOT / "evals/comparative/history/v0.7.0/emil-motion-ablation"
         with tempfile.TemporaryDirectory() as temp_dir:
             case_dir = Path(temp_dir) / source.name
             shutil.copytree(source, case_dir)

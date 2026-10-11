@@ -1,0 +1,48 @@
+{
+  "schema": "design-craft.comparative-scorecard.v1",
+  "total": 100,
+  "criteria": [
+    {
+      "id": "product_hierarchy",
+      "label": "Product hierarchy and decision flow",
+      "weight": 15,
+      "full_credit": "Reorders attention around next-hour exceptions and separates lead, support, and historical information."
+    },
+    {
+      "id": "anti_generic",
+      "label": "Anti-generic visual judgment",
+      "weight": 15,
+      "full_credit": "Identifies card soup, fake insight copy, equal emphasis, and decorative defaults without imposing another generic aesthetic."
+    },
+    {
+      "id": "visual_craft",
+      "label": "Typography, color, and surface craft",
+      "weight": 15,
+      "full_credit": "Gives specific readable type, semantic color, spacing, border, elevation, and scanability corrections."
+    },
+    {
+      "id": "product_fit",
+      "label": "Product fit and authority",
+      "weight": 15,
+      "full_credit": "Preserves the operations job, data, workflows, and stated visual authority rather than rebranding."
+    },
+    {
+      "id": "concrete_moves",
+      "label": "Concrete redesign moves",
+      "weight": 20,
+      "full_credit": "Supplies prioritized implementation-ready moves and observable acceptance criteria across the full surface."
+    },
+    {
+      "id": "evidence_honesty",
+      "label": "Evidence honesty",
+      "weight": 10,
+      "full_credit": "Labels static evidence, avoids runtime invention, and names the smallest decisive validation plan."
+    },
+    {
+      "id": "scope_discipline",
+      "label": "Scope, prioritization, and output discipline",
+      "weight": 10,
+      "full_credit": "Stays read-only and within the requested finding, move, and line budgets with clear priorities."
+    }
+  ]
+}

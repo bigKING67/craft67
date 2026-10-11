@@ -18,6 +18,11 @@ Operational 95 release. Validate all archived tranches separately with:
 against the `0.5.4` behavior source. It is archived before the Evidence Graph
 v2 projection transition and cannot be relabeled as score-v5 evidence.
 
+`v0.7.0/` preserves the score-v5/run-v3 Codex and Pi projection tranche
+collected on 2026-09-19 against the pre-monorepo `0.7.0` source (`ab0ca11`,
+`2c4cc3c`). Those commits are not in the craft67 history and the Skill has
+changed since, so the tranche cannot satisfy a current-source gate.
+
 ```bash
 python3 scripts/design_craft_cross_agent_validate.py \
   --history-root evals/cross-agent/history

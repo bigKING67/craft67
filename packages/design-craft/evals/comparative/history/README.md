@@ -23,3 +23,8 @@ release. Active directories retain definitions only until a complete new
 failed `v0.5.5` Operational candidate. They remain valid for that exact
 full-tree execution, but cannot be transcribed into run/result-v4 causal
 projection evidence.
+
+`v0.7.0/` preserves the run/result-v4 projection ablations collected on
+2026-09-19 with Pi `codex/gpt-5.5` (`high`) against the pre-monorepo `0.7.0`
+source. Their source commits are not in the craft67 history and the Skill has
+changed since, so they cannot satisfy a current-source gate.
