@@ -73,6 +73,37 @@ design-craft 在 emil-motion-planning 以 1 分落后，`comparative-observed-ch
 
 本轮修复的评测运行器问题：Pi 用户扩展导致挂起并注入规则、Codex/Claude 读取操作者全局指令与 MCP、Claude 评审 schema 不兼容、monorepo 下包根路径错误、子进程继承 stdin 挂起，以及历史证据缺少空白保护。
 
+## 2026-10-12 改进后重采
+
+在 10-11 结果基础上做了三类改动后，全部重新采集：
+
+- motion 规划规则：要求写出被排除的候选、计划中不放推测性实验、给出完整代码块。
+- 吸收 Emil `animation-performance` 和 Taste 侧边栏折叠规则。
+- 输出准入接受 “concrete moves” 的写法；历史校验不再套用胜出要求。
+
+10-11 证据已归档到 `history/2026-10-11/`。
+
+宿主（`538d9e9`）9 份全部准入：
+
+| 任务 | Codex | Pi | Claude |
+| --- | --- | --- | --- |
+| dashboard | 91 | 93 | 94 |
+| motion | 87 | 91 | 90 |
+| native-adaptive | 93 | 94 | 92 |
+
+对照（`bcfbc6e`）：
+
+| case | 无 skill | 单一上游 | design-craft | 10-11 |
+| --- | --- | --- | --- | --- |
+| emil-motion | 92 | 95 | **97** | 胜 98:95 |
+| emil-motion-planning | 81 | **92** | 89 | 负 91:92 |
+| impeccable-production | 89 | 91 | **92** | 胜 93:91 |
+| taste-visual-critique | 84 | **90** | 88 | 胜 91:90 |
+
+针对 motion-planning 的规则改动没有扭转结果。taste 相关内容几乎未改，却从小胜变为小负，说明单次运行、单一评审的 1～3 分差距处在评审噪声范围内。评审对两局输局的共同意见是输出偏长、优先级区分不足、没有复用项目里已有的先例。
+
+`operational_95` 候选检查 20/24 通过。剩余失败：对照评测、iOS/Android 原生证据、性能回归（需 Linux CI）。宿主 Codex/Pi、上游审查与安装来源均已通过。
+
 ## 真实评测执行顺序
 
 所有命令从 `packages/design-craft` 执行。模型、推理档位、费用预算尚未指定；下面是待执行清单，不是已经执行的记录。
