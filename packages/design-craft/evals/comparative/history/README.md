@@ -33,3 +33,9 @@ changed since, so they cannot satisfy a current-source gate.
 `codex/gpt-6-astra` (`medium`) and a Claude judge, before the 2026-10-12
 motion-planning and motion-performance Skill changes. design-craft lost
 `emil-motion-planning-ablation` 91 to 92 in that tranche.
+
+`2026-10-12/` preserves the last single-run ablations, collected after the
+2026-10-12 Skill changes: design-craft won emil-motion and
+impeccable-production and lost emil-motion-planning and
+taste-visual-critique by 2-3 points. Current evidence now requires repeated
+trials, because single judged runs moved by that much on unchanged domains.

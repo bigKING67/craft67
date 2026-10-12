@@ -32,7 +32,26 @@ four ablations admitted by the v0.5.0 Operational 95 release are preserved
 under `history/v0.5.0/`. Neither archive can satisfy a current-source release
 gate.
 
-Run the following workflow for each active case:
+Current evidence uses repeated trials. A single judged run moved by 2-3
+points on an unchanged Skill domain, so certification compares means across at
+least three independent trials instead of one winner. Each trial lives at
+`<case>/trials/<n>/<case-id>/`: an exact copy of the case definition plus its
+own generation, blind packet (with its own seed), judge and result. The parent
+`aggregate.json` (`design-craft.comparative-aggregate.v1`) binds every trial
+result by hash and records per-variant mean scores. `make
+comparative-observed-check` requires design-craft to have the highest mean;
+individual trials may lose.
+
+```bash
+python3 scripts/design_craft_comparative_trials.py prepare \
+  --case-dir evals/comparative/<case-id> --trial <n>
+# then run, blind (seed unique per trial), judge and record against
+# evals/comparative/<case-id>/trials/<n>/<case-id>
+python3 scripts/design_craft_comparative_trials.py aggregate \
+  --case-dir evals/comparative/<case-id>
+```
+
+Each trial uses the single-run workflow below:
 
 ```bash
 python3 scripts/design_craft_comparative_run.py \
