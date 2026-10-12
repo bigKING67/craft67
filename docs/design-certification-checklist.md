@@ -133,7 +133,7 @@ design-craft 在 emil-motion-planning 以 1 分落后，`comparative-observed-ch
 
 认证产物 `release-certification-design-craft-v0.8.0-38218715731` 保留至 2027-01-10。根 `native-runtime.yml` 为此启用了 `design-craft/v*` 标签触发。
 
-尚未执行 GitHub Release 发布；根仓库没有 Design 的发布工作流，发布需单独确认。Certified 100 仍需 Cursor、Claude 宿主与真机证据。
+GitHub Release [Design Craft 0.8.0](https://github.com/bigKING67/craft67/releases/tag/design-craft/v0.8.0) 已于 2026-10-12 手动发布（根仓库没有 Design 的发布工作流），附件为 `npm pack` 生成的 `design-craft-0.8.0.tgz` 与 `SHA256SUMS.txt`。Certified 100 仍需 Cursor、Claude 宿主与真机证据。
 
 ## 2026-10-12 Operational 95 候选检查：24/24
 
