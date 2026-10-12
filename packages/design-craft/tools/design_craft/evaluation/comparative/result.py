@@ -80,7 +80,9 @@ def validate_result(
             for value in scores.values()
         ):
             errors.append(f"{path}: every variant score must be an integer")
-        elif not (
+        # Winning is a certification claim about current evidence; archived
+        # tranches are kept for integrity even when design-craft lost.
+        elif require_current_source and not (
             all(
                 scores["design-craft"] > scores[variant]
                 for variant in required_variants

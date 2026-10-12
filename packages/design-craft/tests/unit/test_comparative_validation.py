@@ -104,5 +104,18 @@ class ComparativeValidationTests(unittest.TestCase):
         self.assertTrue(CONTRACT_MODULES.issubset(CONTRACT_FILES))
 
 
+    def test_archived_losing_tranche_passes_history_validation(self) -> None:
+        losing = REPO_ROOT / (
+            "evals/comparative/history/2026-10-11/emil-motion-planning-ablation"
+        )
+        result = json.loads((losing / "comparison.json").read_text(encoding="utf-8"))
+        self.assertNotEqual(result["winner"], "design-craft")
+
+        errors = validate_case(
+            losing, require_observed=True, require_current_source=False
+        )
+
+        self.assertEqual(errors, [])
+
 if __name__ == "__main__":
     unittest.main()

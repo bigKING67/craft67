@@ -17,8 +17,11 @@ def validate_output(task_dir: Path, host: str) -> list[str]:
     required_concepts = {
         "evidence": ("evidence", "证据"),
         "unverified": ("unverified", "未验证", "未确认"),
+        # Prompts ask for "concrete design moves"; hosts often answer under a
+        # "Concrete moves" heading, which is the same deliverable.
         "design move": (
             "design move",
+            "concrete move",
             "设计动作",
             "设计建议",
             "设计移动",

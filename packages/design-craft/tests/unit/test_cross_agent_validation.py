@@ -111,6 +111,25 @@ class CrossAgentValidationTests(unittest.TestCase):
 
         self.assertTrue(any("score.cursor.json" in error for error in errors))
 
+    def test_output_admission_accepts_concrete_moves_heading(self) -> None:
+        from tools.design_craft.evaluation.cross_agent.output import validate_output
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            task_dir = Path(temp_dir)
+            body = "Evidence level L0 and unverified runtime claims. " * 10
+            (task_dir / "codex-output.md").write_text(
+                body + "\n## Concrete moves\n", encoding="utf-8"
+            )
+            (task_dir / "pi-output.md").write_text(
+                body + "\n## Next steps\n", encoding="utf-8"
+            )
+
+            accepted = validate_output(task_dir, "codex")
+            rejected = validate_output(task_dir, "pi")
+
+        self.assertEqual(accepted, [])
+        self.assertTrue(any("design move" in error for error in rejected))
+
     def test_cli_rejects_observed_only_options_without_task(self) -> None:
         stderr = io.StringIO()
 
