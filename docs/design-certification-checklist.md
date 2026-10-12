@@ -104,6 +104,23 @@ design-craft 在 emil-motion-planning 以 1 分落后，`comparative-observed-ch
 
 `operational_95` 候选检查 20/24 通过。剩余失败：对照评测、iOS/Android 原生证据、性能回归（需 Linux CI）。宿主 Codex/Pi、上游审查与安装来源均已通过。
 
+## 2026-10-12 多次评测（对照）
+
+单次评测的分差落在评审噪声范围内，因此对照评测改为每个 case 至少 3 次独立运行，按平均分认证（`comparative-aggregate.v1`，实现见 `9c08268`、`9f39e61`）。每次都重新生成输出、使用独立盲评种子，并由独立 Claude 评审打分。单次结果已归档到 `history/2026-10-12/`。
+
+证据记录在 `5bf9648`：
+
+| case | 无 skill | 单一上游 | design-craft | 单次胜出 |
+| --- | --- | --- | --- | --- |
+| emil-motion | 82.7 | 92.3 | **97.0** | 3/3 |
+| emil-motion-planning | 81.3 | 89.0 | **89.7** | 2/3 |
+| impeccable-production | 86.3 | 89.3 | **93.3** | 3/3 |
+| taste-visual-critique | 84.7 | 89.0 | **90.0** | 2/3 |
+
+`comparative-observed-check` 通过。motion-planning 与 taste 的领先幅度小于单次波动，只能说明与专门上游大致持平、略占上风。
+
+`operational_95` 候选检查 21/24 通过。剩余：性能回归（需 Linux CI 基准）、iOS 与 Android 原生运行证据。Claude、Cursor、真机属于 `certified_100` 范围，仍为 explicitly unverified。
+
 ## 真实评测执行顺序
 
 所有命令从 `packages/design-craft` 执行。模型、推理档位、费用预算尚未指定；下面是待执行清单，不是已经执行的记录。
