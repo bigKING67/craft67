@@ -1,0 +1,165 @@
+{
+  "blind_map_sha256": "d3ac1c73a8dbfb2fdc22fa3c5f73f7f5ac25d1ad7d08273c3cfa730c1334c293",
+  "blind_packet_sha256": "78085a5daba4da3791efb978f6b6e09370b891ba5af66eb7e4ff1bc7ec5e5dbb",
+  "case_id": "emil-motion-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "97e5bf64b05ca0dcacee6cb95daf412e162136532ea51c3e99de9366fae8c8c3",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "0ac7b433b3f9555ec386c97d675bdafd75b5b25bb562c12a11642d6196b85af4",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.296 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "6fc7376df30d7cff1ac8faf21ce6bcd63c76f72365458cfe0812ec88b16cd701",
+  "judgment_sha256": "f33d1a81dfdbc8088d152de1d027ed645c03f4c11a45164fe5eb1e9cbc954ea9",
+  "prompt_sha256": "32a158dae9908cefce2747965d6451cf024eb3a877438295898a75412e11e0c8",
+  "rationale": "A wins (97, ahead of C at 92 and B at 84) because it is the most complete. It handles velocity with explicit units, a projected endpoint and a separate velocity handoff. It interrupts from the sampled presentation position and velocity, and it rejects conflicting transform ownership outright. Its evidence labels are also the most careful. C is close but leaves out velocity units and comes closer to predicting how the sheet will feel at runtime. B labels some runtime consequences as observed and treats velocity projection only briefly.",
+  "recorded_at": "2026-10-12T03:50:49Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 14,
+        "evidence_honesty": 12,
+        "interruption": 13,
+        "motion_necessity": 8,
+        "performance": 9,
+        "velocity_projection": 9
+      },
+      "score": 84,
+      "summary": "Strong structure and verification boundary. Some runtime consequences are labeled [Observed], such as hover movement and drag lagging behind the pointer, which overstates static evidence. It handles drag ownership and grab offset well. Interruption starts from the rendered position but does not hand off velocity. Velocity projection is mentioned only briefly, with no units and no velocity passed into the settle. Reduced Motion and the validation plan are good."
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 8,
+        "performance": 10,
+        "velocity_projection": 15
+      },
+      "score": 97,
+      "summary": "Labels static evidence, risks and proposed moves strictly, and makes no runtime claims. It covers lockout, pointer capture, grab offset, 1:1 tracking and a jump-free threshold. On interruption, it samples presentation position and velocity and guards against stale callbacks. It gives velocity in CSS px/s with unit conversion, separates projection from the velocity handoff, and states snap-selection policy. It explicitly separates transform ownership. Reduced Motion and the runtime plan come with acceptance gates. The case for removing motion as unnecessary is a little less explicit than in C."
+    },
+    "emil": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 13,
+        "interruption": 14,
+        "motion_necessity": 9,
+        "performance": 9,
+        "velocity_projection": 13
+      },
+      "score": 92,
+      "summary": "Thorough, well-labeled findings, though the 'Predicted experience' line about how it will feel leans toward runtime claims. It covers direct manipulation fully. It samples the live pose before canceling and handles stale completions. Velocity estimation includes signed velocity, decay after a pause, projection, snap selection and spring handoff, but units are not stated. It notes that a CSS-only Reduced Motion override won't stop the explicit animation. Transform ownership is addressed less explicitly than in A."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "8138c39d53d54e9513c89c172ab2cc5b53135fb06c58c4f42f99179b3b2f1c7e",
+  "scorecard_sha256": "89663cb8f65c3bd9387414a1f79fcf0789dad360d4287d15130189ed7c11ee72",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "6ee41202cd299de0d9139791f0e084667f89a59d2ca6d30659ceaab016ba6b70",
+      "run_path": "run.baseline.json",
+      "run_sha256": "9759a6367d8323ee067003c89abe6940854afdaa438ad2cdee25608013dd511e",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "f51268d5e6159259e342e558b67489d61400cb2dc773ee871deb07a4648d9ea2",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "b57a58c54f82c60f5dd47e83953fda4b06605b04092770d53100fdfdcf5973ab",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-motion-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55",
+          "sha256": "e0aa26fe78ce38174a694de284ff6860a41f42f6c8a3a895ef04d33b941afd3f",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+      },
+      "thinking": "medium"
+    },
+    "emil": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.emil.md",
+      "output_sha256": "3576273deb419cf2d3ccae8bacce0ac5ab12c94c16886a414029e05a29017130",
+      "run_path": "run.emil.json",
+      "run_sha256": "70254c47417722ca189a378ad11346b4bf2486d4b8204a7667cb3d297961f71f",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "upstreams/emilkowalski-skills/skills/apple-design": {
+          "kind": "tree",
+          "projected_tree_sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/improve-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/review-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "design-craft"
+}

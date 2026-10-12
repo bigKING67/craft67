@@ -1,0 +1,47 @@
+{
+  "command": "pi --print --no-session --no-extensions --no-prompt-templates --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium --skill '$VARIANT_SKILL_1'",
+  "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 73.419,
+  "host": "pi",
+  "host_version": "1.1.0",
+  "installed_skill_paths": {
+    "skills/design-craft": "$VARIANT_WORKSPACE/.pi/skills/01-design-craft"
+  },
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.design-craft.md",
+  "output_sha256": "739f21243a40dc92b39f9f06fadbf595f6d2b4410d14be2c781e4e6a0b0db618",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "returncode": 0,
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v4",
+  "skill_install_mode": "isolated_case_projection",
+  "skill_trees": {
+    "skills/design-craft": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a"
+  },
+  "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+  "source_fingerprints": {
+    "skills/design-craft": {
+      "domain": "skill-visual-critique",
+      "kind": "evidence_domain",
+      "projected_tree_sha256": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a",
+      "sha256": "188c162b0e5fec3eea0721fc66517663a9b0d54b58f3f15df23178429ba059bb",
+      "source_dirty": false
+    }
+  },
+  "source_trees": {
+    "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+  },
+  "started_at": "2026-10-12T04:31:44Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "medium",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 2400,
+  "variant": "design-craft",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "93c26ac4caeefc13d06c4b2d92efa0c56ae266998cfaf9326cc218f9f1f875b1",
+  "worktree_before_sha256": "93c26ac4caeefc13d06c4b2d92efa0c56ae266998cfaf9326cc218f9f1f875b1",
+  "worktree_unchanged": true
+}

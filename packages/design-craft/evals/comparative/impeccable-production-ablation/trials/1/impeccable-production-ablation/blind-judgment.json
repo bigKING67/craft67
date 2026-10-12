@@ -1,0 +1,48 @@
+{
+  "rationale": "All three outputs are honest, read-only audits that do not claim any tools were run, and none turns the task into a redesign. C wins because it pairs every finding with explicit acceptance conditions and its validation plan is the most quantified: mounted-row caps, p95 latency, long-task, CLS and heap budgets, regression tolerances and repeat counts. That gives C the highest scores for concrete production fixes and measurement-first performance. B is close behind, with a clean table of failure states and careful detector nuance, but its performance gates are thinner. A is thorough but places polish before optimization and gives less concrete acceptance for each fix.",
+  "results": [
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 17,
+        "measured_performance": 12,
+        "mode_sequence": 8,
+        "production_fixes": 16,
+        "responsive_accessibility": 13
+      },
+      "label": "A",
+      "summary": "A is a strong, honest audit. It has a well-defined P0 and covers 401/403/409/429/offline/batch cases, uploads and modal versus nonmodal drawers. It puts polish before optimization and rates most findings P1, so its severity tiers are flatter. Its performance gates are provisional and only partly numeric, and it gives fewer acceptance conditions for each fix.",
+      "total": 84
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 12,
+        "mode_sequence": 9,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "label": "B",
+      "summary": "B is a well-structured audit that runs audit, then harden, optimize and polish. Its table of failure states is clear, and it covers hostile data and uploads in depth. Its static-signal reconciliation is careful, including the nuance between the 24px and 44px target sizes. The performance budgets are reasonable but thin (one p75 latency target and CLS), and acceptance conditions are given mainly at the plan level rather than for each fix.",
+      "total": 88
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 14
+      },
+      "label": "C",
+      "summary": "C structures findings by ID, and each one separates source evidence, runtime unknowns, the fix and an acceptance test, which makes it the most implementation-ready. It covers every failure branch explicitly and gives the most rigorous measurement plan: mounted-row bounds, latency/long-task/CLS/heap budgets, regression tolerances, repeat counts and rollback criteria. Its P0–P3 definitions are clear, and it controls scope well.",
+      "total": 93
+    }
+  ],
+  "winner": "C"
+}

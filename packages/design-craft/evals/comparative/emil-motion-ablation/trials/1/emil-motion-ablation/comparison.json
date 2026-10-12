@@ -1,0 +1,165 @@
+{
+  "blind_map_sha256": "e40a6492a0773318df6b373a2ae166145ca03338bdbb7e6808ac1866c0645db8",
+  "blind_packet_sha256": "78245671e700b0c34063505dea8a563b25fd16fc2866046ee6cd1c09491e4f87",
+  "case_id": "emil-motion-ablation",
+  "focused_variant": "emil",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "84af8f404480f9547c11bf700cf49985a3c496a7a152f43f51daf897e4bd4c8c",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "1353c9167cf5b694309a69b3633d1eca10dbd7039c2420ea99eb5e4c0b1dceee",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.296 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "6fc7376df30d7cff1ac8faf21ce6bcd63c76f72365458cfe0812ec88b16cd701",
+  "judgment_sha256": "2768d4721b65b765a9ae750767abea7201bcf82ae1aa04da4d01eec5c12035f3",
+  "prompt_sha256": "32a158dae9908cefce2747965d6451cf024eb3a877438295898a75412e11e0c8",
+  "rationale": "C wins because it meets nearly every scorecard criterion in full. It gives velocity with units and an explicit projected-endpoint formula, and it interrupts from the current presentation position and velocity. It explicitly separates scale from translate ownership and is the most rigorous about evidence boundaries. B comes close, with excellent coverage of Reduced Motion and the drag lifecycle, but gives no velocity units and does not separate transform ownership. A is competent but shallower on velocity, projection and interruption.",
+  "recorded_at": "2026-10-12T03:47:47Z",
+  "results": {
+    "baseline": {
+      "blind_label": "A",
+      "criteria": {
+        "accessibility": 8,
+        "actionability": 8,
+        "direct_manipulation": 14,
+        "evidence_honesty": 14,
+        "interruption": 12,
+        "motion_necessity": 8,
+        "performance": 8,
+        "velocity_projection": 9
+      },
+      "score": 81,
+      "summary": "A is a solid, honest critique. It clearly labels what comes from the code and what is only a risk. It catches the missing drag guard, the unused startY, missing pointer capture, the input lockout and transition-all lag. Its weaker points are velocity handling, which gives no units, no projected endpoint and no velocity handoff, and interruption, which says to rebase to the visible position but never mentions carrying velocity forward. It does not address the conflict between whole-sheet scale and translateY ownership. Its Reduced Motion path is reasonable but thin."
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 14,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 9,
+        "performance": 10,
+        "velocity_projection": 15
+      },
+      "score": 97,
+      "summary": "C has the most careful handling of evidence. Its validation plan is marked 'proposed, not run', and every feel claim is flagged as unmeasured. Interruption is fully specified: it samples the on-screen position and velocity before cancelling, commits a named state and blocks obsolete completion callbacks. Velocity guidance is the most complete of the three: CSS px/s units, monotonic timestamps, an explicit projection formula with clamping, and projection kept separate from velocity handoff. On property discipline, it uses a single translateY owner, limits transitions to chosen properties and separates the scale wrapper from translation. Each finding has acceptance criteria. Its only weakness is that the direct-manipulation moves are folded into the findings rather than listed separately."
+    },
+    "emil": {
+      "blind_label": "B",
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 14,
+        "interruption": 14,
+        "motion_necessity": 8,
+        "performance": 8,
+        "velocity_projection": 13
+      },
+      "score": 91,
+      "summary": "B is a thorough critique with strong direct-manipulation coverage: pointer ID, capture, grab offset as a delta formula, 1:1 tracking and resistance at the bounds. On interruption, it keeps the current presentation position, carries velocity into a retargeted settle and guards against stale callbacks. It samples velocity with a stale-sample cutoff, uses a bounded projected endpoint and adds hysteresis, but gives no units. Its Reduced Motion section is excellent: it notes that sheet.animate() bypasses CSS, handles a preference change mid-settle and adds state buttons. It names the three competing motion effects but does not explicitly separate scale from translation ownership."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "8138c39d53d54e9513c89c172ab2cc5b53135fb06c58c4f42f99179b3b2f1c7e",
+  "scorecard_sha256": "89663cb8f65c3bd9387414a1f79fcf0789dad360d4287d15130189ed7c11ee72",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "c72358b5b11ca76cdb4608f705b4499277c2e8b8423855bb4a3fd8f0b7b09aeb",
+      "run_path": "run.baseline.json",
+      "run_sha256": "8a64292836985f7d6884e070495eb4fccf837787a0e46dd7fa0e4059778931d8",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "ec1c5f164ecfb4e9721d1d0f6dd52d73df5d4777ef5da92aeec7348c733a4f8e",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "34c022b69815fbdabb49bc0beef932df499ae397bf3465fc6a446034af0eaae7",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-motion-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55",
+          "sha256": "e0aa26fe78ce38174a694de284ff6860a41f42f6c8a3a895ef04d33b941afd3f",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+      },
+      "thinking": "medium"
+    },
+    "emil": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.emil.md",
+      "output_sha256": "0a3a9e42f3611c296a0f4b1d474120876c6cf1ba64e68fecf0afa457e743b98c",
+      "run_path": "run.emil.json",
+      "run_sha256": "0040d089e9eba1e91c359f1eb2b0fa024dd7d43c10c185f993448dc03373b083",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "upstreams/emilkowalski-skills/skills/apple-design": {
+          "kind": "tree",
+          "projected_tree_sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/improve-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+          "source_dirty": false
+        },
+        "upstreams/emilkowalski-skills/skills/review-animations": {
+          "kind": "tree",
+          "projected_tree_sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+        "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+        "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "design-craft"
+}

@@ -1,0 +1,48 @@
+{
+  "rationale": "All three outputs agree on the main diagnosis: the queue sits below the fold, emphasis is spread equally, status relies on colour alone, actions are unlabelled icons, and names truncate. All three are also honest that the evidence is static. B wins because it gives the most implementation-ready acceptance criteria across the whole page. It keeps every metric and workflow intact, adds tabular figures and timestamped freshness, and covers pending and failed row actions and duplicate submissions. C is close behind on prioritization, since it links each move to the findings it addresses, but it covers less ground. A is solid, but it has a section-numbering error and less pointed anti-generic judgment.",
+  "results": [
+    {
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 17,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 7,
+        "visual_craft": 12
+      },
+      "label": "A",
+      "summary": "A is a strong critique that keeps the full budget of findings and moves. It ties the triage priority rule to next-hour exceptions, with deadline first and impact second, and it gives clear acceptance criteria for the 14px type, 4.5:1 contrast, and 8/16/24 spacing. It is labelled honestly as a static assessment. It loses points because two sections are numbered 4, it says less about the decorative sparklines than B does, and its fixes for the header and insights are less sharp than B's or C's.",
+      "total": 84
+    },
+    {
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 8,
+        "visual_craft": 13
+      },
+      "label": "B",
+      "summary": "B is the most complete and implementation-ready critique. It gives an explicit page order of context, then summary, then queue, then analysis. It keeps all eight metrics accessible with unchanged values and definitions, and specifies tabular figures and exact deadline timestamps. It also covers pending and failed row actions and duplicate submissions, and checks each insight and sparkline against the data and the decision it supports. Its state coverage and preservation of the visual authority are strong. Its validation plan is slightly larger than the smallest plan that could change the verdict.",
+      "total": 89
+    },
+    {
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 17,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 9,
+        "visual_craft": 12
+      },
+      "label": "C",
+      "summary": "C is the most disciplined output: it numbers each finding and links every move to the findings it fixes, which makes its priorities clear. Its 'quiet, don't dismantle' approach to the header fits the product authority well, and its validation plan includes a measurable 30-second triage target. It is somewhat less complete than B, with fewer findings and moves, less detail on type and number formatting, and summary cards folded into another move.",
+      "total": 87
+    }
+  ],
+  "winner": "B"
+}

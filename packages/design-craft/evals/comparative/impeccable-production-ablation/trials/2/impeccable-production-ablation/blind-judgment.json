@@ -1,0 +1,48 @@
+{
+  "rationale": "All three outputs put the audit first, separate static evidence from runtime hypotheses, claim no tool runs, and avoid redesign. B wins because it attaches acceptance criteria to each finding. It also has the most complete measurement-first gates (latency, long tasks, mounted rows, CLS, memory and regression budgets) and spells out rollback and safe-fallback conditions. A is close behind; it has the strongest detector reconciliation but thinner thresholds and less per-fix acceptance. C is solid but has the weakest performance budgets and fix-level acceptance.",
+  "results": [
+    {
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 13,
+        "mode_sequence": 9,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "label": "A",
+      "summary": "A is thorough and honest. It has a clear failure matrix, careful evidence-versus-hypothesis labeling, and the best decisive-versus-contextual reconciliation, which also preserves existing foundations. Its performance gates are proposed and calibrated against a baseline, but they are less complete than B's: no row cap, memory or regression thresholds. Acceptance conditions are grouped in the validation plan rather than attached to each fix.",
+      "total": 90
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 15,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 14
+      },
+      "label": "B",
+      "summary": "B gives every finding evidence, runtime unknowns, concrete repairs and its own acceptance criteria. Hostile-data and failure coverage is the strongest of the three, with truthful save recovery and upload replacement safety. Its provisional performance table covers latency, long tasks, mounted rows, CLS, memory and base-to-head regression limits, and it gives explicit rollback and safe-fallback rules. It keeps scale at P1 unless runtime evidence shows otherwise, which is careful about evidence. Scope stays disciplined.",
+      "total": 94
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 12,
+        "mode_sequence": 9,
+        "production_fixes": 16,
+        "responsive_accessibility": 14
+      },
+      "label": "C",
+      "summary": "C has a compact P0-P3 table with useful escalation conditions, good failure and recovery handling, and handles both modal and nonmodal drawers. The reconciliation section is sound. Its performance thresholds are thin (p75 ≤200ms and CLS only) and it has no regression or row bounds. Fixes are concrete but mostly lack per-fix acceptance criteria, which leaves it behind A and B.",
+      "total": 87
+    }
+  ],
+  "winner": "B"
+}

@@ -1,0 +1,47 @@
+{
+  "command": "pi --print --no-session --no-extensions --no-prompt-templates --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium --skill '$VARIANT_SKILL_1'",
+  "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 99.601,
+  "host": "pi",
+  "host_version": "1.1.0",
+  "installed_skill_paths": {
+    "skills/design-craft": "$VARIANT_WORKSPACE/.pi/skills/01-design-craft"
+  },
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.design-craft.md",
+  "output_sha256": "01df84315e7bc5f96569ff55c4a43470768126f4fa924a2a82f147a0fc126bc8",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "returncode": 0,
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v4",
+  "skill_install_mode": "isolated_case_projection",
+  "skill_trees": {
+    "skills/design-craft": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55"
+  },
+  "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+  "source_fingerprints": {
+    "skills/design-craft": {
+      "domain": "skill-motion-review",
+      "kind": "evidence_domain",
+      "projected_tree_sha256": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55",
+      "sha256": "e0aa26fe78ce38174a694de284ff6860a41f42f6c8a3a895ef04d33b941afd3f",
+      "source_dirty": false
+    }
+  },
+  "source_trees": {
+    "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+  },
+  "started_at": "2026-10-12T04:07:34Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "medium",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 2400,
+  "variant": "design-craft",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "60fad963d88b0a7296370d0b71939647cb17603b3c0479284255f9498d720012",
+  "worktree_before_sha256": "60fad963d88b0a7296370d0b71939647cb17603b3c0479284255f9498d720012",
+  "worktree_unchanged": true
+}

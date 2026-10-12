@@ -1,0 +1,47 @@
+{
+  "case_id": "impeccable-production-ablation",
+  "focused_variant": "impeccable",
+  "mean_scores": {
+    "baseline": 86.33,
+    "design-craft": 93.33,
+    "impeccable": 89.33
+  },
+  "mean_winner": "design-craft",
+  "schema": "design-craft.comparative-aggregate.v1",
+  "trial_count": 3,
+  "trials": [
+    {
+      "comparison_sha256": "e4924f940c812506b2b8a008019937d20632e0eba26ce5b63255ed8ffe75c81a",
+      "scores": {
+        "baseline": 84,
+        "design-craft": 93,
+        "impeccable": 88
+      },
+      "seed_sha256": "7951cd617ba6501cefa26deb75672fda4af3b1d68455c6f125595e5ccf97c5d6",
+      "trial": 1,
+      "winner": "design-craft"
+    },
+    {
+      "comparison_sha256": "63d7f53cf7564e0e8b7103fe75fd6032ea6eac129f510385ce6c19383785672b",
+      "scores": {
+        "baseline": 87,
+        "design-craft": 94,
+        "impeccable": 90
+      },
+      "seed_sha256": "9d516dffce948265217d5c3fe97cd3c95a25e272e51b443835294165a43b44b7",
+      "trial": 2,
+      "winner": "design-craft"
+    },
+    {
+      "comparison_sha256": "56acd8a14619a98822998617c161c5d64fb0a95513af0eb0ded6f28c25b0a447",
+      "scores": {
+        "baseline": 88,
+        "design-craft": 93,
+        "impeccable": 90
+      },
+      "seed_sha256": "8a34eaf902cdfd7c3a3bc082a27e5686fd25465086ccc7f31fafd02be73ae54c",
+      "trial": 3,
+      "winner": "design-craft"
+    }
+  ]
+}

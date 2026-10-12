@@ -1,0 +1,27 @@
+{
+  "schema": "design-craft.comparative-variants.v2",
+  "host": "pi",
+  "focused_variant": "taste",
+  "variants": [
+    {
+      "id": "baseline",
+      "label": "No skill",
+      "skill_paths": []
+    },
+    {
+      "id": "taste",
+      "label": "Focused visual-taste upstream",
+      "skill_paths": [
+        "upstreams/taste-skill/skills/taste-skill",
+        "upstreams/taste-skill/skills/redesign-skill"
+      ]
+    },
+    {
+      "id": "design-craft",
+      "label": "design-craft",
+      "skill_paths": [
+        "skills/design-craft"
+      ]
+    }
+  ]
+}

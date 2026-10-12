@@ -1,0 +1,51 @@
+{
+  "rationale": "A wins (97, ahead of C at 92 and B at 84) because it is the most complete. It handles velocity with explicit units, a projected endpoint and a separate velocity handoff. It interrupts from the sampled presentation position and velocity, and it rejects conflicting transform ownership outright. Its evidence labels are also the most careful. C is close but leaves out velocity units and comes closer to predicting how the sheet will feel at runtime. B labels some runtime consequences as observed and treats velocity projection only briefly.",
+  "results": [
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 8,
+        "performance": 10,
+        "velocity_projection": 15
+      },
+      "label": "A",
+      "summary": "Labels static evidence, risks and proposed moves strictly, and makes no runtime claims. It covers lockout, pointer capture, grab offset, 1:1 tracking and a jump-free threshold. On interruption, it samples presentation position and velocity and guards against stale callbacks. It gives velocity in CSS px/s with unit conversion, separates projection from the velocity handoff, and states snap-selection policy. It explicitly separates transform ownership. Reduced Motion and the runtime plan come with acceptance gates. The case for removing motion as unnecessary is a little less explicit than in C.",
+      "total": 97
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 14,
+        "evidence_honesty": 12,
+        "interruption": 13,
+        "motion_necessity": 8,
+        "performance": 9,
+        "velocity_projection": 9
+      },
+      "label": "B",
+      "summary": "Strong structure and verification boundary. Some runtime consequences are labeled [Observed], such as hover movement and drag lagging behind the pointer, which overstates static evidence. It handles drag ownership and grab offset well. Interruption starts from the rendered position but does not hand off velocity. Velocity projection is mentioned only briefly, with no units and no velocity passed into the settle. Reduced Motion and the validation plan are good.",
+      "total": 84
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 13,
+        "interruption": 14,
+        "motion_necessity": 9,
+        "performance": 9,
+        "velocity_projection": 13
+      },
+      "label": "C",
+      "summary": "Thorough, well-labeled findings, though the 'Predicted experience' line about how it will feel leans toward runtime claims. It covers direct manipulation fully. It samples the live pose before canceling and handles stale completions. Velocity estimation includes signed velocity, decay after a pause, projection, snap selection and spring handoff, but units are not stated. It notes that a CSS-only Reduced Motion override won't stop the explicit animation. Transform ownership is addressed less explicitly than in A.",
+      "total": 92
+    }
+  ],
+  "winner": "A"
+}

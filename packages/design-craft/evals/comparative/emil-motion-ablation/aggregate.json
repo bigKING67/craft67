@@ -1,0 +1,47 @@
+{
+  "case_id": "emil-motion-ablation",
+  "focused_variant": "emil",
+  "mean_scores": {
+    "baseline": 82.67,
+    "design-craft": 97.0,
+    "emil": 92.33
+  },
+  "mean_winner": "design-craft",
+  "schema": "design-craft.comparative-aggregate.v1",
+  "trial_count": 3,
+  "trials": [
+    {
+      "comparison_sha256": "f789d2aeb49aa1f3c1d50756782d3e568195497a0623418059eefa8626d6677f",
+      "scores": {
+        "baseline": 81,
+        "design-craft": 97,
+        "emil": 91
+      },
+      "seed_sha256": "8cdc9a74e4e287b5158887e2efb2bc2eb0310d84891bc06ee8e60ed66b79b974",
+      "trial": 1,
+      "winner": "design-craft"
+    },
+    {
+      "comparison_sha256": "0a1c8887bf3ef8efe6fda7b457dba6bbe2822cce77adf67223c7724c3cac9895",
+      "scores": {
+        "baseline": 84,
+        "design-craft": 97,
+        "emil": 92
+      },
+      "seed_sha256": "2b5dcbcca2b26d17c4f33d835cc12bd32e6abcabe99f4f00d1450822c079952b",
+      "trial": 2,
+      "winner": "design-craft"
+    },
+    {
+      "comparison_sha256": "d3d0d14056eae9bdfaf90e59ca0b8abe3fd74829d50533cd5af0a0f8069b04da",
+      "scores": {
+        "baseline": 83,
+        "design-craft": 97,
+        "emil": 94
+      },
+      "seed_sha256": "45372d2da01096ff23743bfaea7fafd55dc91c4fb0fae8a576532a28201004fe",
+      "trial": 3,
+      "winner": "design-craft"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "blind_map_sha256": "a9092a298481e1b87919346580b6231790382936e29631849d2b4afa8ebc0060",
+  "blind_packet_sha256": "f9673630dfc297a9f7b0736b1f7f1332ce019890620e3c018e32b763f03072f9",
+  "case_id": "impeccable-production-ablation",
+  "focused_variant": "impeccable",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "3845212bb7ceebe65401b0cf80244f4a2217c9928fadf5e74655c89d51591b18",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "79299dd649c5a7050e9ee9612564e66b230acfa189a2cb7d4d17adacbab648e8",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.296 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "8ab06e3fbd808dfb94de68b17ca25a94d56d3e15c485f64756f3528fdfdae4ce",
+  "judgment_sha256": "cd0386951dd2579eb9482d453805b694ee42658b971ec33796f0c95f29c92142",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "rationale": "All three outputs are honest, read-only audits that do not claim any tools were run, and none turns the task into a redesign. C wins because it pairs every finding with explicit acceptance conditions and its validation plan is the most quantified: mounted-row caps, p95 latency, long-task, CLS and heap budgets, regression tolerances and repeat counts. That gives C the highest scores for concrete production fixes and measurement-first performance. B is close behind, with a clean table of failure states and careful detector nuance, but its performance gates are thinner. A is thorough but places polish before optimization and gives less concrete acceptance for each fix.",
+  "recorded_at": "2026-10-12T04:15:26Z",
+  "results": {
+    "baseline": {
+      "blind_label": "A",
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 17,
+        "measured_performance": 12,
+        "mode_sequence": 8,
+        "production_fixes": 16,
+        "responsive_accessibility": 13
+      },
+      "score": 84,
+      "summary": "A is a strong, honest audit. It has a well-defined P0 and covers 401/403/409/429/offline/batch cases, uploads and modal versus nonmodal drawers. It puts polish before optimization and rates most findings P1, so its severity tiers are flatter. Its performance gates are provisional and only partly numeric, and it gives fewer acceptance conditions for each fix."
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 14
+      },
+      "score": 93,
+      "summary": "C structures findings by ID, and each one separates source evidence, runtime unknowns, the fix and an acceptance test, which makes it the most implementation-ready. It covers every failure branch explicitly and gives the most rigorous measurement plan: mounted-row bounds, latency/long-task/CLS/heap budgets, regression tolerances, repeat counts and rollback criteria. Its P0–P3 definitions are clear, and it controls scope well."
+    },
+    "impeccable": {
+      "blind_label": "B",
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 12,
+        "mode_sequence": 9,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "score": 88,
+      "summary": "B is a well-structured audit that runs audit, then harden, optimize and polish. Its table of failure states is clear, and it covers hostile data and uploads in depth. Its static-signal reconciliation is careful, including the nuance between the 24px and 44px target sizes. The performance budgets are reasonable but thin (one p75 latency target and CLS), and acceptance conditions are given mainly at the plan level rather than for each fix."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "1941a30865724592c32ea8a4440e36e85cedc2d19bad7d65c9e4300de81ccd7b",
+  "scorecard_sha256": "b82445ccf5f79e3dcebbf76c7b4133151b0f54a6c8ddc3e348d7d0d5348230a2",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "b2a7c0ced2aedc26cc576d14a1baf2c174ea11418fe25105e3ce3ef4120edc7a",
+      "run_path": "run.baseline.json",
+      "run_sha256": "cf77238b0965a95d837a20cc8db65fe23fcfd35898874caa89231a678b209c29",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "5202e5c54147caafe6cceceda7579813a4380b828eb921dcd82e83d5823712de",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "efb853fdef2804eaa5021ba2488c9e1b60b4c46397170a4aab5e1eae40cb0e3f",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "467d222d8c41241a02fabc9e42ebdc223072afc2f99229d54e4547c50164ac6c"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-production-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "467d222d8c41241a02fabc9e42ebdc223072afc2f99229d54e4547c50164ac6c",
+          "sha256": "3131b1e647306a77ef5d20487df0522db4220560a8952f7682f4e18a77463072",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+      },
+      "thinking": "medium"
+    },
+    "impeccable": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.impeccable.md",
+      "output_sha256": "0d77a9815830fe843ac78f23f30e26e55073c875b482421d642219c112105dd4",
+      "run_path": "run.impeccable.json",
+      "run_sha256": "335f2af683aa761e6746fc9154ba31cef451df1cf8792c6436db240cb600e567",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "upstreams/impeccable/.agents/skills/impeccable": {
+          "kind": "tree",
+          "projected_tree_sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "design-craft"
+}

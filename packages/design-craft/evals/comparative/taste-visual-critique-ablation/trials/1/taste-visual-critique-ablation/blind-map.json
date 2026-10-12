@@ -1,0 +1,35 @@
+{
+  "case_id": "taste-visual-critique-ablation",
+  "focused_variant": "taste",
+  "judgment_schema_sha256": "f80a55f5da5692ecd98e1a34f3ab5e0884af7840e14870655dfb99dc5306cf58",
+  "outputs": {
+    "A": {
+      "path": "output.baseline.md",
+      "run_path": "run.baseline.json",
+      "run_sha256": "0c682b9224ba3286845d26b8f3c14eac85fc42dd99414726f5b19055fc8db775",
+      "sha256": "99cb02d81aa11d38ddc1b261ef6aff47af81c15481905176a4cbece529e632b2",
+      "variant": "baseline"
+    },
+    "B": {
+      "path": "output.taste.md",
+      "run_path": "run.taste.json",
+      "run_sha256": "96918f9f37b1656f4777f7141428c1b4e41315f062ea3e8316902f9923e670c4",
+      "sha256": "7289fe873aed365486ebbf1df518d80c66d51f47d434c60babbf9584a275921a",
+      "variant": "taste"
+    },
+    "C": {
+      "path": "output.design-craft.md",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "c955dd361fd00c77e2bbd549d5d814672eff80c2c29f3162ea5dac64389971f1",
+      "sha256": "981b7558b9f4278ad09f25736ed0a0f0c241242420ad1fe6c61a77431d612ead",
+      "variant": "design-craft"
+    }
+  },
+  "packet_path": "blind-packet.md",
+  "packet_sha256": "1c55a4025de9787517bb35654c1ddedd06229b1173cc0b608d566505ea65ff71",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "schema": "design-craft.comparative-blind-map.v3",
+  "scorecard_json_sha256": "fce00a94275af2560f20e1e69edb040a5c470a03a5caa51b71bb49ab07489c75",
+  "scorecard_sha256": "a1f750a6c735ff178260bcc806a0ad089d0c4de4e2ff0cfd466ffcd08317d989",
+  "seed_sha256": "ff405d9c662e25cff80cd0dadefbb6ca1fd20f196ee5e1d084c52e294907924f"
+}

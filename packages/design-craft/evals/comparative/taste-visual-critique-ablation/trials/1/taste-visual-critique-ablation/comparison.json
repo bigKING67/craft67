@@ -1,0 +1,154 @@
+{
+  "blind_map_sha256": "a0379236773fed7c40b65613be078d4724cadcac13b3cd13dbe91ecfb98b2ef2",
+  "blind_packet_sha256": "1c55a4025de9787517bb35654c1ddedd06229b1173cc0b608d566505ea65ff71",
+  "case_id": "taste-visual-critique-ablation",
+  "focused_variant": "taste",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "446430c59e538dadec1ae1f23d3d7ef3da5aadcf458ff9eab6fca6830df7d161",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "6d19c55564a2ab085539cdd797bc660d9de2a745656fe47b352ae09690000627",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.296 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "f80a55f5da5692ecd98e1a34f3ab5e0884af7840e14870655dfb99dc5306cf58",
+  "judgment_sha256": "25cc14ad4f7be648847ab3bfecb25ba26246a39a335ac8d3728c544abaf127f4",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "rationale": "All three outputs agree on the main diagnosis: the queue sits below the fold, emphasis is spread equally, status relies on colour alone, actions are unlabelled icons, and names truncate. All three are also honest that the evidence is static. B wins because it gives the most implementation-ready acceptance criteria across the whole page. It keeps every metric and workflow intact, adds tabular figures and timestamped freshness, and covers pending and failed row actions and duplicate submissions. C is close behind on prioritization, since it links each move to the findings it addresses, but it covers less ground. A is solid, but it has a section-numbering error and less pointed anti-generic judgment.",
+  "recorded_at": "2026-10-12T04:29:44Z",
+  "results": {
+    "baseline": {
+      "blind_label": "A",
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 17,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 7,
+        "visual_craft": 12
+      },
+      "score": 84,
+      "summary": "A is a strong critique that keeps the full budget of findings and moves. It ties the triage priority rule to next-hour exceptions, with deadline first and impact second, and it gives clear acceptance criteria for the 14px type, 4.5:1 contrast, and 8/16/24 spacing. It is labelled honestly as a static assessment. It loses points because two sections are numbered 4, it says less about the decorative sparklines than B does, and its fixes for the header and insights are less sharp than B's or C's."
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 17,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 9,
+        "visual_craft": 12
+      },
+      "score": 87,
+      "summary": "C is the most disciplined output: it numbers each finding and links every move to the findings it fixes, which makes its priorities clear. Its 'quiet, don't dismantle' approach to the header fits the product authority well, and its validation plan includes a measurable 30-second triage target. It is somewhat less complete than B, with fewer findings and moves, less detail on type and number formatting, and summary cards folded into another move."
+    },
+    "taste": {
+      "blind_label": "B",
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 8,
+        "visual_craft": 13
+      },
+      "score": 89,
+      "summary": "B is the most complete and implementation-ready critique. It gives an explicit page order of context, then summary, then queue, then analysis. It keeps all eight metrics accessible with unchanged values and definitions, and specifies tabular figures and exact deadline timestamps. It also covers pending and failed row actions and duplicate submissions, and checks each insight and sparkline against the data and the decision it supports. Its state coverage and preservation of the visual authority are strong. Its validation plan is slightly larger than the smallest plan that could change the verdict."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "fce00a94275af2560f20e1e69edb040a5c470a03a5caa51b71bb49ab07489c75",
+  "scorecard_sha256": "a1f750a6c735ff178260bcc806a0ad089d0c4de4e2ff0cfd466ffcd08317d989",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "99cb02d81aa11d38ddc1b261ef6aff47af81c15481905176a4cbece529e632b2",
+      "run_path": "run.baseline.json",
+      "run_sha256": "0c682b9224ba3286845d26b8f3c14eac85fc42dd99414726f5b19055fc8db775",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "981b7558b9f4278ad09f25736ed0a0f0c241242420ad1fe6c61a77431d612ead",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "c955dd361fd00c77e2bbd549d5d814672eff80c2c29f3162ea5dac64389971f1",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-visual-critique",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a",
+          "sha256": "188c162b0e5fec3eea0721fc66517663a9b0d54b58f3f15df23178429ba059bb",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+      },
+      "thinking": "medium"
+    },
+    "taste": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.taste.md",
+      "output_sha256": "7289fe873aed365486ebbf1df518d80c66d51f47d434c60babbf9584a275921a",
+      "run_path": "run.taste.json",
+      "run_sha256": "96918f9f37b1656f4777f7141428c1b4e41315f062ea3e8316902f9923e670c4",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "upstreams/taste-skill/skills/redesign-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "source_dirty": false
+        },
+        "upstreams/taste-skill/skills/taste-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "taste"
+}

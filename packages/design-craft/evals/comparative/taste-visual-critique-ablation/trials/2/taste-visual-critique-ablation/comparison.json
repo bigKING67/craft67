@@ -1,0 +1,154 @@
+{
+  "blind_map_sha256": "3c530d4058cb9ef395d46d6c3e7a69c488d0b0b866993ebbc5e30ba6f125aa92",
+  "blind_packet_sha256": "a77a1280ebd1ca7455a582db05b9d2ca0f2cb170f8aabbf954baff580f01ff83",
+  "case_id": "taste-visual-critique-ablation",
+  "focused_variant": "taste",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "1f456c311b53f8630c54bb1ed13154c2b988a0c839fe146cb43e646fe15954b0",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "a29c1be5c5c05ded5efeb09d169bceac048f1969236cede387ad8fec1484436a",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.296 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "f80a55f5da5692ecd98e1a34f3ab5e0884af7840e14870655dfb99dc5306cf58",
+  "judgment_sha256": "6540b68d3359b3268bf45332dc3a951af55927eae847e048ed8fde70f82d0f88",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "rationale": "All three critiques correctly bring the next-hour exception queue forward, keep the navy/amber/red system and existing workflows, and give acceptance criteria that can be checked. C wins on evidence honesty and traceability. It marks the unverified limit of every finding, links each move to a finding ID, and gives the most decisive minimal validation plan, with explicit conditions for downgrading or keeping each blocker. Its type, contrast, spacing and elevation corrections are also slightly more specific. A comes a close second, with strong product-fit detail (time zone, exact timestamps, confirming the sort rule with operations). B is solid, with a well-scoped bounded score, but some of its acceptance criteria are vaguer.",
+  "recorded_at": "2026-10-12T04:33:18Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 17,
+        "evidence_honesty": 9,
+        "product_fit": 13,
+        "product_hierarchy": 13,
+        "scope_discipline": 9,
+        "visual_craft": 12
+      },
+      "score": 85,
+      "summary": "A solid critique with a clear table of moves and acceptance criteria. It is honest about the limits of the data, for example deadlines that may lack time-of-day precision. It gives a bounded 2/5 task-hierarchy score and explains its scope. Its craft guidance is a bit less specific: roughly 14px text and an 8px spacing base, with less on elevation and alignment. Some acceptance criteria stay soft, such as 'at the agreed desktop viewport'."
+    },
+    "design-craft": {
+      "blind_label": "C",
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 18,
+        "evidence_honesty": 10,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 9,
+        "visual_craft": 13
+      },
+      "score": 91,
+      "summary": "The strongest evidence discipline of the three. Each finding has an 'unverified boundary' column, and every move maps back to a finding ID. Its craft guidance is precise: a 14px/1.4 floor, ink for decision-bearing text, 3:1 for focus indicators, 8/16/24 spacing, a shared left edge, shadows only on overlays, and a 40% label-expansion test. It states the authority constraints up front. Its validation plan is the smallest of the three and says which result would downgrade or keep each blocker. The diagnosis sentence runs a little long."
+    },
+    "taste": {
+      "blind_label": "A",
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 9,
+        "visual_craft": 12
+      },
+      "score": 87,
+      "summary": "A thorough critique that puts the exception queue first. Its eight moves have observable acceptance criteria: at least three rows at 1366×768, exact timestamps, time zone, 14px text, 8/16/24 spacing and 4.5:1 contrast. It handles product fit carefully, for example by confirming the sort rule with operations and keeping all seven fields. It reasonably withholds a numeric score. The validation plan has four parts, slightly more than the smallest decisive set."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "fce00a94275af2560f20e1e69edb040a5c470a03a5caa51b71bb49ab07489c75",
+  "scorecard_sha256": "a1f750a6c735ff178260bcc806a0ad089d0c4de4e2ff0cfd466ffcd08317d989",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "0064ff3fa1249154e0a48c7f9379e3c0b7a43bb959457e1ec7b38bc3dc34a7fe",
+      "run_path": "run.baseline.json",
+      "run_sha256": "c1ecb83eedc13067bf483e47e458b8556db020ad2a4db17b07ab8aa19874b0a5",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "739f21243a40dc92b39f9f06fadbf595f6d2b4410d14be2c781e4e6a0b0db618",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "088b3e71e04442aa353fb65ff6cdd939fce5c9cbfb26aca31ea7e5898e66dc31",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-visual-critique",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a",
+          "sha256": "188c162b0e5fec3eea0721fc66517663a9b0d54b58f3f15df23178429ba059bb",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+      },
+      "thinking": "medium"
+    },
+    "taste": {
+      "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.taste.md",
+      "output_sha256": "54da550cecbd3079a94890055ff74c72fee1a9b775bb0107221662ff262df708",
+      "run_path": "run.taste.json",
+      "run_sha256": "592684c697cfdf28a5757e635d440d42235538d939bb1f8df1c3227b914e8477",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+      "source_fingerprints": {
+        "upstreams/taste-skill/skills/redesign-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "source_dirty": false
+        },
+        "upstreams/taste-skill/skills/taste-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "design-craft"
+}

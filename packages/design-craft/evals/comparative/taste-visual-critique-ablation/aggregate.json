@@ -1,0 +1,47 @@
+{
+  "case_id": "taste-visual-critique-ablation",
+  "focused_variant": "taste",
+  "mean_scores": {
+    "baseline": 84.67,
+    "design-craft": 90.0,
+    "taste": 89.0
+  },
+  "mean_winner": "design-craft",
+  "schema": "design-craft.comparative-aggregate.v1",
+  "trial_count": 3,
+  "trials": [
+    {
+      "comparison_sha256": "5a89ef4691d00754f5e63cea1c56c2b3b0ee23f9b95b879664a633c1795356a9",
+      "scores": {
+        "baseline": 84,
+        "design-craft": 87,
+        "taste": 89
+      },
+      "seed_sha256": "ff405d9c662e25cff80cd0dadefbb6ca1fd20f196ee5e1d084c52e294907924f",
+      "trial": 1,
+      "winner": "taste"
+    },
+    {
+      "comparison_sha256": "ec4bdfc4021e29a054278ab65939c71971150c1ca76f262672571328827236d4",
+      "scores": {
+        "baseline": 85,
+        "design-craft": 91,
+        "taste": 87
+      },
+      "seed_sha256": "d4a4c522d075342711c0d9f8a101743e16d15f127379e472d10bb4afd80e8ea0",
+      "trial": 2,
+      "winner": "design-craft"
+    },
+    {
+      "comparison_sha256": "3e718e06df184076e60a7d7679d63cc0b62857e66e9e58b3ba9c6dbfa022c84e",
+      "scores": {
+        "baseline": 85,
+        "design-craft": 92,
+        "taste": 91
+      },
+      "seed_sha256": "c648fc00e60aa8be7aff4106e105c9fe240a315ff4467a555c1418f3b59ad979",
+      "trial": 3,
+      "winner": "design-craft"
+    }
+  ]
+}

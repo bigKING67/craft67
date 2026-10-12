@@ -1,0 +1,64 @@
+{
+  "command": "pi --print --no-session --no-extensions --no-prompt-templates --no-context-files --no-skills --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium --skill '$VARIANT_SKILL_1' --skill '$VARIANT_SKILL_2' --skill '$VARIANT_SKILL_3'",
+  "contract_sha256": "1a5c1056cdd1dd2118069814229959bffeb77f09784634c4c4ba8adee6a6b951",
+  "cwd": "$VARIANT_WORKSPACE",
+  "duration_seconds": 110.364,
+  "host": "pi",
+  "host_version": "1.1.0",
+  "installed_skill_paths": {
+    "upstreams/emilkowalski-skills/skills/apple-design": "$VARIANT_WORKSPACE/.pi/skills/01-apple-design",
+    "upstreams/emilkowalski-skills/skills/improve-animations": "$VARIANT_WORKSPACE/.pi/skills/03-improve-animations",
+    "upstreams/emilkowalski-skills/skills/review-animations": "$VARIANT_WORKSPACE/.pi/skills/02-review-animations"
+  },
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "output_path": "output.emil.md",
+  "output_sha256": "5eca106bd00d2925e4f4e2c646274a539883a40c50f631ebd78e9e54024c5ea7",
+  "prompt_sha256": "81453e8d19e3de0d27bf7603b60f045cedaafa90b1a6fd7ee6dcc7249ca639ba",
+  "returncode": 0,
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "schema": "design-craft.comparative-run.v4",
+  "skill_install_mode": "isolated_case_projection",
+  "skill_trees": {
+    "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+    "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+    "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+  },
+  "source_commit": "9f39e61853cb2a6a51175ae7ad9f797111e2fafe",
+  "source_fingerprints": {
+    "upstreams/emilkowalski-skills/skills/apple-design": {
+      "kind": "tree",
+      "projected_tree_sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+      "sha256": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+      "source_dirty": false
+    },
+    "upstreams/emilkowalski-skills/skills/improve-animations": {
+      "kind": "tree",
+      "projected_tree_sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+      "sha256": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+      "source_dirty": false
+    },
+    "upstreams/emilkowalski-skills/skills/review-animations": {
+      "kind": "tree",
+      "projected_tree_sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+      "sha256": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00",
+      "source_dirty": false
+    }
+  },
+  "source_trees": {
+    "upstreams/emilkowalski-skills/skills/apple-design": "84ebad0905bc9274fc22eb0b100778adaee20e6d479a69168b5f3a2f018e19de",
+    "upstreams/emilkowalski-skills/skills/improve-animations": "b4813f60575f3e1e3d916bb76def2b5821e91194fc6896e6d47177cc22a9e488",
+    "upstreams/emilkowalski-skills/skills/review-animations": "b86f754de11344856c2e7ae5c809eb134c8b8c23920baa44adaa06e77cf4ad00"
+  },
+  "started_at": "2026-10-12T03:55:08Z",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "thinking": "medium",
+  "thinking_observation": "requested_by_cli",
+  "timeout_seconds": 2400,
+  "variant": "emil",
+  "workspace_kind": "repo_external_isolated_project",
+  "worktree_after_sha256": "1db6b7bf61b4254c8f4d89956deb73f3ca6a9ff1be4c9f6839c201fbc5614b83",
+  "worktree_before_sha256": "1db6b7bf61b4254c8f4d89956deb73f3ca6a9ff1be4c9f6839c201fbc5614b83",
+  "worktree_unchanged": true
+}

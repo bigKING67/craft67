@@ -1,0 +1,48 @@
+{
+  "rationale": "All three critiques correctly bring the next-hour exception queue forward, keep the navy/amber/red system and existing workflows, and give acceptance criteria that can be checked. C wins on evidence honesty and traceability. It marks the unverified limit of every finding, links each move to a finding ID, and gives the most decisive minimal validation plan, with explicit conditions for downgrading or keeping each blocker. Its type, contrast, spacing and elevation corrections are also slightly more specific. A comes a close second, with strong product-fit detail (time zone, exact timestamps, confirming the sort rule with operations). B is solid, with a well-scoped bounded score, but some of its acceptance criteria are vaguer.",
+  "results": [
+    {
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 9,
+        "visual_craft": 12
+      },
+      "label": "A",
+      "summary": "A thorough critique that puts the exception queue first. Its eight moves have observable acceptance criteria: at least three rows at 1366×768, exact timestamps, time zone, 14px text, 8/16/24 spacing and 4.5:1 contrast. It handles product fit carefully, for example by confirming the sort rule with operations and keeping all seven fields. It reasonably withholds a numeric score. The validation plan has four parts, slightly more than the smallest decisive set.",
+      "total": 87
+    },
+    {
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 17,
+        "evidence_honesty": 9,
+        "product_fit": 13,
+        "product_hierarchy": 13,
+        "scope_discipline": 9,
+        "visual_craft": 12
+      },
+      "label": "B",
+      "summary": "A solid critique with a clear table of moves and acceptance criteria. It is honest about the limits of the data, for example deadlines that may lack time-of-day precision. It gives a bounded 2/5 task-hierarchy score and explains its scope. Its craft guidance is a bit less specific: roughly 14px text and an 8px spacing base, with less on elevation and alignment. Some acceptance criteria stay soft, such as 'at the agreed desktop viewport'.",
+      "total": 85
+    },
+    {
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 18,
+        "evidence_honesty": 10,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 9,
+        "visual_craft": 13
+      },
+      "label": "C",
+      "summary": "The strongest evidence discipline of the three. Each finding has an 'unverified boundary' column, and every move maps back to a finding ID. Its craft guidance is precise: a 14px/1.4 floor, ink for decision-bearing text, 3:1 for focus indicators, 8/16/24 spacing, a shared left edge, shadows only on overlays, and a 40% label-expansion test. It states the authority constraints up front. Its validation plan is the smallest of the three and says which result would downgrade or keep each blocker. The diagnosis sentence runs a little long.",
+      "total": 91
+    }
+  ],
+  "winner": "C"
+}

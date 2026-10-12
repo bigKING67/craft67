@@ -1,0 +1,48 @@
+{
+  "rationale": "All three outputs are honest, read-only audits with good scope control and correct sequencing. B wins because each finding comes with its own acceptance check and because it is the only one to define specific, measurement-first gates: p95 latency, maximum task length, a mounted-row bound, heap growth, regression tolerances, and rollback triggers. That matches the performance and production-fix criteria best. C comes second because its error-recovery table and hostile-data coverage are strong. A is close behind, but its performance budgets are less specific.",
+  "results": [
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 12,
+        "mode_sequence": 9,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "label": "A",
+      "summary": "A thorough, honest audit with clear P0–P3 findings that separate source evidence from runtime hypotheses. Its hardening and accessibility coverage is broad, and it reconciles static signals well. Weaknesses: it puts polish before optimization, sets only INP/CLS budgets and leaves the filter and render budgets to be agreed later, and keeps acceptance conditions in the validation section instead of attaching them to each fix.",
+      "total": 88
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 14
+      },
+      "label": "B",
+      "summary": "Each finding has its own evidence, unknowns, repair steps and acceptance check, which makes the fixes the most ready to implement. It gives specific provisional performance gates: p95 latency, long tasks, a mounted-row bound, heap growth and regression tolerances. Hostile-data and upload handling is strong, including not implying an unfinished upload was stored. It treats static signals as contextual under design-system authority and gives explicit rollback/hold conditions.",
+      "total": 93
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 12,
+        "mode_sequence": 9,
+        "production_fixes": 18,
+        "responsive_accessibility": 14
+      },
+      "label": "C",
+      "summary": "A strong audit whose failure-to-recovery table clearly covers 401, 403, 409, 429, 500/timeout, offline and partial-batch failures. It covers hostile data well, including bidirectional text and rendering names as text, and gives careful touch-target and WCAG nuance. It reconciles static signals cleanly. Its performance budgets are only partly specific, with a tolerance that is defined later, and its acceptance conditions are less tied to individual findings than B's.",
+      "total": 90
+    }
+  ],
+  "winner": "B"
+}
