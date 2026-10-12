@@ -15,9 +15,8 @@ if str(ROOT) not in sys.path:
 
 from tools.design_craft.evaluation.comparative.trials import (  # noqa: E402
     AGGREGATE_FILE,
-    build_aggregate,
     prepare_trial,
-    validate_trials,
+    validate_trial_set,
 )
 
 
@@ -43,20 +42,16 @@ def main(argv: list[str] | None = None) -> int:
             parser.error(str(exc))
         return 0
 
-    # Write first so validation compares the file against a fresh rebuild.
+    # Validate every trial before touching aggregate.json, so a failed run
+    # never removes a previously valid aggregate. A losing mean is recorded
+    # as judged; certification is decided by the observed-evidence check.
+    aggregate, errors = validate_trial_set(case_dir, require_current_source=True)
+    if errors or aggregate is None:
+        parser.error("; ".join(errors))
     path = case_dir / AGGREGATE_FILE
     path.write_text(
-        json.dumps(build_aggregate(case_dir), indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
+        json.dumps(aggregate, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
-    errors = [
-        error
-        for error in validate_trials(case_dir, require_current_source=True)
-        if "certification requires" not in error
-    ]
-    if errors:
-        path.unlink()
-        parser.error("; ".join(errors))
     print(path)
     return 0
 

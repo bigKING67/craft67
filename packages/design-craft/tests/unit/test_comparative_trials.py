@@ -136,16 +136,67 @@ class ComparativeTrialsTests(unittest.TestCase):
         self.assertTrue(any("must match the recorded" in e for e in self.validate()))
 
     def test_trial_numbering_must_be_contiguous(self) -> None:
-        for number in (1, 2, 4):
+        for number in (1, 2, 3):
             add_trial(self.case, number, WIN, f"seed-{number}")
+        (self.case / "trials" / "3").rename(self.case / "trials" / "4")
         write_aggregate(self.case)
 
         self.assertTrue(any("without gaps" in e for e in self.validate()))
 
-    def test_prepare_refuses_existing_trial(self) -> None:
+    def test_renamed_trial_is_reported_not_skipped(self) -> None:
+        for number in (1, 2, 3):
+            add_trial(self.case, number, WIN, f"seed-{number}")
+        add_trial(self.case, 4, LOSE, "seed-4")
+        (self.case / "trials" / "4").rename(self.case / "trials" / "4-old")
+        write_aggregate(self.case)
+
+        self.assertTrue(any("unexpected entry" in e for e in self.validate()))
+
+    def test_prepare_requires_the_next_trial_number(self) -> None:
         trials.prepare_trial(self.case, 1)
         with self.assertRaises(ValueError):
             trials.prepare_trial(self.case, 1)
+        with self.assertRaises(ValueError):
+            trials.prepare_trial(self.case, 3)
+
+    def test_prepare_leaves_nothing_when_definitions_are_missing(self) -> None:
+        (self.case / "judgment.schema.json").unlink()
+        with self.assertRaises(ValueError):
+            trials.prepare_trial(self.case, 1)
+        self.assertFalse((self.case / "trials" / "1").exists())
+
+    def test_missing_parent_definition_is_an_error_not_a_crash(self) -> None:
+        for number in (1, 2, 3):
+            add_trial(self.case, number, WIN, f"seed-{number}")
+        write_aggregate(self.case)
+        (self.case / "expected-findings.md").unlink()
+
+        self.assertTrue(any("missing definition" in e for e in self.validate()))
+
+    def test_incomplete_trial_reports_instead_of_raising(self) -> None:
+        for number in (1, 2, 3):
+            add_trial(self.case, number, WIN, f"seed-{number}")
+        (trials.trial_dir(self.case, 3) / "comparison.json").unlink()
+
+        aggregate, errors = trials.validate_trial_set(
+            self.case, require_current_source=True
+        )
+        self.assertIsNone(aggregate)
+        self.assertTrue(any("cannot build aggregate" in e for e in errors))
+
+    def test_aggregate_command_keeps_existing_file_on_failure(self) -> None:
+        from scripts.design_craft_comparative_trials import main as trials_main
+
+        for number in (1, 2, 3):
+            add_trial(self.case, number, WIN, f"seed-{number}")
+        write_aggregate(self.case)
+        before = (self.case / trials.AGGREGATE_FILE).read_bytes()
+        add_trial(self.case, 4, WIN, "seed-1")  # reused seed makes the set invalid
+
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            trials_main(["aggregate", "--case-dir", str(self.case)])
+
+        self.assertEqual((self.case / trials.AGGREGATE_FILE).read_bytes(), before)
 
 
 class ComparativeTrialsCliTests(unittest.TestCase):
@@ -158,6 +209,27 @@ class ComparativeTrialsCliTests(unittest.TestCase):
 
         self.assertEqual(code, 1)
         self.assertIn("requires repeated trials", stderr.getvalue())
+
+    def test_routine_validation_ignores_trials_in_progress(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            case = make_case(Path(raw))
+            trials.prepare_trial(case, 1)
+            with contextlib.redirect_stderr(io.StringIO()):
+                code = main(["--root", raw])
+
+        self.assertEqual(code, 0)
+
+    def test_losing_trial_validated_directly_is_not_a_certification_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as raw, patch(
+            "tools.design_craft.evaluation.comparative.cli.validate_case",
+            return_value=[],
+        ) as single:
+            case = make_case(Path(raw))
+            add_trial(case, 1, LOSE, "seed-1")
+            code = main(["--case-dir", str(trials.trial_dir(case, 1))])
+
+        self.assertEqual(code, 0)
+        self.assertFalse(single.call_args.kwargs["require_win"])
 
     def test_trial_modules_are_part_of_the_contract(self) -> None:
         self.assertIn("tools/design_craft/evaluation/comparative/trials.py", CONTRACT_FILES)

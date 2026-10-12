@@ -75,17 +75,33 @@ def main(argv: list[str] | None = None) -> int:
         cases = active_cases(root)
     if not cases:
         errors.append("at least one comparative case is required")
+    current = not history_mode
     for case in cases:
         if args.definitions_only:
             _, _, definition_errors = validate_definition(case)
             errors.extend(definition_errors)
-        elif has_trials(case):
+        elif is_trial_dir(case):
+            # One trial of a repeated set: full single-run checks, but a trial
+            # may legitimately lose; the aggregate decides certification.
             errors.extend(
-                validate_trials(case, require_current_source=not history_mode)
+                validate_case(
+                    case,
+                    require_observed=True,
+                    require_current_source=current,
+                    require_win=False,
+                )
             )
-        elif args.require_observed and not history_mode and not args.case_dir:
-            # Single judged runs sit inside judge noise; current evidence must
-            # come from repeated trials.
+        elif has_trials(case):
+            if history_mode or args.require_observed:
+                errors.extend(validate_trials(case, require_current_source=current))
+            else:
+                # Trials may still be in progress; routine validation checks
+                # the definition only.
+                errors.extend(validate_definition(case)[2])
+        elif args.require_observed and current and not args.case_dir:
+            # Single judged runs sit inside judge noise; current evidence over
+            # the case root must come from repeated trials. An explicit
+            # --case-dir on a single-run case keeps single-run validation.
             errors.append(
                 f"{case}: current comparative evidence requires repeated trials "
                 "under trials/"
@@ -95,7 +111,7 @@ def main(argv: list[str] | None = None) -> int:
                 validate_case(
                     case,
                     require_observed=True if history_mode else args.require_observed,
-                    require_current_source=not history_mode,
+                    require_current_source=current,
                 )
             )
     if errors:
