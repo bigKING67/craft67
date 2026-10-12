@@ -2,6 +2,9 @@ name: Native runtime evidence
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - "design-craft/v*"
 
 permissions:
   contents: read

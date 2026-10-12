@@ -2,6 +2,33 @@
 
 All notable local changes to `design-craft` are recorded here.
 
+## 0.8.0 - 2026-10-12
+
+- Absorb selected upstream behavior: Operate/Read surfaces are code-led,
+  Operate comps and dashboards carry real data, meaningful state color and
+  headline-metric history (Impeccable); scenario cases are grouped in
+  product language (Jakub); motion performance gains a 120Hz frame budget,
+  cause-first diagnosis and cheaper-property swaps (Emil
+  animation-performance); collapsible sidebars collapse to a usable icon
+  rail (Taste redesign-skill).
+- Motion audit plans name the candidates set aside, keep speculative
+  experiments out of plans, and show complete current and replacement
+  blocks.
+- Comparative evidence now requires at least three independent trials per
+  case and certifies on mean scores (`comparative-aggregate.v1`); archived
+  single-run tranches validate for integrity only.
+- Evaluation runners isolate operator configuration: Pi runs without user
+  extensions or prompt templates, Claude hosts load project settings only,
+  and Codex hosts use a private home with only the model provider and
+  API-key auth. Runners close stdin for argument prompts, and the Claude
+  judge accepts the judgment schema.
+- Cross-agent output admission accepts a "Concrete moves" heading, and
+  committed behavior domains resolve from the package root inside the
+  craft67 monorepo.
+- Collected current evidence: nine admitted Codex/Pi/Claude host runs and
+  repeated-trial ablations in which design-craft has the highest mean in
+  all four cases.
+
 ## 0.7.0 - 2026-09-19
 
 - Refresh six controlled Codex/Pi observations and four independently judged
