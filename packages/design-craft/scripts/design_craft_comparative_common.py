@@ -44,6 +44,8 @@ CONTRACT_FILES = (
     "tools/design_craft/evaluation/comparative/judge_evidence.py",
     "tools/design_craft/evaluation/comparative/result.py",
     "tools/design_craft/evaluation/comparative/run_evidence.py",
+    "tools/design_craft/evaluation/comparative/trials.py",
+    "scripts/design_craft_comparative_trials.py",
     "tools/design_craft/evaluation/evidence_graph.py",
     "contracts/evaluation/evidence-graph.schema.json",
 )

@@ -19,6 +19,7 @@ def validate_result(
     runs: dict[str, dict],
     required_variants: tuple[str, str, str],
     require_current_source: bool,
+    require_win: bool = True,
 ) -> list[str]:
     path = case_dir / "comparison.json"
     try:
@@ -82,7 +83,7 @@ def validate_result(
             errors.append(f"{path}: every variant score must be an integer")
         # Winning is a certification claim about current evidence; archived
         # tranches are kept for integrity even when design-craft lost.
-        elif require_current_source and not (
+        elif require_current_source and require_win and not (
             all(
                 scores["design-craft"] > scores[variant]
                 for variant in required_variants

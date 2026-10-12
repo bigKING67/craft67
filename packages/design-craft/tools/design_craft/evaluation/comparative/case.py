@@ -16,6 +16,7 @@ def validate_case(
     *,
     require_observed: bool,
     require_current_source: bool = True,
+    require_win: bool = True,
 ) -> list[str]:
     variants, weights, errors = validate_definition(
         case_dir,
@@ -72,6 +73,7 @@ def validate_case(
                 runs=runs,
                 required_variants=required_variants,
                 require_current_source=require_current_source,
+                require_win=require_win,
             )
         )
     return errors

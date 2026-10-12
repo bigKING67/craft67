@@ -7,6 +7,7 @@ from pathlib import Path
 from .case import validate_case
 from .definition import active_cases, validate_definition
 from .self_check import run_self_check
+from .trials import has_trials, is_trial_dir, validate_trials
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -64,7 +65,11 @@ def main(argv: list[str] | None = None) -> int:
         cases = [Path(args.case_dir).expanduser().resolve()]
     elif history_mode:
         history_root = Path(args.history_root).expanduser().resolve()
-        cases = sorted(path.parent for path in history_root.rglob("variants.json"))
+        cases = sorted(
+            path.parent
+            for path in history_root.rglob("variants.json")
+            if not is_trial_dir(path.parent)
+        )
     else:
         root = Path(args.root or "evals/comparative").expanduser().resolve()
         cases = active_cases(root)
@@ -74,6 +79,17 @@ def main(argv: list[str] | None = None) -> int:
         if args.definitions_only:
             _, _, definition_errors = validate_definition(case)
             errors.extend(definition_errors)
+        elif has_trials(case):
+            errors.extend(
+                validate_trials(case, require_current_source=not history_mode)
+            )
+        elif args.require_observed and not history_mode and not args.case_dir:
+            # Single judged runs sit inside judge noise; current evidence must
+            # come from repeated trials.
+            errors.append(
+                f"{case}: current comparative evidence requires repeated trials "
+                "under trials/"
+            )
         else:
             errors.extend(
                 validate_case(
