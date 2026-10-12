@@ -121,6 +121,24 @@ design-craft 在 emil-motion-planning 以 1 分落后，`comparative-observed-ch
 
 `operational_95` 候选检查 21/24 通过。剩余：性能回归（需 Linux CI 基准）、iOS 与 Android 原生运行证据。Claude、Cursor、真机属于 `certified_100` 范围，仍为 explicitly unverified。
 
+## 2026-10-12 Operational 95 候选检查：24/24
+
+在 `e1e6026` 上手动触发两个工作流，均成功：
+
+- [原生运行证据 38208672546](https://github.com/bigKING67/craft67/actions/runs/38208672546)：iOS Simulator 与 Android Emulator。
+- [完整性能基准 38208675356](https://github.com/bigKING67/craft67/actions/runs/38208675356)：Linux，`benchmark-result.json` 的 sha256 前缀为 `ca0ce7a05730`。
+
+两份原生证据按 `benchmark.yml` 的方式合并后，`design_craft_native_runtime_validate.py --require ios --require android --require-current-source` 通过。
+
+以 `DESIGN_CRAFT_NATIVE_EVIDENCE_ROOT` 指向合并证据，并用 `--benchmark-result` 传入 Linux 基准结果，运行 `design_craft_maturity.py --profile operational_95 --phase candidate`，结果为 `passed`，24/24，release level 95。
+
+边界：
+
+- 这是候选阶段核验，基于手动触发的运行，而非标签触发的运行。
+- 原生证据与基准产物保留在 GitHub Actions（90 天），未提交进仓库。
+- 正式 Operational 95 发布仍需按“真实评测执行顺序”第 6 步执行：确定版本号、打 annotated 标签、等待标签触发的原生工作流、构建原生 Release 资产，并跑 final 阶段认证。
+- Certified 100 另需 Cursor、Claude 宿主与真机证据。
+
 ## 真实评测执行顺序
 
 所有命令从 `packages/design-craft` 执行。模型、推理档位、费用预算尚未指定；下面是待执行清单，不是已经执行的记录。
