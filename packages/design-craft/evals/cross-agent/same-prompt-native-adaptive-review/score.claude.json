@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "claude",
+  "verified": true,
+  "agent_version": "2.1.291 (Claude Code)",
+  "model": "claude-opus-5-5",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-12",
+  "prompt_sha256": "61f2e14e7f03ad0f21bff2db3770e0b6c0ffba120aa7598dab1f73411256b2bd",
+  "scorecard_json_sha256": "260126ae8e6eb6765184f92ad040b5e32995c941f559d654a303a0d5305e210f",
+  "contract_sha256": "10f9092ad2bdbbb3157607736678244a30b968e918ad1b4a30ad51716a970e96",
+  "run_manifest_path": "run.claude.json",
+  "run_manifest_sha256": "68ac192e64aef3c93b8dbf498c7ba93838f4aed8f782f8edad9dfcbf7f3db174",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb",
+  "skill_path": "$BENCHMARK_WORKSPACE/.claude/skills/design-craft",
+  "behavior_domain": "skill-native-adaptive-review",
+  "behavior_sha256": "e1b99802f95840cac78c3c7ef7ec194f9887b88b94191b4125da0f41b5e9e0a1",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "3fa61b0ea28305559f8405fc2bca24a532586a9016dbb391c7fd1a15367cade3",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "claude --print --permission-mode plan --tools Read,Grep,Glob --no-session-persistence --no-chrome --strict-mcp-config --setting-sources project --model claude-opus-5-5 --effort medium",
+  "output_path": "claude-output.md",
+  "output_sha256": "824e332c05e9c8e7d7f86fdf35f3fe09d7bb3a43e1989b93e693353260ad6dc3",
+  "score": 92,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "An explicit 'Authority' bullet says DESIGN.md shares roles and hierarchy and allows native navigation, controls, and motion, so the shared look-alikes are 'accidental drift'. The product read is kept separate."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 12,
+      "note": "Names `adaptive-quality.md`, `ios-quality.md`, and `android-quality.md` and visibly applies them (AX5, 200% sp, sidebar/rail, Android 14+ predictive Back). Interaction physics (critically damped, haptic at state change) and validation are applied but not cited as selected references."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Fixes target native trust and task flow, such as the 'Keep editing / Discard' Back guard, per-step draft saves, and a thumb-reach Complete button. It suggests no decorative styling."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 14,
+      "note": "States 'static description only ... no source, build, screenshot, accessibility tree, or runtime' and labels verdicts 'Fails (static)'. It does not use the formal L0 label but makes no runtime claims."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 13,
+      "note": "It has separate verified and unverified lists and says 'All eight findings stay open until steps 3-5 produce artifacts'. Labeling prompt-described facts as 'Verified from your description' blurs prompt-supported and verified slightly."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "The eight moves are concrete and mapped to findings: native-stack, draft persistence, Dynamic Type/sp, 44pt/48dp targets, sidebar on iPad and rail on Android, a reduced-motion variant with announcement, per-platform tokens, and native switch and icons. A detailed parity matrix is included."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "70 lines and eight moves are within limits, and F1-F5 are marked blocking. The ledger still lists eight findings at P0/P1 (F5 'P1->blocking'), which dilutes prioritization."
+    }
+  }
+}

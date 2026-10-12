@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.162.1",
+  "model": "gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-12",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "10f9092ad2bdbbb3157607736678244a30b968e918ad1b4a30ad51716a970e96",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "a1c7d8c155d42610f0ac4266461202aab1557c5f558a5ed7529739ff86bcd39d",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "behavior_domain": "skill-production-review",
+  "behavior_sha256": "3131b1e647306a77ef5d20487df0522db4220560a8952f7682f4e18a77463072",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "467d222d8c41241a02fabc9e42ebdc223072afc2f99229d54e4547c50164ac6c",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-6-astra -c 'model_reasoning_effort=\"medium\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "fc2a5fbebd260e41dfcc3cab6175ab753cfe4a1286758a7c6839edd06c6b8c9e",
+  "score": 91,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Design read anchors on 'restrained, dense, and calm' and M5 requires 'project tokens' and semantic color only, 'pending project authority'; applied, though only from the prompt."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 11,
+      "note": "Uses design-craft evidence levels, 'Operate surface', and 'Flat KPI grid -> priority hierarchy' moves, but references are only implicit and the 'card soup' dashboard move is not named."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 14,
+      "note": "States the hierarchy should follow 'urgent exception -> supporting evidence -> affected entity -> next action'; repairs restructure decision flow rather than restyle cards."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 14,
+      "note": "Labels 'L0 static: prose only' with a provisional 60-74 band and warns a precise score is unsupported; less explicit about what screenshot/responsive/before-after evidence would raise the level."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 14,
+      "note": "Section 5 separates prompt-established facts and inferences from an unverified list covering keyboard/focus/hover and loading/error/empty states; M5-M7 are flagged 'not claims of existing defects'."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "M1 lead operational state plus supporting metric strip and M3 'Table -> task-first exception queue' with explainable ranking cover the required anatomy; only 7 moves and the exception queue is merged into the table."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 10,
+      "note": "Tightest response at ~40 lines, 4 findings and 7 moves, all UI and decisive validation; no backend drift."
+    }
+  }
+}

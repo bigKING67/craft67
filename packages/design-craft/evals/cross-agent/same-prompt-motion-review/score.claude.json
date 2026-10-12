@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-motion-review",
+  "agent": "claude",
+  "verified": true,
+  "agent_version": "2.1.291 (Claude Code)",
+  "model": "claude-opus-5-5",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-12",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_json_sha256": "5b0b6a0d6df83ce49b9e2c598a9cdd79149efca50a9e12069667bc008462d183",
+  "contract_sha256": "10f9092ad2bdbbb3157607736678244a30b968e918ad1b4a30ad51716a970e96",
+  "run_manifest_path": "run.claude.json",
+  "run_manifest_sha256": "9f291be0f77f52184fe8c6517daf52e65ff390073b7a69614def91dcc0dceeb5",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb",
+  "skill_path": "$BENCHMARK_WORKSPACE/.claude/skills/design-craft",
+  "behavior_domain": "skill-motion-review",
+  "behavior_sha256": "e0aa26fe78ce38174a694de284ff6860a41f42f6c8a3a895ef04d33b941afd3f",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "claude --print --permission-mode plan --tools Read,Grep,Glob --no-session-persistence --no-chrome --strict-mcp-config --setting-sources project --model claude-opus-5-5 --effort medium",
+  "output_path": "claude-output.md",
+  "output_sha256": "b1bdd9dbe29a9c6f06a7d14f80485a6e28bbbc228331f260219fa156aa971c16",
+  "score": 90,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Reads the surface as an operations sheet with 'calm utility-grade motion' and rejects whole-sheet scale because it 'works against keeping context'; motion policy is checked before tuning."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 13,
+      "note": "Explicitly names design-craft/SKILL.md and references/interaction-physics.md and applies them (interruptibility rule, spring, projection, rubber-band); design-system references are not visibly selected beyond token-free handle styling."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 13,
+      "note": "Limits motion to 'only two parts' and bans content fades/staggers and transition: all, but M4's optional 'damping 0.8 ... should overshoot slightly' reopens decorative bounce for a calm utility UI."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 14,
+      "note": "States 'static only' and that every 'feel' claim is an unverified inference; performance gates are 'provisional', and the ~300 ms lag is listed under 'Inferred but not verified'."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 14,
+      "note": "Three-tier list (verified from source, inferred but not verified, not claimed) explicitly excludes Reduced Motion, browser and performance validation; F1's freeze is hedged as 'probably' with an Unknown line."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Most concrete moves: primary-pointer capture, grab offset, 10 px threshold, rAF translateY writes, touch-action handoff, removing the animating lock and fill:forwards, spring with velocity conversion, gated projection with one-state-skip limit, rubber-band formula and Reduced Motion cross-fade. No explicit hysteresis."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "Within limits (149 of 150 lines, five findings, eight moves) but runs at the ceiling and adds peripheral items (44 px hit target, aria-expanded button semantics) that dilute the motion focus."
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-dashboard-review",
+  "agent": "claude",
+  "verified": true,
+  "agent_version": "2.1.291 (Claude Code)",
+  "model": "claude-opus-5-5",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-12",
+  "prompt_sha256": "7fd3c7f14647c8b54cc44ef371f2d7ea56bb77efa89cb8081f09a7b41ae777d6",
+  "scorecard_json_sha256": "9b73f89575f83eecd859595a81851a57681987dbb8aee6d3b8230d5827081920",
+  "contract_sha256": "10f9092ad2bdbbb3157607736678244a30b968e918ad1b4a30ad51716a970e96",
+  "run_manifest_path": "run.claude.json",
+  "run_manifest_sha256": "bf25b4a41fee7ece12beddc8fb229d9426f5c8609354ceb1f85b5d688f0760ed",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb",
+  "skill_path": "$BENCHMARK_WORKSPACE/.claude/skills/design-craft",
+  "behavior_domain": "skill-production-review",
+  "behavior_sha256": "3131b1e647306a77ef5d20487df0522db4220560a8952f7682f4e18a77463072",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "467d222d8c41241a02fabc9e42ebdc223072afc2f99229d54e4547c50164ac6c",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "claude --print --permission-mode plan --tools Read,Grep,Glob --no-session-persistence --no-chrome --strict-mcp-config --setting-sources project --model claude-opus-5-5 --effort medium",
+  "output_path": "claude-output.md",
+  "output_sha256": "1ec0880696409bec5bd810214298153fdaa9f6d7cd4b785dd227ae91b75f7d5c",
+  "score": 94,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Design read restates the restrained, dense, calm console, M1 says 'No hero treatment', M7/M8 use 'tokens and existing component variants only'; authority applied from the prompt only."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 13,
+      "note": "Explicitly applies the library's 'dashboard card soup -> decision surface' move, the 'enterprise-dense treatment', and the calibration ceiling rule, plus L2/L4 validation levels; references named but source files not cited."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "F2 identifies the missing 'exception queue or next-action object' and says the page 'should be ranked by exceptions, not laid out as an overview'; repairs are decision-hierarchy changes."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 14,
+      "note": "Labels 'L0 static', low confidence, hard ceiling 84, and names L2 browser capture and L4 before/after for higher claims; loses a point for a point estimate 'about 70/100' alongside a range that straddles bands."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates 'Taken from the prompt' / 'Inferred, not verified' / 'Unverified', and states missing states are 'an unknown, not a confirmed defect'."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Gives explicit target anatomy (command band, lead risk object, metric strip, exception queue, diagnostic chart, task-first table) with M2 lead 'Revenue at risk, next 60 min' plus 4-6 KPI strip and M3 ranked queue with verb+object actions."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 8,
+      "note": "Within limits (64 lines, 5 findings, 8 moves), but the 'minimal' plan runs 7 steps including unrequested performance gates (p95 <= 100 ms, CLS, virtualization, rollback rule) that stretch beyond minimal dashboard UI validation."
+    }
+  }
+}

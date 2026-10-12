@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "1.1.0",
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-12",
+  "prompt_sha256": "61f2e14e7f03ad0f21bff2db3770e0b6c0ffba120aa7598dab1f73411256b2bd",
+  "scorecard_json_sha256": "260126ae8e6eb6765184f92ad040b5e32995c941f559d654a303a0d5305e210f",
+  "contract_sha256": "10f9092ad2bdbbb3157607736678244a30b968e918ad1b4a30ad51716a970e96",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "57c0eba235e36bbf859e4e84b93d9f1fd664cb5b3d6873396e31eb1b950e7dc8",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "behavior_domain": "skill-native-adaptive-review",
+  "behavior_sha256": "e1b99802f95840cac78c3c7ef7ec194f9887b88b94191b4125da0f41b5e9e0a1",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "3fa61b0ea28305559f8405fc2bca24a532586a9016dbb391c7fd1a15367cade3",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-extensions --no-prompt-templates --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium",
+  "output_path": "pi-output.md",
+  "output_sha256": "1055ebc538e9d48836deba08320b8fa3a382a4cb7be5fc38d8e8c205920c5a21",
+  "score": 94,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 15,
+      "note": "Has a dedicated 'Style authority' bullet: DESIGN.md 'requires shared semantic roles and hierarchy, not identical controls or layouts'. The diagnosis says it 'shares platform appearance where it should share product meaning'."
+    },
+    "reference_selection": {
+      "passed": false,
+      "earned": 10,
+      "note": "Content applies iOS, Android, adaptive (window classes, hinge insets), motion, and validation guidance. However, references are only asserted ('design-craft guidance was read and applied'), with no named selection, so full credit is withheld."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "It says overridden OS behavior 'undermine[s] operational trust more than visual polish could repair'. Repairs target navigation, recovery states ('Saved on device', 'Sync pending'), and restrained feedback."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "States 'Evidence level: L0 static - prose only' and lists 'No validation performed' across build, simulator, and hardware. It carefully notes 'Data loss is not established'."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Separates 'Established for this review', 'Not independently verified', and 'No validation performed'. Findings carry 'Runtime unknown' columns and conditional contrast wording."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 15,
+      "note": "Exactly eight concrete moves (M1-M8) cover targets, scaling and semantics, OS-owned navigation, interruption recovery, window-driven composition, restrained motion branches, color roles, and native controls. They are tied to an explicit parity matrix ('not pixel equality')."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 9,
+      "note": "74 lines, five P1 blockers plus one P2, and exactly eight moves are all within limits. The analytics row and the sync-status copy are minor extensions."
+    }
+  }
+}

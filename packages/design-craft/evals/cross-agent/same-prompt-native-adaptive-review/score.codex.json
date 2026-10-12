@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-native-adaptive-review",
+  "agent": "codex",
+  "verified": true,
+  "agent_version": "codex-cli 0.162.1",
+  "model": "gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-12",
+  "prompt_sha256": "61f2e14e7f03ad0f21bff2db3770e0b6c0ffba120aa7598dab1f73411256b2bd",
+  "scorecard_json_sha256": "260126ae8e6eb6765184f92ad040b5e32995c941f559d654a303a0d5305e210f",
+  "contract_sha256": "10f9092ad2bdbbb3157607736678244a30b968e918ad1b4a30ad51716a970e96",
+  "run_manifest_path": "run.codex.json",
+  "run_manifest_sha256": "0f7d61bfc684367577eed0d3ce77d5fef14c46f46901c2288e1ddb339dd23b7b",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb",
+  "skill_path": "$BENCHMARK_WORKSPACE/.agents/skills/design-craft",
+  "behavior_domain": "skill-native-adaptive-review",
+  "behavior_sha256": "e1b99802f95840cac78c3c7ef7ec194f9887b88b94191b4125da0f41b5e9e0a1",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "3fa61b0ea28305559f8405fc2bca24a532586a9016dbb391c7fd1a15367cade3",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "codex exec --ephemeral --sandbox read-only --skip-git-repo-check --ignore-rules -C '$BENCHMARK_WORKSPACE' --model gpt-6-astra -c 'model_reasoning_effort=\"medium\"' --output-last-message '$BENCHMARK_WORKSPACE/.design-craft-host-output.md' -",
+  "output_path": "codex-output.md",
+  "output_sha256": "142ce0f8516f7abbcc99e6dc2dc9644cccc59f259eabb47d140cb312599393e8",
+  "score": 93,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Resolves `adaptive` from PRODUCT.md and states the forced geometry and identical treatments 'conflict with the native adaptation explicitly allowed by DESIGN.md'; the parity matrix keeps semantic roles shared. Authority separation is implied rather than labeled as its own line, so one point is withheld."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 11,
+      "note": "Applies iOS (44pt, SF Symbols, Reduce Motion), Android (48dp, predictive Back, rail/drawer), adaptive, and validation guidance, and says 'available platform, adaptive, interaction, and validation references informed this critique'. No specific references are named, and the physics content stays general beyond removing overshoot."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 15,
+      "note": "Repairs focus on navigation, targets, scaling, draft persistence, and restrained motion ('Remove decorative overshoot'). It suggests no decorative styling."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 15,
+      "note": "Opens with 'Evidence: L0 static, prose only' and says verdicts are 'not observed runtime failures or store-review predictions'. Every validation step is marked 'proposed, not executed'."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 15,
+      "note": "Splits claims into 'Established from the prompt', 'Derived' (including the conditional 4.48:1 contrast), and 'Unverified'. Each finding also has a 'Runtime unknown' column."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "M1-M7 cover targets, scaling and semantics, native stack and predictive Back, window-driven list/detail, motion alternatives, semantic theming, and native controls, plus a full parity matrix. Moves are slightly less specific than they could be, for example 'Adapt navigation when space warrants it'."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 9,
+      "note": "56 lines, exactly five blocking findings plus one P2, and seven moves are all within limits. The Analytics parity row is a minor stretch beyond native UI conformance."
+    }
+  }
+}

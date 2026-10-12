@@ -1,0 +1,71 @@
+{
+  "schema": "design-craft.cross-agent-score.v5",
+  "task_id": "same-prompt-motion-review",
+  "agent": "pi",
+  "verified": true,
+  "agent_version": "1.1.0",
+  "model": "codex/gpt-6-astra",
+  "model_observation": "requested_by_cli",
+  "reasoning_profile": "medium",
+  "reasoning_observation": "requested_by_cli",
+  "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "date": "2026-10-12",
+  "prompt_sha256": "15b25396696901c46fd0dde92cd556d10f30179ca38df969ab796228ce6d207f",
+  "scorecard_json_sha256": "5b0b6a0d6df83ce49b9e2c598a9cdd79149efca50a9e12069667bc008462d183",
+  "contract_sha256": "10f9092ad2bdbbb3157607736678244a30b968e918ad1b4a30ad51716a970e96",
+  "run_manifest_path": "run.pi.json",
+  "run_manifest_sha256": "827d61857a76d15208b2f51470940c955fbe14d784654be3239b9336ca82ff29",
+  "skill_version": "0.7.0",
+  "skill_source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+  "skill_source_dirty": false,
+  "repo_dirty": true,
+  "release_state": "unknown",
+  "skill_tree_sha256": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb",
+  "skill_path": "$BENCHMARK_WORKSPACE/.pi/skills/design-craft",
+  "behavior_domain": "skill-motion-review",
+  "behavior_sha256": "e0aa26fe78ce38174a694de284ff6860a41f42f6c8a3a895ef04d33b941afd3f",
+  "behavior_source_dirty": false,
+  "projected_skill_tree_sha256": "d80520251feebbec592ee6b41c360f4e975299d4e425d383115ee3e27af90f55",
+  "provenance_skill_path": "~/Documents/sixseven/codeproject/craft67/packages/design-craft/skills/design-craft",
+  "command_summary": "pi --print --no-session --no-extensions --no-prompt-templates --no-skills --skill '$BENCHMARK_SKILL' --no-context-files --tools read,grep,find,ls --model codex/gpt-6-astra --thinking medium",
+  "output_path": "pi-output.md",
+  "output_sha256": "930c47c293c87792f3c3fe45dee0e6e17c08ee8fda05dafad23ac03e1c751fac",
+  "score": 91,
+  "criteria": {
+    "style_authority": {
+      "passed": true,
+      "earned": 14,
+      "note": "Opens with a 'Reading this as' read of a frequent-use calm utility operations sheet and ties the 480 ms ease-in settle to that context. Component role (draggable workspace, 'not a push button') is used to reject press scaling."
+    },
+    "reference_selection": {
+      "passed": true,
+      "earned": 12,
+      "note": "Visibly applies interaction-physics guidance (critical-damped spring, velocity handoff, projection horizon, bounded rubber-band) and a validation plan, but never names which references were selected, so credit is withheld for implicit selection."
+    },
+    "anti_generic_redesign": {
+      "passed": true,
+      "earned": 14,
+      "note": "Section 2 answers 'Yes, selectively' and lists what must not animate (transition: all, whole-sheet shrink, content/focus, overshoot under Reduced Motion); explicitly avoids bounce for a utility surface."
+    },
+    "evidence_level": {
+      "passed": true,
+      "earned": 14,
+      "note": "Labels evidence as 'static code plus product context' and states runtime consequences 'remain hypotheses'; F3 says layout animation adds 'performance risk, not proven dropped frames'."
+    },
+    "verified_boundary": {
+      "passed": true,
+      "earned": 14,
+      "note": "Separate Verified/Unverified lists cover lag, frame rate, focus behavior and accessibility; repairs are flagged 'not tested fixes' and Reduced Motion/interruption are deferred to the validation plan."
+    },
+    "design_moves": {
+      "passed": true,
+      "earned": 14,
+      "note": "Eight moves cover handle-only press feedback, single translateY owner with capture and grab offset, presentation-value interruption, measured velocity into a spring, conditional projection formula, bounded rubber-band, and a Reduced Motion path. Hysteresis is not addressed."
+    },
+    "scope_control": {
+      "passed": true,
+      "earned": 9,
+      "note": "78 lines, exactly five blockers and eight moves, all within motion behavior and validation; the dense finding table is slightly heavy but priorities stay clear."
+    }
+  }
+}
