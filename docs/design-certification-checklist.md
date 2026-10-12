@@ -121,6 +121,20 @@ design-craft 在 emil-motion-planning 以 1 分落后，`comparative-observed-ch
 
 `operational_95` 候选检查 21/24 通过。剩余：性能回归（需 Linux CI 基准）、iOS 与 Android 原生运行证据。Claude、Cursor、真机属于 `certified_100` 范围，仍为 explicitly unverified。
 
+## 0.8.0 Operational 95 认证（2026-10-12）
+
+`design-craft/v0.8.0`（annotated，指向 `c4f54c5`）已通过 Operational 95 最终认证：
+
+| 步骤 | 运行 | 结果 |
+| --- | --- | --- |
+| 标签触发的原生运行证据（iOS Simulator + Android Emulator） | [38217597314](https://github.com/bigKING67/craft67/actions/runs/38217597314) | success |
+| 标签绑定的 operational-candidate 完整基准（基线 `benchmarks/baselines/v0.7.0-linux-x86_64-python3.13.json`） | [38218171294](https://github.com/bigKING67/craft67/actions/runs/38218171294) | success |
+| main 上的 Release certification（`operational_95`） | [38218715731](https://github.com/bigKING67/craft67/actions/runs/38218715731) | success |
+
+认证产物 `release-certification-design-craft-v0.8.0-38218715731` 保留至 2027-01-10。根 `native-runtime.yml` 为此启用了 `design-craft/v*` 标签触发。
+
+尚未执行 GitHub Release 发布；根仓库没有 Design 的发布工作流，发布需单独确认。Certified 100 仍需 Cursor、Claude 宿主与真机证据。
+
 ## 2026-10-12 Operational 95 候选检查：24/24
 
 在 `e1e6026` 上手动触发两个工作流，均成功：
