@@ -1,0 +1,54 @@
+{
+  "schema": "design-craft.comparative-scorecard.v1",
+  "total": 100,
+  "criteria": [
+    {
+      "id": "evidence_recon",
+      "label": "Evidence honesty and recon",
+      "weight": 15,
+      "full_credit": "Maps the static motion surface and labels every runtime or feel claim as unverified."
+    },
+    {
+      "id": "project_conventions",
+      "label": "Project conventions",
+      "weight": 10,
+      "full_credit": "Reuses supplied tokens and the correct local precedent instead of inventing a parallel system."
+    },
+    {
+      "id": "purpose_frequency",
+      "label": "Purpose and frequency",
+      "weight": 10,
+      "full_credit": "Prioritizes keyboard and high-frequency restraint plus causal feedback over decoration."
+    },
+    {
+      "id": "technical_accuracy",
+      "label": "Technical accuracy",
+      "weight": 15,
+      "full_credit": "Diagnoses property cost, origin, interruption, pointer tracking, and primitive tradeoffs without framework myths."
+    },
+    {
+      "id": "prioritization",
+      "label": "Prioritization",
+      "weight": 10,
+      "full_credit": "Vets and ranks a small set by user impact, frequency, confidence, and implementation cost."
+    },
+    {
+      "id": "plan_self_containment",
+      "label": "Plan self-containment",
+      "weight": 20,
+      "full_credit": "Plans include exact paths and excerpts, target behavior, steps, boundaries, and drift stop conditions."
+    },
+    {
+      "id": "verification_quality",
+      "label": "Verification quality",
+      "weight": 10,
+      "full_credit": "Provides targeted mechanical and runtime feel checks without claiming those checks ran."
+    },
+    {
+      "id": "accessibility_performance",
+      "label": "Accessibility and performance",
+      "weight": 10,
+      "full_credit": "Defines Reduced Motion behavior and measured performance checks while preserving useful feedback."
+    }
+  ]
+}

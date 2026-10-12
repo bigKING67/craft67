@@ -27,3 +27,9 @@ changed since, so the tranche cannot satisfy a current-source gate.
 python3 scripts/design_craft_cross_agent_validate.py \
   --history-root evals/cross-agent/history
 ```
+
+
+`2026-10-11/` preserves the score-v5/run-v3 Codex, Pi and Claude tranche
+collected with operator instructions isolated, before the 2026-10-12 Skill and
+output-admission changes. Three runs that failed the then-current "design move"
+wording check are recorded only as unverified notes.

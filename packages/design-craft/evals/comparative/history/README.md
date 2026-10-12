@@ -28,3 +28,8 @@ projection evidence.
 2026-09-19 with Pi `codex/gpt-5.5` (`high`) against the pre-monorepo `0.7.0`
 source. Their source commits are not in the craft67 history and the Skill has
 changed since, so they cannot satisfy a current-source gate.
+
+`2026-10-11/` preserves the run/result-v4 ablations collected with Pi
+`codex/gpt-6-astra` (`medium`) and a Claude judge, before the 2026-10-12
+motion-planning and motion-performance Skill changes. design-craft lost
+`emil-motion-planning-ablation` 91 to 92 in that tranche.
