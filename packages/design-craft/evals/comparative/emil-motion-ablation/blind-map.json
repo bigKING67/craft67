@@ -1,0 +1,35 @@
+{
+  "case_id": "emil-motion-ablation",
+  "focused_variant": "emil",
+  "judgment_schema_sha256": "6fc7376df30d7cff1ac8faf21ce6bcd63c76f72365458cfe0812ec88b16cd701",
+  "outputs": {
+    "A": {
+      "path": "output.design-craft.md",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "b7dd3b9e88d1215ce4181dfbd882867747dc07b26b8eecb21837056ebdb5a5c1",
+      "sha256": "c6ad08c6caf3bfe3c172059d2a734dcdc69747525b4544a84ad3c877a66e2e4b",
+      "variant": "design-craft"
+    },
+    "B": {
+      "path": "output.baseline.md",
+      "run_path": "run.baseline.json",
+      "run_sha256": "dc424723211e3e31fe61689abac289c3edeaa2471d03c000f1252772f632dd80",
+      "sha256": "bc2cfb94fc5d9c322d1affe1a1fe69e723ef392eb9a23b85a90f48dcf535702d",
+      "variant": "baseline"
+    },
+    "C": {
+      "path": "output.emil.md",
+      "run_path": "run.emil.json",
+      "run_sha256": "72eb0cf1e7eeffef05b5ed130f35b5f97c4447d6215ab81f8be661770bb7fc23",
+      "sha256": "f56e91432eadf4ac07841389bd2b5222738f7a17f0aef0553a6d205863373fb5",
+      "variant": "emil"
+    }
+  },
+  "packet_path": "blind-packet.md",
+  "packet_sha256": "69b6497bbb8689fa8378582dd136b9219ba210935841e8d2c18d57b57e4e7088",
+  "prompt_sha256": "32a158dae9908cefce2747965d6451cf024eb3a877438295898a75412e11e0c8",
+  "schema": "design-craft.comparative-blind-map.v3",
+  "scorecard_json_sha256": "8138c39d53d54e9513c89c172ab2cc5b53135fb06c58c4f42f99179b3b2f1c7e",
+  "scorecard_sha256": "89663cb8f65c3bd9387414a1f79fcf0789dad360d4287d15130189ed7c11ee72",
+  "seed_sha256": "4235e5d2ec099cb53b7169ea8126e8957a0b5e073428a741cec29460627d0ec2"
+}

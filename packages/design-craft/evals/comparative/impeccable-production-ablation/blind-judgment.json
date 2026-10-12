@@ -1,0 +1,48 @@
+{
+  "rationale": "All three audits stay read-only, claim no unrun tools and avoid a redesign. A wins narrowly. It pairs every finding with source evidence, the runtime unknowns, a concrete repair and its own acceptance test. Its validation plan is the most measurement-first: specific p95 and long-task thresholds, a cap on mounted rows, retained-heap limits, regression allowances and explicit rollback rules. C is close behind, with equally strong reconciliation and recovery coverage but less concrete performance gates. B covers detail well but softens the P0 severity and relies on generic field-metric budgets.",
+  "results": [
+    {
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 14
+      },
+      "label": "A",
+      "summary": "Orders the work correctly: audit, harden, optimize, then polish. It rates the silent save failure P0. Each finding labels its source evidence, separates runtime unknowns, gives a repair and states its own acceptance test. It has a full table of recovery states and uploads that covers object-URL cleanup. Its performance budgets are the most concrete of the three, with retained-heap limits, regression allowances and rollback rules. It reconciles detector signals carefully, though it covers select-all and live-region detail less fully than the other two.",
+      "total": 92
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 12,
+        "mode_sequence": 8,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "label": "B",
+      "summary": "Has a clear sequence and a readable findings table with escalation conditions. It handles each HTTP status well, including permissions, idempotency, scoped draft storage and per-item batch retries. Its separation of decisive from contextual signals is excellent. However, it rates the swallowed save error only a conditional P0, which weakens the severity ranking. Its performance budgets are generic field metrics rather than route-specific thresholds, and its fixes have no per-item acceptance conditions.",
+      "total": 89
+    },
+    {
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 13,
+        "mode_sequence": 9,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "label": "C",
+      "summary": "Uses a coherent P0-P3 ranking with explicit Source and Hypothesis labels, and rates the save failure P0. Its recovery-state table is thorough, including offline queueing and the case where a timeout follows a successful write. Accessibility coverage is strong, including product-specific checkbox names and the select-all mixed state. Its detector reconciliation is excellent and it avoids unsupported claims. Its performance budgets are reasonable but less detailed than A's, and its fixes are less tied to per-finding acceptance tests.",
+      "total": 91
+    }
+  ],
+  "winner": "A"
+}

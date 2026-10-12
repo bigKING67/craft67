@@ -1,0 +1,51 @@
+{
+  "rationale": "All three outputs are honest about the evidence, catch the main direct-manipulation defects and define a reduced-motion path. A wins on velocity and on rendering discipline. It specifies release velocity in px/s with a concrete clamped projection and passes the measured velocity into the settle. Its re-grab samples both the displayed position and the velocity. It is also the only output that explicitly handles conflicting transform ownership. C comes a close second, with strong interruption and snap-hysteresis detail, but it gives no units and ranks five findings as P0. B is thinner on velocity handoff and units.",
+  "results": [
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 9,
+        "performance": 10,
+        "velocity_projection": 14
+      },
+      "label": "A",
+      "summary": "A labels its evidence carefully throughout. It covers input lockout, pointer-ID ownership, pointer capture, cancellation, the grab offset and 1:1 tracking. On interruption, it samples both the displayed position and the velocity. It measures velocity in CSS px/s, gives a clamped projection formula, and passes velocity into a critically damped settle. It is the only output that explicitly handles conflicting transforms by composing them or using separate wrappers. Its Reduced Motion path is strong and includes a handle-only preview. One small weakness: it hedges on whether to adopt momentum-based targeting.",
+      "total": 97
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 14,
+        "motion_necessity": 9,
+        "performance": 9,
+        "velocity_projection": 11
+      },
+      "label": "B",
+      "summary": "B is honest about evidence and notes that something missing from the snippet is not proven missing from the full app. Its direct-manipulation coverage is complete, with a clear 1:1 clamp formula. On interruption, it resumes from the current rendered position but does not hand off velocity. Velocity projection is mentioned only in general terms: no units, and measured velocity is not fed into the settle. It rejects top and transition-all but does not address conflicting transform ownership. The Reduced Motion path and runtime plan are solid.",
+      "total": 92
+    },
+    {
+      "criteria": {
+        "accessibility": 10,
+        "actionability": 9,
+        "direct_manipulation": 15,
+        "evidence_honesty": 15,
+        "interruption": 15,
+        "motion_necessity": 9,
+        "performance": 9,
+        "velocity_projection": 13
+      },
+      "label": "C",
+      "summary": "C's labels clearly separate Evidence, Risk and Recommendation. Its ownership and coordinate analysis is thorough, and it covers lostpointercapture and touch-action. Interruption is continuous, with velocity retargeting and a guard against stale callbacks. Velocity uses a timestamped history, accounts for a pause before release, and adds a projected endpoint and hysteresis, but gives no units. It catches the offsetTop layout reads but does not discuss conflicting transform ownership. Marking five findings P0 weakens its prioritization a little.",
+      "total": 95
+    }
+  ],
+  "winner": "A"
+}

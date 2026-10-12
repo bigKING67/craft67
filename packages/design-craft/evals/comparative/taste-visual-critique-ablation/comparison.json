@@ -1,0 +1,154 @@
+{
+  "blind_map_sha256": "9e57953233f45fa6793e795f2040cb7d4e0355edd3c8bd39ce0af841a7a02584",
+  "blind_packet_sha256": "753111e577082d3a4e2a052635d291dd0199f9b89b238a7730d14bea207b2a42",
+  "case_id": "taste-visual-critique-ablation",
+  "focused_variant": "taste",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "0eb2ed31f9cfafa7ace02406ca76790d3a4d0b42535855b39991c11773d60b96",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "1436db3bfcecb373256990ae3bcb3c454bd4d01a8644c4cb7a120dcc416dd157",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.296 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "f80a55f5da5692ecd98e1a34f3ab5e0884af7840e14870655dfb99dc5306cf58",
+  "judgment_sha256": "5c64b37e1e7e31467fba24f82950280c3af7f4685e26a198e95c1b63889fe158",
+  "prompt_sha256": "24483d75b8bec334c978ae4f120d5523ec4ee54a1b8c3bbeef97aafbd6090ed9",
+  "rationale": "All three stay read-only, honest about evidence, and faithful to the product authority. C wins narrowly. It gives the most implementation-ready triage rules: deadline sort with impact as the tie-breaker, time-zone precision, five visible rows at 1366×768, and all seven fields retained. Its surface corrections are specific, including a fix for the uppercase labels, and it covers the full surface within budget. A is close behind with excellent traceability and a smart baseline-first validation step, but it is more verbose and has fewer findings. B's validation fixture is strong, but its acceptance criteria and visual-craft guidance are less concrete.",
+  "recorded_at": "2026-10-12T02:50:47Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 16,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 13,
+        "scope_discipline": 8,
+        "visual_craft": 12
+      },
+      "score": 84,
+      "summary": "Has solid 5+5 findings and 8 table-form moves that preserve the authority and workflows. The validation fixture (overdue, next-hour, high-impact later, similar names) is decisive and well judged. Its acceptance criteria are vaguer, for example 'agreed desktop reference viewport' and 'actionable rows' with no count. Its spacing and surface guidance is less specific than A or C."
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "anti_generic": 12,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 7,
+        "visual_craft": 14
+      },
+      "score": 88,
+      "summary": "Has a clear decision flow and moves that map back to each finding (B1–S4). Its acceptance criteria are concrete: 1366×768 with at least three rows visible, 14px/1.4 text, 8/16/24 spacing, no resting shadows, 4.5:1 contrast. It labels evidence honestly and starts validation with a baseline check. It uses only 4+4 findings, so it gives less attention to equal-emphasis and decorative defaults. The verbose table and paragraph format makes it the longest output."
+    },
+    "taste": {
+      "blind_label": "C",
+      "criteria": {
+        "anti_generic": 13,
+        "concrete_moves": 18,
+        "evidence_honesty": 9,
+        "product_fit": 14,
+        "product_hierarchy": 14,
+        "scope_discipline": 8,
+        "visual_craft": 14
+      },
+      "score": 90,
+      "summary": "Has the most specific triage logic. It sorts by deadline ascending with impact as the tie-breaker, uses absolute time with a time zone, requires five visible rows at 1366×768, and keeps all seven fields. Craft guidance is precise: sentence-case labels, 8/16/24 spacing, shadows only for overlays. It labels evidence honestly and notes the 64px header is fine. The validation plan is slightly broader than minimal (1024 width plus a 200% zoom pass)."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "fce00a94275af2560f20e1e69edb040a5c470a03a5caa51b71bb49ab07489c75",
+  "scorecard_sha256": "a1f750a6c735ff178260bcc806a0ad089d0c4de4e2ff0cfd466ffcd08317d989",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "bedae97fe3c42be27e85fd493e5f793a9fe73aec3391da60161c6f8a921a1724",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "d1367af6ac61fdaf45041b0d8053e14f2b322c44c7fbb4499539d094b108b85c",
+      "run_path": "run.baseline.json",
+      "run_sha256": "1f5f780aa3714cb90c3249595a12dae37f3e54e14d8ed94be2e82dc20efbccfa",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "bedae97fe3c42be27e85fd493e5f793a9fe73aec3391da60161c6f8a921a1724",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "f19020ce1775f0042d9e7833d1882bff3664ae9f28791089d85236e80fdeefcf",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "37d456a73edeb3b968ec4830f3953f1a537bb013a456a25fc05b41d40075ca3a",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a"
+      },
+      "source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-visual-critique",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "955e8251293c7419a771ad0bbad545c7365ee3809956fa65f5ed1caf8bcea76a",
+          "sha256": "188c162b0e5fec3eea0721fc66517663a9b0d54b58f3f15df23178429ba059bb",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+      },
+      "thinking": "medium"
+    },
+    "taste": {
+      "contract_sha256": "bedae97fe3c42be27e85fd493e5f793a9fe73aec3391da60161c6f8a921a1724",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.taste.md",
+      "output_sha256": "5e0a861bd923805f7588ba8a992426ce876d15599b7f774a3af7a73bcf844fdd",
+      "run_path": "run.taste.json",
+      "run_sha256": "92dac0fbeb8a71c51005e110883f58aa5330abcb33e498ddcbe75af0ac09bf1f",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+      "source_fingerprints": {
+        "upstreams/taste-skill/skills/redesign-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "sha256": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+          "source_dirty": false
+        },
+        "upstreams/taste-skill/skills/taste-skill": {
+          "kind": "tree",
+          "projected_tree_sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "sha256": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/taste-skill/skills/redesign-skill": "1fd74922e6bb2011c7c0d82aefd70d0cc1dbd31bd904054bec3f6cae4d731b90",
+        "upstreams/taste-skill/skills/taste-skill": "40ef50925b446e08a4ad5cead8edeb98f48982eb498b0073fe6a0b27ea736769"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "taste"
+}

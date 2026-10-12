@@ -1,0 +1,35 @@
+{
+  "case_id": "impeccable-production-ablation",
+  "focused_variant": "impeccable",
+  "judgment_schema_sha256": "8ab06e3fbd808dfb94de68b17ca25a94d56d3e15c485f64756f3528fdfdae4ce",
+  "outputs": {
+    "A": {
+      "path": "output.design-craft.md",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "3c05885b267ce12ddb03f72b0329fe08b8e3a7084e7f8008735d833c40896105",
+      "sha256": "03bc8c3d49427b2c4126a10c666c20620eeaa59eecb94179f88c8508797321b3",
+      "variant": "design-craft"
+    },
+    "B": {
+      "path": "output.baseline.md",
+      "run_path": "run.baseline.json",
+      "run_sha256": "1b30609baa840dd5ebf04e7a52e515bc28d5422aebc0dcb9be7a816b5f749b16",
+      "sha256": "3a115f87094038c5233bf0e6ac1cb48c1b19ad2cd30e943089704db0d279b053",
+      "variant": "baseline"
+    },
+    "C": {
+      "path": "output.impeccable.md",
+      "run_path": "run.impeccable.json",
+      "run_sha256": "445d7fefed75b0631fea9dd602bfce5601ae6d65d0119d4004ceb6d6552ba54f",
+      "sha256": "234335cf5b1552252ca05fd3ae16e1147e609c4eeec755dbe03cabd0e2056799",
+      "variant": "impeccable"
+    }
+  },
+  "packet_path": "blind-packet.md",
+  "packet_sha256": "90fdab7a2b8cde0ab40222664253104e4924d7dd0b56ce62601ad569f3ce42bd",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "schema": "design-craft.comparative-blind-map.v3",
+  "scorecard_json_sha256": "1941a30865724592c32ea8a4440e36e85cedc2d19bad7d65c9e4300de81ccd7b",
+  "scorecard_sha256": "b82445ccf5f79e3dcebbf76c7b4133151b0f54a6c8ddc3e348d7d0d5348230a2",
+  "seed_sha256": "4235e5d2ec099cb53b7169ea8126e8957a0b5e073428a741cec29460627d0ec2"
+}

@@ -1,0 +1,146 @@
+{
+  "blind_map_sha256": "ea5779b71ec89e23c3f75956c9adb6b4cba4bd188d04372dead697a579e17d89",
+  "blind_packet_sha256": "90fdab7a2b8cde0ab40222664253104e4924d7dd0b56ce62601ad569f3ce42bd",
+  "case_id": "impeccable-production-ablation",
+  "focused_variant": "impeccable",
+  "judge": {
+    "host": "claude",
+    "model": "claude-opus-5-5",
+    "model_observation": "requested_by_cli",
+    "raw_output_path": "judge-output.raw.txt",
+    "raw_output_sha256": "6ff2bfd93ab8c1af22d1e19975c6abaed6ad4ffdc201d22c19e2861b0493abd6",
+    "reasoning": "medium",
+    "reasoning_observation": "requested_by_cli",
+    "run_path": "run.judge.json",
+    "run_sha256": "f03c708e166f96da998f38090a073cc510f504e76bcf279145755e01855262fc",
+    "runner_os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "version": "2.1.296 (Claude Code)"
+  },
+  "judgment_path": "blind-judgment.json",
+  "judgment_schema_sha256": "8ab06e3fbd808dfb94de68b17ca25a94d56d3e15c485f64756f3528fdfdae4ce",
+  "judgment_sha256": "21d105b9c77b3a4e2f3341e3da953f199e1c066f11fe00656da5241588763c33",
+  "prompt_sha256": "8efbd7f3fc974e0abcb8ef0d736102db96436e596a93cb040717a757ff451fde",
+  "rationale": "All three audits stay read-only, claim no unrun tools and avoid a redesign. A wins narrowly. It pairs every finding with source evidence, the runtime unknowns, a concrete repair and its own acceptance test. Its validation plan is the most measurement-first: specific p95 and long-task thresholds, a cap on mounted rows, retained-heap limits, regression allowances and explicit rollback rules. C is close behind, with equally strong reconciliation and recovery coverage but less concrete performance gates. B covers detail well but softens the P0 severity and relies on generic field-metric budgets.",
+  "recorded_at": "2026-10-12T02:46:50Z",
+  "results": {
+    "baseline": {
+      "blind_label": "B",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 12,
+        "mode_sequence": 8,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "score": 89,
+      "summary": "Has a clear sequence and a readable findings table with escalation conditions. It handles each HTTP status well, including permissions, idempotency, scoped draft storage and per-item batch retries. Its separation of decisive from contextual signals is excellent. However, it rates the swallowed save error only a conditional P0, which weakens the severity ranking. Its performance budgets are generic field metrics rather than route-specific thresholds, and its fixes have no per-item acceptance conditions."
+    },
+    "design-craft": {
+      "blind_label": "A",
+      "criteria": {
+        "detector_reconciliation": 9,
+        "evidence_scope": 9,
+        "hostile_data": 18,
+        "measured_performance": 14,
+        "mode_sequence": 9,
+        "production_fixes": 19,
+        "responsive_accessibility": 14
+      },
+      "score": 92,
+      "summary": "Orders the work correctly: audit, harden, optimize, then polish. It rates the silent save failure P0. Each finding labels its source evidence, separates runtime unknowns, gives a repair and states its own acceptance test. It has a full table of recovery states and uploads that covers object-URL cleanup. Its performance budgets are the most concrete of the three, with retained-heap limits, regression allowances and rollback rules. It reconciles detector signals carefully, though it covers select-all and live-region detail less fully than the other two."
+    },
+    "impeccable": {
+      "blind_label": "C",
+      "criteria": {
+        "detector_reconciliation": 10,
+        "evidence_scope": 9,
+        "hostile_data": 19,
+        "measured_performance": 13,
+        "mode_sequence": 9,
+        "production_fixes": 17,
+        "responsive_accessibility": 14
+      },
+      "score": 91,
+      "summary": "Uses a coherent P0-P3 ranking with explicit Source and Hypothesis labels, and rates the save failure P0. Its recovery-state table is thorough, including offline queueing and the case where a timeout follows a successful write. Accessibility coverage is strong, including product-specific checkbox names and the select-all mixed state. Its detector reconciliation is excellent and it avoids unsupported claims. Its performance budgets are reasonable but less detailed than A's, and its fixes are less tied to per-finding acceptance tests."
+    }
+  },
+  "schema": "design-craft.comparative-result.v4",
+  "scorecard_json_sha256": "1941a30865724592c32ea8a4440e36e85cedc2d19bad7d65c9e4300de81ccd7b",
+  "scorecard_sha256": "b82445ccf5f79e3dcebbf76c7b4133151b0f54a6c8ddc3e348d7d0d5348230a2",
+  "variant_runs": {
+    "baseline": {
+      "contract_sha256": "bedae97fe3c42be27e85fd493e5f793a9fe73aec3391da60161c6f8a921a1724",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.baseline.md",
+      "output_sha256": "3a115f87094038c5233bf0e6ac1cb48c1b19ad2cd30e943089704db0d279b053",
+      "run_path": "run.baseline.json",
+      "run_sha256": "1b30609baa840dd5ebf04e7a52e515bc28d5422aebc0dcb9be7a816b5f749b16",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {},
+      "source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+      "source_fingerprints": {},
+      "source_trees": {},
+      "thinking": "medium"
+    },
+    "design-craft": {
+      "contract_sha256": "bedae97fe3c42be27e85fd493e5f793a9fe73aec3391da60161c6f8a921a1724",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.design-craft.md",
+      "output_sha256": "03bc8c3d49427b2c4126a10c666c20620eeaa59eecb94179f88c8508797321b3",
+      "run_path": "run.design-craft.json",
+      "run_sha256": "3c05885b267ce12ddb03f72b0329fe08b8e3a7084e7f8008735d833c40896105",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "skills/design-craft": "467d222d8c41241a02fabc9e42ebdc223072afc2f99229d54e4547c50164ac6c"
+      },
+      "source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+      "source_fingerprints": {
+        "skills/design-craft": {
+          "domain": "skill-production-review",
+          "kind": "evidence_domain",
+          "projected_tree_sha256": "467d222d8c41241a02fabc9e42ebdc223072afc2f99229d54e4547c50164ac6c",
+          "sha256": "3131b1e647306a77ef5d20487df0522db4220560a8952f7682f4e18a77463072",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "skills/design-craft": "67dc338391514456538c7be9ad3f96f272c43c053c94bc4deb06a8fded1f2abb"
+      },
+      "thinking": "medium"
+    },
+    "impeccable": {
+      "contract_sha256": "bedae97fe3c42be27e85fd493e5f793a9fe73aec3391da60161c6f8a921a1724",
+      "host": "pi",
+      "host_version": "1.1.0",
+      "model": "codex/gpt-6-astra",
+      "output_path": "output.impeccable.md",
+      "output_sha256": "234335cf5b1552252ca05fd3ae16e1147e609c4eeec755dbe03cabd0e2056799",
+      "run_path": "run.impeccable.json",
+      "run_sha256": "445d7fefed75b0631fea9dd602bfce5601ae6d65d0119d4004ceb6d6552ba54f",
+      "skill_install_mode": "isolated_case_projection",
+      "skill_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "source_commit": "5c4b85336f941b2e3f305d5eb9b23bdd4bc577f2",
+      "source_fingerprints": {
+        "upstreams/impeccable/.agents/skills/impeccable": {
+          "kind": "tree",
+          "projected_tree_sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "sha256": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f",
+          "source_dirty": false
+        }
+      },
+      "source_trees": {
+        "upstreams/impeccable/.agents/skills/impeccable": "a402eba7e7705aa0f648f5ff85a8b359ee77ba1732fe09dbc7e05416af34f14f"
+      },
+      "thinking": "medium"
+    }
+  },
+  "winner": "design-craft"
+}
