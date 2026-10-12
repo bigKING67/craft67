@@ -128,3 +128,9 @@ Adoption-screened range: `e79ca9ec7e071eb3a3b623c4fb752e853fc3ed58..ce26fc25c0e5
 See [the 2026-10-11 bounded adoption review](upstream-adoption-review-2026-10-11.md) for the exact range, path counts and exclusions.
 
 Adoption-screened range: `ce26fc25c0e5e8cab638f883de62d9a86ee5e45b..717446e07a78d4e6d7918b1fde1a263378eebac9`. Latest disposition: `provenance_only`. This does not advance the absorbed-behavior boundary.
+
+## 2026-10-12 adoption follow-up
+
+See [the 2026-10-12 bounded adoption review](upstream-adoption-review-2026-10-12.md) for the exact range and exclusions.
+
+Adoption-screened range: `717446e07a78d4e6d7918b1fde1a263378eebac9..d237dd399d57524945c0c81327da5da19f7a468d`. Latest disposition: `partial`. The selected behavior boundary advances to `e04409a461022e1b9d0e898eac6b9224e2b9dc4e` for the redesign-skill collapsible-sidebar rule only, now in the dashboard playbook of `surface-playbooks.md`.

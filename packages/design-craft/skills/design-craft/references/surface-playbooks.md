@@ -59,6 +59,12 @@ Primary job: monitor, compare, operate, decide.
 - A headline number that moves over time shows its recent history, with the
   onset marked when something changed and the data supports it.
 - Motion should be quiet and state-oriented.
+- A collapsible sidebar keeps expanded labels as the default and collapses to
+  an icon rail (about 56-72px), not to nothing; below the tablet breakpoint it
+  becomes an off-canvas drawer. Rail items keep their names in the DOM, show a
+  tooltip on hover and keyboard focus, and have 44x44px targets. The toggle is
+  a named button with `aria-expanded`, and the rail stays outside `inert` or
+  hidden ancestors.
 
 ## Persistent agent workspace
 

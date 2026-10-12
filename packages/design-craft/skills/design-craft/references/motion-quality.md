@@ -149,6 +149,20 @@ Rapidly-triggered UI should retarget smoothly.
   animation libraries are appropriate for dynamic, gesture-driven, or
   interruptible cases, but measure under load when smoothness matters.
 - Never make content inaccessible or invisible until JavaScript animation starts.
+- Budget against 120Hz screens (about 8ms per frame), and do not call motion
+  smooth because it ran well on a fast development machine.
+- Name the cause before proposing a fix: layout or paint property, busy main
+  thread, per-frame React re-render, inherited CSS variable, or large blur.
+  `will-change` comes last, only after an observed shift or measured drop.
+- Swap down a tier where the visual is the same: `scale()` instead of size or
+  padding, `translate()` instead of `top`/`left`/margin, and
+  `filter: drop-shadow()` instead of an animated `box-shadow`.
+- Hand-rolled animation writes to an element style or a motion value, not to
+  component state on every frame.
+- Motion that plays during navigation, fetching, or hydration belongs in CSS or
+  WAAPI. Motion-library `x`/`y`/`scale` shorthands use CSS variables, so pass a
+  full `transform` string when the main thread will be busy.
+- Keep animated `blur()` small, under about 20px; 2-5px softens a crossfade.
 
 ## Accessibility
 

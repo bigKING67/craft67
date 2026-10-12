@@ -27,6 +27,7 @@ LATEST_RANGE_ENTRYPOINT_DECISIONS = {
     "animate-expo": "partial",
     "write-swift": "intentionally_rejected",
     "mobile-native": "partial",
+    "animation-performance": "partial",
 }
 LATEST_RANGE_COVERAGE = {
     "paths": [
@@ -58,6 +59,10 @@ LATEST_RANGE_COVERAGE = {
         "UI/worklet/native path",
         "release build on every shipped target",
         "adaptive or cross-platform scope requires both iOS and Android",
+        "Budget against 120Hz screens",
+        "Name the cause before proposing a fix",
+        "filter: drop-shadow()",
+        "component state on every frame",
         "There are no universal duration",
     ],
 }
@@ -308,6 +313,7 @@ def self_check() -> None:
         "animate-expo": "partial",
         "write-swift": "intentionally_rejected",
         "mobile-native": "partial",
+        "animation-performance": "partial",
     }:
         raise RuntimeError("latest-range entrypoint decisions drifted")
 

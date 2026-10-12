@@ -142,6 +142,9 @@ Before presenting a finding:
    exact changed-property analysis.
 5. Separate corrective findings from additive opportunities.
 6. Rank by `user impact x frequency x confidence / implementation cost`.
+7. Name the plausible candidates you set aside, one line each with the reason,
+   such as a `transform-origin` or variable concern the evidence does not
+   support. Reviewers then see what was vetted out instead of guessing.
 
 Use one compact table:
 
@@ -178,6 +181,11 @@ history. Include:
 - Reduced Motion and interruption checks;
 - stop conditions when the source has drifted.
 
+Keep each plan to its selected correction. Do not add speculative
+experiments, alternative tuning studies, or extra features to a plan; record
+them as a missed opportunity instead. For every edit, show the complete current
+block and its complete replacement, not inline fragments.
+
 Do not turn generic reference values into false precision. If runtime feel must
 be tuned, give an initial bounded range, the evidence to collect, and the
 decision rule for choosing the final value.
@@ -208,6 +216,7 @@ Default audit output:
 - one-sentence motion diagnosis;
 - recon summary and evidence level;
 - at most eight vetted findings;
+- the candidates set aside, one line each with the reason;
 - at most four missed opportunities;
 - prioritized plan candidates;
 - explicit runtime checks needed before approval;

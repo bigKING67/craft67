@@ -29,10 +29,12 @@ evidence for an otherwise unchanged Skill tree.
 - Pinned compatibility commit:
   `b17742737e796305d829b3ad39eda3add0d79060`
 - Selected-behavior boundary:
-  `06d6028b5c623016c59ce8536f578e5a1127b499`
+  `e04409a461022e1b9d0e898eac6b9224e2b9dc4e`
 - Cumulative status: `selective_absorbed`; behavior through the initial
   `06d6028b5c623016c59ce8536f578e5a1127b499` snapshot is represented in the
   local visual-judgment, product-taste, design-move, and design-system layers.
+  The 2026-10-12 review adds only the redesign-skill collapsible-sidebar rule
+  to the dashboard playbook.
 - Local consolidation also selects supplied-image implementation and opt-in
   web concept-image direction into `image-reference-implementation.md` and
   `web-image-direction.md`. Editorial/tactile and motion-led options live in
@@ -106,8 +108,10 @@ production-readiness flows.
 - Pinned compatibility commit:
   `7bb7061b5cf7de15ea1aeaf00fbd9e6592a20fce`
 - Selected-behavior boundary:
-  `85e8e2363b713506e1d5b6e07a0eb2da66be1bc3`
-- Cumulative status: `selective_absorbed`; the motion-opportunity gate,
+  `6465079742eb019bc419caf2c352ecda03f5dfd8`
+- Cumulative status: `selective_absorbed`; the 2026-10-12 review adds the
+  animation-performance frame-budget and cause-first diagnosis guidance in
+  `motion-quality.md`. The motion-opportunity gate,
   calibrated prototype workflow, project-authorized Base UI-specific
   application, and conditional React Native/Expo motion ownership and evidence
   contract are local. Conditional mobile Web viewport, keyboard, safe-area and

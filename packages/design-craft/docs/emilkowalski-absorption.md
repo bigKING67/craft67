@@ -218,3 +218,13 @@ pre-date the mobile Web guidance and do not validate the current Skill tree:
 See [the current bounded adoption review](upstream-adoption-review-2026-10-06.md) for the exact new ranges, complete path counts, deferred candidates and exclusions. The compatibility inventories and previously absorbed behavior documented above remain unchanged; this follow-up imports no new Skill behavior.
 
 Adoption-screened range: `85e8e2363b713506e1d5b6e07a0eb2da66be1bc3..e8a175de22ae1e49370fc144c1f3bb9aeedf988d`. Latest disposition: `deferred`. This does not advance the absorbed-behavior boundary.
+
+## 2026-10-12 adoption follow-up
+
+See [the 2026-10-12 bounded adoption review](upstream-adoption-review-2026-10-12.md) for the exact range and exclusions.
+
+Adoption-screened range: `e8a175de22ae1e49370fc144c1f3bb9aeedf988d..2d228630ba1446365f614a108cb8252f1feda202`. Latest disposition: `partial`. The selected behavior boundary advances to `6465079742eb019bc419caf2c352ecda03f5dfd8` for the row below only; the 2026-10-06 `break-ui` range stays deferred.
+
+| Entrypoint | Status | Local target or boundary |
+| --- | --- | --- |
+| `animation-performance` | partial | `motion-quality.md` Performance: 120Hz frame budget, cause-first diagnosis with `will-change` last, cheaper-property swaps including `filter: drop-shadow()`, no component state on every frame, busy-main-thread motion in CSS/WAAPI with full `transform` strings, small animated blur. The initial-response ritual and report-then-stop default are not adopted. |
