@@ -117,6 +117,50 @@ class DesignWorkflowInputsTests(unittest.TestCase):
                                           env={**env, **change}, capture_output=True)
                 self.assertNotEqual(rejected.returncode, 0)
 
+    def test_publication_verifies_the_tag_after_main_moved_on(self):
+        # main moves past the tag; the workflow checks the tag out and binds it to the certification run.
+        tag_commit = self.git('rev-parse', 'HEAD').strip()
+        (self.package / 'NOTES.md').write_text('later docs\n')
+        self.git('add', '--', 'packages/design-craft/NOTES.md')
+        self.git('commit', '-qm', 'later docs')
+        self.git('checkout', '-q', '--detach', self.tag)
+        # Only the two GitHub queries are stubbed: certification run head and release existence.
+        bin_dir = self.root / 'bin'
+        bin_dir.mkdir()
+        gh = bin_dir / 'gh'
+        gh.write_text('#!/bin/sh\ncase "$1 $2" in\n'
+                      '  api\\ *) echo "$STUB_RUN_HEAD" ;;\n'
+                      '  "release view") exit "${STUB_RELEASE_EXISTS:-1}" ;;\n'
+                      '  *) exit 3 ;;\nesac\n')
+        gh.chmod(0o755)
+        output = self.root / 'github-output'
+        env = {**self.env, 'PATH': f'{bin_dir}:{os.environ["PATH"]}', 'RELEASE_TAG': self.tag,
+               'CONFIRM_PUBLICATION': f'publish-{self.tag}', 'CERTIFICATION_RUN_ID': '789',
+               'CERTIFICATION_ARTIFACT_ID': '456', 'CERTIFICATION_ARTIFACT_DIGEST': 'sha256:' + 'a' * 64,
+               'GITHUB_REPOSITORY': 'owner/repo', 'GITHUB_OUTPUT': str(output), 'STUB_RUN_HEAD': tag_commit}
+        script = run_block('release-publish.yml', 'Verify immutable publication inputs')
+        result = subprocess.run(['bash', '-c', script], cwd=self.package, env=env,
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(output.read_text(), f'source_commit={tag_commit}\n')
+        for change in ({'STUB_RUN_HEAD': self.git('rev-parse', 'main').strip()},
+                       {'STUB_RELEASE_EXISTS': '0'},
+                       {'RELEASE_TAG': 'v1.2.3'},
+                       {'CONFIRM_PUBLICATION': f'publish-{self.tag}-x'},
+                       {'CERTIFICATION_RUN_ID': '789; echo x'},
+                       {'CERTIFICATION_ARTIFACT_DIGEST': 'sha256:' + 'A' * 64}):
+            with self.subTest(change=change):
+                rejected = subprocess.run(['bash', '-c', script], cwd=self.package,
+                                          env={**env, **change}, capture_output=True)
+                self.assertNotEqual(rejected.returncode, 0)
+        # A lightweight tag is not an immutable release tag.
+        self.git('checkout', '-q', 'main')
+        self.git('tag', '-d', self.tag)
+        self.git('tag', self.tag, tag_commit)
+        self.git('checkout', '-q', '--detach', self.tag)
+        rejected = subprocess.run(['bash', '-c', script], cwd=self.package, env=env, capture_output=True)
+        self.assertNotEqual(rejected.returncode, 0)
+
 
 if __name__ == '__main__':
     unittest.main()
