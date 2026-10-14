@@ -133,7 +133,7 @@ design-craft 在 emil-motion-planning 以 1 分落后，`comparative-observed-ch
 
 认证产物 `release-certification-design-craft-v0.8.0-38218715731` 保留至 2027-01-10。根 `native-runtime.yml` 为此启用了 `design-craft/v*` 标签触发。
 
-GitHub Release [Design Craft 0.8.0](https://github.com/bigKING67/craft67/releases/tag/design-craft/v0.8.0) 已于 2026-10-12 手动发布（根仓库没有 Design 的发布工作流），附件为 `npm pack` 生成的 `design-craft-0.8.0.tgz` 与 `SHA256SUMS.txt`。Certified 100 仍需 Cursor、Claude 宿主与真机证据。
+GitHub Release [Design Craft 0.8.0](https://github.com/bigKING67/craft67/releases/tag/design-craft/v0.8.0) 于 2026-10-12 先手动发布，只有 `design-craft-0.8.0.tgz` 与合同外的 `SHA256SUMS.txt`，缺 `operational_95` 合同要求的 `.tgz.sha256`、`release-assets.json`、`spdx.json`，也没有构建来源证明。2026-10-14 删除该 Release（保留标签），由根 [Release publication](../.github/workflows/release-publish.yml) 按认证产物 `11732982786`（`sha256:6c09404e911cf4cf91e1fc32b669c1ce64c53ec767ccca61a10aa74dad764781`）重新发布：运行 [38500611499](https://github.com/bigKING67/craft67/actions/runs/38500611499) 成功，4 个合同资产与认证产物逐字节一致（tgz 仍为 `fdf4c148…`），`gh attestation verify` 全部通过，`design_craft_github_checks.py --level operational_95 --require-tag-run --require-release-assets` 在标签提交上通过。Certified 100 仍需 Cursor、Claude 宿主与真机证据。
 
 ## 2026-10-12 Operational 95 候选检查：24/24
 

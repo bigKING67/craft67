@@ -1,6 +1,6 @@
 # 发布流程迁移
 
-本页描述 craft67 的发布准备入口与尚未迁移的门禁。2026-10-06 核对时，GitHub Release 列表为空；版本文件存在不表示已发布。具体版本始终读取 catalog 指定的来源，正式发布遵循 [版本与发布](versioning.md)。
+本页描述 craft67 的发布准备入口与尚未迁移的门禁。2026-10-14 核对时，GitHub Release 有 Write Craft 0.3.0–0.3.2 与 Design Craft 0.8.0；其余包的版本文件存在不表示已发布。具体版本始终读取 catalog 指定的来源，正式发布遵循 [版本与发布](versioning.md)。
 
 ## 离线候选构建
 
@@ -51,7 +51,7 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 - **Write Craft：发布检查失败（2026-10-06）；2026-10-09 起 0.3.0 已通过。** 当日在 `a15cc0c` 上 Skill 摘要、用例 digest 与旧基线不一致，缺完整 PASS、探索披露、评审器校准与真人阅读摘要。之后重新采集了证据：冻结的 0.3.0 Skill 在 Sonnet 5.5 生成、火山方舟 DeepSeek Flash 评审下 21 条回归用例全部通过，评审器校准 35/35，3 份真实文档真人验收的记录以 sha256 绑定（`packages/write-craft/evals/baselines/pi-v0.3.0.json`）。没有复制旧 PASS、改摘要或放宽门禁。2026-10-10 起 0.3.1 通过：31 条用例首次运行全部 PASS、无重评，评审器校准 35/35（同版本首次为 34/35），3 份真实文档真人验收记录以 sha256 绑定（`packages/write-craft/evals/baselines/pi-v0.3.1.json`）。同日 0.3.2 通过：21 条回归用例首次运行全部 PASS、无重评，10 条探索用例 9 条 PASS（`readme-translation-keeps-parity` 失败并已披露），评审器校准 35/35，真人验收记录以 sha256 绑定（`pi-v0.3.2.json`）。
 - **Commerce：证据输入待准备。** `tooling/build/package_release.py` 明确要求 quality-regression 通过、干净当前 HEAD、完整选择/执行/评审/校准层、活跃安装一致性，以及同一个显式指定模型。当前未提供符合新 HEAD 的质量证据包；未执行正式打包或触发付费模型评测。仓库中的评测用例不是通过证据。
-- **Design：认证链迁移尚未完成。** operational/certified 产物构建需要 native observation、benchmark observation/result、证据目录及后续标签绑定校验。根手动认证入口已迁移，但尚未取得完整 tag-bound 认证成功证据，正式发布工作流仍在包内。本轮没有运行或宣称这些认证通过。
+- **Design：认证链迁移尚未完成（2026-10-06）；2026-10-12 起 0.8.0 已取得 `operational_95`。** operational/certified 产物构建需要 native observation、benchmark observation/result、证据目录及后续标签绑定校验。0.8.0 的标签触发 native、标签绑定基准与根认证运行均成功，2026-10-14 由根发布工作流发布带来源证明的合同资产，见 [Design 认证清单](design-certification-checklist.md)。`certified_100` 仍缺物理设备与四宿主证据。
 - **Browser67：先恢复平台验证入口。** 根 [Browser67 platform checks](../.github/workflows/browser67-platform.yml) 保留旧四格系统/Node 矩阵、Ubuntu 隔离 Chrome remote-CDP、覆盖率附件；只手动触发。它不访问用户浏览器配置，不运行真实 TMWD/Profile 验收，不代替 `release:ready` 中的 live、上游当前性与截图稳定性条件，因此暂不加入离线候选支持名单。
 
 剩余缺口是实际验收和工作流迁移工作，不是缺少版本号。六个已接入包的候选入口继续独立可用。
@@ -83,6 +83,8 @@ python3 scripts/candidate.py verify --package review-craft --directory /tmp/revi
 
 根 [Release certification](../.github/workflows/release-certify.yml) 只在 main 手动运行，输入现有 annotated Design 标签、native/benchmark run ID、包内 baseline 路径和 `certify-<完整标签>`。它重新观察指定运行、下载证据、执行 final 门禁、构建并验证认证包。源码 main、运行 SHA 和标签目标必须相同；不创建标签、不发布 Release、不授予 contents 写权限。附件采用不含斜杠的名称 `release-certification-design-craft-v<版本>-<run_id>`，工作流上传路径从仓库根指向包内产物。
 
-**尚未完成真实认证运行。** 根 `native-runtime.yml` 已在推送 `design-craft/v*` 标签时触发（2026-10-12 启用）；main 上的手动采集仍不能用作最终认证输入；需要后续在已确认的版本提交上取得合格 native、baseline 和宿主证据。`certified_100` 还要求 physical-device observation 和四宿主证据，根物理设备工作流尚未迁移，该等级目前不可完成。新增入口不改变这些门禁，也不代表十个包均已可正式发布。
+根 [Release publication](../.github/workflows/release-publish.yml) 只在 main 手动运行，输入认证级别、现有 annotated Design 标签、认证运行与产物 ID、产物 digest 和 `publish-<完整标签>`。它检出标签本身做校验（main 可以已经越过标签），要求认证运行构建的正是标签提交、Release 尚不存在；重新下载并核对产物 digest、用标签提交上的工具重验认证包，再为合同资产生成构建来源证明并创建 Release，说明中写入完整源码 SHA、认证运行、产物 digest 与各资产 sha256。
+
+**0.8.0 已完成 `operational_95` 认证运行（2026-10-12）。** 根 `native-runtime.yml` 在推送 `design-craft/v*` 标签时触发；main 上的手动采集不能用作最终认证输入。`certified_100` 还要求 physical-device observation 和四宿主证据，根物理设备工作流尚未迁移，该等级目前不可完成。新增入口不改变这些门禁，也不代表十个包均已可正式发布。
 
 当前认证证据的现场结果、真实评测调用清单和执行顺序见 [Design 认证证据核验与执行清单](design-certification-checklist.md)。
