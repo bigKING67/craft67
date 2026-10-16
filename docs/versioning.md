@@ -1,6 +1,6 @@
 # 独立包版本与发布
 
-craft67 是集合仓库，10 个包继续独立使用语义化版本。根仓库不另设与各包竞争的产品版本；整体源码快照用完整 commit SHA 标识。18 个 Skill 随各自所属包分发：Commerce 的八个 Skill 随一个 pack 版本，browser67 与 js-reverse 随 browser67 包版本，不另造重复版本。
+craft67 是集合仓库，11 个包继续独立使用语义化版本。根仓库不另设与各包竞争的产品版本；整体源码快照用完整 commit SHA 标识。19 个 Skill 随各自所属包分发：Commerce 的八个 Skill 随一个 pack 版本，browser67 与 js-reverse 随 browser67 包版本，不另造重复版本。
 
 ## 版本来源
 
@@ -8,7 +8,7 @@ craft67 是集合仓库，10 个包继续独立使用语义化版本。根仓库
 
 | 包 | 版本来源 |
 | --- | --- |
-| design-craft、creative-craft、review-craft、money-craft、3d-craft、reverse-craft、write-craft | 包根 `VERSION` |
+| design-craft、creative-craft、review-craft、money-craft、3d-craft、reverse-craft、write-craft、team-workflow-craft | 包根 `VERSION` |
 | whoami、browser67 | 包根 `package.json` 的 `version` |
 | commerce-growth-os | `skill-pack.json` 的 `pack_version` |
 

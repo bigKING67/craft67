@@ -1,0 +1,498 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Team Workflow Craft v1 exchange contracts",
+  "description": "Structural interchange contracts; neither identity attestation nor merge authorization. Extra observation fields are allowed.",
+  "$defs": {
+    "TaskRef": {
+      "type": "object",
+      "required": [
+        "provider",
+        "instance",
+        "repository",
+        "type",
+        "number"
+      ],
+      "properties": {
+        "provider": {
+          "enum": ["gitea", "cnb"]
+        },
+        "instance": {
+          "type": "string",
+          "format": "uri"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "issue",
+            "pr"
+          ]
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "CodeState": {
+      "type": "object",
+      "required": [
+        "head",
+        "base",
+        "base_ref",
+        "dirty",
+        "fingerprint",
+        "fingerprint_complete"
+      ],
+      "properties": {
+        "head": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "base_ref": {
+          "type": "string"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "fingerprint": {
+          "type": "string"
+        },
+        "fingerprint_complete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CheckResult": {
+      "type": "object",
+      "required": [
+        "check",
+        "argv",
+        "cwd",
+        "started_at",
+        "ended_at",
+        "exit_code",
+        "status",
+        "log_ref"
+      ],
+      "properties": {
+        "check": {
+          "type": "string"
+        },
+        "argv": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cwd": {
+          "type": "string"
+        },
+        "started_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ended_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exit_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not_run",
+            "incomplete"
+          ]
+        },
+        "log_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "WorkPacket": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "run_id",
+        "created_at",
+        "task_ref",
+        "workflow_owner",
+        "contract",
+        "sources",
+        "platform",
+        "code",
+        "policy_sha256",
+        "authority"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "WorkPacket"
+        },
+        "run_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "task_ref": {
+          "$ref": "#/$defs/TaskRef"
+        },
+        "workflow_owner": {
+          "enum": [
+            "team-workflow-craft",
+            "trellis"
+          ]
+        },
+        "contract": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "platform": {
+          "type": "object"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeState"
+        },
+        "policy_sha256": {
+          "type": "string"
+        },
+        "authority": {
+          "const": "derived_snapshot"
+        },
+        "actor": {
+          "$ref": "#/$defs/Actor"
+        }
+      }
+    },
+    "VerificationEvidence": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "run_id",
+        "created_at",
+        "task_ref",
+        "before",
+        "after",
+        "policy_sha256",
+        "toolchain",
+        "checks",
+        "status",
+        "provenance",
+        "ci_refs",
+        "drift"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "VerificationEvidence"
+        },
+        "run_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "task_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TaskRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "before": {
+          "$ref": "#/$defs/CodeState"
+        },
+        "after": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CodeState"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "policy_sha256": {
+          "type": "string"
+        },
+        "toolchain": {
+          "type": "object"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CheckResult"
+          }
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not_run",
+            "incomplete"
+          ]
+        },
+        "provenance": {
+          "const": "local_execution_unattested"
+        },
+        "ci_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "drift": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actor": {
+          "$ref": "#/$defs/Actor"
+        }
+      }
+    },
+    "Handoff": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "run_id",
+        "created_at",
+        "task_ref",
+        "packet",
+        "code",
+        "done",
+        "remaining",
+        "next_steps",
+        "evidence",
+        "platform",
+        "readiness",
+        "blockers",
+        "unknowns",
+        "merge_authorized",
+        "published"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "Handoff"
+        },
+        "run_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "task_ref": {
+          "$ref": "#/$defs/TaskRef"
+        },
+        "packet": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/$defs/CodeState"
+        },
+        "done": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remaining": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "next_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array"
+        },
+        "platform": {
+          "type": "object"
+        },
+        "readiness": {
+          "enum": [
+            "not_ready",
+            "advisory_ready",
+            "unknown"
+          ]
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "merge_authorized": {
+          "const": false
+        },
+        "published": {
+          "const": false
+        },
+        "actor": {
+          "$ref": "#/$defs/Actor"
+        },
+        "prepared_by": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Actor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "integrator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Actor": {
+      "type": "object",
+      "description": "Fresh local observation of a platform account and effective Git identity; not authentication attestation or task ownership.",
+      "required": [
+        "observed_at",
+        "platform",
+        "git",
+        "trust"
+      ],
+      "properties": {
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "platform": {
+          "type": "object",
+          "required": [
+            "provider",
+            "instance",
+            "status",
+            "observed_at",
+            "data"
+          ],
+          "properties": {
+            "provider": {
+              "enum": ["gitea", "cnb"]
+            },
+            "instance": {
+              "type": "string",
+              "format": "uri"
+            },
+            "status": {
+              "type": "string"
+            },
+            "observed_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "data": {
+              "type": [
+                "object",
+                "null"
+              ]
+            }
+          }
+        },
+        "git": {
+          "type": "object",
+          "required": [
+            "status",
+            "source",
+            "trust",
+            "author",
+            "committer"
+          ]
+        },
+        "trust": {
+          "const": "local_observation_not_identity_attestation"
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/TaskRef"
+    },
+    {
+      "$ref": "#/$defs/WorkPacket"
+    },
+    {
+      "$ref": "#/$defs/VerificationEvidence"
+    },
+    {
+      "$ref": "#/$defs/Handoff"
+    }
+  ]
+}

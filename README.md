@@ -2,7 +2,7 @@
 
 # craft67
 
-集中维护 Craft 工程与 Agent Skills 的源码仓库：设计、创意、工程审查、投资研究、商业经营、浏览器操作等能力在同一处维护，各包保留独立版本、依赖、测试与许可证。目前包含 10 个项目、18 个 Skill；准确入口和检查命令以 [catalog.json](catalog.json) 为准。
+集中维护 Craft 工程与 Agent Skills 的源码仓库：设计、创意、工程审查、投资研究、商业经营、浏览器操作等能力在同一处维护，各包保留独立版本、依赖、测试与许可证。目前包含 11 个项目、19 个 Skill；准确入口和检查命令以 [catalog.json](catalog.json) 为准。
 
 ## 选择能力
 
@@ -18,6 +18,7 @@
 | [3D Craft](packages/3d-craft/README.md) | Blender 产品道具、GLB 与 Web3D 查看器的制作和验证 | 3d-craft |
 | [Reverse Craft](packages/reverse-craft/README.md) | 授权范围内的逆向、CTF、DFIR、协议与威胁证据分析 | reverse-craft |
 | [Write Craft](packages/write-craft/README.md) | 将复杂方案、进展与工程说明整理为读者可判断、可行动的文档，并审查改写项目 README | write-craft |
+| [Team Workflow Craft](packages/team-workflow-craft/README.md) | 跨成员与 Agent 的任务契约、工作区检查、验证证据和交接 | team-workflow-craft |
 
 ## 使用 Skill
 

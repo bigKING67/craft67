@@ -281,6 +281,26 @@
         "path": "VERSION",
         "format": "text"
       }
+    },
+    {
+      "name": "team-workflow-craft",
+      "path": "packages/team-workflow-craft",
+      "skills": [
+        {
+          "name": "team-workflow-craft",
+          "path": "skills/team-workflow-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "python3",
+          "scripts/check.py"
+        ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
     }
   ]
 }

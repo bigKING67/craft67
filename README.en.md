@@ -2,7 +2,7 @@ English · [简体中文](README.md)
 
 # craft67
 
-The source repository for Craft projects and Agent Skills. Design, creative work, engineering review, investment research, commerce operations, browser automation, and more are maintained in one place, and each package keeps its own version, dependencies, tests, and license. It currently contains 10 projects and 18 Skills; for the exact entry points and check commands, [catalog.json](catalog.json) is the source of truth.
+The source repository for Craft projects and Agent Skills. Design, creative work, engineering review, investment research, commerce operations, browser automation, and more are maintained in one place, and each package keeps its own version, dependencies, tests, and license. It currently contains 11 projects and 19 Skills; for the exact entry points and check commands, [catalog.json](catalog.json) is the source of truth.
 
 ## Choose a capability
 
@@ -18,6 +18,7 @@ The source repository for Craft projects and Agent Skills. Design, creative work
 | [3D Craft](packages/3d-craft/README.md) | Building and verifying Blender product props, GLB files, and Web3D viewers | 3d-craft |
 | [Reverse Craft](packages/reverse-craft/README.md) | Authorized reverse engineering, CTF, DFIR, protocol, and threat-evidence analysis | reverse-craft |
 | [Write Craft](packages/write-craft/README.md) | Turns complex plans, progress, and engineering explanations into documents readers can evaluate and act on, and reviews and rewrites project READMEs | write-craft |
+| [Team Workflow Craft](packages/team-workflow-craft/README.md) | Shared task contracts, workspace checks, verification evidence, and handoffs across team members and agents | team-workflow-craft |
 
 ## Use a Skill
 
