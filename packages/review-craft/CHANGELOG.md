@@ -19,6 +19,16 @@ Selectively informed by [How the Claude Code team does code review](https://clau
 This update adds no schema, automated multi-pass workflow, or runtime history comparison.
 It does not claim a new model evaluation, host acceptance, installation, tag, or publication.
 
+### Scope selection
+
+- Normalize repeated leading `./` prefixes in current scope selectors so equivalent
+  directory, file, and root spellings retain the same canonical inventory. Keep literal
+  filename whitespace and POSIX backslashes unchanged, and preserve frozen run.v3/v4
+  selection semantics through the existing private compatibility path.
+- Add real-Git and filesystem inventory regressions, root-selector union checks, and a
+  CLI preflight/validation regression. Refresh only the Alibaba reference pin and reviewed
+  blobs for this selective adaptation; keep earlier adaptation provenance and exclusions.
+
 ## 0.7.3 — source update 2026-09-23 (not published)
 
 ### Verification

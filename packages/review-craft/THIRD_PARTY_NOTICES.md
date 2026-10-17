@@ -94,13 +94,15 @@ an adoption of Alibaba's project-rule loader or runtime.
 
 - Project: `alibaba/open-code-review`
 - Source: <https://github.com/alibaba/open-code-review>
-- Latest reviewed revision: `cf64e7080f600d507888a26785ad6a8b7a13ab6a` (2026-09-21)
+- Latest reviewed revision: `8eb83340a487b1150af00701b94f01af97e4b4d6` (2026-10-17)
 - Original adaptation review: `5d255d160f9707b05537fd933d7adb68ba999c88` (2026-08-28)
 - Reviewed source paths: `internal/session/manifest.go`,
   `internal/session/resume_identity.go`, `internal/diff/resolver.go`,
   `internal/config/rules/system_rules.go`, `internal/model/preview.go`,
   `internal/agent/preview.go`, `skills/open-code-review/SKILL.md`,
-  `internal/agent/selection.go`, and `internal/agent/preview_run_test.go`
+  `internal/agent/selection.go`, `internal/agent/preview_run_test.go`,
+  `internal/diff/git.go`, `internal/diff/git_cquoted_test.go`,
+  `internal/scan/provider.go`, and `internal/scan/provider_paths_test.go`
 - License: Apache-2.0
 
 The 2026-09-21 bounded review also informs selection consistency: fast preflight now
@@ -197,3 +199,11 @@ At `bccbc15f785269400735d5255540c231e6c02b6d`, the selected `internal/scan/provi
 boundaries, separating stderr from path data, and testing against real Git. The root-path
 fix is independently implemented; no Go runtime or source is copied. Earlier adaptation
 provenance remains unchanged.
+
+The 2026-10-17 bounded review at
+`8eb83340a487b1150af00701b94f01af97e4b4d6` also informs equivalence tests for
+leading `./` scope prefixes and the union of root and narrower selectors. Review Craft
+independently normalizes repeated prefixes in Python, preserving literal filename
+whitespace and POSIX backslashes. Its private run.v3/v4 validation path retains the
+original single-prefix behavior. No Go source, provider runtime, or upstream trimming
+policy is imported; exact reviewed blobs remain recorded in `contracts/upstreams.json`.

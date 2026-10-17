@@ -13,9 +13,11 @@ See [CHANGELOG.md](https://github.com/bigKING67/craft67/blob/main/packages/revie
 Version 0.7.4 adds host guidance for change attribution and convergent re-review: compare
 base and current behavior, retain candidate dispositions, review the relevant delta, and
 reassess after three non-converging review-and-fix rounds. It also connects project failure
-modes and accepted tradeoffs to decisive checks. These are on-demand review instructions;
-canonical schemas, command-retry semantics, and runtime capabilities are unchanged. No new
-model-quality or host-behavior result is claimed.
+modes and accepted tradeoffs to decisive checks. These are on-demand review instructions.
+The current runtime also fixes repeated leading `./` scope prefixes: equivalent directory,
+file, and root spellings select the same inventory while frozen run.v3/v4 validation keeps
+its original semantics. Canonical schemas, command-retry semantics, and supported workflows
+are unchanged. No new model-quality or host-behavior result is claimed.
 
 Version 0.7.2 rejects failed Git status reads before review or delivery evidence can claim
 a clean worktree. Automatic project profiling reads only inventory-bound ordinary text
@@ -414,6 +416,8 @@ validation inform our bounded workflow. Assured v2 content binding is independen
 implemented here; the full security-audit and mandatory multi-agent workflows are excluded.
 See [provenance and boundaries](THIRD_PARTY_NOTICES.md#cloudflare-security-audit-skill).
 Alibaba's Git path handling also informs preservation of whitespace and protocol boundaries.
+Its scope-selector fixes inform equivalent leading `./` spellings and root-selection union
+tests, independently implemented here without importing its provider runtime or trimming policy.
 When an upstream branch advances, `contracts/upstreams.json` records the latest reviewed
 revision and blobs; `THIRD_PARTY_NOTICES.md` separately preserves the original adaptation
 review where it differs.

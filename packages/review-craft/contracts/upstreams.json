@@ -77,8 +77,8 @@
       "id": "alibaba/open-code-review#review-runtime-contracts",
       "repository": "https://github.com/alibaba/open-code-review",
       "branch": "main",
-      "reviewedRevision": "bccbc15f785269400735d5255540c231e6c02b6d",
-      "reviewedAt": "2026-09-22",
+      "reviewedRevision": "8eb83340a487b1150af00701b94f01af97e4b4d6",
+      "reviewedAt": "2026-10-17",
       "license": "Apache-2.0",
       "status": "selective_absorbed",
       "sourcePaths": [
@@ -108,8 +108,8 @@
         "internal/agent/preview_run_test.go": "81082b0a9f1dfa12719e0b0d5c0608fc8a0b3413",
         "internal/diff/git.go": "babfd1e7e2743cca1956504b9b8fe6d09bfec07b",
         "internal/diff/git_cquoted_test.go": "e8d13d5d03a95e6692b4675f89c233b7ab7eca09",
-        "internal/scan/provider.go": "a0471ed3bc32195d4c830a920dad966a5e8ca617",
-        "internal/scan/provider_paths_test.go": "681f4dc1d76c90077649b077f3d6d2cc0755a886"
+        "internal/scan/provider.go": "45622407e5eedc9c62039f45bb7cc1f53c75b83f",
+        "internal/scan/provider_paths_test.go": "5bb54cf00ee05f987ca1738b8107326fe5ea4157"
       },
       "absorbedSurfaces": [
         "deterministic source-location anchoring with source-side and span-digest closure",
@@ -118,7 +118,8 @@
         "explicit skip reasons for unavailable or untrusted automatic-profile inputs",
         "shared eligibility decisions across fast preflight, coverage, and budget validation",
         "selection parity tests distinguishing accounted files from budget-eligible files",
-        "Git path identity preserves filename whitespace and separates protocol terminators from path bytes, backed by real Git fixtures"
+        "Git path identity preserves filename whitespace and separates protocol terminators from path bytes, backed by real Git fixtures",
+        "equivalent leading dot-prefix scope selectors preserve inventory, and root selection widens narrower selectors; independent Python implementation preserves literal path characters and frozen protocol semantics"
       ],
       "watchSurfaces": [
         "coverage-derived run terminal states",

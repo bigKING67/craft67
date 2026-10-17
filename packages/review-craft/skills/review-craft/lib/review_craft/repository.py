@@ -231,9 +231,15 @@ def _matches(path: str, patterns: Iterable[str]) -> bool:
     return False
 
 
-def _is_in_scope(path: str, scopes: Iterable[str]) -> bool:
+def _is_in_scope(
+    path: str, scopes: Iterable[str], *, _legacy_identity: bool = False
+) -> bool:
     for scope in scopes:
-        normalized = scope.removeprefix("./").rstrip("/")
+        normalized = scope.removeprefix("./")
+        # Frozen run.v3/v4 readers retain their original single-prefix selection.
+        while not _legacy_identity and normalized.startswith("./"):
+            normalized = normalized.removeprefix("./")
+        normalized = normalized.rstrip("/")
         if not normalized or normalized == ".":
             return True
         if path == normalized or path.startswith(normalized + "/"):
@@ -555,7 +561,7 @@ def inventory(
     excluded: list[dict[str, str]] = []
     for relative in candidate_paths:
         relative = Path(relative).as_posix()
-        if not _is_in_scope(relative, scopes):
+        if not _is_in_scope(relative, scopes, _legacy_identity=_legacy_identity):
             excluded.append({"path": relative, "reason": "outside configured scope"})
             continue
         if _matches(relative, exclude_patterns):
