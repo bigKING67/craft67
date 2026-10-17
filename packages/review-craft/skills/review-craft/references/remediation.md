@@ -4,6 +4,11 @@ Use this workflow only after a canonical review is sealed and the user explicitl
 selects findings to change. The runtime binds evidence and verifies the result; it
 never edits the target source itself.
 
+For a requested re-review, read the convergence guidance in
+[finding-lifecycle.md](finding-lifecycle.md). A host review-and-fix round may change
+source; an immutable fix-attempt retry requires the same source and bound configuration.
+Keep those counts and evidence separate, and preserve the baseline requirements below.
+
 ## 1. Prepare before editing
 
 The target must still match the sealed review. Select explicit finding IDs and the

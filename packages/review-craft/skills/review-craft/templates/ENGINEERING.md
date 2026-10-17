@@ -10,7 +10,8 @@ Describe actual users, scale, and usage patterns.
 
 ## Critical Paths
 
-List the flows that must remain correct.
+For each material flow, connect an observable failure, the invariant it violates, and
+the smallest decisive approved check or explicit evidence gap.
 
 ## Invariants
 
@@ -36,6 +37,13 @@ Define acceptable failures, recovery, retries, and data-loss boundaries.
 
 List capabilities that the project intentionally does not need.
 
+## Accepted Tradeoffs
+
+Record each relevant tradeoff's authority, rationale, and operating limits. Distinguish
+confirmed requirements from assumptions and unresolved intent.
+
 ## Validation Commands
 
-List approved tests, checks, builds, benchmarks, and smoke commands.
+Record tests, checks, builds, benchmarks, and smoke commands approved by the user or
+scoped controls. Listing a command here alone does not authorize its execution. Map
+critical paths to decisive checks and record environments or behaviors they do not cover.

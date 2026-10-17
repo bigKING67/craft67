@@ -5,10 +5,17 @@ agent understand a repository, account for review coverage, validate candidate f
 choose proportionate remediation, and preserve well-designed code instead of rewarding issue
 count.
 
-The current source version is **0.7.3**, pending formal publication. This source update
-does not create a `v0.7.3` tag, GitHub Release, or npm release. For a published installation,
+The current source version is **0.7.4**, pending formal publication. This source update
+does not create a tag, GitHub Release, or npm release. For a published installation,
 use an existing exact release tag or npm version rather than a moving branch.
-See [CHANGELOG.md](https://github.com/bigKING67/craft67/blob/main/packages/review-craft/CHANGELOG.md) for the 0.7.3 changes and compatibility boundary.
+See [CHANGELOG.md](https://github.com/bigKING67/craft67/blob/main/packages/review-craft/CHANGELOG.md) for the 0.7.4 changes and compatibility boundary.
+
+Version 0.7.4 adds host guidance for change attribution and convergent re-review: compare
+base and current behavior, retain candidate dispositions, review the relevant delta, and
+reassess after three non-converging review-and-fix rounds. It also connects project failure
+modes and accepted tradeoffs to decisive checks. These are on-demand review instructions;
+canonical schemas, command-retry semantics, and runtime capabilities are unchanged. No new
+model-quality or host-behavior result is claimed.
 
 Version 0.7.2 rejects failed Git status reads before review or delivery evidence can claim
 a clean worktree. Automatic project profiling reads only inventory-bound ordinary text
@@ -219,7 +226,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 \
 For this candidate the result should include:
 
 ```json
-{"ready": true, "version": "0.7.3"}
+{"ready": true, "version": "0.7.4"}
 ```
 
 Adjust the path for the Codex-only or Claude installation root.

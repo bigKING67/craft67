@@ -1,6 +1,6 @@
 {
   "name": "review-craft",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Evidence-driven engineering review, validation, remediation planning, and quality governance for real codebases.",
   "author": {
     "name": "bigKING67",

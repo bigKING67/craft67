@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.7.4 — source update 2026-10-17 (not published)
+
+### Review guidance
+
+- Describe whether a finding is introduced, exposed, pre-existing, or undetermined relative
+  to an explicit change boundary. Require causal base/current evidence and keep attribution
+  separate from validation, severity, and priority through existing free-text fields.
+- Guide explicitly requested host re-review toward the new diff and affected behavior,
+  retain prior candidate dispositions, and reassess the approach after three non-converging
+  review-and-fix rounds. Keep unchanged-source command retries and immutable canonical
+  evidence separate from host review rounds.
+- Add project-specific failure-mode examples and accepted-tradeoff guidance to the quality
+  model and engineering-context template. Connect observable failures to invariants and
+  decisive checks while preserving repository trust and command-authorization boundaries.
+
+Selectively informed by [How the Claude Code team does code review](https://claude.dev/blog/solving-code-review-at-anthropic/).
+This update adds no schema, automated multi-pass workflow, or runtime history comparison.
+It does not claim a new model evaluation, host acceptance, installation, tag, or publication.
+
 ## 0.7.3 — source update 2026-09-23 (not published)
 
 ### Verification

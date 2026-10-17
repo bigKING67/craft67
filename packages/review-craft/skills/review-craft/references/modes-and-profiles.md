@@ -25,6 +25,10 @@ Always provide an explicit base. Preflight resolves it to an immutable commit an
 records modified, added, renamed, copied, deleted, and untracked paths. Deleted files
 are hashed from the base commit. Do not silently replace a missing base with `HEAD`.
 
+When attributing a finding to this change, read the relationship guidance in
+[finding-lifecycle.md](finding-lifecycle.md). An unchanged faulty line can become a
+regression through a changed caller; an unrelated old defect has a different relationship.
+
 ```text
 python3 <skill-root>/scripts/review_craft.py preflight \
   --target . --mode diff --base origin/main

@@ -1,6 +1,6 @@
 [project]
 name = "review-craft-dev"
-version = "0.7.3"
+version = "0.7.4"
 description = "Development tooling for Review Craft"
 requires-python = ">=3.10"
 dependencies = []

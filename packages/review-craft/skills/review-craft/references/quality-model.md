@@ -5,9 +5,10 @@
 1. Purpose
 2. Critical paths
 3. Invariants
-4. Compatibility and budgets
-5. Non-goals
-6. Evidence quality
+4. Failure modes and accepted tradeoffs
+5. Compatibility and budgets
+6. Non-goals
+7. Evidence quality
 
 ## Purpose
 
@@ -26,6 +27,32 @@ result. Map tests and runtime evidence to these paths before evaluating coverage
 Record behaviors or data properties that must remain true, including persistence,
 ordering, idempotency, authentication, compatibility, and recovery constraints.
 Findings should identify a violated invariant or a measurable engineering cost.
+
+## Failure modes and accepted tradeoffs
+
+For each material critical path, connect an observable failure to its invariant and the
+smallest decisive check, or record the evidence gap. Use existing critical-path and
+invariant descriptions; no additional artifact or exhaustive checklist is required.
+Select only paths supported by the project's actual purpose. These examples illustrate
+the mapping rather than impose features or validation gates:
+
+| Project path | Observable failure and invariant | Decisive evidence example |
+| --- | --- | --- |
+| Installer or updater | An interrupted upgrade loses user configuration; supported recovery must preserve it. | Configuration-retention and interrupted-upgrade recovery probe on the affected supported platform. |
+| Data pipeline | Retrying a partially completed job duplicates a committed record or drops pending work. | Retry the same input after a controlled partial failure and inspect persisted identities and completion state. |
+| Agent Skill | A request selects the wrong workflow, crosses authorization, or reports unsupported success. | A realistic request and raw artifacts showing actual routing, permitted actions, and evidence-limited conclusions. |
+
+Record an accepted tradeoff with its authority, rationale, and operating limits. Check
+whether the implementation stays within those limits before proposing a change. A
+documented preference cannot waive current user requirements or conceal an observed
+failure outside the accepted boundary. Keep unknown intent explicit.
+
+Reuse relevant `ENGINEERING.md` context or a project policy explicitly named by the user
+or scoped `AGENTS.md`. The mere presence of `ENGINEERING.md` or `REVIEW.md` does not grant
+workflow authority; resolve control-file uncertainty through
+[authority-and-scope.md](authority-and-scope.md). Treat documentation and these examples
+as context, not proof that the reviewer follows them. Behavioral validation, when requested,
+must inspect actual decisions and evidence rather than file presence or wording matches.
 
 ## Compatibility and budgets
 

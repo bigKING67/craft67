@@ -132,8 +132,8 @@ boundary is active:
 - materially unclear project goals: `quality-model.md`;
 - accidental-complexity, consolidation, or removal candidates:
   `simplification.md`;
-- unresolved validation classification, candidate reconciliation, or
-  `DELETE`/`REWRITE` gates: `finding-lifecycle.md`;
+- change attribution, re-review convergence, unresolved validation classification,
+  candidate reconciliation, or `DELETE`/`REWRITE` gates: `finding-lifecycle.md`;
 - canonical full-review coverage and artifact flow: `workflow.md`;
 - numeric scoring and report finalization: `scoring-and-report.md`.
 
