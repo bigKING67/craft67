@@ -26,7 +26,7 @@ CNB 的开发者角色默认包含合并权限，必须配置保护规则并单�
 ## 成员第一次使用
 
 1. 用自己的账号访问仓库，在自己电脑建立独立 clone。Git HTTPS 凭据使用操作系统或批准的凭据管理器；不把密码/Token 放进 URL、终端命令参数、项目文件或聊天。
-2. 按 [固定产物安装](../README.md#固定构建与项目安装) 的预览和 `--apply` 安装项目副本。Claude、Codex、Pi 路径不同，共用同一产物；不复制另一人的全局配置。AIOS 使用 Trellis 托管模式。
+2. 仓库里已提交 `.agents/skills/team-workflow-craft/` 和 `.claude/skills/team-workflow-craft/` 时，clone 下来就能用，不用另外安装。否则由负责人按 [固定产物安装](../README.md#固定构建与项目安装) 安装一次并提交；只有项目不允许提交时，成员才各自安装项目副本。不复制另一人的全局配置。TWC 不依赖 Trellis；AIOS 使用 Trellis 托管模式，但没装 Trellis 的成员同样可以用 TWC。
 3. TWC 使用个人只读 Token。CNB 分别配置仅目标仓库的 `TWC_CNB_TOKEN` 和仅账户信息的 `TWC_CNB_IDENTITY_TOKEN`，六项读取权限见 [CNB 接入](../skills/team-workflow-craft/references/cnb.md)；实际账号仍需仓库可见权限。Gitea 使用 `TWC_GITEA_TOKEN` 与所需 read scopes。不要复用管理员写 Token。
 4. 先运行 `doctor --local`，按 `next_steps` 补齐项目配置或修正安装副本。再按 [成员身份](../skills/team-workflow-craft/references/identity.md) 在自己的 clone 设置 Git 姓名和邮箱；平台显示名可填写中文姓名。在所用宿主的新会话显式调用 Skill，运行 `doctor --online` 和 `workspace inspect`，核对平台 login 是本人、Git author/committer 正确。TWC 的个人只读 Token 与 Git push 的个人凭据分别配置。记录宿主/OS 版本、实际加载路径、产物哈希；文件安装成功不能代替会话加载验收。
 5. 读取任务和项目规范，确认验收及资源隔离，再开始修改。端口、测试数据库、Redis key、Docker 项目名和输出目录按任务隔离；不得用生产数据环境完成实习测试。

@@ -19,7 +19,7 @@ TWC 只做这三件事的确定性检查，载体是随任务分支提交的 `.t
 - 小任务直接按项目规范完成，不要求新 Issue、文档、子 Agent 或 CLI。
 - 普通协作记录目标、范围、验收与接手信息；多人改变接口时才增加分工、共享契约和集成负责人。
 - 风险与人数分开。一个人修鉴权仍需高强度验证；多人改普通界面不自动启动完整审计。
-- 已有 Trellis 时只选一个流程控制者。TWC 可只提供检查、证据和交接，不维护另一套任务状态。
+- 不需要 Trellis，默认就是独立模式。项目已经在用 Trellis 时只选一个流程控制者：TWC 只提供检查、证据和交接，不维护另一套任务状态；团队里没装 Trellis 的成员照样可以用 TWC。
 - 不调用模型、不管理模型 Key/Agent 进程、不启动常驻服务、不自动提交/推送/合并/部署。
 
 ## 快速开始
@@ -109,7 +109,9 @@ python3 scripts/install.py --artifact /path/to/approved-artifacts/team-workflow-
 
 安装器校验 ZIP/文件哈希，拒绝未知、漂移或 symlink 目标；固定版本重复安装幂等。只支持明确项目目标，正常升级需要检查旧安装无漂移并显式 `--allow-upgrade --apply`。ZIP 与清单必须来自批准来源：攻击者同时换掉二者时，本地哈希无法验证真实性。
 
-Codex/Pi 使用 `.agents/skills/team-workflow-craft/`；Claude 使用 `.claude/skills/team-workflow-craft/`。宿主规则尽量共用 AGENTS.md，Claude 如需 `CLAUDE.md` 导入由项目显式配置。工具不修改它们。三宿主发现路径、实际加载和独立包证据见 [兼容性](docs/compatibility.md)。
+Codex/Pi 使用 `.agents/skills/team-workflow-craft/`；Claude 使用 `.claude/skills/team-workflow-craft/`。
+
+**推荐：负责人装一次，提交进仓库。** 负责人分别用 `--host codex` 和 `--host claude` 安装，然后把这两个目录和 `.team-workflow/` 一起提交。成员 clone 后即可使用，只需要 Python 3.11+ 和 Git，不用另装 TWC，也不需要 Trellis。`doctor --local` 会核对 clone 下来的副本是否与安装清单一致。升级时由负责人 `--allow-upgrade --apply` 后提交，成员 pull 即可。项目若忽略了 `.claude/`，需要为 `.claude/skills/team-workflow-craft/` 加一条例外规则。宿主规则尽量共用 AGENTS.md，Claude 如需 `CLAUDE.md` 导入由项目显式配置。工具不修改它们。三宿主发现路径、实际加载和独立包证据见 [兼容性](docs/compatibility.md)。
 
 ## 开发与验收
 

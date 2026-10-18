@@ -76,8 +76,10 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
             alice.mkdir()
             git(alice, 'init', '-q', '-b', 'main')
             identity(alice, 'Alice')
+            # The lead installs once for every host and commits it; members install nothing.
             cli_a = install(alice, 'claude')
-            (alice / '.gitignore').write_text('.agents/\n.claude/\n__pycache__/\n')
+            install(alice, 'codex')
+            (alice / '.gitignore').write_text('__pycache__/\n')
             (alice / 'protocol.py').write_text('SUFFIX = ""\n')
             (alice / 'renderer.py').write_text('from protocol import SUFFIX\ndef render(text):\n    return text.strip() + SUFFIX\n')
             (alice / 'tests').mkdir()
@@ -85,7 +87,8 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                 'import unittest\nfrom protocol import SUFFIX\nfrom renderer import render\n'
                 'class CoreTests(unittest.TestCase):\n'
                 '    def test_suffix(self):\n        self.assertEqual(render(""), SUFFIX)\n')
-            commit(alice, 'Synthetic baseline', '.gitignore', 'protocol.py', 'renderer.py', 'tests/test_core.py')
+            commit(alice, 'Synthetic baseline', '.gitignore', '.agents', '.claude',
+                   'protocol.py', 'renderer.py', 'tests/test_core.py')
             # No external remote is contacted: origin is an isolated local bare repository.
             remote = root / 'shared.git'
             run(['git', 'init', '--bare', '-q', '-b', 'main', str(remote)])
@@ -109,7 +112,8 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
             for project, name in ((bob, 'Bob'), (integrator, 'sixseven')):
                 run(['git', '-c', 'core.hooksPath=' + str(root / 'no-hooks'), 'clone', '-q', str(remote), str(project)])
                 identity(project, name)
-            cli_b, cli_c = install(bob, 'codex'), install(integrator, 'pi')
+            # Codex and Pi share the committed .agents copy.
+            cli_b, cli_c = (project / '.agents/skills/team-workflow-craft/scripts/twc.py' for project in (bob, integrator))
             for project, cli in ((alice, cli_a), (bob, cli_b), (integrator, cli_c)):
                 diagnosis = twc(project, cli, 'doctor')
                 self.assertEqual(diagnosis['toolchain']['status'], 'matched')

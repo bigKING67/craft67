@@ -12,6 +12,7 @@
 - **Breaking**：证据的代码身份从"HEAD + dirty 指纹"改为排除任务目录的内容哈希 `tree_sha256`，同一内容无论是否提交都相同；所有产物 `schema_version=2`，不读取 v1 产物。`handoff` 去掉 `--packet/--evidence`，改为读取任务目录；`workspace inspect` 去掉 `fingerprint`，新增 `tree_sha256`、`staged`、`staged_outside_scope` 和 `task_metadata_changes`。迁移：升级后对进行中的任务重新 `prepare` 和 `verify`。
 - 交接拒绝 TODO、TBD、待补充等占位文本；未验证的验收条件自动列入 remaining。
 - 提交卫生：`resume` 报告暂存区中超出任务范围的文件，文档要求提交一律带 pathspec。
+- 成员零安装：推荐负责人安装 Codex/Claude 两个项目入口并提交进仓库，成员 clone 即可用，只需 Python 3.11+ 和 Git；跨 clone 验收改为这种方式。明确 TWC 不依赖 Trellis。
 
 ## 0.1.4 — Unreleased
 
