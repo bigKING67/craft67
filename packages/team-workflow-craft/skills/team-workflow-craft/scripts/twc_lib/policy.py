@@ -94,7 +94,7 @@ def load(root):
     permissions = config.get('permissions', {})
     strict_keys(permissions, ('auto_commit', 'auto_push', 'auto_publish_handoff', 'auto_merge'), 'permissions')
     if any(permissions.get(key) is not False for key in ('auto_commit', 'auto_push', 'auto_publish_handoff', 'auto_merge')):
-        raise WorkflowError('v0.1 requires all automatic external/Git write permissions to be false')
+        raise WorkflowError('Automatic external/Git write permissions must remain false')
     checks = config.get('checks', {})
     if not isinstance(checks, dict):
         raise WorkflowError('checks must be a TOML table')

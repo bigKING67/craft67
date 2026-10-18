@@ -2,12 +2,13 @@
 """Local team workflow tools. All commands emit JSON; no model or agent calls."""
 import argparse
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
 
 sys.dont_write_bytecode = True
-from twc_lib import actors, context, evidence, handoff, policy, workspace
+from twc_lib import actors, context, evidence, handoff, policy, tasks, workspace
 from twc_lib.models import WorkflowError
 from twc_lib.providers import ProviderError
 
@@ -18,7 +19,9 @@ def parser():
     cli.add_argument('--version', action='version', version=policy.runtime_identity()['version'])
     commands = cli.add_subparsers(dest='command', required=True)
     doctor = commands.add_parser('doctor', help='Inspect Git, config, lock and optional platform capability')
-    doctor.add_argument('--online', action='store_true', help='Read the configured collaboration platform')
+    diagnosis = doctor.add_mutually_exclusive_group()
+    diagnosis.add_argument('--online', action='store_true', help='Read the configured collaboration platform')
+    diagnosis.add_argument('--local', action='store_true', help='Read-only member setup check; works before init, no network')
     init = commands.add_parser('init', help='Preview a minimal project configuration; no host rule edits')
     init.add_argument('--base-url', required=True)
     init.add_argument('--provider', choices=('gitea', 'cnb'), default='gitea')
@@ -33,6 +36,12 @@ def parser():
     prepare.add_argument('--contract', help='Repository-relative JSON contract; no duplicate owner/status')
     prepare.add_argument('--offline', action='store_true')
     prepare.add_argument('--rebind', action='store_true', help='Explicitly switch this workspace to another task')
+    prepare.add_argument('--update-contract', action='store_true',
+                         help='Record a reviewed contract change; older evidence becomes stale')
+    resume = commands.add_parser('resume', help='Read-only start-of-session view: contract, acceptance, evidence, last handoff')
+    resume.add_argument('--task', help='issue:N or pr:N; default is the local binding or the task this branch changed')
+    lint = commands.add_parser('check', help='Lint committed task records; deterministic and safe for CI')
+    lint.add_argument('--task')
     ws = commands.add_parser('workspace', help='Inspect or explicitly create an isolated worktree')
     ws_commands = ws.add_subparsers(dest='workspace_command', required=True)
     inspect = ws_commands.add_parser('inspect')
@@ -48,16 +57,81 @@ def parser():
     verify.add_argument('--execute', action='store_true')
     verify.add_argument('--approved-policy')
     verify.add_argument('--online', action='store_true', help='Read the current platform operator before executing checks')
-    transfer = commands.add_parser('handoff', help='Generate local handoff drafts; v0.1 cannot publish')
+    verify.add_argument('--task', help='Record shareable evidence for this task; default is the current task')
+    transfer = commands.add_parser('handoff', help='Generate local handoff drafts; publishing is unsupported')
     transfer.add_argument('--draft', action='store_true')
-    transfer.add_argument('--publish', action='store_true', help='Unsupported in v0.1; fails without sending a request')
-    transfer.add_argument('--packet', required=True)
-    transfer.add_argument('--evidence', action='append', default=[])
+    transfer.add_argument('--publish', action='store_true', help='Unsupported; fails without sending a request')
+    transfer.add_argument('--task', help='issue:N or pr:N; default is the current task')
     transfer.add_argument('--done', action='append', default=[])
     transfer.add_argument('--remaining', action='append', default=[])
     transfer.add_argument('--next', dest='next_steps', action='append', default=[])
     transfer.add_argument('--online', action='store_true')
     return cli
+
+
+def project_entries(root, identity):
+    """Only inspect project-specific discovery paths, not unrelated user profiles/accounts."""
+    entries = []
+    for directory, hosts in (('.agents', ['codex', 'pi']), ('.claude', ['claude'])):
+        path = root / directory / 'skills/team-workflow-craft'
+        # Parent links must not turn a project-only check into a global profile scan.
+        linked = any(part.is_symlink() for part in (root / directory, path.parent, path))
+        entry = dict(path=str(path), hosts=hosts, exists=path.exists(), symlink=linked,
+                     is_current=not linked and path.resolve() == policy.SKILL_ROOT.resolve())
+        if linked:
+            entry['matches_runtime'] = False
+        elif path.exists():
+            try:
+                entry['matches_runtime'] = policy.runtime_identity(path) == identity
+            except (WorkflowError, OSError):
+                entry['matches_runtime'] = False
+        entries.append(entry)
+    return entries
+
+
+def local_doctor(root):
+    """Member setup check before or after init; never contacts the platform or runs project checks."""
+    state = root / '.team-workflow'
+    config_path, lock_path = state / 'config.toml', state / 'toolchain.lock.json'
+    identity = policy.runtime_identity()
+    integrity = policy.installation_integrity()
+    entries = project_entries(root, identity)
+    config_status, lock_status = 'missing', 'missing'
+    if (state.is_symlink() or (state.exists() and not state.is_dir())
+            or config_path.is_symlink() or lock_path.is_symlink()):
+        config_status, lock_status = 'unsafe_path', 'not_checked'
+    else:
+        if config_path.exists():
+            try:
+                policy.load(root)
+                config_status = 'valid'
+            except (WorkflowError, OSError, ValueError, KeyError, TypeError):
+                config_status = 'invalid'
+        if lock_path.exists():
+            try:
+                lock_status = policy.lock_status(root)['status']
+            except (WorkflowError, OSError, ValueError, KeyError, TypeError):
+                lock_status = 'invalid'
+    posix = os.name == 'posix'
+    entry_drift = integrity in ('mismatch', 'invalid_marker') or any(
+        row.get('matches_runtime') is False for row in entries)
+    next_steps = []
+    if config_status != 'valid':
+        next_steps.append('initialize_project' if config_status == 'missing' else 'review_project_config')
+    if lock_status != 'matched':
+        next_steps.append('review_toolchain_lock')
+    if entry_drift:
+        next_steps.append('review_project_installation')
+    if not posix:
+        next_steps.append('qualify_native_process_tree_verification')
+    next_steps.append('confirm_skill_loading_in_new_session')
+    attention = config_status != 'valid' or lock_status != 'matched' or not posix or entry_drift
+    return dict(status='attention_required' if attention else 'ok', scope='member_local_preflight',
+                project=str(root), python=sys.version.split()[0], git=shutil.which('git'), os=sys.platform,
+                project_config=config_status, toolchain=dict(status=lock_status), runtime=identity,
+                installation_integrity=integrity, project_entries=entries,
+                verification=dict(implementation='posix_process_group' if posix else 'unsupported'),
+                host_loading='unverified', platform=dict(status='not_requested'), next_steps=next_steps)
 
 
 def doctor(root, config, policy_hash, online):
@@ -73,16 +147,8 @@ def doctor(root, config, policy_hash, online):
                   installation_integrity=integrity, actor=actor)
     if actor['git']['status'] != 'available':
         report['status'] = 'attention_required'
-    # Only inspect project-specific discovery paths, not unrelated user profiles/accounts.
-    paths = [root / '.agents/skills/team-workflow-craft', root / '.claude/skills/team-workflow-craft']
-    report['project_entries'] = [dict(path=str(p), exists=p.exists(), symlink=p.is_symlink(),
-                                      is_current=p.resolve() == policy.SKILL_ROOT.resolve()) for p in paths]
-    for path, entry in zip(paths, report['project_entries']):
-        if path.exists() and not path.is_symlink():
-            try:
-                entry['matches_runtime'] = policy.runtime_identity(path) == lock['actual']
-            except (WorkflowError, OSError):
-                entry['matches_runtime'] = False
+    report['project_entries'] = project_entries(root, lock['actual'])
+    for entry in report['project_entries']:
         if entry.get('matches_runtime') is False or entry['symlink']:
             report['status'] = 'attention_required'
     if integrity in ('mismatch', 'invalid_marker') or code['repository_identity'] == 'mismatch':
@@ -111,6 +177,8 @@ def run(args):
     if args.command == 'handoff' and args.publish:
         raise WorkflowError('Publishing is unsupported; share reviewed drafts through the configured platform manually')
     root = workspace.root_for(Path(args.project))
+    if args.command == 'doctor' and args.local:
+        return local_doctor(root)
     if args.command == 'init':
         workspace.resolve(root, args.base_ref)
         return policy.init(root, args.base_url, args.repository, args.base_ref, args.workflow_owner, args.apply, args.provider)
@@ -122,11 +190,16 @@ def run(args):
             return dict(**workspace.inspect(root, config['integration']['base_ref'], args.scope), binding=context.binding(root))
         return workspace.create(root, args.path, args.branch, config['integration']['base_ref'], args.apply)
     if args.command == 'prepare':
-        return context.prepare(root, config, policy_hash, args.task, args.contract, args.offline, args.rebind)
+        return context.prepare(root, config, policy_hash, args.task, args.contract, args.offline, args.rebind,
+                               args.update_contract)
+    if args.command == 'resume':
+        return tasks.resume(root, config, policy_hash, policy.runtime_identity(), context.binding(root), args.task)
+    if args.command == 'check':
+        return tasks.check(root, config, args.task)
     if args.command == 'verify':
-        return evidence.verify(root, config, policy_hash, args.check, args.execute, args.approved_policy, args.online)
-    return handoff.draft(root, config, policy_hash, args.packet, args.evidence,
-                         args.done, args.remaining, args.next_steps, args.online)
+        return evidence.verify(root, config, policy_hash, args.check, args.execute, args.approved_policy, args.online,
+                               args.task)
+    return handoff.draft(root, config, policy_hash, args.task, args.done, args.remaining, args.next_steps, args.online)
 
 
 def main():

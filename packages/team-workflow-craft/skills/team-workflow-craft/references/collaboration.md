@@ -1,12 +1,14 @@
 # 工作区和集成
 
-不同成员各自 clone。同机并行任务按需 worktree；已独立的工作区无需再套一层。检查始终覆盖真实 Git 根：branch/base/head、暂存/未暂存/未跟踪、其他包 WIP、现有任务绑定。路径预警不代表锁或独占授权。
+不同成员各自 clone。同机并行任务或多个 Agent 尝试不同方案时，每个尝试用独立 worktree 和分支，结果按普通 PR 评审；已独立的工作区无需再套一层。检查始终覆盖真实 Git 根：branch/base/head、暂存/未暂存/未跟踪、其他包 WIP、现有任务绑定。路径预警不代表锁或独占授权。
 
 ```sh
 python3 <skill>/scripts/twc.py --project <repo> workspace inspect --scope packages/example
 python3 <skill>/scripts/twc.py --project <repo> workspace create --path <new-sibling-directory> --branch task/42
 # 查看目标和基线，已有授权覆盖后在同一命令加 --apply
 ```
+
+多个 Agent 会话共用一个 clone 时，暂存区可能有别的会话的文件。提交一律带 pathspec（`git add -- <paths>` 后 `git commit -m … -- <paths>`），提交前看一眼 `git diff --cached --name-only`；`resume` 和 `workspace inspect` 会列出 `staged_outside_scope`。
 
 只创建新路径和新分支，不 stash/reset/clean/覆盖现有工作目录。worktree 使用当前配置的本地 base_ref；不会自动 fetch，输出 `remote_freshness=unverified`。先按项目授权刷新基线。worktree 创建属于 Git 元数据写入，工具会说明影响。
 

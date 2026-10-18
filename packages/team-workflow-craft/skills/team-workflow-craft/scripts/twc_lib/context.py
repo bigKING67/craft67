@@ -2,7 +2,7 @@
 import json
 import os
 
-from . import actors
+from . import actors, tasks
 from .models import (WorkflowError, digest, envelope, local_target, now,
                      read_json, relative_path, save_local, task_ref, validate_contract)
 from .providers import from_config, ProviderError
@@ -44,7 +44,7 @@ def binding(root):
     return read_json(path) if path.exists() else None
 
 
-def prepare(root, config, policy_hash, task, contract_path=None, offline=False, rebind=False):
+def prepare(root, config, policy_hash, task, contract_path=None, offline=False, rebind=False, update_contract=False):
     ref = task_ref(config, task)
     current = binding(root)
     if current and current.get('task_ref') != ref and not rebind:
@@ -70,8 +70,9 @@ def prepare(root, config, policy_hash, task, contract_path=None, offline=False, 
         is_pr = bool(platform['data'].get('pull_request'))
         if ref['type'] == 'issue' and is_pr:
             raise WorkflowError('Issue number is a pull request; use pr:<number>')
-    packet = envelope('WorkPacket', task_ref=ref, workflow_owner=config['workflow_owner'],
-                      actor=actors.snapshot(root, config, online=not offline),
+    actor = actors.snapshot(root, config, online=not offline)
+    record, record_status = tasks.upsert(root, ref, contract, sources if contract else [], actor, update_contract)
+    packet = envelope('WorkPacket', task_ref=ref, workflow_owner=config['workflow_owner'], actor=actor,
                       contract=contract, sources=sources, platform=platform, code=code,
                       policy_sha256=policy_hash, authority='derived_snapshot',
                       warnings=['Refresh platform facts before assignment/integration; dependencies are references, not resolved.'])
@@ -82,20 +83,7 @@ def prepare(root, config, policy_hash, task, contract_path=None, offline=False, 
         json.dump(dict(task_ref=ref, packet=path), stream)
     os.replace(temp, binding_path)
     return dict(packet=path, task_ref=ref, platform_status=platform['status'],
-                contract_status='provided' if contract else 'missing', code=code, actor=packet['actor'])
-
-
-def load_packet(root, path):
-    packet = read_json(relative_path(root, path, must_exist=True))
-    if not isinstance(packet, dict) or packet.get('kind') != 'WorkPacket' or packet.get('schema_version') != 1:
-        raise WorkflowError('Expected a WorkPacket v1')
-    return packet
-
-
-def stale_sources(root, packet):
-    stale = []
-    for source in packet.get('sources', []):
-        path = relative_path(root, source['path'])
-        if not path.is_file() or digest(path.read_bytes()) != source['sha256']:
-            stale.append(source['path'])
-    return stale
+                contract_status='provided' if record['contract'] else 'missing', code=code, actor=actor,
+                task_record=(tasks.directory(root, ref) / 'task.json').relative_to(root).as_posix(),
+                task_record_status=record_status, revision=record['revision'], acceptance=record['acceptance'],
+                next_step='commit the task record on the task branch: ' + tasks.commit_hint(root, ref))

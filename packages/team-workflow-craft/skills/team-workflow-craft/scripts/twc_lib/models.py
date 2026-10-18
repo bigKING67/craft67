@@ -25,7 +25,7 @@ def canonical(value):
 
 
 def envelope(kind, **fields):
-    return dict(schema_version=1, kind=kind, run_id=uuid.uuid4().hex, created_at=now(), **fields)
+    return dict(schema_version=2, kind=kind, run_id=uuid.uuid4().hex, created_at=now(), **fields)
 
 
 def read_json(path):
@@ -115,10 +115,13 @@ def validate_contract(value, root):
     for name in ('goal', 'integrator'):
         if not isinstance(value.get(name), str) or not value[name].strip():
             raise WorkflowError(f'Contract requires {name}')
-    for name in ('non_goals', 'scope', 'dependencies', 'acceptance', 'contracts'):
+    for name in ('non_goals', 'scope', 'dependencies', 'contracts'):
         items = value.get(name)
         if not isinstance(items, list) or any(not isinstance(x, str) or not x.strip() for x in items):
             raise WorkflowError(f'Contract requires a string array: {name}')
+    if not isinstance(value.get('acceptance'), list):
+        raise WorkflowError('Contract requires an acceptance array')
+    acceptance_items(value)
     if not value['scope'] or not value['acceptance']:
         raise WorkflowError('Contract scope and acceptance cannot be empty')
     for path in value['scope']:
@@ -132,3 +135,31 @@ def validate_contract(value, root):
     for path in value['contracts']:
         relative_path(root, path, must_exist=True)
     return value
+
+
+def acceptance_items(contract):
+    """Numbered acceptance criteria. A plain string has no mapped check and needs human review."""
+    raw = (contract or {}).get('acceptance', [])
+    explicit = {item.get('id') for item in raw if isinstance(item, dict)}
+    items, seen, counter = [], set(), 0
+    for item in raw:
+        if isinstance(item, str):
+            item = dict(text=item)
+        if not isinstance(item, dict) or set(item) - {'id', 'text', 'checks'}:
+            raise WorkflowError('Acceptance items are strings or objects with id/text/checks')
+        identifier = item.get('id')
+        while identifier is None:
+            counter += 1
+            identifier = f'AC-{counter}' if f'AC-{counter}' not in explicit else None
+        text, checks = item.get('text'), item.get('checks', [])
+        if (not isinstance(identifier, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,63}', identifier)
+                or identifier in seen):
+            raise WorkflowError('Acceptance ids must be unique short identifiers')
+        if not isinstance(text, str) or not text.strip():
+            raise WorkflowError('Acceptance items require text')
+        if not isinstance(checks, list) or any(not isinstance(x, str) or not re.fullmatch(r'[A-Za-z0-9_-]+', x)
+                                               for x in checks):
+            raise WorkflowError('Acceptance checks must name configured checks')
+        seen.add(identifier)
+        items.append(dict(id=identifier, text=text.strip(), checks=list(dict.fromkeys(checks))))
+    return items

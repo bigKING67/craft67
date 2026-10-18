@@ -6,12 +6,12 @@ import re
 import subprocess
 from urllib.parse import urlsplit, urlunsplit
 
-from .models import WorkflowError, digest
+from .models import WorkflowError, canonical, digest
 
 
-def git(root, *args, allowed=(0,)):
+def git(root, *args, allowed=(0,), stdin=None):
     try:
-        result = subprocess.run(['git', '-C', str(root), *args], capture_output=True,
+        result = subprocess.run(['git', '-C', str(root), *args], capture_output=True, input=stdin,
                                 timeout=30, env=dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
     except (OSError, subprocess.TimeoutExpired) as exc:
         raise WorkflowError('Git unavailable or timed out') from exc
@@ -19,6 +19,14 @@ def git(root, *args, allowed=(0,)):
         # Raw stderr may contain credential-bearing remote URLs.
         raise WorkflowError(f'Git {args[0]} failed (exit {result.returncode})')
     return result.stdout
+
+
+def succeeds(root, *args):
+    try:
+        git(root, *args)
+        return True
+    except WorkflowError:
+        return False
 
 
 def root_for(path):
@@ -61,46 +69,95 @@ def paths_from_status(raw):
     return changes
 
 
+TASKS = '.team-workflow/tasks'
+CODE_PATHS = ('--', '.', ':(exclude)' + TASKS)
+
+
+def _in_scope(path, scope):
+    return any(path == item.rstrip('/') or path.startswith(item.rstrip('/') + '/') for item in scope)
+
+
+def _blob_id(algorithm, data):
+    return hashlib.new(algorithm, b'blob %d\0' % len(data) + data).hexdigest()
+
+
+def _tree(root, changes):
+    """Content identity of the working tree, excluding TWC task metadata.
+
+    Equal content gives an equal hash whether it is committed, staged or only in the
+    working tree, so committing task evidence does not invalidate the evidence itself.
+    """
+    algorithm = git(root, 'rev-parse', '--show-object-format', allowed=(0, 128)).decode().strip() or 'sha1'
+    if algorithm not in ('sha1', 'sha256'):
+        return None, False
+    file_mode = git(root, 'config', '--bool', 'core.fileMode', allowed=(0, 1)).decode().strip() != 'false'
+    entries, complete, regular = {}, True, []
+    for row in git(root, 'ls-files', '-s', '-z', *CODE_PATHS).split(b'\0'):
+        if not row:
+            continue
+        meta, path = row.split(b'\t', 1)
+        mode, oid, stage = meta.decode().split()
+        if stage != '0':
+            complete = False  # Unresolved merge entries have no single content.
+        entries[os.fsdecode(path)] = (mode, oid)
+    for item in changes:
+        for name in filter(None, (item.get('from'), item['path'])):
+            path = root / name
+            if path.is_symlink():
+                entries[name] = ('120000', _blob_id(algorithm, os.fsencode(os.readlink(path))))
+            elif path.is_file():
+                indexed = entries.get(name, ('100644',))[0]
+                mode = ('100755' if os.stat(path).st_mode & 0o100 else '100644') if file_mode else indexed
+                entries[name] = (mode, None)
+                regular.append(name)
+            elif path.exists():
+                complete = False  # Dirty submodule/nested repository contents are not bound.
+            else:
+                entries.pop(name, None)
+    if regular:
+        # Same clean filters (eol, LFS) Git applies on add; without -w no Git objects are written.
+        names = sorted(set(regular))
+        if any('\n' in name for name in names):
+            return None, False
+        oids = git(root, 'hash-object', '--stdin-paths', stdin=os.fsencode('\n'.join(names)) + b'\n').decode().split()
+        if len(oids) != len(names):
+            return None, False
+        for name, oid in zip(names, oids):
+            entries[name] = (entries[name][0], oid)
+    return digest(canonical(sorted([path, *value] for path, value in entries.items()))), complete
+
+
 def inspect(root, base_ref, scope=()):
     head, base = resolve(root, 'HEAD'), resolve(root, base_ref)
     branch = git(root, 'symbolic-ref', '--short', '-q', 'HEAD', allowed=(0, 1)).decode().strip() or None
-    raw = git(root, 'status', '--porcelain=v1', '-z', '--untracked-files=all', '--ignore-submodules=none')
-    changes = paths_from_status(raw)
-    state = hashlib.sha256(raw)
-    # Hash content rather than only status: two edits at one HEAD are not the same sample.
-    state.update(git(root, 'diff', '--binary', '--no-ext-diff', '--no-textconv', '--ignore-submodules=none', 'HEAD', '--'))
-    complete = True
-    for item in changes:
-        path = root / item['path']
-        state.update(os.fsencode(item['path']))
-        if path.is_symlink():
-            state.update(os.fsencode(os.readlink(path)))
-        elif path.is_file():
-            with path.open('rb') as stream:
-                for block in iter(lambda: stream.read(1024 * 1024), b''):
-                    state.update(block)
-        elif path.exists():
-            # Dirty submodule/nested repository contents cannot be bound by the parent's diff.
-            complete = False
-    staged = digest(git(root, 'diff', '--cached', '--binary', '--no-ext-diff', '--no-textconv', '--ignore-submodules=none', '--'))
-    state.update(staged.encode())
+    status = ('status', '--porcelain=v1', '-z', '--untracked-files=all', '--ignore-submodules=none')
+    changes = paths_from_status(git(root, *status, *CODE_PATHS))
+    task_changes = [row['path'] for row in paths_from_status(git(root, *status, '--', TASKS))]
+    tree, complete = _tree(root, changes)
+    staged = [os.fsdecode(path) for path in git(root, 'diff', '--cached', '--name-only', '-z', *CODE_PATHS).split(b'\0') if path]
     remotes = {}
     for name in git(root, 'remote').decode().splitlines():
         url = git(root, 'remote', 'get-url', name).decode().strip()
         remotes[name] = safe_remote(url)
     merge_base = git(root, 'merge-base', base, head, allowed=(0, 1)).decode().strip() or None
-    outside = [item['path'] for item in changes if scope and not any(
-        item['path'] == path.rstrip('/') or item['path'].startswith(path.rstrip('/') + '/') for path in scope)]
+    outside = [item['path'] for item in changes if scope and not _in_scope(item['path'], scope)]
     shared = [item['path'] for item in changes if item['path'] in ('catalog.json', 'package-lock.json', 'uv.lock', '.cnb.yml')
               or item['path'].startswith(('.github/', '.gitea/', 'migrations/'))]
     return dict(root=str(root), head=head, base=base, base_ref=base_ref, branch=branch,
-                base_is_ancestor=merge_base == base, remote_freshness='unverified', remotes=remotes,
-                dirty=bool(changes), changes=changes, outside_scope=outside, shared_paths=shared,
-                fingerprint=state.hexdigest(), fingerprint_complete=complete)
+                base_is_ancestor=merge_base == base, merge_base=merge_base, remote_freshness='unverified',
+                remotes=remotes, dirty=bool(changes), changes=changes, outside_scope=outside, shared_paths=shared,
+                staged=staged, staged_outside_scope=[path for path in staged if scope and not _in_scope(path, scope)],
+                task_metadata_changes=task_changes, tree_sha256=tree, fingerprint_complete=complete and tree is not None)
 
 
 def code_identity(snapshot):
-    return {key: snapshot[key] for key in ('head', 'base', 'fingerprint', 'fingerprint_complete')}
+    return {key: snapshot.get(key) for key in ('tree_sha256', 'base', 'fingerprint_complete')}
+
+
+def portable(snapshot):
+    """Code facts safe to commit: no local absolute paths, remotes or file listings."""
+    return {key: snapshot.get(key) for key in ('branch', 'head', 'base', 'base_ref', 'base_is_ancestor',
+                                                'tree_sha256', 'fingerprint_complete', 'dirty')}
 
 
 def repository_identity(config, snapshot):

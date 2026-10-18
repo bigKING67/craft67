@@ -2,7 +2,6 @@
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -52,8 +51,8 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                 return json.loads(run([sys.executable, str(cli), '--project', str(project), *args],
                                       cwd=project, expected=expected))
 
-            def prepare(project, cli):
-                return twc(project, cli, 'prepare', '--task', 'pr:8', '--contract', 'contract.json', '--offline')
+            def prepare(project, cli, *extra):
+                return twc(project, cli, 'prepare', '--task', 'pr:8', '--contract', 'contract.json', '--offline', *extra)
 
             def verify(project, cli, expected=0):
                 plan = twc(project, cli, 'verify')
@@ -61,15 +60,17 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                 return twc(project, cli, 'verify', '--execute', '--approved-policy', plan['policy_sha256'],
                            expected=expected)
 
-            def draft(project, cli, packet, evidence=None):
-                args = ['handoff', '--draft', '--packet', packet['packet'],
-                        '--done', 'Implemented the agreed renderer', '--next', 'sixseven reviews integration']
-                if evidence:
-                    args += ['--evidence', evidence['evidence']]
-                result = twc(project, cli, *args)
+            def draft(project, cli):
+                result = twc(project, cli, 'handoff', '--draft',
+                             '--done', 'Implemented the agreed renderer', '--next', 'sixseven reviews integration')
                 self.assertFalse(result['merge_authorized'])
                 self.assertFalse(result['published'])
                 return result
+
+            def share(project, message):
+                # Commit only the task directory, never another session's staged work.
+                git(project, 'add', '--', '.team-workflow/tasks')
+                git(project, 'commit', '-qm', message, '--', '.team-workflow/tasks')
 
             alice = root / 'alice'
             alice.mkdir()
@@ -98,7 +99,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                     [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests']) + '\ncwd = "."\n')
             contract = dict(goal='Trim and uppercase a name, then append the shared protocol suffix',
                             non_goals=['deployment'], scope=['renderer.py', 'tests'], dependencies=[],
-                            acceptance=['Core and feature checks pass together on the latest main'],
+                            acceptance=[dict(text='Core and feature checks pass together on the latest main', checks=['unit'])],
                             integrator='sixseven', contracts=['protocol.py'], complexity='L2', risk='normal')
             (alice / 'contract.json').write_text(json.dumps(contract))
             commit(alice, 'Shared workflow contract', '.team-workflow/config.toml',
@@ -117,7 +118,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                 self.assertFalse(twc(project, cli, 'workspace', 'inspect')['dirty'])
 
             git(alice, 'switch', '-qc', 'alice/renderer')
-            packet_a = prepare(alice, cli_a)
+            prepare(alice, cli_a)
             (alice / 'renderer.py').write_text('from protocol import SUFFIX\ndef render(text):\n    return text.strip().upper()\n')
             (alice / 'tests/test_feature.py').write_text(
                 'import unittest\nfrom protocol import SUFFIX\nfrom renderer import render\n'
@@ -126,37 +127,35 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
             commit(alice, 'Implement uppercase on the original baseline', 'renderer.py', 'tests/test_feature.py')
             record_a = verify(alice, cli_a)
             self.assertEqual(record_a['status'], 'passed')
-            handoff_a = draft(alice, cli_a, packet_a, record_a)
-            self.assertEqual(handoff_a['readiness'], 'unknown')
+            self.assertEqual(draft(alice, cli_a)['readiness'], 'unknown')
+            share(alice, 'twc: Alice hands off pr-8')
             git(alice, 'push', '-q', '-u', 'origin', 'alice/renderer')
             alice_head = git(alice, 'rev-parse', 'HEAD')
             (alice / 'unrelated-wip.txt').write_text('Keep the original developer work intact.\n')
             inspected = twc(alice, cli_a, 'workspace', 'inspect', '--scope', 'renderer.py')
             self.assertIn('unrelated-wip.txt', inspected['outside_scope'])
 
+            # Bob continues from the pushed branch alone: no copied files, packet or binding.
             git(bob, 'fetch', '-q', 'origin')
             git(bob, 'switch', '-qc', 'bob/renderer', 'origin/alice/renderer')
-            self.assertFalse((bob / packet_a['packet']).exists())
+            self.assertFalse((bob / '.team-workflow/local').exists())
+            view = twc(bob, cli_b, 'resume')
+            self.assertEqual(view['resolved_by'], 'branch_changes')
+            self.assertEqual(view['last_handoff']['next_steps'], ['sixseven reviews integration'])
+            self.assertEqual(view['acceptance'][0]['status'], 'verified')
+            self.assertEqual(view['checks']['unit']['actor']['git']['author']['name'], 'Alice')
+            self.assertEqual(view['handed_off_by']['git']['author']['name'], 'Alice')
             packet_b = prepare(bob, cli_b)
+            self.assertEqual(packet_b['task_record_status'], 'unchanged')
             self.assertEqual(packet_b['actor']['git']['author']['name'], 'Bob')
-            self.assertIn('required_verification_missing', draft(bob, cli_b, packet_b)['unknowns'])
-            # Explicitly transfer historical evidence; never copy local binding or another member's credentials.
-            history = bob / '.team-workflow/local/history'
-            history.mkdir()
-            previous = history / 'alice-verification.json'
-            shutil.copyfile(alice / record_a['evidence'], previous)
-            imported = {'evidence': str(previous.relative_to(bob))}
-            original = draft(bob, cli_b, packet_b, imported)
-            self.assertTrue(original['evidence'][0]['fresh'])
-            self.assertEqual(original['evidence'][0]['actor']['git']['author']['name'], 'Alice')
-            self.assertEqual(original['actor']['git']['author']['name'], 'Bob')
             (bob / 'tests/test_empty.py').write_text(
                 'import unittest\nfrom protocol import SUFFIX\nfrom renderer import render\n'
                 'class EmptyTests(unittest.TestCase):\n'
                 '    def test_empty(self):\n        self.assertEqual(render("  "), SUFFIX)\n')
             commit(bob, 'Add empty input acceptance', 'tests/test_empty.py')
-            stale = draft(bob, cli_b, packet_b, imported)
+            stale = draft(bob, cli_b)
             self.assertIn('stale_or_unrelated_evidence', stale['blockers'])
+            self.assertIn('verify: unit', twc(bob, cli_b, 'resume')['next_actions'])
             record_b = verify(bob, cli_b)
             self.assertEqual(record_b['status'], 'passed')
             self.assertEqual(record_b['actor']['git']['author']['name'], 'Bob')
@@ -167,42 +166,51 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
             run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests'], cwd=integrator)
             git(integrator, 'push', '-q', 'origin', 'main')
             git(bob, 'fetch', '-q', 'origin')
-            stale_base = draft(bob, cli_b, packet_b, record_b)
+            stale_base = draft(bob, cli_b)
             self.assertEqual(stale_base['readiness'], 'not_ready')
             self.assertIn('local_base_not_integrated', stale_base['blockers'])
             self.assertIn('stale_or_unrelated_evidence', stale_base['blockers'])
             git(bob, 'merge', '--no-edit', 'origin/main')
-            changed_contract = draft(bob, cli_b, packet_b, record_b)
+            changed_contract = draft(bob, cli_b)
             self.assertIn('task_or_interface_contract_changed', changed_contract['blockers'])
-            packet_b = prepare(bob, cli_b)
+            twc(bob, cli_b, 'prepare', '--task', 'pr:8', '--contract', 'contract.json', '--offline', expected=2)
+            self.assertEqual(prepare(bob, cli_b, '--update-contract')['revision'], 2)
             combined = verify(bob, cli_b, expected=1)
             self.assertEqual(combined['status'], 'failed')
-            self.assertIn('verification_not_passed', draft(bob, cli_b, packet_b, combined)['blockers'])
+            self.assertIn('verification_not_passed', draft(bob, cli_b)['blockers'])
             (bob / 'renderer.py').write_text('from protocol import SUFFIX\ndef render(text):\n    return text.strip().upper() + SUFFIX\n')
             commit(bob, 'Honor the current shared protocol', 'renderer.py')
             fixed = verify(bob, cli_b)
             self.assertEqual(fixed['status'], 'passed')
-            self.assertEqual(draft(bob, cli_b, packet_b, fixed)['readiness'], 'unknown')
+            self.assertEqual(draft(bob, cli_b)['readiness'], 'unknown')
+            share(bob, 'twc: Bob hands off pr-8')
             git(bob, 'push', '-q', '-u', 'origin', 'bob/renderer')
 
             git(integrator, 'fetch', '-q', 'origin')
             git(integrator, 'switch', '-qc', 'integration/renderer', 'origin/bob/renderer')
-            packet_c = prepare(integrator, cli_c)
+            view = twc(integrator, cli_c, 'resume')
+            self.assertEqual(view['revision'], 2)
+            self.assertEqual(view['handed_off_by']['git']['author']['name'], 'Bob')
+            self.assertEqual(view['acceptance'][0]['status'], 'verified')
+            self.assertEqual(twc(integrator, cli_c, 'check')['status'], 'ok')
+            prepare(integrator, cli_c)
             record_c = verify(integrator, cli_c)
-            final = draft(integrator, cli_c, packet_c, record_c)
+            final = draft(integrator, cli_c)
             self.assertEqual(record_c['status'], 'passed')
             self.assertEqual(final['actor']['git']['author']['name'], 'sixseven')
             self.assertEqual(final['integrator'], 'sixseven')
             self.assertEqual(final['readiness'], 'unknown')
             self.assertIn('platform_not_current', final['unknowns'])
+            share(integrator, 'twc: integration evidence for pr-8')
             git(integrator, 'switch', '-q', 'main')
             git(integrator, 'merge', '--ff-only', 'integration/renderer')
             git(integrator, 'push', '-q', 'origin', 'main')
-            self.assertEqual(git(integrator, 'rev-parse', 'HEAD'), record_c['after']['head'])
-            self.assertEqual(git(remote, 'rev-parse', 'refs/heads/main'), record_c['after']['head'])
+            # Committing task records does not change the verified code content.
+            merged = twc(integrator, cli_c, 'workspace', 'inspect')
+            self.assertEqual(merged['tree_sha256'], record_c['after']['tree_sha256'])
+            self.assertEqual(git(remote, 'rev-parse', 'refs/heads/main'), merged['head'])
             self.assertEqual(git(alice, 'rev-parse', 'HEAD'), alice_head)
             self.assertEqual((alice / 'unrelated-wip.txt').read_text(), 'Keep the original developer work intact.\n')
-
 
 if __name__ == '__main__':
     unittest.main()

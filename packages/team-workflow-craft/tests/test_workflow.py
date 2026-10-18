@@ -18,7 +18,7 @@ from twc_lib.providers import CNB
 import twc
 
 
-class WorkflowTests(unittest.TestCase):
+class Fixture(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -36,7 +36,7 @@ class WorkflowTests(unittest.TestCase):
         policy.init(self.root, 'https://gitea.example.invalid', 'team/product', self.base, apply=True)
         self.checks([('unit', 'print("ok")', 5)])
         self.contract = dict(goal='Deliver a feature', non_goals=['deployment'], scope=['a.txt'],
-                             dependencies=[], acceptance=['unit passes'], integrator='maintainer',
+                             dependencies=[], acceptance=[dict(text='unit passes', checks=['unit'])], integrator='maintainer',
                              contracts=[], complexity='L1', risk='normal')
         (self.root / 'contract.json').write_text(json.dumps(self.contract))
         self.git('add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json',
@@ -65,6 +65,20 @@ class WorkflowTests(unittest.TestCase):
         self.git('add', '.team-workflow/config.toml')
         self.git('commit', '-qm', 'CNB configuration')
 
+    def prepare(self, task='pr:3', **kwargs):
+        config, sha = self.configuration()
+        return context.prepare(self.root, config, sha, task, 'contract.json', offline=True, **kwargs)
+
+    def verify(self, **kwargs):
+        config, sha = self.configuration()
+        return evidence.verify(self.root, config, sha, execute_commands=True, approved_policy=sha, **kwargs)
+
+    def draft(self, online=False, task=None):
+        config, sha = self.configuration()
+        return handoff.draft(self.root, config, sha, task, ['feature complete'], [], ['review and integrate'], online)
+
+
+class WorkflowTests(Fixture):
     def test_cnb_doctor_reports_supported_reads_without_inventing_server_version(self):
         self.use_cnb()
         config, sha = self.configuration()
@@ -88,20 +102,21 @@ class WorkflowTests(unittest.TestCase):
                 packet = context.prepare(self.root, config, sha, 'issue:8', 'contract.json')
             record = self.verify(online=True)
             with patch.object(CNB, 'get_task', return_value=dict(number='8')):
-                result = self.draft(packet, [record], online=True)
+                result = self.draft(online=True)
         self.assertEqual(result['task_ref']['provider'], 'cnb')
         self.assertEqual(result['prepared_by']['platform']['data']['login'], 'alice')
-        self.assertEqual(result['evidence'][0]['actor']['platform']['data']['login'], 'bob')
+        self.assertEqual(result['checks']['unit']['actor']['platform']['data']['login'], 'bob')
         self.assertEqual(result['actor']['platform']['data']['login'], 'sixseven')
         self.assertEqual(result['readiness'], 'unknown')
         self.assertFalse(result['merge_authorized'])
         self.assertIn('issue_has_no_verified_delivery_pr', result['unknowns'])
         self.assertFalse(actors.attributed(result['actor'], 'https://cnb.cool', 'gitea'))
-        saved = json.loads((self.root / packet['packet']).read_text())
+        bound = self.root / '.team-workflow/local/binding.json'
+        saved = json.loads(bound.read_text())
         saved['task_ref']['provider'] = 'gitea'
-        (self.root / packet['packet']).write_text(json.dumps(saved))
+        bound.write_text(json.dumps(saved))
         with self.assertRaisesRegex(WorkflowError, 'another configured'):
-            self.draft(packet, [record])
+            self.draft()
 
     def test_provider_switch_rejects_stale_binding_before_execution(self):
         self.prepare()
@@ -134,19 +149,6 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(result['status'], 'passed')
         self.assertIn('separate_identity_token', result['actor']['platform']['credential_binding'])
 
-    def prepare(self, task='pr:3', **kwargs):
-        config, sha = self.configuration()
-        return context.prepare(self.root, config, sha, task, 'contract.json', offline=True, **kwargs)
-
-    def verify(self, **kwargs):
-        config, sha = self.configuration()
-        return evidence.verify(self.root, config, sha, execute_commands=True, approved_policy=sha, **kwargs)
-
-    def draft(self, packet, records=(), online=False):
-        config, sha = self.configuration()
-        return handoff.draft(self.root, config, sha, packet['packet'],
-                             [r['evidence'] for r in records], ['feature complete'], [], ['review and integrate'], online)
-
     def test_init_preview_has_no_side_effects_and_existing_config_is_protected(self):
         other = self.root.parent / 'other'
         other.mkdir()
@@ -164,7 +166,7 @@ class WorkflowTests(unittest.TestCase):
         file.write_text('second')
         second = workspace.inspect(self.root, self.base, ['a.txt'])
         self.assertIn('other-package/wip.txt', first['outside_scope'])
-        self.assertNotEqual(first['fingerprint'], second['fingerprint'])
+        self.assertNotEqual(first['tree_sha256'], second['tree_sha256'])
         self.assertEqual(first['head'], second['head'])
         self.assertEqual(workspace.root_for(self.root / 'other-package'), self.root)
 
@@ -205,7 +207,7 @@ class WorkflowTests(unittest.TestCase):
         self.git('remote', 'set-url', 'origin', 'git@company-alias:team/product.git')
         packet = self.prepare()
         record = self.verify()
-        result = self.draft(packet, [record])
+        result = self.draft()
         self.assertIn('git_remote_identity_unverified', result['unknowns'])
 
     def test_installed_marker_detects_content_drift(self):
@@ -220,7 +222,7 @@ class WorkflowTests(unittest.TestCase):
         config, sha = self.configuration()
         packet = context.prepare(self.root, config, sha, 'issue:3', offline=True)
         self.assertEqual(packet['contract_status'], 'missing')
-        result = self.draft(packet)
+        result = self.draft()
         self.assertIn('task_contract_missing', result['blockers'])
         self.assertEqual(result['readiness'], 'not_ready')
 
@@ -353,7 +355,7 @@ class WorkflowTests(unittest.TestCase):
     def test_handoff_unknown_without_current_platform_never_authorizes_merge(self):
         packet = self.prepare()
         record = self.verify()
-        result = self.draft(packet, [record])
+        result = self.draft()
         self.assertEqual(result['readiness'], 'unknown')
         self.assertFalse(result['merge_authorized'])
         self.assertFalse(result['published'])
@@ -365,7 +367,7 @@ class WorkflowTests(unittest.TestCase):
             observation = dict(status='observed', change=dict(status='observed', data=dict(
                 head=dict(sha=record['after']['head']), base=dict(sha=record['after']['base']))))
             with patch.object(handoff, 'platform_snapshot', return_value=observation):
-                result = self.draft(packet, [record], online=True)
+                result = self.draft(online=True)
         self.assertEqual(result['readiness'], 'advisory_ready')
         self.assertFalse(result['merge_authorized'])
 
@@ -384,11 +386,11 @@ class WorkflowTests(unittest.TestCase):
             observation = dict(task, change=dict(status='observed', data=dict(
                 head=dict(sha=record['after']['head']), base=dict(sha=record['after']['base']))))
             with patch.object(handoff, 'platform_snapshot', return_value=observation):
-                result = self.draft(packet, [record], online=True)
+                result = self.draft(online=True)
         saved_packet = json.loads((self.root / packet['packet']).read_text())
         self.assertEqual(saved_packet['platform']['data']['assignees'][0]['login'], 'alice')
         self.assertEqual(result['prepared_by']['platform']['data']['login'], 'alice')
-        self.assertEqual(result['evidence'][0]['actor']['platform']['data']['login'], 'bob')
+        self.assertEqual(result['checks']['unit']['actor']['platform']['data']['login'], 'bob')
         self.assertEqual(result['actor']['platform']['data']['login'], 'sixseven')
         self.assertEqual(result['integrator'], 'maintainer')  # Operator does not become integrator.
         self.assertFalse(result['merge_authorized'])
@@ -469,7 +471,7 @@ class WorkflowTests(unittest.TestCase):
     def test_missing_or_legacy_verification_actor_cannot_claim_attributed_handoff(self):
         packet = self.prepare()
         record = self.verify()
-        evidence_path = self.root / record['evidence']
+        evidence_path = self.root / record['task_evidence']
         legacy = json.loads(evidence_path.read_text())
         legacy.pop('actor')
         evidence_path.write_text(json.dumps(legacy))
@@ -477,17 +479,17 @@ class WorkflowTests(unittest.TestCase):
             observation = dict(status='observed', change=dict(status='observed', data=dict(
                 head=dict(sha=record['after']['head']), base=dict(sha=record['after']['base']))))
             with patch.object(handoff, 'platform_snapshot', return_value=observation):
-                result = self.draft(packet, [record], online=True)
+                result = self.draft(online=True)
         self.assertEqual(result['readiness'], 'unknown')
         self.assertIn('verification_actor_unverified', result['unknowns'])
-        self.assertIsNone(result['evidence'][0]['actor'])
+        self.assertIsNone(result['checks']['unit']['actor'])
 
     def test_old_evidence_same_head_different_dirty_bytes_is_stale(self):
         packet = self.prepare()
         (self.root / 'a.txt').write_text('first')
         record = self.verify()
         (self.root / 'a.txt').write_text('second')
-        result = self.draft(packet, [record])
+        result = self.draft()
         self.assertEqual(result['readiness'], 'not_ready')
         self.assertIn('stale_or_unrelated_evidence', result['blockers'])
 
@@ -495,7 +497,7 @@ class WorkflowTests(unittest.TestCase):
         packet = self.prepare()
         record = self.verify()
         (self.root / 'contract.json').write_text(json.dumps(dict(self.contract, goal='new goal')))
-        result = self.draft(packet, [record])
+        result = self.draft()
         self.assertIn('task_or_interface_contract_changed', result['blockers'])
 
     def test_worktree_create_preserves_existing_dirty_work_and_previews(self):

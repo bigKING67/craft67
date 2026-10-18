@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Team Workflow Craft v1 exchange contracts",
-  "description": "Structural interchange contracts; neither identity attestation nor merge authorization. Extra observation fields are allowed.",
+  "title": "Team Workflow Craft v2 exchange contracts",
+  "description": "Structural interchange contracts; neither identity attestation nor merge authorization. Extra observation fields are allowed. TaskRecord, VerificationRecord and Handoff live in .team-workflow/tasks/<type>-<number>/ and are committed with the task branch; WorkPacket and VerificationEvidence stay in ignored local state. v1 artifacts are not read.",
   "$defs": {
     "TaskRef": {
       "type": "object",
@@ -14,7 +14,10 @@
       ],
       "properties": {
         "provider": {
-          "enum": ["gitea", "cnb"]
+          "enum": [
+            "gitea",
+            "cnb"
+          ]
         },
         "instance": {
           "type": "string",
@@ -42,7 +45,7 @@
         "base",
         "base_ref",
         "dirty",
-        "fingerprint",
+        "tree_sha256",
         "fingerprint_complete"
       ],
       "properties": {
@@ -58,13 +61,26 @@
         "dirty": {
           "type": "boolean"
         },
-        "fingerprint": {
-          "type": "string"
-        },
         "fingerprint_complete": {
           "type": "boolean"
+        },
+        "tree_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "branch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "base_is_ancestor": {
+          "type": "boolean"
         }
-      }
+      },
+      "description": "tree_sha256 is the content identity of the working tree excluding .team-workflow/tasks/; equal content hashes equally whether committed or not."
     },
     "CheckResult": {
       "type": "object",
@@ -75,8 +91,7 @@
         "started_at",
         "ended_at",
         "exit_code",
-        "status",
-        "log_ref"
+        "status"
       ],
       "properties": {
         "check": {
@@ -122,6 +137,13 @@
             "string",
             "null"
           ]
+        },
+        "output_sha256": {
+          "type": "string"
+        },
+        "output_bytes": {
+          "type": "integer",
+          "minimum": 0
         }
       }
     },
@@ -143,7 +165,7 @@
       ],
       "properties": {
         "schema_version": {
-          "const": 1
+          "const": 2
         },
         "kind": {
           "const": "WorkPacket"
@@ -226,7 +248,7 @@
       ],
       "properties": {
         "schema_version": {
-          "const": 1
+          "const": 2
         },
         "kind": {
           "const": "VerificationEvidence"
@@ -299,6 +321,12 @@
         },
         "actor": {
           "$ref": "#/$defs/Actor"
+        },
+        "contract_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },
@@ -310,12 +338,14 @@
         "run_id",
         "created_at",
         "task_ref",
-        "packet",
+        "task_revision",
+        "contract_sha256",
         "code",
         "done",
         "remaining",
         "next_steps",
-        "evidence",
+        "acceptance",
+        "checks",
         "platform",
         "readiness",
         "blockers",
@@ -325,7 +355,7 @@
       ],
       "properties": {
         "schema_version": {
-          "const": 1
+          "const": 2
         },
         "kind": {
           "const": "Handoff"
@@ -340,9 +370,6 @@
         },
         "task_ref": {
           "$ref": "#/$defs/TaskRef"
-        },
-        "packet": {
-          "type": "string"
         },
         "code": {
           "$ref": "#/$defs/CodeState"
@@ -364,9 +391,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "evidence": {
-          "type": "array"
         },
         "platform": {
           "type": "object"
@@ -414,8 +438,48 @@
             "string",
             "null"
           ]
+        },
+        "task_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contract_sha256": {
+          "type": "string"
+        },
+        "acceptance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AcceptanceItem"
+          }
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "status",
+              "evidence"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "passed",
+                  "failed",
+                  "incomplete",
+                  "missing"
+                ]
+              },
+              "evidence": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
         }
-      }
+      },
+      "description": "handoff.json beside handoff.md; the latest handoff for the task, history kept by Git."
     },
     "Actor": {
       "type": "object",
@@ -442,7 +506,10 @@
           ],
           "properties": {
             "provider": {
-              "enum": ["gitea", "cnb"]
+              "enum": [
+                "gitea",
+                "cnb"
+              ]
             },
             "instance": {
               "type": "string",
@@ -479,6 +546,189 @@
           "const": "local_observation_not_identity_attestation"
         }
       }
+    },
+    "AcceptanceItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "text",
+        "checks"
+      ],
+      "description": "Numbered acceptance criterion. Empty checks means human review; it is never auto-verified.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "verified",
+            "pending",
+            "failed",
+            "needs_review",
+            "unknown_check"
+          ]
+        }
+      }
+    },
+    "TaskRecord": {
+      "type": "object",
+      "description": "task.json: the recorded contract revision. Not an owner/status record; changes require prepare --update-contract.",
+      "required": [
+        "schema_version",
+        "kind",
+        "task_ref",
+        "revision",
+        "contract",
+        "acceptance",
+        "sources",
+        "contract_sha256",
+        "recorded_by",
+        "recorded_at",
+        "history"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 2
+        },
+        "kind": {
+          "const": "TaskRecord"
+        },
+        "task_ref": {
+          "$ref": "#/$defs/TaskRef"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contract": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "acceptance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AcceptanceItem"
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "sha256"
+            ]
+          }
+        },
+        "contract_sha256": {
+          "type": "string",
+          "description": "SHA-256 of canonical {contract, sources}"
+        },
+        "recorded_by": {
+          "$ref": "#/$defs/Actor"
+        },
+        "recorded_at": {
+          "type": "string"
+        },
+        "history": {
+          "type": "array"
+        }
+      }
+    },
+    "VerificationRecord": {
+      "type": "object",
+      "description": "evidence/<timestamp>-<run_id>.json: commit-safe summary of one verify run; no local paths, remotes or output.",
+      "required": [
+        "schema_version",
+        "kind",
+        "run_id",
+        "created_at",
+        "task_ref",
+        "contract_sha256",
+        "policy_sha256",
+        "toolchain",
+        "actor",
+        "provenance",
+        "status",
+        "drift",
+        "code",
+        "checks"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 2
+        },
+        "kind": {
+          "const": "VerificationRecord"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "task_ref": {
+          "$ref": "#/$defs/TaskRef"
+        },
+        "contract_sha256": {
+          "type": "string"
+        },
+        "policy_sha256": {
+          "type": "string"
+        },
+        "toolchain": {
+          "type": "object"
+        },
+        "actor": {
+          "$ref": "#/$defs/Actor"
+        },
+        "provenance": {
+          "const": "local_execution_unattested"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not_run",
+            "incomplete"
+          ]
+        },
+        "drift": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "code": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/CodeState"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CheckResult"
+          }
+        }
+      }
     }
   },
   "oneOf": [
@@ -490,6 +740,12 @@
     },
     {
       "$ref": "#/$defs/VerificationEvidence"
+    },
+    {
+      "$ref": "#/$defs/TaskRecord"
+    },
+    {
+      "$ref": "#/$defs/VerificationRecord"
     },
     {
       "$ref": "#/$defs/Handoff"

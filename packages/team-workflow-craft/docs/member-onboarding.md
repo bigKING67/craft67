@@ -28,16 +28,16 @@ CNB 的开发者角色默认包含合并权限，必须配置保护规则并单�
 1. 用自己的账号访问仓库，在自己电脑建立独立 clone。Git HTTPS 凭据使用操作系统或批准的凭据管理器；不把密码/Token 放进 URL、终端命令参数、项目文件或聊天。
 2. 按 [固定产物安装](../README.md#固定构建与项目安装) 的预览和 `--apply` 安装项目副本。Claude、Codex、Pi 路径不同，共用同一产物；不复制另一人的全局配置。AIOS 使用 Trellis 托管模式。
 3. TWC 使用个人只读 Token。CNB 分别配置仅目标仓库的 `TWC_CNB_TOKEN` 和仅账户信息的 `TWC_CNB_IDENTITY_TOKEN`，六项读取权限见 [CNB 接入](../skills/team-workflow-craft/references/cnb.md)；实际账号仍需仓库可见权限。Gitea 使用 `TWC_GITEA_TOKEN` 与所需 read scopes。不要复用管理员写 Token。
-4. 按 [成员身份](../skills/team-workflow-craft/references/identity.md) 在自己的 clone 设置 Git 姓名和邮箱；平台显示名可填写中文姓名。在所用宿主的新会话显式调用 Skill，运行 `doctor --online` 和 `workspace inspect`，核对平台 login 是本人、Git author/committer 正确。TWC 的个人只读 Token 与 Git push 的个人凭据分别配置。记录宿主/OS 版本、实际加载路径、产物哈希；文件安装成功不能代替会话加载验收。
+4. 先运行 `doctor --local`，按 `next_steps` 补齐项目配置或修正安装副本。再按 [成员身份](../skills/team-workflow-craft/references/identity.md) 在自己的 clone 设置 Git 姓名和邮箱；平台显示名可填写中文姓名。在所用宿主的新会话显式调用 Skill，运行 `doctor --online` 和 `workspace inspect`，核对平台 login 是本人、Git author/committer 正确。TWC 的个人只读 Token 与 Git push 的个人凭据分别配置。记录宿主/OS 版本、实际加载路径、产物哈希；文件安装成功不能代替会话加载验收。
 5. 读取任务和项目规范，确认验收及资源隔离，再开始修改。端口、测试数据库、Redis key、Docker 项目名和输出目录按任务隔离；不得用生产数据环境完成实习测试。
 
 ## 每个任务只走一条链路
 
 已有干净 clone 时从最新 main 建短任务分支，如 `feat/alice/42-material-search`。名字只是辨识提示，不授予独占或合并权限。Issue 分配给实际负责人，任务契约的 `integrator` 对 AIOS 填负责人 sixseven，并在需平台权限匹配时核对其实际 CNB username/ID。明确本次范围，实施后按已批准检查执行验证，提交自己的文件，并为提交后的 SHA 重新验证，再经授权推任务分支并建立 PR。其他人的 WIP 保留；TWC 不自动 commit/push，也不替代项目原有授权规则。
 
-PR 至少能定位任务、目标/非目标、实际变化、验收证据及未完成项。AIOS 的 PR 处理人指派给负责人 sixseven 对应的实际 CNB 账号；正式启用前以普通开发者账号验证其他人不能代为合并。处理人机制不能仅凭填写成功宣称权限隔离完成。交接人必须能从平台取得已推送分支和资料；本地绝对路径或未推送提交不算交接完成。TWC v0.1 生成交接草稿，由获授权成员发布。
+PR 至少能定位任务、目标/非目标、实际变化、验收证据及未完成项。AIOS 的 PR 处理人指派给负责人 sixseven 对应的实际 CNB 账号；正式启用前以普通开发者账号验证其他人不能代为合并。处理人机制不能仅凭填写成功宣称权限隔离完成。交接人必须能从平台取得已推送分支和资料；本地绝对路径或未推送提交不算交接完成。TWC 只在任务目录写交接，提交、推送和在 PR 发布由获授权成员完成。
 
-正式交接使用 `verify --execute --approved-policy <已批准策略哈希> --online` 与 `handoff --draft --online ...`，分别记录本次验证者和交接者。接手者重新 prepare；不修改旧证据的名字。离线可工作，平台身份未知时补充联网验证再交付。要看“谁做了什么”，从 Issue → PR → 提交作者 → 验证者 → 合并者这条链路查看，不单凭分支名或提交数量评价贡献。
+每次打开会话先运行 `resume`，按它给出的 `next_actions` 继续。正式交接使用 `verify --execute --approved-policy <已批准策略哈希> --online` 与 `handoff --draft --online ...`，分别记录本次验证者和交接者；然后带 pathspec 提交 `.team-workflow/tasks/<task>/` 并推送分支。接手者切到该分支后先 `resume`，再用自己的身份 prepare；不修改旧证据的名字。离线可工作，平台身份未知时补充联网验证再交付。要看“谁做了什么”，从 Issue → PR → 提交作者 → 验证者 → 合并者这条链路查看，不单凭分支名或提交数量评价贡献。
 
 负责人串行集成：更新基线 → 重验组合 → 审查者确认当前 head → 核对审批与平台门禁 → 合并。Gitea 仅合入 main 时可能保留旧内容审批；CNB 的新提交、基线变化与审批策略要分别验收。任何平台都要重新验证新的 head/base。审批和代码测试是两种证据。
 

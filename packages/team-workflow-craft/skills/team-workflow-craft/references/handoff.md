@@ -2,15 +2,28 @@
 
 ```sh
 python3 <skill>/scripts/twc.py --project <repo> handoff --draft --online \
-  --packet .team-workflow/local/packets/<run_id>.json \
-  --evidence .team-workflow/local/evidence/<run_id>.json \
   --done "完成接口和错误分支" --next "负责人核对组合测试和审批"
+git add -- .team-workflow/tasks/pr-8
+git commit -m "twc: hand off pr-8" -- .team-workflow/tasks/pr-8
 ```
 
-生成 JSON 和 Markdown 草稿，含任务、分支、base/head、完成/未完成、证据、阻碍和下一步。有未完成工作用 `--remaining`，多个项可重复传；在线刷新 PR 加 `--online`。草稿和快照默认留在 ignored local，不自动评论、上传或提交。`--publish` 在 v0.1 明确报不支持且不发请求。
+`handoff` 在任务目录写入 `handoff.json` 和 `handoff.md`。内容包括：任务和契约版本、分支、base/head、代码内容哈希、完成/剩余/下一步、每条 AC 和每项检查的状态及执行者、阻碍和未知项。目录里只保留最新一份交接，历史由 Git 保存。
 
-`not_ready`：缺契约、内容/策略漂移、验证未通过、未提交代码或仍有未完成工作。`unknown`：缺必要证据、平台未刷新或没有可核对交付 PR。`advisory_ready`：当前材料满足本地判断且已核对 PR base/head，仅建议进入人工集成审查，不证明审批、CI 完整或具有合并许可。
+- remaining：手写的未完成项，加上所有未 verified 的 AC（自动推导，不靠自报）。
+- 输入里的 TODO、TBD、待补充、`...` 等占位文本会被拒绝。
+- `--online` 重新读取 PR，核对平台上的 head/base。
+- `--publish` 明确不支持，不发任何请求。
 
-跨人交接前，由获授权的人把分支推到公司平台，并发布审核后的 Markdown 和去敏证据/规范链接；明确哪些本地引用已转换成平台可访问位置。不能把本机绝对路径、未推送提交或 ignored local JSON 当作对方可用的交付。上传平台后以平台 URL 交接，不同步全部会话或凭据。
+## 状态含义
 
-接手者 clone/更新代码，核对实际 Skill 版本与锁、重新 prepare/inspect，阅读目标和剩余步骤。旧证据仅作历史来源；必要检查在自己的环境或受控 CI 重跑。不同 Agent 的加载证明独立记录。
+| readiness | 条件 |
+| --- | --- |
+| `not_ready` | 缺契约、契约或接口漂移、验证失败、证据全部过期、AC 未验证、有未提交代码、基线未集成，或仍有未完成工作 |
+| `unknown` | 缺必要证据、有需人工判断的 AC、平台未刷新，或没有可核对的交付 PR |
+| `advisory_ready` | 本地材料齐全且 PR base/head 一致；只表示可以进入人工集成审查，不代表审批、CI 完整或合并许可 |
+
+## 交给下一个人
+
+提交任务目录并推送任务分支，就完成了交接材料的传递；需要平台可见时，由获授权的人把 `handoff.md` 发到 PR。本地绝对路径、未推送的提交和 `.team-workflow/local/` 都不能当作对方可用的交付。
+
+接手者 fetch 后切到该分支，先 `resume`：它读取已提交的任务目录，报告哪些证据对当前代码仍然有效、上次交接的下一步、交接之后又有哪些提交。然后用自己的身份 `prepare`，按需重跑 `verify`。旧证据保留原执行者；不同 Agent 的加载证明分别记录。

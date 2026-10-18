@@ -6,7 +6,7 @@ import subprocess
 import threading
 import time
 
-from . import actors
+from . import actors, tasks
 from .context import binding
 from .models import WorkflowError, envelope, local_target, now, relative_path, save_local
 from .policy import load, require_lock, runtime_identity
@@ -105,7 +105,8 @@ def execute(root, name, check, token_env, identity_token_env=None):
     return result
 
 
-def verify(root, config, policy_hash, selected=(), execute_commands=False, approved_policy=None, online=False):
+def verify(root, config, policy_hash, selected=(), execute_commands=False, approved_policy=None, online=False,
+           task=None):
     checks = config.get('checks', {})
     names = list(selected) if selected else list(checks)
     if len(set(names)) != len(names) or any(name not in checks for name in names):
@@ -131,7 +132,14 @@ def verify(root, config, policy_hash, selected=(), execute_commands=False, appro
                         repository=source['repository'])
         if not isinstance(ref, dict) or any(ref.get(key) != value for key, value in expected.items()):
             raise WorkflowError('Task binding belongs to another platform/repository; prepare with explicit --rebind')
-    record = envelope('VerificationEvidence', task_ref=bound.get('task_ref') if bound else None,
+    ref = tasks.current(root, config, task, bound, before)[0]
+    if task and bound and bound.get('task_ref') != ref:
+        raise WorkflowError('Requested task does not match the current workspace task binding')
+    task_record = tasks.load(root, ref) if ref else None
+    if task_record:
+        tasks.preflight(root, ref)  # Fail before executing if the summary cannot be committed.
+    record = envelope('VerificationEvidence', task_ref=ref,
+                      contract_sha256=task_record['contract_sha256'] if task_record else None,
                       actor=actors.snapshot(root, config, online),
                       before=before, after=None, policy_sha256=policy_hash,
                       toolchain=runtime_identity(), checks=[], status='incomplete',
@@ -172,6 +180,8 @@ def verify(root, config, policy_hash, selected=(), execute_commands=False, appro
             record['drift'].append('runtime_changed_during_execution')
         if binding(root) != bound:
             record['drift'].append('workspace_task_binding_changed')
+        if ref and (tasks.load(root, ref) or {}).get('contract_sha256') != record['contract_sha256']:
+            record['drift'].append('task_contract_changed_during_execution')
         record['git_identity_after'] = actors.git_identity(root)
         if record['git_identity_after'] != record['actor']['git']:
             record['drift'].append('git_identity_changed_during_execution')
@@ -187,4 +197,7 @@ def verify(root, config, policy_hash, selected=(), execute_commands=False, appro
     else:
         record['status'] = 'passed'
     path = save_local(root, 'evidence', record)
-    return dict(evidence=path, **record)
+    shared = tasks.save_evidence(root, ref, task_record, record) if task_record else None
+    return dict(evidence=path, task_evidence=shared,
+                next_step=tasks.commit_hint(root, ref) if shared else 'prepare a task to record shareable evidence',
+                **record)

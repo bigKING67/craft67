@@ -1,9 +1,12 @@
 {
-  "goal": "Implement the behavior described by the linked Gitea task",
+  "goal": "Implement the behavior described by the linked platform task",
   "non_goals": ["Unrelated modules and deployment"],
   "scope": ["src"],
   "dependencies": [],
-  "acceptance": ["The affected workflow and failure paths pass project checks"],
+  "acceptance": [
+    {"text": "The affected workflow and failure paths pass project checks", "checks": ["unit"]},
+    "Reviewer confirms the user-facing copy"
+  ],
   "integrator": "Assign the integration role before coordinated changes",
   "contracts": [],
   "complexity": "L1",

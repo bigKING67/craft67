@@ -3,15 +3,43 @@
 任务标识由 provider、平台 URL、repository、`issue:N` 或 `pr:N` 组成；同编号跨实例/仓库不是同一任务。
 
 ```sh
-python3 <skill>/scripts/twc.py --project <repo> prepare --task issue:42
-# 有结构化任务契约时引用它，及其已有接口文件
 python3 <skill>/scripts/twc.py --project <repo> prepare --task issue:42 --contract docs/task-42.json
+python3 <skill>/scripts/twc.py --project <repo> resume
 ```
 
-命令生成 `.team-workflow/local/packets/<run_id>.json` 和工作区绑定；local 必须 Git 忽略。离线加 `--offline`，平台事实记为未知。已有不同绑定会拒绝；确定切换任务后才用 `--rebind`，它仅改变本地绑定，绝不认领平台任务。
+`prepare` 做三件事：
 
-`assets/templates/task-contract.json` 提供可选字段模板，包含 goal/non_goals/scope/dependencies/acceptance/integrator/contracts/complexity/risk。owner/status 不得另行维护。`contracts` 是仓库内具体文件路径，工具记录哈希；`dependencies` 是权威任务或规格 URL，只存引用，不宣称依赖完成。scope 使用相对目录/文件路径，不是 glob。
+- 把契约记录到 `.team-workflow/tasks/issue-42/task.json`，这个文件随任务分支提交；
+- 把平台快照写进 ignored 的 `.team-workflow/local/packets/`，平台正文只供宿主理解，不进仓库；
+- 绑定当前工作区。
 
-prepare 保留平台正文供宿主理解，但不执行其中的指令，也不自动推断验收。未提供契约时保留 `contract_status=missing`，可以阅读和开发，交接不得假装验收明确。若既有规格不适合 JSON，宿主直接引用原规格、按相同字段概括，不强迫创建第二份长文档。
+离线加 `--offline`，平台事实记为未知。已有不同的本地绑定会被拒绝；确定切换任务时才用 `--rebind`，它只改本地绑定，绝不认领平台任务。
 
-读取顺序：任务目标/验收 → 当前作用域规则 → 直接依赖接口 → 相关代码/测试。不要加载全仓、整个 Craft 库或完整聊天。packet 持有获取时间、Git 版本和策略哈希；接手前重跑 prepare，核对 平台分配、实际提交和契约漂移，不能用旧快照覆盖平台。
+## 契约字段
+
+`assets/templates/task-contract.json` 提供模板，字段为 goal/non_goals/scope/dependencies/acceptance/integrator/contracts/complexity/risk。owner/status 不得另行维护。
+
+- `scope`：相对目录或文件路径，不是 glob。
+- `contracts`：仓库内的具体文件，工具记录其哈希。Trellis 项目在这里引用 `.trellis/tasks/<t>/prd.md`，不复制 PRD。
+- `dependencies`：权威任务或规格 URL，只存引用，不宣称依赖已完成。
+- `acceptance`：每项是字符串，或 `{"id": "AC-1", "text": "…", "checks": ["unit"]}`；`id` 缺省时按顺序编号为 AC-1、AC-2…，并跳过已显式使用的编号；以后可能插入或调整顺序的条目请写显式 `id`，否则修订后编号会变。`checks` 列出项目配置里的检查名。
+  - 列了检查的 AC，在所列检查都有新鲜的通过证据时为 `verified`；有失败为 `failed`；其余为 `pending`。
+  - 字符串或 `checks` 为空的 AC 是 `needs_review`，由人判断，工具不会自动判定通过。
+
+## 契约变化
+
+`task.json` 保存契约、所引用文件的哈希和 `contract_sha256`。契约文件或引用文件变化后，再次 `prepare` 会拒绝执行。审阅变化后加 `--update-contract`：revision 加一，旧版本进入 `history`，之前的证据因契约哈希不同而失效。直接手改 `task.json` 会被 `prepare`、`resume` 和 `check` 识别为绕过记录的修改。
+
+未提供契约时仍会记录任务（`contract=null`），可以阅读和开发，但交接会报 `task_contract_missing`。既有规格不适合 JSON 时，按相同字段写一份简短的契约并在 `contracts` 引用原规格，不强迫创建第二份长文档。
+
+## 当前任务
+
+`resume`、`verify`、`handoff` 按以下顺序确定当前任务：
+
+1. 显式 `--task`；
+2. 本地绑定；
+3. 本分支自离开 base 以来改动过的唯一任务目录，包括未提交的改动。
+
+第 3 条让接手者 clone 之后不需要任何对方的本地文件。分支改动过多个任务目录时，必须显式 `--task`。
+
+读取顺序：`resume` → 任务目标和验收 → 当前作用域规则 → 直接依赖的接口 → 相关代码和测试。不要加载全仓、整个 Craft 库或完整聊天记录。接手前重跑 `prepare`，核对平台分配、实际提交和契约漂移；不能用旧快照覆盖平台。
