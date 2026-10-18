@@ -69,11 +69,20 @@ class LocalDoctorTests(unittest.TestCase):
     def test_configured_workflow_does_not_claim_runtime_or_host_acceptance(self):
         self.configure()
         before = self.snapshot()
-        with patch('subprocess.run', side_effect=AssertionError('preflight must not dispatch tools')):
+        real_run = subprocess.run
+
+        def git_only(argv, *args, **kwargs):
+            # Read-only Git inspection is allowed; no project checks, network or other tools.
+            self.assertEqual(argv[0], 'git')
+            self.assertNotIn('fetch', argv)
+            return real_run(argv, *args, **kwargs)
+
+        with patch('subprocess.run', side_effect=git_only):
             report = twc.local_doctor(self.project)
         self.assertEqual(report['status'], 'ok' if os.name == 'posix' else 'attention_required')
         self.assertEqual(report['project_config'], 'valid')
         self.assertEqual(report['toolchain']['status'], 'matched')
+        self.assertEqual(report['base_ref']['status'], 'resolved')
         self.assertEqual(report['host_loading'], 'unverified')
         self.assertEqual(self.snapshot(), before)
 

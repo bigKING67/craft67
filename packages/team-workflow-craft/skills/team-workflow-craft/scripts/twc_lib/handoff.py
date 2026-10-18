@@ -57,7 +57,7 @@ def draft(root, config, policy_hash, task=None, done=(), remaining=(), next_step
     criteria = tasks.acceptance_states(record, states)
     if any(row['status'] in ('failed', 'incomplete') for row in states.values()):
         blockers.append('verification_not_passed')
-    if not states or any(row['status'] == 'missing' for row in states.values()):
+    if not states or any(row['status'] in ('missing', 'stale') for row in states.values()):
         unknowns.append('required_verification_missing')
     if rows and not any(tasks.fresh(row, ref, record, code, policy_hash, runtime) for _, row in rows):
         blockers.append('stale_or_unrelated_evidence')

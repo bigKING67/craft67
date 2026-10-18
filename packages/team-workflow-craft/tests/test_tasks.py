@@ -9,7 +9,7 @@ from twc_lib import context, handoff, policy, tasks, workspace
 from twc_lib.models import WorkflowError
 
 
-class TaskRecordTests(Fixture):
+class TaskFixture(Fixture):
     def resume(self, root=None, task=None):
         root = root or self.root
         config, sha = policy.load(root)
@@ -28,6 +28,8 @@ class TaskRecordTests(Fixture):
         self.git('add', name)
         self.git('commit', '-qm', 'contract ' + name)
 
+
+class TaskRecordTests(TaskFixture):
     def test_content_identity_ignores_commit_state_and_task_metadata(self):
         (self.root / 'a.txt').write_text('changed\n')
         dirty = workspace.inspect(self.root, self.base)
@@ -58,6 +60,7 @@ class TaskRecordTests(Fixture):
         self.git('commit', '-qam', 'more work')
         view = self.resume()
         self.assertEqual(view['acceptance'][0]['status'], 'pending')
+        self.assertEqual(view['checks']['unit']['status'], 'stale')
         self.assertIn('verify: unit', view['next_actions'])
 
     def test_plain_acceptance_needs_human_review_and_never_reaches_advisory(self):
@@ -98,7 +101,7 @@ class TaskRecordTests(Fixture):
         updated = self.prepare(update_contract=True)
         self.assertEqual((updated['task_record_status'], updated['revision']), ('updated', 2))
         view = self.resume()
-        self.assertEqual(view['checks']['unit']['status'], 'missing')
+        self.assertEqual(view['checks']['unit']['status'], 'stale')
         self.assertEqual(len(tasks.load(self.root, view['task_ref'])['history']), 1)
 
     def test_fresh_clone_resumes_from_branch_changes_without_local_state(self):
@@ -224,3 +227,24 @@ class ReviewRegressionTests(Fixture):
         self.assertEqual([item['id'] for item in items], ['AC-1', 'AC-2'])
         items = acceptance_items(dict(acceptance=['plain', dict(id='AC-1', text='explicit')]))
         self.assertEqual([item['id'] for item in items], ['AC-2', 'AC-1'])
+
+
+class BaseRefTests(TaskFixture):
+    def test_branch_only_clone_uses_the_single_remote_tracking_base(self):
+        path = self.root / '.team-workflow/config.toml'
+        path.write_text(path.read_text().replace(f'base_ref = "{self.base}"', 'base_ref = "main"'))
+        self.git('commit', '-qam', 'base_ref main')
+        self.git('switch', '-qc', 'alice/feature')
+        self.prepare()
+        self.commit_task()
+        clone = self.root.parent / 'branch-only'
+        subprocess.run(['git', 'clone', '-q', '-b', 'alice/feature', str(self.root), str(clone)], check=True)
+        self.assertFalse(workspace.succeeds(clone, 'rev-parse', '--verify', '-q', 'refs/heads/main'))
+        view = self.resume(clone)
+        self.assertEqual(view['status'], 'ok')
+        self.assertEqual(view['code']['base_ref'], 'main')
+        self.assertEqual(workspace.inspect(clone, 'main')['base_ref_resolved'], 'origin/main')
+
+    def test_unresolvable_base_ref_explains_how_to_fix(self):
+        with self.assertRaisesRegex(WorkflowError, 'origin/release'):
+            workspace.inspect(self.root, 'release')

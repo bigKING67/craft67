@@ -17,6 +17,40 @@ The destinations are project-relative. The installer has no default target and
 rejects global installation paths. It never updates a host profile, account,
 settings file, hook, or running session.
 
+## Session acceptance: `resume` from a teammate's branch (0.2.0, 2026-10-18)
+
+A synthetic project committed the Codex and Claude skill copies (members install
+nothing). Alice prepared `pr:8`, verified, handed off, committed the task
+directory, then made one more commit, so her evidence no longer matched the
+code. Each host started a fresh, read-only, non-interactive session in its own
+`git clone -b alice/subtract` with no `.team-workflow/local/`, and got the same
+prompt: report the previous handoff's next step, which acceptance criteria are
+open and why, and the first thing to do.
+
+| Host | Command | Result |
+| --- | --- | --- |
+| Claude Code 2.1.296 | `claude -p`, tools limited to the skill CLI plus Read/Glob/Grep | `PASS`: loaded the project skill, ran `resume` first (6 turns) |
+| Codex 0.163.0 | `codex exec --sandbox read-only --ephemeral` | `PASS`: read `SKILL.md`, ran `resume` and the `verify` preview |
+| Pi 1.1.0 | `pi -p --no-session --tools read,bash` | `PASS`: read `SKILL.md`, ran `resume` and the `verify` preview |
+
+All three quoted the handoff's next step, reported AC-1 as pending because the
+evidence was recorded for older code (not a failed test), AC-2 as needing human
+review, and named `verify: unit` as the first step. No clone was modified.
+Artifact: `team-workflow-craft-0.2.0.zip`, SHA-256
+`1e9fe3d4b8f6aaa656d221113334324e684c94643466ed32cc3b8c9d2e9430ea`, macOS 27 arm64.
+
+The first round failed in all three hosts: `base_ref = "main"` did not resolve in
+a branch-only clone that has `origin/main` but no local `main`. The models worked
+around it, but the tool was wrong. `resolve_base` now falls back to the single
+remote-tracking branch, reports `base_ref_resolved`, and `doctor --local` checks
+it. After the passing round, check states that have records for older code were
+renamed from `missing` to `stale` because one model read `missing` as "never
+ran"; this changes labels only.
+
+Limits: one synthetic task with synthetic identities and the hosts' default
+models. This does not replace a real multi-member pilot with real platform
+accounts, PRs and review.
+
 ## Discovery acceptance and limits
 
 The above checks used macOS 27.0.1 arm64, temporary Git projects, and the same

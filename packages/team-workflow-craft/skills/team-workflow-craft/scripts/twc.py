@@ -113,6 +113,14 @@ def local_doctor(root):
             except (WorkflowError, OSError, ValueError, KeyError, TypeError):
                 lock_status = 'invalid'
     posix = os.name == 'posix'
+    base_ref = dict(status='not_checked')
+    if config_status == 'valid':
+        configured = policy.load(root)[0]['integration']['base_ref']
+        try:
+            base_ref = dict(status='resolved', configured=configured,
+                            resolved=workspace.resolve_base(root, configured)[1])
+        except WorkflowError:
+            base_ref = dict(status='unresolved', configured=configured)
     entry_drift = integrity in ('mismatch', 'invalid_marker') or any(
         row.get('matches_runtime') is False for row in entries)
     next_steps = []
@@ -122,13 +130,16 @@ def local_doctor(root):
         next_steps.append('review_toolchain_lock')
     if entry_drift:
         next_steps.append('review_project_installation')
+    if base_ref['status'] == 'unresolved':
+        next_steps.append('fetch_or_fix_integration_base_ref')
     if not posix:
         next_steps.append('qualify_native_process_tree_verification')
     next_steps.append('confirm_skill_loading_in_new_session')
-    attention = config_status != 'valid' or lock_status != 'matched' or not posix or entry_drift
+    attention = (config_status != 'valid' or lock_status != 'matched' or not posix or entry_drift
+                 or base_ref['status'] == 'unresolved')
     return dict(status='attention_required' if attention else 'ok', scope='member_local_preflight',
                 project=str(root), python=sys.version.split()[0], git=shutil.which('git'), os=sys.platform,
-                project_config=config_status, toolchain=dict(status=lock_status), runtime=identity,
+                project_config=config_status, base_ref=base_ref, toolchain=dict(status=lock_status), runtime=identity,
                 installation_integrity=integrity, project_entries=entries,
                 verification=dict(implementation='posix_process_group' if posix else 'unsupported'),
                 host_loading='unverified', platform=dict(status='not_requested'), next_steps=next_steps)

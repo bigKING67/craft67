@@ -466,6 +466,7 @@
                   "passed",
                   "failed",
                   "incomplete",
+                  "stale",
                   "missing"
                 ]
               },

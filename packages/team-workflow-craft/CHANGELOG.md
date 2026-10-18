@@ -13,6 +13,7 @@
 - 交接拒绝 TODO、TBD、待补充等占位文本；未验证的验收条件自动列入 remaining。
 - 提交卫生：`resume` 报告暂存区中超出任务范围的文件，文档要求提交一律带 pathspec。
 - AIOS 专属的 `aios-adoption.md`、已停用的 `gitea-vps.md` 及其 compose 示例和测试迁到 AIOS 仓库；通用包不再携带平台部署材料。
+- 三宿主真实会话验收：Claude Code、Codex、Pi 在只含已提交状态的分支 clone 上新开会话，均先运行 `resume` 并给出正确的下一步，见 [兼容性](docs/compatibility.md)。首轮暴露的缺陷已修复：分支 clone 没有本地 `main` 时 `base_ref` 回退到唯一的远端跟踪分支，`doctor --local` 也检查它；检查状态区分 `stale`（有记录但过期）与 `missing`（从未记录）。
 - 成员零安装：推荐负责人安装 Codex/Claude 两个项目入口并提交进仓库，成员 clone 即可用，只需 Python 3.11+ 和 Git；跨 clone 验收改为这种方式。明确 TWC 不依赖 Trellis。
 
 ## 0.1.4 — Unreleased

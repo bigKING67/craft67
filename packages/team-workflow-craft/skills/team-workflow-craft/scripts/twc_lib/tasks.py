@@ -153,6 +153,11 @@ def check_states(config, ref, task, rows, code, policy_hash, runtime):
     states = {name: dict(status='missing', evidence=None, actor=None) for name in config.get('checks', {})}
     for path, row in rows:
         if not fresh(row, ref, task, code, policy_hash, runtime):
+            # Recorded, but for other code, contract, policy or toolchain: rerun, not "never ran".
+            for check in row.get('checks', []) if isinstance(row, dict) else ():
+                state = states.get(check.get('check'))
+                if state and state['status'] == 'missing' and check.get('status') != 'not_run':
+                    state.update(status='stale', evidence=path, actor=row.get('actor'))
             continue
         for check in row.get('checks', []):
             expected = config.get('checks', {}).get(check.get('check'))

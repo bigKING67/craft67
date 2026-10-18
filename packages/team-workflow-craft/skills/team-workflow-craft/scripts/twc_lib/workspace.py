@@ -40,6 +40,23 @@ def resolve(root, ref):
     return value.decode().strip()
 
 
+def resolve_base(root, ref):
+    """Resolve integration.base_ref; a bare branch absent locally may use its only remote-tracking copy.
+
+    A member who cloned a task branch has origin/main but no local main.
+    """
+    if succeeds(root, 'rev-parse', '--verify', '-q', '--end-of-options', ref + '^{commit}'):
+        return resolve(root, ref), ref
+    if ref and not ref.startswith(('-', 'refs/')) and '/' not in ref:
+        remotes = git(root, 'remote').decode().split()
+        found = [f'{name}/{ref}' for name in remotes
+                 if succeeds(root, 'rev-parse', '--verify', '-q', f'refs/remotes/{name}/{ref}^{{commit}}')]
+        if len(found) == 1:
+            return resolve(root, found[0]), found[0]
+    raise WorkflowError(f'integration.base_ref "{ref}" does not resolve in this clone; fetch it, or set base_ref '
+                        f'to a remote-tracking ref such as origin/{ref}')
+
+
 def safe_remote(value):
     if '://' in value:
         url = urlsplit(value)
@@ -128,7 +145,8 @@ def _tree(root, changes):
 
 
 def inspect(root, base_ref, scope=()):
-    head, base = resolve(root, 'HEAD'), resolve(root, base_ref)
+    head = resolve(root, 'HEAD')
+    base, resolved_ref = resolve_base(root, base_ref)
     branch = git(root, 'symbolic-ref', '--short', '-q', 'HEAD', allowed=(0, 1)).decode().strip() or None
     status = ('status', '--porcelain=v1', '-z', '--untracked-files=all', '--ignore-submodules=none')
     changes = paths_from_status(git(root, *status, *CODE_PATHS))
@@ -143,7 +161,7 @@ def inspect(root, base_ref, scope=()):
     outside = [item['path'] for item in changes if scope and not _in_scope(item['path'], scope)]
     shared = [item['path'] for item in changes if item['path'] in ('catalog.json', 'package-lock.json', 'uv.lock', '.cnb.yml')
               or item['path'].startswith(('.github/', '.gitea/', 'migrations/'))]
-    return dict(root=str(root), head=head, base=base, base_ref=base_ref, branch=branch,
+    return dict(root=str(root), head=head, base=base, base_ref=base_ref, base_ref_resolved=resolved_ref, branch=branch,
                 base_is_ancestor=merge_base == base, merge_base=merge_base, remote_freshness='unverified',
                 remotes=remotes, dirty=bool(changes), changes=changes, outside_scope=outside, shared_paths=shared,
                 staged=staged, staged_outside_scope=[path for path in staged if scope and not _in_scope(path, scope)],
@@ -195,7 +213,7 @@ def create(root, destination, branch, base_ref, apply=False):
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]*', branch):
         raise WorkflowError('Invalid branch name')
     git(root, 'check-ref-format', '--branch', branch)
-    base = resolve(root, base_ref)
+    base = resolve_base(root, base_ref)[0]
     plan = dict(action='create_worktree', destination=str(destination), branch=branch, base=base,
                 applied=False, service_isolation='not_provided')
     if apply:
