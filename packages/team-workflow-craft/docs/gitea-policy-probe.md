@@ -4,7 +4,7 @@
 
 ## 运行边界
 
-先按 [恢复方案](gitea-vps.md#备份与恢复) 建立新本机恢复项目。当前探针要求一个空私有仓库及已经配置的 main 规则：禁止 push/force push，至少一次审批，内容变化后撤销审批，阻止被拒审和落后分支合并，管理员不可绕过，指定 owner 合并，没有 CI 状态门禁。
+先按 AIOS 仓库 `docs/archive/gitea-vps/README.md` 的“备份与恢复”建立新本机恢复项目。当前探针要求一个空私有仓库及已经配置的 main 规则：禁止 push/force push，至少一次审批，内容变化后撤销审批，阻止被拒审和落后分支合并，管理员不可绕过，指定 owner 合并，没有 CI 状态门禁。
 
 探针只接受本机 Unix-socket Docker context、`twc-gitea-restore-<8 位 hex>` 项目、restore.example.invalid、无 host port/Traefik、仅 internal 网络，以及属于新项目的卷；拒绝可写宿主 bind。Python helper 使用已有本地 image ID，不自动拉镜像，不挂 Docker socket。Token 不进入参数/日志，收尾撤销后再验证拒绝访问。
 

@@ -123,4 +123,4 @@ python3 scripts/check.py --package team-workflow-craft
 
 门禁覆盖临时 Git 工作区、受控 CNB/Gitea HTTP 模拟器、失败/漂移、安装保护及真实运行时独立包测试；不使用公司账号或付费模型。根 catalog 接入离线 CI，不能替代受控 CI、宿主或目标平台实测。
 
-进一步说明：[架构与数据合同](docs/architecture.md)、[成员接入](docs/member-onboarding.md)、[试点与运维验收](docs/operations.md)、[隔离分支保护验收](docs/gitea-policy-probe.md)、[可选 Gitea 部署方案（AIOS 已停用）](docs/gitea-vps.md)、[AIOS 接入与发布来源切换建议](docs/aios-adoption.md)、[来源与许可](docs/upstreams.md)、[版本变更](CHANGELOG.md)。MIT；未复制 Trellis/OpenSpec 的代码或模板。
+进一步说明：[架构与数据合同](docs/architecture.md)、[成员接入](docs/member-onboarding.md)、[试点与运维验收](docs/operations.md)、[隔离分支保护验收](docs/gitea-policy-probe.md)、[来源与许可](docs/upstreams.md)、[版本变更](CHANGELOG.md)。AIOS 的 CNB 接入方案和已停用的 Gitea 自托管方案已迁到 AIOS 仓库（`docs/CNB_TEAM_ADOPTION.md`、`docs/archive/gitea-vps/`）。MIT；未复制 Trellis/OpenSpec 的代码或模板。
