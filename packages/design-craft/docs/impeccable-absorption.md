@@ -1,8 +1,9 @@
 # pbakaus/impeccable absorption matrix
 
 This document records the deliberate fusion and runtime boundary for
-`https://github.com/pbakaus/impeccable` through reviewed remote commit
-`695df68a5860da4d25cd629fc3727ec8f3c0991b`. The compatibility submodule stays
+`https://github.com/pbakaus/impeccable`, with the original matrix reviewed
+through `695df68a5860da4d25cd629fc3727ec8f3c0991b` and newer bounded decisions
+in the dated follow-ups below. The compatibility submodule stays
 pinned at `80e4dd0d581fcdb42be62252b7bc07dcd2238330`; selected behavior from the
 newer reviewed range is represented by original local modules and contracts,
 not copied upstream runtime or generated files.
@@ -60,7 +61,7 @@ beside browser67 and the host's existing execution contracts.
 | `/onboard` | partial | product context and project authority discovery are local |
 | `/animate` | partial | motion-quality, pattern, planning, and runtime-evidence references are local |
 | `/layout` | partial | hierarchy, grid, responsive, and surface playbooks are local |
-| `/typeset` | partial | typography roles, optical sizing, line length, and hierarchy are local |
+| `/typeset` | partial | typography roles, optical sizing, line length, hierarchy, and conditional phrase-aware line breaks are local |
 | `/colorize` | partial | semantic color roles and contrast are local; arbitrary recoloring is not a baseline mode |
 | `/clarify` | partial | information hierarchy, copy, and decision-flow repairs are local |
 | `/delight` | partial | causal feedback and restrained product delight are local |
@@ -289,9 +290,10 @@ explicit local contracts. The duplicative live/provider/package/hook runtime,
 forced delegation, universal visual bans, and prescriptive ecosystem choices
 remain intentionally outside the product.
 
-Current independent blind evidence is recorded in
-`evals/comparative/impeccable-production-ablation/`: `design-craft` 100,
-focused Impeccable upstream 97, no-skill baseline 96.
+Historical independent blind evidence for its recorded source is retained in
+the `impeccable-production-ablation` cases under `evals/comparative/history/`.
+Those results certify only their recorded source; the changed Skill requires
+new current-source comparison before release certification.
 
 ## 2026-10-06 adoption follow-up
 
@@ -312,3 +314,22 @@ Adoption-screened range: `cf3d2fa07d3ad1814ac5fbbbb5b2043b795eaef1..c63b8dd7dd5a
 | Per-reference visual description (ground, colours, type voices, signature) in new-work concept seeding | deferred | No local cultural-world seeding step exists to attach it to; deferred until such a workflow is chosen |
 | Decision-card dealing, `buildPath` config and toggle, comp sketch skeletons | intentionally-rejected | Depends on the upstream CLI, decision page and persisted config the package does not implement |
 | Audit dimension renumbering, version files, engine pins, URL-capture/detector engine, CLI and Firefox extension fixes | provenance-only | Engine changes stay behind the unchanged compatibility pin; a pin bump needs local executable fixtures |
+
+## 2026-10-23 adoption follow-up
+
+See [the 2026-10-23 bounded adoption review](upstream-adoption-review-2026-10-23.md)
+for the complete 114-commit / 1,250-path inventory and the narrower reading
+coverage. Adoption-screened range:
+`c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2..5cb95eea9c96479f57afe0732a45470d30183326`.
+Disposition: `partial`. Selected behavior advances to that head for the
+typography adaptation below; earlier deferred ranges stay deferred.
+
+| Capability | Status | Local target or boundary |
+| --- | --- | --- |
+| Phrase-aware manual breaks, optional balanced wrapping, intentional uneven-line exceptions | partial | Typography section in `design-system-contract.md`; check target widths, text sizes, and locales. `pretty` stays optional, with layout-cost and editable-text stability checks; `typographic_line_breaks` coverage guards the local contract |
+| Arabic/Persian joining, numeral/calendar choices, and mixed-script hardening | deferred | Add only for an actual target locale; no universal character normalization or nationality-based calendar assumption |
+| Rust detector/launcher, CDP scanning, hooks, providers, browser session, and platform distribution | deferred | New head lacks `skill/scripts/detect.mjs`. The local wrapper still uses that JS entrypoint at the compatibility pin; JSON/exit/degraded behavior, distribution trust, platforms, and rollback need a separate migration |
+| Weakened prohibition wording, open-ended polish, forced orchestration, and upstream host installation | intentionally-rejected | Existing authority, requirement strength, bounded verification, and authorization continue to govern |
+
+The twenty-four-command inventory and detector fixtures still describe the
+compatibility pin. They do not certify the newer engine or native runtime.

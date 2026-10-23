@@ -61,19 +61,26 @@ class JakubUpstreamContractTests(unittest.TestCase):
         for path, expected in hashes.items():
             self.assertEqual(hashlib.sha256((self.upstream / path).read_bytes()).hexdigest(), expected)
 
-    def test_latest_range_selection_is_recorded_beyond_the_pin(self) -> None:
+    def test_deferred_range_preserves_the_earlier_behavior_boundary(self) -> None:
         inventory = self.meta["skill_inventory"]
         latest = inventory["latest_range_entrypoint_decisions"]
-        self.assertEqual(latest, {"state-machine": "partial", "variant": "deferred"})
-        self.assertNotIn("state-machine", inventory["entrypoint_decisions"])
-        coverage = inventory["latest_range_local_coverage"]
-        self.assertEqual(set(coverage), {name for name, status in latest.items() if status == "partial"})
-        text = (REPO_ROOT / coverage["state-machine"]).read_text(encoding="utf-8")
+        self.assertEqual(latest, {"technical-drawing": "deferred"})
+        self.assertNotIn("technical-drawing", inventory["entrypoint_decisions"])
+        self.assertEqual(inventory["latest_range_local_coverage"], {})
+        self.assertEqual(inventory["latest_range_source_sha256"], {})
+        self.assertEqual(self.meta["latest_range_status"], "deferred")
+        self.assertEqual(
+            self.meta["behavior_absorbed_through_commit"],
+            self.meta["latest_range_base_commit"],
+        )
+        self.assertNotEqual(
+            self.meta["behavior_absorbed_through_commit"],
+            self.meta["reviewed_through_commit"],
+        )
+        text = (REPO_ROOT / "skills/design-craft/references/impeccable-workflow.md").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("group them under product-language headings", " ".join(text.split()))
-        digests = inventory["latest_range_source_sha256"]
-        self.assertEqual(set(digests), {"skills/state-machine/SKILL.md"})
-        for digest in digests.values():
-            self.assertRegex(digest, r"^[0-9a-f]{64}$")
 
     def test_report_detects_unreviewed_remote_without_advancing_lock(self) -> None:
         lock = REPO_ROOT / "upstreams.lock.json"

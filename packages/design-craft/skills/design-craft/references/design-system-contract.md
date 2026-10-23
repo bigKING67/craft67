@@ -161,6 +161,15 @@ Treat optical detail as part of the role contract:
 - Use tabular figures for changing metrics, timers, and aligned numeric columns
   when the selected font supports them.
 
+Review line breaks at target widths, text sizes, and locales. Put manual breaks
+only between meaningful phrases and recheck them after reflow. Consider
+`text-wrap: balance` for short headings when it helps the hierarchy;
+`text-wrap: pretty` is an optional progressive enhancement for reading copy.
+Assess its layout cost on long or frequently updated content and preserve
+editable-text stability before applying it. An intentionally uneven final line
+can carry emphasis; a wrapping warning is a contextual signal, not an automatic
+defect.
+
 For icons that appear off-center, inspect the actual glyph/viewBox and visual
 mass at the intended size before changing alignment. A temporary blurred view
 can help locate that mass; remove the diagnostic filter afterward. Keep any

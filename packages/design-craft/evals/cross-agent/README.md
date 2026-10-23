@@ -39,6 +39,12 @@ runner, version, or score contract has changed. Do not restore historical
 outputs to active directories or edit their hashes; rerun the controlled host
 against the final clean commit instead.
 
+The pre-adoption score-v5/run-v3 dashboard, motion, and native/adaptive tasks
+are preserved under `history/2026-10-23-pre-upstream-adoption/`. The upstream
+instruction changes affect their behavior projections. Their active host
+statuses are pending until new observations are admitted; archived scores and
+outputs retain their original hashes and are not current-source evidence.
+
 Validate the recorded runs with:
 
 ```bash

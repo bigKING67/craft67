@@ -32,6 +32,12 @@ four ablations admitted by the v0.5.0 Operational 95 release are preserved
 under `history/v0.5.0/`. Neither archive can satisfy a current-source release
 gate.
 
+The pre-adoption repeated-trial tranche is preserved under
+`history/2026-10-23-pre-upstream-adoption/`. The upstream instruction changes
+affect all four case projections; their active definitions await new trials
+against the final clean source. Original runs, blind packets, judgments, and
+aggregates remain unchanged in the archive.
+
 Current evidence uses repeated trials. A single judged run moved by 2-3
 points on an unchanged Skill domain, so certification compares means across at
 least three independent trials instead of one winner. Each trial lives at

@@ -209,6 +209,19 @@ COVERAGE = {
             "shows its recent history",
         ],
     },
+    "typographic_line_breaks": {
+        "paths": [
+            "skills/design-craft/references/design-system-contract.md",
+        ],
+        "terms": [
+            "between meaningful phrases",
+            "text-wrap: balance",
+            "text-wrap: pretty",
+            "optional progressive enhancement",
+            "editable-text stability",
+            "contextual signal, not an automatic",
+        ],
+    },
 }
 
 
@@ -374,6 +387,7 @@ def self_check() -> None:
         "design_system_corrections",
         "latest_judgment",
         "operate_code_led_and_dashboard_meaning",
+        "typographic_line_breaks",
     }:
         raise RuntimeError("internal impeccable coverage map drifted")
 

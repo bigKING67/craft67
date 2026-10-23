@@ -1,0 +1,22 @@
+{
+  "schema": "design-craft.cross-agent-status.v1",
+  "task_id": "same-prompt-dashboard-review",
+  "hosts": {
+    "codex": {
+      "status": "observed",
+      "reason": "Current-source score-v5/run-v3 on gpt-6-astra (medium) with operator instructions isolated, domain skill-production-review, projection 467d222d8c41; rubric score 91/100 from an anonymized rubric scorer. Static critique only; model is requested_by_cli."
+    },
+    "pi": {
+      "status": "observed",
+      "reason": "Current-source score-v5/run-v3 on codex/gpt-6-astra (medium) with operator instructions isolated, domain skill-production-review, projection 467d222d8c41; rubric score 93/100 from an anonymized rubric scorer. Static critique only; model is requested_by_cli."
+    },
+    "cursor": {
+      "status": "pending",
+      "reason": "The 2026-10-11 tranche is archived under history/2026-10-11; this definition has not admitted a current-source score-v5/run-v3 projection run."
+    },
+    "claude": {
+      "status": "observed",
+      "reason": "Current-source score-v5/run-v3 on claude-opus-5-5 (medium) with operator instructions isolated, domain skill-production-review, projection 467d222d8c41; rubric score 94/100 from an anonymized rubric scorer. Static critique only; model is requested_by_cli."
+    }
+  }
+}

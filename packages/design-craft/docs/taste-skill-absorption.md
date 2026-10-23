@@ -1,9 +1,11 @@
 # Leonxlnx/taste-skill absorption matrix
 
-This document records the deliberate baseline-fusion boundary for
-`https://github.com/Leonxlnx/taste-skill` at commit
-`ccbc15639c97057cbfcf32ecebc38ef716e4bb37`. The compatibility submodule stays
-pinned at `b17742737e796305d829b3ad39eda3add0d79060`.
+This document preserves the compatibility inventory and baseline-fusion
+decisions for `https://github.com/Leonxlnx/taste-skill`, followed by dated
+adoption decisions for newer source. The compatibility submodule stays pinned
+at `b17742737e796305d829b3ad39eda3add0d79060`; the baseline matrix was reviewed
+through `ccbc15639c97057cbfcf32ecebc38ef716e4bb37`. Newer review boundaries are
+owned by `upstreams.lock.json` and the follow-ups below.
 
 ## Contents
 
@@ -16,10 +18,10 @@ pinned at `b17742737e796305d829b3ad39eda3add0d79060`.
 
 ## Inventory truth
 
-The reviewed remote head contains the same thirteen Skill entrypoints, one
-`llms.txt`, and one Stitch-oriented `DESIGN.md` as the pinned compatibility
-snapshot. It contains no reusable component library, runtime package, test
-harness, or implementation script under `skills/`.
+The pinned compatibility snapshot contains thirteen Skill entrypoints, one
+`llms.txt`, and one Stitch-oriented `DESIGN.md`. It contains no reusable
+component library, runtime package, test harness, or implementation script
+under `skills/`. These counts describe the pin, not the newer remote tree.
 
 `design-craft` absorbs durable judgment and workflow behavior into one design
 entrypoint with conditional references. Optional image and style capabilities
@@ -42,7 +44,7 @@ specialized brand/mobile generators remain outside this consolidation.
 
 | Upstream entrypoint | Status | Local target or boundary | Decision |
 | --- | --- | --- | --- |
-| `taste-skill` | absorbed | `visual-judgment.md`, `foundational-visual-principles.md`, `product-ui-taste-review.md`, `design-move-library.md` | Brief inference, anti-slop judgment, hierarchy, product fit, responsive craft, and final preflight are baseline behavior. |
+| `taste-skill` | absorbed | `visual-judgment.md`, `foundational-visual-principles.md`, `product-ui-taste-review.md`, `design-move-library.md`, `surface-playbooks.md`, `validation-contract.md` | Brief inference, anti-slop judgment, hierarchy, product fit, responsive craft, and final preflight are baseline behavior; the 2026-10-23 selection adds KPI meaning/comparison and mobile task priority. |
 | `taste-skill-v1` | provenance-only | pristine upstream | The legacy v1 behavior is retained for traceability; the current fusion is the maintained baseline. |
 | `redesign-skill` | absorbed | `product-ui-taste-review.md`, `design-move-library.md`, critique/polish passes | Scan, diagnose, preserve functionality, remove generic patterns, and apply concrete repair moves are local. |
 | `minimalist-skill` | partial | `visual-judgment.md`, `design-system-contract.md` | Restraint, typography, low-noise surfaces, and meaningful elevation are useful; a fixed minimalist palette/font/icon prescription is not universal. |
@@ -110,11 +112,11 @@ or reusable design-engineering behavior. Its latest-range status is
 repository-presentation changes.
 
 Historical independent blind evidence for its recorded source is retained in
-`evals/comparative/taste-visual-critique-ablation/`: `design-craft` 98,
-focused taste upstream 96, no-skill baseline 95. The first controlled run
+the `taste-visual-critique-ablation` cases under `evals/comparative/history/`.
+The first controlled run
 exposed an incomplete move-budget rule; the Skill was repaired and the final
-evidence was rerun rather than editing the judge result. Those scores do not
-certify the changed 2026-09-07 Skill tree; current behavioral evidence must be
+evidence was rerun rather than editing the judge result. Those results certify
+only their recorded source; current behavioral evidence must be
 collected separately without rewriting historical hashes or judge results.
 
 ## 2026-10-06 adoption follow-up
@@ -134,3 +136,25 @@ Adoption-screened range: `ce26fc25c0e5e8cab638f883de62d9a86ee5e45b..717446e07a78
 See [the 2026-10-12 bounded adoption review](upstream-adoption-review-2026-10-12.md) for the exact range and exclusions.
 
 Adoption-screened range: `717446e07a78d4e6d7918b1fde1a263378eebac9..d237dd399d57524945c0c81327da5da19f7a468d`. Latest disposition: `partial`. The selected behavior boundary advances to `e04409a461022e1b9d0e898eac6b9224e2b9dc4e` for the redesign-skill collapsible-sidebar rule only, now in the dashboard playbook of `surface-playbooks.md`.
+
+## 2026-10-23 adoption follow-up
+
+See [the 2026-10-23 bounded adoption review](upstream-adoption-review-2026-10-23.md)
+for the complete 41-commit / 105-path inventory, reading depth, and exclusions.
+Adoption-screened range:
+`d237dd399d57524945c0c81327da5da19f7a468d..6010f91a9935f1c167dfc500fb1a475681892e6b`.
+Disposition: `partial`; selected behavior advances to that head only for the
+two adapted rules below. Earlier selections and rejection boundaries remain.
+
+| Capability | Status | Local target or boundary |
+| --- | --- | --- |
+| KPI direction follows business meaning; zero or absent baselines do not invent percentage change | absorbed | Dashboard section in `surface-playbooks.md`, source-data checks in `validation-contract.md`; preserve the declared formula, numeric sign, comparison window, and a cue beyond color |
+| Mobile action priority survives column collapse | absorbed | Dashboard section in `surface-playbooks.md`; keep relevant task summaries reachable before long lists with coherent reading/keyboard order and retained detail |
+| One main entrypoint; classic/image entrypoints move to other repositories | provenance-only | New head has `skills/taste-skill/SKILL.md`; the pinned thirteen-entry inventory above stays unchanged. The destination repositories are not registered or reviewed here |
+| Complex scene verification and unreviewed style/asset/reference recipes | deferred | Conditional candidates or structure-screened material; no new baseline workflow or completeness claim |
+| Universal style/dimension/animation quotas and display-rounded totals as a universal arithmetic rule | intentionally-rejected | Project authority and actual business aggregation/rounding govern |
+| Drawing, seeding, inspectors, assets, browser/CDP lifecycle, and installation scripts | intentionally-rejected | No new upstream runtime is executed or packaged |
+
+The `taste-skill` coverage map now includes the dashboard and data-validation
+references. Strict coverage still checks the compatibility inventory, not a
+claim that every reference or script at the newer head was absorbed.

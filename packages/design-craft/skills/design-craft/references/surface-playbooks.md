@@ -56,8 +56,19 @@ Primary job: monitor, compare, operate, decide.
 - Charts need correct scales, labels, legends, tooltips, and responsive behavior.
 - Semantic status color (see `design-move-library.md`) sits on top of the
   established palette only where a state carries meaning, not as decoration.
+- Interpret a KPI delta using the metric's business definition: a lower error
+  rate or cost can be an improvement. Keep the numeric sign and comparison
+  window, with an accessible improvement/worsening cue beyond color. Follow the
+  declared metric formula; a zero denominator or missing comparison period
+  must not produce a fabricated percentage. Show an absolute change or an
+  unavailable-baseline label as the source data permits.
 - A headline number that moves over time shows its recent history, with the
   onset marked when something changed and the data supports it.
+- When columns collapse on mobile, keep urgent or primary task summaries and
+  actions ahead of long lists where the task priority calls for it. A low-stock
+  rail's Reorder action can become a compact summary above the orders, rather
+  than disappearing below twenty rows. Preserve the underlying details and a
+  coherent reading and keyboard order.
 - Motion should be quiet and state-oriented.
 - A collapsible sidebar keeps expanded labels as the default and collapses to
   an icon rail (about 56-72px), not to nothing; below the tablet breakpoint it

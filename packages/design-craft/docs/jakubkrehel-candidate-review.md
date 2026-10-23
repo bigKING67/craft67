@@ -212,4 +212,25 @@ Adoption-screened range: `267330e1adfc66a718fb65fa6918c1f06d0a689e..d574cc8a576d
 
 See [the 2026-10-11 bounded adoption review](upstream-adoption-review-2026-10-11.md) for the exact range, path counts and exclusions.
 
-Adoption-screened range: `d574cc8a576dc24256ad38268b8d03d86724a1b3..c0588bb6d654eb725046f0bf9deec338c34891ab`. Latest disposition: `partial`. Only the product-language grouping of many scenario cases is adapted into component scenario inspection in `impeccable-workflow.md`; the absorbed-behavior boundary advances to `c0588bb6d654eb725046f0bf9deec338c34891ab` for that principle alone. Switcher markup, the fixed 232px layout, the container-query recipe and the `__state` param convention are not adopted. The pinned 11-entry inventory and entrypoint decisions are unchanged; the beyond-pin selection is recorded in `skill_inventory.latest_range_entrypoint_decisions` (`state-machine`: partial, `variant`: deferred), with local coverage and the reviewed `skills/state-machine/SKILL.md` digest, and is checked by `tests/unit/test_jakub_upstream_contract.py`.
+Adoption-screened range: `d574cc8a576dc24256ad38268b8d03d86724a1b3..c0588bb6d654eb725046f0bf9deec338c34891ab`. Disposition: `partial`. Only the product-language grouping of many scenario cases is adapted into component scenario inspection in `impeccable-workflow.md`; the absorbed-behavior boundary advances to `c0588bb6d654eb725046f0bf9deec338c34891ab` for that principle alone. Switcher markup, the fixed 232px layout, the container-query recipe and the `__state` param convention are not adopted. The pinned 11-entry inventory and entrypoint decisions are unchanged. At this review, the beyond-pin selection was `state-machine`: partial and `variant`: deferred; the reviewed `skills/state-machine/SKILL.md` SHA-256 was `30b72100000bc8039a81fd4150919430d6ba5bcff5b4e86de11e7490afa54010`. This historical selection remains local when newer ranges are deferred.
+
+## 2026-10-23 adoption follow-up
+
+Adoption-screened range:
+`c0588bb6d654eb725046f0bf9deec338c34891ab..4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63`:
+11 commits and 25 changed paths, all returned by the GitHub compare API.
+Disposition: `deferred`. Twenty-two added paths belong to `technical-drawing`;
+the other three are repository/plugin presentation or instructions. The new
+viewer, geometry, projection, export, and build/test tools were inventoried,
+not executed or fully reviewed. They expand drawing-tool scope rather than
+repairing the selected writing or component-scenario guidance.
+
+The review boundary advances to `4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63`;
+the behavior boundary remains `c0588bb6d654eb725046f0bf9deec338c34891ab`.
+The latest-range inventory records `technical-drawing`: deferred, with no local
+coverage or selected source hashes for this range. Earlier deferred ranges and
+the pinned eleven-entry inventory remain unchanged. The contract test checks
+this separation and preservation of the earlier state-grouping rule.
+
+See [the bounded adoption review](upstream-adoption-review-2026-10-23.md) for
+cross-upstream scope and exclusions.

@@ -29,12 +29,13 @@ evidence for an otherwise unchanged Skill tree.
 - Pinned compatibility commit:
   `b17742737e796305d829b3ad39eda3add0d79060`
 - Selected-behavior boundary:
-  `e04409a461022e1b9d0e898eac6b9224e2b9dc4e`
+  `6010f91a9935f1c167dfc500fb1a475681892e6b`
 - Cumulative status: `selective_absorbed`; behavior through the initial
   `06d6028b5c623016c59ce8536f578e5a1127b499` snapshot is represented in the
   local visual-judgment, product-taste, design-move, and design-system layers.
-  The 2026-10-12 review adds only the redesign-skill collapsible-sidebar rule
-  to the dashboard playbook.
+  The 2026-10-12 review adds the redesign-skill collapsible-sidebar rule.
+  The 2026-10-23 selection adds metric-aware KPI deltas, honest comparison
+  baselines, and mobile task priority to the dashboard playbook and data checks.
 - Local consolidation also selects supplied-image implementation and opt-in
   web concept-image direction into `image-reference-implementation.md` and
   `web-image-direction.md`. Editorial/tactile and motion-led options live in
@@ -42,13 +43,17 @@ evidence for an otherwise unchanged Skill tree.
   installations. This local selection does not advance the remote review pin.
 - Contract: `docs/taste-skill-absorption.md`, validated by
   `scripts/design_craft_taste_absorption.py` in the canonical repository.
-- Primary material to inspect:
+- Primary material at the compatibility pin:
   - `skills/taste-skill/SKILL.md`
   - `skills/redesign-skill/SKILL.md`
   - `skills/minimalist-skill/SKILL.md`
   - `skills/gpt-tasteskill/SKILL.md`
   - `skills/image-to-code-skill/SKILL.md`
   - `skills/stitch-skill/SKILL.md`
+- Beyond-pin selected source: `skills/taste-skill/references/app-screens.md`
+  at the selected-behavior boundary. That tree has one main Skill entrypoint;
+  the classic and image Skill moves do not change the compatibility inventory
+  or register their destination repositories as local upstreams.
 
 Use this upstream for brief inference, anti-slop judgment, visual hierarchy,
 motion discipline, redesign protocol, design-system selection, and final
@@ -62,7 +67,7 @@ preflight thinking.
 - Pinned compatibility commit:
   `80e4dd0d581fcdb42be62252b7bc07dcd2238330`
 - Selected-behavior boundary:
-  `c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2`
+  `5cb95eea9c96479f57afe0732a45470d30183326`
 - Cumulative status: `selective_absorbed` for the command taxonomy,
   brief/change-scope authority, surface modes, craft floor, applicable scoring,
   detector/native guidance and correctness, reference-first fidelity,
@@ -74,9 +79,11 @@ preflight thinking.
   review may also use a repository-owned committed visual-regression baseline
   after exact target, freshness, theme/variant, and source reconciliation,
   without upgrading it to live browser or native evidence.
-  The 2026-10-11 review adds only Operate/Read surfaces not being comp-first
+  The 2026-10-11 review adds Operate/Read surfaces not being comp-first
   and real-data, meaningful-state and headline-history guidance for Operate
-  comps and dashboards.
+  comps and dashboards. The 2026-10-23 selection adapts phrase-aware line breaks,
+  optional wrap balancing, and intentional uneven-line exceptions from
+  `skill/reference/typeset.md`; layout cost and editing stability bound their use.
 - Contract: `docs/impeccable-absorption.md`, validated by
   `scripts/design_craft_impeccable_absorption.py` in the canonical repository.
 - Detector evidence boundary: local function-level fixtures prove selected
@@ -84,6 +91,8 @@ preflight thinking.
   execution additionally requires `htmlparser2`, `css-select`, `css-tree`, and
   `domutils`; the wrapper reports `available_regex_fallback` and degraded output
   when those packages are absent. This is separate from installed-host parity.
+  The newer selected source replaces the old JS detector with a Rust launcher;
+  that engine is deferred and does not change the local detector contract.
 - Stable boundary: random concept selection, forced delegation, upstream
   live/provider/hooks runtime, generated provider copies, promotional tone,
   forced reviewers/delegation, absolute visual bans, and universal ecosystem
@@ -180,7 +189,7 @@ digests in `docs/gustavo-fior-craft-reference.md`.
 
 - Source: https://github.com/jakubkrehel/skills
 - Pinned compatibility revision: `267330e1adfc66a718fb65fa6918c1f06d0a689e`;
-  reviewed through `c0588bb6d654eb725046f0bf9deec338c34891ab`.
+  selected behavior through `c0588bb6d654eb725046f0bf9deec338c34891ab`.
 - Selected paths: `skills/better-writing/SKILL.md`, `skills/break/SKILL.md`
   and `skills/break/scenarios.md`; plus the product-language state grouping
   principle from `skills/state-machine/SKILL.md` at

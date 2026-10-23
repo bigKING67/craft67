@@ -174,6 +174,9 @@ source data, not only against the expected layout:
 
 - Trace displayed values, units, filters, aggregation, and rounding from source
   records to marks and labels.
+- For KPI comparisons, check improvement/worsening against the metric's
+  definition, retain the sign and comparison window, and exercise a zero
+  denominator and missing comparison period without inventing a percentage.
 - Verify zero baselines for length-encoded bars, visible zero crossings for
   diverging values, square-root radius scaling for area encodings,
   non-negative hierarchical weights for treemaps, and explicit normalized
