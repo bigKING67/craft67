@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 
 import { extensionRuntimeInfo } from "./extension-identity.mjs";
+import { browserInstanceError, normalizeBrowserInstanceId } from "./browser-instance.mjs";
 import { listActiveSessions, pickSession, resolveBrowserInstance } from "./sessions.mjs";
 import { isSocketOpen, sendWsPayload, toSerializableError } from "./socket-utils.mjs";
 
@@ -32,6 +33,12 @@ function clearPendingByControllerSocket(hub, socket, reason) {
   }
 }
 
+function isInstanceReload(code) {
+  return code && typeof code === "object" && !Array.isArray(code)
+    && code.cmd === "management" && code.method === "reload"
+    && Object.keys(code).every((key) => key === "cmd" || key === "method");
+}
+
 async function relayExecToExtension(hub, {
   browserInstanceId,
   sessionId,
@@ -42,8 +49,9 @@ async function relayExecToExtension(hub, {
   replyId = "",
 }) {
   const socket = extensionSocketFor(hub, browserInstanceId);
-  const tabId = Number(sessionId);
-  if (!Number.isFinite(tabId)) throw new Error(`invalid numeric tab/session id: ${String(sessionId)}`);
+  const tabId = sessionId === undefined && isInstanceReload(code) ? undefined : Number(sessionId);
+  if (tabId !== undefined && !Number.isFinite(tabId)) throw new Error(`invalid numeric tab/session id: ${String(sessionId)}`);
+  if (tabId === undefined && !isInstanceReload(code)) throw new Error("missing tab/session id");
   const relayId = `hub_${randomUUID()}`;
   const clampedTimeoutMs = Math.max(500, Math.min(120_000, timeoutMs));
   const promise = new Promise((resolve, reject) => {
@@ -65,7 +73,7 @@ async function relayExecToExtension(hub, {
     socket.send(JSON.stringify({
       id: relayId,
       browser_instance_id: browserInstanceId,
-      tabId,
+      ...(tabId === undefined ? {} : { tabId }),
       code,
       monitorNewTabs: monitorNewTabs !== false,
     }));
@@ -156,19 +164,26 @@ function handleControllerRequest(hub, config, socket, message) {
     return;
   }
   try {
-    const session = pickSession(
-      hub,
-      config.sessionTtlMs,
-      message.tabId,
-      message.browser_instance_id ?? message.browserInstanceId,
-    );
+    const requestedInstanceId = message.browser_instance_id ?? message.browserInstanceId;
+    const maintenance = isInstanceReload(code);
+    if (maintenance) {
+      const explicitIds = ["browser_instance_id", "browserInstanceId"]
+        .filter((key) => Object.hasOwn(message, key)).map((key) => message[key]);
+      if (explicitIds.some((id) => typeof id !== "string" || !normalizeBrowserInstanceId(id))
+        || new Set(explicitIds.map(normalizeBrowserInstanceId)).size > 1) {
+        throw browserInstanceError("BROWSER_INSTANCE_INVALID", "extension reload requires a valid, consistent browser_instance_id");
+      }
+    }
+    const session = maintenance
+      ? { browser_instance_id: resolveBrowserInstance(hub, requestedInstanceId), tab_id: undefined }
+      : pickSession(hub, config.sessionTtlMs, message.tabId, requestedInstanceId);
     if (!session) throw new Error("no active session available");
     relayExecToExtension(hub, {
       browserInstanceId: session.browser_instance_id,
       sessionId: session.tab_id,
       code: message.code,
       timeoutMs: config.requestTimeoutMs,
-      monitorNewTabs: message.monitorNewTabs !== false,
+      monitorNewTabs: !maintenance && message.monitorNewTabs !== false,
       replySocket: socket,
       replyId: requestId,
     }).catch((error) => {

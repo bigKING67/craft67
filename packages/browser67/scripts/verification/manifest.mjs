@@ -86,7 +86,7 @@ const entries = [
   npmEntry("runtime-home", "check:runtime-home", { changed_paths: ["src/runtime/**", "scripts/migrate-**", "contracts/runtime-**"] }),
   npmEntry("project-structure", "check:project-structure", { changed_paths: ["src/**", "scripts/project-structure-audit.mjs", "docs/project-structure.md"] }),
   npmEntry("change-set-contract", "check:change-set-contract", { changed_paths: ["scripts/change-set-lib.mjs", "contracts/change-set-contract.mjs"] }),
-  npmEntry("setup-extension", "check:setup-extension", { changed_paths: ["extension/**", "src/extension/**", "scripts/setup-extension.mjs", "scripts/build-extension.mjs", "contracts/setup-extension-contract.mjs"] }),
+  npmEntry("setup-extension", "check:setup-extension", { changed_paths: ["extension/**", "src/extension/**", "scripts/setup-extension.mjs", "scripts/setup-extension/**", "scripts/build-extension.mjs", "contracts/setup-extension-contract.mjs"] }),
   npmEntry("extension-build", "check:extension-build", { changed_paths: ["extension/**", "src/extension/**", "scripts/build-extension.mjs", "contracts/extension-build-contract.mjs"] }),
   npmEntry("extension-managed-runtime", "check:extension-managed-runtime", { changed_paths: ["extension/**", "contracts/extension-managed-runtime-contract.mjs"] }),
   npmEntry("extension-debugger-runtime", "check:extension-debugger-runtime", { changed_paths: ["extension/**", "scripts/build-extension.mjs", "contracts/extension-debugger-runtime-contract.mjs"] }),

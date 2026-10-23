@@ -153,7 +153,7 @@ const GROUPS = [
       /^contracts\/run-store-contract\.mjs$/,
       /^contracts\/browser-runtime-contract\.mjs$/,
       /^contracts\/tool-journal-contract\.mjs$/,
-      /^contracts\/browser-content-core-contract\.mjs$/,
+      /^contracts\/browser-content-core-contract(?:\.mjs|\/)/,
     ],
   },
   {
@@ -179,6 +179,7 @@ const GROUPS = [
       /^contracts\/browser67-(?:hub-control-contract|hub-relay-contract|live-contract|live-doctor|live-gate)(?:\.mjs|\/)/,
       /^contracts\/browser-tmwd-performance-live-smoke\.mjs$/,
       /^contracts\/tmwd-(?:runtime-dispose|transport-health)-contract\.mjs$/,
+      /^contracts\/tmwd-runtime-dispose-contract\//,
     ],
   },
   {
@@ -292,6 +293,7 @@ const GROUPS = [
       /^docs\/schemas\/browser-doctor\.schema\.json$/,
       /^extension\/config\.example\.js$/,
       /^scripts\/(?:install-launchd|setup-extension|extension-install-doctor|uninstall-launchd|migrate-home|release-readiness)\.mjs$/,
+      /^scripts\/setup-extension\//,
       /^scripts\/update-release(?:\.mjs|\/)/,
       /^contracts\/update-release-contract\.mjs$/,
       /^skills\/browser67\//,

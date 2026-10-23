@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 import assert from "node:assert/strict";
+import { assertExecutionOutcomes } from "./browser67-browser-mcp-contract/execution-outcome.mjs";
+import { assertSemanticDiffMatching } from "./browser-content-core-contract/semantic-diff.mjs";
 import { setTimeout as delay } from "node:timers/promises";
 import vm from "node:vm";
 
@@ -54,6 +56,8 @@ function node(nodeId, overrides = {}) {
 }
 
 async function run() {
+  await assertExecutionOutcomes();
+  assertSemanticDiffMatching();
   const store = createSnapshotStore({ ttl_ms: 20, max_per_tab: 2, max_global: 3 });
   const before = store.put({
     tab_id: "tab-1",

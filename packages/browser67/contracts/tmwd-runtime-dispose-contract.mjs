@@ -8,6 +8,8 @@ import {
   resolvePreferredBrowserContext,
 } from "../src/tmwd-runtime/index.mjs";
 import { createTmwdWsRuntime } from "../src/tmwd-runtime/ws.mjs";
+import { assertRealSocketOwnership, assertSocketOwnership } from "./tmwd-runtime-dispose-contract/socket-ownership.mjs";
+import { assertUnknownExecutionIsNotReplayed } from "./tmwd-runtime-dispose-contract/execution-replay.mjs";
 
 function waitForServerListening(server) {
   return new Promise((resolvePromise, rejectPromise) => {
@@ -59,15 +61,10 @@ async function startMockTmwdWs() {
       executionCodePayloads.push(code);
       if (code?.cmd === "silent") return;
       executionMonitorFlags.push(request.monitorNewTabs);
+      const value = { echoed_tab_id: request.tabId, disposed_contract: true };
       socket.send(JSON.stringify({
         id: request.id,
-        result: {
-          ok: true,
-          data: {
-            echoed_tab_id: request.tabId,
-            disposed_contract: true,
-          },
-        },
+        result: typeof code === "object" ? { ok: true, data: value } : value,
       }));
     });
   });
@@ -106,6 +103,9 @@ async function startMockTmwdWs() {
 }
 
 async function run() {
+  await assertSocketOwnership();
+  await assertRealSocketOwnership();
+  await assertUnknownExecutionIsNotReplayed();
   const mock = await startMockTmwdWs();
   try {
     const args = {

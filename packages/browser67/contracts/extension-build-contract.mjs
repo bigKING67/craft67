@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
 import { assertFileSchemeDiscovery } from "./extension-build-contract/file-scheme.mjs";
+import { assertWebSocketLifecycle } from "./extension-build-contract/websocket-lifecycle.mjs";
 
 import { buildBackground, buildExtension } from "../scripts/build-extension.mjs";
 import {
@@ -45,8 +46,20 @@ async function run() {
       buildBackground(sourceBackground),
       "extension background transform should produce identical output for CRLF and LF sources",
     );
+    for (const [anchor, changed] of [
+      ["filter(t => !/streamlit/i.test(t.title))", "filter(t => !/streamlit|private/i.test(t.title))"],
+      ["scheduleKeepalive(); // Keep SW alive while connected", "scheduleKeepalive(); // changed handshake behavior"],
+    ]) {
+      assert(sourceBackground.includes(anchor));
+      assert.throws(
+        () => buildBackground(sourceBackground.replace(anchor, changed)),
+        /upstream WebSocket anchors changed/,
+        "changed upstream lifecycle bodies require review before replacement",
+      );
+    }
     const manifest = JSON.parse(readFileSync(resolve(targetDir, "manifest.json"), "utf8"));
     const background = readFileSync(resolve(targetDir, "background.js"), "utf8");
+    await assertWebSocketLifecycle(background);
     await assertFileSchemeDiscovery(background);
     const runtime = readFileSync(resolve(targetDir, "browser67/runtime.js"), "utf8");
     const debuggerRuntime = readFileSync(
@@ -86,7 +99,7 @@ async function run() {
     assert.match(background, /monitorNewTabs && newTabIds\.size === 0/);
     assert.match(background, /if \(monitorNewTabs\) chrome\.tabs\.onCreated\.addListener/);
     assert.match(background, /let browser67TabsUpdateFlight = Promise\.resolve\(\)/);
-    assert.match(background, /browser67TabsUpdateFlight\.catch\(\(\) => \{\}\)\.then/);
+    assert.match(background, /browser67TabsUpdateFlight\.then/);
     assert.equal(background.includes(extensionPageExecutionSource()), true);
     assert.equal(background.includes(extensionBatchReferenceSource()), true);
     assert.match(debuggerRuntime, /browser67ResolveBatchReferences/);
@@ -195,6 +208,7 @@ async function run() {
       dedicated_agent_window_runtime: true,
       focus_lease_runtime: true,
       serialized_tab_updates: true,
+      connection_scoped_websocket_lifecycle: true,
       source_eol_normalized: true,
     })}\n`);
   } finally {

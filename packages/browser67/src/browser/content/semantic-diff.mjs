@@ -29,30 +29,39 @@ function semanticIdentity(node) {
 
 function matchNodes(beforeNodes, afterNodes) {
   const unmatchedAfter = new Set(afterNodes.map((_item, index) => index));
+  const stableIdentities = afterNodes.map(identityCandidates);
+  const semanticIdentities = afterNodes.map(semanticIdentity);
+  const stableIndex = new Map();
+  const semanticIndex = new Map();
+  function addCandidate(index, key, candidateIndex) {
+    if (!index.has(key)) index.set(key, new Set());
+    index.get(key).add(candidateIndex);
+  }
+  for (const [index, identities] of stableIdentities.entries()) {
+    for (const identity of identities) addCandidate(stableIndex, identity, index);
+    addCandidate(semanticIndex, semanticIdentities[index], index);
+  }
   const matches = [];
   for (const before of beforeNodes) {
     let index = -1;
     let confidence = "low";
     const stable = new Set(identityCandidates(before));
-    if (stable.size > 0) {
-      index = afterNodes.findIndex((after, candidateIndex) => (
-        unmatchedAfter.has(candidateIndex)
-        && identityCandidates(after).some((candidate) => stable.has(candidate))
-      ));
-      if (index >= 0) confidence = "high";
+    for (const identity of stable) {
+      const candidate = stableIndex.get(identity)?.values().next().value;
+      if (candidate !== undefined && (index < 0 || candidate < index)) index = candidate;
     }
+    if (index >= 0) confidence = "high";
     if (index < 0) {
-      const identity = semanticIdentity(before);
-      const candidates = afterNodes
-        .map((after, candidateIndex) => ({ after, candidateIndex }))
-        .filter(({ after, candidateIndex }) => unmatchedAfter.has(candidateIndex) && semanticIdentity(after) === identity);
-      if (candidates.length === 1) {
-        index = candidates[0].candidateIndex;
+      const candidates = semanticIndex.get(semanticIdentity(before));
+      if (candidates?.size === 1) {
+        index = candidates.values().next().value;
         confidence = "medium";
       }
     }
     if (index >= 0) {
       unmatchedAfter.delete(index);
+      for (const identity of stableIdentities[index]) stableIndex.get(identity).delete(index);
+      semanticIndex.get(semanticIdentities[index]).delete(index);
       matches.push({ before, after: afterNodes[index], confidence });
     } else {
       matches.push({ before, after: null, confidence: "none" });

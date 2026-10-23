@@ -51,11 +51,53 @@ native fallback -> src/native/input.mjs -> macOS/Windows/Linux OS input backend
     not acquire it; native/CAPTCHA work may acquire one managed-tab focus lease.
     Restore is conditional on unchanged user focus, a still-live original
     target, an unchanged foreground target, and no service-worker recovery.
+12. Bind extension WebSocket callbacks and replies to their accepting connection.
+    After asynchronous work, send only while that socket is still current and
+    open. Late callbacks cannot clear a replacement connection, and a pending
+    tab-list query from an old connection cannot block the replacement's updates.
+    A failed ACK send prevents script execution; an interrupted result is not replayed.
+13. Controller WebSocket ownership starts while connecting. Endpoint changes and
+    disposal cancel the previous attempt and its pending requests; late socket
+    events cannot replace the current connection, update its cache or settle its
+    requests. A request never follows a different endpoint after awaiting connect.
+    Once a WS request has been sent, loss of its result is an uncertain execution
+    failure and cannot trigger automatic replay through Link. Failed Link
+    execution POSTs also cannot replay through WS: legacy hubs do not attest
+    whether dispatch occurred. Context resolution and WS connection failures
+    before send may still use the configured transport recovery policy.
+14. `browser_execute_js` reports operational failure as a failed tool outcome
+    (`ok:false`, MCP `isError:true`), with execution diagnostics in `error.details`.
+    Structured bridge errors retain their message and code. User return values
+    containing `status`, `ok` or `error` remain ordinary data inside `js_return`.
+    Execution session diagnostics and pointers are scoped to the confirmed
+    `(browser_instance_id, tab_id)` in both output modes; unresolved execution
+    includes no registry sessions. Explicit session-list tools retain their scope.
 
 ## Maintenance boundaries
 
+- Setup repairs the generated `mcp/servers.toml` pair when both default entries
+  point into the same removed checkout, or still use compatibility entrypoints
+  in the current checkout. It preserves unrelated bytes, custom commands/env,
+  existing checkout directories and symlinks. Unsupported or conflicting entries
+  report `manual_review_required` with a nonzero exit instead of claiming a
+  complete setup. Registry writes use a private temporary file and compare the
+  observed snapshot immediately before replacement; this detects observed edits,
+  not a filesystem transaction against arbitrary external writers.
+- The exact WS bridge command `{cmd:"management",method:"reload"}` is instance
+  maintenance and needs no page session. The reload helper first resolves a
+  connected Browser Instance, then uses that same identity without selecting,
+  opening or changing a tab. Other bridge commands retain their session checks.
+  Multiple-instance ambiguity and an unavailable requested/default instance fail
+  closed. The current Hub must be running for zero-tab reload; an already running
+  older Hub does not acquire this route from source edits. A scheduling response
+  still requires reconnect and live identity verification before acceptance.
 - `extension/` is source-controlled and mirrors GenericAgent's extension except
   install-local `config.js`.
+- `src/extension/websocket-overlay.mjs` applies connection ownership in the
+  extension build rather than modifying the vendored reference or installed
+  files. The generated-code lifecycle regressions run in
+  `contracts/extension-build-contract.mjs`; installation and live extension
+  identity still require their separate gates.
 - `~/.browser67/browser/tmwd_cdp_bridge/` is the canonical Chrome/Edge
   unpacked extension install target. Legacy installs under
   `~/.tmwd-browser-mcp/browser/tmwd_cdp_bridge/` remain supported during

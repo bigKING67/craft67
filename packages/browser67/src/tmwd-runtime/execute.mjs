@@ -2,6 +2,7 @@ import { normalizeTimeoutMs } from "../runtime/config/limits.mjs";
 import { createOperationDeadline } from "../runtime/operation-deadline.mjs";
 import { appendTransportAttempt } from "../runtime/transport-attempts.mjs";
 import {
+  browserErrorMessage,
   classifyBrowserErrorCode,
   shouldFallbackAcrossTmwdTransports,
   withTransportAttempts,
@@ -72,7 +73,7 @@ async function executeTmwdJs(args, tmwdContext, code, options = {}) {
         newTabs: Array.isArray(response.newTabs) ? response.newTabs : [],
       };
     }
-    if (raw.data && typeof raw.data === "object" && raw.data !== null && "ok" in raw.data) {
+    if (typeof code === "object" && code !== null && raw.data && typeof raw.data === "object" && "ok" in raw.data) {
       return {
         raw: raw.data,
         value: raw.data.data ?? raw.data.results ?? raw.data,
@@ -87,35 +88,53 @@ async function executeTmwdJs(args, tmwdContext, code, options = {}) {
   }
   const remoteExecutionTimeoutMs = Math.max(100, timeoutMs - 250);
   const timeoutSecs = Number((remoteExecutionTimeoutMs / 1000).toFixed(2));
-  const exec = await callTmwdLink(
-    {
-      ...args,
-      tmwd_link_endpoint: tmwdContext.endpoint,
-    },
-    {
-      cmd: "execute_js",
-      sessionId: tmwdContext.target.tab_id ?? tmwdContext.target.id,
-      browser_instance_id: tmwdContext.target.browser_instance_id,
-      code: bridgeCommandPayload(
-        code,
-        tmwdContext.target.tab_id ?? tmwdContext.target.id,
-        remoteExecutionTimeoutMs,
-      ),
-      timeout: String(timeoutSecs),
-      monitorNewTabs: args?.no_monitor !== true,
-    },
-    timeoutMs,
-  );
-  const raw = exec.value;
-  if (raw && typeof raw === "object" && typeof raw.error === "string" && raw.error.length > 0) {
-    throw Object.assign(new Error(raw.error), {
-      errorCode: raw.errorCode,
-      details: raw.details,
+  let exec;
+  try {
+    exec = await callTmwdLink(
+      {
+        ...args,
+        tmwd_link_endpoint: tmwdContext.endpoint,
+      },
+      {
+        cmd: "execute_js",
+        sessionId: tmwdContext.target.tab_id ?? tmwdContext.target.id,
+        browser_instance_id: tmwdContext.target.browser_instance_id,
+        code: bridgeCommandPayload(
+          code,
+          tmwdContext.target.tab_id ?? tmwdContext.target.id,
+          remoteExecutionTimeoutMs,
+        ),
+        timeout: String(timeoutSecs),
+        monitorNewTabs: args?.no_monitor !== true,
+      },
+      timeoutMs,
+    );
+  } catch (error) {
+    // Legacy Link replies do not attest dispatch timing. A failed execution POST
+    // may already have reached the extension, even when its response was lost.
+    throw Object.assign(error instanceof Error ? error : new Error(browserErrorMessage(error)), {
+      executionMayHaveStarted: true,
     });
+  }
+  const raw = exec.value;
+  if (raw && typeof raw === "object" && raw.error) {
+    throw Object.assign(new Error(browserErrorMessage(raw.error, "tmwd bridge command failed")), {
+      errorCode: raw.errorCode ?? raw.error?.code,
+      details: raw.details,
+      executionMayHaveStarted: true,
+    });
+  }
+  const value = raw?.data ?? raw?.result ?? raw;
+  if (typeof code === "object" && code !== null && value && typeof value === "object" && "ok" in value) {
+    return {
+      raw: value,
+      value: value.data ?? value.results ?? value,
+      newTabs: Array.isArray(raw?.newTabs) ? raw.newTabs : [],
+    };
   }
   return {
     raw,
-    value: raw?.data ?? raw?.result ?? raw,
+    value,
     newTabs: Array.isArray(raw?.newTabs) ? raw.newTabs : [],
   };
 }

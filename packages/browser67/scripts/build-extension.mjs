@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 
 import { extensionBatchReferenceSource } from "../src/browser/execution/batch-references.mjs";
 import { extensionPageExecutionSource } from "../src/browser/execution/page-script.mjs";
+import { patchWebSocketLifecycle } from "../src/extension/websocket-overlay.mjs";
 import {
   createExtensionBuildIdentity,
   extensionBuildIdentityJavaScript,
@@ -214,41 +215,6 @@ function patchDebuggerSerialization(source) {
   return `${source.slice(0, batchStart)}${wrappers}${source.slice(cdpEnd)}`;
 }
 
-function patchTabsUpdateSerialization(source) {
-  const anchor = [
-    "async function sendTabsUpdate() {",
-    "  if (!ws || ws.readyState !== WebSocket.OPEN) return;",
-    "  const tabs = (await queryScriptableTabs()).filter(t => !/streamlit/i.test(t.title));",
-    "  ws.send(JSON.stringify({",
-    "    type: 'tabs_update',",
-    "    browser_instance_id: await browser67GetInstanceId(),",
-    "    extension_identity: globalThis.__browser67BuildIdentity ?? null,",
-    "    tabs: tabs.map(t => ({ id: t.id, url: t.url, title: t.title }))",
-    "  }));",
-    "}",
-  ].join("\n");
-  const replacement = [
-    "let browser67TabsUpdateFlight = Promise.resolve();",
-    "function sendTabsUpdate() {",
-    "  browser67TabsUpdateFlight = browser67TabsUpdateFlight.catch(() => {}).then(async () => {",
-    "    if (!ws || ws.readyState !== WebSocket.OPEN) return;",
-    "    const tabs = (await queryScriptableTabs()).filter(t => !/streamlit/i.test(t.title));",
-    "    ws.send(JSON.stringify({",
-    "      type: 'tabs_update',",
-    "      browser_instance_id: await browser67GetInstanceId(),",
-    "      extension_identity: globalThis.__browser67BuildIdentity ?? null,",
-    "      tabs: tabs.map(t => ({ id: t.id, url: t.url, title: t.title }))",
-    "    }));",
-    "  });",
-    "  return browser67TabsUpdateFlight;",
-    "}",
-  ].join("\n");
-  if (!source.includes(anchor)) {
-    throw new Error("upstream tab update anchors changed; review browser67 tabs_update serialization");
-  }
-  return source.replace(anchor, replacement);
-}
-
 function buildBackground(source) {
   const normalizedSource = String(source).replace(/\r\n?/g, "\n");
   const installStart = normalizedSource.indexOf("chrome.runtime.onInstalled.addListener(() => {");
@@ -271,7 +237,7 @@ function buildBackground(source) {
   if (routed === withoutGlobalCsp) {
     throw new Error("failed to inject browser67 command routing into background.js");
   }
-  return patchTabsUpdateSerialization(
+  return patchWebSocketLifecycle(
     patchExtensionIdentityHandshake(
       patchBrowserInstanceResponseIdentity(
         patchBrowserInstanceIdentity(

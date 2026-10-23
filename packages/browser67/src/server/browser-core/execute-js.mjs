@@ -14,6 +14,7 @@ import {
   finishExecutionNetworkObservation,
 } from "../../browser/network/execution-observation.mjs";
 import { resolveExecuteJsScriptInput } from "../../browser/execution/script-input.mjs";
+import { executionSessionDiagnostics } from "../../browser/execution/session-diagnostics.mjs";
 import { normalizeEndpoint } from "../../runtime/config/endpoints.mjs";
 import {
   mergeTransportAttempts,
@@ -25,6 +26,7 @@ import {
 } from "../../cdp-runtime/index.mjs";
 import { runBridgeCommand } from "../../browser/execution/bridge-commands.mjs";
 import {
+  browserErrorMessage,
   classifyBrowserErrorCode,
   createToolError,
   isRetryableBrowserErrorCode,
@@ -188,8 +190,8 @@ async function handleBrowserExecuteJs(args, options = {}) {
       native_input_hint: nativeInputSuggestion.should_escalate === true ? nativeInputSuggestion : undefined,
       native_input_capabilities: nativeInputSuggestion.should_escalate === true ? nativeInputCapabilities : undefined,
       native_auto_fallback: nativeAutoFallback,
-      tab_id: sessionStore.getActiveTargetId() || undefined,
-      session_id: sessionStore.getActiveTargetId() || undefined,
+      tab_id: undefined,
+      session_id: undefined,
       selection: undefined,
       selection_source: null,
       selection_warning: undefined,
@@ -197,8 +199,7 @@ async function handleBrowserExecuteJs(args, options = {}) {
       reloaded: false,
       transients: [],
       diff: "context resolution failed before script execution",
-      sessions: sessionStore.list(),
-      ...sessionStore.sessionPointers(),
+      ...executionSessionDiagnostics(sessionStore),
       environment: {
         newTabs: [],
         reloaded: false,
@@ -224,6 +225,7 @@ async function handleBrowserExecuteJs(args, options = {}) {
   const executionObservation = await beginExecutionNetworkObservation(args ?? {}, preferred, options);
   let jsReturn = null;
   let error = "";
+  let executionErrorCode;
   let responseTransport = preferred.transport;
   let executeTransportAttempts = [];
   let tabId = preferred.context.target.id;
@@ -258,7 +260,8 @@ async function handleBrowserExecuteJs(args, options = {}) {
         selection = tmwdExecution.context.selection ?? selection;
         if (executed.raw && typeof executed.raw === "object") {
           if (executed.raw.ok === false) {
-            error = String(executed.raw.error ?? "tmwd bridge command failed");
+            error = browserErrorMessage(executed.raw.error, "tmwd bridge command failed");
+            executionErrorCode = executed.raw.errorCode ?? executed.raw.error?.code;
           }
           if (typeof executed.raw.tab_id === "string" && executed.raw.tab_id.trim().length > 0) {
             tabId = executed.raw.tab_id.trim();
@@ -286,7 +289,8 @@ async function handleBrowserExecuteJs(args, options = {}) {
         jsReturn = commandResult;
         if (commandResult && typeof commandResult === "object") {
           if (commandResult.ok === false) {
-            error = String(commandResult.error ?? "bridge command failed");
+            error = browserErrorMessage(commandResult.error, "bridge command failed");
+            executionErrorCode = commandResult.errorCode ?? commandResult.error?.code;
           }
           if (commandResult.selection && typeof commandResult.selection === "object") {
             selection = commandResult.selection;
@@ -325,7 +329,8 @@ async function handleBrowserExecuteJs(args, options = {}) {
         sessionStore.sync(afterTargets);
       }
     } catch (execError) {
-      error = String(execError?.message ?? execError);
+      error = browserErrorMessage(execError);
+      executionErrorCode = execError?.errorCode;
       if (Array.isArray(execError?.transportAttempts)) {
         executeTransportAttempts = execError.transportAttempts;
       }
@@ -370,7 +375,7 @@ async function handleBrowserExecuteJs(args, options = {}) {
   const diff = noMonitor
     ? "monitor skipped (no_monitor=true)"
     : (newTabs.length > 0 ? `DOM变化监控：检测到 ${String(newTabs.length)} 个新标签页` : "DOM变化监控：未检测到显著结构变化");
-  const errorCode = error ? classifyBrowserErrorCode(error) : undefined;
+  const errorCode = error ? (executionErrorCode || classifyBrowserErrorCode(error)) : undefined;
   const nativeAutoFallbackPolicy = resolveNativeAutoFallbackPolicy(args ?? {});
   const nativeInputSuggestion = buildNativeInputSuggestion(errorCode, error, nativeAutoFallbackPolicy);
   const nativeAutoFallback = error
@@ -409,8 +414,7 @@ async function handleBrowserExecuteJs(args, options = {}) {
     reloaded: false,
     transients,
     diff,
-    sessions: sessionStore.list(),
-    ...sessionStore.sessionPointers(),
+    ...executionSessionDiagnostics(sessionStore, preferred.context.target),
     environment: {
       newTabs,
       reloaded: false,

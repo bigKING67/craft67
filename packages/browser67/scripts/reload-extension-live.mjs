@@ -89,6 +89,8 @@ function reloadBrowser67Extension(options = {}) {
   return new Promise((resolvePromise, rejectPromise) => {
     const socket = new WebSocket(endpoint);
     let settled = false;
+    let targetBrowserInstanceId = "";
+    let reloadSent = false;
     const timer = setTimeout(() => {
       finish(new Error(`extension reload timed out after ${String(timeoutMs)}ms`));
     }, timeoutMs);
@@ -98,6 +100,8 @@ function reloadBrowser67Extension(options = {}) {
       settled = true;
       clearTimeout(timer);
       socket.removeAllListeners();
+      // Aborting a CONNECTING socket emits an asynchronous error in ws.
+      socket.on("error", () => {});
       try {
         socket.close();
       } catch {
@@ -110,12 +114,21 @@ function reloadBrowser67Extension(options = {}) {
       }
     }
 
+    function send(payload) {
+      if (settled) return;
+      try {
+        socket.send(JSON.stringify(payload), (error) => { if (error) finish(error); });
+      } catch (error) {
+        finish(error);
+      }
+    }
+
     socket.once("open", () => {
-      socket.send(JSON.stringify({
+      send({
         id: tabsRequestId,
         ...(browserInstanceId ? { browser_instance_id: browserInstanceId } : {}),
         code: { cmd: "tabs", method: "list" },
-      }));
+      });
     });
     socket.on("message", (raw) => {
       let message;
@@ -126,29 +139,26 @@ function reloadBrowser67Extension(options = {}) {
       }
       const messageId = String(message?.id ?? "");
       if (messageId === tabsRequestId) {
-        if (message?.type === "ack") return;
-        if (message?.success !== true || !Array.isArray(message?.result) || message.result.length === 0) {
-          finish(new Error(toErrorMessage(message?.error ?? "no active browser tab is available for extension reload")));
+        if (message?.type === "ack" || reloadSent) return;
+        if (message?.success !== true || !Array.isArray(message?.result)) {
+          finish(new Error(toErrorMessage(message?.error ?? "could not discover the connected browser instance")));
           return;
         }
-        const target = message.result.find((row) => Number.isFinite(Number(row?.tab_id ?? row?.id)));
-        if (!target) {
-          finish(new Error("extension reload could not resolve a numeric live tab id"));
-          return;
-        }
-        const targetBrowserInstanceId = String(
-          message?.browser_instance_id ?? target?.browser_instance_id ?? browserInstanceId,
-        ).trim();
+        targetBrowserInstanceId = String(message?.browser_instance_id ?? "").trim();
         if (!targetBrowserInstanceId) {
           finish(new Error("extension reload could not resolve browser_instance_id"));
           return;
         }
-        socket.send(JSON.stringify({
+        if (browserInstanceId && targetBrowserInstanceId !== browserInstanceId) {
+          finish(new Error("extension reload browser_instance_id changed during discovery"));
+          return;
+        }
+        reloadSent = true;
+        send({
           id: reloadRequestId,
           browser_instance_id: targetBrowserInstanceId,
-          tabId: Number(target.tab_id ?? target.id),
           code: { cmd: "management", method: "reload" },
-        }));
+        });
         return;
       }
       if (messageId !== reloadRequestId || message?.type === "ack") {
@@ -158,11 +168,16 @@ function reloadBrowser67Extension(options = {}) {
         finish(new Error(toErrorMessage(message?.error ?? message?.result)));
         return;
       }
+      if (!reloadSent || message.browser_instance_id !== targetBrowserInstanceId) {
+        finish(new Error("extension reload confirmation has an unexpected browser_instance_id"));
+        return;
+      }
       finish(null, {
         ok: true,
         status: "reload_scheduled",
         endpoint,
         request_id: reloadRequestId,
+        browser_instance_id: targetBrowserInstanceId,
         next_steps: [
           "Wait for the extension to reconnect to the browser67 Hub.",
           "Refresh existing target tabs when content-script changes must be reinjected.",

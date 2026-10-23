@@ -1,5 +1,10 @@
 import { resolveTmwdTransport } from "./config/endpoints.mjs";
 
+function browserErrorMessage(error, fallback = "browser execution failed") {
+  const message = typeof error === "string" ? error : error?.message;
+  return typeof message === "string" && message.trim() ? message : fallback;
+}
+
 function classifyBrowserErrorCode(message) {
   const normalized = String(message ?? "").toLowerCase();
   if (
@@ -111,16 +116,18 @@ function createToolError(errorCode, message, options = {}) {
 }
 
 function shouldFallbackAcrossTmwdTransports(args, error) {
+  if (error?.executionMayHaveStarted === true) return false;
   const configuredTransport = resolveTmwdTransport(args?.tmwd_transport);
   if (configuredTransport === "link") {
     return false;
   }
   const message = String(error?.message ?? error ?? "");
-  const code = classifyBrowserErrorCode(message);
+  const code = error?.errorCode || classifyBrowserErrorCode(message);
   return isRetryableBrowserErrorCode(code);
 }
 
 export {
+  browserErrorMessage,
   classifyBrowserErrorCode,
   isRetryableBrowserErrorCode,
   withTransportAttempts,

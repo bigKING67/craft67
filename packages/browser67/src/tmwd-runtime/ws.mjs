@@ -46,6 +46,7 @@ function createTmwdWsRuntime(options = {}) {
     socket: null,
     status: "idle",
     connectPromise: null,
+    cancelConnect: null,
     pending: new Map(),
     lastTabs: [],
     lastTabsUpdatedAtMs: 0,
@@ -74,23 +75,29 @@ function createTmwdWsRuntime(options = {}) {
   function clearPending(errorMessage) {
     for (const [, pending] of state.pending) {
       clearTimeout(pending.timer);
-      pending.reject(new Error(errorMessage));
+      pending.reject(Object.assign(new Error(errorMessage), { executionMayHaveStarted: true }));
     }
     state.pending.clear();
   }
 
   function closeConnection(reason) {
-    if (state.socket) {
+    const socket = state.socket;
+    const cancelConnect = state.cancelConnect;
+    // Revoke ownership before close() can dispatch callbacks synchronously.
+    state.socket = null;
+    state.status = "idle";
+    state.connectPromise = null;
+    state.cancelConnect = null;
+    resetSessionCache();
+    cancelConnect?.(new Error(reason || "tmwd ws closed"));
+    if (reason) clearPending(reason);
+    if (socket) {
       try {
-        state.socket.close();
+        socket.close();
       } catch {
         // Connection teardown is best effort; pending calls receive the decisive error below.
       }
     }
-    state.socket = null;
-    state.status = "idle";
-    state.connectPromise = null;
-    if (reason) clearPending(reason);
   }
 
   async function waitForSocketClose(socket, timeoutMs) {
@@ -170,21 +177,18 @@ function createTmwdWsRuntime(options = {}) {
       await state.connectPromise;
       return endpoint;
     }
-    if (state.endpoint && state.endpoint !== endpoint) closeConnection("tmwd ws endpoint changed");
+    if (state.socket || state.connectPromise) {
+      closeConnection(state.endpoint !== endpoint ? "tmwd ws endpoint changed" : "tmwd ws closed before reconnect");
+    }
     state.endpoint = endpoint;
     state.status = "connecting";
     const connectPromise = new Promise((resolve, reject) => {
       const socket = new WebSocketImpl(endpoint);
+      state.socket = socket;
+      const isCurrent = () => !state.disposed && state.socket === socket;
       let settled = false;
       const timer = setTimeout(() => {
-        if (settled) return;
-        settled = true;
-        try {
-          socket.close();
-        } catch {
-          // The timeout error is sufficient if the underlying socket cannot close cleanly.
-        }
-        reject(new Error(`tmwd ws connect timeout after ${String(connectTimeoutMs)}ms`));
+        if (isCurrent()) closeConnection(`tmwd ws connect timeout after ${String(connectTimeoutMs)}ms`);
       }, connectTimeoutMs);
       const finishResolve = () => {
         if (settled) return;
@@ -198,26 +202,29 @@ function createTmwdWsRuntime(options = {}) {
         clearTimeout(timer);
         reject(error);
       };
+      state.cancelConnect = finishReject;
       socket.addEventListener("open", () => {
-        state.socket = socket;
+        if (!isCurrent() || settled) return;
         state.status = "open";
         state.connectionGeneration += 1;
         resetSessionCache();
         finishResolve();
       }, { once: true });
-      socket.addEventListener("message", (event) => onMessage(event.data));
+      socket.addEventListener("message", (event) => {
+        if (isCurrent() && state.status === "open") onMessage(event.data);
+      });
       socket.addEventListener("close", () => {
         const reason = "tmwd ws closed";
-        if (state.socket === socket) closeConnection(reason);
-        if (state.status === "connecting") finishReject(new Error(reason));
+        if (isCurrent()) closeConnection(reason);
+        finishReject(new Error(reason));
       });
       socket.addEventListener("error", (event) => {
         const detail = String(event?.message ?? "").trim();
         const reason = detail.length > 0
           ? `tmwd ws error: ${detail}`
           : `tmwd ws connection failed endpoint=${endpoint}`;
-        if (state.socket === socket) closeConnection(reason);
-        if (state.status === "connecting") finishReject(new Error(reason));
+        if (isCurrent()) closeConnection(reason);
+        finishReject(new Error(reason));
       });
     });
     state.connectPromise = connectPromise;
@@ -225,20 +232,23 @@ function createTmwdWsRuntime(options = {}) {
       await connectPromise;
       return endpoint;
     } finally {
-      if (state.connectPromise === connectPromise) state.connectPromise = null;
-      if (state.status === "connecting") state.status = "idle";
+      if (state.connectPromise === connectPromise) {
+        state.connectPromise = null;
+        state.cancelConnect = null;
+        if (state.status === "connecting") state.status = "idle";
+      }
     }
   }
 
   async function send(args, payload, timeoutMs) {
     const startedAtMs = Date.now();
     const totalTimeoutMs = normalizeTimeoutMs(timeoutMs);
-    await connect({
+    const endpoint = await connect({
       ...(args ?? {}),
       timeout_ms: totalTimeoutMs,
     }, { probe: false });
     const socket = state.socket;
-    if (!socket || socket.readyState !== WebSocketImpl.OPEN) {
+    if (!socket || socket.readyState !== WebSocketImpl.OPEN || state.endpoint !== endpoint) {
       throw new Error("tmwd ws is not connected");
     }
     if (state.pending.size >= maxPending) {
@@ -249,28 +259,37 @@ function createTmwdWsRuntime(options = {}) {
     if (requestTimeoutMs < 100) {
       throw new Error(`tmwd ws request timeout before send after ${String(totalTimeoutMs)}ms`);
     }
-    const promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const timer = setTimeout(() => {
         state.pending.delete(requestId);
-        reject(new Error(`tmwd ws request timeout id=${requestId}`));
+        reject(Object.assign(new Error(`tmwd ws request timeout id=${requestId}`), { executionMayHaveStarted: true }));
       }, requestTimeoutMs);
       state.pending.set(requestId, { resolve, reject, timer });
+      try {
+        socket.send(JSON.stringify({
+          id: requestId,
+          browser_instance_id: payload.browser_instance_id,
+          tabId: payload.tabId,
+          code: payload.code,
+          monitorNewTabs: payload.monitorNewTabs !== false,
+        }));
+      } catch (error) {
+        state.pending.delete(requestId);
+        clearTimeout(timer);
+        reject(error);
+      }
     });
-    socket.send(JSON.stringify({
-      id: requestId,
-      browser_instance_id: payload.browser_instance_id,
-      tabId: payload.tabId,
-      code: payload.code,
-      monitorNewTabs: payload.monitorNewTabs !== false,
-    }));
-    return promise;
   }
 
   async function listSessionsWithMeta(args, listOptions = {}) {
     const timeoutMs = listOptions.probe === true
       ? 1_500
       : Math.min(10_000, normalizeTimeoutMs(args?.timeout_ms));
-    await connect(args, { probe: listOptions.probe === true });
+    const endpoint = await connect(args, { probe: listOptions.probe === true });
+    const socket = state.socket;
+    if (!socket || socket.readyState !== WebSocketImpl.OPEN || state.endpoint !== endpoint) {
+      throw new Error("tmwd ws is not connected");
+    }
     const cacheTtlMs = normalizeSessionCacheTtlMs(listOptions.cache_ttl_ms ?? args?.session_cache_ttl_ms);
     const cacheAgeMs = state.lastTabsUpdatedAtMs > 0
       ? Date.now() - state.lastTabsUpdatedAtMs
@@ -296,6 +315,7 @@ function createTmwdWsRuntime(options = {}) {
       browser_instance_id: args?.browser_instance_id ?? args?.browserInstanceId,
       code: { cmd: "tabs" },
     }, timeoutMs);
+    if (state.socket !== socket) throw new Error("tmwd ws endpoint changed during tabs request");
     if (!response.success) {
       throw Object.assign(new Error(String(response.error ?? "tmwd ws tabs failed")), {
         errorCode: response.errorCode,

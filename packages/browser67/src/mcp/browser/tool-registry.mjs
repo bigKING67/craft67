@@ -11,6 +11,7 @@ import {
 } from "../../browser-wrappers/index.mjs";
 import {
   classifyBrowserErrorCode,
+  createToolError,
   isRetryableBrowserErrorCode,
 } from "../../runtime/tool-errors.mjs";
 import { handleBrowserNativeInput } from "../../native/input.mjs";
@@ -183,6 +184,14 @@ async function dispatchRegisteredTool(name, args = {}, options = {}) {
     const page = await tool.pagePolicy(name, args, rawData, { runtime });
     const outputMode = resolveOutputMode(args, tool.defaultOutputMode);
     const data = tool.compactPolicy(name, rawData, page, { mode: outputMode });
+    // This is the execute handler's operational result, never the nested user js_return.
+    if (name === "browser_execute_js" && rawData?.status === "failed") {
+      const error = createToolError(rawData.error_code, rawData.error, {
+        retryable: rawData.retryable,
+        details: data,
+      });
+      throw Object.assign(error, { transportAttempts: rawData.transport_attempts });
+    }
     const rawTransportAttempts = Array.isArray(rawData?.transport_attempts)
       ? rawData.transport_attempts
       : undefined;

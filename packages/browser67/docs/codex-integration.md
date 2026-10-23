@@ -899,6 +899,23 @@ run `npm run setup:local-extension` and load exactly:
 /path/to/browser67/runtime/chrome-extension/tmwd_cdp_bridge/
 ```
 
+Setup also maintains the active home's `mcp/servers.toml`; it does not rewrite
+the host's Codex configuration. A default `tmwd_browser`/`js-reverse` pair left
+in one removed checkout is retargeted to the current checkout. Existing old
+directories (including symlinks), custom commands/env/arguments and unsupported
+TOML are preserved. An unresolved or conflicting pair returns
+`status:"manual_review_required"`, `ok:false`, a nonzero exit and reason codes in
+`mcp_registry_warnings`. Review those entries before rerunning setup.
+
+With the current Hub running, `npm run extension:reload-live --
+--browser-instance-id <id>` works even when that instance has zero routable
+pages. It sends only instance-level `management.reload`; it does not open a
+temporary tab. Omit the id only when there is one active instance or an explicit
+default. An unavailable default never falls through to another instance. Running
+Hub processes must be restarted separately to load source changes. Reload
+success means `reload_scheduled`, followed by reconnect and the doctor check
+below; an ACK alone is insufficient.
+
 The generated extension includes `browser67/build-identity.json`. On
 `ext_ready`, the running service worker reports that identity to the Hub. The
 live doctor deterministically builds the expected identity from current source,

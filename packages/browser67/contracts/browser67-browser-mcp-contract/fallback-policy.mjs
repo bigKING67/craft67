@@ -4,7 +4,18 @@ import path from "node:path";
 import {
   assertTextJsonContent,
   firstJsonContent,
+  firstOutcomeContent,
 } from "./rpc-content.mjs";
+
+function executionFailureData(result) {
+  const outcome = firstOutcomeContent(result);
+  assert.equal(outcome.ok, false);
+  assert.equal(outcome.status, "failed");
+  assert.equal(outcome.error.details.status, "failed");
+  assert.equal(outcome.error.code, outcome.error.details.error_code);
+  assert.equal(outcome.error.message, outcome.error.details.error);
+  return outcome.error.details;
+}
 
 async function registerExecuteErrorManagedTab(registryPath) {
   const now = new Date().toISOString();
@@ -129,8 +140,8 @@ async function assertExecuteJsFallbackPolicy({
     },
     timeoutMs,
   );
-  assert.equal(toolCallWithAutoFallback?.result?.isError, undefined, "balanced native auto fallback returns tool data");
-  const autoFallbackPayload = firstJsonContent(toolCallWithAutoFallback.result);
+  assert.equal(toolCallWithAutoFallback?.result?.isError, true, "unexecuted native fallback retains the failure outcome");
+  const autoFallbackPayload = executionFailureData(toolCallWithAutoFallback.result);
   assert.equal(autoFallbackPayload?.status, "failed");
   assert.equal(
     ["NO_EXTENSION", "TRANSPORT_UNAVAILABLE"].includes(autoFallbackPayload?.error_code),
@@ -172,8 +183,8 @@ async function assertExecuteJsFallbackPolicy({
     },
     timeoutMs,
   );
-  assert.equal(toolCallWithStrictAutoFallback?.result?.isError, undefined, "strict native auto fallback returns tool data");
-  const strictAutoFallbackPayload = firstJsonContent(toolCallWithStrictAutoFallback.result);
+  assert.equal(toolCallWithStrictAutoFallback?.result?.isError, true, "strict native fallback retains the failure outcome");
+  const strictAutoFallbackPayload = executionFailureData(toolCallWithStrictAutoFallback.result);
   assert.equal(strictAutoFallbackPayload?.status, "failed");
   assert.equal(strictAutoFallbackPayload?.native_input_suggested, false);
   assert.equal(strictAutoFallbackPayload?.native_input_hint, undefined);
@@ -202,8 +213,8 @@ async function assertExecuteJsFallbackPolicy({
     },
     timeoutMs,
   );
-  assert.equal(toolCallWithAggressiveAutoFallback?.result?.isError, undefined, "aggressive native auto fallback returns tool data");
-  const aggressiveAutoFallbackPayload = firstJsonContent(toolCallWithAggressiveAutoFallback.result);
+  assert.equal(toolCallWithAggressiveAutoFallback?.result?.isError, true, "unexecuted aggressive fallback retains the failure outcome");
+  const aggressiveAutoFallbackPayload = executionFailureData(toolCallWithAggressiveAutoFallback.result);
   assert.equal(aggressiveAutoFallbackPayload?.status, "failed");
   assert.equal(
     aggressiveAutoFallbackPayload?.native_input_suggested,
@@ -270,8 +281,8 @@ async function assertExecuteJsFallbackPolicy({
     },
     timeoutMs,
   );
-  assert.equal(timeoutBalancedCall?.result?.isError, undefined, "balanced timeout fallback returns tool data");
-  const timeoutBalancedPayload = firstJsonContent(timeoutBalancedCall.result);
+  assert.equal(timeoutBalancedCall?.result?.isError, true, "timeout remains an MCP failure");
+  const timeoutBalancedPayload = executionFailureData(timeoutBalancedCall.result);
   assert.equal(timeoutBalancedPayload?.status, "failed");
   assert.equal(timeoutBalancedPayload?.error_code, "TIMEOUT");
   assert.equal(timeoutBalancedPayload?.native_input_suggested, false);
@@ -298,8 +309,8 @@ async function assertExecuteJsFallbackPolicy({
     },
     timeoutMs,
   );
-  assert.equal(timeoutAggressiveCall?.result?.isError, undefined, "aggressive timeout fallback returns tool data");
-  const timeoutAggressivePayload = firstJsonContent(timeoutAggressiveCall.result);
+  assert.equal(timeoutAggressiveCall?.result?.isError, true, "timeout remains an MCP failure after fallback planning");
+  const timeoutAggressivePayload = executionFailureData(timeoutAggressiveCall.result);
   assert.equal(timeoutAggressivePayload?.status, "failed");
   assert.equal(timeoutAggressivePayload?.error_code, "TIMEOUT");
   assert.equal(timeoutAggressivePayload?.native_input_suggested, true, "aggressive timeout suggests native input");
@@ -338,8 +349,8 @@ async function assertExecuteJsFallbackPolicy({
     },
     timeoutMs,
   );
-  assert.equal(executionErrorBalancedCall?.result?.isError, undefined, "balanced execution fallback returns tool data");
-  const executionErrorBalancedPayload = firstJsonContent(executionErrorBalancedCall.result);
+  assert.equal(executionErrorBalancedCall?.result?.isError, true, "execution failure is reflected by MCP");
+  const executionErrorBalancedPayload = executionFailureData(executionErrorBalancedCall.result);
   assert.equal(executionErrorBalancedPayload?.status, "failed");
   assert.equal(executionErrorBalancedPayload?.error_code, "EXECUTION_ERROR");
   assert.equal(executionErrorBalancedPayload?.native_input_suggested, false);
@@ -366,8 +377,8 @@ async function assertExecuteJsFallbackPolicy({
     },
     timeoutMs,
   );
-  assert.equal(executionErrorAggressiveCall?.result?.isError, undefined, "aggressive execution fallback returns tool data");
-  const executionErrorAggressivePayload = firstJsonContent(executionErrorAggressiveCall.result);
+  assert.equal(executionErrorAggressiveCall?.result?.isError, true, "execution failure persists until fallback actually executes");
+  const executionErrorAggressivePayload = executionFailureData(executionErrorAggressiveCall.result);
   assert.equal(executionErrorAggressivePayload?.status, "failed");
   assert.equal(executionErrorAggressivePayload?.error_code, "EXECUTION_ERROR");
   assert.equal(

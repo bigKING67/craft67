@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
 import { randomBytes } from "node:crypto";
-import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { resolveBrowser67Home } from "../src/runtime/paths/home.mjs";
 import { buildExtension } from "./build-extension.mjs";
+import { ensureMcpRegistry } from "./setup-extension/registry.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, "..");
@@ -15,10 +16,6 @@ const homeResolution = resolveBrowser67Home();
 const defaultHome = homeResolution.path;
 const defaultTargetDir = resolve(defaultHome, "browser/tmwd_cdp_bridge");
 const defaultMcpRegistryPath = resolve(defaultHome, "mcp/servers.toml");
-const browserServerPath = resolve(repoRoot, "src/mcp/browser/server.mjs");
-const jsReverseServerPath = resolve(repoRoot, "src/mcp/js-reverse/server.mjs");
-const legacyBrowserServerPath = resolve(repoRoot, "src/server.mjs");
-const legacyJsReverseServerPath = resolve(repoRoot, "src/js-reverse-server.mjs");
 
 function parseArgs(argv) {
   const parsed = {
@@ -81,77 +78,6 @@ function makeTid() {
   return `__browser67_${randomBytes(6).toString("hex")}`;
 }
 
-function tomlString(value) {
-  return JSON.stringify(String(value));
-}
-
-function normalizeMcpRegistry(current) {
-  let next = current;
-  next = next.replace(/^(\s*name\s*=\s*)["']tmwd-browser-mcp["']/gm, '$1"tmwd_browser"');
-  for (const [legacyPath, canonicalPath] of [
-    [legacyBrowserServerPath, browserServerPath],
-    [legacyJsReverseServerPath, jsReverseServerPath],
-  ]) {
-    next = next.split(tomlString(legacyPath)).join(tomlString(canonicalPath));
-    next = next.split(`'${legacyPath}'`).join(`'${canonicalPath}'`);
-  }
-  return next;
-}
-
-function ensureMcpRegistry(registryPath) {
-  mkdirSync(dirname(registryPath), { recursive: true });
-  let current = existsSync(registryPath) ? readFileSync(registryPath, "utf8") : "";
-  let changed = false;
-  const normalized = normalizeMcpRegistry(current);
-  if (normalized !== current) {
-    writeFileSync(registryPath, normalized, "utf8");
-    current = normalized;
-    changed = true;
-  }
-  const blocks = [];
-  if (!/^\s*name\s*=\s*["'](?:tmwd_browser|tmwd-browser-mcp)["']/m.test(current)) {
-    blocks.push([
-      "",
-      "# browser67 real-browser automation MCP server.",
-      "[[servers]]",
-      "name = \"tmwd_browser\"",
-      "command = \"node\"",
-      `args = [${tomlString(browserServerPath)}]`,
-      "enabled = true",
-      "",
-      "[servers.env]",
-      "BROWSER_STRUCTURED_TMWD_MODE = \"tmwd\"",
-      "BROWSER_STRUCTURED_TMWD_TRANSPORT = \"auto\"",
-      "BROWSER_STRUCTURED_TMWD_WS_ENDPOINT = \"ws://127.0.0.1:18765\"",
-      "BROWSER_STRUCTURED_TMWD_LINK_ENDPOINT = \"http://127.0.0.1:18766/link\"",
-      "",
-    ].join("\n"));
-  }
-  if (!/^\s*name\s*=\s*["']js-reverse["']/m.test(current)) {
-    blocks.push([
-      "",
-      "# browser67-backed JavaScript reverse-engineering MCP server.",
-      "[[servers]]",
-      "name = \"js-reverse\"",
-      "command = \"node\"",
-      `args = [${tomlString(jsReverseServerPath)}]`,
-      "enabled = true",
-      "",
-      "[servers.env]",
-      "BROWSER_STRUCTURED_TMWD_MODE = \"tmwd\"",
-      "BROWSER_STRUCTURED_TMWD_TRANSPORT = \"auto\"",
-      "BROWSER_STRUCTURED_TMWD_WS_ENDPOINT = \"ws://127.0.0.1:18765\"",
-      "BROWSER_STRUCTURED_TMWD_LINK_ENDPOINT = \"http://127.0.0.1:18766/link\"",
-      "",
-    ].join("\n"));
-  }
-  if (blocks.length === 0) {
-    return { path: registryPath, changed };
-  }
-  appendFileSync(registryPath, blocks.join(""), "utf8");
-  return { path: registryPath, changed: true };
-}
-
 function run() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
@@ -178,9 +104,10 @@ function run() {
   }
   const registry = args.skipRegistry
     ? { path: args.registryPath, changed: false, skipped: true }
-    : ensureMcpRegistry(args.registryPath);
+    : ensureMcpRegistry(args.registryPath, repoRoot);
   const payload = {
-    ok: true,
+    ok: (registry.warnings?.length ?? 0) === 0,
+    status: (registry.warnings?.length ?? 0) === 0 ? "prepared" : "manual_review_required",
     product: "browser67",
     active_home: defaultHome,
     active_home_source: homeResolution.source,
@@ -194,6 +121,8 @@ function run() {
     mcp_registry_path: registry.path,
     mcp_registry_changed: registry.changed,
     mcp_registry_skipped: registry.skipped === true,
+    mcp_registry_migrated: registry.migrated === true,
+    mcp_registry_warnings: registry.warnings ?? [],
     next_steps: [
       "Open chrome://extensions or edge://extensions",
       "Enable Developer mode",
@@ -206,7 +135,7 @@ function run() {
   };
   if (args.json) {
     process.stdout.write(`${JSON.stringify(payload)}\n`);
-    return 0;
+    return payload.ok ? 0 : 1;
   }
   process.stdout.write(`Extension prepared: ${payload.extension_dir}\n`);
   const identity = payload.extension_build.extension_identity;
@@ -216,11 +145,14 @@ function run() {
   process.stdout.write(`Active home: ${payload.active_home} (${payload.active_home_source})\n`);
   process.stdout.write(`Config: ${payload.config_path}${payload.config_created ? " (created)" : " (kept)"}\n`);
   process.stdout.write(`MCP registry: ${payload.mcp_registry_path}${payload.mcp_registry_changed ? " (updated)" : " (unchanged)"}\n`);
+  for (const warning of payload.mcp_registry_warnings) {
+    process.stdout.write(`MCP registry requires manual review: ${warning}\n`);
+  }
   process.stdout.write("Next:\n");
   for (const item of payload.next_steps) {
     process.stdout.write(`  - ${item}\n`);
   }
-  return 0;
+  return payload.ok ? 0 : 1;
 }
 
 try {
