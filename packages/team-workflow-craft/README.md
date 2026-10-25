@@ -12,7 +12,7 @@
 
 TWC 只做这三件事的确定性检查，载体是随任务分支提交的 `.team-workflow/tasks/<task>/` 目录：契约、证据摘要和最新交接都在里面，推送分支就是交接。任务分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，TWC 只负责检查整个 Git 根，提醒 WIP 互相覆盖。
 
-**当前为源码 v0.2.0，非正式 Release。** 核心 CLI、CNB/Gitea 只读客户端已经验证；Claude Code、Codex、Pi 在新会话中从队友推送的分支 clone 接手，均先运行 `resume` 并给出正确的下一步（合成任务）。AIOS 已在 Trellis 托管模式下接入，检查登记为 `npm run verify:quick`，随 AIOS 4.1.106 发布。真实多人试点和已有 Issue/PR 的成功读取路径尚未验收。Windows 原生进程树完成性不支持，返回 incomplete。各轮验收记录见 [试点与运维验收](docs/operations.md)、[宿主兼容性](docs/compatibility.md)、[CNB 首轮演练](docs/cnb-pilot.md) 和 [分支保护验收](docs/gitea-policy-probe.md)。
+**当前为源码 v0.2.1，非正式 Release。** 核心 CLI、CNB/Gitea 只读客户端已经验证；历史 v0.2.0 的 Claude Code、Codex、Pi 在新会话中从队友推送的分支 clone 接手，均先运行 `resume` 并给出正确的下一步（合成任务）。AIOS 已在 Trellis 托管模式下接入，检查登记为 `npm run verify:quick`，随 AIOS 4.1.106 发布。0.2.1 的 CNB 合成试点已验证既有 Issue/PR 读取、同机新 clone 接手、管理员评审合并及 main 本地复验；同一用户双账号不构成独立真人或跨机器验收。Windows 原生进程树完成性不支持，返回 incomplete。各轮验收记录见 [试点与运维验收](docs/operations.md)、[宿主兼容性](docs/compatibility.md)、[CNB 首轮演练](docs/cnb-pilot.md) 和 [分支保护验收](docs/gitea-policy-probe.md)。
 
 ## 使用边界
 
@@ -102,7 +102,7 @@ git commit -m "twc: hand off issue-42" -- .team-workflow/tasks/issue-42
 
 ```sh
 python3 scripts/build.py --output-dir /path/to/approved-artifacts
-python3 scripts/install.py --artifact /path/to/approved-artifacts/team-workflow-craft-0.2.0.zip \
+python3 scripts/install.py --artifact /path/to/approved-artifacts/team-workflow-craft-0.2.1.zip \
   --project /path/to/product --host codex
 # 核对目标、产物和来源后加 --apply；Claude 用 --host claude，Pi 用 --host pi。
 ```

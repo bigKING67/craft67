@@ -41,14 +41,29 @@ def binding(root):
     path = root / '.team-workflow/local/binding.json'
     if path.is_symlink():
         raise WorkflowError('Task binding cannot be a symlink')
-    return read_json(path) if path.exists() else None
+    if not path.exists():
+        return None
+    value = read_json(path)
+    if not isinstance(value, dict):
+        raise WorkflowError('Invalid task binding')
+    # Legacy v2 bindings already point to a local packet containing the prepared branch.
+    packet = value.get('packet')
+    if 'branch' not in value and isinstance(packet, str) and packet.startswith('.team-workflow/local/packets/'):
+        source = relative_path(root, packet)
+        if source.is_file():
+            snapshot = read_json(source)
+            if isinstance(snapshot, dict) and isinstance(snapshot.get('code'), dict) and 'branch' in snapshot['code']:
+                value['branch'] = snapshot['code']['branch']
+    return value
 
 
 def prepare(root, config, policy_hash, task, contract_path=None, offline=False, rebind=False, update_contract=False):
     ref = task_ref(config, task)
-    current = binding(root)
-    if current and current.get('task_ref') != ref and not rebind:
-        raise WorkflowError('Workspace is bound to a different task; use another worktree or explicit --rebind')
+    current = None if rebind else binding(root)
+    if current and not rebind:
+        tasks.current(root, config, bound=current)
+        if current.get('task_ref') != ref:
+            raise WorkflowError('Workspace is bound to a different task; use another worktree or explicit --rebind')
     binding_path = local_target(root, '', 'binding.json')
     contract = None
     sources = []
@@ -80,7 +95,7 @@ def prepare(root, config, policy_hash, task, contract_path=None, offline=False, 
     temp = local_target(root, '', packet['run_id'] + '.binding')
     with temp.open('x', encoding='utf-8') as stream:
         os.chmod(temp, 0o600)
-        json.dump(dict(task_ref=ref, packet=path), stream)
+        json.dump(dict(task_ref=ref, packet=path, branch=code['branch']), stream)
     os.replace(temp, binding_path)
     return dict(packet=path, task_ref=ref, platform_status=platform['status'],
                 contract_status='provided' if record['contract'] else 'missing', code=code, actor=actor,

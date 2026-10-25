@@ -31,13 +31,13 @@ description: 协调多人或跨 Agent 的软件任务、工作区、验证证据
 
 `<skill>` 是本次实际加载的目录，不是开发源码路径。需要 Python 3.11+ 和 Git。命令输出 JSON；没有 Hook、子 Agent 或模型凭据也可用。以下 `twc` 指 `python3 <skill>/scripts/twc.py --project <repo>`。
 
-1. **开场先 `twc resume`**，L1/L2 任务每个会话都先跑。它只读，给出当前任务、每条验收条件（AC）的状态、证据是否仍对应当前代码、上次交接的 next、交接之后的提交，以及 `next_actions`。按 `next_actions` 的顺序处理；看到 `verify: …` 就先重跑检查，再开始新工作。
+1. **开场先 `twc resume`**，L1/L2 任务每个会话都先跑。它只读，给出当前任务、每条验收条件（AC）的状态、证据是否仍对应当前代码、上次交接的 next、交接之后的提交，以及 `next_actions`。遇到分支与本地绑定冲突时，先核对当前任务，再 `prepare --rebind`。按 `next_actions` 的顺序处理；看到 `verify: …` 就先重跑检查，再开始新工作。
 2. **`twc prepare --task issue:N --contract <path>`** 把契约记录到 `.team-workflow/tasks/<type>-<N>/task.json`，AC 自动编号。契约或其引用文件变了，`prepare` 会拒绝；审阅变化后加 `--update-contract`，旧证据随之失效。
 3. **`twc verify`** 先预览，授权后 `--execute --approved-policy <hash>`。每次执行在任务目录写一份可提交的证据摘要。证据绑定代码内容、基线、策略、契约版本和工具链，任一变化即失效；提交任务目录本身不会使它失效。
 4. **`twc handoff --draft --done … --next …`** 在任务目录写 `handoff.json/md`。没有证据的 AC 自动进入 remaining；拒绝 TODO、待补充之类的占位文本。
 5. **只提交自己的路径**：`git add -- <paths>`，再 `git commit -m … -- <paths>`。任务目录也这样提交，推送分支即完成交接材料。`resume` 报告 `staged_outside_scope` 时，先确认暂存区里没有别的会话或成员的文件。
 
-AC 写成 `{"text": "…", "checks": ["unit"]}`，所列检查在当前代码上都有新鲜的通过证据时才算 verified。纯文字的 AC 是 `needs_review`，留给人判断，工具永远不会自动判它通过。CI 可运行 `twc check`，它只做确定性的结构检查：契约是否被绕过 prepare 修改过、证据里是否混入本地路径、交接是否含占位文本。
+AC 写成 `{"text": "…", "checks": ["unit"]}`，所列检查在当前代码上都有新鲜的通过证据时才算 verified。纯文字的 AC 是 `needs_review`，留给人判断，工具永远不会自动判它通过。CI 可运行 `twc check`，它只做确定性的结构检查：契约是否被绕过 prepare 修改过、记录结构与检查状态是否有效、旧命令摘要是否含绝对路径、交接是否含占位文本。
 
 接手者 clone 并切到对方推送的分支后直接 `resume`：任务由"本分支自 base 以来改动过的任务目录"推导，不需要对方的本地文件。接手者用自己的身份重新 `prepare`、`verify`，旧证据保留执行者，不改名。
 

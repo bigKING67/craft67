@@ -139,8 +139,12 @@ def validate_contract(value, root):
 
 def acceptance_items(contract):
     """Numbered acceptance criteria. A plain string has no mapped check and needs human review."""
+    if contract is not None and not isinstance(contract, dict):
+        raise WorkflowError('Contract must be a JSON object')
     raw = (contract or {}).get('acceptance', [])
-    explicit = {item.get('id') for item in raw if isinstance(item, dict)}
+    if not isinstance(raw, list):
+        raise WorkflowError('Contract requires an acceptance array')
+    explicit = {item['id'] for item in raw if isinstance(item, dict) and isinstance(item.get('id'), str)}
     items, seen, counter = [], set(), 0
     for item in raw:
         if isinstance(item, str):

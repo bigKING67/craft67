@@ -17,6 +17,20 @@ The destinations are project-relative. The installer has no default target and
 rejects global installation paths. It never updates a host profile, account,
 settings file, hook, or running session.
 
+## Source compatibility update (0.2.1)
+
+The shared v2 check summary now stores `command_sha256` for canonical `{argv,cwd}`;
+full argv remains in ignored local evidence. Existing v2 argv records remain readable,
+and missing legacy actor fields remain unknown. `check` flags absolute paths in legacy
+command arguments; owners must review any historical migration rather than expecting
+an automatic rewrite. Task bindings now retain the prepared branch; legacy bindings
+recover it from their local packet when available. An unavailable branch observation or a branch conflict requires reviewed
+`prepare --rebind` before execution. Explicit rebind can recover an unreadable old local packet.
+
+Runtime changes require a reviewed toolchain-lock and fixed-installation upgrade. The
+host results below are historical 0.2.0/0.1.3 evidence; they do not certify a 0.2.1 host
+session or a real multi-member pilot.
+
 ## Session acceptance: `resume` from a teammate's branch (0.2.0, 2026-10-18)
 
 A synthetic project committed the Codex and Claude skill copies (members install
@@ -82,7 +96,7 @@ sessions or other members' installations. No paid model task, company code, or
 company platform credentials were supplied to these probes. Package runtime
 checks and real platform API acceptance remain separate evidence.
 
-Native Windows verification is intentionally incomplete in v0.1: the runner
+Native Windows verification is intentionally incomplete in v0.2.1: the runner
 cannot certify process-tree completion and records
 `incomplete / process_tree_completion_unverified` rather than `passed`.
 Use a POSIX development/CI environment for the complete verification workflow;

@@ -7,7 +7,7 @@ git add -- .team-workflow/tasks/pr-8
 git commit -m "twc: hand off pr-8" -- .team-workflow/tasks/pr-8
 ```
 
-`handoff` 在任务目录写入 `handoff.json` 和 `handoff.md`。内容包括：任务和契约版本、分支、base/head、代码内容哈希、完成/剩余/下一步、每条 AC 和每项检查的状态及执行者、阻碍和未知项。检查状态中 `stale` 表示有过记录但对应的是旧代码、旧契约或旧策略，需要重跑；`missing` 表示从未记录。目录里只保留最新一份交接，历史由 Git 保存。
+`handoff` 在任务目录写入 `handoff.json` 和 `handoff.md`。内容包括：任务和契约版本、分支、base/head、代码内容哈希、完成/剩余/下一步、每条 AC 和每项检查的状态及执行者、阻碍和未知项。检查状态中 `stale` 表示有过记录但对应的是旧代码、旧契约或旧策略，需要重跑；`missing` 表示从未记录；`not_run` 表示最新尝试未能启动，不可沿用旧通过。目录里只保留最新一份交接，历史由 Git 保存。
 
 - remaining：手写的未完成项，加上所有未 verified 的 AC（自动推导，不靠自报）。
 - 输入里的 TODO、TBD、待补充、`...` 等占位文本会被拒绝。

@@ -1,6 +1,6 @@
 # 依据与许可
 
-本包按用户给出的 Team Workflow Craft 设计 v0.2 落地源码 v0.1.0。未取得其 sandbox 附件，实施以本次消息中的完整方案为依据，不声称已读取 ZIP。未复制 Trellis/OpenSpec/Superpowers 代码或模板；本包新增内容 MIT，包根 LICENSE 随安装产物分发。
+本包首版按用户给出的 Team Workflow Craft 设计 v0.2 落地为源码 v0.1.0；当前版本见包根 VERSION。未取得其 sandbox 附件，实施以本次消息中的完整方案为依据，不声称已读取 ZIP。未复制 Trellis/OpenSpec/Superpowers 代码或模板；本包新增内容 MIT，包根 LICENSE 随安装产物分发。
 
 实现核对的权威资料（2026-10-15；不等于公司实例已验收）：
 

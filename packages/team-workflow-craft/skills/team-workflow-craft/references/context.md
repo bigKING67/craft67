@@ -11,7 +11,7 @@ python3 <skill>/scripts/twc.py --project <repo> resume
 
 - 把契约记录到 `.team-workflow/tasks/issue-42/task.json`，这个文件随任务分支提交；
 - 把平台快照写进 ignored 的 `.team-workflow/local/packets/`，平台正文只供宿主理解，不进仓库；
-- 绑定当前工作区。
+- 绑定当前工作区，并记录准备时的 Git 分支。
 
 离线加 `--offline`，平台事实记为未知。已有不同的本地绑定会被拒绝；确定切换任务时才用 `--rebind`，它只改本地绑定，绝不认领平台任务。
 
@@ -39,6 +39,8 @@ python3 <skill>/scripts/twc.py --project <repo> resume
 1. 显式 `--task`；
 2. 本地绑定；
 3. 本分支自离开 base 以来改动过的唯一任务目录，包括未提交的改动。
+
+本地绑定与当前分支冲突、或绑定的任务记录在当前分支不存在时，命令会先拒绝并提示 `prepare --rebind`；审阅实际任务后再重新绑定。旧 v2 绑定可从其本地 packet 读取分支，无法取得准备时分支的旧绑定也需显式 `--rebind`；该恢复动作不依赖旧 packet 可解析。
 
 第 3 条让接手者 clone 之后不需要任何对方的本地文件。分支改动过多个任务目录时，必须显式 `--task`。
 

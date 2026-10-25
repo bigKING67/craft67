@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 — Unreleased
+
+- 同一代码上下文的新尝试发生身份漂移等不完整结果、或因程序缺失而未能启动时，`resume`/`handoff` 不再沿用旧通过；因前序失败而未尝试的检查保留历史观察，整次交接仍受失败阻止。
+- 本地绑定记录准备时分支；旧绑定从本地 packet 恢复分支信息。分支冲突或任务记录缺失时在验证前拒绝，并提示审阅后 `prepare --rebind`。
+- 任务、证据和交接在持久化读取边界统一校验必要结构及状态；损坏输入由 `check` 报错，`resume`/`handoff` 返回受控错误。
+- 可提交检查摘要使用 `command_sha256` 绑定规范化 `{argv,cwd}`，完整 argv 只留 ignored local 记录。schema v2 扩展 `CheckSummary`，旧 argv 记录仍可读，`check` 报告旧记录中的绝对命令路径；不自动改写历史证据。
+- 通用成员指南不再维护 AIOS 的当前账号、仓库和部署状态；版本能力说明与历史验收日期分开。
+- 本轮是源码修复；版本锁与成员安装需另行核对并升级，未宣称新宿主/live/正式 Release 已验收。
+
 ## 0.2.0 — Unreleased
 
 交接随分支走：接手者 clone 并切到任务分支后直接 `resume`，不再需要对方的本地文件或手动拷贝证据。设计参考了 Trellis 的任务文件、Anthropic 长时 Agent harness 的开场读状态，以及 BMAD/OpenSpec 的"任务文件即交接载体"；不采用 Hook 注入、子代理编排和个人 journal。

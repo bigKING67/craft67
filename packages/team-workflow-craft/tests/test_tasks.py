@@ -216,7 +216,9 @@ class ReviewRegressionTests(Fixture):
         self.prepare()
         self.draft()
         path = self.root / '.team-workflow/tasks/pr-3/handoff.json'
-        path.write_text(json.dumps(dict(json.loads(path.read_text()), code=dict(head='--output=/tmp/twc-x'))))
+        value = json.loads(path.read_text())
+        value['code']['head'] = '--output=/tmp/twc-x'
+        path.write_text(json.dumps(value))
         config, sha = self.configuration()
         view = tasks.resume(self.root, config, sha, policy.runtime_identity(), context.binding(self.root))
         self.assertEqual(view['commits_since_handoff'], [])

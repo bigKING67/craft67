@@ -9,11 +9,12 @@ from pathlib import Path
 import re
 import uuid
 
+from . import records
 from .models import WorkflowError, acceptance_items, canonical, digest, now, read_json, relative_path, task_ref
 from .workspace import TASKS, code_identity, git, inspect, portable, succeeds
 
 PLACEHOLDER = re.compile(r'^(todo|tbd|tba|wip|fixme|n/?a|none|null|\.{2,}|…+|-+|\?+|待定|待补充|待填写?|无|略|同上)$', re.I)
-CHECK_FIELDS = ('check', 'argv', 'cwd', 'status', 'exit_code', 'reason', 'started_at', 'ended_at',
+CHECK_FIELDS = ('check', 'cwd', 'status', 'exit_code', 'reason', 'started_at', 'ended_at',
                 'duration_seconds', 'output_sha256', 'output_bytes')
 
 
@@ -57,9 +58,7 @@ def load(root, ref):
     if not path.exists():
         return None
     value = read_json(path)
-    if (not isinstance(value, dict) or value.get('kind') != 'TaskRecord' or value.get('schema_version') != 2
-            or value.get('task_ref') != ref):
-        raise WorkflowError(f'Invalid task record: {key(ref)}')
+    records.validate(value, ref, 'TaskRecord')
     try:
         derived = acceptance_items(value.get('contract'))
     except WorkflowError:
@@ -118,7 +117,9 @@ def save_evidence(root, ref, task, record):
                    toolchain=record['toolchain'], actor=record['actor'], provenance=record['provenance'],
                    status=record['status'], drift=record['drift'],
                    code=portable(record['after']) if record.get('after') else None,
-                   checks=[{name: row.get(name) for name in CHECK_FIELDS} for row in record['checks']])
+                   checks=[dict({name: row.get(name) for name in CHECK_FIELDS},
+                                command_sha256=records.command_hash(row['argv'], row.get('cwd', '.')))
+                           for row in record['checks']])
     stamp = re.sub(r'\D', '', record['created_at'][:26])
     path = target(root, ref, 'evidence', f'{stamp}-{record["run_id"]}.json')
     if path.exists():
@@ -135,24 +136,28 @@ def evidence(root, ref):
     for path in folder.glob('*.json') if folder.is_dir() else ():
         if path.is_symlink():
             raise WorkflowError('Evidence record cannot be a symlink')
-        rows.append((path.relative_to(root).as_posix(), read_json(path)))
+        rows.append((path.relative_to(root).as_posix(), records.validate(read_json(path), ref, 'VerificationRecord')))
     # Chronological by recorded time (UTC ISO, microseconds); file names only break ties.
     return sorted(rows, key=lambda row: (str(row[1].get('created_at', '')) if isinstance(row[1], dict) else '', row[0]))
 
 
-def fresh(row, ref, task, code, policy_hash, runtime):
+def same_context(row, ref, task, code, policy_hash, runtime):
     return (isinstance(row, dict) and row.get('kind') == 'VerificationRecord' and row.get('schema_version') == 2
             and row.get('task_ref') == ref and row.get('contract_sha256') == task['contract_sha256']
             and row.get('policy_sha256') == policy_hash and row.get('toolchain') == runtime
-            and not row.get('drift') and isinstance(row.get('code'), dict)
+            and isinstance(row.get('code'), dict)
             and code_identity(row['code']) == code_identity(code))
+
+
+def fresh(row, ref, task, code, policy_hash, runtime):
+    return same_context(row, ref, task, code, policy_hash, runtime) and not row.get('drift')
 
 
 def check_states(config, ref, task, rows, code, policy_hash, runtime):
     """Newest fresh observation per configured check; older passes do not outlive a newer failure."""
     states = {name: dict(status='missing', evidence=None, actor=None) for name in config.get('checks', {})}
     for path, row in rows:
-        if not fresh(row, ref, task, code, policy_hash, runtime):
+        if not same_context(row, ref, task, code, policy_hash, runtime):
             # Recorded, but for other code, contract, policy or toolchain: rerun, not "never ran".
             for check in row.get('checks', []) if isinstance(row, dict) else ():
                 state = states.get(check.get('check'))
@@ -161,11 +166,14 @@ def check_states(config, ref, task, rows, code, policy_hash, runtime):
             continue
         for check in row.get('checks', []):
             expected = config.get('checks', {}).get(check.get('check'))
-            if not expected or check.get('status') == 'not_run':
+            if not expected or (check.get('status') == 'not_run' and check.get('started_at') is None
+                                and check.get('reason') == 'earlier_check_did_not_complete'):
                 continue
-            matches = check.get('argv') == expected['argv'] and check.get('cwd') == expected.get('cwd', '.')
+            command = check.get('command_sha256') or records.command_hash(check['argv'], check['cwd'])
+            matches = command == records.command_hash(expected['argv'], expected.get('cwd', '.'))
             passed = matches and check.get('status') == 'passed' and check.get('exit_code') == 0
-            states[check['check']] = dict(status='passed' if passed else 'failed' if check.get('status') == 'failed'
+            states[check['check']] = dict(status='incomplete' if row.get('drift') else 'passed' if passed
+                                          else check['status'] if check['status'] in ('failed', 'not_run')
                                           else 'incomplete', evidence=path, actor=row.get('actor'))
     return states
 
@@ -191,7 +199,7 @@ def latest_handoff(root, ref):
     path = directory(root, ref) / 'handoff.json'
     if path.is_symlink():
         raise WorkflowError('Handoff record cannot be a symlink')
-    return read_json(path) if path.exists() else None
+    return records.validate(read_json(path), ref, 'Handoff') if path.exists() else None
 
 
 def touched(root, code):
@@ -207,6 +215,17 @@ def touched(root, code):
 
 def current(root, config, explicit=None, bound=None, code=None):
     """Explicit task → local binding → the single task directory this branch changed."""
+    if bound:
+        code = code or inspect(root, config['integration']['base_ref'])
+        ref = bound.get('task_ref')
+        if (not isinstance(ref, dict) or ref.get('type') not in ('issue', 'pr')
+                or type(ref.get('number')) is not int or ref['number'] < 1):
+            raise WorkflowError('Invalid task binding; prepare the current task with --rebind')
+        if ref != task_ref(config, f'{ref["type"]}:{ref["number"]}'):
+            raise WorkflowError('Task belongs to another configured instance/repository; prepare with --rebind')
+        if ('branch' not in bound or bound['branch'] != code['branch']
+                or not (directory(root, ref) / 'task.json').is_file()):
+            raise WorkflowError('Task binding conflicts with this branch; review the current task and run prepare --rebind')
     if explicit:
         return task_ref(config, explicit), 'explicit', []
     if bound:
@@ -282,15 +301,11 @@ def resume(root, config, policy_hash, runtime, bound, explicit=None):
 
 
 def _validate_record(path, value, ref, kind):
-    problems = []
-    if not isinstance(value, dict) or value.get('kind') != kind or value.get('schema_version') != 2:
-        return [f'{path}: expected {kind} v2']
-    if value.get('task_ref') != ref:
-        problems.append(f'{path}: task_ref does not match its directory')
-    text = json.dumps(value, ensure_ascii=False)
-    if '"root":' in text or '"remotes":' in text:
-        problems.append(f'{path}: contains local-only workspace fields')
-    return problems
+    try:
+        records.validate(value, ref, kind, portable=True)
+    except WorkflowError as exc:
+        return [f'{path}: {exc}']
+    return []
 
 
 def check(root, config, explicit=None):

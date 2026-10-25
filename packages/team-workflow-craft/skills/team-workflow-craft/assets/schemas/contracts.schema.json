@@ -465,6 +465,7 @@
                 "enum": [
                   "passed",
                   "failed",
+                  "not_run",
                   "incomplete",
                   "stale",
                   "missing"
@@ -661,7 +662,6 @@
         "contract_sha256",
         "policy_sha256",
         "toolchain",
-        "actor",
         "provenance",
         "status",
         "drift",
@@ -694,7 +694,8 @@
           "type": "object"
         },
         "actor": {
-          "$ref": "#/$defs/Actor"
+          "$ref": "#/$defs/Actor",
+          "description": "May be absent in legacy v2 records; absence never proves attribution."
         },
         "provenance": {
           "const": "local_execution_unattested"
@@ -726,10 +727,103 @@
         "checks": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/CheckResult"
+            "$ref": "#/$defs/CheckSummary"
           }
         }
       }
+    },
+    "CheckSummary": {
+      "type": "object",
+      "required": [
+        "check",
+        "cwd",
+        "started_at",
+        "ended_at",
+        "exit_code",
+        "status"
+      ],
+      "properties": {
+        "check": {
+          "type": "string"
+        },
+        "argv": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cwd": {
+          "type": "string"
+        },
+        "started_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ended_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exit_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not_run",
+            "incomplete"
+          ]
+        },
+        "log_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "output_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "output_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "command_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "description": "Portable check summary. command_sha256 binds canonical {argv,cwd}; raw argv stays in local evidence. Legacy v2 argv records remain readable; check flags absolute legacy command paths.",
+      "anyOf": [
+        {
+          "required": [
+            "command_sha256"
+          ]
+        },
+        {
+          "required": [
+            "argv"
+          ]
+        }
+      ]
     }
   },
   "oneOf": [
