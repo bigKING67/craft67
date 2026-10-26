@@ -17,6 +17,29 @@ The destinations are project-relative. The installer has no default target and
 rejects global installation paths. It never updates a host profile, account,
 settings file, hook, or running session.
 
+## Session acceptance: read-only handoff (0.2.2, 2026-10-26)
+
+The CNB pilot's fixed 0.2.2 candidate was installed in a fresh branch clone at
+`60fa7741678eba594e51859a35154c646c57b9c7`, with base
+`008bd37814a883edee71854c5d95386b9efbba92`. Artifact and merge identities are
+recorded in [the pilot acceptance snapshot](operations.md).
+
+A new ephemeral Codex session received an ordinary prompt to inspect the
+handoff state and next step, without naming the Skill. Its first command read
+the project 0.2.2 `SKILL.md`. It identified PR #6, the fresh unit evidence for
+that branch, and stale evidence for older tasks, leaving verification and
+reviewed rebind as next actions. The session ran in a read-only sandbox with
+extra MCP, hooks, apps, memory and multi-agent execution disabled, and no CNB
+credentials injected. All 26 observed commands were read-only queries; none
+ran tests, contacted the platform, prepared a task or rebound it. The 46 tracked
+files and 30 installation files remained byte-for-byte unchanged.
+
+This is one controlled Codex session on a synthetic task, not an independent
+member or cross-machine acceptance. The later merged-main clone had the same
+installation bytes but no additional host session. Claude Code and Pi sessions
+using 0.2.2 remain `UNVERIFIED`; the older results below retain their own dates
+and artifact versions.
+
 ## Source compatibility update (0.2.1)
 
 The shared v2 check summary now stores `command_sha256` for canonical `{argv,cwd}`;
@@ -28,8 +51,8 @@ recover it from their local packet when available. An unavailable branch observa
 `prepare --rebind` before execution. Explicit rebind can recover an unreadable old local packet.
 
 Runtime changes require a reviewed toolchain-lock and fixed-installation upgrade. The
-host results below are historical 0.2.0/0.1.3 evidence; they do not certify a 0.2.1 host
-session or a real multi-member pilot.
+host results below are historical 0.2.0/0.1.3 evidence; they do not certify a newer
+artifact's host session or a real multi-member pilot.
 
 ## Session acceptance: `resume` from a teammate's branch (0.2.0, 2026-10-18)
 
@@ -67,7 +90,8 @@ accounts, PRs and review.
 
 ## Discovery acceptance and limits
 
-The above checks used macOS 27.0.1 arm64, temporary Git projects, and the same
+The native discovery checks dated 2026-10-16 used macOS 27.0.1 arm64, temporary
+Git projects, and the same
 v0.1.3 ZIP with SHA-256
 `665eef181d93c2844cb843075152bbfd977bdc20b8b53168d9ee1d40c745aa65`.
 Each installation came from the fixed artifact, not a link to the source tree.
@@ -89,14 +113,16 @@ The probes exercised the installed host loaders without sending a model task:
   `get_messages` returned an empty conversation. The probe used isolated agent
   state, offline mode, and disabled extensions/MCP, with no `prompt` request.
 
-These are **metadata discovery** results. Full Skill-body invocation, model-led
-`doctor` / `prepare` / `verify` / `handoff`, real cross-person handoff and other
-OS/host versions remain `UNVERIFIED`. They do not certify the user's existing
-sessions or other members' installations. No paid model task, company code, or
-company platform credentials were supplied to these probes. Package runtime
-checks and real platform API acceptance remain separate evidence.
+These are **metadata discovery** results. These probes alone leave full
+Skill-body invocation, model-led `doctor` / `prepare` / `verify` / `handoff`,
+real cross-person handoff and other OS/host versions `UNVERIFIED`; the session
+acceptance sections above provide their separate, bounded evidence. The probes
+do not certify the user's existing sessions or other members' installations.
+No paid model task, company code, or company platform credentials were supplied
+to these probes. Package runtime checks and real platform API acceptance remain
+separate evidence.
 
-Native Windows verification is intentionally incomplete in v0.2.1: the runner
+Native Windows verification remains intentionally incomplete in v0.2.2: the runner
 cannot certify process-tree completion and records
 `incomplete / process_tree_completion_unverified` rather than `passed`.
 Use a POSIX development/CI environment for the complete verification workflow;
