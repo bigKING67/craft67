@@ -31,7 +31,9 @@ description: 协调多人或跨 Agent 的软件任务、工作区、验证证据
 
 `<skill>` 是本次实际加载的目录，不是开发源码路径。需要 Python 3.11+ 和 Git。命令输出 JSON；没有 Hook、子 Agent 或模型凭据也可用。以下 `twc` 指 `python3 <skill>/scripts/twc.py --project <repo>`。
 
-1. **开场先 `twc resume`**，L1/L2 任务每个会话都先跑。它只读，给出当前任务、每条验收条件（AC）的状态、证据是否仍对应当前代码、上次交接的 next、交接之后的提交，以及 `next_actions`。遇到分支与本地绑定冲突时，先核对当前任务，再 `prepare --rebind`。按 `next_actions` 的顺序处理；看到 `verify: …` 就先重跑检查，再开始新工作。
+仅查看任务、已有证据或解释状态时，使用 `resume` 和必要的本地只读查询；需要本机预检时用 `doctor --local`。`next_actions` 中的重验、准备或重绑只列为待办，不执行项目检查或写任务记录，也不为核对本地材料自动调用 `--online`。用户要求核对平台时，在已有授权内读取；未刷新平台事实时保留未知。
+
+1. **开场先 `twc resume`**，L1/L2 任务每个会话都先跑。它只读，给出当前任务、每条验收条件（AC）的状态、证据是否仍对应当前代码、上次交接的 next、交接之后的提交，以及 `next_actions`。接续实现或重验已获授权时，按 `next_actions` 的顺序处理；看到 `verify: …`，先按第 3 步预览并执行已批准检查，再开始新工作。需要切换绑定时，先核对当前任务，再在授权范围内 `prepare --rebind`。
 2. **`twc prepare --task issue:N --contract <path>`** 把契约记录到 `.team-workflow/tasks/<type>-<N>/task.json`，AC 自动编号。契约或其引用文件变了，`prepare` 会拒绝；审阅变化后加 `--update-contract`，旧证据随之失效。
 3. **`twc verify`** 先预览，授权后 `--execute --approved-policy <hash>`。每次执行在任务目录写一份可提交的证据摘要。证据绑定代码内容、基线、策略、契约版本和工具链，任一变化即失效；提交任务目录本身不会使它失效。
 4. **`twc handoff --draft --done … --next …`** 在任务目录写 `handoff.json/md`。没有证据的 AC 自动进入 remaining；拒绝 TODO、待补充之类的占位文本。

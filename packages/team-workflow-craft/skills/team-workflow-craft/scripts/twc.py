@@ -8,6 +8,12 @@ import shutil
 import sys
 
 sys.dont_write_bytecode = True
+if sys.version_info < (3, 11):
+    print(json.dumps(dict(status='error', required_python='>=3.11',
+                          python='.'.join(map(str, sys.version_info[:3])),
+                          message='Python 3.11+ is required; select a supported interpreter.')))
+    raise SystemExit(2)
+
 from twc_lib import actors, context, evidence, handoff, policy, tasks, workspace
 from twc_lib.models import WorkflowError
 from twc_lib.providers import ProviderError
