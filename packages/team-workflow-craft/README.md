@@ -12,7 +12,11 @@
 
 TWC 只做这三件事的确定性检查，载体是随任务分支提交的 `.team-workflow/tasks/<task>/` 目录：契约、证据摘要和最新交接都在里面，推送分支就是交接。任务分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，TWC 只负责检查整个 Git 根，提醒 WIP 互相覆盖。
 
-**当前为源码 v0.2.2，非正式 Release。** 本轮修正只读接手的执行边界和低版本 Python 的启动提示，CNB 试点仍固定使用 0.2.1 产物。核心 CLI、CNB/Gitea 只读客户端已经验证；历史 v0.2.0 的 Claude Code、Codex、Pi 在新会话中从队友推送的分支 clone 接手，均先运行 `resume` 并给出正确的下一步（合成任务）。AIOS 已在 Trellis 托管模式下接入，检查登记为 `npm run verify:quick`，随 AIOS 4.1.106 发布。0.2.1 的 CNB 合成试点已验证既有 Issue/PR 读取、同机新 clone 接手、管理员评审合并及 main 本地复验；同一用户双账号不构成独立真人或跨机器验收。Windows 原生进程树完成性不支持，返回 incomplete。各轮验收记录见 [试点与运维验收](docs/operations.md)、[宿主兼容性](docs/compatibility.md)、[CNB 首轮演练](docs/cnb-pilot.md) 和 [分支保护验收](docs/gitea-policy-probe.md)。
+**当前为源码 v0.2.2，非正式 Release。** 本轮修正只读接手的执行边界和低版本 Python 的启动提示。2026-10-26 的 CNB 合成试点已固定使用 0.2.2 候选，完成旧版显式升级、全新项目安装、一次 Codex 受控只读接手、负责人评审和普通合并；合并后 main 全新 clone 的 9 项测试通过。源码、产物与测试依据见 [试点与运维验收](docs/operations.md)。
+
+当前 0.2.2 证据覆盖同机双账号和合成任务；独立真人、跨机器及 0.2.2 的 Claude Code/Pi 会话仍待验收。Windows 原生进程树完成性不支持，返回 incomplete。历史 v0.2.0 的三宿主新会话接手结果与本轮 Codex 结果分别记录在 [宿主兼容性](docs/compatibility.md)。
+
+核心 CLI、CNB/Gitea 只读客户端已经验证。AIOS 已在 Trellis 托管模式下接入，检查登记为 `npm run verify:quick`，随 AIOS 4.1.106 发布。更早的平台证据见 [CNB 首轮演练](docs/cnb-pilot.md) 和 [分支保护验收](docs/gitea-policy-probe.md)。
 
 ## 使用边界
 

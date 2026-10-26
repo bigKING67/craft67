@@ -6,6 +6,20 @@
 
 已建立的 CNB 合成演练仓库、首条真实 CI 和待验收边界见 [CNB 首轮演练记录](cnb-pilot.md)。该记录是带日期的证据快照，不是第二套平台状态。
 
+## CNB 0.2.2 验收（2026-10-26）
+
+本节记录当日的合成试点结果。源码来源、安装产物、宿主会话、服务器 CI 和合并后本地复验分别核对；后续平台状态以 CNB 为准。
+
+- **源码与固定产物**：候选从 craft67 已合并提交 [`e189bbce70508a9567e9cb3afe3fcdb6794ff6fa`](https://github.com/bigKING67/craft67/commit/e189bbce70508a9567e9cb3afe3fcdb6794ff6fa) 的本包重建。[该源码的 GitHub CI](https://github.com/bigKING67/craft67/actions/runs/40260385162) 中，本包 127 项测试通过。`team-workflow-craft-0.2.2.zip` 的 SHA-256 为 `e3b6b51fde137205bec2f565145da99d04ae3fd3517624dab010c71002e8358c`；29 个载荷文件与清单匹配，含安装标记共 30 个文件。
+- **升级与安装**：未经修改的 0.2.1 安装在未加 `--allow-upgrade` 时拒绝替换，显式预览后升级到 0.2.2 成功；另一份全新 clone 直接安装成功。`doctor --local` 核对安装内容与工具链锁一致。旧固定产物、历史契约、验证者和执行证据保持原样。
+- **Codex 接手**：一份全新分支 clone 在新 Codex 会话中接受普通只读接手提示，实际读取项目 0.2.2 Skill，查询当前任务与证据，将重验和重绑列为待办。该样本的执行轨迹与文件快照说明见 [宿主兼容性](compatibility.md)。
+- **PR 与普通合并**：[CNB PR #6](https://cnb.cool/bql_huayue/twc-pilot/-/pulls/6) 的源提交为 `60fa7741678eba594e51859a35154c646c57b9c7`，目标基线为 `008bd37814a883edee71854c5d95386b9efbba92`。负责人账号完成评审并普通合并，平台回读 `is_merged=true`、`is_force_merged=false`。实际 main 合并提交为 `aec310d1d4e9493d7f543fda4c5bb649c9eb3348`，父提交为上述目标与源提交，代码树与已评审分支一致。
+- **试点的 9 项测试**：[CNB PR 构建](https://cnb.cool/bql_huayue/twc-pilot/-/build/logs/cnb-505-1k5r2br4p#001) 实际 checkout 为 `60fa7741`，Python 3.12.15 下 9 项通过；状态接口 SHA `3529e4d7accec39ae839c890acb023fbe001cb47` 单独记录。合并后另从 main 全新 clone，安装同一固定产物，在 Python 3.12.10 下本地重验 9 项通过。两次均为失败、错误、跳过 0，退出码 0。该流水线只触发 PR，合并后的本地结果不算新增 CNB main 构建。
+
+合并后 main 默认 `resume` 返回 `no_task`，不自动绑定历史任务；显式查询 PR #6、Issue #1 和 PR #3 时，旧 unit 证据均为 `stale`，PR #6 的 AC-1 为 `pending`，文字 AC 为 `needs_review`。顶层 `status=ok` 仅说明任务记录可读取，检查结果看 `checks.unit.status`，验收看 `acceptance`。本轮 main 的测试回执单独留存，没有回写历史任务证据或交接快照。
+
+本轮由同一操作者使用用户控制的两个平台账号完成，证明角色流程，不构成独立真人审批或跨机器验收。0.2.2 的 Claude Code/Pi 会话、独立成员与跨机器接手仍未覆盖。合并后新 clone 的安装文件与上述 Codex 样本逐文件一致，但未另开宿主会话。本轮未进行正式 tag/Release 或全局安装；原工作区 WIP、此前试点安装和全局 Codex 配置保持原样。
+
 ## 三人试点
 
 1. CNB 使用公司批准的组织/私有仓库、个人最小权限和恢复渠道；自托管 Gitea 另需固定平台/数据库版本与隔离 Runner。真实平台 OpenAPI 和权限返回是最终依据。
@@ -60,4 +74,4 @@ CNB 的权限和合并预览差异见 [CNB 接入](../skills/team-workflow-craft
 
 ## 后续版本
 
-当前源码 v0.2.1 提供随分支提交的任务记录、`resume`、`check` 和本地交接；`--publish` 仍不支持。下一步优先完成真实多人试点、平台门禁和故障演练，分别记录当前版本与证据。评论发布仅在出现明确需求、另行授权并验收去重及写超时回读后评估，不是本版本承诺。客户端去重不保证 exactly-once；自动抢单、分布式锁、合并队列及更多平台抽象仍无当前需求。
+当前源码 v0.2.2 提供随分支提交的任务记录、`resume`、`check` 和本地交接；`--publish` 仍不支持。下一步优先完成真实多人试点、平台门禁和故障演练，分别记录当前版本与证据。评论发布仅在出现明确需求、另行授权并验收去重及写超时回读后评估，不是本版本承诺。客户端去重不保证 exactly-once；自动抢单、分布式锁、合并队列及更多平台抽象仍无当前需求。
