@@ -8,6 +8,12 @@ import shutil
 import sys
 
 sys.dont_write_bytecode = True
+if sys.version_info < (3, 11):
+    print(json.dumps(dict(status='error', required_python='>=3.11',
+                          python='.'.join(map(str, sys.version_info[:3])),
+                          message='Python 3.11+ is required; select a supported interpreter.')))
+    raise SystemExit(2)
+
 from twc_lib import actors, context, evidence, handoff, policy, tasks, workspace
 from twc_lib.models import WorkflowError
 from twc_lib.providers import ProviderError
@@ -31,11 +37,12 @@ def parser():
     mutation = init.add_mutually_exclusive_group()
     mutation.add_argument('--dry-run', action='store_true')
     mutation.add_argument('--apply', action='store_true')
-    prepare = commands.add_parser('prepare', help='Prepare a rebuildable task snapshot')
+    prepare = commands.add_parser('prepare', help='Write task records and binding; reads the platform unless --offline',
+                                  description='Write task records, a local packet and binding. Reads platform task and identity by default; --offline skips platform reads, not local writes.')
     prepare.add_argument('--task', required=True)
     prepare.add_argument('--contract', help='Repository-relative JSON contract; no duplicate owner/status')
-    prepare.add_argument('--offline', action='store_true')
-    prepare.add_argument('--rebind', action='store_true', help='Explicitly switch this workspace to another task')
+    prepare.add_argument('--offline', action='store_true', help='Skip platform reads; still write local task records, packet and binding')
+    prepare.add_argument('--rebind', action='store_true', help='Explicitly replace the task binding; use --offline to skip platform reads')
     prepare.add_argument('--update-contract', action='store_true',
                          help='Record a reviewed contract change; older evidence becomes stale')
     resume = commands.add_parser('resume', help='Read-only start-of-session view: contract, acceptance, evidence, last handoff')

@@ -1,11 +1,11 @@
 {
-  "goal": "Implement the behavior described by the linked platform task",
+  "goal": "State the intended user, the problem to solve, and the first usable outcome from the linked task",
   "non_goals": ["Unrelated modules and deployment"],
   "scope": ["src"],
   "dependencies": [],
   "acceptance": [
-    {"text": "The affected workflow and failure paths pass project checks", "checks": ["unit"]},
-    "Reviewer confirms the user-facing copy"
+    {"id": "AC-1", "text": "Describe an observable result and its conditions; replace unit with project checks that cover this behavior", "checks": ["unit"]},
+    "Describe the user-facing outcome that needs actual operation or reviewer judgment"
   ],
   "integrator": "Assign the integration role before coordinated changes",
   "contracts": [],

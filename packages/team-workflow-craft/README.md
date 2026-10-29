@@ -12,7 +12,13 @@
 
 TWC 只做这三件事的确定性检查，载体是随任务分支提交的 `.team-workflow/tasks/<task>/` 目录：契约、证据摘要和最新交接都在里面，推送分支就是交接。任务分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，TWC 只负责检查整个 Git 根，提醒 WIP 互相覆盖。
 
-**当前为源码 v0.2.1，非正式 Release。** 核心 CLI、CNB/Gitea 只读客户端已经验证；历史 v0.2.0 的 Claude Code、Codex、Pi 在新会话中从队友推送的分支 clone 接手，均先运行 `resume` 并给出正确的下一步（合成任务）。AIOS 已在 Trellis 托管模式下接入，检查登记为 `npm run verify:quick`，随 AIOS 4.1.106 发布。0.2.1 的 CNB 合成试点已验证既有 Issue/PR 读取、同机新 clone 接手、管理员评审合并及 main 本地复验；同一用户双账号不构成独立真人或跨机器验收。Windows 原生进程树完成性不支持，返回 incomplete。各轮验收记录见 [试点与运维验收](docs/operations.md)、[宿主兼容性](docs/compatibility.md)、[CNB 首轮演练](docs/cnb-pilot.md) 和 [分支保护验收](docs/gitea-policy-probe.md)。
+**当前为源码 v0.2.4，非正式 Release。** 本版完善目标到首版验收的任务示例、排障交接和审查收敛规则，沿用已有 CLI 与协议。本地固定候选已验证三种宿主目标参数的全新安装和 0.2.3 → 0.2.4 升级，覆盖工具链锁、旧证据失效、重验、幂等与漂移保护；该结果属于安装器和已安装 CLI。旧候选和历史证据分别保留，具体依据见 [试点与运维验收](docs/operations.md)。
+
+本次指引在升版前完成四个 Codex 受控场景验收：首版拆分、排障接续、三轮审查收敛和 L0 文案修改均通过。该结果限于显式调用、同机合成项目和含全局 AGENTS 的宿主配置，不证明独立成员协作，也不等于 0.2.4 新模型会话验收。此前 0.2.3 的三种宿主安装路径和两份 Pi 命令副作用复验保留各自证据，具体范围及剩余建议误差见 [宿主兼容性](docs/compatibility.md)。
+
+历史 0.2.2 CNB 合成试点覆盖同机双账号接手、负责人评审普通合并及 main 全新 clone 的 9 项测试。2026-10-28 补测中，Claude Code 2.1.308 与 Pi 1.4.0 均完成受控只读接手；Pi 复验明确限制只使用当前仓库资料。Pi 的模型适配修复、原生重试恢复的连接错误和建议措辞限制见 [宿主兼容性](docs/compatibility.md)。独立真人与跨机器仍待验收。Windows 原生进程树完成性不支持，返回 incomplete；历史宿主结果保留各自日期与版本。
+
+核心 CLI、CNB/Gitea 只读客户端已经验证。AIOS 已在 Trellis 托管模式下接入，检查登记为 `npm run verify:quick`，随 AIOS 4.1.106 发布。更早的平台证据见 [CNB 首轮演练](docs/cnb-pilot.md) 和 [分支保护验收](docs/gitea-policy-probe.md)。
 
 ## 使用边界
 
@@ -102,16 +108,18 @@ git commit -m "twc: hand off issue-42" -- .team-workflow/tasks/issue-42
 
 ```sh
 python3 scripts/build.py --output-dir /path/to/approved-artifacts
-python3 scripts/install.py --artifact /path/to/approved-artifacts/team-workflow-craft-0.2.1.zip \
+python3 scripts/install.py --artifact /path/to/approved-artifacts/team-workflow-craft-0.2.4.zip \
   --project /path/to/product --host codex
 # 核对目标、产物和来源后加 --apply；Claude 用 --host claude，Pi 用 --host pi。
 ```
 
 安装器校验 ZIP/文件哈希，拒绝未知、漂移或 symlink 目标；固定版本重复安装幂等。只支持明确项目目标，正常升级需要检查旧安装无漂移并显式 `--allow-upgrade --apply`。ZIP 与清单必须来自批准来源：攻击者同时换掉二者时，本地哈希无法验证真实性。
 
+升级保留项目的旧工具链锁。先让所有项目宿主入口安装同一批准产物，再从新安装副本运行 `doctor --local`：安装完整性应为 `matched`，旧锁会显示 `mismatch`。核对批准的 ZIP SHA-256 与安装清单后，在已授权升级范围内，将 `.team-workflow/toolchain.lock.json` 的 `version`、`protocol_version`、`runtime_tree_sha256` 更新为本次诊断的 `runtime` 值，保留锁的其余字段；再次运行 `doctor --local`，确认所有入口与锁都匹配。不同内容需独立版本，不能用同版本覆盖绕过保护。历史任务和证据保留，涉及工具链变更的旧通过需重新验证。
+
 Codex/Pi 使用 `.agents/skills/team-workflow-craft/`；Claude 使用 `.claude/skills/team-workflow-craft/`。
 
-**推荐：负责人装一次，提交进仓库。** 负责人分别用 `--host codex` 和 `--host claude` 安装，然后把这两个目录和 `.team-workflow/` 一起提交。成员 clone 后即可使用，只需要 Python 3.11+ 和 Git，不用另装 TWC，也不需要 Trellis。`doctor --local` 会核对 clone 下来的副本是否与安装清单一致。升级时由负责人 `--allow-upgrade --apply` 后提交，成员 pull 即可。项目若忽略了 `.claude/`，需要为 `.claude/skills/team-workflow-craft/` 加一条例外规则。宿主规则尽量共用 AGENTS.md，Claude 如需 `CLAUDE.md` 导入由项目显式配置。工具不修改它们。三宿主发现路径、实际加载和独立包证据见 [兼容性](docs/compatibility.md)。
+**推荐：负责人装一次，提交进仓库。** 负责人分别用 `--host codex` 和 `--host claude` 安装，然后把这两个目录和 `.team-workflow/` 一起提交。成员 clone 后即可使用，只需要 Python 3.11+ 和 Git，不用另装 TWC，也不需要 Trellis。`doctor --local` 会核对 clone 下来的副本是否与安装清单一致。升级时由负责人完成上述安装、工具链锁核对与更新后提交，成员 pull 后再做本地预检。项目若忽略了 `.claude/`，需要为 `.claude/skills/team-workflow-craft/` 加一条例外规则。宿主规则尽量共用 AGENTS.md，Claude 如需 `CLAUDE.md` 导入由项目显式配置。工具不修改它们。三宿主发现路径、实际加载和独立包证据见 [兼容性](docs/compatibility.md)。
 
 ## 开发与验收
 

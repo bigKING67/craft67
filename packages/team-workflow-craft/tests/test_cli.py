@@ -11,6 +11,36 @@ import unittest
 PACKAGE = Path(__file__).resolve().parents[1]
 
 
+class RuntimeVersionTests(unittest.TestCase):
+    def test_unsupported_python_reports_json_before_loading_runtime(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            cli = root / 'twc.py'
+            # No runtime libraries are present: the version error must precede imports.
+            shutil.copyfile(PACKAGE / 'skills/team-workflow-craft/scripts/twc.py', cli)
+            project = root / 'project'
+            for version in ((3, 9, 6), (3, 10, 99)):
+                with self.subTest(version=version):
+                    program = (
+                        'import runpy, sys; '
+                        f'sys.version_info = {version!r}; '
+                        f'sys.argv = [{str(cli)!r}, "--project", {str(project)!r}, "resume"]; '
+                        f'runpy.run_path({str(cli)!r}, run_name="__main__")'
+                    )
+                    result = subprocess.run(
+                        [sys.executable, '-c', program], cwd=root,
+                        env=dict(os.environ, PYTHONDONTWRITEBYTECODE='1'),
+                        capture_output=True, text=True, timeout=10)
+                    self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+                    self.assertEqual(result.stderr, '')
+                    report = json.loads(result.stdout)
+                    self.assertEqual(report['status'], 'error')
+                    self.assertEqual(report['required_python'], '>=3.11')
+                    self.assertEqual(report['python'], '.'.join(map(str, version)))
+                    self.assertFalse(project.exists())
+                    self.assertFalse((root / '__pycache__').exists())
+
+
 class InstalledProductTests(unittest.TestCase):
     def test_real_artifact_three_host_paths_and_offline_workflow(self):
         with tempfile.TemporaryDirectory() as temporary:
