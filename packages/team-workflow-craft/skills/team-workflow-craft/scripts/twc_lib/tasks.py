@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 import uuid
 
-from . import records
+from . import actors, records
 from .models import WorkflowError, acceptance_items, canonical, digest, now, read_json, relative_path, task_ref
 from .workspace import TASKS, code_identity, git, inspect, portable, succeeds
 
@@ -251,15 +251,20 @@ def commit_hint(root, ref):
 
 def resume(root, config, policy_hash, runtime, bound, explicit=None):
     """Read-only start-of-session view of where the task stands."""
+    member = actors.member_name(root)
+    member_actions = []
+    if member['status'] != 'available':
+        member['message'] = actors.MEMBER_NAME_PROMPT
+        member_actions.append('configure_member_name')
     ref, resolved_by, candidates = current(root, config, explicit, bound)
     if not ref:
-        return dict(status='no_task', resolved_by=resolved_by, candidates=candidates,
-                    next_actions=['prepare --task issue:<N>|pr:<N> [--contract <path>]' if not candidates
-                                  else 'resume --task <one of the candidates>'])
+        return dict(status='no_task', resolved_by=resolved_by, candidates=candidates, member=member,
+                    next_actions=member_actions + ['prepare --task issue:<N>|pr:<N> [--contract <path>]' if not candidates
+                                                   else 'resume --task <one of the candidates>'])
     task = load(root, ref)
     if not task:
-        return dict(status='no_task_record', task_ref=ref, resolved_by=resolved_by,
-                    next_actions=[f'prepare --task {ref["type"]}:{ref["number"]} --contract <path>'])
+        return dict(status='no_task_record', task_ref=ref, resolved_by=resolved_by, member=member,
+                    next_actions=member_actions + [f'prepare --task {ref["type"]}:{ref["number"]} --contract <path>'])
     scope = (task.get('contract') or {}).get('scope', ())
     code = inspect(root, config['integration']['base_ref'], scope)
     states = check_states(config, ref, task, evidence(root, ref), code, policy_hash, runtime)
@@ -297,7 +302,7 @@ def resume(root, config, policy_hash, runtime, bound, explicit=None):
                 last_handoff=None if not handoff else {name: handoff.get(name) for name in (
                     'created_at', 'readiness', 'done', 'remaining', 'next_steps', 'blockers', 'unknowns')},
                 handed_off_by=None if not handoff else handoff.get('actor'),
-                commits_since_handoff=since, next_actions=actions)
+                commits_since_handoff=since, member=member, next_actions=member_actions + actions)
 
 
 def _validate_record(path, value, ref, kind):

@@ -185,6 +185,9 @@ def verify(root, config, policy_hash, selected=(), execute_commands=False, appro
         record['git_identity_after'] = actors.git_identity(root)
         if record['git_identity_after'] != record['actor']['git']:
             record['drift'].append('git_identity_changed_during_execution')
+        record['member_after'] = actors.member_name(root)
+        if record['member_after'] != record['actor']['member']:
+            record['drift'].append('member_name_changed_during_execution')
     except WorkflowError:
         record['drift'].append('state_unreadable_after_execution')
     states = {row['status'] for row in record['checks']}

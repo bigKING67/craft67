@@ -99,6 +99,7 @@ def project_entries(root, identity):
 def local_doctor(root):
     """Member setup check before or after init; never contacts the platform or runs project checks."""
     state = root / '.team-workflow'
+    member = actors.member_name(root)
     config_path, lock_path = state / 'config.toml', state / 'toolchain.lock.json'
     identity = policy.runtime_identity()
     integrity = policy.installation_integrity()
@@ -131,6 +132,9 @@ def local_doctor(root):
     entry_drift = integrity in ('mismatch', 'invalid_marker') or any(
         row.get('matches_runtime') is False for row in entries)
     next_steps = []
+    if member['status'] != 'available':
+        next_steps.append('configure_member_name')
+        member['message'] = actors.MEMBER_NAME_PROMPT
     if config_status != 'valid':
         next_steps.append('initialize_project' if config_status == 'missing' else 'review_project_config')
     if lock_status != 'matched':
@@ -142,12 +146,14 @@ def local_doctor(root):
     if not posix:
         next_steps.append('qualify_native_process_tree_verification')
     next_steps.append('confirm_skill_loading_in_new_session')
-    attention = (config_status != 'valid' or lock_status != 'matched' or not posix or entry_drift
+    attention = (member['status'] != 'available' or config_status != 'valid'
+                 or lock_status != 'matched' or not posix or entry_drift
                  or base_ref['status'] == 'unresolved')
     return dict(status='attention_required' if attention else 'ok', scope='member_local_preflight',
                 project=str(root), python=sys.version.split()[0], git=shutil.which('git'), os=sys.platform,
                 project_config=config_status, base_ref=base_ref, toolchain=dict(status=lock_status), runtime=identity,
                 installation_integrity=integrity, project_entries=entries,
+                member=member,
                 verification=dict(implementation='posix_process_group' if posix else 'unsupported'),
                 host_loading='unverified', platform=dict(status='not_requested'), next_steps=next_steps)
 

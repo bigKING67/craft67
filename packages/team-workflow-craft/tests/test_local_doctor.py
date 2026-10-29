@@ -86,6 +86,93 @@ class LocalDoctorTests(unittest.TestCase):
         self.assertEqual(report['host_loading'], 'unverified')
         self.assertEqual(self.snapshot(), before)
 
+    def test_missing_name_prompts_before_and_after_init_without_writing(self):
+        self.git('config', '--unset', 'user.name')
+        self.git('config', '--unset', 'user.email')
+        for configured in (False, True):
+            with self.subTest(configured=configured):
+                if configured:
+                    self.configure()
+                before = self.snapshot()
+                report = self.cli('doctor', '--local', expected=1)
+                self.assertEqual(report['status'], 'attention_required')
+                self.assertEqual(report['member']['status'], 'missing')
+                self.assertIsNone(report['member']['name'])
+                self.assertTrue(report['member']['message'])
+                self.assertIn('configure_member_name', report['next_steps'])
+                self.assertEqual(report['platform']['status'], 'not_requested')
+                self.assertEqual(self.snapshot(), before)
+
+    def test_name_alone_is_sufficient_and_current_member_is_read_each_time(self):
+        self.configure()
+        self.git('config', '--unset', 'user.email')
+        for name in ('67', '小王'):
+            with self.subTest(name=name):
+                self.git('config', 'user.name', name)
+                before = self.snapshot()
+                report = self.cli('doctor', '--local', expected=0 if os.name == 'posix' else 1)
+                self.assertEqual(report['member']['status'], 'available')
+                self.assertEqual(report['member']['name'], name)
+                self.assertNotIn('configure_member_name', report['next_steps'])
+                self.assertEqual(self.snapshot(), before)
+        # Name-only onboarding does not assert that a complete commit identity exists.
+        full = self.cli('doctor', expected=1)
+        self.assertEqual(full['actor']['git']['status'], 'incomplete')
+
+    def test_existing_global_name_is_reused_and_local_name_takes_precedence(self):
+        self.configure()
+        self.git('config', '--unset', 'user.name')
+        global_config = self.root / 'global.gitconfig'
+        self.env['GIT_CONFIG_GLOBAL'] = str(global_config)
+        self.git('config', '--global', 'user.name', 'Global Member')
+        global_before = global_config.read_bytes()
+        for name in ('Global Member', 'Local Member'):
+            with self.subTest(name=name):
+                if name == 'Local Member':
+                    self.git('config', '--local', 'user.name', name)
+                before = self.snapshot()
+                report = self.cli('doctor', '--local', expected=0 if os.name == 'posix' else 1)
+                self.assertEqual(report['member']['name'], name)
+                self.assertNotIn('configure_member_name', report['next_steps'])
+                self.assertEqual(self.snapshot(), before)
+                self.assertEqual(global_config.read_bytes(), global_before)
+
+    def test_resume_reminds_without_blocking_or_writing_in_all_task_states(self):
+        self.configure()
+        self.git('config', '--unset', 'user.name')
+        self.git('config', '--unset', 'user.email')
+        cases = [('no_task', ()), ('no_task_record', ('--task', 'pr:9')), ('ok', ())]
+        for status, arguments in cases:
+            with self.subTest(status=status):
+                if status == 'ok':
+                    self.cli('prepare', '--task', 'pr:9', '--offline')
+                before = self.snapshot()
+                report = self.cli('resume', *arguments)
+                self.assertEqual(report['status'], status)
+                self.assertEqual(report['member']['status'], 'missing')
+                self.assertTrue(report['member']['message'])
+                self.assertIn('configure_member_name', report['next_actions'])
+                self.assertGreater(len(report['next_actions']), 1)
+                self.assertEqual(self.snapshot(), before)
+        self.git('config', 'user.name', '67')
+        before = self.snapshot()
+        report = self.cli('resume')
+        self.assertEqual(report['member']['name'], '67')
+        self.assertNotIn('configure_member_name', report['next_actions'])
+        self.assertEqual(self.snapshot(), before)
+
+    def test_email_or_invalid_name_cannot_replace_member_name(self):
+        self.configure()
+        for name in ('', '   ', 'invalid\nname'):
+            with self.subTest(name=name):
+                self.git('config', 'user.name', name)
+                before = self.snapshot()
+                report = self.cli('doctor', '--local', expected=1)
+                self.assertEqual(report['member']['status'], 'missing')
+                self.assertIsNone(report['member']['name'])
+                self.assertIn('configure_member_name', report['next_steps'])
+                self.assertEqual(self.snapshot(), before)
+
     def test_invalid_config_and_lock_are_actionable_without_echoing_content(self):
         self.configure()
         config = self.project / '.team-workflow/config.toml'

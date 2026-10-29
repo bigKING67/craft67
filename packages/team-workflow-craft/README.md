@@ -12,9 +12,9 @@
 
 TWC 只做这三件事的确定性检查，载体是随任务分支提交的 `.team-workflow/tasks/<task>/` 目录：契约、证据摘要和最新交接都在里面，推送分支就是交接。任务分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，TWC 只负责检查整个 Git 根，提醒 WIP 互相覆盖。
 
-**当前为源码 v0.2.4，非正式 Release。** 本版完善目标到首版验收的任务示例、排障交接和审查收敛规则，沿用已有 CLI 与协议。本地固定候选已验证三种宿主目标参数的全新安装和 0.2.3 → 0.2.4 升级，覆盖工具链锁、旧证据失效、重验、幂等与漂移保护；该结果属于安装器和已安装 CLI。旧候选和历史证据分别保留，具体依据见 [试点与运维验收](docs/operations.md)。
+**当前为源码 v0.2.5，非正式 Release。** 本版补齐首次使用只询问名字、`resume` 缺名字提醒，以及任务、验证和交接各自保留称呼的链路。名字不替代平台认证；旧记录不补写，验证期间改名会使证据不完整。旧候选和历史证据分别保留，固定候选的安装与升级依据见 [试点与运维验收](docs/operations.md)。
 
-本次指引在升版前完成四个 Codex 受控场景验收：首版拆分、排障接续、三轮审查收敛和 L0 文案修改均通过。该结果限于显式调用、同机合成项目和含全局 AGENTS 的宿主配置，不证明独立成员协作，也不等于 0.2.4 新模型会话验收。此前 0.2.3 的三种宿主安装路径和两份 Pi 命令副作用复验保留各自证据，具体范围及剩余建议误差见 [宿主兼容性](docs/compatibility.md)。
+称呼链路在升版前通过一场 Codex 受控只读接手：读取安装副本、运行预检和 `resume`，只询问名字，继续给出接手说明。该结果限于显式调用、同机合成项目和含全局 AGENTS 的宿主配置，不证明独立成员协作，也不等于 0.2.5 新模型会话验收。此前四场景 Codex 指引验收、0.2.3 的安装路径和 Pi 命令副作用复验保留各自证据，具体范围见 [宿主兼容性](docs/compatibility.md)。
 
 历史 0.2.2 CNB 合成试点覆盖同机双账号接手、负责人评审普通合并及 main 全新 clone 的 9 项测试。2026-10-28 补测中，Claude Code 2.1.308 与 Pi 1.4.0 均完成受控只读接手；Pi 复验明确限制只使用当前仓库资料。Pi 的模型适配修复、原生重试恢复的连接错误和建议措辞限制见 [宿主兼容性](docs/compatibility.md)。独立真人与跨机器仍待验收。Windows 原生进程树完成性不支持，返回 incomplete；历史宿主结果保留各自日期与版本。
 
@@ -76,7 +76,7 @@ python3 skills/team-workflow-craft/scripts/twc.py --project /path/to/product ver
 
 命令记录真实时间、退出码、base/head、代码内容哈希、策略、契约版本及工具版本。完整记录留在本地 ignored 目录，任务目录里另写一份可提交的摘要。配置哈希只是把执行绑定到已审阅命令，不构成批准来源；输出只存摘要哈希和字节数，避免把潜在凭据日志写入交接。未运行/失败/超时/内容漂移不会通过。
 
-每人首次配置个人 Git 姓名/邮箱和个人平台凭据，随后自动记录执行者。任务负责人、Git 作者、验证者、交接者和合并者分别追踪；换人不会沿用旧身份，离线也不会猜测账号。接入步骤见 [成员身份](skills/team-workflow-craft/references/identity.md)。
+首次接入只需名字或团队称呼：`doctor --local` 和 `resume` 复用已有 Git `user.name`，缺失时提示提供名字，不要求邮箱。任务、验证和交接分别保留当时的称呼，离线也能显示，并标明平台身份未核验。实际提交、正式交接时再核对完整 Git 身份和个人平台账号。任务负责人、Git 作者、验证者、交接者和合并者分别追踪；换人不会沿用旧身份，离线也不会猜测账号。接入步骤见 [成员身份](skills/team-workflow-craft/references/identity.md)。
 
 契约按 [任务模板](skills/team-workflow-craft/assets/templates/task-contract.json) 填写，`prepare --contract <repo-relative.json>` 引用；已有规格（包括 Trellis 的 prd.md）放进 `contracts` 引用，不复制。验收条件写成 `{"text": "…", "checks": ["unit"]}` 时，所列检查在当前代码上都通过才算 verified；纯文字的验收条件留给人判断。不要填第二份 owner/status。
 
@@ -108,7 +108,7 @@ git commit -m "twc: hand off issue-42" -- .team-workflow/tasks/issue-42
 
 ```sh
 python3 scripts/build.py --output-dir /path/to/approved-artifacts
-python3 scripts/install.py --artifact /path/to/approved-artifacts/team-workflow-craft-0.2.4.zip \
+python3 scripts/install.py --artifact /path/to/approved-artifacts/team-workflow-craft-0.2.5.zip \
   --project /path/to/product --host codex
 # 核对目标、产物和来源后加 --apply；Claude 用 --host claude，Pi 用 --host pi。
 ```

@@ -17,6 +17,39 @@ The destinations are project-relative. The installer has no default target and
 rejects global installation paths. It never updates a host profile, account,
 settings file, hook, or running session.
 
+## 0.2.5 candidate: installed CLI acceptance (2026-10-29)
+
+The fixed local ZIP SHA-256 is
+`35f5015097034d828df35361c30c6eb8043ad2ee758e769528aa40b3916c7589`.
+Six temporary projects passed fresh installation and fixed-0.2.4 upgrade checks
+for Codex, Claude and Pi target parameters. Checks cover name-only onboarding,
+unchanged legacy task/verification attribution, newly recorded names, explicit
+upgrade, lock mismatch, stale old evidence, re-verification, nonmutating preview,
+idempotency and drift rejection. These are installed-CLI checks, not three
+host-model sessions. The first fixture's uncommitted setup was correctly blocked
+at handoff; its failure is retained, and the same candidate passed with committed
+fixture state. Rebuilding produced identical bytes. See
+[operations](operations.md#本地-025-候选验收2026-10-29) for the artifact and rollback boundary.
+
+## Name-only onboarding: controlled Codex acceptance (2026-10-29)
+
+One fresh Codex 0.165.0 session used `gpt-6-astra` with `xhigh`, an installed
+development snapshot, and a synthetic project whose current member had no name
+or email. The prompt explicitly invoked the Skill for read-only takeover,
+without supplying the expected name question. Codex read the installed Skill,
+ran `doctor --local` and `resume`, asked only for a name or nickname, and continued
+with a takeover summary. It made nine local read-only commands in 94.73 seconds;
+all 78 project files, including Git config/index, were unchanged. It ran no
+project tests and made no platform requests.
+
+The development ZIP SHA-256 was
+`1ecc0e37179b98c777652b953eefd882347ebbeb531a34d157d7ae2e1f297523`;
+it carried 0.2.4 but was not the fixed 0.2.4 candidate below. Only VERSION differs
+from the fixed 0.2.5 candidate. This establishes content parity, not a fresh
+0.2.5 host session. Global AGENTS remained part of the host context; the result
+does not isolate TWC causality or establish automatic discovery, other hosts,
+independent-member collaboration, cross-machine use or remote release.
+
 ## 0.2.4 candidate: installed CLI acceptance (2026-10-29)
 
 The fixed local candidate SHA-256 is

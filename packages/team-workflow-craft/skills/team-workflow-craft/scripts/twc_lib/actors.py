@@ -5,6 +5,20 @@ from .models import now
 from .providers import from_config, ProviderError
 from .workspace import git
 
+MEMBER_NAME_PROMPT = '请提供你在这个项目中使用的名字或称呼（例如“67”），首次接入只需名字。'
+
+
+def _valid_name(name):
+    return isinstance(name, str) and bool(name.strip()) and not any(ord(char) < 32 or ord(char) == 127 for char in name)
+
+
+def member_name(root):
+    """Read the onboarding name without requiring a complete Git commit identity."""
+    name = git(root, 'config', '--get', 'user.name', allowed=(0, 1)).decode('utf-8', errors='replace').strip()
+    valid = _valid_name(name)
+    return dict(status='available' if valid else 'missing', name=name if valid else None,
+                source='git_config_user_name', trust='self_asserted')
+
 
 def git_identity(root):
     identities = {}
@@ -50,7 +64,7 @@ def snapshot(root, config, online=False):
         except ProviderError as exc:
             platform['status'] = exc.code
         platform['observed_at'] = now()
-    return dict(observed_at=now(), platform=platform, git=git_identity(root),
+    return dict(observed_at=now(), member=member_name(root), platform=platform, git=git_identity(root),
                 trust='local_observation_not_identity_attestation')
 
 
@@ -66,7 +80,12 @@ def attributed(actor, instance=None, provider=None):
 
 
 def label(actor):
+    member = actor.get('member') if isinstance(actor, dict) else None
+    name = member.get('name') if isinstance(member, dict) and member.get('status') == 'available' else None
+    # Stored records are untrusted input; names must not inject Markdown into handoffs.
+    name = re.sub(r'([\\`*_{}\[\]<>()!|#])', r'\\\1', name.strip()) if _valid_name(name) else None
     if not attributed(actor):
-        return 'unknown (platform identity unverified)'
+        return (f'{name} (self-reported name; platform identity unverified)' if name
+                else 'unknown (platform identity unverified)')
     user = actor['platform']['data']
-    return user['login']
+    return f'{user["login"]} (self-reported name: {name})' if name else user['login']

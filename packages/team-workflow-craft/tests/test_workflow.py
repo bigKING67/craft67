@@ -449,6 +449,44 @@ class WorkflowTests(Fixture):
         self.assertEqual(result['status'], 'incomplete')
         self.assertIn('git_identity_changed_during_execution', result['drift'])
 
+    def test_name_change_during_check_invalidates_evidence_without_email(self):
+        self.prepare()
+        self.git('config', 'user.name', '67')
+        self.git('config', '--unset', 'user.email')
+        self.checks([('unit', 'import subprocess; subprocess.run(["git", "config", "user.name", "Changed"], check=True)', 5)])
+        env = {key: value for key, value in os.environ.items() if not key.startswith('GIT_') and key != 'EMAIL'}
+        env.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull)
+        with patch.dict(os.environ, env, clear=True):
+            result = self.verify()
+        self.assertEqual(result['checks'][0]['status'], 'passed')
+        self.assertEqual(result['status'], 'incomplete')
+        self.assertEqual(result['actor']['member']['name'], '67')
+        self.assertEqual(result['member_after']['name'], 'Changed')
+        self.assertEqual(result['actor']['git'], result['git_identity_after'])
+        self.assertIn('member_name_changed_during_execution', result['drift'])
+
+    def test_member_label_keeps_claimed_name_separate_from_platform_identity(self):
+        self.git('config', 'user.name', '67')
+        config, _ = self.configuration()
+        actor = actors.snapshot(self.root, config)
+        self.assertIn('67 (self-reported name; platform identity unverified)', actors.label(actor))
+        self.assertFalse(actors.attributed(actor))
+        with patch.object(Gitea, 'get_identity', return_value=dict(id=7, login='account67')):
+            online = actors.snapshot(self.root, config, online=True)
+        self.assertEqual(actors.label(online), 'account67 (self-reported name: 67)')
+        self.assertTrue(actors.attributed(online))
+        # Older records are not retrospectively assigned the current member's name.
+        actor.pop('member')
+        self.assertEqual(actors.label(actor), 'unknown (platform identity unverified)')
+        online.pop('member')
+        self.assertEqual(actors.label(online), 'account67')
+        for value in (None, {}, {'member': 'malformed'}, {'member': {'status': 'available', 'name': '67\nForged'}}):
+            with self.subTest(value=value):
+                self.assertEqual(actors.label(value), 'unknown (platform identity unverified)')
+        unsafe = dict(member=dict(status='available', name='[67](https://example.invalid)'))
+        self.assertEqual(actors.label(unsafe),
+                         r'\[67\]\(https://example.invalid\) (self-reported name; platform identity unverified)')
+
     def test_doctor_reads_platform_account_once_without_changing_local_git_identity(self):
         config, sha = self.configuration()
         with patch.object(Gitea, 'get_identity', return_value=dict(id=1, login='sixseven')) as who:
