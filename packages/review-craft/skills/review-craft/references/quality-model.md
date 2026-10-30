@@ -1,5 +1,10 @@
 # Project Quality Model
 
+The test-sensitivity, state-ownership, and refactoring guidance here and in
+`simplification.md` is independently written, informed by a bounded reading of
+[`ub-mode/SKILL.md`](https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/SKILL.md).
+Its tools, thresholds, and execution workflow are not Review Craft requirements.
+
 ## Contents
 
 1. Purpose
@@ -60,6 +65,13 @@ Record supported platforms, data formats, public APIs, migration formats, and ho
 versions. Record performance budgets only when the project or user establishes
 them. Otherwise state which metrics require baselining.
 
+Complexity, coverage, duplication, and mutation results are investigation leads. Bind
+them to the analyzed source and exercised scope; retain unsupported or skipped paths
+as gaps. A metric alone does not establish a finding or justify splitting functions,
+merging similar code, or deleting untested code. Identify the violated behavior or
+evidenced maintenance cost. Use project-approved tools and thresholds when relevant;
+this reference adds no mandatory tool, installation, or universal numeric gate.
+
 ## Non-goals
 
 Explicitly exclude capabilities the project does not need. Examples may include
@@ -71,3 +83,15 @@ or a comprehensive observability platform. Do not deduct points for non-goals.
 Separate facts, assumptions, and unknowns. A source-backed assumption is not a user
 requirement. A stale document is not current runtime evidence. A passing unit test
 is not proof of production behavior outside its exercised boundary.
+
+When tests support a material claim, check whether their inputs and assertions would
+distinguish the required observable result from a plausible defect on that path.
+For example, a retry test that checks only a success status cannot establish that no
+duplicate durable record was created. Internal call counts or mocks alone may miss the
+claimed outcome. Use the smallest decisive evidence within the review's execution scope.
+
+For a regression, prefer evidence that the relevant test fails on the faulty behavior
+for the expected reason and passes after the correction. Reuse existing evidence;
+writing or changing tests belongs to authorized remediation. If a practical behavioral
+check is unavailable, preserve the evidence gap rather than adding a test that merely
+mirrors implementation structure or claiming the behavior is verified.

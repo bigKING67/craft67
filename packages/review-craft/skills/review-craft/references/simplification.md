@@ -213,6 +213,14 @@ owner and protect the same failure window. Preserve distinct mechanisms that sep
 provide publication rollback, callback isolation, terminal arbitration, worker ownership,
 durability transitions, or quiescent disposal.
 
+When a candidate adds coordination for shared writes, first establish which actors
+actually need shared mutable state. Compare per-owner state against shared state while
+preserving consistency, identity, persistence, and recovery contracts. Where sharing is
+required, trace the enforced writer ownership and synchronization boundary, including
+other processes; a single-writer label alone is not enforcement. Keep this analysis in
+the existing ownership proof. The conceptual source is recorded in
+[quality-model.md](quality-model.md).
+
 When related updates can leave a half-applied state, map the precondition, each write or
 publication step, observers, failure windows, rollback or compensation, and retry
 semantics. Promote the lead only when an intermediate state can violate an observable
@@ -262,6 +270,14 @@ preserve that residual contract and choose `KEEP`, `DEFER`, or `MEASURE` when th
 is unresolved.
 
 ## Verify an authorized cut
+
+For a structural-only change, establish the affected behavior before editing and compare
+it after the change at supported entrypoints: relevant outputs, errors, persisted effects,
+and lifecycle guarantees. Reuse existing tests and receipts with the
+[test-sensitivity checks](quality-model.md#evidence-quality); preserving helper names or
+call layout is not proof of behavioral equivalence. If behavior also changes by explicit
+requirement, separate preserved contracts from the newly required outcomes. Report any
+missing baseline or check as a gap in the equivalence claim.
 
 Apply source changes only through the existing Review Craft remediation authorization and
 host editing boundary. Retire one coherent ownership boundary at a time and account for
