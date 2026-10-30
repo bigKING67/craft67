@@ -18,7 +18,7 @@ The source repository for Craft projects and Agent Skills. Design, creative work
 | [3D Craft](packages/3d-craft/README.md) | Building and verifying Blender product props, GLB files, and Web3D viewers | 3d-craft |
 | [Reverse Craft](packages/reverse-craft/README.md) | Authorized reverse engineering, CTF, DFIR, protocol, and threat-evidence analysis | reverse-craft |
 | [Write Craft](packages/write-craft/README.md) | Turns complex plans, progress, and engineering explanations into documents readers can evaluate and act on, and reviews and rewrites project READMEs | write-craft |
-| [Team Workflow Craft](packages/team-workflow-craft/README.md) | Shared task contracts, workspace checks, verification evidence, and handoffs across team members and agents | team-workflow-craft |
+| [Workflow Craft](packages/workflow-craft/README.md) | Task contracts, workspace checks, verification evidence, and continuity for solo or team development | workflow-craft |
 
 ## Use a Skill
 

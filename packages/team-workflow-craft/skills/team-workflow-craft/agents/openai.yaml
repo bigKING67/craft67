@@ -1,4 +1,0 @@
-interface:
-  display_name: "Team Workflow Craft"
-  short_description: "Coordinate shared tasks, verification, and team handoffs"
-  default_prompt: "Use $team-workflow-craft to prepare a shared task and a verifiable handoff."

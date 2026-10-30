@@ -1,0 +1,49 @@
+# 项目开发模式
+
+个人与团队共用契约、验证和接续链路。模式决定新任务的协作要求，不改变当前用户权限、项目保护规则或历史任务。一个人使用多个 Agent 可以选择个人；团队仓库里一个人执行任务仍沿用团队配置。
+
+## 首次选择
+
+`doctor --local` 或尚未初始化时的 `resume` 返回 `development_mode.status=selection_required`。询问一次个人/团队，个人只是推荐，不是默认授权。用户没有回答时只读工作可以继续，init 不能写配置。已有明确意图时直接采用，已有名字时不重问。新项目单独选择，Git 根下的子目录共用；新 clone 从版本化配置恢复选择。非 Git 或没有任何提交的目录需先说明前置条件，不自行 git init/commit。
+
+用户确认个人开发后：
+
+```sh
+python3 <skill>/scripts/twc.py --project <repo> init --mode personal
+python3 <skill>/scripts/twc.py --project <repo> init --mode personal --apply
+```
+
+默认把当前提交固定为本地基线，不需要 remote、平台或 Token。使用长期集成分支时显式传 `--base-ref main` 等已存在引用。个人契约沿用 goal/non_goals/scope/dependencies/acceptance/contracts/complexity/risk，可省略 integrator。按现有 [契约规则](context.md) 说明验收并配置真实检查，然后创建 `local:<slug>` 任务（小写字母、数字、下划线和连字符）：
+
+```sh
+python3 <skill>/scripts/twc.py --project <repo> prepare --task local:export-orders --contract docs/export-orders.json
+python3 <skill>/scripts/twc.py --project <repo> resume
+python3 <skill>/scripts/twc.py --project <repo> verify
+```
+
+本地 prepare 写任务和绑定，默认不联网。后续验证仍需执行授权及准确策略哈希。`handoff --draft` 可供下一会话接续：本地任务的 `readiness_scope=local_task`，即使 advisory_ready 也不证明平台审批或授予提交/发布权限。未提交改动仍报告不可移植；同一工作树可继续，跨机器分享须按项目规则提交。名字足以记录本地执行，正式 Git 提交仍使用用户自己的提交身份。
+
+## 团队接入
+
+团队模式用 `init --mode team`。没有平台时也可使用 local 任务，但新契约必须指定 integrator；此类交接报告 `task_integrator_review_required`，工具不伪造独立评审。连接已有 CNB/Gitea 时显式传 provider/base-url/repository/base-ref，并读取 [身份与交接](identity.md) 及对应 [CNB](cnb.md)/[Gitea](gitea.md) 引用。
+
+```sh
+python3 <skill>/scripts/twc.py --project <repo> init --mode team \
+  --provider cnb --base-url https://cnb.cool --repository company/product --base-ref origin/main
+```
+
+按授权加 `--apply`。平台 issue/pr 的默认联网行为保持不变；`prepare --offline` 不写平台，但仍写本地记录。已有 Trellis 时沿用 `--workflow-owner trellis`，引用原规格，不建立另一套负责人/任务状态。模式没有“自动运行子 Agent”含义。
+
+## 后续切换
+
+```sh
+python3 <skill>/scripts/twc.py --project <repo> mode
+python3 <skill>/scripts/twc.py --project <repo> mode --set team
+python3 <skill>/scripts/twc.py --project <repo> mode --set team --apply --approved-policy <返回的policy_sha256>
+```
+
+用户已授权本次切换时，Agent 核对预览后直接应用，不重复索要同一授权。个人使用 `--set personal`。切换仅重写项目 config，保留解析后的其他设置；格式和注释可能变化，预览包含完整拟写入内容。应用校验当前策略哈希，防止覆盖期间的配置修改。
+
+预览列出当前任务、集成人和最近交接的未完成项；绑定异常先处理，不隐式解绑。旧任务、历史署名、验证记录和平台连接保持原样，原有平台或 integrator 要求继续生效；修改配置使旧验证过期，需在新策略下重验。已有平台不能通过 mode 命令替换；尚未接入的平台可用 `--provider ... --base-url ... --repository ...` 一次补齐，调用不联网。
+
+旧 schema v1 配置只读时识别为团队；显式切换时升级到 v2，新增稳定 project_id，既有平台任务身份不变。v2 缺失或非法模式是配置错误，不能自动退回个人。工具链协议升级到 2，旧锁须单独核对升级；模式切换不更新锁或代替升级授权。

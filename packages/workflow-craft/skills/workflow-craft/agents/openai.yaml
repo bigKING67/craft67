@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Craft"
+  short_description: "Continue personal or team work with verifiable task records"
+  default_prompt: "Use $workflow-craft to inspect this project's workflow mode and continue its task with verifiable results."

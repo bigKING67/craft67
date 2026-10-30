@@ -8,7 +8,7 @@ craft67 是集合仓库，11 个包继续独立使用语义化版本。根仓库
 
 | 包 | 版本来源 |
 | --- | --- |
-| design-craft、creative-craft、review-craft、money-craft、3d-craft、reverse-craft、write-craft、team-workflow-craft | 包根 `VERSION` |
+| design-craft、creative-craft、review-craft、money-craft、3d-craft、reverse-craft、write-craft、workflow-craft | 包根 `VERSION` |
 | whoami、browser67 | 包根 `package.json` 的 `version` |
 | commerce-growth-os | `skill-pack.json` 的 `pack_version` |
 

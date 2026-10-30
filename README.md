@@ -18,7 +18,7 @@
 | [3D Craft](packages/3d-craft/README.md) | Blender 产品道具、GLB 与 Web3D 查看器的制作和验证 | 3d-craft |
 | [Reverse Craft](packages/reverse-craft/README.md) | 授权范围内的逆向、CTF、DFIR、协议与威胁证据分析 | reverse-craft |
 | [Write Craft](packages/write-craft/README.md) | 将复杂方案、进展与工程说明整理为读者可判断、可行动的文档，并审查改写项目 README | write-craft |
-| [Team Workflow Craft](packages/team-workflow-craft/README.md) | 跨成员与 Agent 的任务契约、工作区检查、验证证据和交接 | team-workflow-craft |
+| [Workflow Craft](packages/workflow-craft/README.md) | 个人或团队的任务契约、工作区检查、验证证据和接续 | workflow-craft |
 
 ## 使用 Skill
 

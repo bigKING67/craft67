@@ -1,0 +1,41 @@
+// Exercise the real adapter with host callbacks and the real Python mode reader.
+import assert from 'node:assert/strict';
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import workflowStatus from '../skills/workflow-craft/assets/adapters/pi-status.ts';
+
+const root = process.argv[2];
+const handlers = new Map();
+const statuses = new Map([['existing-extension', 'keep me']]);
+let writes = 0;
+workflowStatus({ on(event, handler) { handlers.set(event, handler); } });
+const ctx = { cwd: root, hasUI: true, ui: { setStatus(key, value) {
+  writes++;
+  if (value === undefined) statuses.delete(key); else statuses.set(key, value);
+} } };
+const emit = (event, context = ctx) => handlers.get(event)({}, context);
+await emit('session_start');
+assert.equal(statuses.get('workflow-craft'), 'Workflow: solo');
+const config = path.join(root, '.team-workflow/config.toml');
+const original = await readFile(config, 'utf8');
+await writeFile(config, original.replace('"personal"', '"team"'));
+await emit('agent_end');
+assert.equal(statuses.get('workflow-craft'), 'Workflow: team');
+await writeFile(config, 'invalid configuration');
+await emit('session_shutdown');
+await emit('session_start');
+assert.equal(statuses.get('workflow-craft'), 'Workflow: 配置错误');
+const previousWrites = writes;
+await emit('session_start', { ...ctx, hasUI: false });
+assert.equal(writes, previousWrites);
+const pending = emit('agent_end');
+await emit('session_shutdown');
+await pending;
+assert.equal(statuses.has('workflow-craft'), false, 'stale async refresh must not restore shutdown status');
+await writeFile(config, original);
+process.env.WORKFLOW_CRAFT_PYTHON = path.join(root, 'missing-interpreter');
+await emit('session_start');
+assert.equal(statuses.get('workflow-craft'), 'Workflow: 不可用');
+await emit('session_shutdown');
+assert.deepEqual([...statuses], [['existing-extension', 'keep me']]);
+console.log('Pi status adapter: passed');

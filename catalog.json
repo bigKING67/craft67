@@ -283,12 +283,12 @@
       }
     },
     {
-      "name": "team-workflow-craft",
-      "path": "packages/team-workflow-craft",
+      "name": "workflow-craft",
+      "path": "packages/workflow-craft",
       "skills": [
         {
-          "name": "team-workflow-craft",
-          "path": "skills/team-workflow-craft/SKILL.md"
+          "name": "workflow-craft",
+          "path": "skills/workflow-craft/SKILL.md"
         }
       ],
       "checks": [
