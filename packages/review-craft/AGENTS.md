@@ -56,4 +56,5 @@ Keep Python cache, local runs, logs, credentials, absolute paths, and `.codex/` 
 
 - Use scoped staging; never use `git add -A`.
 - Do not amend, force-push, rewrite history, or publish a tag/release without explicit authorization.
-- A commit does not imply push unless the user explicitly authorizes it.
+- Maintenance delivery follows craft67's root `AGENTS.md`; report local commit,
+  remote push, and installed state independently.

@@ -47,7 +47,8 @@ entrypoint, and a rule moved out of the entrypoint loses salience for it.
   behavior into the fusion layer under `skills/write-craft/`.
 - Treat licenses per source path. Do not copy text from a source whose reuse
   terms are absent or unclear.
-- Keep source validation, installation, commit, push, versioning, tagging, and
-  release as separate authorization layers.
-- Preserve unrelated work. Do not write to global Skill roots unless the user
-  explicitly authorizes installation.
+- Follow craft67's root `AGENTS.md` for maintenance delivery authorization.
+  Keep source validation, installation, commit, push, versioning, tagging, and
+  release as separate evidence states.
+- Preserve unrelated work and update only the known local Skill installation
+  within the maintenance scope.

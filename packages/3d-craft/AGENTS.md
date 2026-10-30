@@ -23,5 +23,5 @@ requirements for the installed Skill.
 - Generated Blender, GLB, screenshot, report, cache, and run-state artifacts
   belong outside the repository unless they are deliberately small fixtures.
 - Use explicit schemas and stable enumerations for machine contracts.
-- Do not commit, push, tag, release, publish, or install globally unless the
-  user authorizes that layer separately.
+- Follow craft67's root `AGENTS.md` for maintenance delivery authorization.
+  Keep source, commit, push, installation, and release evidence separate.
