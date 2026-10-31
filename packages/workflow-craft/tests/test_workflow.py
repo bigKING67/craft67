@@ -40,7 +40,7 @@ class Fixture(unittest.TestCase):
                              contracts=[], complexity='L1', risk='normal')
         (self.root / 'contract.json').write_text(json.dumps(self.contract))
         self.git('add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json',
-                 '.team-workflow/.gitignore', 'contract.json')
+                 '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json')
         self.git('commit', '-qm', 'workflow config')
 
     def git(self, *args):

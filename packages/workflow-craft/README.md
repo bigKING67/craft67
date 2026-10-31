@@ -64,7 +64,7 @@ python3 skills/workflow-craft/scripts/twc.py --project /path/to/product init --m
   --provider cnb --base-url https://cnb.cool --repository company/product --base-ref origin/main
 ```
 
-核对预览后用 `--apply` 替代 `--dry-run`。只创建 `.team-workflow/config.toml`、`toolchain.lock.json` 和忽略 `local/` 的 `.gitignore`，不改 AGENTS.md/CLAUDE.md、宿主账号或配置。现有 `.team-workflow` 会拒绝覆盖。base_ref 必须在本地可解析；不会隐式 fetch。
+核对预览后用 `--apply` 替代 `--dry-run`。只在 `.team-workflow/` 内创建 `config.toml`、`toolchain.lock.json`、忽略 `local/` 的 `.gitignore`，以及保护配置原始字节的 `.gitattributes`；初始化统一写 UTF-8/LF，提交配置时一并提交该属性文件。不改根 `.gitattributes`、AGENTS.md/CLAUDE.md、宿主账号或配置。现有 `.team-workflow` 会拒绝覆盖。base_ref 必须在本地可解析；不会隐式 fetch。已有项目的换行保护见[跨平台接续](skills/workflow-craft/references/development-modes.md#跨平台配置与已有项目)。
 
 把项目已批准检查写入配置（命令需匹配真实项目）：
 

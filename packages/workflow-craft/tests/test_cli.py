@@ -127,7 +127,7 @@ class InstalledProductTests(unittest.TestCase):
             contract = dict(goal='test a feature', non_goals=[], scope=['check.py'], dependencies=[],
                             acceptance=['arithmetic check'], integrator='maintainer', contracts=[], complexity='L1', risk='normal')
             (project / 'contract.json').write_text(json.dumps(contract))
-            run(git + ['add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json', '.team-workflow/.gitignore', 'contract.json'])
+            run(git + ['add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json', '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json'])
             run(git + ['commit', '-qm', 'workflow'])
             run(git + ['config', '--unset', 'user.name'])
             run(git + ['config', '--unset', 'user.email'])
@@ -197,7 +197,7 @@ class InstalledProductTests(unittest.TestCase):
                             acceptance=[dict(text='Local content is ready', checks=['unit'])])
             (project / 'contract.json').write_text(json.dumps(contract))
             run(git + ['add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json',
-                       '.team-workflow/.gitignore', 'contract.json'])
+                       '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json'])
             run(git + ['-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'workflow'])
             prepared = json.loads(run(command + ['prepare', '--task', 'local:content', '--contract', 'contract.json']))
             self.assertEqual(prepared['platform_status'], 'not_applicable')

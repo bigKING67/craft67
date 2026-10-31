@@ -34,6 +34,12 @@ python3 <skill>/scripts/twc.py --project <repo> init --mode team \
 
 按授权加 `--apply`。平台 issue/pr 的默认联网行为保持不变；`prepare --offline` 不写平台，但仍写本地记录。已有 Trellis 时沿用 `--workflow-owner trellis`，引用原规格，不建立另一套负责人/任务状态。模式没有“自动运行子 Agent”含义。
 
+## 跨平台配置与已有项目
+
+策略批准和证据绑定 `config.toml` 的原始字节。0.6.3 起，`init` 在 `.team-workflow/.gitattributes` 中写入 `/config.toml -text`，避免 Windows Git 自动换行改变策略哈希；新文件统一写 UTF-8/LF。应把该属性文件与配置一同提交。已有根属性和用户规则不改写；实际编辑配置仍会改变策略哈希，旧批准与证据照常失效。
+
+升级 Skill 不自动迁移已有项目。项目出现仅换行造成的跨 clone `stale` 时，先核对 Git blob、工作区字节及本地改动；在已授权修复范围内，将同一规则合入现有的 `.team-workflow/.gitattributes`（没有时创建），不覆盖其余规则，并以已核对的版本化配置统一字节。旧记录保持原样，按正常流程记录所需的新验证；不手改旧策略哈希。跨机器复验需同时检查配置字节、策略哈希和 `resume`，不能仅以测试通过或安装完整性代替。
+
 ## 后续切换
 
 ```sh

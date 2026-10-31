@@ -106,7 +106,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                             integrator='sixseven', contracts=['protocol.py'], complexity='L2', risk='normal')
             (alice / 'contract.json').write_text(json.dumps(contract))
             commit(alice, 'Shared workflow contract', '.team-workflow/config.toml',
-                   '.team-workflow/toolchain.lock.json', '.team-workflow/.gitignore', 'contract.json')
+                   '.team-workflow/toolchain.lock.json', '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json')
             git(alice, 'push', '-q', 'origin', 'main')
             bob, integrator = root / 'bob', root / 'integrator'
             for project, name in ((bob, 'Bob'), (integrator, 'sixseven')):

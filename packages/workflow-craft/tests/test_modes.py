@@ -50,7 +50,7 @@ class PersonalProject(unittest.TestCase):
             contract['integrator'] = 'reviewer'
         (self.root / 'contract.json').write_text(json.dumps(contract))
         self.git('add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json',
-                 '.team-workflow/.gitignore', 'contract.json')
+                 '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json')
         self.commit('workflow setup')
 
     def hashes(self):

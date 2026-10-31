@@ -205,7 +205,8 @@ auto_merge = false
 # No commands are executed or guessed during init.
 '''
     lock = dict(schema_version=1, skill='workflow-craft', **runtime_identity())
-    files = {'config.toml': content, 'toolchain.lock.json': json.dumps(lock, indent=2) + '\n', '.gitignore': 'local/\n'}
+    files = {'config.toml': content, 'toolchain.lock.json': json.dumps(lock, indent=2) + '\n',
+             '.gitignore': 'local/\n', '.gitattributes': '/config.toml -text\n'}
     directory = root / '.team-workflow'
     if directory.exists() or directory.is_symlink():
         raise WorkflowError('.team-workflow already exists; inspect and edit existing configuration explicitly')
@@ -214,7 +215,7 @@ auto_merge = false
     if apply:
         directory.mkdir(mode=0o755)
         for name, text in files.items():
-            with (directory / name).open('x', encoding='utf-8') as stream:
+            with (directory / name).open('x', encoding='utf-8', newline='\n') as stream:
                 stream.write(text)
         plan['applied'] = True
     return plan

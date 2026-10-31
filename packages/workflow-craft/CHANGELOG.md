@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.3 — Unreleased
+
+- 修复真实 Windows→Mac 接续中 Git 自动换行使策略证据过期的问题：新项目在 `.team-workflow/.gitattributes` 内保护配置原始字节，初始化统一写 UTF-8/LF；不改根属性、用户规则或已有项目。
+- 增加 LF/CRLF 配置经两种 Git checkout 设置接续已完成任务的回归，并验证实际策略修改仍令旧证据和批准失效；保留原始字节哈希与协议 3。已有项目按文档显式迁移，保留旧证据。
+
 ## 0.6.2 — Unreleased
 
 - 同类排查实际复现纯文本状态栏在 ASCII 管道下的中文输出失败；状态栏明确输出 UTF-8，宿主测试按 UTF-8 解码，并覆盖项目路径及 Claude stdin 两种入口。
