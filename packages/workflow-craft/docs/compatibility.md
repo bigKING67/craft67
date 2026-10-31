@@ -2,7 +2,14 @@
 
 ## 0.7.0 global entry candidate
 
-Explicit global installation uses the same fixed artifact. The `entry` command selects a verified project copy or previews a new project pin; it never executes the selected CLI. Existing project locks, rules and evidence survive global upgrades. The installed-product regressions cover first-use selection, project/subdirectory reuse, mode switching, mixed versions, drift and missing runtimes. These are CLI contracts, not proof of native host discovery or model behavior. Actual candidate validation is recorded below as it completes.
+Explicit global installation uses the same fixed artifact. The `entry` command selects a verified project copy or previews a new project pin; it never executes the selected CLI. Existing project locks, rules and evidence survive global upgrades. The installed-product regressions cover first-use selection, project/subdirectory reuse, mode switching, mixed versions, drift and missing runtimes. These are CLI contracts, not proof of native host discovery or model behavior. Validation for this candidate:
+
+- Frozen package gate: 213 tests, one Windows-only skip on macOS. The final instruction-only L0 refinement also passed all eight installed-entry tests and the Skill validator.
+- Company native Windows / Python 3.12.10: eight entry tests passed, including directory handle protection, rollback, shared Codex/Pi global target and legacy-protocol selection. This is real Windows execution; the old-protocol fixture is synthetic.
+- Independent diff review closed both reproduced findings in three bounded rounds. Two independent Skill-use exercises then completed personal-mode onboarding without changing AGENTS or creating tasks, and a separate L0 spelling fix without running onboarding commands or creating workflow state. These exercises are agent behavior evidence, not independent-human acceptance.
+- Local Codex 0.166.0 app-server `skills/list`: an unconfigured Git project discovers the global user Skill; AIOS lists both repo and user metadata. No automatic host deduplication is claimed. Calling global `entry` selects AIOS's unchanged project 0.6.2; installation into this Mac's shared Codex/Pi user path is verified. Native Claude/Pi global discovery and fresh-session model loading remain unverified.
+- Final runtime artifact SHA-256: `b3b707ac530adf1d76cffdbbf7393ce426905f0798bd5bdccab64a8fdb4f14bf`. Installation and source are not a formal Release. Full platform matrix for source commit `1df9480` is tracked in [CI](https://github.com/bigKING67/craft67/actions/runs/41187637386); its live result must be checked separately.
+
 
 ## 0.6.3 portability closeout (2026-10-31)
 
