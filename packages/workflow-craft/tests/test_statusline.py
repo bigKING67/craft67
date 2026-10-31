@@ -118,6 +118,11 @@ class StatuslineTests(unittest.TestCase):
                      ' ' * (64 * 1024 + 1)):
             self.assertEqual(self.cli('--claude', data=data), 'Workflow: 不可用')
 
+    def test_claude_deeply_nested_input_is_unavailable(self):
+        self.configure()
+        data = '[' * 2000 + '0' + ']' * 2000
+        self.assertEqual(self.cli('--claude', data=data), 'Workflow: 不可用')
+
     def test_no_writes_or_check_execution_or_network(self):
         config = self.configure()
         config.write_text(config.read_text() + '\n[checks.never]\nargv = ["must-not-execute"]\n')

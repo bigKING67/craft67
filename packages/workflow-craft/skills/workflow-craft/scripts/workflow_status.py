@@ -28,7 +28,7 @@ def main():
             workspace = value.get('workspace', {}) if isinstance(value, dict) else {}
             project = (workspace.get('current_dir') if isinstance(workspace, dict) else None)
             project = project or (value.get('cwd') if isinstance(value, dict) else None)
-        except (OSError, ValueError):
+        except (OSError, ValueError, RecursionError):
             project = None
     print(render(project))
     return 0
