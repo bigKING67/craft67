@@ -6,7 +6,7 @@
 
 本版明确与项目 `AGENTS.md` / `CLAUDE.md` 分工：项目约定继续生效，Workflow Craft 只补任务接续、验证证据与交接，不自动改写规则文件。详细命令按需加载；关键功能先复用已有测试和操作说明，再补真实覆盖缺口，见 [功能验证路径](skills/workflow-craft/references/feature-verification.md) 与 [本包验证索引](docs/verification-paths.md)。
 
-产品目标包含独立承接个人和团队的完整任务循环。0.5.0 已实现最小本地任务树、生命周期与会话绑定；针对已有 Trellis 项目的 [替代与退役验收方案](docs/trellis-retirement.md) 和只读盘点工具继续适用。AIOS 隔离副本已完成局部真实修复及 Windows/Claude → Mac 接续；完整真人平台协作与原项目迁移尚未验收，当前不能退役 AIOS 的 Trellis。
+产品目标包含独立承接个人和团队的完整任务循环。0.5.0 已实现最小本地任务树、生命周期与会话绑定；针对已有 Trellis 项目的 [替代与退役验收方案](docs/trellis-retirement.md) 和只读盘点工具继续适用。AIOS 隔离副本已完成局部真实修复、限定 CNB PR 闭环及 sixseven 的新 Windows/Claude 会话接手；迁移门禁在 Mac、准备好项目工具链的原生 Windows 及证据带回 Mac 后均通过。完整宿主排他性、应用与业务验收、原项目迁移尚未完成，当前不能退役 AIOS 的 Trellis。
 
 可选 [模式状态栏](skills/workflow-craft/references/statusline.md) 支持 Claude Code 和 Pi，显示 `Workflow: solo` / `Workflow: team`；配置缺失或错误会如实显示。适配器随固定产物提供，须显式启用并保留原状态栏；Codex 继续用接续开场提示。显示模式不代表检查或审批通过。
 
