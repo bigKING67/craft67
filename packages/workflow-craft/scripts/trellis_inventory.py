@@ -147,6 +147,13 @@ def inventory(project):
                           effective_profile=effective, legacy_profile_default=(data.get('workflow_profile') is None),
                           parent=parent, children=children, fields=sorted(data), artifacts=related))
 
+    # A migration source includes every task attachment, not only the standard
+    # planning files. Keep their paths and hashes; never emit their contents.
+    # Unreadable or oversized attachments remain explicit findings, not omissions.
+    for relative in task_files:
+        if relative not in sources:
+            read(relative)
+
     spec_files = files('.trellis/spec')
     for relative in spec_files:
         if read(relative) is not None:
@@ -208,16 +215,16 @@ def inventory(project):
     if files('.trellis/spec') != spec_files:
         finding('spec_file_set_changed', '.trellis/spec', 'error')
     summary = dict(discovered_task_records=sum(Path(path).name == 'task.json' for path in task_files),
-                   tasks=len(tasks), unarchived=sum(not row['archived'] for row in tasks),
+                   tasks=len(tasks), task_files=len(task_files), unarchived=sum(not row['archived'] for row in tasks),
                    archived=sum(row['archived'] for row in tasks), specs=len(specs),
                    statuses=dict(sorted(Counter(row['status'] or 'unrecognized' for row in tasks).items())),
                    declared_profiles=dict(sorted(Counter(row['declared_profile'] or 'missing_or_unrecognized' for row in tasks).items())),
                    relations=len(relations), findings=dict(sorted(Counter(row['code'] for row in findings).items())))
     return dict(schema='workflow-craft.trellis-inventory.v1',
                 status='needs_review' if any(row['severity'] != 'notice' for row in findings) else 'ok',
-                scope='task metadata, canonical planning artifacts, specs and project rule hashes',
+                scope='task metadata, all task file hashes, specs and project rule hashes',
                 migration_ready=False, source_version=version, summary=summary, tasks=tasks,
-                specs=specs, relations=relations, sources=first_sources, findings=findings,
+                task_files=task_files, specs=specs, relations=relations, sources=first_sources, findings=findings,
                 limitations=['not a full archive backup', 'no runtime sessions or credentials inspected',
                              'legacy profiles are observed with the existing full default, never rewritten',
                              'no imports, project checks, task execution, host activation or remote requests'])

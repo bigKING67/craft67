@@ -79,6 +79,36 @@ class TrellisInventoryTests(unittest.TestCase):
         self.assertTrue({'ambiguous_task_id', 'ambiguous_task_directory', 'unresolved_parent'} <= self.codes(result))
         self.assertIsNone(result['relations'][0]['target_source'])
 
+    def test_includes_noncanonical_task_attachments_without_exposing_contents(self):
+        self.task('parent', status='planning', children=['child'])
+        self.task('child', parent='parent')
+        self.write('.trellis/tasks/child/prd.md', '# Acceptance\n')
+        attachment = '.trellis/tasks/child/evidence/native-result.json'
+        self.write(attachment, '{"private-evidence": "retained"}\n')
+        self.write('.trellis/tasks/child/delivery-runbook.md', 'private-runbook')
+        self.write('.trellis/tasks/index.md', 'private-index')
+        before = self.snapshot()
+        result = self.scan()
+        expected = sorted(path for path in before if path.startswith('.trellis/tasks/'))
+        self.assertEqual(result['task_files'], expected)
+        self.assertEqual(result['summary']['task_files'], len(expected))
+        self.assertTrue(set(expected) <= set(result['sources']))
+        self.assertEqual(result['sources'][attachment]['sha256'],
+                         hashlib.sha256(before[attachment]).hexdigest())
+        self.assertEqual(self.snapshot(), before)
+        for private in ('private-evidence', 'private-runbook', 'private-index'):
+            self.assertNotIn(private, json.dumps(result))
+
+    def test_unreadable_attachment_prevents_complete_inventory(self):
+        self.task('one')
+        relative = '.trellis/tasks/one/large-evidence.bin'
+        self.write(relative, b'X' * (inventory_module.MAX_BYTES + 1))
+        result = self.scan()
+        self.assertEqual(result['status'], 'needs_review')
+        self.assertIn(relative, result['task_files'])
+        self.assertNotIn(relative, result['sources'])
+        self.assertIn('file_exceeds_inventory_limit', self.codes(result))
+
     def test_relations_use_directory_names_not_json_ids(self):
         self.task('10-29-parent', id='parent', children=['10-29-child'])
         self.task('10-29-child', id='child', parent='10-29-parent')
