@@ -7,8 +7,17 @@ Explicit global installation uses the same fixed artifact. The `entry` command s
 - Frozen package gate: 213 tests, one Windows-only skip on macOS. The final instruction-only L0 refinement also passed all eight installed-entry tests and the Skill validator.
 - Company native Windows / Python 3.12.10: eight entry tests passed, including directory handle protection, rollback, shared Codex/Pi global target and legacy-protocol selection. This is real Windows execution; the old-protocol fixture is synthetic.
 - Independent diff review closed both reproduced findings in three bounded rounds. Two independent Skill-use exercises then completed personal-mode onboarding without changing AGENTS or creating tasks, and a separate L0 spelling fix without running onboarding commands or creating workflow state. These exercises are agent behavior evidence, not independent-human acceptance.
-- Local Codex 0.166.0 app-server `skills/list`: an unconfigured Git project discovers the global user Skill; AIOS lists both repo and user metadata. No automatic host deduplication is claimed. Calling global `entry` selects AIOS's unchanged project 0.6.2; installation into this Mac's shared Codex/Pi user path is verified. Native Claude/Pi global discovery and fresh-session model loading remain unverified.
-- Final runtime artifact SHA-256: `b3b707ac530adf1d76cffdbbf7393ce426905f0798bd5bdccab64a8fdb4f14bf`. Installation and source are not a formal Release. Full platform matrix for source commit `1df9480` is tracked in [CI](https://github.com/bigKING67/craft67/actions/runs/41187637386); its live result must be checked separately.
+- Local Codex 0.166.0 app-server `skills/list`: an unconfigured Git project discovers the global user Skill; AIOS lists both repo and user metadata. No automatic host deduplication is claimed. Calling global `entry` selects AIOS's unchanged project 0.6.2; installation into this Mac's shared Codex/Pi user path is verified.
+- Local Claude Code 2.1.309 native `initialize`: a fresh Git project lists `workflow-craft` with user scope from the separate Claude global installation. With user/project/local setting sources enabled, a fresh AIOS clone also lists the user entry; a separate explicit `entry --host claude` selects the unchanged project 0.6.2. The initialize probe disabled hooks, MCP and session persistence, sent no model prompt, and left checked user settings/rules and project Git state unchanged. This establishes command discovery and CLI selection, not model execution of the selected project Skill.
+- Local Pi 1.4.0 native RPC `get_commands`: without `--skill`, a fresh offline process discovers `skill:workflow-craft` from the shared user `.agents/skills/workflow-craft/SKILL.md`. Disabling Skills removes the command; explicit attachment is a separate positive control, not auto-discovery evidence. All three processes report zero messages. Extensions, MCP, tools and session persistence were disabled; no model prompt or provider call was made.
+- Fresh-session model use of the 0.7.0 global entry on Claude/Pi and independent-human PR integration remain unverified. Earlier project-Skill trials and metadata discovery do not fill those gaps.
+- Final runtime artifact SHA-256: `b3b707ac530adf1d76cffdbbf7393ce426905f0798bd5bdccab64a8fdb4f14bf`. Installation and source are not a formal Release. All six native platform jobs for source commit `1df9480` [passed](https://github.com/bigKING67/craft67/actions/runs/41187637386). Subsequent test/documentation changes do not alter that runtime payload.
+
+### Read-only fixture maintenance race (2026-10-31)
+
+The later docs-only commit `ec05b57` triggered a [failed macOS/Python 3.11 job](https://github.com/bigKING67/craft67/actions/runs/41188070167). A full-repository read-only snapshot differed because `.git/objects/maintenance.lock` disappeared. A local Git trace confirms that the fixture commit starts detached auto-maintenance; setting `maintenance.auto=false` in that temporary repository removes the maintenance child. This is a high-confidence diagnosis of the race, not a deterministic reproduction of its original timing.
+
+Commit `ac2dde8` disables auto-maintenance only in that test fixture before its commit. The full snapshot, including `.git`, and its assertions remain intact; global Git configuration and the installed runtime are unchanged. The local 213-test package gate passes with one Windows-only skip, and the 13 doctor tests pass separately on Python 3.11. The fix has a new [six-platform CI run](https://github.com/bigKING67/craft67/actions/runs/41189728346); inspect its terminal result separately rather than treating the earlier failure as passed.
 
 
 ## 0.6.3 portability closeout (2026-10-31)
@@ -132,9 +141,10 @@ The entire Agent scenario was not rerun against this final hint-only revision.
 Workflow Craft packages one portable Agent Skill directory. The artifact
 contains `SKILL.md`, its runtime `scripts/`, references/assets when present,
 and injected `VERSION` and `LICENSE`. It does not contain a link back to the
-craft67 checkout. Each host installation is a separate, explicit project-local
-copy; an artifact being built or installed does not prove a host loaded it in a
-current session.
+craft67 checkout. An explicit installation may target a project, or since 0.7.0,
+a supported global user path. Codex and Pi share their `.agents` target; Claude
+uses its own `.claude` target. Building or installing an artifact does not prove
+a host loaded it in a current session.
 
 | Host | `install.py --project` destination | Explicit invocation | Historical native discovery on macOS, 2026-10-16 |
 | --- | --- | --- | --- |
@@ -144,9 +154,11 @@ current session.
 
 The current destinations and invocation names above use workflow-craft. The dated host observations used the former team-workflow-craft name and do not establish discovery of the renamed package.
 
-The destinations are project-relative. The installer has no default target and
-rejects global installation paths. It never updates a host profile, account,
-settings file, hook, or running session.
+The table lists project-relative destinations and historical host observations.
+The installer still requires an explicit project or global target. Global entry
+selects the project's fixed runtime without upgrading it; see the current 0.7.0
+checks above. Installation never updates a host profile, account, settings file,
+hook, or running session.
 
 ## 0.4.1 project-rule cooperation acceptance (2026-10-30)
 
