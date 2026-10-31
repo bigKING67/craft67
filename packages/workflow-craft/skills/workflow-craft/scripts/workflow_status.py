@@ -8,6 +8,8 @@ sys.dont_write_bytecode = True
 
 
 def main():
+    # Host statusline text is UTF-8, independent of Windows pipe code pages.
+    sys.stdout.reconfigure(encoding='utf-8')
     if sys.version_info < (3, 11):
         print('Workflow: 不可用')
         return 0

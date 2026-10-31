@@ -57,7 +57,7 @@ class InstalledProductTests(unittest.TestCase):
                        GIT_CONFIG_SYSTEM=os.devnull, GIT_CONFIG_COUNT='0', GIT_TERMINAL_PROMPT='0')
 
             def run(argv, cwd=root, expected=0):
-                result = subprocess.run(argv, cwd=cwd, env=env, capture_output=True, text=True, timeout=45)
+                result = subprocess.run(argv, cwd=cwd, env=env, capture_output=True, text=True, encoding='utf-8', timeout=45)
                 self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
                 return result.stdout
 
@@ -165,7 +165,7 @@ class InstalledProductTests(unittest.TestCase):
             self.assertEqual(draft['prepared_by']['member']['name'], '67')
             self.assertEqual(draft['checks']['unit']['actor']['member']['name'], '小王')
             self.assertEqual(draft['actor']['member']['name'], '小李')
-            markdown = (project / draft['markdown']).read_text()
+            markdown = (project / draft['markdown']).read_text(encoding='utf-8')
             for label in ('Prepared by: 67', 'executed by 小王', 'Handed off by: 小李'):
                 self.assertIn(label + ' (self-reported name; platform identity unverified)', markdown)
             self.assertEqual(task_path.read_bytes(), task_before)

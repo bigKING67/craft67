@@ -72,7 +72,7 @@ def change(root, selected=None, *, apply=False, approved_policy=None,
     path = relative_path(root, '.team-workflow/config.toml', must_exist=True)
     if path.is_symlink() or (root / '.team-workflow').is_symlink():
         raise WorkflowError('Project configuration cannot be a symlink')
-    content = path.read_text() if unchanged else config_text(updated)
+    content = path.read_text(encoding='utf-8') if unchanged else config_text(updated)
     report.update(target_mode=selected, current_task=current_task, changed=not unchanged,
                   files={'.team-workflow/config.toml': content},
                   effects=[] if unchanged else ['previous_verification_becomes_stale'],

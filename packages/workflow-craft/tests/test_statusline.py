@@ -35,7 +35,7 @@ class StatuslineTests(unittest.TestCase):
 
     def cli(self, *args, data=None):
         result = subprocess.run([sys.executable, '-B', str(RUNTIME / 'workflow_status.py'), *args],
-                                cwd=self.root, input=data, capture_output=True, text=True,
+                                cwd=self.root, input=data, capture_output=True, text=True, encoding='utf-8',
                                 timeout=5, env=self.env)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stderr, '')
@@ -44,6 +44,11 @@ class StatuslineTests(unittest.TestCase):
     def test_missing_mode_never_guesses_or_initializes(self):
         self.assertEqual(self.cli('--project', str(self.root)), 'Workflow: 未配置')
         self.assertFalse((self.root / '.team-workflow').exists())
+
+    def test_utf8_status_text_survives_ascii_pipe_encoding(self):
+        self.env['PYTHONIOENCODING'] = 'ascii'
+        self.assertEqual(self.cli('--project', str(self.root)), 'Workflow: 未配置')
+        self.assertEqual(self.cli('--claude', data=json.dumps({'cwd': str(self.root)})), 'Workflow: 未配置')
 
     def test_mode_refresh_subdirectory_and_nested_project(self):
         config = self.configure()
