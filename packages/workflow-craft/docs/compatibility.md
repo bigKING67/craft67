@@ -1,5 +1,22 @@
 # Host compatibility
 
+## Codex entry archival and rollback (2026-10-31)
+
+The [follow-up entry trial](aios-codex-entry.md) archives 12 legacy Skills and
+three Codex Agent definitions outside discovery, preserving all 49 source
+files and legacy contract checks. Codex 0.166.0 discovers Workflow Craft from
+the repository root and an ETL subdirectory without Skill-disable overrides.
+A native model session implicitly loads the Skill and completes the named
+pilot task; a second session reads its current completion without writes or
+reverification. Entry rollback preserves new task records and correctly marks
+the evidence stale until the same candidate is restored.
+
+Native CLI startup also wrote a project trust entry. That side effect and the
+user-authorized temporary trust for the second session are explicitly recorded;
+the global configuration is restored afterward. This is not a claim that trust
+is unnecessary, all AIOS tasks have migrated, or Claude/Pi are runtime-qualified.
+The fixed 0.5.1 payload is unchanged by this documentation-only delivery.
+
 ## 0.5.1 AIOS source replay and fresh-clone correction (2026-10-30)
 
 The [isolated AIOS trial](aios-pilot.md) replays nine existing business tests,
