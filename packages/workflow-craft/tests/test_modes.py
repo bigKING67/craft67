@@ -54,7 +54,7 @@ class PersonalProject(unittest.TestCase):
         self.commit('workflow setup')
 
     def hashes(self):
-        return {str(p.relative_to(self.root)): hashlib.sha256(p.read_bytes()).hexdigest()
+        return {p.relative_to(self.root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in self.root.rglob('*') if p.is_file() and '.git' not in p.relative_to(self.root).parts}
 
     def prepare(self, name='local:read-content'):
@@ -195,7 +195,9 @@ class PersonalProject(unittest.TestCase):
         sha = policy.load(self.root)[1]
         target = self.root / 'config-copy.toml'
         path.rename(target)
-        path.symlink_to('../config-copy.toml')
+        path.symlink_to(Path('..') / 'config-copy.toml')
+        self.assertTrue(path.is_symlink())
+        self.assertTrue(path.exists())
         with self.assertRaises(WorkflowError):
             self.cli('mode', '--set', 'team', '--apply', '--approved-policy', sha)
         self.assertEqual(target.read_text(), original)

@@ -52,7 +52,7 @@ class InstalledProductTests(unittest.TestCase):
             for name in ('VERSION', 'LICENSE'):
                 shutil.copyfile(PACKAGE / name, source / name)
             env = {key: value for key, value in os.environ.items()
-                   if key in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL', 'SYSTEMROOT')}
+                   if key in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL', 'SYSTEMROOT', 'USERPROFILE', 'HOMEDRIVE', 'HOMEPATH')}
             env.update(PYTHONDONTWRITEBYTECODE='1', GIT_CONFIG_GLOBAL=os.devnull,
                        GIT_CONFIG_SYSTEM=os.devnull, GIT_CONFIG_COUNT='0', GIT_TERMINAL_PROMPT='0')
 

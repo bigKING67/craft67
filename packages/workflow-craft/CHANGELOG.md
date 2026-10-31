@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.1 — Unreleased
+
+- 首轮 Windows 原生 CI 揭示中文 JSON 在非 Unicode 输出编码下失败；改用标准 JSON Unicode 转义，解码后的称呼与提示保持原文，加入 ASCII stdout 回归。
+- 安装器在逐层拒绝不允许的 symlink 后展开 Windows 8.3 短路径，使目标校验与禁止全局安装使用相同路径身份。
+- 修正测试的 Windows 环境保留、原生相对 symlink 和相对路径断言。首轮 Windows 3.12 的 201 项检查出现 19 个失败断言；锁、进程树、超时、取消与 Job 分配失败用例均未失败。保留失败 CI，修正后重新进行原生验收，不以 macOS 或模拟结果代替。
+
 ## 0.6.0 — Unreleased
 
 - 增加 Windows 原生工作区字节锁，与 POSIX flock 保持同一串行写入合同；进程退出后由系统释放锁，嵌套命令继续复用本线程锁。

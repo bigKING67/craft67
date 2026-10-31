@@ -79,7 +79,9 @@ def _canonical_explicit_path(value: Path, label: str) -> Path:
                 continue
             raise PackagingError(f"{label} path contains a non-platform symlink: {candidate}")
         current = candidate
-    return current
+    # Expand Windows 8.3 aliases only after inspecting every component for links.
+    # Target comparisons (including prohibited global installs) use one identity.
+    return current.resolve(strict=False)
 
 
 def resolve_target(arguments: argparse.Namespace) -> Path:

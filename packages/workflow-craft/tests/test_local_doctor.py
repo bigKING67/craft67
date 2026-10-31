@@ -27,7 +27,7 @@ class LocalDoctorTests(unittest.TestCase):
         self.project = self.root / 'project'
         self.project.mkdir()
         self.env = {key: value for key, value in os.environ.items()
-                    if key in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL', 'SYSTEMROOT')}
+                    if key in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL', 'SYSTEMROOT', 'USERPROFILE', 'HOMEDRIVE', 'HOMEPATH')}
         self.env.update(PYTHONDONTWRITEBYTECODE='1', GIT_CONFIG_GLOBAL=os.devnull,
                         GIT_CONFIG_SYSTEM=os.devnull, GIT_CONFIG_COUNT='0', GIT_TERMINAL_PROMPT='0')
         self.git('init', '-q', '-b', 'main')
@@ -223,6 +223,15 @@ class LocalDoctorTests(unittest.TestCase):
         self.assertEqual(report['status'], 'ok')
         self.assertEqual(report['verification']['implementation'], 'windows_job_object')
         self.assertEqual(report['host_loading'], 'unverified')
+
+    def test_json_preserves_chinese_with_ascii_stdout_encoding(self):
+        self.env['PYTHONIOENCODING'] = 'ascii'
+        missing = self.cli('doctor', '--local', expected=1)
+        self.assertIn('个人', missing['development_mode']['message'])
+        self.configure()
+        self.git('config', 'user.name', '小王')
+        report = self.cli('doctor', '--local')
+        self.assertEqual(report['member']['name'], '小王')
 
     def test_local_and_online_diagnosis_are_mutually_exclusive(self):
         result = subprocess.run([sys.executable, str(SCRIPTS / 'twc.py'), '--project', str(self.project),

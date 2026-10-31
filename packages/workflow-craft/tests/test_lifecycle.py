@@ -151,7 +151,7 @@ class LifecycleTests(TaskFixture):
         self.assertEqual(context.binding(self.root, 'one')['branch'], 'other-branch')
 
     def test_trellis_owner_and_missing_session_refuse_lifecycle_mutation(self):
-        with patch.dict(os.environ, {}, clear=True):
+        with patch.dict(os.environ, {k: v for k, v in os.environ.items() if k != 'TWC_SESSION_ID'}, clear=True):
             with self.assertRaisesRegex(WorkflowError, 'session'):
                 self.create(session=None)
         path = self.root / '.team-workflow/config.toml'
@@ -173,7 +173,7 @@ class LifecycleTests(TaskFixture):
         self.move('start')
         with self.assertRaisesRegex(WorkflowError, 'session'):
             self.verify_session('other', task='local:one')
-        with patch.dict(os.environ, {}, clear=True):
+        with patch.dict(os.environ, {k: v for k, v in os.environ.items() if k != 'TWC_SESSION_ID'}, clear=True):
             with self.assertRaisesRegex(WorkflowError, 'session'):
                 self.verify(task='local:one')
 

@@ -16,7 +16,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='twc-handoff-') as temporary:
             root = Path(temporary).resolve()
             env = {key: value for key, value in os.environ.items()
-                   if key.upper() in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL', 'SYSTEMROOT')}
+                   if key.upper() in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL', 'SYSTEMROOT', 'USERPROFILE', 'HOMEDRIVE', 'HOMEPATH')}
             env.update(PYTHONDONTWRITEBYTECODE='1', GIT_CONFIG_GLOBAL=os.devnull,
                        GIT_CONFIG_SYSTEM=os.devnull, GIT_TERMINAL_PROMPT='0')
 

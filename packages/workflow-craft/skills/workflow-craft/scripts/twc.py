@@ -287,7 +287,9 @@ def run(args):
 def main():
     try:
         result = run(parser().parse_args())
-        print(json.dumps(result, ensure_ascii=False, indent=2))
+        # JSON escapes preserve Unicode names/prompts even on a legacy Windows
+        # pipe encoding. Consumers recover the original text with json.loads.
+        print(json.dumps(result, ensure_ascii=True, indent=2))
         if result.get('kind') == 'VerificationEvidence' and result['status'] != 'passed':
             return 1
         if result.get('status') == 'attention_required':
