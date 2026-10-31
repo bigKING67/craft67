@@ -2,6 +2,27 @@
 
 个人与团队共用契约、验证和接续链路。模式决定新任务的协作要求，不改变当前用户权限、项目保护规则或历史任务。一个人使用多个 Agent 可以选择个人；团队仓库里一个人执行任务仍沿用团队配置。
 
+## 全局入口与项目固定版本
+
+全局 Skill 用来发现项目；执行任务和保存证据使用项目内固定副本。全局升级不自动升级项目。宿主加载全局 Skill 后，先执行（`<global-skill>` 是本次加载的目录）：
+
+```sh
+python3 <global-skill>/scripts/twc.py --project <repo-or-child> entry --host codex
+```
+
+Claude 用 `--host claude`，Pi 用 `--host pi`。返回 `use_project_runtime` 时，后续仅使用返回的 `cli` 和 `skill`；它可以是旧版本，只要完整性、项目各入口及工具链锁一致。该命令不执行项目代码；选定路径仍须遵循宿主的项目信任及执行授权。未知/漂移副本、旧新名并存、宿主副本不一致或锁失配时先恢复批准的固定安装，不用全局版本绕过。
+
+返回 `pin_project_runtime` 时，项目尚未接入。可先用全局 `doctor --local` 读取名字和模式提示；先按下一节确认模式，再在接入授权范围内执行：
+
+```sh
+python3 <global-skill>/scripts/twc.py --project <repo> entry --host codex --apply
+python3 <returned-project-cli> --project <repo> init --mode personal --apply
+```
+
+`entry --apply` 只创建当前宿主的项目 Skill，不初始化模式、不安装其他宿主、不写用户规则或宿主设置。团队模式替换为已选择的 `team`；另一宿主可直接使用已有的项目 CLI，需要原生发现时再按安装说明安装同一批准版本。安装副本与 `.team-workflow/` 应按项目约定一同提交。已有 `.team-workflow/` 却没有项目副本时，需恢复锁中固定的产物，不能当新项目初始化。
+
+全局目录与宿主发现由宿主管理。打开文件夹本身不会执行提醒；仅在宿主实际选择/显式调用 Skill 时开始上述流程，不安装 Hook 或每轮注入。已有项目的原生入口优先级仍须按宿主实测，CLI 选择结果不等于宿主已加载。
+
 ## 首次选择
 
 `doctor --local` 或尚未初始化时的 `resume` 返回 `development_mode.status=selection_required`。询问一次个人/团队，个人只是推荐，不是默认授权。用户没有回答时只读工作可以继续，init 不能写配置。已有明确意图时直接采用，已有名字时不重问。新项目单独选择，Git 根下的子目录共用；新 clone 从版本化配置恢复选择。非 Git 或没有任何提交的目录需先说明前置条件，不自行 git init/commit。

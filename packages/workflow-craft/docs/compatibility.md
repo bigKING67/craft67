@@ -1,5 +1,13 @@
 # Host compatibility
 
+## 0.7.0 global entry candidate
+
+Explicit global installation uses the same fixed artifact. The `entry` command selects a verified project copy or previews a new project pin; it never executes the selected CLI. Existing project locks, rules and evidence survive global upgrades. The installed-product regressions cover first-use selection, project/subdirectory reuse, mode switching, mixed versions, drift and missing runtimes. These are CLI contracts, not proof of native host discovery or model behavior. Actual candidate validation is recorded below as it completes.
+
+## 0.6.3 portability closeout (2026-10-31)
+
+The Windows-to-Mac AIOS trial now preserves policy bytes and historical evidence. A new Windows verification/completion commit resumes as `completed/current` on Mac without rerunning checks. The project remains pinned to 0.6.2 with the compatible project attribute fix. Source 0.6.3 passed [six native platform jobs](https://github.com/bigKING67/craft67/actions/runs/41185046910): Windows/Linux/macOS with Python 3.11/3.12. Windows ran 205 tests with no skips; other platforms skipped only the Windows-specific test. Full original-project migration, independent-member PR integration and formal release remain unverified.
+
 ## 0.6.0 native Windows support
 
 The runtime now uses a Windows byte-range lock for worktree mutations and a

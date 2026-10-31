@@ -14,7 +14,7 @@ if sys.version_info < (3, 11):
                           message='Python 3.11+ is required; select a supported interpreter.')))
     raise SystemExit(2)
 
-from twc_lib import actors, context, evidence, handoff, lifecycle, modes, policy, sessions, tasks, workspace
+from twc_lib import entry, actors, context, evidence, handoff, lifecycle, modes, policy, sessions, tasks, workspace
 from twc_lib.models import WorkflowError
 from twc_lib.providers import ProviderError
 
@@ -25,6 +25,9 @@ def parser():
     cli.add_argument('--session', help='Stable host-session ID; otherwise TWC_SESSION_ID. Lifecycle writes require it')
     cli.add_argument('--version', action='version', version=policy.runtime_identity()['version'])
     commands = cli.add_subparsers(dest='command', required=True)
+    bootstrap = commands.add_parser('entry', help='Select the project runtime; explicitly pin a verified copy for a new project')
+    bootstrap.add_argument('--host', required=True, choices=('codex', 'claude', 'pi'))
+    bootstrap.add_argument('--apply', action='store_true', help='Pin only a new project runtime; never upgrade or initialize its mode')
     doctor = commands.add_parser('doctor', help='Inspect Git, config, lock and optional platform capability')
     diagnosis = doctor.add_mutually_exclusive_group()
     diagnosis.add_argument('--online', action='store_true', help='Read the configured collaboration platform')
@@ -240,6 +243,12 @@ def run(args):
     if args.command == 'handoff' and args.publish:
         raise WorkflowError('Publishing is unsupported; share reviewed drafts through the configured platform manually')
     root = workspace.root_for(Path(args.project))
+    if args.command == 'entry':
+        return entry.select(root, args.host, apply=args.apply)
+    if entry.is_global():
+        selection = entry.select(root)
+        if not (args.command == 'doctor' and args.local and selection['action'] == 'pin_project_runtime'):
+            return dict(selection, status='attention_required', next_steps=['use_project_runtime_or_entry'])
     session = sessions.selected(args.session)
     if args.command == 'doctor' and args.local:
         return local_doctor(root)

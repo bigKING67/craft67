@@ -6,7 +6,7 @@
 
 本版明确与项目 `AGENTS.md` / `CLAUDE.md` 分工：项目约定继续生效，Workflow Craft 只补任务接续、验证证据与交接，不自动改写规则文件。详细命令按需加载；关键功能先复用已有测试和操作说明，再补真实覆盖缺口，见 [功能验证路径](skills/workflow-craft/references/feature-verification.md) 与 [本包验证索引](docs/verification-paths.md)。
 
-产品目标包含独立承接个人和团队的完整任务循环。0.5.0 已实现最小本地任务树、生命周期与会话绑定；针对已有 Trellis 项目的 [替代与退役验收方案](docs/trellis-retirement.md) 和只读盘点工具继续适用。团队真人协作、真实 AIOS 接管与迁移尚未验收，当前不能退役 AIOS 的 Trellis。
+产品目标包含独立承接个人和团队的完整任务循环。0.5.0 已实现最小本地任务树、生命周期与会话绑定；针对已有 Trellis 项目的 [替代与退役验收方案](docs/trellis-retirement.md) 和只读盘点工具继续适用。AIOS 隔离副本已完成局部真实修复及 Windows/Claude → Mac 接续；完整真人平台协作与原项目迁移尚未验收，当前不能退役 AIOS 的 Trellis。
 
 可选 [模式状态栏](skills/workflow-craft/references/statusline.md) 支持 Claude Code 和 Pi，显示 `Workflow: solo` / `Workflow: team`；配置缺失或错误会如实显示。适配器随固定产物提供，须显式启用并保留原状态栏；Codex 继续用接续开场提示。显示模式不代表检查或审批通过。
 
@@ -20,13 +20,15 @@
 
 这些事实保存在随任务分支提交的 `.team-workflow/tasks/<task>/` 目录：契约、本地执行进度、证据摘要和最新交接都在里面。平台任务的分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，工具检查整个 Git 根并保留 WIP 边界。
 
-**当前为源码 v0.6.2，非正式 Release。** 0.6.2 同步修复纯文本状态栏编码与 UTF-8 配置读取。0.6.1 修复原生 CI 发现的中文 JSON 管道编码和 Windows 短路径规范化问题。0.6.0 增加 Windows 原生任务锁与 Job Object 验证进程管理；实际验收见 [宿主兼容性](docs/compatibility.md)。0.5.2 修复 Python 3.11 下 Claude 状态栏读取深层 JSON 时异常退出的问题。0.5.1 修复了隔离 AIOS 试点发现的跨 clone 基线分支解析问题；实际测试范围与剩余接管阻碍见 [AIOS 试点](docs/aios-pilot.md)。 新增 `task create/start/pause/finish/complete/reopen/archive/list`；生命周期写入使用稳定的 `--session` 或 `TWC_SESSION_ID`。父任务完成需核对子任务和当前证据，finish 仅解除会话绑定。模式仍按项目首次明确选择，后续复用及显式切换；见 [开发模式](skills/workflow-craft/references/development-modes.md) 与 [任务循环](skills/workflow-craft/references/task-loop.md)。协议升至 3，升级需匹配固定安装和工具链锁；现有 v2 契约与证据可读取，不自动加入生命周期。写入锁支持 POSIX 和 Windows 原生；历史候选验收不代表本版宿主验收。
+**当前为源码 v0.7.0，非正式 Release。** 本版新增显式全局安装和项目固定版本引导。全局入口负责首次接入；已有项目继续使用自己的固定运行时，全局升级不会改动项目模式、规则、锁或历史。0.6.3 的配置字节保护修复已完成真实 Windows→Mac 接续及六组平台 CI；当前 0.7.0 的独立验证范围见 [兼容性记录](docs/compatibility.md)。
+
+模式按项目首次明确选择，后续复用并可显式切换；见 [开发模式](skills/workflow-craft/references/development-modes.md)。协议仍为 3，升级项目需匹配固定安装和工具链锁；全局安装不自动升级项目。写入锁和验证进程管理支持 POSIX 与原生 Windows。历史候选的宿主结果不代表当前版本的自动发现或模型行为已验收。
 
 0.4.1 收敛了流程触发、重验时机与集成边界：多文件修改不自动建任务；接续时按需要安排检查，部分通过不掩盖其他过期证据；项目原有合并队列/CI 继续生效。本版通过 163 项离线测试，以及三个使用固定安装副本的 Codex 规则兼容场景。它们验证了上述行为，没有证明所有宿主或任意规则组合都能兼容；见 [本轮验收](docs/compatibility.md#041-project-rule-cooperation-acceptance-2026-10-30)。
 
 此前 0.4.0 通过 162 项离线包测试、版本与 Skill 静态检查；固定产物独立重建一致。Pi 1.4.0 已通过原生扩展加载、RPC 模式切换和终端状态栏显示验收，未调用模型。Claude Code 已验证 stdin 命令合同，原生界面显示及现有状态栏组合尚未验收；该轮未进行新的 Skill 模型行为评估。完整范围见 [宿主兼容性](docs/compatibility.md#040-workflow-references-and-optional-status-adapters-2026-10-30)。
 
-此前 0.3.1 通过 151 项包测试、23 项根元数据测试，以及固定 0.3.0 安装副本的改名迁移与重验；任务、模式、署名和证据保留。此前 0.3.0 的 Codex 受控只读新会话已验证主动询问个人/团队、复用名字、不索要邮箱、不擅自初始化；该会话不代表新名称的宿主加载。自动发现、全局安装与独立成员验收仍未覆盖，具体版本与范围见 [宿主兼容性](docs/compatibility.md)。
+此前 0.3.1 通过 151 项包测试、23 项根元数据测试，以及固定 0.3.0 安装副本的改名迁移与重验；任务、模式、署名和证据保留。此前 0.3.0 的 Codex 受控只读新会话已验证主动询问个人/团队、复用名字、不索要邮箱、不擅自初始化；该会话不代表新名称的宿主加载。这些历史样本未覆盖自动发现、全局安装与独立成员验收，具体版本与范围见 [宿主兼容性](docs/compatibility.md)。
 
 历史 0.2.2 CNB 合成试点覆盖同机双账号接手、负责人评审普通合并及 main 全新 clone 的 9 项测试。2026-10-28 补测中，Claude Code 2.1.308 与 Pi 1.4.0 均完成受控只读接手；Pi 复验明确限制只使用当前仓库资料。Pi 的模型适配修复、原生重试恢复的连接错误和建议措辞限制见 [宿主兼容性](docs/compatibility.md)。独立真人与跨机器仍待验收。0.6.0 在 Windows 使用 Job Object 管理普通子进程；作业创建/分配失败、超时、取消或残留进程均不能通过。历史宿主结果保留各自日期与版本。
 
@@ -112,6 +114,7 @@ git commit -m "twc: hand off issue-42" -- .team-workflow/tasks/issue-42
 
 | 命令 | 行为 |
 | --- | --- |
+| `entry --host codex/claude/pi [--apply]` | 只读选择项目固定副本；仅在明确接入时为新项目固定运行时，不初始化模式或升级已有项目 |
 | `task list/create/start/pause/finish/complete/reopen/archive` | 只读列出或显式管理本地执行；写入要求会话 ID；不回写平台，Trellis 托管项目拒绝生命周期写入 |
 | `mode [--set personal/team]` | 查看项目模式或预览切换；显式应用后保留记录，策略变化需要重验 |
 | `doctor [--local/--online]` | `--local` 为 init 前可用的本机预检；默认检查整个 Git 根、配置/版本锁、项目安装入口；`--online` 追加只读平台诊断 |
@@ -129,12 +132,20 @@ git commit -m "twc: hand off issue-42" -- .team-workflow/tasks/issue-42
 
 ```sh
 python3 scripts/build.py --output-dir /path/to/approved-artifacts
-python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.5.2.zip \
+python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.7.0.zip \
   --project /path/to/product --host codex
 # 核对目标、产物和来源后加 --apply；Claude 用 --host claude，Pi 用 --host pi。
 ```
 
-安装器校验 ZIP/文件哈希，拒绝未知、漂移或 symlink 目标；固定版本重复安装幂等。只支持明确项目目标，正常升级需要检查旧安装无漂移并显式 `--allow-upgrade --apply`。ZIP 与清单必须来自批准来源：攻击者同时换掉二者时，本地哈希无法验证真实性。
+安装器校验 ZIP/文件哈希，拒绝未知、漂移或 symlink 目标；固定版本重复安装幂等。项目与全局安装都必须明确目标，正常升级需要检查旧安装无漂移并显式 `--allow-upgrade --apply`。ZIP 与清单必须来自批准来源：攻击者同时换掉二者时，本地哈希无法验证真实性。
+
+全局启用用同一固定产物，先预览，再在授权范围内加 `--apply`：
+
+```sh
+python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.7.0.zip --global --host codex
+```
+
+Codex 与 Pi 共用 `~/.agents/skills/workflow-craft/`，Claude 写入 `~/.claude/skills/workflow-craft/`。检测到已知 Codex/Pi 另一条全局发现路径中的同名或旧名副本时，先核对迁移，不再增加重复安装。只安装选定入口，不改全局 AGENTS、CLAUDE、宿主配置或状态栏。已有同名未知/漂移安装拒绝覆盖；固定版本升级仍需 `--allow-upgrade`。宿主需重新发现 Skill，新会话可显式调用。进入具体项目后按 [全局入口与项目固定版本](skills/workflow-craft/references/development-modes.md#全局入口与项目固定版本) 选择副本，不用全局运行时直接管理项目任务。
 
 升级保留项目的旧工具链锁。先让所有项目宿主入口安装同一批准产物，再从新安装副本运行 `doctor --local`：安装完整性应为 `matched`，旧锁会显示 `mismatch`。核对批准的 ZIP SHA-256 与安装清单后，在已授权升级范围内，将 `.team-workflow/toolchain.lock.json` 的 `version`、`protocol_version`、`runtime_tree_sha256` 更新为本次诊断的 `runtime` 值，保留锁的其余字段；再次运行 `doctor --local`，确认所有入口与锁都匹配。不同内容需独立版本，不能用同版本覆盖绕过保护。历史任务和证据保留，涉及工具链变更的旧通过需重新验证。
 

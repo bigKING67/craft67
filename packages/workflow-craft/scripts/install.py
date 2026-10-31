@@ -17,6 +17,7 @@ from packaging import (
     LEGACY_SKILL_NAME,
     PackagingError,
     SKILL_NAME,
+    canonical_json,
     install_marker,
     read_artifact,
     safe_remove_tree,
@@ -29,6 +30,11 @@ HOST_PATHS = {
     "codex": Path(".agents") / "skills" / "workflow-craft",
     "pi": Path(".agents") / "skills" / "workflow-craft",
     "claude": Path(".claude") / "skills" / "workflow-craft",
+}
+GLOBAL_HOST_PATHS = {
+    "codex": Path(".agents/skills/workflow-craft"),
+    "claude": Path(".claude/skills/workflow-craft"),
+    "pi": Path(".agents/skills/workflow-craft"),
 }
 PLATFORM_PARENT_SYMLINKS = {Path("/tmp"), Path("/var"), Path("/etc")}
 
@@ -54,14 +60,15 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     target_group = parser.add_mutually_exclusive_group(required=True)
     target_group.add_argument("--project", type=Path, help="Project root for a host-specific project installation")
     target_group.add_argument("--target", type=Path, help="Exact skill directory to install into")
+    target_group.add_argument("--global", dest="global_install", action="store_true", help="Install the entry Skill for this user; projects retain their own fixed runtime")
     parser.add_argument("--host", choices=sorted(HOST_PATHS), help="Required with --project")
     parser.add_argument("--apply", action="store_true", help="Write only after this explicit flag")
     parser.add_argument("--allow-upgrade", action="store_true", help="Replace a known, unchanged older installation, including migration from team-workflow-craft")
     arguments = parser.parse_args(argv)
-    if arguments.project is not None and arguments.host is None:
-        parser.error("--project requires --host")
+    if (arguments.project is not None or arguments.global_install) and arguments.host is None:
+        parser.error("--project/--global requires --host")
     if arguments.target is not None and arguments.host is not None:
-        parser.error("--host is only valid with --project")
+        parser.error("--host is only valid with --project or --global")
     return arguments
 
 
@@ -85,7 +92,15 @@ def _canonical_explicit_path(value: Path, label: str) -> Path:
 
 
 def resolve_target(arguments: argparse.Namespace) -> Path:
-    if arguments.target is not None:
+    if getattr(arguments, "global_install", False):
+        target = _canonical_explicit_path(Path.home() / GLOBAL_HOST_PATHS[arguments.host], "global target")
+        if arguments.host in ("codex", "pi"):
+            for parent in (".codex/skills", ".pi/agent/skills"):
+                for name in (SKILL_NAME, LEGACY_SKILL_NAME):
+                    alias = Path.home() / parent / name
+                    if alias.exists() or alias.is_symlink():
+                        raise PackagingError("another global workflow entry exists; review duplicate discovery paths before installing")
+    elif arguments.target is not None:
         target = _canonical_explicit_path(arguments.target, "--target")
     else:
         project = _canonical_explicit_path(arguments.project, "--project")
@@ -97,8 +112,8 @@ def resolve_target(arguments: argparse.Namespace) -> Path:
     global_targets = {(home / parent / name).resolve(strict=False)
                       for name in (SKILL_NAME, LEGACY_SKILL_NAME)
                       for parent in (".agents/skills", ".codex/skills", ".claude/skills", ".pi/agent/skills")}
-    if target in global_targets:
-        raise PackagingError("global skill installation is not supported; provide a project-local target")
+    if target in global_targets and not getattr(arguments, "global_install", False):
+        raise PackagingError("global targets require explicit --global --host; do not use --target or --project")
     if target.exists() and target.is_symlink():
         raise PackagingError(f"target must not be a symlink: {target}")
     if target.name == LEGACY_SKILL_NAME:
@@ -228,6 +243,8 @@ def main(argv: list[str] | None = None) -> int:
         target = resolve_target(arguments)
         source = prior_target(target)
         marker = install_marker(manifest, manifest_sha256)
+        if arguments.global_install:
+            marker = canonical_json(dict(json.loads(marker), installation_scope="global"))
         marker_path = source / INSTALL_MARKER
         expected_prior_marker = marker_path.read_bytes() if marker_path.is_file() and not marker_path.is_symlink() else None
         action = plan_install(source, files, marker, manifest["version"], arguments.allow_upgrade)
@@ -241,6 +258,7 @@ def main(argv: list[str] | None = None) -> int:
             "target": str(target),
             "version": manifest["version"],
             "host": arguments.host,
+            "scope": "global" if arguments.global_install else "project",
             "host_loading": "UNVERIFIED",
         }
         if source != target:
