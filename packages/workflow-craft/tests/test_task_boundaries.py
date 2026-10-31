@@ -225,13 +225,17 @@ class TaskBoundaryTests(TaskFixture):
         self.assertEqual(self.resume()['checks']['unit']['status'], 'incomplete')
 
     def test_legacy_v2_commands_readable_but_lint_flags_absolute_paths(self):
-        self.configure_argv(['python3', '-c', 'pass'])
+        executable = Path(sys.executable)
+        argv = [executable.name, '-c', 'pass']
+        self.configure_argv(argv)
         self.prepare()
-        run = self.verify()
+        with patch.dict(os.environ, {'PATH': str(executable.parent) + os.pathsep + os.environ.get('PATH', '')}):
+            run = self.verify()
+        self.assertEqual(run['status'], 'passed')
         path = self.root / run['task_evidence']
         row = json.loads(path.read_text())
         row['checks'][0].pop('command_sha256')
-        row['checks'][0]['argv'] = ['python3', '-c', 'pass']
+        row['checks'][0]['argv'] = argv
         path.write_text(json.dumps(row))
         self.assertEqual(self.resume()['checks']['unit']['status'], 'passed')
         self.assertEqual(self.lint()['status'], 'ok')

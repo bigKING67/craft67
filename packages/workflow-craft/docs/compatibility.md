@@ -1,5 +1,41 @@
 # Host compatibility
 
+## 0.7.1 record newline correction (2026-10-31)
+
+The shared task writer now requests UTF-8/LF explicitly, preventing native Windows
+text streams from adding CRLF to newly generated JSON and Markdown. It does not
+rewrite old records, normalize policy hashes or relax freshness checks. The new
+regression fails with the former writer under actual CRLF text-stream translation;
+reading old CRLF records and appending verification preserves their original bytes.
+
+The local package gate covers 215 tests (the macOS run skips the Windows-only
+case). On the company Windows 3.12.10 machine, the full gate exposed an existing
+test fixture that assumes `python3`: that command resolves to a WindowsApps stub
+and exits 9009. The fixture now resolves the current interpreter by a relative
+command name using a test-local PATH; its passed-execution and absolute-path
+rejection assertions remain. The corrected case passes on both native Windows
+and macOS. That Windows SSH environment skips the optional Pi adapter test because
+the required Node runtime is unavailable; Python checks are separate from Pi host
+support. Native matrix CI remains a separate check of the final source commit.
+
+A separate trial worktree upgrades both fixed host entries and the toolchain lock
+from 0.6.2 to 0.7.1. The three registered checks pass on Mac and native Windows:
+11 source regressions, nine frozen offline cases with zero skips, and the pilot
+guard. Six generated task files contain no CRLF; all 51 earlier task files retain
+their original hashes. Mac receives the Windows records as `completed/current`
+without rerunning them. Previous tasks become stale under the new toolchain, as
+required; their history is preserved. The colleague's existing checkout is unchanged.
+
+The local Codex/Pi shared entry and Claude entry are installed from the same fixed
+0.7.1 artifact, and each CLI selects the upgraded project runtime. This is installed
+payload/CLI acceptance, not a new model-session loading test or formal Release.
+The preceding trial PR #1 was explicitly authorized by 67 and approved/fast-forwarded
+by the Agent on that authorization; that approval does not cover this upgrade branch.
+Original AIOS migration, platform integration of this upgrade and deployment remain
+separate boundaries. See the updated [retirement assessment](trellis-retirement.md).
+
+Artifact SHA-256: `00a0dc497c50199f8338ad7267d1b0bd8b7313fd3636ce0218d2c8af38ac51c7`.
+
 ## 0.7.0 global entry candidate
 
 Explicit global installation uses the same fixed artifact. The `entry` command selects a verified project copy or previews a new project pin; it never executes the selected CLI. Existing project locks, rules and evidence survive global upgrades. The installed-product regressions cover first-use selection, project/subdirectory reuse, mode switching, mixed versions, drift and missing runtimes. These are CLI contracts, not proof of native host discovery or model behavior. Validation for this candidate:

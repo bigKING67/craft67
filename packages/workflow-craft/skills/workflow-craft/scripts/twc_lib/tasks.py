@@ -42,7 +42,7 @@ def target(root, ref, *parts):
 def write(path, value, text=False):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(f'.{path.name}.{uuid.uuid4().hex}.tmp')
-    with temporary.open('x', encoding='utf-8') as stream:
+    with temporary.open('x', encoding='utf-8', newline='\n') as stream:
         stream.write(value if text else json.dumps(value, ensure_ascii=False, indent=2) + '\n')
     os.replace(temporary, path)
 
