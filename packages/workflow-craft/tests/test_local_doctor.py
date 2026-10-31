@@ -31,6 +31,9 @@ class LocalDoctorTests(unittest.TestCase):
         self.env.update(PYTHONDONTWRITEBYTECODE='1', GIT_CONFIG_GLOBAL=os.devnull,
                         GIT_CONFIG_SYSTEM=os.devnull, GIT_CONFIG_COUNT='0', GIT_TERMINAL_PROMPT='0')
         self.git('init', '-q', '-b', 'main')
+        # The fixture commit must not leave detached Git maintenance racing
+        # with the full-repository read-only snapshot (including .git).
+        self.git('config', 'maintenance.auto', 'false')
         self.git('config', 'user.name', 'Fixture')
         self.git('config', 'user.email', 'fixture@example.invalid')
         (self.project / 'check.py').write_text('assert True\n')
