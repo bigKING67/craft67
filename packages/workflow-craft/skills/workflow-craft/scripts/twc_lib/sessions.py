@@ -1,6 +1,7 @@
 """Session-local bindings and a worktree-wide lock for tool-owned mutations."""
 from contextlib import contextmanager
 from functools import wraps
+import errno
 import os
 import re
 import threading
@@ -62,28 +63,37 @@ def clear(root, session=None):
 @contextmanager
 def workspace_lock(root):
     """Serialize tool writes/check execution; raw Git/editor changes remain detectable drift."""
-    try:
+    if os.name == 'nt':
+        import msvcrt
+
+        def lock(stream, release=False):
+            stream.seek(0)
+            msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK if release else msvcrt.LK_NBLCK, 1)
+    else:
         import fcntl
-    except ImportError as exc:
-        raise WorkflowError('Mutating workflow commands require POSIX worktree locking in this version') from exc
+
+        def lock(stream, release=False):
+            fcntl.flock(stream.fileno(), fcntl.LOCK_UN if release else fcntl.LOCK_EX | fcntl.LOCK_NB)
     key = str(root.resolve())
     held = getattr(_held, 'roots', set())
     if key in held:
         yield
         return
     target = local_target(root, '', 'mutation.lock')
-    with target.open('a', encoding='utf-8') as stream:
+    with target.open('a+b') as stream:
         os.chmod(target, 0o600)
         try:
-            fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError as exc:
+            lock(stream)
+        except OSError as exc:
+            if exc.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
+                raise
             raise WorkflowError('Workspace is busy with another workflow mutation/check; retry after it ends or use a separate worktree') from exc
         _held.roots = held | {key}
         try:
             yield
         finally:
             _held.roots = held
-            fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
+            lock(stream, release=True)
 
 
 def serialized(function):

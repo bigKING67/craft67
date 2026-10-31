@@ -14,19 +14,22 @@ from .policy import load, require_lock, runtime_identity
 from .workspace import code_identity, inspect
 
 
-def _stop(process):
-    if os.name == 'posix':
+def _stop(process, job=None):
+    if job is not None:
+        job.stop()
+    elif os.name == 'posix':
         try:
             os.killpg(process.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
     else:
-        # No claim of Windows process-tree isolation without native acceptance.
         process.kill()
     process.wait(timeout=5)
 
 
-def _group_alive(process):
+def _group_alive(process, job=None):
+    if job is not None:
+        return job.alive()
     if os.name != 'posix':
         return None
     try:
@@ -60,35 +63,44 @@ def execute(root, name, check, token_env, identity_token_env=None):
         env.pop(name_to_remove, None)  # Platform credentials are not needed by project tests.
     process = None
     reader = None
+    job = None
     try:
-        process = subprocess.Popen(check['argv'], cwd=relative_path(root, result['cwd'], must_exist=True),
-                                   env=env, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
-                                   stderr=subprocess.STDOUT, start_new_session=os.name == 'posix')
+        cwd = relative_path(root, result['cwd'], must_exist=True)
+        if os.name == 'nt':
+            from .windows_job import WindowsJob
+            job = WindowsJob()
+            process = job.start(check['argv'], cwd=cwd, env=env)
+        else:
+            process = subprocess.Popen(check['argv'], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
+                                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                       start_new_session=os.name == 'posix')
         reader = threading.Thread(target=drain, args=(process.stdout,), daemon=True)
         reader.start()
         try:
             result['exit_code'] = process.wait(timeout=check.get('timeout_seconds', 300))
             result['status'] = 'passed' if result['exit_code'] == 0 else 'failed'
+            if job is not None:
+                result.update(job.outcome())
         except subprocess.TimeoutExpired:
             result.update(status='incomplete', reason='timeout')
-            _stop(process)
+            _stop(process, job)
             result['exit_code'] = process.returncode
         except KeyboardInterrupt:
             result.update(status='incomplete', reason='cancelled')
-            _stop(process)
+            _stop(process, job)
             result['exit_code'] = process.returncode
-        alive = _group_alive(process)
+        alive = _group_alive(process, job)
         if alive is True:
             if result['status'] == 'passed':
                 result.update(status='incomplete', reason='child_process_still_running')
-            _stop(process)
+            _stop(process, job)
         elif alive is None and result['status'] == 'passed':
             result.update(status='incomplete', reason='process_tree_completion_unverified')
         reader.join(timeout=2)
         if reader.is_alive():
             # A descendant retained stdout after the parent exited. Do not certify completion.
             result.update(status='incomplete', reason='child_process_output_still_open')
-            _stop(process)
+            _stop(process, job)
             reader.join(timeout=2)
         if reader_failed:
             result.update(status='incomplete', reason='output_read_failed')
@@ -96,9 +108,17 @@ def execute(root, name, check, token_env, identity_token_env=None):
         result.update(status='not_run', reason='executable_or_cwd_missing')
     except (OSError, subprocess.SubprocessError):
         result.update(status='incomplete', reason='execution_error')
-        if process is not None and process.poll() is None:
-            _stop(process)
+        if process is not None:
+            try:
+                _stop(process, job)
+            except (OSError, subprocess.SubprocessError):
+                result.update(status='incomplete', reason='process_cleanup_failed')
     finally:
+        if job is not None:
+            try:
+                job.close()
+            except OSError:
+                result.update(status='incomplete', reason='process_cleanup_failed')
         if process is not None and process.stdout is not None and (reader is None or not reader.is_alive()):
             process.stdout.close()
     result.update(ended_at=now(), duration_seconds=round(time.monotonic() - start, 3),

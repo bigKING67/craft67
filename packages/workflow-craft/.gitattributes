@@ -1,0 +1,2 @@
+# Fixed runtime hashes must survive a Windows checkout with core.autocrlf=true.
+/skills/workflow-craft/** text eol=lf

@@ -1,5 +1,26 @@
 # Host compatibility
 
+## 0.6.0 native Windows support
+
+The runtime now uses a Windows byte-range lock for worktree mutations and a
+kill-on-close Job Object for verification. A gated launcher is assigned before
+it can execute the approved argv; job assignment failure never starts project
+code. Missing executables, failed checks, timeout/cancellation, retained output
+and surviving children remain distinct from a passed check. Ordinary descendants
+inherit the job; processes started through external services/WMI are outside this
+lifecycle guarantee. This is not an OS sandbox.
+
+The platform workflow runs the package contracts on Windows, Linux and macOS,
+with Python 3.11 and 3.12. Native CI results and exact source revision are recorded
+when available; macOS tests or mocked Windows behavior do not qualify Windows.
+A colleague's Windows + Claude Code session remains a separate acceptance step.
+Historical 0.5.x and 0.2.x limitations below describe those fixed versions.
+
+Windows project commands must use an available interpreter (`py -3` / `python`)
+and the native virtualenv layout (`Scripts/python.exe`). Fixed installed payloads
+must retain their bytes when cloned: use repository `.gitattributes` with LF or
+`-text` for installed Skill trees. Do not overwrite a member's global Claude rules.
+
 ## Codex entry archival and rollback (2026-10-31)
 
 The [follow-up entry trial](aios-codex-entry.md) archives 12 legacy Skills and

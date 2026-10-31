@@ -1,6 +1,6 @@
 # 任务循环
 
-`<skill>` 是本次实际加载的目录，不是开发源码路径。需要 Python 3.11+ 和 Git。命令输出 JSON；无需 Hook、子 Agent 或模型凭据。以下 `twc` 指 `python3 <skill>/scripts/twc.py --project <repo>`。
+`<skill>` 是本次实际加载的目录，不是开发源码路径。需要 Python 3.11+ 和 Git。命令输出 JSON；无需 Hook、子 Agent 或模型凭据。以下 `twc` 指 `python3 <skill>/scripts/twc.py --project <repo>`；Windows 原生可用 `py -3` 或已确认的 `python`，并使用本机虚拟环境的 `Scripts/python.exe`。命令 argv 由项目按实际解释器配置，不把其他机器的绝对路径提交进仓库。
 
 仅查看任务、已有证据或解释状态时，使用 `resume` 和必要的本地只读查询；需要本机预检时用 `doctor --local`。`next_actions` 中的重验、准备或重绑只列为待办，不执行项目检查或写任务记录，也不为核对本地材料自动调用 `--online`。用户要求核对平台时，在已有授权内读取；未刷新平台事实时保留未知。
 
@@ -29,7 +29,7 @@
 
 父子关系只在子任务保存 parent，父任务子列表从记录派生；不维护两份可冲突的关系。任务记录的 `execution.state` 是历史进度，`execution.completion` 展示当前依据是否仍有效：代码、契约、策略、工具链、评审材料或子任务变化会使完成依据 stale。查看不偷偷改历史状态；重开后再验收。执行完成不要求先 commit，也不表示代码已经可供他人 clone 或允许合并；交接、集成仍走项目门禁。
 
-同工作区的 prepare、生命周期写入、verify 执行和 handoff 通过本地锁串行化，忙时明确拒绝。它不锁编辑器、Git、端口或数据库，也不是任务认领租约；真正并行开发用独立 worktree 和服务资源。此版本写入锁仅支持 POSIX，Windows 原生写入明确拒绝。文件以原子替换写入，跨文件创建/绑定不是数据库事务；写入失败后先只读核对已有契约与绑定，再显式接续，不删除历史重来。
+同工作区的 prepare、生命周期写入、verify 执行和 handoff 通过本地锁串行化，忙时明确拒绝。它不锁编辑器、Git、端口或数据库，也不是任务认领租约；真正并行开发用独立 worktree 和服务资源。写入锁使用 POSIX flock 或 Windows 原生字节锁；Windows 验证命令先加入 Job Object 再执行，残留子进程、超时与取消均不能算通过。Job Object 和 POSIX 进程组都不是恶意代码沙箱，也不跟踪通过外部服务启动的进程。文件以原子替换写入，跨文件创建/绑定不是数据库事务；写入失败后先只读核对已有契约与绑定，再显式接续，不删除历史重来。
 
 ## 契约、验证与交接
 

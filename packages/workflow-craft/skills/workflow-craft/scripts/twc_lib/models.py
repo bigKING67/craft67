@@ -74,7 +74,7 @@ def save_local(root, category, value, suffix='json'):
         os.chmod(path, 0o600)
         json.dump(value, stream, ensure_ascii=False, indent=2)
         stream.write('\n')
-    return str(path.relative_to(root))
+    return path.relative_to(root).as_posix()
 
 
 def local_target(root, category, filename):

@@ -287,7 +287,6 @@ class WorkflowTests(Fixture):
         self.assertEqual(record['status'], 'incomplete')
         self.assertEqual(record['checks'][0]['reason'], 'timeout')
 
-    @unittest.skipUnless(os.name == 'posix', 'POSIX process group observation')
     def test_redirected_background_child_is_incomplete_and_terminated(self):
         self.checks([('unit', 'import subprocess, sys; subprocess.Popen([sys.executable, "-c", "import time; time.sleep(30)"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)', 5)])
         record = self.verify()

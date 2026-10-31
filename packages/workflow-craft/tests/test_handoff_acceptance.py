@@ -11,13 +11,12 @@ import unittest
 PACKAGE = Path(__file__).resolve().parents[1]
 
 
-@unittest.skipIf(os.name == 'nt', 'Complete verification requires POSIX process-tree support')
 class CrossCloneAcceptanceTests(unittest.TestCase):
     def test_handoff_identity_and_revalidation_after_main_advances(self):
         with tempfile.TemporaryDirectory(prefix='twc-handoff-') as temporary:
             root = Path(temporary).resolve()
             env = {key: value for key, value in os.environ.items()
-                   if key in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'LANG', 'LC_ALL')}
+                   if key.upper() in ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL', 'SYSTEMROOT')}
             env.update(PYTHONDONTWRITEBYTECODE='1', GIT_CONFIG_GLOBAL=os.devnull,
                        GIT_CONFIG_SYSTEM=os.devnull, GIT_TERMINAL_PROMPT='0')
 
@@ -80,6 +79,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
             cli_a = install(alice, 'claude')
             install(alice, 'codex')
             (alice / '.gitignore').write_text('__pycache__/\n')
+            (alice / '.gitattributes').write_text('.agents/** -text\n.claude/** -text\n')
             (alice / 'protocol.py').write_text('SUFFIX = ""\n')
             (alice / 'renderer.py').write_text('from protocol import SUFFIX\ndef render(text):\n    return text.strip() + SUFFIX\n')
             (alice / 'tests').mkdir()
@@ -87,7 +87,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                 'import unittest\nfrom protocol import SUFFIX\nfrom renderer import render\n'
                 'class CoreTests(unittest.TestCase):\n'
                 '    def test_suffix(self):\n        self.assertEqual(render(""), SUFFIX)\n')
-            commit(alice, 'Synthetic baseline', '.gitignore', '.agents', '.claude',
+            commit(alice, 'Synthetic baseline', '.gitignore', '.gitattributes', '.agents', '.claude',
                    'protocol.py', 'renderer.py', 'tests/test_core.py')
             # No external remote is contacted: origin is an isolated local bare repository.
             remote = root / 'shared.git'

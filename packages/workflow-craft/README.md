@@ -20,7 +20,7 @@
 
 这些事实保存在随任务分支提交的 `.team-workflow/tasks/<task>/` 目录：契约、本地执行进度、证据摘要和最新交接都在里面。平台任务的分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，工具检查整个 Git 根并保留 WIP 边界。
 
-**当前为源码 v0.5.2，非正式 Release。** 0.5.2 修复 Python 3.11 下 Claude 状态栏读取深层 JSON 时异常退出的问题。0.5.1 修复了隔离 AIOS 试点发现的跨 clone 基线分支解析问题；实际测试范围与剩余接管阻碍见 [AIOS 试点](docs/aios-pilot.md)。 新增 `task create/start/pause/finish/complete/reopen/archive/list`；生命周期写入使用稳定的 `--session` 或 `TWC_SESSION_ID`。父任务完成需核对子任务和当前证据，finish 仅解除会话绑定。模式仍按项目首次明确选择，后续复用及显式切换；见 [开发模式](skills/workflow-craft/references/development-modes.md) 与 [任务循环](skills/workflow-craft/references/task-loop.md)。协议升至 3，升级需匹配固定安装和工具链锁；现有 v2 契约与证据可读取，不自动加入生命周期。写入锁目前仅支持 POSIX；历史候选验收不代表本版宿主验收。
+**当前为源码 v0.6.0，非正式 Release。** 0.6.0 增加 Windows 原生任务锁与 Job Object 验证进程管理；实际验收见 [宿主兼容性](docs/compatibility.md)。0.5.2 修复 Python 3.11 下 Claude 状态栏读取深层 JSON 时异常退出的问题。0.5.1 修复了隔离 AIOS 试点发现的跨 clone 基线分支解析问题；实际测试范围与剩余接管阻碍见 [AIOS 试点](docs/aios-pilot.md)。 新增 `task create/start/pause/finish/complete/reopen/archive/list`；生命周期写入使用稳定的 `--session` 或 `TWC_SESSION_ID`。父任务完成需核对子任务和当前证据，finish 仅解除会话绑定。模式仍按项目首次明确选择，后续复用及显式切换；见 [开发模式](skills/workflow-craft/references/development-modes.md) 与 [任务循环](skills/workflow-craft/references/task-loop.md)。协议升至 3，升级需匹配固定安装和工具链锁；现有 v2 契约与证据可读取，不自动加入生命周期。写入锁支持 POSIX 和 Windows 原生；历史候选验收不代表本版宿主验收。
 
 0.4.1 收敛了流程触发、重验时机与集成边界：多文件修改不自动建任务；接续时按需要安排检查，部分通过不掩盖其他过期证据；项目原有合并队列/CI 继续生效。本版通过 163 项离线测试，以及三个使用固定安装副本的 Codex 规则兼容场景。它们验证了上述行为，没有证明所有宿主或任意规则组合都能兼容；见 [本轮验收](docs/compatibility.md#041-project-rule-cooperation-acceptance-2026-10-30)。
 
@@ -28,7 +28,7 @@
 
 此前 0.3.1 通过 151 项包测试、23 项根元数据测试，以及固定 0.3.0 安装副本的改名迁移与重验；任务、模式、署名和证据保留。此前 0.3.0 的 Codex 受控只读新会话已验证主动询问个人/团队、复用名字、不索要邮箱、不擅自初始化；该会话不代表新名称的宿主加载。自动发现、全局安装与独立成员验收仍未覆盖，具体版本与范围见 [宿主兼容性](docs/compatibility.md)。
 
-历史 0.2.2 CNB 合成试点覆盖同机双账号接手、负责人评审普通合并及 main 全新 clone 的 9 项测试。2026-10-28 补测中，Claude Code 2.1.308 与 Pi 1.4.0 均完成受控只读接手；Pi 复验明确限制只使用当前仓库资料。Pi 的模型适配修复、原生重试恢复的连接错误和建议措辞限制见 [宿主兼容性](docs/compatibility.md)。独立真人与跨机器仍待验收。Windows 原生进程树完成性不支持，返回 incomplete；历史宿主结果保留各自日期与版本。
+历史 0.2.2 CNB 合成试点覆盖同机双账号接手、负责人评审普通合并及 main 全新 clone 的 9 项测试。2026-10-28 补测中，Claude Code 2.1.308 与 Pi 1.4.0 均完成受控只读接手；Pi 复验明确限制只使用当前仓库资料。Pi 的模型适配修复、原生重试恢复的连接错误和建议措辞限制见 [宿主兼容性](docs/compatibility.md)。独立真人与跨机器仍待验收。0.6.0 在 Windows 使用 Job Object 管理普通子进程；作业创建/分配失败、超时、取消或残留进程均不能通过。历史宿主结果保留各自日期与版本。
 
 核心 CLI、CNB/Gitea 只读客户端已经验证。AIOS 已在 Trellis 托管模式下接入，检查登记为 `npm run verify:quick`，随 AIOS 4.1.106 发布。更早的平台证据见 [CNB 首轮演练](docs/cnb-pilot.md) 和 [分支保护验收](docs/gitea-policy-probe.md)。
 

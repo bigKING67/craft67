@@ -2,6 +2,7 @@
 import copy
 import json
 import os
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -50,12 +51,15 @@ class TaskBoundaryTests(TaskFixture):
         self.git('commit', '-qam', 'configure argv')
 
     def test_missing_executable_supersedes_pass_and_recovery_restores_it(self):
-        self.configure_argv(['twc-test-tool'])
+        self.configure_argv(['twc-test-tool', '/d', '/c', 'exit', '0'] if os.name == 'nt' else ['twc-test-tool'])
         bin_dir = self.root.parent / 'bin'
         bin_dir.mkdir()
-        tool = bin_dir / 'twc-test-tool'
-        tool.write_text('#!/bin/sh\nexit 0\n')
-        tool.chmod(0o755)
+        tool = bin_dir / ('twc-test-tool.exe' if os.name == 'nt' else 'twc-test-tool')
+        if os.name == 'nt':
+            shutil.copyfile(Path(os.environ['SYSTEMROOT']) / 'System32/cmd.exe', tool)
+        else:
+            tool.write_text('#!/bin/sh\nexit 0\n')
+            tool.chmod(0o755)
         self.prepare()
         with patch.dict(os.environ, PATH=str(bin_dir) + os.pathsep + os.environ.get('PATH', '')):
             self.assertEqual(self.verify()['status'], 'passed')

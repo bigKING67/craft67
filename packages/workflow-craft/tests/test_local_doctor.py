@@ -79,7 +79,7 @@ class LocalDoctorTests(unittest.TestCase):
 
         with patch('subprocess.run', side_effect=git_only):
             report = twc.local_doctor(self.project)
-        self.assertEqual(report['status'], 'ok' if os.name == 'posix' else 'attention_required')
+        self.assertEqual(report['status'], 'ok')
         self.assertEqual(report['project_config'], 'valid')
         self.assertEqual(report['toolchain']['status'], 'matched')
         self.assertEqual(report['base_ref']['status'], 'resolved')
@@ -110,7 +110,7 @@ class LocalDoctorTests(unittest.TestCase):
             with self.subTest(name=name):
                 self.git('config', 'user.name', name)
                 before = self.snapshot()
-                report = self.cli('doctor', '--local', expected=0 if os.name == 'posix' else 1)
+                report = self.cli('doctor', '--local', expected=0)
                 self.assertEqual(report['member']['status'], 'available')
                 self.assertEqual(report['member']['name'], name)
                 self.assertNotIn('configure_member_name', report['next_steps'])
@@ -131,7 +131,7 @@ class LocalDoctorTests(unittest.TestCase):
                 if name == 'Local Member':
                     self.git('config', '--local', 'user.name', name)
                 before = self.snapshot()
-                report = self.cli('doctor', '--local', expected=0 if os.name == 'posix' else 1)
+                report = self.cli('doctor', '--local', expected=0)
                 self.assertEqual(report['member']['name'], name)
                 self.assertNotIn('configure_member_name', report['next_steps'])
                 self.assertEqual(self.snapshot(), before)
@@ -216,13 +216,13 @@ class LocalDoctorTests(unittest.TestCase):
         self.assertEqual(report['project_config'], 'unsafe_path')
         self.assertEqual(list(external.iterdir()), [])
 
-    def test_windows_process_family_remains_unqualified(self):
+    def test_windows_backend_is_reported_without_claiming_host_loading(self):
         self.configure()
         with patch.object(twc, 'os', SimpleNamespace(name='nt')):
             report = twc.local_doctor(self.project)
-        self.assertEqual(report['status'], 'attention_required')
-        self.assertEqual(report['verification']['implementation'], 'unsupported')
-        self.assertIn('qualify_native_process_tree_verification', report['next_steps'])
+        self.assertEqual(report['status'], 'ok')
+        self.assertEqual(report['verification']['implementation'], 'windows_job_object')
+        self.assertEqual(report['host_loading'], 'unverified')
 
     def test_local_and_online_diagnosis_are_mutually_exclusive(self):
         result = subprocess.run([sys.executable, str(SCRIPTS / 'twc.py'), '--project', str(self.project),
