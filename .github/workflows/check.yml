@@ -60,3 +60,14 @@ jobs:
         env:
           PACKAGE: ${{ matrix.package }}
         run: python3 scripts/check.py --package "$PACKAGE"
+      - name: Set up Python 3.11 for Workflow Craft
+        if: matrix.package == 'workflow-craft'
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+      - name: Check Workflow Craft statusline on Python 3.11
+        if: matrix.package == 'workflow-craft'
+        working-directory: packages/workflow-craft
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -m unittest discover -s tests -p test_statusline.py -v
