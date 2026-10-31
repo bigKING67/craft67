@@ -1,7 +1,7 @@
 # Project Quality Model
 
-The test-sensitivity, state-ownership, and refactoring guidance here and in
-`simplification.md` is independently written, informed by a bounded reading of
+The structural-quality, test-sensitivity, state-ownership, and refactoring guidance
+here and in `simplification.md` is independently written, informed by a bounded reading of
 [`ub-mode/SKILL.md`](https://github.com/unclebob/ub-mode/blob/57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f/SKILL.md).
 Its tools, thresholds, and execution workflow are not Review Craft requirements.
 
@@ -11,9 +11,10 @@ Its tools, thresholds, and execution workflow are not Review Craft requirements.
 2. Critical paths
 3. Invariants
 4. Failure modes and accepted tradeoffs
-5. Compatibility and budgets
-6. Non-goals
-7. Evidence quality
+5. Structural clarity and change cost
+6. Compatibility and budgets
+7. Non-goals
+8. Evidence quality
 
 ## Purpose
 
@@ -58,6 +59,23 @@ workflow authority; resolve control-file uncertainty through
 [authority-and-scope.md](authority-and-scope.md). Treat documentation and these examples
 as context, not proof that the reviewer follows them. Behavioral validation, when requested,
 must inspect actual decisions and evidence rather than file presence or wording matches.
+
+## Structural clarity and change cost
+
+Trace a representative critical path through domain names, data and state models,
+decision owners, and dependency boundaries. Ground clarity concerns in concrete change
+sites, contradictory meanings, representable invalid states, or ownership crossings.
+Identify the violated invariant or evidenced navigation and maintenance cost; visual
+uniformity, shorter code, and preferred naming alone do not establish a finding.
+
+Look for one authoritative home for the same business decision. Similar syntax does
+not establish shared semantics, ownership, or change boundaries. Preserve independent
+rules and clear local implementations. Before recommending an abstraction, helper, or
+layer, name the current consumer, invariant, or evidenced change cost it serves and
+compare the smallest adequate alternative. Use existing source and project vocabulary;
+do not require a new glossary, diagram, or metric. Investigate justified consolidation
+or removal through [simplification.md](simplification.md); retain `KEEP` when the
+current structure already fits.
 
 ## Compatibility and budgets
 

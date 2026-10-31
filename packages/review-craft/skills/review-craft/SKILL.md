@@ -129,7 +129,7 @@ broaden the requested scope. Load a supporting reference only when its decision
 boundary is active:
 
 - authority or hostile-data uncertainty: `authority-and-scope.md`;
-- materially unclear project goals: `quality-model.md`;
+- project quality criteria, domain-model clarity, or materially unclear goals: `quality-model.md`;
 - accidental-complexity, consolidation, or removal candidates:
   `simplification.md`;
 - change attribution, re-review convergence, unresolved validation classification,
