@@ -80,10 +80,31 @@
 
 用户为这个接收目录单独批准临时项目信任。会话结束后移除该条目，`~/.codex/config.toml` 的字节哈希与验收前完全相同；未复制凭据或扩大其他项目授权。一次原生审计没有同模型/同任务对照，不用于判断相对 Trellis 的成本与质量。
 
+## Claude/Pi 原生接续与入口指引修正
+
+首个 Claude 样本在 `b18fdfc9` 上完成只读查询，但先加载全局同名 Skill 后，沿根 AGENTS 的统一指针使用了 `.agents` CLI，没有执行全局入口选择器。因此它只算部分通过，不能算 Claude 固定入口选路通过。Claude 的[官方名称解析规则](https://code.claude.com/docs/en/skills#resolve-skills-that-share-a-name)说明个人同名 Skill 优先于项目副本；宿主发现顺序与项目运行时选择需要分别核对。
+
+隔离提交 `73698c66ef109800080bfa6d915545b0d783aa17` 仅澄清根 AGENTS 的宿主路径和既有全局选择器要求：Claude 使用 `.claude`，Codex/Pi 使用 `.agents`，全局 Skill 先加载时先执行当前宿主的只读 `entry`，再使用返回的项目入口。没有新增编码规则、Hook 或运行时 API，也没有改成员安装。保护清单显式记录这一处规则摘要变化，迁移契约更新到 revision 4，四个业务契约更新到 revision 3；所有原状态、父子关系、PRD、历史及失败证据保留。三项登记检查重新通过。
+
+在这个新候选的两个全新无远端 clone 中，沿用原提示和模型参数再次验收：
+
+| 宿主 | 实际选路与结果 | 边界 |
+| --- | --- | --- |
+| Claude Code 2.1.309 / claude-opus-5-5 / high | 全局 Skill 的 `entry --host claude` 返回项目 `.claude`；随后用该固定 CLI 执行 doctor 和五项任务 resume。exit 0，74.22 秒，13 次工具调用，无权限拒绝 | 全局与项目 Skill 正文相同；没有证明任意版本冲突或加载排他性 |
+| Pi 1.4.0 / codex/gpt-6.1-sol / high | 实际读取项目 `.agents` Skill 和任务循环，再执行 doctor 和五项任务 resume。exit 0，117.81 秒，17 次工具调用 | 保留一次上游 HTTP 500 / TLS handshake EOF，宿主自动重试后完成；不是无重试的稳定性样本 |
+
+两个会话均准确保留迁移 in_progress、AC-1/AC-2 verified、AC-3 needs_review，四项业务任务为一个 planning、三个 in_progress。项目 Git 状态、全部共享任务文件及关键宿主配置哈希未变，未生成本地绑定或重跑测试。两者是有边界的原生 headless 模型样本，不是新 Windows、交互界面或真人接手验收；CLI 的 `host_loading=unverified` 仍保留。
+
+Pi 首次启动失败也保留：外部 macOS 只读沙箱拦住了 settings/auth 的临时读取锁，模型尚未开始接续。核对宿主源码后，只为确切的临时锁目录放行，配置、凭据库内容与项目写入仍被拒绝；测试自有文件的负向控制确认限制有效。这个沙箱属于外部验收措施，不进入 Workflow Craft。此前候选上的另一份 Pi 成功样本同样经历一次上游连接重试，两个样本分别保存。
+
+原始事件流和 receipts 留在本机验收目录，摘要、哈希、失败分类和给同事的首轮只读提示保存在隔离任务 `diagnostics/native-hosts-readonly.md`。再次检查原 AIOS：HEAD、Git 状态、2,703 个捕获文件和两个符号链接目标均未变。此前 Codex 样本仍只对应 `e9477fd8`，不自动升级为后来规则修订的原生验收。
+
+隔离交付提交为 `293668643d2c0ea3248a52ce5ec182ab6d4b1bba`，只比代码候选多宿主证据和交接。另生成包含候选与基线分支的完整 bundle，已通过 `git bundle verify` 和全新 clone 还原；还原副本的完整性检查、只读 doctor、五项 resume 均通过，21 个共享任务文件未变化、工作树干净、没有本地绑定。该包目前只在本机，未传到同事机器或推送公司仓库；还原检验不是新的原生宿主或真人样本。
+
 ## 尚未通过的接管条件
 
 迁移任务 `local:aios-migration-rehearsal` 仍为 in_progress：完整性和活动门禁替换两个 AC 已 verified，当前候选的原生宿主与真人接手 AC 仍 needs_review。三项登记检查均 passed/current，不能据此替人确认第三项或完成迁移。
 
-下一步是在这个固定代码候选上补齐 Claude/Pi 原生及同事接手，沿用当前项目规则、原业务验收和真实身份；随后补足适用的完整 CI 与代表性业务任务验证。原项目已有 `PRODUCT.md` 引用却缺文件，继续作为来源缺口，不归因于本轮迁移。
+下一步是让真实同事在交付的隔离候选中开新 Claude 会话，只读接手并报告自己的有效称呼、当前入口、任务和验收缺口；已有首轮提示可直接复用。随后补足入口排他性、适用的完整 CI 与代表性业务任务验证。原项目已有 `PRODUCT.md` 引用却缺文件，继续作为来源缺口，不归因于本轮迁移。
 
 正式 AIOS 切换、旧目录清理、平台合并及部署仍未执行。本轮也未完成同模型、同任务的开销比较，不能据此宣称超过 Trellis。

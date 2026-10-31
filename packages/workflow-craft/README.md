@@ -147,6 +147,8 @@ python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft
 
 Codex 与 Pi 共用 `~/.agents/skills/workflow-craft/`，Claude 写入 `~/.claude/skills/workflow-craft/`。检测到已知 Codex/Pi 另一条全局发现路径中的同名或旧名副本时，先核对迁移，不再增加重复安装。只安装选定入口，不改全局 AGENTS、CLAUDE、宿主配置或状态栏。已有同名未知/漂移安装拒绝覆盖；固定版本升级仍需 `--allow-upgrade`。宿主需重新发现 Skill，新会话可显式调用。进入具体项目后按 [全局入口与项目固定版本](skills/workflow-craft/references/development-modes.md#全局入口与项目固定版本) 选择副本，不用全局运行时直接管理项目任务。
 
+Claude Code 在个人与项目目录存在同名 Skill 时优先加载个人副本，这是[宿主的名称解析规则](https://code.claude.com/docs/en/skills#resolve-skills-that-share-a-name)。先加载全局 Skill 不等于已经使用项目固定版本：全局入口须先执行只读 `entry --host claude`，后续按返回的项目 `skill` / `cli` 工作。项目如维护入口指针，应区分 Claude 的 `.claude` 与 Codex/Pi 的 `.agents`；共用编码规则仍保留在原 AGENTS/CLAUDE 中。AIOS 的[原生接续演练](docs/aios-migration-rehearsal.md)保留了错误选路和修正后的实际样本，不能仅凭 Skill 名称或安装文件判断加载成功。
+
 升级保留项目的旧工具链锁。先让所有项目宿主入口安装同一批准产物，再从新安装副本运行 `doctor --local`：安装完整性应为 `matched`，旧锁会显示 `mismatch`。核对批准的 ZIP SHA-256 与安装清单后，在已授权升级范围内，将 `.team-workflow/toolchain.lock.json` 的 `version`、`protocol_version`、`runtime_tree_sha256` 更新为本次诊断的 `runtime` 值，保留锁的其余字段；再次运行 `doctor --local`，确认所有入口与锁都匹配。不同内容需独立版本，不能用同版本覆盖绕过保护。历史任务和证据保留，涉及工具链变更的旧通过需重新验证。
 
 Codex/Pi 使用 `.agents/skills/workflow-craft/`；Claude 使用 `.claude/skills/workflow-craft/`。调用分别为 `$workflow-craft`、`/skill:workflow-craft`、`/workflow-craft`。
