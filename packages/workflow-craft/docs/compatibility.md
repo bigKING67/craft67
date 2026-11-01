@@ -1,5 +1,42 @@
 # Host compatibility
 
+## 0.7.3 POSIX check cancellation (2026-11-01)
+
+The changed POSIX stop path sends SIGTERM to the owned process group, allows up
+to 20 seconds for its descendants to finish cleanup after the leader exits,
+then force-stops an uncooperative group. A denied signal-0 existence probe is
+conservatively treated as still present; actual termination permission errors
+remain errors. Repeated Ctrl-C during this bounded cleanup does not interrupt it.
+
+On macOS with Python 3.14.7, the six targeted regressions passed, followed by
+30 actual SIGINT repetitions with no failures. The complete offline package gate
+ran 223 tests: 222 passed and the Windows-only Job assignment test was skipped.
+Tests exercise temporary resource removal, a detached lock-holding process,
+timeout, repeated SIGINT, forced termination and permission-query boundaries.
+
+The first graceful-stop candidate was not stable: an independent 30-run batch
+had one cleanup failure; a bounded 100-run trace batch captured two signal-0
+PermissionError failures. These observations led to the conservative probe
+handling. They remain failures of that candidate; the precise Darwin kernel
+reason was not established.
+
+An actual AIOS check CLI probe against disposable local PostgreSQL and Redis
+reproduced two surviving containers with the old fixed 0.7.1 runtime; the probe
+then removed only those verified owned containers. With fixed 0.7.3, the same
+HTTP check cancelled as incomplete/cancelled and both containers were already
+absent before probe cleanup. Existing containers remained present. One earlier
+post-upgrade probe never reached the cancellation checkpoint because a locked
+Cargo archive was missing, so it is an invalid cancellation sample; after
+hydrating the locked public dependency cache, the successful probe ran offline.
+The original Cargo lockfile was unchanged.
+
+This establishes the exercised POSIX cancellation and owned fixture paths.
+It does not prove cleanup after an external SIGKILL, beyond the grace period,
+for arbitrary external services, or during a real long-running compiler job.
+Native Windows, Linux and fresh model-host loading were not revalidated by
+these macOS observations. Installation parity and static doctor output remain
+separate from native Skill loading and formal Release.
+
 ## 0.7.2 thin discovery entry (2026-11-01)
 
 The global Skill is now a discovery/selection entry. A selected new project reads

@@ -14,17 +14,41 @@ from .policy import load, require_lock, runtime_identity
 from .workspace import code_identity, inspect
 
 
+_TERMINATE_GRACE_SECONDS = 20
+
+
 def _stop(process, job=None):
-    if job is not None:
-        job.stop()
-    elif os.name == 'posix':
-        try:
-            os.killpg(process.pid, signal.SIGKILL)
-        except ProcessLookupError:
-            pass
-    else:
-        process.kill()
-    process.wait(timeout=5)
+    posix = job is None and os.name == 'posix'
+    # Once cleanup starts, a second Ctrl-C must not interrupt the bounded wait.
+    restore = posix and threading.current_thread() is threading.main_thread()
+    previous = signal.signal(signal.SIGINT, signal.SIG_IGN) if restore else None
+    try:
+        if job is not None:
+            job.stop()
+        elif posix:
+            try:
+                os.killpg(process.pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            deadline = time.monotonic() + _TERMINATE_GRACE_SECONDS
+            while True:
+                process.poll()  # Reap the leader, but still wait for its group.
+                if not _group_alive(process):
+                    break
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    try:
+                        os.killpg(process.pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+                    break
+                time.sleep(min(.05, remaining))
+        else:
+            process.kill()
+        process.wait(timeout=5)
+    finally:
+        if restore:
+            signal.signal(signal.SIGINT, previous)
 
 
 def _group_alive(process, job=None):
@@ -37,6 +61,9 @@ def _group_alive(process, job=None):
         return True
     except ProcessLookupError:
         return False
+    except PermissionError:
+        # A denied existence probe does not establish that the group is gone.
+        return True
 
 
 def execute(root, name, check, token_env, identity_token_env=None):

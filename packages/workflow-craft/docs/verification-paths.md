@@ -10,6 +10,7 @@
 | 延后与部分重验 | 已有两项通过 → 改代码 → resume 只读报告 stale → 只重验 unit → full 仍 stale、交接未就绪 → 补齐 full | `test_task_boundaries.py`：不重建任务，不因部分通过而放行其他必要检查；不能通过删契约/检查来省略验收 |
 | 本地生命周期 | create → start → verify → complete → archive → reopen；finish 只清绑定；父任务等待全部子任务 | `test_lifecycle.py`：保留历史，代码/评审/子任务变化使完成依据过期；文字验收不可替代失败检查，本地完成不等于平台审批 |
 | 会话与工作区 | 两会话各绑一任务、结束一个、换分支、独立 worktree 接续、两个进程争用锁 | `test_lifecycle.py`：指针不串线；没有绑定不猜任务；锁只覆盖工具写入，不能当编辑器/数据库沙箱 |
+| POSIX 取消与资源回收 | 真实 SIGINT / 超时 → 主进程退出 → 后代完成 finally → 临时资源消失、另会话进程回收、锁可重取；不合作的组到期强制结束 | `test_posix_cleanup.py`：真实进程与信号，取消和超时保持 incomplete；不把临时文件/锁回归当成容器、外部服务或 Windows 证明 |
 | 模式显示 | 子目录/linked worktree → solo；更改配置 → team；嵌套项目/坏配置/读取失败给出对应状态 | `test_statusline.py`：不写文件、不联网、不执行检查；显示不证明工具链锁、任务或宿主加载 |
 | Claude 输入 | 工作区 JSON → 当前目录优先于启动目录；坏输入及解码深度异常显示不可用 | `test_statusline.py`：真实命令 stdin/stdout 合同，含 Python 3.11 深层 JSON 回归；不能代替 Claude 原生 TUI 显示验收 |
 | Pi 状态项 | session_start → solo；agent_end → 更新；切换时 shutdown/start → 新状态；shutdown → 清除自己的项 | `test_statusline.py` 调用 `statusline.test.mjs`：真实适配器、模拟事件、真实 Python 读取；保留其他状态并拒绝过期回调。需要 Node 22.18+，缺失会明确 skip；另需原生宿主加载验收 |
