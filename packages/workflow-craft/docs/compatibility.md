@@ -1,5 +1,55 @@
 # Host compatibility
 
+## 0.7.2 thin discovery entry (2026-11-01)
+
+The global Skill is now a discovery/selection entry. A selected new project reads
+its fixed `references/workflow.md` directly; an existing pinned project without
+that file reads its own `SKILL.md`. Neither path reads the global detailed guide
+as a second workflow. First-use mode/name prompts, project-rule precedence,
+authorization, lifecycle, freshness and completion boundaries remain applicable.
+No CLI implementation or protocol changed, and global upgrades do not upgrade
+project pins.
+
+The original instruction body is byte-identical after reversing only the relative
+Markdown-link rebasing. Its SHA-256 is
+`d618c5a12252eaebc90ff6bcc9b7312c819bb80381b34877e597f3511903707b`.
+The entry shrank from 10,064 to 2,638 UTF-8 bytes; the detailed guide is 9,713 bytes.
+This measures the discovery entry, not total tokens, latency or task quality;
+direct project loading now includes a short index before the complete guide.
+
+The local gate passes 216 of 217 tests with one Windows-only skip on macOS.
+The Skill validator passes, and an independent bounded diff review found no
+remaining actionable issue. Both known global installations match all 42 artifact
+files; the old AIOS rehearsal remains pinned to 0.7.1. Native continuation results
+and their limits are recorded below.
+
+| Native sample | Observed rule and CLI route |
+| --- | --- |
+| Claude Code 2.1.309, new 0.7.2 project | Global thin entry, read-only `entry`, then the project `references/workflow.md` and project CLI; no second project header or global detailed guide. |
+| Claude Code 2.1.309, old 0.7.1 AIOS rehearsal | Global thin entry, read-only `entry`, then only the old project `SKILL.md` and project CLI; no project upgrade or global detailed guide. |
+| Pi 1.4.0, new 0.7.2 project | Project thin entry, its own detailed guide and project CLI; no global selection or global guide. |
+| Codex 0.166.0, old 0.7.1 AIOS rehearsal | Direct project Skill and CLI; no global entry. The explicitly approved temporary project trust was removed and the global config restored byte-for-byte. |
+
+All four bounded final samples leave Git state, task files and checked critical
+host settings unchanged; tasks remain unfinished. The new-project fixture uses a
+self-declared fixture name, not an authenticated member. An initial old-project
+Claude sample selected the correct version but redirected output to two files
+outside the repository, violating the no-write request. It remains a partial
+sample, not a read-only pass. A separate follow-up explicitly covering external
+temporary files passed without such writes and preserved its original failure.
+This illustrates why instruction compliance needs observed evidence rather than
+assuming a prompt guarantees it.
+
+These are controlled model-session routing results, not independent-human review,
+application acceptance, certification of arbitrary rule combinations or proof of
+native Windows behavior for 0.7.2. The static `doctor` result remains
+`host_loading=unverified`. The existing migration AC-3 and business acceptance are
+not marked complete by these sessions.
+
+Artifact SHA-256: `5b57644670b5953c0efddf303dc4ddab48284dad0620b2ff6e39bfeae167c992`.
+This is source/local-install acceptance, not a formal Release or original AIOS
+migration.
+
 ## 0.7.1 record newline correction (2026-10-31)
 
 The shared task writer now requests UTF-8/LF explicitly, preventing native Windows
