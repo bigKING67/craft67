@@ -15,7 +15,7 @@ from .workspace import code_identity, git, inspect, portable, succeeds
 
 PLACEHOLDER = re.compile(r'^(todo|tbd|tba|wip|fixme|n/?a|none|null|\.{2,}|…+|-+|\?+|待定|待补充|待填写?|无|略|同上)$', re.I)
 CHECK_FIELDS = ('check', 'cwd', 'status', 'exit_code', 'reason', 'started_at', 'ended_at',
-                'duration_seconds', 'output_sha256', 'output_bytes')
+                'duration_seconds', 'output_sha256', 'output_bytes', 'supersedes')
 
 
 def key(ref):
@@ -139,7 +139,7 @@ def evidence(root, ref):
         if path.is_symlink():
             raise WorkflowError('Evidence record cannot be a symlink')
         rows.append((path.relative_to(root).as_posix(), records.validate(read_json(path), ref, 'VerificationRecord')))
-    # Chronological by recorded time (UTC ISO, microseconds); file names only break ties.
+    # Stable presentation only: wall clocks do not establish observation order.
     return sorted(rows, key=lambda row: (str(row[1].get('created_at', '')) if isinstance(row[1], dict) else '', row[0]))
 
 
@@ -155,8 +155,31 @@ def fresh(row, ref, task, code, policy_hash, runtime):
     return same_context(row, ref, task, code, policy_hash, runtime) and not row.get('drift')
 
 
+def check_observations(config, ref, task, rows, code, policy_hash, runtime):
+    """Unsuperseded observations per check, addressed by the complete shared record's hash.
+
+    Each actual attempt names the heads it observed before execution. Links are
+    check-specific: an unattempted or independently selected check cannot supersede
+    another check's result. Legacy records are unordered roots, never rewritten.
+    """
+    observations = {name: {} for name in config.get('checks', {})}
+    for path, row in rows:
+        if not same_context(row, ref, task, code, policy_hash, runtime):
+            continue
+        sha = digest(canonical(row))
+        for check in row['checks']:
+            if check['check'] not in observations or (check['status'] == 'not_run' and check['started_at'] is None
+                                                     and check.get('reason') == 'earlier_check_did_not_complete'):
+                continue
+            observations[check['check']][sha] = (path, row, check)
+    for name, candidates in observations.items():
+        superseded = {sha for _, _, check in candidates.values() for sha in check.get('supersedes', [])}
+        observations[name] = {sha: value for sha, value in candidates.items() if sha not in superseded}
+    return observations
+
+
 def check_states(config, ref, task, rows, code, policy_hash, runtime):
-    """Newest fresh observation per configured check; older passes do not outlive a newer failure."""
+    """Observed successors win; incomparable conflicting results cannot certify completion."""
     states = {name: dict(status='missing', evidence=None, actor=None) for name in config.get('checks', {})}
     for path, row in rows:
         if not same_context(row, ref, task, code, policy_hash, runtime):
@@ -165,18 +188,21 @@ def check_states(config, ref, task, rows, code, policy_hash, runtime):
                 state = states.get(check.get('check'))
                 if state and state['status'] == 'missing' and check.get('status') != 'not_run':
                     state.update(status='stale', evidence=path, actor=row.get('actor'))
-            continue
-        for check in row.get('checks', []):
-            expected = config.get('checks', {}).get(check.get('check'))
-            if not expected or (check.get('status') == 'not_run' and check.get('started_at') is None
-                                and check.get('reason') == 'earlier_check_did_not_complete'):
-                continue
+    for name, candidates in check_observations(config, ref, task, rows, code, policy_hash, runtime).items():
+        options = []
+        expected = config['checks'][name]
+        for path, row, check in candidates.values():
             command = check.get('command_sha256') or records.command_hash(check['argv'], check['cwd'])
             matches = command == records.command_hash(expected['argv'], expected.get('cwd', '.'))
             passed = matches and check.get('status') == 'passed' and check.get('exit_code') == 0
-            states[check['check']] = dict(status='incomplete' if row.get('drift') else 'passed' if passed
-                                          else check['status'] if check['status'] in ('failed', 'not_run')
-                                          else 'incomplete', evidence=path, actor=row.get('actor'))
+            options.append(dict(status='incomplete' if row.get('drift') else 'passed' if passed
+                                else check['status'] if check['status'] in ('failed', 'not_run')
+                                else 'incomplete', evidence=path, actor=row.get('actor')))
+        if len({option['status'] for option in options}) > 1:
+            states[name] = dict(status='incomplete', evidence=None, actor=None, reason='evidence_order_unresolved',
+                                evidence_candidates=sorted(option['evidence'] for option in options))
+        elif options:
+            states[name] = options[0]  # All remaining observations agree; no temporal claim is made.
     return states
 
 

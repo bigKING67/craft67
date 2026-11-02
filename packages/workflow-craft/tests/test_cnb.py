@@ -73,6 +73,18 @@ class CNBAdapterTests(unittest.TestCase):
             with self.subTest(ref=ref), self.assertRaises(ProviderError):
                 self.api().get_checks(ref)
 
+    def test_deep_json_and_oversized_integer_are_controlled_provider_errors(self):
+        # Truncated at depth: invalid even on interpreters that can decode deeper JSON.
+        for payload in (b'{"private-marker":' + b'[' * 2000 + b'0',
+                        b'{"private-marker":' + b'9' * 5000 + b'}'):
+            with self.subTest(size=len(payload)):
+                self.route('/user', payload)
+                with self.assertRaises(ProviderError) as captured:
+                    self.api().get_identity()
+                self.assertEqual(captured.exception.code, 'invalid_response')
+                self.assertNotIn('private-marker', str(captured.exception))
+                self.assertNotIn('fixture-token', str(captured.exception))
+
     def test_resource_number_is_checked_without_coercion(self):
         for number in ['5', '04', 4.0, True, None]:
             self.route('/org/sub/repo/-/issues/4', {'number': number})

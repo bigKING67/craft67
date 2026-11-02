@@ -201,12 +201,15 @@ def _verify(root, config, policy_hash, checks, names, online, task, session):
                       before=before, after=None, policy_sha256=policy_hash,
                       toolchain=runtime_identity(), checks=[], status='incomplete',
                       provenance='local_execution_unattested', ci_refs=[], drift=[])
+    prior = tasks.check_observations(config, ref, task_record, tasks.evidence(root, ref), before,
+                                    policy_hash, record['toolchain']) if task_record else {}
     target = local_target(root, 'evidence', record['run_id'] + '.json')
     if target.exists():
         raise WorkflowError('Evidence destination already exists')
     for name in names:
         result = execute(root, name, checks[name], source.get('token_env', f'TWC_{source.get("provider", "local").upper()}_TOKEN'),
                          source.get('identity_token_env'))
+        result['supersedes'] = sorted(prior.get(name, {}))
         record['checks'].append(result)
         if result['status'] != 'passed':
             break
@@ -223,7 +226,7 @@ def _verify(root, config, policy_hash, checks, names, online, task, session):
         if name not in completed:
             record['checks'].append(dict(check=name, argv=checks[name]['argv'], cwd=checks[name].get('cwd', '.'),
                                          started_at=None, ended_at=None, exit_code=None, status='not_run',
-                                         reason='earlier_check_did_not_complete', log_ref=None))
+                                         reason='earlier_check_did_not_complete', log_ref=None, supersedes=[]))
     try:
         record['after'] = inspect(root, config['integration']['base_ref'])
         if code_identity(before) != code_identity(record['after']):

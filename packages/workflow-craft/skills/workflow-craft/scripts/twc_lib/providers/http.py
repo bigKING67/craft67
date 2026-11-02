@@ -207,7 +207,7 @@ class ReadOnlyAPI:
                         raise ProviderError("invalid_response", "Provider response is too large")
                     try:
                         data = json.loads(body.decode("utf-8"))
-                    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+                    except (ValueError, RecursionError) as exc:
                         raise ProviderError("invalid_response", "Provider returned invalid JSON") from exc
                     return _Response(data=data, headers=dict(response.headers.items()))
             except ProviderError:

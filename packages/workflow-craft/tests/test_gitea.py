@@ -226,6 +226,18 @@ class GiteaAdapterTests(unittest.TestCase):
             self.provider().get_identity()
         self.assertEqual(captured.exception.code, "invalid_response")
 
+    def test_deep_json_and_oversized_integer_are_controlled_provider_errors(self) -> None:
+        # Truncated at depth: invalid even on interpreters that can decode deeper JSON.
+        for payload in (b'{"private-marker":' + b'[' * 2000 + b'0',
+                        b'{"private-marker":' + b'9' * 5000 + b'}'):
+            with self.subTest(size=len(payload)):
+                self.route('/api/v1/user', payload)
+                with self.assertRaises(ProviderError) as captured:
+                    self.provider().get_identity()
+                self.assertEqual(captured.exception.code, 'invalid_response')
+                self.assertNotIn('private-marker', str(captured.exception))
+                self.assertNotIn('test-token', str(captured.exception))
+
 
 if __name__ == "__main__":
     unittest.main()

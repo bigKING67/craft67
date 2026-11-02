@@ -174,6 +174,10 @@ class TaskBoundaryTests(TaskFixture):
         bad_check = copy.deepcopy(original['checks'])
         bad_check[0]['status'] = 'unrecognized'
         mutations.append(dict(checks=bad_check))
+        for predecessors in (None, 'not-a-list', [42], ['bad-hash'], ['a' * 64, 'a' * 64]):
+            bad_check = copy.deepcopy(original['checks'])
+            bad_check[0]['supersedes'] = predecessors
+            mutations.append(dict(checks=bad_check))
         for update in mutations:
             with self.subTest(update=update):
                 path.write_text(json.dumps(dict(original, **update)))

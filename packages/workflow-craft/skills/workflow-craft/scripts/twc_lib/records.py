@@ -84,6 +84,10 @@ def _check(value, portable):
     _require(status not in ('passed', 'failed') or all(value[name] is not None for name in ('started_at', 'ended_at')),
              'executed check timestamps')
     _require(value.get('reason') is None or isinstance(value['reason'], str), 'check.reason')
+    if 'supersedes' in value:
+        predecessors = value['supersedes']
+        _require(isinstance(predecessors, list) and all(_hash(sha) for sha in predecessors), 'check.supersedes')
+        _require(len(predecessors) == len(set(predecessors)), 'duplicate check.supersedes')
 
 
 def validate(value, ref, kind, *, portable=False):

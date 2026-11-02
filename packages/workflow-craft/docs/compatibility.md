@@ -1,5 +1,46 @@
 # Host compatibility
 
+## 0.8.2 evidence ordering and provider JSON (2026-11-02)
+
+Each actually attempted check now records optional `supersedes` hashes of the
+same-context shared check observations visible before execution. These references,
+not wall-clock timestamps, establish successors. Incomparable conflicting results
+remain `incomplete` / `evidence_order_unresolved` until an actual rerun observes
+them. Old v2 records stay readable and unchanged; unattempted and unselected checks
+do not supersede other results. Timestamps retain their actual clock values, and
+local references do not attest honest execution or server approval. Protocol stays 3.
+
+Seven targeted regression methods pass on Python 3.11.12 and 3.14.7, including
+an actual clone, backward clocks, a new failure blocking completion, a later
+successful rerun, independent/legacy conflicts, partial checks and malformed
+predecessor metadata. The original runtime failed the same seven-method selection
+with nine failures and four errors on Python 3.11. The complete local package gate
+passes 246 of 247 tests; the Windows-only Job assignment test is skipped on macOS.
+Independent diff review found no pending issues and separately exercised reversed
+input order, missing/changed intermediate records and an independent failure
+arriving during execution on Python 3.11.
+
+Gitea and CNB now convert decoder `ValueError` and `RecursionError` to controlled
+`invalid_response`. Actual loopback HTTP regressions cover a deeply truncated
+response and a 5,000-digit integer without echoing content or credentials. The
+original valid 2,000-level object also returns structured provider errors from
+the Python 3.11 public `doctor --online` entry using an offline opener. Python 3.14
+can decode that valid object; no arbitrary new depth limit was introduced. An
+initial test assumption that every interpreter rejects it was corrected while
+retaining its failed result.
+
+Fixed ZIP SHA-256:
+`37f7d172e042dffcf9195abdde446ef9658283a7104288d5177754877041f2f2`.
+A disposable project upgrades from 0.8.1, detects the old lock until its explicit
+update, preserves historical evidence, runs installed checks with decreasing
+clock values, blocks failure, then completes after success. A new clone resumes
+that task as `completed/current`. The first harness advanced its configured
+`main` base by committing task metadata and correctly received stale evidence;
+the corrected fixture uses a task branch with a fixed integration base, without
+weakening product gates. Both known global installations match all 45 artifact
+payload files. These are macOS CLI/Git checks, not new model-host sessions, native
+Windows acceptance, a live platform trial, human benefit measurement or a Release.
+
 ## 0.8.1 bounded JSON artifact decoding (2026-11-02)
 
 The common artifact reader converts JSON decoder `RecursionError` into a
