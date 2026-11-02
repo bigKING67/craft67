@@ -1,5 +1,16 @@
 # Host compatibility
 
+## CI headroom and timing (2026-11-02)
+
+The 0.8.4 Windows/Python 3.12 baseline job succeeded in 19 minutes 11 seconds,
+including setup, leaving only 49 seconds under the previous 20-minute job limit.
+Windows jobs now allow 30 minutes; Linux/macOS retain 20 minutes. The package
+gate reports the ten slowest tests on Python 3.12+ using unittest's duration
+report, while Python 3.11 keeps its supported invocation. All tests, subprocess
+deadlines, process cleanup checks and failure exit codes are retained. This
+provides job headroom and timing evidence; it is not a runtime speedup claim.
+Only CI/development checks change, so the 0.8.4 Skill and fixed ZIP stay unchanged.
+
 ## 0.8.4 archive across sessions (2026-11-02)
 
 An unbound session can explicitly select a completed task with

@@ -26,8 +26,10 @@ def main():
     for file in SKILL.glob('assets/**/*.json'):
         json.loads(file.read_text(encoding='utf-8'))
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1')
-    return subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py'],
-                          cwd=ROOT, env=env).returncode
+    command = [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py']
+    if sys.version_info >= (3, 12):
+        command.extend(['--durations', '10'])
+    return subprocess.run(command, cwd=ROOT, env=env).returncode
 
 
 if __name__ == '__main__':

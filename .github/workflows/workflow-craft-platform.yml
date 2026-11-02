@@ -16,7 +16,8 @@ concurrency:
   cancel-in-progress: true
 jobs:
   contracts:
-    timeout-minutes: 20
+    # The complete Windows suite takes about 19 minutes on hosted runners.
+    timeout-minutes: ${{ matrix.os == 'windows-latest' && 30 || 20 }}
     strategy:
       fail-fast: false
       matrix:
