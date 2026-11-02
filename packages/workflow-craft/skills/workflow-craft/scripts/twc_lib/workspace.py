@@ -6,6 +6,7 @@ import re
 import subprocess
 from urllib.parse import urlsplit, urlunsplit
 
+from . import layout
 from .models import WorkflowError, canonical, digest
 
 
@@ -89,8 +90,7 @@ def paths_from_status(raw):
     return changes
 
 
-TASKS = '.team-workflow/tasks'
-CODE_PATHS = ('--', '.', ':(exclude)' + TASKS)
+CODE_PATHS = ('--', '.', *(':(exclude)' + path for path in layout.TASK_PATHS))
 
 
 def _in_scope(path, scope):
@@ -153,7 +153,7 @@ def inspect(root, base_ref, scope=()):
     branch = git(root, 'symbolic-ref', '--short', '-q', 'HEAD', allowed=(0, 1)).decode().strip() or None
     status = ('status', '--porcelain=v1', '-z', '--untracked-files=all', '--ignore-submodules=none')
     changes = paths_from_status(git(root, *status, *CODE_PATHS))
-    task_changes = [row['path'] for row in paths_from_status(git(root, *status, '--', TASKS))]
+    task_changes = [row['path'] for row in paths_from_status(git(root, *status, '--', *layout.TASK_PATHS))]
     tree, complete = _tree(root, changes)
     staged = [os.fsdecode(path) for path in git(root, 'diff', '--cached', '--name-only', '-z', *CODE_PATHS).split(b'\0') if path]
     remotes = {}

@@ -8,7 +8,7 @@ import shutil
 import stat
 import uuid
 
-from . import policy, workspace
+from . import layout, policy, workspace
 from .models import WorkflowError, read_json
 
 HOST_PATHS = {'codex': '.agents/skills/workflow-craft',
@@ -50,7 +50,7 @@ def select(root, host='codex', apply=False):
             # attribute this global process's protocol constant to older code.
             identity.pop("protocol_version")
             candidates.append((path, identity))
-    state = root / '.team-workflow'
+    state = layout.directory(root)
     safe_path(root, state)
     lock_path = state / 'toolchain.lock.json'
     if lock_path.is_symlink() or (state / 'config.toml').is_symlink():
@@ -143,7 +143,7 @@ def check_destination(root, target, state, held):
     actual = target.parent.lstat()
     if not stat.S_ISDIR(actual.st_mode) or (actual.st_dev, actual.st_ino) != (held.st_dev, held.st_ino):
         raise WorkflowError('Installation parent changed while pinning')
-    if target.exists() or state.exists() or state.is_symlink():
+    if target.exists() or state.exists() or state.is_symlink() or layout.directory(root).exists():
         raise WorkflowError('Project changed while pinning; no existing files replaced')
 
 

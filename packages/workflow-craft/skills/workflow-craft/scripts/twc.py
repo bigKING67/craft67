@@ -14,7 +14,7 @@ if sys.version_info < (3, 11):
                           message='Python 3.11+ is required; select a supported interpreter.')))
     raise SystemExit(2)
 
-from twc_lib import entry, actors, context, evidence, handoff, lifecycle, modes, policy, sessions, tasks, workspace
+from twc_lib import layout, migration, entry, actors, context, evidence, handoff, lifecycle, modes, policy, sessions, tasks, workspace
 from twc_lib.models import WorkflowError
 from twc_lib.providers import ProviderError
 
@@ -42,6 +42,9 @@ def parser():
     mutation = init.add_mutually_exclusive_group()
     mutation.add_argument('--dry-run', action='store_true')
     mutation.add_argument('--apply', action='store_true')
+    relocate = commands.add_parser('migrate', help='Preview or explicitly relocate .team-workflow to .workflow')
+    relocate.add_argument('--apply', action='store_true')
+    relocate.add_argument('--approved-inventory', help='Exact inventory hash from the migration preview')
     mode = commands.add_parser('mode', help='Read the project mode or preview an explicit mode change')
     mode.add_argument('--set', choices=('personal', 'team'), dest='selected_mode')
     mode.add_argument('--provider', choices=('gitea', 'cnb'))
@@ -131,7 +134,11 @@ def project_entries(root, identity):
 
 def local_doctor(root):
     """Member setup check before or after init; never contacts the platform or runs project checks."""
-    state = root / '.team-workflow'
+    try:
+        state = layout.directory(root)
+    except WorkflowError:
+        return dict(status='attention_required', project_config='unsafe_path',
+                    next_steps=['resolve_workflow_directory_conflict_or_unsafe_path'], host_loading='unverified')
     member = actors.member_name(root)
     config_path, lock_path = state / 'config.toml', state / 'toolchain.lock.json'
     identity = policy.runtime_identity()
@@ -252,6 +259,8 @@ def run(args):
     session = sessions.selected(args.session)
     if args.command == 'doctor' and args.local:
         return local_doctor(root)
+    if args.command == 'migrate':
+        return migration.migrate(root, args.apply, args.approved_inventory)
     if args.command == 'init':
         if args.mode is None:
             return dict(status='attention_required', development_mode=modes.describe(), applied=False,
@@ -260,7 +269,7 @@ def run(args):
         workspace.resolve_base(root, base_ref)
         return policy.init(root, args.base_url, args.repository, base_ref, args.workflow_owner,
                            args.apply, args.provider, args.mode)
-    if args.command in ('resume', 'mode') and not (root / '.team-workflow/config.toml').exists():
+    if args.command in ('resume', 'mode') and not (layout.directory(root) / 'config.toml').exists():
         return local_doctor(root)
     if args.command == 'mode':
         return modes.change(root, args.selected_mode, apply=args.apply, approved_policy=args.approved_policy,

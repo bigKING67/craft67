@@ -9,9 +9,9 @@ from pathlib import Path
 import re
 import uuid
 
-from . import actors, records, sessions
+from . import actors, layout, records, sessions
 from .models import WorkflowError, acceptance_items, canonical, digest, now, read_json, relative_path, task_ref, task_label
-from .workspace import TASKS, code_identity, git, inspect, portable, succeeds
+from .workspace import code_identity, git, inspect, portable, succeeds
 
 PLACEHOLDER = re.compile(r'^(todo|tbd|tba|wip|fixme|n/?a|none|null|\.{2,}|…+|-+|\?+|待定|待补充|待填写?|无|略|同上)$', re.I)
 CHECK_FIELDS = ('check', 'cwd', 'status', 'exit_code', 'reason', 'started_at', 'ended_at',
@@ -23,7 +23,7 @@ def key(ref):
 
 
 def directory(root, ref):
-    return root / TASKS / key(ref)
+    return layout.directory(root) / 'tasks' / key(ref)
 
 
 def target(root, ref, *parts):
@@ -208,11 +208,11 @@ def touched(root, code):
     """Task directories changed on this branch since it left the integration base."""
     names = set()
     if code.get('merge_base'):
-        raw = git(root, 'diff', '--name-only', '-z', code['merge_base'], 'HEAD', '--', TASKS)
+        raw = git(root, 'diff', '--name-only', '-z', code['merge_base'], 'HEAD', '--', *layout.TASK_PATHS)
         names.update(os.fsdecode(path) for path in raw.split(b'\0') if path)
     names.update(code.get('task_metadata_changes', []))
-    prefix = TASKS + '/'
-    return sorted({name[len(prefix):].split('/', 1)[0] for name in names if name.startswith(prefix)})
+    return sorted({name[len(prefix) + 1:].split('/', 1)[0]
+                   for name in names for prefix in layout.TASK_PATHS if name.startswith(prefix + '/')})
 
 
 def current(root, config, explicit=None, bound=None, code=None, session=None):
@@ -325,9 +325,10 @@ def _validate_record(path, value, ref, kind):
 def check(root, config, explicit=None):
     """Deterministic structure lint of committed task metadata; safe to run in CI."""
     problems = []
-    if git(root, 'ls-files', '--', '.team-workflow/local').strip():
-        problems.append('.team-workflow/local is tracked; it holds local-only snapshots')
-    base = root / TASKS
+    local = layout.relative(root, 'local')
+    if git(root, 'ls-files', '--', local).strip():
+        problems.append(local + ' is tracked; it holds local-only snapshots')
+    base = layout.directory(root) / 'tasks'
     if base.is_symlink():
         return dict(status='attention_required', tasks=[], problems=['task directory is a symlink'])
     names = [key(task_ref(config, explicit))] if explicit else sorted(

@@ -20,8 +20,8 @@ class TaskFixture(Fixture):
         return tasks.check(self.root, config)
 
     def commit_task(self, message='twc: task metadata'):
-        self.git('add', '--', '.team-workflow/tasks')
-        self.git('commit', '-qm', message, '--', '.team-workflow/tasks')
+        self.git('add', '--', '.workflow/tasks')
+        self.git('commit', '-qm', message, '--', '.workflow/tasks')
 
     def contract_file(self, name, **changes):
         (self.root / name).write_text(json.dumps(dict(self.contract, **changes)))
@@ -37,13 +37,13 @@ class TaskRecordTests(TaskFixture):
         committed = workspace.inspect(self.root, self.base)
         self.assertEqual(dirty['tree_sha256'], committed['tree_sha256'])
         self.assertNotEqual(dirty['head'], committed['head'])
-        record = self.root / '.team-workflow/tasks/pr-3/note.json'
+        record = self.root / '.workflow/tasks/pr-3/note.json'
         record.parent.mkdir(parents=True)
         record.write_text('{}')
         metadata = workspace.inspect(self.root, self.base)
         self.assertEqual(metadata['tree_sha256'], committed['tree_sha256'])
         self.assertFalse(metadata['dirty'])
-        self.assertEqual(metadata['task_metadata_changes'], ['.team-workflow/tasks/pr-3/note.json'])
+        self.assertEqual(metadata['task_metadata_changes'], ['.workflow/tasks/pr-3/note.json'])
 
     def test_committed_evidence_stays_fresh_until_code_changes(self):
         prepared = self.prepare()
@@ -78,13 +78,13 @@ class TaskRecordTests(TaskFixture):
         self.assertEqual([row['status'] for row in result['acceptance']], ['verified', 'needs_review'])
 
     def test_newer_failure_supersedes_an_older_pass(self):
-        self.checks([('unit', 'import pathlib, sys; sys.exit(7 if pathlib.Path(".team-workflow/local/fail").exists() else 0)', 5)])
+        self.checks([('unit', 'import pathlib, sys; sys.exit(7 if pathlib.Path(".workflow/local/fail").exists() else 0)', 5)])
         self.git('commit', '-qam', 'flaky check')
         self.prepare()
         # Both runs land in the same second; ordering must not depend on the random run id.
         with patch('twc_lib.models.now', return_value='2026-10-18T10:00:00.000001+00:00'):
             self.assertEqual(self.verify()['status'], 'passed')
-        (self.root / '.team-workflow/local/fail').write_text('x')
+        (self.root / '.workflow/local/fail').write_text('x')
         with patch('twc_lib.models.now', return_value='2026-10-18T10:00:00.000002+00:00'):
             self.assertEqual(self.verify()['status'], 'failed')
         view = self.resume()
@@ -116,7 +116,7 @@ class TaskRecordTests(TaskFixture):
         subprocess.run([*bob, 'switch', '-qc', 'bob/feature', 'origin/alice/feature'], check=True)
         subprocess.run([*bob, 'config', 'user.name', 'Bob'], check=True)
         subprocess.run([*bob, 'config', 'user.email', 'bob@example.invalid'], check=True)
-        self.assertFalse((clone / '.team-workflow/local').exists())
+        self.assertFalse((clone / '.workflow/local').exists())
         view = self.resume(clone)
         self.assertEqual(view['resolved_by'], 'branch_changes')
         self.assertEqual(view['last_handoff']['done'], ['feature complete'])
@@ -134,7 +134,7 @@ class TaskRecordTests(TaskFixture):
         for text in ('TODO', '待补充', '...'):
             with self.subTest(text=text), self.assertRaisesRegex(WorkflowError, 'placeholder'):
                 handoff.draft(self.root, config, sha, None, [text], [], ['review'])
-        self.assertFalse((self.root / '.team-workflow/tasks/pr-3/handoff.json').exists())
+        self.assertFalse((self.root / '.workflow/tasks/pr-3/handoff.json').exists())
 
     def test_staged_files_outside_scope_are_reported_before_commit(self):
         self.prepare()
@@ -149,7 +149,7 @@ class TaskRecordTests(TaskFixture):
         record = self.verify()
         self.draft()
         self.assertEqual(self.lint()['status'], 'ok')
-        task_file = self.root / '.team-workflow/tasks/pr-3/task.json'
+        task_file = self.root / '.workflow/tasks/pr-3/task.json'
         original = task_file.read_text()
         edited = json.loads(original)
         edited['contract']['goal'] = 'quietly changed'
@@ -160,13 +160,13 @@ class TaskRecordTests(TaskFixture):
         summary.write_text(json.dumps(dict(json.loads(summary.read_text()), root='/Users/someone/project')))
         self.assertIn('local-only', json.dumps(self.lint()))
         summary.unlink()
-        handoff_file = self.root / '.team-workflow/tasks/pr-3/handoff.json'
+        handoff_file = self.root / '.workflow/tasks/pr-3/handoff.json'
         handoff_file.write_text(json.dumps(dict(json.loads(handoff_file.read_text()), done=['TBD'])))
         self.assertIn('placeholder', json.dumps(self.lint()))
 
     def test_ignored_task_directory_is_refused(self):
         with (self.root / '.gitignore').open('a') as stream:
-            stream.write('.team-workflow/tasks/\n')
+            stream.write('.workflow/tasks/\n')
         with self.assertRaisesRegex(WorkflowError, 'Git-ignored'):
             self.prepare()
 
@@ -174,7 +174,7 @@ class TaskRecordTests(TaskFixture):
         view = self.resume()
         self.assertEqual(view['status'], 'no_task')
         self.assertTrue(view['next_actions'][0].startswith('prepare'))
-        self.assertFalse((self.root / '.team-workflow/local').exists())
+        self.assertFalse((self.root / '.workflow/local').exists())
 
 
 class ReviewRegressionTests(Fixture):
@@ -189,7 +189,7 @@ class ReviewRegressionTests(Fixture):
 
     def test_hand_edited_acceptance_mapping_is_detected(self):
         self.prepare()
-        path = self.root / '.team-workflow/tasks/pr-3/task.json'
+        path = self.root / '.workflow/tasks/pr-3/task.json'
         value = json.loads(path.read_text())
         value['acceptance'][0]['checks'] = ['lint']
         path.write_text(json.dumps(value))
@@ -215,7 +215,7 @@ class ReviewRegressionTests(Fixture):
     def test_option_like_handoff_head_is_not_passed_to_git(self):
         self.prepare()
         self.draft()
-        path = self.root / '.team-workflow/tasks/pr-3/handoff.json'
+        path = self.root / '.workflow/tasks/pr-3/handoff.json'
         value = json.loads(path.read_text())
         value['code']['head'] = '--output=/tmp/twc-x'
         path.write_text(json.dumps(value))
@@ -234,7 +234,7 @@ class ReviewRegressionTests(Fixture):
 class BaseRefTests(TaskFixture):
     def test_branch_only_clone_resumes_with_a_namespaced_base(self):
         self.git('branch', 'release/current', self.base)
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         path.write_text(path.read_text().replace(f'base_ref = "{self.base}"', 'base_ref = "release/current"'))
         self.git('commit', '-qam', 'namespaced base')
         self.git('switch', '-qc', 'alice/feature')
@@ -267,7 +267,7 @@ class BaseRefTests(TaskFixture):
                 workspace.resolve_base(self.root, ref)
 
     def test_branch_only_clone_uses_the_single_remote_tracking_base(self):
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         path.write_text(path.read_text().replace(f'base_ref = "{self.base}"', 'base_ref = "main"'))
         self.git('commit', '-qam', 'base_ref main')
         self.git('switch', '-qc', 'alice/feature')

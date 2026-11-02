@@ -31,7 +31,7 @@ class StatuslineTests(unittest.TestCase):
 
     def configure(self, mode='personal'):
         policy.init(self.root, '', '', 'main', apply=True, mode=mode)
-        return self.root / '.team-workflow/config.toml'
+        return self.root / '.workflow/config.toml'
 
     def cli(self, *args, data=None):
         result = subprocess.run([sys.executable, '-B', str(RUNTIME / 'workflow_status.py'), *args],
@@ -43,7 +43,7 @@ class StatuslineTests(unittest.TestCase):
 
     def test_missing_mode_never_guesses_or_initializes(self):
         self.assertEqual(self.cli('--project', str(self.root)), 'Workflow: 未配置')
-        self.assertFalse((self.root / '.team-workflow').exists())
+        self.assertFalse((self.root / '.workflow').exists())
 
     def test_utf8_status_text_survives_ascii_pipe_encoding(self):
         self.env['PYTHONIOENCODING'] = 'ascii'
@@ -64,12 +64,12 @@ class StatuslineTests(unittest.TestCase):
 
     def test_linked_worktree_reads_its_own_config(self):
         self.configure()
-        self.git('add', '.team-workflow/config.toml')
+        self.git('add', '.workflow/config.toml')
         self.git('-c', 'user.name=fixture', '-c', 'user.email=fixture@example.invalid',
                  '-c', 'core.hooksPath=/dev/null', 'commit', '-qm', 'fixture')
         other = self.root.parent / 'linked'
         self.git('worktree', 'add', '-qb', 'other', str(other))
-        config = other / '.team-workflow/config.toml'
+        config = other / '.workflow/config.toml'
         config.write_text(config.read_text().replace('"personal"', '"team"'))
         self.assertEqual(self.cli('--project', str(other)), 'Workflow: team')
         self.assertEqual(self.cli('--project', str(self.root)), 'Workflow: solo')
@@ -77,7 +77,7 @@ class StatuslineTests(unittest.TestCase):
     def test_legacy_configuration_keeps_team_meaning(self):
         policy.init(self.root, 'https://cnb.cool', 'example/project', 'main',
                     provider='cnb', apply=True, mode='team')
-        config = self.root / '.team-workflow/config.toml'
+        config = self.root / '.workflow/config.toml'
         lines = config.read_text().replace('schema_version = 2', 'schema_version = 1').splitlines()
         config.write_text('\n'.join(line for line in lines
                                     if not line.startswith(('development_mode', 'project_id'))))

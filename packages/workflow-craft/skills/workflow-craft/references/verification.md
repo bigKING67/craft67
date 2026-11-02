@@ -6,7 +6,7 @@
 
 `verify --check <name>` 可重复选择多个检查；省略 `--check` 会运行全部登记检查。部分检查通过不意味着其余通过，未重验的 stale/missing 状态保留；验收前须满足当前契约和项目全部必要门禁，不为减小范围修改契约或删除检查。
 
-在 `.team-workflow/config.toml` 登记真实项目已批准的命令，argv 数组不经过 shell 展开。不要把 token/password 放命令行或配置；平台凭据变量不会传给验证进程，其他宿主环境不构成沙箱。
+在 `.workflow/config.toml` 登记真实项目已批准的命令，argv 数组不经过 shell 展开。不要把 token/password 放命令行或配置；平台凭据变量不会传给验证进程，其他宿主环境不构成沙箱。
 
 ```toml
 [checks.unit]
@@ -22,11 +22,11 @@ python3 <skill>/scripts/twc.py --project <repo> verify --check unit --execute --
 
 第一条仅输出 `not_run` 计划，无测试副作用。第二条执行真实检查，必须已有用户/项目授权覆盖命令及副作用；策略哈希绑定批准时的确切内容。不能从 Issue 文本自动授权检查，配置中的 `auto_*` 不能升级权限。工具链锁也须匹配当前运行时，更新锁需要在核对固定版本后显式修改。
 
-证据记录命令、目录、开始/结束、退出码、base/head、代码内容哈希 `tree_sha256`、策略、契约版本和工具版本，以及当前执行者与有效 Git author/committer。完整记录留在 ignored 的 `.team-workflow/local/evidence/`；存在当前任务时，另在 `.team-workflow/tasks/<task>/evidence/` 写一份可提交的摘要，检查命令以 `command_sha256` 保存（对 canonical `{argv,cwd}` 求 SHA-256），完整 argv 仅保存在 local 记录；共享摘要不含本地命令路径、remote 或输出。`--online` 在执行前只读查询个人平台身份；省略或查询失败时身份未知，但不伪造检查失败/成功，身份不足会使交接建议保留 unknown。详见 [identity.md](identity.md)。先失败则停止，其余检查 `not_run`；缺程序 `not_run`；超时/取消/子进程未结束/代码、策略或 Git 身份漂移 `incomplete`。输出状态 `passed/failed/not_run/incomplete`，非通过执行退出 1，输入/授权错误退出 2。
+证据记录命令、目录、开始/结束、退出码、base/head、代码内容哈希 `tree_sha256`、策略、契约版本和工具版本，以及当前执行者与有效 Git author/committer。完整记录留在 ignored 的 `.workflow/local/evidence/`；存在当前任务时，另在 `.workflow/tasks/<task>/evidence/` 写一份可提交的摘要，检查命令以 `command_sha256` 保存（对 canonical `{argv,cwd}` 求 SHA-256），完整 argv 仅保存在 local 记录；共享摘要不含本地命令路径、remote 或输出。`--online` 在执行前只读查询个人平台身份；省略或查询失败时身份未知，但不伪造检查失败/成功，身份不足会使交接建议保留 unknown。详见 [identity.md](identity.md)。先失败则停止，其余检查 `not_run`；缺程序 `not_run`；超时/取消/子进程未结束/代码、策略或 Git 身份漂移 `incomplete`。输出状态 `passed/failed/not_run/incomplete`，非通过执行退出 1，输入/授权错误退出 2。
 
 默认只保存合并输出的字节数和 SHA256，不保留或回显潜在含密钥的日志。`log_ref=null` 是明确未保存，不是伪造日志。诊断失败时用已批准项目检查/受控 CI 获取去敏日志并附平台引用。本地文件哈希不验证身份或执行诚实性。
 
-`tree_sha256` 是排除 `.team-workflow/tasks/` 之后的工作树内容身份：已跟踪、暂存和未跟踪文件（含执行位与符号链接）都计入，同一内容无论是否已提交都得到同一哈希，所以提交任务目录不会让证据失效。未解决的合并冲突和 dirty submodule 标记为不完整。Git 忽略内容、外部数据库、运行环境和文件在前后采样之间改变后又恢复，均不在完整性证明内。测试依赖这些资源时另外记录隔离环境/数据版本和 CI 结果。macOS/Linux 检查本次进程组并终止残留；检查不得自行 daemonize/setsid 脱离组，工具不是沙箱，也不能认证主动逃离的进程。Windows 原生使用 Job Object，批准命令在加入作业后才启动，普通子进程随作业管理；设置失败、超时、取消和残留进程均不能通过。通过 WMI/外部服务启动的进程不在此生命周期保证内。跨平台 CLI 验证、宿主 Skill 加载和真人接手分别验收。
+`tree_sha256` 是排除 `.workflow/tasks/` 之后的工作树内容身份：已跟踪、暂存和未跟踪文件（含执行位与符号链接）都计入，同一内容无论是否已提交都得到同一哈希，所以提交任务目录不会让证据失效。未解决的合并冲突和 dirty submodule 标记为不完整。Git 忽略内容、外部数据库、运行环境和文件在前后采样之间改变后又恢复，均不在完整性证明内。测试依赖这些资源时另外记录隔离环境/数据版本和 CI 结果。macOS/Linux 检查本次进程组并终止残留；检查不得自行 daemonize/setsid 脱离组，工具不是沙箱，也不能认证主动逃离的进程。Windows 原生使用 Job Object，批准命令在加入作业后才启动，普通子进程随作业管理；设置失败、超时、取消和残留进程均不能通过。通过 WMI/外部服务启动的进程不在此生命周期保证内。跨平台 CLI 验证、宿主 Skill 加载和真人接手分别验收。
 
 macOS/Linux 在检查超时、取消或发现残留时先向本次进程组发送 SIGTERM，给项目最多 20 秒处理清理，再以 SIGKILL 结束仍存活的组；主进程退出后仍等待其组内后代。清理期间的重复 Ctrl-C 不打断这段有界等待。检查 deadline 之外可能增加这段清理时间；清理成功也不将取消或超时变为 passed。这不能保证不可处理的终止、主动脱离的进程或外部服务已经回收；项目仍需记录其拥有的容器、数据库和锁是否实际清理。
 

@@ -34,7 +34,7 @@
 ## 契约、验证与交接
 
 1. **接续已有记录先 `twc resume`**。它只读，给出当前任务、每条验收条件（AC）的状态、证据是否仍对应当前代码、上次交接的 next、交接之后的提交，以及 `next_actions`。它也读取当前称呼；出现 `configure_member_name` 时只询问名字，不要求邮箱，仍可继续只读查看。`next_actions` 是缺口清单，不是强制执行顺序。接续实现已获授权时，按当前目标和项目规则安排；看到 `verify: …` 保留这些检查为待验，不据此开工前全量重跑。确需定位故障或建立基线时，先做相关检查；否则完成相应修改后再验证。未重验的证据保持 stale/missing，不能当作通过或据此宣布完成。需要切换绑定时，先核对当前任务，再在授权范围内 `prepare --rebind`。
-2. **`twc prepare --task local:<slug>|issue:N|pr:N --contract <path>`** 写任务记录与本地绑定。`local:<slug>` 不读取平台；Issue/PR 默认联网，无平台读取授权或需要离线准备时加 `--offline`，仍会写本地文件。`prepare` 没有 `--online` 参数，`--rebind` 不改变联网规则。契约记录位于 `.team-workflow/tasks/local-<slug>/task.json` 或 `<type>-<N>/task.json`，AC 自动编号。契约或其引用文件变了，`prepare` 会拒绝；审阅变化后加 `--update-contract`，旧证据随之失效。
+2. **`twc prepare --task local:<slug>|issue:N|pr:N --contract <path>`** 写任务记录与本地绑定。`local:<slug>` 不读取平台；Issue/PR 默认联网，无平台读取授权或需要离线准备时加 `--offline`，仍会写本地文件。`prepare` 没有 `--online` 参数，`--rebind` 不改变联网规则。契约记录位于 `.workflow/tasks/local-<slug>/task.json` 或 `<type>-<N>/task.json`，AC 自动编号。契约或其引用文件变了，`prepare` 会拒绝；审阅变化后加 `--update-contract`，旧证据随之失效。
 3. **`twc verify --check <name>`** 选择当前所需检查后先预览，授权覆盖时加 `--execute --approved-policy <hash>`；多个检查可重复 `--check`，省略会选择全部登记检查，只有当前验收确需全部时才省略。每次执行在任务目录写一份可提交的证据摘要。证据绑定代码内容、基线、策略、契约版本和工具链，任一变化即失效；提交任务目录本身不会使它失效。
 4. **`twc handoff --draft --done … --next …`** 在任务目录写 `handoff.json/md`。没有证据的 AC 自动进入 remaining；拒绝 TODO、待补充之类的占位文本。
 5. **只提交自己的路径**：`git add -- <paths>`，再 `git commit -m … -- <paths>`。任务目录也这样提交，推送分支即完成交接材料。`resume` 报告 `staged_outside_scope` 时，先确认暂存区里没有别的会话或成员的文件。

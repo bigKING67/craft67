@@ -1,5 +1,21 @@
 # Host compatibility
 
+## 0.8.0 project directory migration (2026-11-02)
+
+New repositories initialize `.workflow/`; existing `.team-workflow/` repositories
+keep their selected directory until explicit content-approved migration. Local
+macOS regression exercises both layouts, byte/mode preservation (including CRLF
+contract input), historical source/actor retention, stale evidence followed by
+fresh verification, collisions, tracked local state, linked paths, failed rename
+recovery and actual CLI contention at both sides of relocation. The mode-write
+and local-link findings from independent diff review have dedicated regressions;
+a second incremental review accepted both fixes. The no-replace macOS primitive
+was checked against the local SDK and exercised against a late empty directory.
+
+The new Windows and Linux rename branches still require native target-platform
+qualification; previous platform results below apply to their recorded versions.
+No new native host session, company platform approval or formal Release is implied.
+
 ## 0.7.3 POSIX check cancellation (2026-11-01)
 
 The changed POSIX stop path sends SIGTERM to the owned process group, allows up

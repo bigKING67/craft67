@@ -9,8 +9,8 @@ python3 <skill>/scripts/twc.py --project <repo> resume
 
 `prepare` 做三件事：
 
-- 把契约记录到 `.team-workflow/tasks/issue-42/task.json`，这个文件随任务分支提交；
-- 把平台快照写进 ignored 的 `.team-workflow/local/packets/`，平台正文只供宿主理解，不进仓库；
+- 把契约记录到 `.workflow/tasks/issue-42/task.json`，这个文件随任务分支提交；
+- 把平台快照写进 ignored 的 `.workflow/local/packets/`，平台正文只供宿主理解，不进仓库；
 - 绑定当前工作区，并记录准备时的 Git 分支。
 
 离线加 `--offline`，平台事实记为未知。已有不同的本地绑定会被拒绝；确定切换任务时才用 `--rebind`，它只改本地绑定，绝不认领平台任务。

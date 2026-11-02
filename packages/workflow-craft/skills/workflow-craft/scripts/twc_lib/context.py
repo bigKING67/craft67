@@ -42,7 +42,7 @@ def binding(root, session=None):
         return None
     # Legacy v2 bindings already point to a local packet containing the prepared branch.
     packet = value.get('packet')
-    if 'branch' not in value and isinstance(packet, str) and packet.startswith('.team-workflow/local/packets/'):
+    if 'branch' not in value and isinstance(packet, str) and packet.startswith(('.workflow/local/packets/', '.team-workflow/local/packets/')):
         source = relative_path(root, packet)
         if source.is_file():
             snapshot = read_json(source)

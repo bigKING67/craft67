@@ -68,8 +68,8 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
 
             def share(project, message):
                 # Commit only the task directory, never another session's staged work.
-                git(project, 'add', '--', '.team-workflow/tasks')
-                git(project, 'commit', '-qm', message, '--', '.team-workflow/tasks')
+                git(project, 'add', '--', '.workflow/tasks')
+                git(project, 'commit', '-qm', message, '--', '.workflow/tasks')
 
             alice = root / 'alice'
             alice.mkdir()
@@ -96,7 +96,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
             git(alice, 'push', '-q', '-u', 'origin', 'main')
             twc(alice, cli_a, 'init', '--mode', 'team', '--provider', 'cnb', '--base-url', 'https://cnb.cool',
                 '--repository', 'fixture/product', '--base-ref', 'origin/main', '--apply')
-            config = alice / '.team-workflow/config.toml'
+            config = alice / '.workflow/config.toml'
             with config.open('a') as stream:
                 stream.write('\n[checks.unit]\nargv = ' + json.dumps(
                     [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests']) + '\ncwd = "."\n')
@@ -105,8 +105,8 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
                             acceptance=[dict(text='Core and feature checks pass together on the latest main', checks=['unit'])],
                             integrator='sixseven', contracts=['protocol.py'], complexity='L2', risk='normal')
             (alice / 'contract.json').write_text(json.dumps(contract))
-            commit(alice, 'Shared workflow contract', '.team-workflow/config.toml',
-                   '.team-workflow/toolchain.lock.json', '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json')
+            commit(alice, 'Shared workflow contract', '.workflow/config.toml',
+                   '.workflow/toolchain.lock.json', '.workflow/.gitignore', '.workflow/.gitattributes', 'contract.json')
             git(alice, 'push', '-q', 'origin', 'main')
             bob, integrator = root / 'bob', root / 'integrator'
             for project, name in ((bob, 'Bob'), (integrator, 'sixseven')):
@@ -142,7 +142,7 @@ class CrossCloneAcceptanceTests(unittest.TestCase):
             # Bob continues from the pushed branch alone: no copied files, packet or binding.
             git(bob, 'fetch', '-q', 'origin')
             git(bob, 'switch', '-qc', 'bob/renderer', 'origin/alice/renderer')
-            self.assertFalse((bob / '.team-workflow/local').exists())
+            self.assertFalse((bob / '.workflow/local').exists())
             view = twc(bob, cli_b, 'resume')
             self.assertEqual(view['resolved_by'], 'branch_changes')
             self.assertEqual(view['last_handoff']['next_steps'], ['sixseven reviews integration'])

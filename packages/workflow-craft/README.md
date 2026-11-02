@@ -1,6 +1,6 @@
 # Workflow Craft
 
-个人或团队共用的任务、验证与接续流程。正式包名和 Skill 调用名为 `workflow-craft`（原 `team-workflow-craft`）。已有 `.team-workflow/` 数据、`TWC_*` 环境变量和 `twc.py` 命令路径保留兼容。
+个人或团队共用的任务、验证与接续流程。正式包名和 Skill 调用名为 `workflow-craft`（原 `team-workflow-craft`）。已有 `.workflow/` 数据、`TWC_*` 环境变量和 `twc.py` 命令路径保留兼容。
 
 面向个人或团队、Claude Code / Codex / Pi 混用的软件工作流 Skill：统一任务契约、验证证据与交接，让任务换人、换 Agent 后仍能接续。
 
@@ -18,9 +18,9 @@
 2. **"测过了"有据可查**：验证证据绑定当时的 base/head、未提交内容、命令和策略；代码或基线一变，旧证据自动失效。
 3. **接手的人能直接继续**：交接写清做完了什么、还剩什么、有哪些未知和阻塞，接手者用自己的身份重新核对。
 
-这些事实保存在随任务分支提交的 `.team-workflow/tasks/<task>/` 目录：契约、本地执行进度、证据摘要和最新交接都在里面。平台任务的分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，工具检查整个 Git 根并保留 WIP 边界。
+这些事实保存在随任务分支提交的 `.workflow/tasks/<task>/` 目录：契约、本地执行进度、证据摘要和最新交接都在里面。平台任务的分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，工具检查整个 Git 根并保留 WIP 边界。
 
-**当前为源码 v0.7.3，非正式 Release。** 本版为 macOS/Linux 检查取消和超时增加有界清理等待，避免立即强杀跳过项目的资源回收；仍保留不合作进程的强制结束与 incomplete 状态。0.7.2 已将全局 Skill 收为发现和选路入口，完整规则只从选定项目固定副本读取；旧项目仍读取自己的旧版说明，不自动升级或改变版本锁、模式、规则与历史。原有正文完整迁入 `references/workflow.md`，保留个人/团队、身份、授权及证据合同。各版本独立验证范围见 [兼容性记录](docs/compatibility.md)。
+**当前为源码 v0.8.0，非正式 Release。** 新项目使用 `.workflow/` 存放配置、任务与证据；已有 `.team-workflow/` 继续可用，可预览并显式迁移，历史文件保持原字节。两套目录并存时拒绝选路。宿主 Skill 入口、项目规则及个人/团队模式保持原有职责，见 [目录迁移](skills/workflow-craft/references/project-directory.md)。各版本验证范围见 [兼容性记录](docs/compatibility.md)。
 
 模式按项目首次明确选择，后续复用并可显式切换；见 [开发模式](skills/workflow-craft/references/development-modes.md)。协议仍为 3，升级项目需匹配固定安装和工具链锁；全局安装不自动升级项目。写入锁和验证进程管理支持 POSIX 与原生 Windows。历史候选的宿主结果不代表当前版本的自动发现或模型行为已验收。
 
@@ -66,7 +66,7 @@ python3 skills/workflow-craft/scripts/twc.py --project /path/to/product init --m
   --provider cnb --base-url https://cnb.cool --repository company/product --base-ref origin/main
 ```
 
-核对预览后用 `--apply` 替代 `--dry-run`。只在 `.team-workflow/` 内创建 `config.toml`、`toolchain.lock.json`、忽略 `local/` 的 `.gitignore`，以及保护配置原始字节的 `.gitattributes`；初始化统一写 UTF-8/LF，提交配置时一并提交该属性文件。不改根 `.gitattributes`、AGENTS.md/CLAUDE.md、宿主账号或配置。现有 `.team-workflow` 会拒绝覆盖。base_ref 必须在本地可解析；不会隐式 fetch。已有项目的换行保护见[跨平台接续](skills/workflow-craft/references/development-modes.md#跨平台配置与已有项目)。
+核对预览后用 `--apply` 替代 `--dry-run`。只在 `.workflow/` 内创建 `config.toml`、`toolchain.lock.json`、忽略 `local/` 的 `.gitignore`，以及保护配置原始字节的 `.gitattributes`；初始化统一写 UTF-8/LF，提交配置时一并提交该属性文件。不改根 `.gitattributes`、AGENTS.md/CLAUDE.md、宿主账号或配置。现有 `.team-workflow` 会拒绝覆盖。base_ref 必须在本地可解析；不会隐式 fetch。已有项目的换行保护见[跨平台接续](skills/workflow-craft/references/development-modes.md#跨平台配置与已有项目)。
 
 把项目已批准检查写入配置（命令需匹配真实项目）：
 
@@ -84,7 +84,7 @@ python3 skills/workflow-craft/scripts/twc.py --project /path/to/product resume
 python3 skills/workflow-craft/scripts/twc.py --project /path/to/product verify
 ```
 
-`prepare` 把契约记到 `.team-workflow/tasks/issue-42/task.json`，验收条件自动编号为 AC-1、AC-2…。这个目录随任务分支提交，之后的证据摘要和交接也写在这里。`resume` 是接续已有 TWC 任务时的开场命令：只读，列出每条验收条件的状态、证据是否仍对应当前代码、上次交接的下一步和 `next_actions`。
+`prepare` 把契约记到 `.workflow/tasks/issue-42/task.json`，验收条件自动编号为 AC-1、AC-2…。这个目录随任务分支提交，之后的证据摘要和交接也写在这里。`resume` 是接续已有 TWC 任务时的开场命令：只读，列出每条验收条件的状态、证据是否仍对应当前代码、上次交接的下一步和 `next_actions`。
 
 联网时通过公司批准的秘密管理工具提供 `TWC_CNB_TOKEN` 和 `TWC_CNB_IDENTITY_TOKEN`（Gitea 使用 `TWC_GITEA_TOKEN`），只使用所需的只读权限。CNB 的端点、权限与检查边界见 [CNB 接入](skills/workflow-craft/references/cnb.md)；Gitea 沿用 [Gitea 接入](skills/workflow-craft/references/gitea.md)，初始化显式用 `--provider gitea`。不要把 Token 放命令行、配置或 URL。`doctor --online` 检查身份、仓库及可用版本信息；CNB SaaS 版本为 unsupported；`prepare --offline` 可在网络不可用时保留未知状态。
 
@@ -104,8 +104,8 @@ python3 skills/workflow-craft/scripts/twc.py --project /path/to/product verify \
 ```sh
 python3 skills/workflow-craft/scripts/twc.py --project /path/to/product handoff --draft --online \
   --done "已实现并验证接口" --next "集成负责人核对组合测试和审批"
-git add -- .team-workflow/tasks/issue-42
-git commit -m "twc: hand off issue-42" -- .team-workflow/tasks/issue-42
+git add -- .workflow/tasks/issue-42
+git commit -m "twc: hand off issue-42" -- .workflow/tasks/issue-42
 ```
 
 交接写入任务目录的 `handoff.json/md`，未验证的验收条件自动列入 remaining，占位文本会被拒绝。平台交接未刷新时 `unknown`，本地任务不要求平台刷新；未提交工作、陈旧证据等为 `not_ready`；`--online` 可重新读 PR。`advisory_ready` 只表示对应 `readiness_scope` 的材料可供本地接续或平台人工审查，永远不是合并授权。提交任务目录并推送分支后，接手者 clone、切到该分支、运行 `resume` 即可继续，不需要对方的任何本地文件。提交一律带 pathspec，避免把别的会话暂存的文件带进来。
@@ -132,7 +132,7 @@ git commit -m "twc: hand off issue-42" -- .team-workflow/tasks/issue-42
 
 ```sh
 python3 scripts/build.py --output-dir /path/to/approved-artifacts
-python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.7.3.zip \
+python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.8.0.zip \
   --project /path/to/product --host codex
 # 核对目标、产物和来源后加 --apply；Claude 用 --host claude，Pi 用 --host pi。
 ```
@@ -142,20 +142,20 @@ python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft
 全局启用用同一固定产物，先预览，再在授权范围内加 `--apply`：
 
 ```sh
-python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.7.3.zip --global --host codex
+python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.8.0.zip --global --host codex
 ```
 
 Codex 与 Pi 共用 `~/.agents/skills/workflow-craft/`，Claude 写入 `~/.claude/skills/workflow-craft/`。检测到已知 Codex/Pi 另一条全局发现路径中的同名或旧名副本时，先核对迁移，不再增加重复安装。只安装选定入口，不改全局 AGENTS、CLAUDE、宿主配置或状态栏。已有同名未知/漂移安装拒绝覆盖；固定版本升级仍需 `--allow-upgrade`。宿主需重新发现 Skill，新会话可显式调用。进入具体项目后按 [全局入口与项目固定版本](skills/workflow-craft/references/development-modes.md#全局入口与项目固定版本) 选择副本，不用全局运行时直接管理项目任务。
 
 Claude Code 在个人与项目目录存在同名 Skill 时优先加载个人副本，这是[宿主的名称解析规则](https://code.claude.com/docs/en/skills#resolve-skills-that-share-a-name)。先加载全局 Skill 不等于已经使用项目固定版本：全局入口须先执行只读 `entry --host claude`，后续按返回的项目 `skill` / `cli` 工作。项目如维护入口指针，应区分 Claude 的 `.claude` 与 Codex/Pi 的 `.agents`；共用编码规则仍保留在原 AGENTS/CLAUDE 中。AIOS 的[原生接续演练](docs/aios-migration-rehearsal.md)保留了错误选路和修正后的实际样本，不能仅凭 Skill 名称或安装文件判断加载成功。
 
-升级保留项目的旧工具链锁。先让所有项目宿主入口安装同一批准产物，再从新安装副本运行 `doctor --local`：安装完整性应为 `matched`，旧锁会显示 `mismatch`。核对批准的 ZIP SHA-256 与安装清单后，在已授权升级范围内，将 `.team-workflow/toolchain.lock.json` 的 `version`、`protocol_version`、`runtime_tree_sha256` 更新为本次诊断的 `runtime` 值，保留锁的其余字段；再次运行 `doctor --local`，确认所有入口与锁都匹配。不同内容需独立版本，不能用同版本覆盖绕过保护。历史任务和证据保留，涉及工具链变更的旧通过需重新验证。
+升级保留项目的旧工具链锁。先让所有项目宿主入口安装同一批准产物，再从新安装副本运行 `doctor --local`：安装完整性应为 `matched`，旧锁会显示 `mismatch`。核对批准的 ZIP SHA-256 与安装清单后，在已授权升级范围内，将 `.workflow/toolchain.lock.json` 的 `version`、`protocol_version`、`runtime_tree_sha256` 更新为本次诊断的 `runtime` 值，保留锁的其余字段；再次运行 `doctor --local`，确认所有入口与锁都匹配。不同内容需独立版本，不能用同版本覆盖绕过保护。历史任务和证据保留，涉及工具链变更的旧通过需重新验证。
 
 Codex/Pi 使用 `.agents/skills/workflow-craft/`；Claude 使用 `.claude/skills/workflow-craft/`。调用分别为 `$workflow-craft`、`/skill:workflow-craft`、`/workflow-craft`。
 
-从旧名迁移时仍使用新包安装器的 `--project ... --host ... --allow-upgrade` 先预览，再按授权加 `--apply`。它验证同目录旧安装清单和全部文件，迁移到新名称，并移除已核验的旧 Skill 副本，避免双重加载；漂移、未知副本、符号链接或新旧名称并存会拒绝。项目 `.team-workflow/`、AGENTS.md、CLAUDE.md 和其他 Skill 不变；旧锁需按上文另行核对升级，`skill` 标识可同步更新为 `workflow-craft`。现有用户安装不会随源码改名自动迁移。
+从旧名迁移时仍使用新包安装器的 `--project ... --host ... --allow-upgrade` 先预览，再按授权加 `--apply`。它验证同目录旧安装清单和全部文件，迁移到新名称，并移除已核验的旧 Skill 副本，避免双重加载；漂移、未知副本、符号链接或新旧名称并存会拒绝。项目 `.workflow/`、AGENTS.md、CLAUDE.md 和其他 Skill 不变；旧锁需按上文另行核对升级，`skill` 标识可同步更新为 `workflow-craft`。现有用户安装不会随源码改名自动迁移。
 
-**推荐：负责人装一次，提交进仓库。** 负责人分别用 `--host codex` 和 `--host claude` 安装，然后把这两个目录和 `.team-workflow/` 一起提交。成员 clone 后即可使用，只需要 Python 3.11+ 和 Git，不用另装 TWC，也不需要 Trellis。`doctor --local` 会核对 clone 下来的副本是否与安装清单一致。升级时由负责人完成上述安装、工具链锁核对与更新后提交，成员 pull 后再做本地预检。项目若忽略了 `.claude/`，需要为 `.claude/skills/workflow-craft/` 加一条例外规则。宿主规则尽量共用 AGENTS.md，Claude 如需 `CLAUDE.md` 导入由项目显式配置。工具不修改它们。三宿主发现路径、实际加载和独立包证据见 [兼容性](docs/compatibility.md)。
+**推荐：负责人装一次，提交进仓库。** 负责人分别用 `--host codex` 和 `--host claude` 安装，然后把这两个目录和 `.workflow/` 一起提交。成员 clone 后即可使用，只需要 Python 3.11+ 和 Git，不用另装 TWC，也不需要 Trellis。`doctor --local` 会核对 clone 下来的副本是否与安装清单一致。升级时由负责人完成上述安装、工具链锁核对与更新后提交，成员 pull 后再做本地预检。项目若忽略了 `.claude/`，需要为 `.claude/skills/workflow-craft/` 加一条例外规则。宿主规则尽量共用 AGENTS.md，Claude 如需 `CLAUDE.md` 导入由项目显式配置。工具不修改它们。三宿主发现路径、实际加载和独立包证据见 [兼容性](docs/compatibility.md)。
 
 ## 开发与验收
 

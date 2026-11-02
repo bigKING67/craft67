@@ -7,7 +7,7 @@ python3 <skill>/scripts/twc.py --project <repo> init --mode team --dry-run \
 python3 <skill>/scripts/twc.py --project <repo> doctor --online
 ```
 
-域名/仓库须替换成真实批准实例；已有 `.team-workflow` 不覆盖。默认不创建或修改 AGENTS.md/CLAUDE.md，不猜测试命令。Trellis 管流程时 init 加 `--workflow-owner trellis`。
+域名/仓库须替换成真实批准实例；已有 `.workflow` 或 `.team-workflow` 不覆盖。默认不创建或修改 AGENTS.md/CLAUDE.md，不猜测试命令。Trellis 管流程时 init 加 `--workflow-owner trellis`。
 
 Token 仅从 `coordination.token_env` 指定的环境变量读取，默认 `TWC_GITEA_TOKEN`；通过公司批准的秘密管理方式提供，不写配置、URL或日志。申请所需最小只读身份/仓库/Issue 权限，具体以实例版本为准。工具不管理模型 Key、宿主登录、账号权限或服务器部署。
 

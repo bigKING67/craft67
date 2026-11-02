@@ -19,7 +19,7 @@ python3 <global-skill>/scripts/twc.py --project <repo> entry --host codex --appl
 python3 <returned-project-cli> --project <repo> init --mode personal --apply
 ```
 
-`entry --apply` 只创建当前宿主的项目 Skill，不初始化模式、不安装其他宿主、不写用户规则或宿主设置。团队模式替换为已选择的 `team`；另一宿主可直接使用已有的项目 CLI，需要原生发现时再按安装说明安装同一批准版本。安装副本与 `.team-workflow/` 应按项目约定一同提交。已有 `.team-workflow/` 却没有项目副本时，需恢复锁中固定的产物，不能当新项目初始化。
+`entry --apply` 只创建当前宿主的项目 Skill，不初始化模式、不安装其他宿主、不写用户规则或宿主设置。团队模式替换为已选择的 `team`；另一宿主可直接使用已有的项目 CLI，需要原生发现时再按安装说明安装同一批准版本。安装副本与 `.workflow/` 应按项目约定一同提交。已有 `.workflow/` 却没有项目副本时，需恢复锁中固定的产物，不能当新项目初始化。
 
 全局目录与宿主发现由宿主管理。打开文件夹本身不会执行提醒；仅在宿主实际选择/显式调用 Skill 时开始上述流程，不安装 Hook 或每轮注入。已有项目的原生入口优先级仍须按宿主实测，CLI 选择结果不等于宿主已加载。
 
@@ -57,9 +57,9 @@ python3 <skill>/scripts/twc.py --project <repo> init --mode team \
 
 ## 跨平台配置与已有项目
 
-策略批准和证据绑定 `config.toml` 的原始字节。0.6.3 起，`init` 在 `.team-workflow/.gitattributes` 中写入 `/config.toml -text`，避免 Windows Git 自动换行改变策略哈希；新文件统一写 UTF-8/LF。应把该属性文件与配置一同提交。已有根属性和用户规则不改写；实际编辑配置仍会改变策略哈希，旧批准与证据照常失效。
+策略批准和证据绑定 `config.toml` 的原始字节。0.6.3 起，`init` 在 `.workflow/.gitattributes` 中写入 `/config.toml -text`，避免 Windows Git 自动换行改变策略哈希；新文件统一写 UTF-8/LF。应把该属性文件与配置一同提交。已有根属性和用户规则不改写；实际编辑配置仍会改变策略哈希，旧批准与证据照常失效。
 
-升级 Skill 不自动迁移已有项目。项目出现仅换行造成的跨 clone `stale` 时，先核对 Git blob、工作区字节及本地改动；在已授权修复范围内，将同一规则合入现有的 `.team-workflow/.gitattributes`（没有时创建），不覆盖其余规则，并以已核对的版本化配置统一字节。旧记录保持原样，按正常流程记录所需的新验证；不手改旧策略哈希。跨机器复验需同时检查配置字节、策略哈希和 `resume`，不能仅以测试通过或安装完整性代替。
+升级 Skill 不自动迁移已有项目。项目出现仅换行造成的跨 clone `stale` 时，先核对 Git blob、工作区字节及本地改动；在已授权修复范围内，将同一规则合入现有的 `.workflow/.gitattributes`（没有时创建），不覆盖其余规则，并以已核对的版本化配置统一字节。旧记录保持原样，按正常流程记录所需的新验证；不手改旧策略哈希。跨机器复验需同时检查配置字节、策略哈希和 `resume`，不能仅以测试通过或安装完整性代替。
 
 ## 后续切换
 

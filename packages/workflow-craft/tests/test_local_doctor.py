@@ -66,7 +66,7 @@ class LocalDoctorTests(unittest.TestCase):
         self.assertEqual(report['toolchain']['status'], 'missing')
         self.assertEqual(report['platform']['status'], 'not_requested')
         self.assertIn('initialize_project', report['next_steps'])
-        self.assertFalse((self.project / '.team-workflow').exists())
+        self.assertFalse((self.project / '.workflow').exists())
         self.assertEqual(self.snapshot(), before)
 
     def test_configured_workflow_does_not_claim_runtime_or_host_acceptance(self):
@@ -178,14 +178,14 @@ class LocalDoctorTests(unittest.TestCase):
 
     def test_invalid_config_and_lock_are_actionable_without_echoing_content(self):
         self.configure()
-        config = self.project / '.team-workflow/config.toml'
+        config = self.project / '.workflow/config.toml'
         original = config.read_text()
         config.write_text('private_marker_do_not_echo = [invalid')
         report = self.cli('doctor', '--local', expected=1)
         self.assertEqual(report['project_config'], 'invalid')
         self.assertNotIn('private_marker_do_not_echo', json.dumps(report))
         config.write_text(original)
-        (self.project / '.team-workflow/toolchain.lock.json').write_text('{broken')
+        (self.project / '.workflow/toolchain.lock.json').write_text('{broken')
         report = self.cli('doctor', '--local', expected=1)
         self.assertEqual(report['toolchain']['status'], 'invalid')
         self.assertIn('review_toolchain_lock', report['next_steps'])
@@ -214,7 +214,7 @@ class LocalDoctorTests(unittest.TestCase):
     def test_unsafe_state_path_is_reported_without_following_it(self):
         external = self.root / 'external'
         external.mkdir()
-        (self.project / '.team-workflow').symlink_to(external, target_is_directory=True)
+        (self.project / '.workflow').symlink_to(external, target_is_directory=True)
         report = self.cli('doctor', '--local', expected=1)
         self.assertEqual(report['project_config'], 'unsafe_path')
         self.assertEqual(list(external.iterdir()), [])
@@ -241,7 +241,7 @@ class LocalDoctorTests(unittest.TestCase):
                                  'doctor', '--local', '--online'], env=self.env,
                                 capture_output=True, text=True, timeout=15)
         self.assertEqual(result.returncode, 2)
-        self.assertFalse((self.project / '.team-workflow').exists())
+        self.assertFalse((self.project / '.workflow').exists())
 
 
 if __name__ == '__main__':

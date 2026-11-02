@@ -1,6 +1,6 @@
 # 可选宿主状态栏
 
-读取当前 Git 工作树的 `.team-workflow/config.toml`，显示 `Workflow: solo` 或 `Workflow: team`；`solo` 对应配置中的 `personal`。未配置显示“未配置”，无效配置显示“配置错误”，读取失败显示“不可用”。旧 v1 配置仍显示 team。它只说明项目模式，不证明 Skill 加载、验证通过、平台审批或授权。
+读取当前 Git 工作树的 `.workflow/config.toml`，显示 `Workflow: solo` 或 `Workflow: team`；`solo` 对应配置中的 `personal`。未配置显示“未配置”，无效配置显示“配置错误”，读取失败显示“不可用”。旧 v1 配置仍显示 team。它只说明项目模式，不证明 Skill 加载、验证通过、平台审批或授权。
 
 适配器包含在安装产物里，但不会自动启用、改宿主设置或替换已有状态栏。需要 Python 3.11+、Git；Pi 继续使用宿主自己的 Node。路径中的 `<skill>` 必须换成**实际安装副本**，不要指向开发源码。
 

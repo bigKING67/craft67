@@ -118,7 +118,7 @@ class LifecycleTests(TaskFixture):
         self.move('start')
         self.verify_session()
         self.assertIn('explicit_acceptance_review_missing_or_invalid', self.move('complete')['blockers'])
-        review = self.root / '.team-workflow/tasks/local-one/review.md'
+        review = self.root / '.workflow/tasks/local-one/review.md'
         review.write_text('Reviewer checked the copy against the accepted wording.\n')
         relative = review.relative_to(self.root).as_posix()
         result = self.move('complete', reviewed=['AC-2'], review_evidence=[relative])
@@ -154,11 +154,11 @@ class LifecycleTests(TaskFixture):
         with patch.dict(os.environ, {k: v for k, v in os.environ.items() if k != 'TWC_SESSION_ID'}, clear=True):
             with self.assertRaisesRegex(WorkflowError, 'session'):
                 self.create(session=None)
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         path.write_text(path.read_text().replace('workflow_owner = "workflow-craft"', 'workflow_owner = "trellis"'))
         with self.assertRaisesRegex(WorkflowError, 'Trellis owns'):
             self.create()
-        self.assertFalse((self.root / '.team-workflow/tasks/local-one').exists())
+        self.assertFalse((self.root / '.workflow/tasks/local-one').exists())
 
     def test_legacy_contract_adoption_is_explicit_and_preserves_evidence(self):
         self.prepare('local:one')
@@ -189,7 +189,7 @@ class LifecycleTests(TaskFixture):
 
     def test_graph_tampering_and_session_symlinks_fail_closed(self):
         self.create()
-        path = self.root / '.team-workflow/tasks/local-one/task.json'
+        path = self.root / '.workflow/tasks/local-one/task.json'
         row = json.loads(path.read_text())
         row['execution']['parent'] = row['task_ref']
         path.write_text(json.dumps(row))
@@ -226,7 +226,7 @@ class LifecycleTests(TaskFixture):
         self.assertEqual(self.view()['checks']['unit']['status'], 'stale')
 
     def test_read_only_cli_list_does_not_create_local_state(self):
-        local = self.root / '.team-workflow/local'
+        local = self.root / '.workflow/local'
         self.assertFalse(local.exists())
         run = subprocess.run([sys.executable, '-B', str(RUNTIME / 'twc.py'), '--project', str(self.root), 'task', 'list'],
                              text=True, capture_output=True)

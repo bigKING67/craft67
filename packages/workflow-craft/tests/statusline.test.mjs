@@ -16,7 +16,7 @@ const ctx = { cwd: root, hasUI: true, ui: { setStatus(key, value) {
 const emit = (event, context = ctx) => handlers.get(event)({}, context);
 await emit('session_start');
 assert.equal(statuses.get('workflow-craft'), 'Workflow: solo');
-const config = path.join(root, '.team-workflow/config.toml');
+const config = path.join(root, '.workflow/config.toml');
 const original = await readFile(config, 'utf8');
 await writeFile(config, original.replace('"personal"', '"team"'));
 await emit('agent_end');

@@ -39,7 +39,7 @@ class PolicyPortabilityTests(unittest.TestCase):
             git(source, 'commit', '-qm', 'baseline')
             base = git(source, 'rev-parse', 'HEAD')
             policy.init(source, None, None, base, apply=True, mode='personal')
-            path = source / '.team-workflow/config.toml'
+            path = source / '.workflow/config.toml'
             self.assertNotIn(b'\r\n', path.read_bytes())
             content = path.read_text(encoding='utf-8')
             content += '\n[checks.unit]\nargv = ' + json.dumps([sys.executable, '-c', 'print("ok")'])
@@ -49,7 +49,7 @@ class PolicyPortabilityTests(unittest.TestCase):
                             acceptance=[dict(text='unit passes', checks=['unit'])], contracts=[],
                             complexity='L1', risk='normal')
             (source / 'contract.json').write_bytes(json.dumps(contract).encode('utf-8'))
-            git(source, 'add', '--', '.team-workflow', 'contract.json')
+            git(source, 'add', '--', '.workflow', 'contract.json')
             git(source, 'commit', '-qm', 'workflow configuration')
             config, sha = policy.load(source)
             lifecycle.create(source, config, sha, 'local:portable', 'contract.json', session='source')
@@ -59,7 +59,7 @@ class PolicyPortabilityTests(unittest.TestCase):
             self.assertEqual(result['status'], 'passed')
             self.assertEqual(lifecycle.transition(source, config, sha, 'complete',
                                                   'local:portable', 'source')['execution_state'], 'completed')
-            git(source, 'add', '--', '.team-workflow/tasks')
+            git(source, 'add', '--', '.workflow/tasks')
             git(source, 'commit', '-qm', 'completed task')
             self.assertEqual((source / '.gitattributes').read_bytes(), attributes)
 
@@ -67,7 +67,7 @@ class PolicyPortabilityTests(unittest.TestCase):
                 with self.subTest(autocrlf=autocrlf, newline=repr(newline)):
                     clone = root / ('receiver-' + autocrlf)
                     git(root, 'clone', '-q', '-c', 'core.autocrlf=' + autocrlf, str(source), str(clone))
-                    self.assertEqual((clone / '.team-workflow/config.toml').read_bytes(), path.read_bytes())
+                    self.assertEqual((clone / '.workflow/config.toml').read_bytes(), path.read_bytes())
                     received, received_sha = policy.load(clone)
                     self.assertEqual(received_sha, sha)
                     view = tasks.resume(clone, received, received_sha, policy.runtime_identity(),
@@ -76,7 +76,7 @@ class PolicyPortabilityTests(unittest.TestCase):
                     self.assertEqual(view['checks']['unit']['status'], 'passed')
                     # An actual policy edit must still invalidate evidence and
                     # reject the approval bound to the previous policy bytes.
-                    changed = clone / '.team-workflow/config.toml'
+                    changed = clone / '.workflow/config.toml'
                     changed.write_bytes(changed.read_bytes().replace(b'timeout_seconds = 5', b'timeout_seconds = 6'))
                     updated, new_sha = policy.load(clone)
                     self.assertNotEqual(new_sha, sha)

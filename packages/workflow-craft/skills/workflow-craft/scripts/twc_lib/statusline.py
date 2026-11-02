@@ -4,6 +4,7 @@ from pathlib import Path
 import subprocess
 import tomllib
 
+from . import layout
 from .models import WorkflowError
 from .policy import development_mode, validate_config
 
@@ -23,7 +24,7 @@ def read_mode(project):
         if result.returncode != 0:
             return 'unconfigured'
         root = Path(os.fsdecode(result.stdout).strip())
-        directory = root / '.team-workflow'
+        directory = layout.directory(root)
         path = directory / 'config.toml'
         if directory.is_symlink() or path.is_symlink():
             return 'invalid'

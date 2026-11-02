@@ -3,7 +3,7 @@ import json
 import os
 import uuid
 
-from . import context, policy, tasks
+from . import layout, context, policy, sessions, tasks
 from .models import WorkflowError, digest, relative_path, task_label
 
 MODE_PROMPT = '这个项目准备怎样开发？请选择个人开发（推荐，可使用多个 Agent）或团队协作（多人分工、交接与评审）。'
@@ -35,7 +35,14 @@ def config_text(config):
     return '\n'.join(lines) + '\n'
 
 
-def change(root, selected=None, *, apply=False, approved_policy=None,
+def change(root, selected=None, **kwargs):
+    if kwargs.get('apply'):
+        with sessions.workspace_lock(root):
+            return _change(root, selected, **kwargs)
+    return _change(root, selected, **kwargs)
+
+
+def _change(root, selected=None, *, apply=False, approved_policy=None,
            provider=None, base_url=None, repository=None):
     config, sha = policy.load(root)
     report = dict(action='mode', development_mode=describe(config), policy_sha256=sha, applied=False)
@@ -69,12 +76,12 @@ def change(root, selected=None, *, apply=False, approved_policy=None,
         last_handoff=None if previous is None else {
             key: previous.get(key) for key in ('readiness', 'remaining', 'next_steps', 'blockers', 'unknowns')})
     unchanged = updated == config
-    path = relative_path(root, '.team-workflow/config.toml', must_exist=True)
-    if path.is_symlink() or (root / '.team-workflow').is_symlink():
+    path = relative_path(root, layout.relative(root, 'config.toml'), must_exist=True)
+    if path.is_symlink() or layout.unsafe(layout.directory(root)):
         raise WorkflowError('Project configuration cannot be a symlink')
     content = path.read_text(encoding='utf-8') if unchanged else config_text(updated)
     report.update(target_mode=selected, current_task=current_task, changed=not unchanged,
-                  files={'.team-workflow/config.toml': content},
+                  files={path.relative_to(root).as_posix(): content},
                   effects=[] if unchanged else ['previous_verification_becomes_stale'],
                   preserved=['task_records', 'actors', 'evidence', 'bindings', 'checks', 'platform_connection',
                              'existing_task_integrator_and_platform_requirements'],

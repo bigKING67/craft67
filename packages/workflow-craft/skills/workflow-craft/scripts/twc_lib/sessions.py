@@ -3,10 +3,12 @@ from contextlib import contextmanager
 from functools import wraps
 import errno
 import os
+from pathlib import Path
 import re
 import threading
 
 from .models import WorkflowError, digest, local_target, read_json
+from . import layout
 
 _held = threading.local()
 
@@ -31,7 +33,7 @@ def path(root, session=None, *, writing=False):
     filename = digest(session.encode()) + '.json' if session else 'binding.json'
     if writing:
         return local_target(root, category, filename)
-    target = root / '.team-workflow/local' / category / filename
+    target = layout.directory(root) / 'local' / category / filename
     if any(part.is_symlink() for part in (target, *target.parents) if root in part.parents):
         raise WorkflowError('Session binding path cannot contain a symlink')
     return target
@@ -61,8 +63,7 @@ def clear(root, session=None):
 
 
 @contextmanager
-def workspace_lock(root):
-    """Serialize tool writes/check execution; raw Git/editor changes remain detectable drift."""
+def file_lock(target):
     if os.name == 'nt':
         import msvcrt
 
@@ -74,12 +75,8 @@ def workspace_lock(root):
 
         def lock(stream, release=False):
             fcntl.flock(stream.fileno(), fcntl.LOCK_UN if release else fcntl.LOCK_EX | fcntl.LOCK_NB)
-    key = str(root.resolve())
-    held = getattr(_held, 'roots', set())
-    if key in held:
-        yield
-        return
-    target = local_target(root, '', 'mutation.lock')
+    if layout.unsafe(target) or (target.exists() and not target.is_file()):
+        raise WorkflowError('Workflow mutex cannot be a symlink, reparse point or non-file')
     with target.open('a+b') as stream:
         os.chmod(target, 0o600)
         try:
@@ -88,12 +85,41 @@ def workspace_lock(root):
             if exc.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
                 raise
             raise WorkflowError('Workspace is busy with another workflow mutation/check; retry after it ends or use a separate worktree') from exc
-        _held.roots = held | {key}
         try:
             yield
         finally:
-            _held.roots = held
             lock(stream, release=True)
+
+
+@contextmanager
+def workspace_lock(root, *, relocating=False):
+    """The worktree Git mutex survives relocation; also respect older runtime locks."""
+    key = str(root.resolve())
+    held = getattr(_held, 'roots', set())
+    if key in held:
+        yield
+        return
+    from .workspace import git
+    target = Path(os.fsdecode(git(root, 'rev-parse', '--git-path', 'workflow-craft-mutation.lock')).strip())
+    if not target.is_absolute():
+        target = root / target
+    with file_lock(target):
+        local = (layout.directory(root) / 'local/mutation.lock' if relocating
+                 else local_target(root, '', 'mutation.lock'))
+        if layout.unsafe(local.parent):
+            raise WorkflowError('Workflow local directory cannot be a symlink or reparse point')
+        _held.roots = held | {key}
+        try:
+            if relocating:
+                if os.path.lexists(local):
+                    with file_lock(local):
+                        pass  # Upgraded lock rejects old writers; drain a writer already in flight.
+                yield
+            else:
+                with file_lock(local):
+                    yield
+        finally:
+            _held.roots = held
 
 
 def serialized(function):

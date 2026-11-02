@@ -102,7 +102,7 @@ class InstalledProductTests(unittest.TestCase):
                     self.assertEqual(named['member']['name'], 'Fixture')
                     self.assertEqual(named['member']['status'], 'available')
                     self.assertNotIn('configure_member_name', named['next_steps'])
-                    self.assertFalse((project / '.team-workflow').exists())
+                    self.assertFalse((project / '.workflow').exists())
             project, cli = projects['codex']
             git = ['git', '-C', str(project)]
             run(git + ['config', 'user.email', 'fixture@example.invalid'])
@@ -116,7 +116,7 @@ class InstalledProductTests(unittest.TestCase):
             self.assertTrue(json.loads(run(command + init + ['--apply']))['applied'])
             self.assertEqual(run([sys.executable, '-B', str(cli.with_name('workflow_status.py')),
                                   '--project', str(project)]).strip(), 'Workflow: team')
-            config = project / '.team-workflow/config.toml'
+            config = project / '.workflow/config.toml'
             with config.open('a') as stream:
                 stream.write('\n[checks.unit]\nargv = ' + json.dumps([sys.executable, 'check.py']) + '\ncwd = "."\n')
             doctor = json.loads(run(command + ['doctor']))
@@ -127,7 +127,7 @@ class InstalledProductTests(unittest.TestCase):
             contract = dict(goal='test a feature', non_goals=[], scope=['check.py'], dependencies=[],
                             acceptance=['arithmetic check'], integrator='maintainer', contracts=[], complexity='L1', risk='normal')
             (project / 'contract.json').write_text(json.dumps(contract))
-            run(git + ['add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json', '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json'])
+            run(git + ['add', '.workflow/config.toml', '.workflow/toolchain.lock.json', '.workflow/.gitignore', '.workflow/.gitattributes', 'contract.json'])
             run(git + ['commit', '-qm', 'workflow'])
             run(git + ['config', '--unset', 'user.name'])
             run(git + ['config', '--unset', 'user.email'])
@@ -136,7 +136,7 @@ class InstalledProductTests(unittest.TestCase):
             run(git + ['config', 'user.name', '67'])
             self.assertEqual(json.loads(run(command + ['doctor', '--local']))['member']['name'], '67')
             prepared = json.loads(run(command + ['prepare', '--task', 'pr:8', '--contract', 'contract.json', '--offline']))
-            self.assertEqual(prepared['task_record'], '.team-workflow/tasks/pr-8/task.json')
+            self.assertEqual(prepared['task_record'], '.workflow/tasks/pr-8/task.json')
             task_path = project / prepared['task_record']
             task_before = task_path.read_bytes()
             self.assertEqual(json.loads(task_before)['recorded_by']['member']['name'], '67')
@@ -188,7 +188,7 @@ class InstalledProductTests(unittest.TestCase):
             self.assertEqual(json.loads(run(command + ['resume'], expected=1))['development_mode']['status'],
                              'selection_required')
             run(command + ['init', '--mode', 'personal', '--apply'])
-            config = project / '.team-workflow/config.toml'
+            config = project / '.workflow/config.toml'
             with config.open('a') as stream:
                 stream.write('\n[checks.unit]\nargv = ' + json.dumps([
                     sys.executable, '-c', 'from pathlib import Path; assert Path("value.txt").read_text() == "ready\\n"']) + '\n')
@@ -196,8 +196,8 @@ class InstalledProductTests(unittest.TestCase):
                             contracts=[], complexity='L1', risk='normal',
                             acceptance=[dict(text='Local content is ready', checks=['unit'])])
             (project / 'contract.json').write_text(json.dumps(contract))
-            run(git + ['add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json',
-                       '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json'])
+            run(git + ['add', '.workflow/config.toml', '.workflow/toolchain.lock.json',
+                       '.workflow/.gitignore', '.workflow/.gitattributes', 'contract.json'])
             run(git + ['-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'workflow'])
             prepared = json.loads(run(command + ['prepare', '--task', 'local:content', '--contract', 'contract.json']))
             self.assertEqual(prepared['platform_status'], 'not_applicable')

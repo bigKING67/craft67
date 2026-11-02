@@ -1,6 +1,6 @@
 # Workflow Craft
 
-帮助个人或团队在不同会话、成员、Claude Code、Codex 或 Pi 之间接续任务。任务、接口与证据留在项目；聊天记录、模型账号和 Agent 进程由各宿主管理。正式入口为 `workflow-craft`，原名 `team-workflow-craft`；已有 `.team-workflow/` 记录路径、`TWC_*` 环境变量和 `twc.py` 命令保留兼容。仅加载一份本 Skill，发现旧名安装时先核对迁移，不同时启用两份。
+帮助个人或团队在不同会话、成员、Claude Code、Codex 或 Pi 之间接续任务。任务、接口与证据留在项目；聊天记录、模型账号和 Agent 进程由各宿主管理。正式入口为 `workflow-craft`，原名 `team-workflow-craft`；新项目数据统一放 `.workflow/`；已有 `.team-workflow/` 按原目录继续工作，迁移须显式执行 [目录迁移](project-directory.md)。`TWC_*` 环境变量和 `twc.py` 命令保留兼容。仅加载一份本 Skill，发现旧名安装时先核对迁移，不同时启用两份。
 
 ## 与项目规则协作
 

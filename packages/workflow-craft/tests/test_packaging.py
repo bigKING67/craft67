@@ -67,7 +67,7 @@ class PackagingTests(unittest.TestCase):
             root = Path(temporary)
             project, legacy, artifact = self.legacy_fixture(root)
             target = legacy.with_name('workflow-craft')
-            history = project / '.team-workflow/tasks/local-existing/task.json'
+            history = project / '.workflow/tasks/local-existing/task.json'
             history.parent.mkdir(parents=True)
             history.write_bytes(b'original history')
             before = {p.relative_to(legacy): p.read_bytes() for p in legacy.rglob('*') if p.is_file()}

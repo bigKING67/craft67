@@ -16,13 +16,13 @@ from twc_lib.models import WorkflowError
 class TaskBoundaryTests(TaskFixture):
     def test_deferred_and_selected_reverification_keep_other_evidence_stale(self):
         self.checks([(name, 'from pathlib import Path; '
-                      f'p=Path(".team-workflow/local/{name}-runs"); '
+                      f'p=Path(".workflow/local/{name}-runs"); '
                       'p.write_text(p.read_text()+"x" if p.exists() else "x")', 5)
                      for name in ('unit', 'full')])
         self.git('commit', '-qam', 'two independently selectable checks')
         self.prepare()
         self.assertEqual(self.verify()['status'], 'passed')
-        task_path = self.root / '.team-workflow/tasks/pr-3/task.json'
+        task_path = self.root / '.workflow/tasks/pr-3/task.json'
         task_before = task_path.read_bytes()
         (self.root / 'a.txt').write_text('updated implementation\n')
         # A new session may inspect stale evidence and continue work without running checks.
@@ -34,7 +34,7 @@ class TaskBoundaryTests(TaskFixture):
         view = self.resume()
         self.assertEqual(view['checks']['unit']['status'], 'passed')
         self.assertEqual(view['checks']['full']['status'], 'stale')
-        local = self.root / '.team-workflow/local'
+        local = self.root / '.workflow/local'
         self.assertEqual((local / 'unit-runs').read_text(), 'xx')
         self.assertEqual((local / 'full-runs').read_text(), 'x')
         draft = self.draft()
@@ -45,7 +45,7 @@ class TaskBoundaryTests(TaskFixture):
         self.assertEqual({row['status'] for row in self.resume()['checks'].values()}, {'passed'})
 
     def configure_argv(self, argv):
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         base = path.read_text().split('[checks.')[0]
         path.write_text(base + '\n[checks.unit]\nargv = ' + json.dumps(argv) + '\ncwd = "."\ntimeout_seconds = 5\n')
         self.git('commit', '-qam', 'configure argv')
@@ -75,12 +75,12 @@ class TaskBoundaryTests(TaskFixture):
             self.assertEqual(self.resume()['acceptance'][0]['status'], 'verified')
 
     def test_skipped_later_check_preserves_prior_observation_but_blocks_handoff(self):
-        self.checks([('first', 'import pathlib,sys; sys.exit(pathlib.Path(".team-workflow/local/fail").exists())', 5),
+        self.checks([('first', 'import pathlib,sys; sys.exit(pathlib.Path(".workflow/local/fail").exists())', 5),
                      ('unit', 'print("ok")', 5)])
         self.git('commit', '-qam', 'two checks')
         self.prepare()
         self.verify()
-        (self.root / '.team-workflow/local/fail').write_text('fail')
+        (self.root / '.workflow/local/fail').write_text('fail')
         run = self.verify()
         self.assertEqual(run['checks'][1]['reason'], 'earlier_check_did_not_complete')
         self.assertEqual(self.resume()['checks']['unit']['status'], 'passed')
@@ -89,12 +89,12 @@ class TaskBoundaryTests(TaskFixture):
     def test_incomplete_new_attempt_for_same_code_supersedes_old_pass(self):
         self.checks([('unit', 'import pathlib,subprocess; '
                      'subprocess.run(["git","config","user.name","Changed"],check=True) '
-                     'if pathlib.Path(".team-workflow/local/change-identity").exists() else None', 5)])
+                     'if pathlib.Path(".workflow/local/change-identity").exists() else None', 5)])
         self.git('commit', '-qam', 'identity drift check')
         self.prepare()
         first = self.verify()
         self.assertEqual(first['status'], 'passed')
-        (self.root / '.team-workflow/local/change-identity').write_text('change')
+        (self.root / '.workflow/local/change-identity').write_text('change')
         second = self.verify()
         self.assertEqual(second['status'], 'incomplete')
         self.assertIn('git_identity_changed_during_execution', second['drift'])
@@ -121,7 +121,7 @@ class TaskBoundaryTests(TaskFixture):
 
     def test_legacy_binding_uses_packet_branch_and_empty_branch_requires_rebind(self):
         self.prepare()
-        path = self.root / '.team-workflow/local/binding.json'
+        path = self.root / '.workflow/local/binding.json'
         value = json.loads(path.read_text())
         value.pop('branch')
         path.write_text(json.dumps(value))
@@ -136,7 +136,7 @@ class TaskBoundaryTests(TaskFixture):
         self.git('switch', '-qc', 'task-A')
         self.prepare()
         self.commit_task()
-        path = self.root / '.team-workflow/local/binding.json'
+        path = self.root / '.workflow/local/binding.json'
         value = json.loads(path.read_text())
         value.pop('branch')
         (self.root / value['packet']).unlink()
@@ -151,7 +151,7 @@ class TaskBoundaryTests(TaskFixture):
 
     def test_explicit_rebind_recovers_unreadable_legacy_packet(self):
         self.prepare()
-        path = self.root / '.team-workflow/local/binding.json'
+        path = self.root / '.workflow/local/binding.json'
         value = json.loads(path.read_text())
         value.pop('branch')
         path.write_text(json.dumps(value))
@@ -195,7 +195,7 @@ class TaskBoundaryTests(TaskFixture):
                                  ('handoff.json', {'done': 42}), ('handoff.json', {'checks': {'unit': 42}}),
                                  ('handoff.json', {'merge_authorized': True})]:
             with self.subTest(filename=filename, update=update):
-                path = self.root / '.team-workflow/tasks/pr-3' / filename
+                path = self.root / '.workflow/tasks/pr-3' / filename
                 original = path.read_text()
                 path.write_text(json.dumps(dict(json.loads(original), **update)))
                 self.assertEqual(self.lint()['status'], 'attention_required')

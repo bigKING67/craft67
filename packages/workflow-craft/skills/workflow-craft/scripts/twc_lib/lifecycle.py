@@ -37,7 +37,8 @@ def validate(value):
 
 
 def graph(root, config):
-    folder = root / workspace.TASKS
+    from . import layout
+    folder = layout.directory(root) / 'tasks'
     if folder.is_symlink():
         raise WorkflowError('Task directory cannot be a symlink')
     result = {}

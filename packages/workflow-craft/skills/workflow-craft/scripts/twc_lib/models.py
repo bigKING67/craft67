@@ -42,6 +42,8 @@ def relative_path(root, value, *, must_exist=False):
     path = Path(value)
     if path.is_absolute() or '..' in path.parts or '\\' in str(value):
         raise WorkflowError('Expected a repository-relative path without traversal')
+    from .layout import historical_path
+    path = historical_path(root, path)
     target = root / path
     if not target.resolve().is_relative_to(root.resolve()):
         raise WorkflowError('Path escapes repository')
@@ -51,16 +53,17 @@ def relative_path(root, value, *, must_exist=False):
 
 
 def local_directory(root):
-    path = root / '.team-workflow' / 'local'
-    for candidate in (root / '.team-workflow', path):
-        if candidate.is_symlink():
-            raise WorkflowError('Workflow state directory cannot be a symlink')
-    # A tracked local directory would leak task snapshots or execution output.
+    from . import layout
+    directory = layout.directory(root)
+    path = directory / 'local'
+    if layout.unsafe(path):
+        raise WorkflowError('Workflow local directory cannot be a symlink or reparse point')
     from .workspace import git
-    if git(root, 'ls-files', '--', '.team-workflow/local').strip():
+    relative = path.relative_to(root).as_posix()
+    if git(root, 'ls-files', '--', relative).strip():
         raise WorkflowError('Local workflow state is tracked; fix ignore/tracking before writing')
-    if git(root, 'check-ignore', '--no-index', '.team-workflow/local/probe', allowed=(0, 1)).strip() == b'':
-        raise WorkflowError('Ignore .team-workflow/local/ before writing workflow artifacts')
+    if not git(root, 'check-ignore', '--no-index', relative + '/probe', allowed=(0, 1)).strip():
+        raise WorkflowError('Ignore ' + relative + '/ before writing workflow artifacts')
     path.mkdir(parents=True, exist_ok=True, mode=0o700)
     return path
 

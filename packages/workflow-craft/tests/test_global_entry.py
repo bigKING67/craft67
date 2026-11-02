@@ -92,23 +92,23 @@ class GlobalEntryTests(unittest.TestCase):
             child.mkdir()
             view = self.cli(global_cli, child, 'entry', '--host', host, expected=1)
             self.assertEqual(view['action'], 'pin_project_runtime')
-            self.assertFalse((project / '.team-workflow').exists())
+            self.assertFalse((project / '.workflow').exists())
             self.assertFalse(Path(view['target']).exists())
             preflight = self.cli(global_cli, child, 'doctor', '--local', expected=1)
             self.assertEqual(preflight['development_mode']['status'], 'selection_required')
             blocked = self.cli(global_cli, child, 'init', '--mode', mode, '--apply', expected=1)
-            self.assertFalse((project / '.team-workflow').exists())
+            self.assertFalse((project / '.workflow').exists())
             pinned = self.cli(global_cli, child, 'entry', '--host', host, '--apply')
             local_cli = Path(pinned['cli'])
             self.assertTrue(pinned['applied'])
             # Pinning itself cannot silently choose a mode.
-            self.assertFalse((project / '.team-workflow').exists())
+            self.assertFalse((project / '.workflow').exists())
             self.cli(local_cli, child, 'init', '--mode', mode, '--apply')
-            before = {p.relative_to(project): p.read_bytes() for p in (project / '.team-workflow').rglob('*') if p.is_file()}
+            before = {p.relative_to(project): p.read_bytes() for p in (project / '.workflow').rglob('*') if p.is_file()}
             second = self.cli(global_cli, child, 'entry', '--host', host, '--apply')
             self.assertFalse(second['applied'])
             self.assertEqual(second['cli'], str(local_cli))
-            self.assertEqual(before, {p.relative_to(project): p.read_bytes() for p in (project / '.team-workflow').rglob('*') if p.is_file()})
+            self.assertEqual(before, {p.relative_to(project): p.read_bytes() for p in (project / '.workflow').rglob('*') if p.is_file()})
             self.assertEqual((project / 'AGENTS.md').read_bytes(), b'Keep project rules\r\n')
             selection = self.cli(global_cli, child, 'resume', expected=1)
             self.assertEqual(selection['action'], 'use_project_runtime')
@@ -123,7 +123,7 @@ class GlobalEntryTests(unittest.TestCase):
         project = self.project()
         pinned = self.cli(global_cli, project, 'entry', '--host', 'codex', '--apply')
         self.cli(pinned['cli'], project, 'init', '--mode', 'team', '--apply')
-        lock = (project / '.team-workflow/toolchain.lock.json').read_bytes()
+        lock = (project / '.workflow/toolchain.lock.json').read_bytes()
         source = self.root / 'new-source'
         shutil.copytree(PACKAGE / 'skills', source / 'skills', ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
         shutil.copyfile(PACKAGE / 'LICENSE', source / 'LICENSE')
@@ -133,7 +133,7 @@ class GlobalEntryTests(unittest.TestCase):
         result = self.cli(global_cli, project, 'entry', '--host', 'claude', '--apply')
         self.assertEqual(result['runtime'], pinned['runtime'])
         self.assertEqual(result['cli'], pinned['cli'])
-        self.assertEqual((project / '.team-workflow/toolchain.lock.json').read_bytes(), lock)
+        self.assertEqual((project / '.workflow/toolchain.lock.json').read_bytes(), lock)
         self.assertFalse((project / '.claude').exists())
 
     def test_drift_missing_runtime_and_conflicting_entries_never_fall_back(self):
@@ -144,7 +144,7 @@ class GlobalEntryTests(unittest.TestCase):
                 pin = self.cli(global_cli, project, 'entry', '--host', 'codex', '--apply')
                 local = Path(pin['cli']).parent.parent
                 self.cli(pin['cli'], project, 'init', '--mode', 'personal', '--apply')
-                state = project / '.team-workflow'
+                state = project / '.workflow'
                 if scenario == 'drift':
                     (local / 'SKILL.md').write_text('edited', encoding='utf-8')
                 elif scenario == 'missing':
@@ -191,7 +191,7 @@ class GlobalEntryTests(unittest.TestCase):
                 row.update(sha256=packaging.sha256_bytes(module.read_bytes()), size=module.stat().st_size)
         (local / packaging.INSTALL_MARKER).write_bytes(packaging.canonical_json(marker))
         self.cli(pin['cli'], project, 'init', '--mode', 'personal', '--apply')
-        self.assertEqual(json.loads((project / '.team-workflow/toolchain.lock.json').read_bytes())['protocol_version'], 2)
+        self.assertEqual(json.loads((project / '.workflow/toolchain.lock.json').read_bytes())['protocol_version'], 2)
         selected = self.cli(global_cli, project, 'entry', '--host', 'codex')
         self.assertEqual(selected['cli'], pin['cli'])
         self.assertEqual(self.cli(pin['cli'], project, 'doctor', '--local')['toolchain']['status'], 'matched')

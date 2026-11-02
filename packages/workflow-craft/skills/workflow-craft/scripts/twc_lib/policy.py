@@ -6,6 +6,7 @@ import tomllib
 import uuid
 
 from .models import WorkflowError, canonical, digest, read_json, relative_path
+from . import layout
 from .providers import from_config, PROVIDERS
 
 SKILL_ROOT = Path(__file__).resolve().parents[2]
@@ -61,7 +62,7 @@ def strict_keys(value, keys, context):
 
 
 def load(root):
-    path = relative_path(root, '.team-workflow/config.toml', must_exist=True)
+    path = relative_path(root, layout.relative(root, 'config.toml'), must_exist=True)
     try:
         raw = path.read_bytes()
         config = tomllib.loads(raw.decode('utf-8'))
@@ -145,7 +146,7 @@ def validate_coordination(source):
 
 def lock_status(root):
     actual = runtime_identity()
-    path = root / '.team-workflow/toolchain.lock.json'
+    path = layout.directory(root) / 'toolchain.lock.json'
     if not path.exists():
         return dict(status='missing', actual=actual)
     lock = read_json(path)
@@ -207,10 +208,10 @@ auto_merge = false
     lock = dict(schema_version=1, skill='workflow-craft', **runtime_identity())
     files = {'config.toml': content, 'toolchain.lock.json': json.dumps(lock, indent=2) + '\n',
              '.gitignore': 'local/\n', '.gitattributes': '/config.toml -text\n'}
-    directory = root / '.team-workflow'
+    directory = layout.directory(root)
     if directory.exists() or directory.is_symlink():
-        raise WorkflowError('.team-workflow already exists; inspect and edit existing configuration explicitly')
-    plan = dict(action='init', files={'.team-workflow/' + name: text for name, text in files.items()}, applied=False,
+        raise WorkflowError('Workflow directory already exists; inspect existing configuration explicitly')
+    plan = dict(action='init', files={directory.name + '/' + name: text for name, text in files.items()}, applied=False,
                 host_rules='AGENTS.md/CLAUDE.md are not modified')
     if apply:
         directory.mkdir(mode=0o755)

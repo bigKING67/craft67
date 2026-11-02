@@ -39,15 +39,15 @@ class Fixture(unittest.TestCase):
                              dependencies=[], acceptance=[dict(text='unit passes', checks=['unit'])], integrator='maintainer',
                              contracts=[], complexity='L1', risk='normal')
         (self.root / 'contract.json').write_text(json.dumps(self.contract))
-        self.git('add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json',
-                 '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json')
+        self.git('add', '.workflow/config.toml', '.workflow/toolchain.lock.json',
+                 '.workflow/.gitignore', '.workflow/.gitattributes', 'contract.json')
         self.git('commit', '-qm', 'workflow config')
 
     def git(self, *args):
         return subprocess.check_output(['git', '-C', str(self.root), *args], text=True, stderr=subprocess.PIPE).strip()
 
     def checks(self, rows):
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         base = path.read_text().split('[checks.')[0]
         for name, script, timeout in rows:
             base += f'\n[checks.{name}]\nargv = {json.dumps([sys.executable, "-c", script])}\ncwd = "."\ntimeout_seconds = {timeout}\n'
@@ -57,12 +57,12 @@ class Fixture(unittest.TestCase):
         return policy.load(self.root)
 
     def use_cnb(self):
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         path.write_text(path.read_text().replace('provider = "gitea"', 'provider = "cnb"')
                         .replace('https://gitea.example.invalid', 'https://cnb.cool')
                         .replace('TWC_GITEA_TOKEN', 'TWC_CNB_TOKEN'))
         self.git('remote', 'set-url', 'origin', 'https://cnb.cool/team/product.git')
-        self.git('add', '.team-workflow/config.toml')
+        self.git('add', '.workflow/config.toml')
         self.git('commit', '-qm', 'CNB configuration')
 
     def prepare(self, task='pr:3', **kwargs):
@@ -111,7 +111,7 @@ class WorkflowTests(Fixture):
         self.assertFalse(result['merge_authorized'])
         self.assertIn('issue_has_no_verified_delivery_pr', result['unknowns'])
         self.assertFalse(actors.attributed(result['actor'], 'https://cnb.cool', 'gitea'))
-        bound = self.root / '.team-workflow/local/binding.json'
+        bound = self.root / '.workflow/local/binding.json'
         saved = json.loads(bound.read_text())
         saved['task_ref']['provider'] = 'gitea'
         bound.write_text(json.dumps(saved))
@@ -128,7 +128,7 @@ class WorkflowTests(Fixture):
 
     def test_cnb_default_token_and_other_platform_token_are_removed_from_checks(self):
         self.use_cnb()
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         path.write_text(path.read_text().replace('token_env = "TWC_CNB_TOKEN"\n', ''))
         self.checks([('no_secrets', 'import os; assert "TWC_CNB_TOKEN" not in os.environ; '
                      'assert "TWC_GITEA_TOKEN" not in os.environ', 5)])
@@ -139,7 +139,7 @@ class WorkflowTests(Fixture):
 
     def test_cnb_custom_identity_token_is_not_inherited_by_project_tests(self):
         self.use_cnb()
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         path.write_text(path.read_text().replace('token_env = "TWC_CNB_TOKEN"',
                         'token_env = "TWC_CNB_TOKEN"\nidentity_token_env = "TWC_IDENTITY_FIXTURE"'))
         self.checks([('no_identity_token', 'import os; assert "TWC_IDENTITY_FIXTURE" not in os.environ; '
@@ -227,7 +227,7 @@ class WorkflowTests(Fixture):
         self.assertEqual(result['readiness'], 'not_ready')
 
     def test_symlinked_local_or_tracked_local_is_rejected_before_execution(self):
-        local = self.root / '.team-workflow/local'
+        local = self.root / '.workflow/local'
         outside = self.root.parent / 'outside'
         outside.mkdir()
         local.symlink_to(outside, target_is_directory=True)
@@ -236,7 +236,7 @@ class WorkflowTests(Fixture):
         local.unlink()
         local.mkdir()
         (local / 'tracked').write_text('bad')
-        self.git('add', '-f', '.team-workflow/local/tracked')
+        self.git('add', '-f', '.workflow/local/tracked')
         with self.assertRaises(WorkflowError):
             self.verify()
 
@@ -245,7 +245,7 @@ class WorkflowTests(Fixture):
         config, sha = self.configuration()
         preview = evidence.verify(self.root, config, sha)
         self.assertEqual(preview['status'], 'not_run')
-        self.assertFalse((self.root / '.team-workflow/local').exists())
+        self.assertFalse((self.root / '.workflow/local').exists())
         with self.assertRaises(WorkflowError):
             evidence.verify(self.root, config, sha, execute_commands=True, approved_policy='incorrect')
         self.assertFalse((self.root / 'unexpected').exists())
@@ -294,15 +294,15 @@ class WorkflowTests(Fixture):
         self.assertEqual(record['checks'][0]['reason'], 'child_process_still_running')
 
     def test_ignored_probe_does_not_authorize_visible_packet_or_binding(self):
-        (self.root / '.team-workflow/.gitignore').write_text('local/probe\n')
+        (self.root / '.workflow/.gitignore').write_text('local/probe\n')
         with self.assertRaises(WorkflowError):
             self.prepare()
-        self.assertFalse((self.root / '.team-workflow/local/binding.json').exists())
-        self.assertFalse((self.root / '.team-workflow/local/packets').exists())
+        self.assertFalse((self.root / '.workflow/local/binding.json').exists())
+        self.assertFalse((self.root / '.workflow/local/packets').exists())
 
     def test_evidence_symlink_is_rejected_before_project_code_runs(self):
         self.checks([('unit', 'open("unexpected", "w").write("x")', 5)])
-        local = self.root / '.team-workflow/local'
+        local = self.root / '.workflow/local'
         local.mkdir()
         outside = self.root.parent / 'outside-evidence'
         outside.mkdir()
@@ -313,7 +313,7 @@ class WorkflowTests(Fixture):
         self.assertEqual(list(outside.iterdir()), [])
 
     def test_task_binding_drift_is_incomplete(self):
-        self.checks([('unit', 'import json; p=".team-workflow/local/binding.json"; x=json.load(open(p)); x["task_ref"]["number"]=9; json.dump(x,open(p,"w"))', 5)])
+        self.checks([('unit', 'import json; p=".workflow/local/binding.json"; x=json.load(open(p)); x["task_ref"]["number"]=9; json.dump(x,open(p,"w"))', 5)])
         self.prepare()
         record = self.verify()
         self.assertEqual(record['status'], 'incomplete')
@@ -327,7 +327,7 @@ class WorkflowTests(Fixture):
         self.assertIn('code_changed_during_execution', record['drift'])
 
     def test_policy_mutation_stops_later_checks(self):
-        self.checks([('first', 'open(".team-workflow/config.toml", "a").write("\\n# changed")', 5),
+        self.checks([('first', 'open(".workflow/config.toml", "a").write("\\n# changed")', 5),
                      ('later', 'open("unexpected", "w")', 5)])
         record = self.verify()
         self.assertEqual(record['status'], 'incomplete')
@@ -335,7 +335,7 @@ class WorkflowTests(Fixture):
         self.assertFalse((self.root / 'unexpected').exists())
 
     def test_lock_drift_rejects_execution(self):
-        path = self.root / '.team-workflow/toolchain.lock.json'
+        path = self.root / '.workflow/toolchain.lock.json'
         value = json.loads(path.read_text())
         value['version'] = '99.0.0'
         path.write_text(json.dumps(value))
@@ -551,7 +551,7 @@ class WorkflowTests(Fixture):
             workspace.create(self.root, destination, 'task/4', self.base, apply=True)
 
     def test_configuration_rejects_unknown_permissions_and_escape_cwd(self):
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         good = path.read_text()
         for bad in (good.replace('auto_merge = false', 'auto_merge = true'),
                     good.replace('cwd = "."', 'cwd = "../"'),

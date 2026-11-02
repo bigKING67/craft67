@@ -40,7 +40,7 @@ class PersonalProject(unittest.TestCase):
 
     def setup_project(self, mode='personal'):
         self.cli('init', '--mode', mode, '--apply')
-        config = self.root / '.team-workflow/config.toml'
+        config = self.root / '.workflow/config.toml'
         check = 'from pathlib import Path; assert Path("a.txt").read_text() == "initial\\n"'
         config.write_text(config.read_text() + '\n[checks.unit]\nargv = ' + json.dumps([sys.executable, '-c', check]) + '\n')
         contract = dict(goal='Keep the initial content readable', scope=['a.txt'], non_goals=[], dependencies=[],
@@ -49,8 +49,8 @@ class PersonalProject(unittest.TestCase):
         if mode == 'team':
             contract['integrator'] = 'reviewer'
         (self.root / 'contract.json').write_text(json.dumps(contract))
-        self.git('add', '.team-workflow/config.toml', '.team-workflow/toolchain.lock.json',
-                 '.team-workflow/.gitignore', '.team-workflow/.gitattributes', 'contract.json')
+        self.git('add', '.workflow/config.toml', '.workflow/toolchain.lock.json',
+                 '.workflow/.gitignore', '.workflow/.gitattributes', 'contract.json')
         self.commit('workflow setup')
 
     def hashes(self):
@@ -74,7 +74,7 @@ class PersonalProject(unittest.TestCase):
             self.assertEqual(result['development_mode']['status'], 'selection_required')
             self.assertIsNone(result['development_mode']['current'])
         self.assertEqual(self.hashes(), before)
-        self.assertFalse((self.root / '.team-workflow').exists())
+        self.assertFalse((self.root / '.workflow').exists())
         self.setup_project()
         sub = self.root / 'subdirectory'
         sub.mkdir()
@@ -121,7 +121,7 @@ class PersonalProject(unittest.TestCase):
         self.assertEqual(self.hashes(), before)
         self.cli('mode', '--set', 'team', '--apply', '--approved-policy', sha)
         after = self.hashes()
-        self.assertEqual([p for p in before if before[p] != after[p]], ['.team-workflow/config.toml'])
+        self.assertEqual([p for p in before if before[p] != after[p]], ['.workflow/config.toml'])
         updated = policy.load(self.root)[0]
         self.assertEqual(updated['checks'], config['checks'])
         self.assertEqual(updated['project_id'], config['project_id'])
@@ -134,7 +134,7 @@ class PersonalProject(unittest.TestCase):
         self.prepare()
         sha = policy.load(self.root)[1]
         self.cli('mode', '--set', 'personal', '--apply', '--approved-policy', sha)
-        self.git('add', '.team-workflow/config.toml')
+        self.git('add', '.workflow/config.toml')
         self.commit('change default workflow')
         self.verify()
         draft = self.draft()
@@ -146,7 +146,7 @@ class PersonalProject(unittest.TestCase):
     def test_mode_change_does_not_overwrite_concurrent_config_edits(self):
         self.setup_project()
         sha = self.cli('mode', '--set', 'team')['policy_sha256']
-        config = self.root / '.team-workflow/config.toml'
+        config = self.root / '.workflow/config.toml'
         config.write_text(config.read_text() + '\n# Reviewed local note\n')
         before = config.read_bytes()
         with self.assertRaisesRegex(WorkflowError, 'approval'):
@@ -160,7 +160,7 @@ class PersonalProject(unittest.TestCase):
         subprocess.check_call(['git', '-C', str(other), 'init', '-q'])
         report = self.cli('resume', root=other)
         self.assertEqual(report['development_mode']['status'], 'selection_required')
-        self.assertFalse((other / '.team-workflow').exists())
+        self.assertFalse((other / '.workflow').exists())
 
     def test_same_mode_is_idempotent_and_platform_can_be_added_explicitly(self):
         self.setup_project()
@@ -178,14 +178,14 @@ class PersonalProject(unittest.TestCase):
         self.assertEqual(updated['coordination']['provider'], 'cnb')
         self.assertEqual(self.cli('resume')['task_ref']['type'], 'local')
         after = self.hashes()
-        self.assertEqual([p for p in before if before[p] != after[p]], ['.team-workflow/config.toml'])
+        self.assertEqual([p for p in before if before[p] != after[p]], ['.workflow/config.toml'])
 
     def test_invalid_mode_and_symlink_config_are_not_silently_initialized(self):
         with self.assertRaisesRegex(WorkflowError, 'explicitly'):
             policy.init(self.root, None, None, 'main', apply=True)
-        self.assertFalse((self.root / '.team-workflow').exists())
+        self.assertFalse((self.root / '.workflow').exists())
         self.setup_project()
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         original = path.read_text()
         path.write_text(original.replace('development_mode = "personal"', 'development_mode = "unknown"'))
         report = self.cli('doctor', '--local')
@@ -207,11 +207,11 @@ class PersonalProject(unittest.TestCase):
         self.prepare()
         self.verify()
         self.draft()
-        self.git('add', '.team-workflow/tasks/local-read-content')
+        self.git('add', '.workflow/tasks/local-read-content')
         self.commit('record task')
         clone = self.root.parent / 'clone'
         self.git('clone', '-q', str(self.root), str(clone))
-        self.assertFalse((clone / '.team-workflow/local').exists())
+        self.assertFalse((clone / '.workflow/local').exists())
         report = self.cli('resume', root=clone)
         self.assertEqual(report['resolved_by'], 'branch_changes')
         self.assertEqual(report['development_mode']['current'], 'personal')
@@ -224,7 +224,7 @@ class PersonalProject(unittest.TestCase):
             with self.assertRaises(WorkflowError):
                 task_ref(config, name)
         self.prepare()
-        path = self.root / '.team-workflow/local/binding.json'
+        path = self.root / '.workflow/local/binding.json'
         bound = json.loads(path.read_text())
         bound['task_ref']['project_id'] = '0' * 32
         path.write_text(json.dumps(bound))
@@ -234,7 +234,7 @@ class PersonalProject(unittest.TestCase):
 
 class ExistingTeamModes(Fixture):
     def test_legacy_configuration_remains_team_and_upgrade_preserves_settings(self):
-        path = self.root / '.team-workflow/config.toml'
+        path = self.root / '.workflow/config.toml'
         config, _ = self.configuration()
         config['schema_version'] = 1
         config['workflow_owner'] = 'team-workflow-craft'
@@ -252,10 +252,10 @@ class ExistingTeamModes(Fixture):
 
     def test_platform_task_does_not_become_local_after_mode_change(self):
         self.prepare()
-        before = (self.root / '.team-workflow/tasks/pr-3/task.json').read_bytes()
+        before = (self.root / '.workflow/tasks/pr-3/task.json').read_bytes()
         _, sha = self.configuration()
         modes.change(self.root, 'personal', apply=True, approved_policy=sha)
-        self.assertEqual((self.root / '.team-workflow/tasks/pr-3/task.json').read_bytes(), before)
+        self.assertEqual((self.root / '.workflow/tasks/pr-3/task.json').read_bytes(), before)
         self.verify()
         draft = self.draft()
         self.assertEqual(draft['readiness_scope'], 'platform_handoff')
@@ -264,9 +264,9 @@ class ExistingTeamModes(Fixture):
         self.assertFalse(draft['merge_authorized'])
 
     def test_existing_platform_cannot_be_replaced_by_mode_switch(self):
-        before = (self.root / '.team-workflow/config.toml').read_bytes()
+        before = (self.root / '.workflow/config.toml').read_bytes()
         _, sha = self.configuration()
         with self.assertRaisesRegex(WorkflowError, 'cannot replace'):
             modes.change(self.root, 'team', apply=True, approved_policy=sha,
                          provider='cnb', base_url='https://cnb.cool', repository='other/project')
-        self.assertEqual((self.root / '.team-workflow/config.toml').read_bytes(), before)
+        self.assertEqual((self.root / '.workflow/config.toml').read_bytes(), before)

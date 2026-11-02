@@ -40,7 +40,7 @@ class LegacyRecordNewlineTests(TaskFixture):
         self.prepare()
         self.verify()
         self.draft()
-        folder = self.root / '.team-workflow/tasks'
+        folder = self.root / '.workflow/tasks'
         for path in folder.rglob('*'):
             if path.is_file():
                 path.write_bytes(path.read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n'))

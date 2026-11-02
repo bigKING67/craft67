@@ -93,7 +93,7 @@ class ProcessTreeTests(unittest.TestCase):
 
     def test_lock_released_after_owner_is_killed_and_nested_use_is_safe(self):
         subprocess.run(['git', 'init', '-q', str(self.root)], check=True)
-        (self.root / '.gitignore').write_text('.team-workflow/local/\n')
+        (self.root / '.gitignore').write_text('.workflow/local/\n')
         script = ('import sys,time; from pathlib import Path; sys.path.insert(0,sys.argv[1]); '
                   'from twc_lib.sessions import workspace_lock\n'
                   'with workspace_lock(Path(sys.argv[2])):\n print("locked",flush=True); time.sleep(30)\n')

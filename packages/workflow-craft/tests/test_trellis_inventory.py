@@ -211,7 +211,7 @@ class TrellisInventoryTests(unittest.TestCase):
         result = json.loads(run.stdout)
         self.assertFalse(result['migration_ready'])
         self.assertEqual(self.snapshot(), before)
-        self.assertFalse((self.root / '.team-workflow').exists())
+        self.assertFalse((self.root / '.workflow').exists())
 
     def test_missing_project_has_controlled_cli_error(self):
         run = subprocess.run([sys.executable, '-B', str(SCRIPT), '--project', str(self.root / 'missing')],
