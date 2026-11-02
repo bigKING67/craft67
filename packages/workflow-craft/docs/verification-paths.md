@@ -5,6 +5,7 @@
 | 路径 | 操作与可观察结果 | 自动证据与容易误判之处 |
 | --- | --- | --- |
 | 首次启用 | 未配置项目 → doctor/resume 要求选择 → 显式 init personal → 子目录复用；另一个项目重新选择 | `test_modes.py`：没有选择不写配置；名字可复用，不要求邮箱。脚本返回 selection_required 不等于模型实际主动询问 |
+| JSON 输入边界 | 深层工具链锁 → 预检报告 invalid 且不写入；深层契约/任务/验证/交接/绑定 → CLI 返回受控 JSON 错误 | `test_local_doctor.py`、`test_task_boundaries.py`：真实子进程，覆盖 Python 3.11 解码深度异常，不回显内容、不改损坏记录；较新 Python 的错误类型不同，仍保留相同拒绝结果 |
 | 个人本地任务 | prepare local → verify 预览/执行 → handoff → resume；修改代码后旧证据 stale | `test_modes.py`：无平台/邮箱也可本地接续；local_task 就绪不等于平台审批；纯文字 AC 保持 needs_review |
 | 团队及切换 | 预览模式切换 → 当前策略哈希应用 → 旧证据失效 → 重验；历史任务/署名/集成要求保留 | `test_modes.py`：并发改配置拒绝覆盖；已有团队任务切到个人仍需原评审，不因模式名绕过 |
 | 延后与部分重验 | 已有两项通过 → 改代码 → resume 只读报告 stale → 只重验 unit → full 仍 stale、交接未就绪 → 补齐 full | `test_task_boundaries.py`：不重建任务，不因部分通过而放行其他必要检查；不能通过删契约/检查来省略验收 |

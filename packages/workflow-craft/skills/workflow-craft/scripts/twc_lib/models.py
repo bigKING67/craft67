@@ -34,7 +34,7 @@ def read_json(path):
         if path.stat().st_size > 4 * 1024 * 1024:
             raise WorkflowError('JSON artifact exceeds 4 MiB')
         return json.loads(path.read_text(encoding='utf-8'))
-    except (OSError, ValueError) as exc:
+    except (OSError, ValueError, RecursionError) as exc:
         raise WorkflowError('Cannot read JSON artifact') from exc
 
 

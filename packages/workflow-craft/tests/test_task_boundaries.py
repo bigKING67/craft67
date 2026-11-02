@@ -203,6 +203,35 @@ class TaskBoundaryTests(TaskFixture):
                     self.resume()
                 path.write_text(original)
 
+    def test_deep_json_artifacts_are_controlled_errors_without_echoing_content(self):
+        self.prepare()
+        run = self.verify()
+        self.draft()
+        cli = Path(__file__).resolve().parents[1] / 'skills/workflow-craft/scripts/twc.py'
+        payload = ('[' * 2000 + '"private_marker_do_not_echo"' + ']' * 2000).encode()
+        cases = [
+            ('contract.json', ['prepare', '--task', 'pr:3', '--contract', 'contract.json', '--offline']),
+            ('.workflow/tasks/pr-3/task.json', ['resume']),
+            (run['task_evidence'], ['resume']),
+            ('.workflow/tasks/pr-3/handoff.json', ['resume']),
+            ('.workflow/local/binding.json', ['resume']),
+        ]
+        for filename, arguments in cases:
+            with self.subTest(filename=filename):
+                path = self.root / filename
+                original = path.read_bytes()
+                try:
+                    path.write_bytes(payload)
+                    result = subprocess.run([sys.executable, str(cli), '--project', str(self.root), *arguments],
+                                            capture_output=True, text=True, timeout=15)
+                    self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+                    self.assertEqual(json.loads(result.stdout)['error'], 'workflow_error')
+                    self.assertNotIn('Traceback', result.stderr)
+                    self.assertNotIn('private_marker_do_not_echo', result.stdout + result.stderr)
+                    self.assertEqual(path.read_bytes(), payload)
+                finally:
+                    path.write_bytes(original)
+
     def test_summary_hashes_absolute_argv_and_keeps_full_command_only_locally(self):
         argv = [sys.executable, '-c', 'pass', '/Users/example/private-input', r'C:\Users\example\input',
                 '--output=/private/tmp/example']

@@ -1,5 +1,40 @@
 # Host compatibility
 
+## 0.8.1 bounded JSON artifact decoding (2026-11-02)
+
+The common artifact reader converts JSON decoder `RecursionError` into a
+controlled `WorkflowError`. On Python 3.11.12, a 4,001-byte nested lock previously
+made the public `doctor --local` command emit a traceback without JSON. The two
+new CLI regression methods also cover contract, task, verification, handoff and
+session-binding files: before the fix there were five failures and one error;
+after the fix both methods pass on Python 3.11.12 and 3.14.7. Invalid input remains
+invalid, file content is not echoed, and the damaged records are preserved.
+The complete local gate passes 240 of 241 tests, with the Windows-only Job
+assignment test skipped on macOS.
+
+The fixed ZIP SHA-256 is
+`06feffd0bf6d5d895471dfef2e293450c45940409f46d3eaee01790ddbf037e3`;
+runtime content SHA-256 is
+`8789fdbbbdc226b9e3d4ea1afb3847327e05eb4aa60d55b6bf182a73f250d6d8`.
+Disposable projects using each Codex, Claude and Pi installation target pass a
+0.8.0-to-0.8.1 upgrade, old-lock mismatch and explicit pin update, approved
+directory relocation, unchanged historical records, a new session binding,
+fresh verification and completion, and a new clone without local session state.
+The installed copies also reject the deep lock correctly under Python 3.11.
+Rollback preserves all task/evidence bytes and marks the 0.8.1 completion stale;
+when the original context is restored exactly, the selected passing check comes
+from its matching 0.8.0 evidence, not the newer incompatible record. Initial
+harness assumptions about clone-local names and rollback freshness were corrected
+with their original failure records retained; product gates were not relaxed.
+
+Both known global entries have 45 files matching the 0.8.1 artifact. Read-only
+entry selection still chooses an existing project's pinned 0.8.0 or 0.8.1 copy;
+global installation does not upgrade project locks. The upgrade guide now names
+the lock in the currently selected data directory before optional relocation.
+These are installed CLI/Git checks on one macOS machine, not new model-host
+sessions, independent-human acceptance, a company-platform approval, a measured
+workflow-cost improvement or a formal Release.
+
 ## 0.8.0 project directory migration (2026-11-02)
 
 New repositories initialize `.workflow/`; existing `.team-workflow/` repositories
@@ -12,9 +47,14 @@ and local-link findings from independent diff review have dedicated regressions;
 a second incremental review accepted both fixes. The no-replace macOS primitive
 was checked against the local SDK and exercised against a late empty directory.
 
-The new Windows and Linux rename branches still require native target-platform
-qualification; previous platform results below apply to their recorded versions.
-No new native host session, company platform approval or formal Release is implied.
+After commit `b0ad913591cc7f7ece9ddd7bac41f9534c7a7129` was pushed, the
+[platform run](https://github.com/bigKING67/craft67/actions/runs/41409689641)
+passed all six native OS/Python combinations: Windows, Ubuntu and macOS with
+Python 3.11 and 3.12, including the directory regressions. The matching
+[package run](https://github.com/bigKING67/craft67/actions/runs/41409689619)
+also passed. These qualify the exercised automated paths on those runners;
+previous platform results below retain their recorded versions. No new model-host
+session, company platform approval or formal Release is implied.
 
 ## 0.7.3 POSIX check cancellation (2026-11-01)
 

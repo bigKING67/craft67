@@ -190,6 +190,17 @@ class LocalDoctorTests(unittest.TestCase):
         self.assertEqual(report['toolchain']['status'], 'invalid')
         self.assertIn('review_toolchain_lock', report['next_steps'])
 
+    def test_deeply_nested_lock_is_invalid_without_writing(self):
+        self.configure()
+        (self.project / '.workflow/toolchain.lock.json').write_text('[' * 2000 + '0' + ']' * 2000)
+        before = self.snapshot()
+        report = self.cli('doctor', '--local', expected=1)
+        self.assertEqual(report['status'], 'attention_required')
+        self.assertEqual(report['project_config'], 'valid')
+        self.assertEqual(report['toolchain']['status'], 'invalid')
+        self.assertIn('review_toolchain_lock', report['next_steps'])
+        self.assertEqual(self.snapshot(), before)
+
     def test_project_entry_parent_link_does_not_scan_external_profile(self):
         self.configure()
         external = self.root / 'external'
