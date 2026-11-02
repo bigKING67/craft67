@@ -41,6 +41,15 @@ weakening product gates. Both known global installations match all 45 artifact
 payload files. These are macOS CLI/Git checks, not new model-host sessions, native
 Windows acceptance, a live platform trial, human benefit measurement or a Release.
 
+The first native platform run for `6d1132e` retained a Windows failure in the new
+clone regression: all failure/completion assertions passed, but its final byte
+comparison mistook Git's LF-to-CRLF checkout for a workflow rewrite. Forcing
+`core.autocrlf=true` reproduced that same assertion on macOS. The corrected test
+first checks semantic JSON equivalence across checkout, then preserves the exact
+receiver-side bytes through verification and completion, as well as the original
+source bytes. Runtime code and the fixed artifact remain unchanged; the first
+failed run is not retroactively classified as successful.
+
 ## 0.8.1 bounded JSON artifact decoding (2026-11-02)
 
 The common artifact reader converts JSON decoder `RecursionError` into a

@@ -40,10 +40,13 @@ class EvidenceOrderingTests(TaskFixture):
         original = (self.root / first['task_evidence']).read_bytes()
         self.commit_task()
         clone = self.root.parent / 'receiver'
-        subprocess.run(['git', 'clone', '-q', str(self.root), str(clone)], check=True)
+        subprocess.run(['git', 'clone', '-q', '-c', 'core.autocrlf=true', str(self.root), str(clone)], check=True)
         for key, value in [('user.name', 'Receiver'), ('user.email', 'receiver@example.invalid'),
                            ('core.hooksPath', str(clone / 'no-hooks'))]:
             subprocess.run(['git', '-C', str(clone), 'config', key, value], check=True)
+        received = (clone / first['task_evidence']).read_bytes()
+        self.assertIn(b'\r\n', received)
+        self.assertEqual(json.loads(received), json.loads(original))
         self.cli('task', 'start', '--task', 'local:one', root=clone)
         marker = clone / '.workflow/local/unit-fail'
         marker.write_text('fail')
@@ -57,7 +60,8 @@ class EvidenceOrderingTests(TaskFixture):
         self.assertEqual(self.cli('resume', root=clone)['checks']['unit']['status'], 'passed')
         self.assertEqual(self.cli('task', 'complete', root=clone)['execution_state'], 'completed')
         self.assertEqual(self.cli('resume', root=clone)['execution']['completion'], 'current')
-        self.assertEqual((clone / first['task_evidence']).read_bytes(), original)
+        self.assertEqual((clone / first['task_evidence']).read_bytes(), received)
+        self.assertEqual((self.root / first['task_evidence']).read_bytes(), original)
 
     def conflicting_records(self, *, legacy=False):
         self.setup_task()
