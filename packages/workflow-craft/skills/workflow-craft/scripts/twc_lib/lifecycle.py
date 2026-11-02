@@ -217,6 +217,9 @@ def transition(root, config, policy_hash, action, task=None, session=None, revie
         ref = task_ref(config, task)
         if bound and bound.get('task_ref') != ref:
             raise WorkflowError('Session is bound to another task; finish that session binding first')
+    elif action == 'archive' and task and bound is None:
+        # A fresh session can name completed work without reopening it.
+        ref = task_ref(config, task)
     else:
         ref = tasks.current(root, config, task, bound, session=session)[0]
         if not bound or ref != bound.get('task_ref'):

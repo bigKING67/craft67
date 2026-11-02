@@ -1,5 +1,40 @@
 # Host compatibility
 
+## 0.8.4 archive across sessions (2026-11-02)
+
+An unbound session can explicitly select a completed task with
+`task archive --task …`, including after a fresh clone, without reopening or
+replacing its completion basis. Archive still requires current completion and
+preserves existing task/branch binding checks and the final input-drift guard.
+Only the archive event and this session's cleared pointer are written; completion
+data, prior history, shared evidence and parent completion references are retained.
+Protocol stays 3.
+
+Six targeted regressions pass on Python 3.11.12 and 3.14.7. They exercise public
+CLI archive/resume commands and a real Git clone, parent/child completion,
+explicit selection, occupied bindings, stale completion and branch switching.
+A separate mechanism regression changes the session binding during validation
+and confirms that archive refuses to write or clear that binding. Before the
+runtime fix, four of the six methods fail on Python 3.11; the two existing-binding
+controls already pass. These are local CLI regressions, not new model-host or
+live company-platform acceptance.
+
+The full local package gate passes 264 of 265 tests on Python 3.14.7; the
+Windows-only Job assignment test is skipped on macOS. Ordinary independent diff
+review found no validated issues and separately checked that another session's
+binding survives archive and that a planning task remains ineligible.
+
+Fixed ZIP SHA-256:
+`ab7a4297d4f4d75cad805e5b621d5f17b8e71306de8e2b2a9fe00f3b37023530`.
+Disposable Codex/Gitea and Claude/CNB project installations upgrade from 0.8.3,
+detect the unchanged old lock and refuse execution until its explicit update.
+Old completion correctly becomes stale after the toolchain change, while a newly
+verified completion can be archived from a fresh session with its basis intact.
+Old task and evidence bytes remain unchanged. Both known global entries match
+all 45 artifact payload files; installation integrity and CLI version match
+0.8.4. Existing project pins are not bulk upgraded, and new model-host loading
+and live platform acceptance remain unverified.
+
 ## 0.8.3 provider transport and PR references (2026-11-02)
 
 HTTP protocol errors, including a chunked response that closes before its final
