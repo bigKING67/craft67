@@ -1,5 +1,40 @@
 # Host compatibility
 
+## 0.8.3 provider transport and PR references (2026-11-02)
+
+HTTP protocol errors, including a chunked response that closes before its final
+chunk, now use the existing bounded retry policy. A transient failure can recover;
+exhausted retries become `unavailable` without a raw exception or response body.
+Both provider adapters validate optional PR `head`/`base` objects and optional
+nonempty string SHAs before consumers inspect them. Missing/null references remain
+unknown, valid raw fields survive unchanged, and provider-specific SHA requirements
+are not replaced by a new common hash format. Protocol stays 3.
+
+The 12 new regression methods pass on Python 3.11.12 and 3.14.7. They exercise real
+loopback HTTP reads and the public `prepare`, `handoff` and `doctor` CLI paths,
+covering both Gitea and CNB, malformed references, unknown references, exactly
+three attempts on persistent truncation and recovery after one truncated response.
+The CLI fixture routes only HTTPS transport to the local server; policy checks,
+provider parsing and application behavior remain real. The same methods produced
+44 failing assertions before the runtime fix on Python 3.11. These are local
+transport/CLI regressions, not a live company-platform or new model-host trial.
+
+The full local package gate passes 258 of 259 tests; the Windows-only Job
+assignment test is skipped on macOS. Ordinary independent diff review found no
+validated issues and separately checked open/read protocol exceptions with zero
+and two retries, response closure and optional-reference compatibility on Python
+3.11. These checks do not replace native platform CI.
+
+Fixed ZIP SHA-256:
+`f6df9a4543cc3d6842c970302be9e026c10edf6eb1c48cdf203ac46134bb4920`.
+Disposable Codex/Gitea and Claude/CNB project installations upgrade from 0.8.2,
+detect the unchanged old lock, refuse execution until its explicit update, and
+then pass the installed CLI failure/recovery checks and a new approved check.
+Historical evidence bytes remain unchanged. Both known global entries match all
+45 artifact payload files; installation integrity and CLI version match 0.8.3.
+Existing projects retain their own fixed versions and locks, and live host loading
+remains unverified.
+
 ## 0.8.2 evidence ordering and provider JSON (2026-11-02)
 
 Each actually attempted check now records optional `supersedes` hashes of the

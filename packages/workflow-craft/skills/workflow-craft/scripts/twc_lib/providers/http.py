@@ -8,6 +8,7 @@ import os
 import socket
 import time
 from dataclasses import dataclass
+from http.client import HTTPException
 from typing import Any, Mapping
 from urllib import error, parse, request
 
@@ -154,6 +155,20 @@ class ReadOnlyAPI:
         return response.data
 
 
+    @staticmethod
+    def _require_change_refs(data: Mapping[str, Any]) -> None:
+        # Missing references stay unknown; present fields must be safe for consumers.
+        for name in ("head", "base"):
+            reference = data.get(name)
+            if reference is None:
+                continue
+            if not isinstance(reference, dict):
+                raise ProviderError("invalid_response", "Provider returned an invalid change reference")
+            sha = reference.get("sha")
+            if sha is not None and (not isinstance(sha, str) or not sha):
+                raise ProviderError("invalid_response", "Provider returned an invalid change reference SHA")
+
+
     def _list(self, path: str) -> list[Any]:
         items: list[Any] = []
         for page in range(1, self.max_pages + 1):
@@ -222,7 +237,7 @@ class ReadOnlyAPI:
                     raise self._status_error(exc.code) from None
                 finally:
                     exc.close()
-            except (error.URLError, socket.timeout, TimeoutError, OSError):
+            except (error.URLError, socket.timeout, TimeoutError, OSError, HTTPException):
                 if attempt < self.retries:
                     self._pause(attempt)
                     continue

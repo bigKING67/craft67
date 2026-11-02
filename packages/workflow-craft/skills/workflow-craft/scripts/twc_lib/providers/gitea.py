@@ -34,6 +34,7 @@ class Gitea(ReadOnlyAPI):
     def get_change(self, number: int) -> dict[str, Any]:
         data = self._object(f"{self._repo_path()}/pulls/{self._number(number)}")
         self._require_matching_number(data, number)
+        self._require_change_refs(data)
         return data
 
 

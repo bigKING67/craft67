@@ -65,7 +65,9 @@ class CNB(ReadOnlyAPI):
         return self._numbered('issues', number)
 
     def get_change(self, number):
-        return self._numbered('pulls', number)
+        data = self._numbered('pulls', number)
+        self._require_change_refs(data)
+        return data
 
     def get_reviews(self, number):
         return self._list(f'{self._repo_path()}/-/pulls/{self._number(number)}/reviews')

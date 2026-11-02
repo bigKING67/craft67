@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.3 — Unreleased
+
+- 将 HTTP 分块响应截断等协议异常纳入既有的有限重试；短暂断流可恢复，耗尽重试后返回受控 unavailable，不向 CLI 抛出 IncompleteRead 或回显响应内容。
+- Gitea/CNB 的 PR 读取边界校验可选 head/base 对象及可选非空字符串 SHA，异常字段返回 invalid_response；缺失/null 仍为未知，保留原始有效字段、平台专属哈希要求和协议 3。
+- 增加真实本地 HTTP 与公开 CLI 回归，覆盖异常 head 的 prepare、异常 base 的 handoff、有限重试、恢复和未知字段；保留修复前失败证据。
+
 ## 0.8.2 — Unreleased
 
 - 验证结果改用每个实际尝试检查的前驱证据哈希判断后继，不再以机器时间选择最新结果；时钟回拨后的新失败能阻止完成，后续成功重验仍可恢复。独立分支或旧记录的冲突结果若无法确定先后则为 incomplete，须在看到冲突后实际重验；部分检查和前序失败后的未尝试检查不覆盖其他观察。

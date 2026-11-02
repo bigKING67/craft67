@@ -20,7 +20,7 @@
 
 这些事实保存在随任务分支提交的 `.workflow/tasks/<task>/` 目录：契约、本地执行进度、证据摘要和最新交接都在里面。平台任务的分配、评审、合并留在 CNB/Gitea 和 Git；模型、Agent 进程和聊天上下文留在各宿主。并行尝试使用普通分支、独立 clone 或 `git worktree`，工具检查整个 Git 根并保留 WIP 边界。
 
-**当前为源码 v0.8.2，非正式 Release。** 新项目使用 `.workflow/` 存放配置、任务与证据；已有 `.team-workflow/` 继续可用，可预览并显式迁移，历史文件保持原字节。两套目录并存时拒绝选路。宿主 Skill 入口、项目规则及个人/团队模式保持原有职责，见 [目录迁移](skills/workflow-craft/references/project-directory.md)。各版本验证范围见 [兼容性记录](docs/compatibility.md)。
+**当前为源码 v0.8.3，非正式 Release。** 新项目使用 `.workflow/` 存放配置、任务与证据；已有 `.team-workflow/` 继续可用，可预览并显式迁移，历史文件保持原字节。两套目录并存时拒绝选路。宿主 Skill 入口、项目规则及个人/团队模式保持原有职责，见 [目录迁移](skills/workflow-craft/references/project-directory.md)。各版本验证范围见 [兼容性记录](docs/compatibility.md)。
 
 模式按项目首次明确选择，后续复用并可显式切换；见 [开发模式](skills/workflow-craft/references/development-modes.md)。协议仍为 3，升级项目需匹配固定安装和工具链锁；全局安装不自动升级项目。写入锁和验证进程管理支持 POSIX 与原生 Windows。历史候选的宿主结果不代表当前版本的自动发现或模型行为已验收。
 
@@ -132,7 +132,7 @@ git commit -m "twc: hand off issue-42" -- .workflow/tasks/issue-42
 
 ```sh
 python3 scripts/build.py --output-dir /path/to/approved-artifacts
-python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.8.2.zip \
+python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.8.3.zip \
   --project /path/to/product --host codex
 # 核对目标、产物和来源后加 --apply；Claude 用 --host claude，Pi 用 --host pi。
 ```
@@ -142,7 +142,7 @@ python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft
 全局启用用同一固定产物，先预览，再在授权范围内加 `--apply`：
 
 ```sh
-python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.8.2.zip --global --host codex
+python3 scripts/install.py --artifact /path/to/approved-artifacts/workflow-craft-0.8.3.zip --global --host codex
 ```
 
 Codex 与 Pi 共用 `~/.agents/skills/workflow-craft/`，Claude 写入 `~/.claude/skills/workflow-craft/`。检测到已知 Codex/Pi 另一条全局发现路径中的同名或旧名副本时，先核对迁移，不再增加重复安装。只安装选定入口，不改全局 AGENTS、CLAUDE、宿主配置或状态栏。已有同名未知/漂移安装拒绝覆盖；固定版本升级仍需 `--allow-upgrade`。宿主需重新发现 Skill，新会话可显式调用。进入具体项目后按 [全局入口与项目固定版本](skills/workflow-craft/references/development-modes.md#全局入口与项目固定版本) 选择副本，不用全局运行时直接管理项目任务。
