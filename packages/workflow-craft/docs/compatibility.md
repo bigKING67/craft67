@@ -1,5 +1,48 @@
 # Host compatibility
 
+## Manual Codex read-only launcher (2026-11-02)
+
+The [manual development launcher](../scripts/codex_readonly.py), documented in
+[operations](operations.md#手动-codex-只读验收), pins the invoking Python and actual Git
+for one explicitly requested POSIX Codex session. It retains the current model and
+authentication, disables login shells, shell snapshots and profile reconstruction,
+and changes only child-process configuration. Preview does not call a model or
+create the output directory. Model execution requires `--execute`, stays native
+`read-only` with approval `never`, and has a maximum 300-second deadline.
+
+An initial implementation used `mcp_servers={}`; independent review reproduced
+that Codex 0.166.0 merges this empty table and leaves configured servers enabled.
+No model was run with that implementation. The corrected launcher discovers
+effective servers with plugins disabled, sets each literal server name to
+`enabled=false`, and checks the final effective configuration before allowing
+model execution. Offline fake-CLI regressions cover merged configuration,
+fail-closed behavior, tool selection, preview, failure preservation, deadline
+cleanup/recovery and interruption. An optional native CLI regression uses a
+temporary `CODEX_HOME` and an `offline.probe` server without starting any server
+or model; it actually ran in local validation and is skipped when CLI is absent.
+Independent review confirmed the MCP finding closed.
+
+One fresh Codex 0.166.0 session used the configured `gpt-6.1-sol` / `max` with
+the unchanged fixed 0.8.4 artifact and the same synthetic personal-task prompt
+and clone as the earlier trials. It took 177.036 seconds, read the project Skill
+and guide, and executed the project CLI's explicit `resume`. All 21 observed
+shell commands used non-login shells; no Git cache error occurred. The current
+task remained `in_progress`, old unit evidence was `stale`, automated acceptance
+was `pending` and the manual item remained `needs_review`. No check or task
+mutation was executed. All 173 receiver files, including `.git`, their modes
+and directory set stayed unchanged; checked user configuration and both known
+global Skill trees were unchanged. This is one bounded model-session result,
+not a quality or latency comparison, human review, or live platform acceptance.
+
+The first earlier native sample remains partial: its Git launcher attempted
+denied cache writes and the model did not run `resume`. Python 3.9 was observed
+later in a temporary `ZDOTDIR` fixture that bypassed normal Homebrew initialization;
+normal-user-shell controls use Python 3.14.7. It is not evidence of an ordinary
+host Python defect. The maintained launcher does not create or replace shell
+profiles. Fresh Claude/Pi sessions, old-project pin acceptance and actual business
+review remain separate. The development launcher is not in the fixed Skill ZIP;
+runtime version 0.8.4 and its existing artifact SHA-256 stay unchanged.
+
 ## CI headroom and timing (2026-11-02)
 
 The 0.8.4 Windows/Python 3.12 baseline job succeeded in 19 minutes 11 seconds,
@@ -43,8 +86,9 @@ Old completion correctly becomes stale after the toolchain change, while a newly
 verified completion can be archived from a fresh session with its basis intact.
 Old task and evidence bytes remain unchanged. Both known global entries match
 all 45 artifact payload files; installation integrity and CLI version match
-0.8.4. Existing project pins are not bulk upgraded, and new model-host loading
-and live platform acceptance remain unverified.
+0.8.4. Existing project pins are not bulk upgraded. These installation checks
+do not establish model-host loading; the bounded Codex continuation sample above
+is separate, and live platform acceptance remains unverified.
 
 ## 0.8.3 provider transport and PR references (2026-11-02)
 

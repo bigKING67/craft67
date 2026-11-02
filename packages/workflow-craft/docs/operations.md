@@ -8,6 +8,40 @@
 
 已建立的 CNB 合成演练仓库、首条真实 CI 和待验收边界见 [CNB 首轮演练记录](cnb-pilot.md)。该记录是带日期的证据快照，不是第二套平台状态。
 
+## 手动 Codex 只读验收
+
+[开发启动器](../scripts/codex_readonly.py) 用于 macOS/Linux 上已安装项目固定 Skill 的隔离 Git 项目。
+在包目录中运行，先预览；显式增加 `--execute` 才会调用一次当前配置的模型：
+
+```sh
+python3 scripts/codex_readonly.py --project "$fixture" --prompt-file "$prompt" --output "$evidence"
+python3 scripts/codex_readonly.py --project "$fixture" --prompt-file "$prompt" --output "$evidence" --execute
+```
+
+`fixture` 是隔离项目的 Git 根，`prompt` 是只读接手要求的 UTF-8 文件，`evidence` 必须是项目外尚不存在的目录。
+预览不调用模型、不创建输出目录；会话开始后的失败保留目录，后续尝试使用新目录，不能覆盖失败记录。
+必须以 Python 3.11+ 启动；子命令的 `python3` 固定到同一解释器。
+macOS 的系统 Git 启动器通过 `xcode-select -p` 解析为实际 Git；也可用 `--git` 指定。
+`--codex` 选择本机 Codex CLI，模型、推理配置和认证继续沿用当前设置。
+
+启动器只在输出目录创建 Python/Git 入口并设置验收进程的 PATH，不创建临时 `ZDOTDIR` 或替换用户 Shell 配置。
+禁用登录 Shell、Shell 快照和 profile 环境重建；运行固定为原生 `read-only`、不允许提权批准和临时会话。
+仅对该进程关闭 hooks、MCP、插件、apps、memory、多代理、浏览器和 Web 搜索；项目 trust 也只作进程覆盖。
+预检只查询原生 CLI 的有效 MCP 配置，逐项禁用服务器后再次查询；仍有启用项时拒绝调用模型。
+不把空 MCP 表误当成删除已有服务器，不保存 MCP 环境变量或认证内容。
+固定 Git 为无可选锁、不提示认证、不读全局/系统 Git 配置的夹具环境，不作为日常项目执行入口。
+`allow_login_shell` 和环境设置语义见 [OpenAI Docs 配置参考](https://learn.chatgpt.com/docs/config-file/config-reference)。
+
+模型执行默认最多 300 秒；`--timeout` 可缩短。超时/中断会终止本次 POSIX 进程组，最多给原进程 2 秒退出时间，
+再清理同组子进程；不声称能回收脱离该进程组的任意外部服务。Windows 不支持本开发启动器，产品运行时的平台支持不变。
+输出保留 `plan.json`、`events.jsonl`、`stderr.log`、`final.txt`（宿主实际生成时）和 `result.json`。
+退出码沿用宿主结果；超时为 124，中断为 130。退出 0 只表示宿主结束，结果仍标记验收未核实，
+须另行检查实际 Skill/CLI 路径、回答、命令和含 `.git` 的前后文件快照。`--ephemeral` 不等于整个用户目录隔离。
+
+离线回归用假 CLI 检查工具选择、模型设置保留、预览、失败保留与超时进程组清理；本机有 Codex CLI 时，
+另用临时配置查询实际 MCP 合并/禁用语义，缺少 CLI 则明确跳过该项。均不调用真实模型或网络。
+本开发脚本不进入固定 Skill 安装产物，不改变 Workflow Craft 版本或宿主配置。
+
 ## 本地 0.3.0 候选验收（2026-10-30）
 
 个人与团队共用的首次选择、项目配置与切换、本地任务闭环已进入源码。固定候选 `team-workflow-craft-0.3.0.zip` 为 75,610 字节、31 个载荷文件，SHA-256 为 `a00f05319fd95e7a006a9eda6312d7e013fa4f1761cfd4976d11e567dcbad6f8`；同工具链独立重建字节一致。运行协议为 2，运行树哈希为 `a192edd22178df215bc89b4f61e1ba044fba724a643106b7d07e5d04d09a19cc`。
