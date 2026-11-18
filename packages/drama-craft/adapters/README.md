@@ -22,11 +22,21 @@ diff -r packages/drama-craft/skills/drama-craft ~/.agents/skills/drama-craft
 
 | 宿主 | 目标 | 说明 | 验证状态 |
 | --- | --- | --- | --- |
-| Pi | `~/.agents/skills/drama-craft/` | 用户级 Skill 根自动发现；启动新会话才生效；可 `/skill:drama-craft` 显式调用，或直接提任务 | 文件一致已验证；新会话加载与生成质量未验证 |
-| Codex | `~/.agents/skills/drama-craft/` | Codex 发现共享 Agents Skill root 时直接可用；不要另装一份到 `~/.codex/skills` | 未在本机验证 |
+| Pi | `~/.agents/skills/drama-craft/` | 用户级 Skill 根自动发现；启动新会话才生效；可 `/skill:drama-craft` 显式调用，或直接提任务 | 发现已验证（2026-11-18 会话技能清单含该路径，用户级）；生成质量未验证 |
+| Codex | `~/.agents/skills/drama-craft/` | Codex 发现共享 Agents Skill root 时直接可用；不要另装一份到 `~/.codex/skills` | 发现已验证（2026-11-18，见下方探针记录）；生成质量未验证 |
 | Claude Code | `~/.agents/skills/` 或 `~/.claude/skills/` | 取决于宿主版本配置的 Skill 目录；只选一个，不要双装 | 未验证 |
 | Cursor | 无原生 Skill 发现 | 把 `SKILL.md` 与本任务需要的 `references/` 作为规则或上下文引入；引用时保留文件路径，避免只贴片段导致铁律与适用范围脱节 | 未验证 |
 | 通用（无 Skill 机制的模型） | 任意 | 把 `SKILL.md` 作为系统或任务上下文，按需追加一个 `references/` 文件；references 之间不互相引用，必须显式带上 | 未验证 |
+
+## 已验证的部分（2026-11-18）
+
+只证明"宿主能发现这个 Skill 文件"，不证明生成质量：
+
+- **Codex**：`codex-cli 0.169.1` 的 `app-server` 走 JSON-RPC，`initialize` → `initialized` → `skills/list`（`forceReload: true`）。返回条目为 `name=drama-craft`、`path=/Users/gaoqian/.agents/skills/drama-craft/SKILL.md`、`scope=user`、`enabled=true`、`pluginId=null`。全程零模型调用，不写任何配置。
+- **Pi**：本次会话的 Skill 清单里直接出现 `drama-craft` 及上述用户级路径，说明 `~/.agents/skills` 已被发现；是否被任务选中、生成质量如何仍需真实新会话验证。
+- **文件一致性**：`diff -r` 源码与安装副本为空。
+
+复验方式：Codex 用同一组 JSON-RPC 方法重新取一次 `skills/list` 并核对 path 与 scope；Pi 开新会话看 Skill 清单。两者都不替代一次真实任务的生成质量对照。
 
 ## 未发布状态
 

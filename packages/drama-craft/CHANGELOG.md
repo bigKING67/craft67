@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.2
+
+只补宿主发现证据，Skill 与评估内容不变。
+
+**变更**
+
+- `adapters/README.md` 记录 2026-11-18 的两次零模型调用核对：Codex CLI 0.169.1 `app-server` 的 `skills/list`（`forceReload: true`）返回 `drama-craft`、`scope=user`、`enabled=true`、路径 `/Users/gaoqian/.agents/skills/drama-craft/SKILL.md`；Pi 会话技能清单同样列出该路径。
+- 明确这两项只证明"宿主能发现 Skill 文件"，不证明生成质量；Claude、Cursor 与通用宿主仍为未验证。
+
 ## 0.3.1
 
 补齐评估覆盖与一条判定规则修正；Skill 正文与模板字段不变。
