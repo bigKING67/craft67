@@ -38,7 +38,7 @@ Build a reusable content and creative system that creates attention, trust, sear
 
 ## Boundary
 
-Long-term spokesperson and PR belong to Brand Strategy. Paid media bidding and CRM belong to Growth/Performance/Lifecycle. Creator profitability belongs to Commercial Strategy. Live-room daily execution belongs to Operations. Use `design-craft`, `brandkit`, or `imagegen` only when actual visual artifacts are required.
+Long-term spokesperson and PR belong to Brand Strategy. Paid media bidding and CRM belong to Growth/Performance/Lifecycle. Creator profitability belongs to Commercial Strategy. Live-room daily execution belongs to Operations. AI drama prototypes, beat sheets, shot lists, and single-variable drama iteration belong to `drama-craft`; this Skill keeps the content system, brief, claim constraints, and usage rights it hands over. Use `design-craft`, `brandkit`, or `imagegen` only when actual visual artifacts are required.
 
 ## Output contract
 

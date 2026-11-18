@@ -42,7 +42,7 @@ Specialists do not read sibling Skill directories or parent-relative runtime pat
 
 - Commercial Strategy owns economics, price, assortment, and budget constraints.
 - Brand Strategy owns positioning, PR, spokespersons, sponsorships, long-term partnership/licensing rights, reputation, and exit.
-- Content/Social owns organic content, creator briefs, creative direction, scripts, and KOL/KOC content usage rights.
+- Content/Social owns organic content, creator briefs, creative direction, scripts, and KOL/KOC content usage rights; AI drama prototypes, beat sheets, and shot lists hand over to `drama-craft`.
 - Growth owns paid media, search, experiments, CRM, retention, and marginal scale decisions.
 - Operations owns platform execution, service, refunds, and operating cadence.
 - Analytics owns metric definitions, evidence quality, attribution limits, and diagnosis.
@@ -224,7 +224,7 @@ Validate a release or tag:
 
 ```bash
 python3 tooling/validation/check_release.py
-python3 tooling/validation/check_release.py --tag v2.2.0
+python3 tooling/validation/check_release.py --tag v2.2.1
 ```
 
 Build a release archive only from a clean commit and a passing full quality-regression artifact produced from that exact commit:
@@ -234,12 +234,12 @@ bash scripts/build_release.sh \
   eval/answers/quality-regression/run-<timestamp>-<random>/quality-regression.json
 ```
 
-The command reruns deterministic validation, performs an isolated real install and parity check, and stages a deterministic three-file artifact set under `dist/`. Archive, versioned attestation, and checksum are fully written and fsynced, verified locally, then published together by one same-filesystem directory rename to `dist/v2.2.0/`. Before packaging, the gate requires an unlocked completed checkpoint, a colocated exact answer-file set, one explicit model shared by all release-quality layers, and recomputes canonical prompt/answer/response hashes, structured scores, pass decisions, medians, votes, durations, call counts, and result/checkpoint parity. An existing version directory, stale same-version staging directory, output-root symlink, partial or internally inconsistent quality results, substituted cases/rubrics/schemas/calibration answers, dirty-source evidence, stale Git SHA, Manifest hash mismatch, or installation mismatch fails closed without overwriting an existing release. The quality run remains local self-attested evidence: these checks make casual or inconsistent forgery fail, but do not cryptographically prove that an external model provider executed the calls.
+The command reruns deterministic validation, performs an isolated real install and parity check, and stages a deterministic three-file artifact set under `dist/`. Archive, versioned attestation, and checksum are fully written and fsynced, verified locally, then published together by one same-filesystem directory rename to `dist/v2.2.1/`. Before packaging, the gate requires an unlocked completed checkpoint, a colocated exact answer-file set, one explicit model shared by all release-quality layers, and recomputes canonical prompt/answer/response hashes, structured scores, pass decisions, medians, votes, durations, call counts, and result/checkpoint parity. An existing version directory, stale same-version staging directory, output-root symlink, partial or internally inconsistent quality results, substituted cases/rubrics/schemas/calibration answers, dirty-source evidence, stale Git SHA, Manifest hash mismatch, or installation mismatch fails closed without overwriting an existing release. The quality run remains local self-attested evidence: these checks make casual or inconsistent forgery fail, but do not cryptographically prove that an external model provider executed the calls.
 
 Verify the final artifact set without network access or the original repository state:
 
 ```bash
-python3 tooling/build/verify_release.py dist/v2.2.0
+python3 tooling/build/verify_release.py dist/v2.2.1
 ```
 
 The verifier requires exactly the archive, its two-entry SHA-256 file, and the versioned attestation; rechecks archive/attestation binding, tar prefix, normalized metadata, safe member types, per-Skill `SKILL.md`, and canonical Bundle tree hashes without extracting the archive. New attestations explicitly record `quality_evidence_trust=self-attested-local` and `quality_execution_authenticity_verified=false`. This proves artifact-set integrity and internal provenance consistency, not publisher identity, external model execution, or the unavailable contents of the quality-evidence file. `dist/` remains local/ignored until an explicit release action is authorized.

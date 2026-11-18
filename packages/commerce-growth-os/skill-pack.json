@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "pack_version": "2.2.0",
+  "pack_version": "2.2.1",
   "minimum_installer_version": "2.2.0",
   "pack_name": "consumer-brand-commerce-marketing-suite",
   "default_install_root": "~/.agents/skills",
