@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "source_sampling": {
+    "platform": "抖音",
+    "window": "2026",
+    "per_prototype_counts_recorded": false
+  },
+  "rounds": [],
+  "library": []
+}

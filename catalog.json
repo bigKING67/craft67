@@ -61,6 +61,16 @@
         ],
         [
           "python3",
+          "scripts/check_eval.py",
+          "--all"
+        ],
+        [
+          "python3",
+          "scripts/evidence.py",
+          "--check"
+        ],
+        [
+          "python3",
           "-m",
           "unittest",
           "discover",

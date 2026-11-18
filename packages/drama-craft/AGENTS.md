@@ -19,6 +19,10 @@
 | `skills/drama-craft/references/output-templates.md` | beat sheet、分镜表（含素材来源与参考资产）、变量矩阵、复盘卡、机制三种结构 |
 | `skills/drama-craft/references/worked-example.md` | 填完的 P1 20s 端到端范例：输入 → beat → 分镜 → 生成交接 → 矩阵 → 复盘 → 验收 |
 | `scripts/check.py` | Skill 结构、链接、原型编号与逐原型字段、铁律位置与适用范围、关键约束与占位声明；包文档与版本一致性 |
+| `evals/cases/` `evals/baselines/` | 固定 brief 与已通过门禁的样例交付；用例用 frontmatter 声明交付形态 |
+| `scripts/check_eval.py` | 交付结构契约：分镜表列、时间码连续、单镜档位、素材来源、参考资产、台词长度、机制数字、单变量矩阵、主原型合法性 |
+| `scripts/evidence.py` | 从台账计算 A/B/C 等级，拒绝声明等级与台账不符或 README 口径漂移 |
+| `evals/ledger.json` `evals/levels.json` | 真实投放台账与声明等级快照；等级只能由台账算出 |
 | `adapters/README.md` | 各宿主安装目标、发现方式与验证状态；只写安装与限制，不复制专业规则 |
 | `tests/` | 校验器的正向与反向回归 |
 
@@ -32,7 +36,10 @@
 - 新增或修改镜头字段时，保证 `素材来源`（AI / 实拍 / 图库）与 `参考资产`（CH/SC/PD 编号）两列在各模板中同时存在，否则跨镜一致性检查不可执行。
 - 原型库只能标"已归类"并附证据等级；不得写"已验证"。台账不足 5 条的结构只能进观察池，90 天未复核的降级回观察池。
 - 原型库、模板与范例里的数字（价格、时长、比例）都是结构占位，必须保留"不得直接作为宣称"的说明；不得把真实品牌、账号或未授权素材写成资产清单，引用样例只保留品类与结构。
-- 修改后运行 `python3 scripts/check.py`（含包文档与版本一致性）与 `python3 -m unittest discover -s tests -p 'test_*.py'`；从仓库根再跑 `python3 scripts/check.py --package drama-craft`。改 Skill 内容后同步本机安装副本 `~/.agents/skills/drama-craft` 并核对差异。
+- 改 `SKILL.md`、`references/` 或 `output-templates.md` 的字段结构时，同步 `evals/rubric.md` 与 `scripts/check_eval.py` 的检查项；字段加了模板却没加检查，等于没有约束。
+- 新增评估用例：`evals/cases/<id>.md` 写 frontmatter 与 brief，`evals/baselines/<id>.md` 放一份能过门禁的样例交付；只加用例不加基线视为未覆盖。
+- 证据等级不得手写抬高：先补 `evals/ledger.json`，跑 `python3 scripts/evidence.py --check` 看计算值，再同步 `evals/levels.json`、README 与 CHANGELOG。90 天未复核的样本自动跌回 C 级。
+- 修改后运行 `python3 scripts/check.py`、`python3 scripts/check_eval.py --all`、`python3 scripts/evidence.py --check` 与 `python3 -m unittest discover -s tests -p 'test_*.py'`；从仓库根再跑 `python3 scripts/check.py --package drama-craft`。改 Skill 内容后同步本机安装副本 `~/.agents/skills/drama-craft` 并核对差异。
 
 ## 数据来源
 

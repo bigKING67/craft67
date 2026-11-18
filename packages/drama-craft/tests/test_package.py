@@ -135,10 +135,11 @@ class DocChecks(unittest.TestCase):
         self.assertTrue(any('prototype range' in error for error in check.check_docs(self.package)))
 
     def test_source_version_drift_is_rejected(self):
-        self.edit_doc('VERSION', '0.2.0', '0.3.0')
+        current = (self.package / 'VERSION').read_text(encoding='utf-8').strip()
+        self.edit_doc('VERSION', current, '9.9.9')
         errors = check.check_docs(self.package)
-        self.assertTrue(any('源码' in error for error in errors), errors)
-        self.assertTrue(any('CHANGELOG.md must open a section' in error for error in errors), errors)
+        self.assertTrue(any('源码 9.9.9' in error for error in errors), errors)
+        self.assertTrue(any('CHANGELOG.md must open a section for 9.9.9' in error for error in errors), errors)
 
     def test_readme_overclaim_is_rejected(self):
         self.edit_doc('README.md', '11 个已归类原型', '11 个已验证原型')

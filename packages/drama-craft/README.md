@@ -53,11 +53,15 @@ diff -r skills/drama-craft ~/.agents/skills/drama-craft
 
 宿主安装与发现见 [adapters/README.md](adapters/README.md)。
 
+交付评估、用例与投放台账见 [evals/README.md](evals/README.md)；机器项与人工项清单在 [evals/rubric.md](evals/rubric.md)。
+
 ## 验证
 
 ```sh
 cd packages/drama-craft
-python3 scripts/check.py
+python3 scripts/check.py                       # Skill 结构 + 包文档 + 版本一致性
+python3 scripts/check_eval.py --all            # 交付结构契约（基线）
+python3 scripts/evidence.py --check            # 证据等级与台账一致
 python3 -m unittest discover -s tests -p 'test_*.py'
 
 # 从仓库根
@@ -68,4 +72,4 @@ python3 scripts/check.py --package drama-craft
 
 ## 当前状态
 
-源码 0.2.0。原型库与生产约束来自内容团队的两份内部采集文档（爆款 AI 剧情采集分类、AI 剧情方向分析），属于 2026 年抖音抽样归类：**证据等级 C**（单条样本量与采集起止日未逐条留档，未经真实投放 A/B 复核），因此称"已归类"而不称"已验证"。文档中的商品名、价格与数据仅用于说明结构，不代表当前在售状态、效果或转化承诺；机制示例数字不得直接写进成片当宣称。真实投放结论需按 [迭代方法](skills/drama-craft/references/iteration-loop.md) 自行积累，并在 90 天复核周期内重新定级。
+源码 0.3.0。原型库与生产约束来自内容团队的两份内部采集文档（爆款 AI 剧情采集分类、AI 剧情方向分析），属于 2026 年抖音抽样归类：11 个原型均为 C 级（单条样本量与采集起止日未逐条留档，未经真实投放 A/B 复核），因此称"已归类"而不称"已验证"；等级由 `evals/ledger.json` 与 `scripts/evidence.py` 计算，不许手写抬高。文档中的商品名、价格与数据仅用于说明结构，不代表当前在售状态、效果或转化承诺；机制示例数字不得直接写进成片当宣称。真实投放结论需按 [迭代方法](skills/drama-craft/references/iteration-loop.md) 自行积累，并在 90 天复核周期内重新定级。
