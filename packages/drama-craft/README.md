@@ -31,13 +31,14 @@
 
 ## 安装与使用
 
-Skill 内容在 `skills/drama-craft/`。宿主安装入口按各自约定复制该目录，例如本机 `~/.agents/skills/drama-craft`：
+Skill 内容在 `skills/drama-craft/`。本机多宿主共用 `~/.agents/skills` 一处 canonical 安装，不要向 `~/.codex/skills`、`~/.claude/skills`、`~/.pi/agent/skills` 另复制副本：
 
 ```sh
 rsync -a --delete skills/drama-craft/ ~/.agents/skills/drama-craft/
+diff -r skills/drama-craft ~/.agents/skills/drama-craft
 ```
 
-安装副本与源码是两种状态：文件一致不等于正在运行的宿主会话已加载新版本，需在新会话验证。
+安装副本与源码是两种状态：文件一致不等于正在运行的宿主会话已加载新版本，需在新会话验证。各宿主的发现方式、限制与验证状态见 [adapters/README.md](adapters/README.md)；本包尚未打 tag、未发 Release，任何按分支或路径安装的方式都不构成不可变版本。
 
 ## 内容索引
 
@@ -49,6 +50,8 @@ rsync -a --delete skills/drama-craft/ ~/.agents/skills/drama-craft/
 | [iteration-loop.md](skills/drama-craft/references/iteration-loop.md) | 百分比分段掉点诊断、基线口径、最小判读条件、变量矩阵、停止条件、分类验收 |
 | [output-templates.md](skills/drama-craft/references/output-templates.md) | beat sheet、分镜表（含素材来源与参考资产）、变量矩阵、复盘卡、机制话术结构 |
 | [worked-example.md](skills/drama-craft/references/worked-example.md) | 一份填完的 P1 20s 端到端交付：输入到验收全流程 |
+
+宿主安装与发现见 [adapters/README.md](adapters/README.md)。
 
 ## 验证
 

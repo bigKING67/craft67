@@ -19,6 +19,7 @@
 | `skills/drama-craft/references/output-templates.md` | beat sheet、分镜表（含素材来源与参考资产）、变量矩阵、复盘卡、机制三种结构 |
 | `skills/drama-craft/references/worked-example.md` | 填完的 P1 20s 端到端范例：输入 → beat → 分镜 → 生成交接 → 矩阵 → 复盘 → 验收 |
 | `scripts/check.py` | Skill 结构、链接、原型编号与逐原型字段、铁律位置与适用范围、关键约束与占位声明；包文档与版本一致性 |
+| `adapters/README.md` | 各宿主安装目标、发现方式与验证状态；只写安装与限制，不复制专业规则 |
 | `tests/` | 校验器的正向与反向回归 |
 
 ## 修改规则
