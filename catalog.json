@@ -46,6 +46,36 @@
       }
     },
     {
+      "name": "drama-craft",
+      "path": "packages/drama-craft",
+      "skills": [
+        {
+          "name": "drama-craft",
+          "path": "skills/drama-craft/SKILL.md"
+        }
+      ],
+      "checks": [
+        [
+          "python3",
+          "scripts/check.py"
+        ],
+        [
+          "python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "version_source": {
+        "path": "VERSION",
+        "format": "text"
+      }
+    },
+    {
       "name": "review-craft",
       "path": "packages/review-craft",
       "skills": [

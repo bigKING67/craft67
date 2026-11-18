@@ -2,7 +2,7 @@
 
 # craft67
 
-集中维护 Craft 工程与 Agent Skills 的源码仓库：设计、创意、工程审查、投资研究、商业经营、浏览器操作等能力在同一处维护，各包保留独立版本、依赖、测试与许可证。目前包含 11 个项目、19 个 Skill；准确入口和检查命令以 [catalog.json](catalog.json) 为准。
+集中维护 Craft 工程与 Agent Skills 的源码仓库：设计、创意、剧情、工程审查、投资研究、商业经营、浏览器操作等能力在同一处维护，各包保留独立版本、依赖、测试与许可证。目前包含 12 个项目、20 个 Skill；准确入口和检查命令以 [catalog.json](catalog.json) 为准。
 
 ## 选择能力
 
@@ -10,6 +10,7 @@
 | --- | --- | --- |
 | [Design Craft](packages/design-craft/README.md) | Web、桌面与原生界面设计、实现和视觉验证 | design-craft |
 | [Creative Craft](packages/creative-craft/README.md) | 广告概念、文案、艺术指导、图像 Brief 与视频方案 | creative-craft |
+| [Drama Craft](packages/drama-craft/README.md) | AI 剧情短视频的原型选型、分镜交付与单变量迭代 | drama-craft |
 | [Review Craft](packages/review-craft/README.md) | 有覆盖范围和证据的工程审查、整改与验收 | review-craft |
 | [Money Craft](packages/money-craft/README.md) | 投资研究、财报、估值与组合分析 | money-craft |
 | [Whoami](packages/whoami/README.md) | 八字、紫微排盘计算与有依据的解读 | whoami |

@@ -2,7 +2,7 @@ English · [简体中文](README.md)
 
 # craft67
 
-The source repository for Craft projects and Agent Skills. Design, creative work, engineering review, investment research, commerce operations, browser automation, and more are maintained in one place, and each package keeps its own version, dependencies, tests, and license. It currently contains 11 projects and 19 Skills; for the exact entry points and check commands, [catalog.json](catalog.json) is the source of truth.
+The source repository for Craft projects and Agent Skills. Design, creative work, drama scripting, engineering review, investment research, commerce operations, browser automation, and more are maintained in one place, and each package keeps its own version, dependencies, tests, and license. It currently contains 12 projects and 20 Skills; for the exact entry points and check commands, [catalog.json](catalog.json) is the source of truth.
 
 ## Choose a capability
 
@@ -10,6 +10,7 @@ The source repository for Craft projects and Agent Skills. Design, creative work
 | --- | --- | --- |
 | [Design Craft](packages/design-craft/README.md) | Design, implementation, and visual verification for web, desktop, and native interfaces | design-craft |
 | [Creative Craft](packages/creative-craft/README.md) | Ad concepts, copywriting, art direction, image briefs, and video plans | creative-craft |
+| [Drama Craft](packages/drama-craft/README.md) | Story-prototype selection, shot-list delivery, and single-variable iteration for AI drama short videos | drama-craft |
 | [Review Craft](packages/review-craft/README.md) | Engineering review with defined coverage and evidence, plus remediation and acceptance | review-craft |
 | [Money Craft](packages/money-craft/README.md) | Investment research, financial reports, valuation, and portfolio analysis | money-craft |
 | [Whoami](packages/whoami/README.md) | BaZi and Zi Wei Dou Shu chart calculation, with evidence-based interpretation | whoami |
