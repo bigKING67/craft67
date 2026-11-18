@@ -193,6 +193,9 @@ def check_matrix(sections: list[tuple[str, str]], errors: list[str]) -> None:
                 errors.append('变量矩阵 must mark the first row as 基线')
             for index in range(1, len(rows)):
                 before, after = rows[index - 1], rows[index]
+                if '基线' in after[state]:
+                    # a new baseline opens a new comparison chain; it is not a single-variable round
+                    continue
                 if len(before) != len(after):
                     errors.append(f'变量矩阵 row {index + 2} has {len(after)} cells, expected {len(before)}')
                     continue
@@ -253,7 +256,10 @@ def run_all(require_coverage: int | None = None) -> dict[str, object]:
         results.append({'case': baseline.stem, 'ok': not errors, 'errors': errors})
     case_ids = sorted(path.stem for path in CASES.glob('*.md'))
     uncovered = [case_id for case_id in case_ids if case_id not in covered]
-    errors = [f'uncovered case without a baseline: {case_id}' for case_id in uncovered] if require_coverage and len(covered) < require_coverage else []
+    errors: list[str] = []
+    if require_coverage and len(covered) < require_coverage:
+        errors.append(f'only {len(covered)} baselines exist, {require_coverage} required')
+    errors.extend(f'uncovered case without a baseline: {case_id}' for case_id in uncovered)
     return {
         'ok': not errors and all(result['ok'] for result in results),
         'cases': case_ids,

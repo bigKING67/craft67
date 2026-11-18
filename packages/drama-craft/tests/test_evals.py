@@ -39,8 +39,13 @@ class DeliveryChecks(unittest.TestCase):
     def test_shipped_baselines_pass(self):
         report = check_eval.run_all()
         self.assertTrue(report['ok'], report)
-        self.assertEqual(report['covered'], ['02-dropoff-diagnosis', '04-hook-candidates'])
-        self.assertEqual(report['uncovered'], ['01-three-directions', '03-retrospective', '05-batch-library'])
+        self.assertEqual(report['cases'], ['01-three-directions', '02-dropoff-diagnosis', '03-retrospective',
+                                           '04-hook-candidates', '05-batch-library'])
+        self.assertEqual(report['uncovered'], [])
+
+    def test_coverage_requirement_is_enforced(self):
+        self.assertTrue(check_eval.run_all(require_coverage=5)['ok'])
+        self.assertFalse(check_eval.run_all(require_coverage=9)['ok'])
 
     def test_missing_shot_column_is_rejected(self):
         errors = self.errors(text=self.mutate('| 卖点 | 素材来源 |', '| 卖点 | 来源 |'))
